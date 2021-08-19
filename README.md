@@ -6,6 +6,9 @@
 
 **演示**：[http://wijmo.gcpowertools.com.cn/5/#demos](http://wijmo.gcpowertools.com.cn/5/#demos)
 ![](http://i.imgur.com/8AX138u.png)
+
+![葡萄城控件微信服务号](http://weixin.gcpowertools.com.cn/images/public_Signature.png "葡萄城控件微信服务号")
+
 ----------
 
 
