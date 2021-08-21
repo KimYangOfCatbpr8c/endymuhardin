@@ -1,0 +1,74 @@
+<div class="header-panel member">
+<h2><span class="identifier">Clipboard</span> Class</h2>
+<dl class="dl-horizontal">
+<dt>File</dt><dd class="filename">wijmo.js</dd>
+<dt>Module</dt><dd><a href="topic/wijmo.Module.html"><span class="identifier">wijmo</span></a></dd>
+</dl>
+<div class="comment"><p>Static class that provides utility methods for clipboard operations.</p>
+<p>The <a href="topic/wijmo.Clipboard.Class.html"><span class="identifier">Clipboard</span></a> class provides static <a href="topic/wijmo.Clipboard.Class.html/#copy"><span class="identifier">copy</span></a> and <a href="topic/wijmo.Clipboard.Class.html/#paste"><span class="identifier">paste</span></a> methods
+that can be used by controls to customize the clipboard content during
+clipboard operations.</p>
+<p>For example, the code below shows how a control could intercept the
+clipboard shortcut keys and provide custom clipboard handling:</p>
+
+
+<pre>rootElement.addEventListener('keydown', function(e) {
+
+  // copy: ctrl+c or ctrl+Insert
+  if (e.ctrlKey && (e.keyCode == 67 || e.keyCode == 45)) {
+    var text = this.getClipString();
+    Clipboard.copy(text);
+    return;
+  }
+
+  // paste: ctrl+v or shift+Insert
+  if ((e.ctrlKey && e.keyCode == 86) || (e.shiftKey && e.keyCode == 45)) {
+    Clipboard.paste(function (text) {
+      this.setClipString(text);
+    });
+    return;
+  }
+});</pre></div>
+</div>
+<div class="member-panel class members" ng-class="{ 'show-inherited' : ctx.showInherited, 'show-raisers' : ctx.showRaisers }">
+<h3 class="node">Methods</h3>
+<ul>
+<li class="mmethod"><a href="topic/wijmo.Clipboard.Class.html/#copy">copy</a></li>
+<li class="mmethod"><a href="topic/wijmo.Clipboard.Class.html/#paste">paste</a></li>
+</ul>
+</div>
+<h3 class="node">Methods</h3>
+<div class="member-list" ng-class="{ 'show-inherited' : ctx.showInherited, 'show-raisers' : ctx.showRaisers }">
+<div id="copy" class="member-panel mmethod">
+<h3><span class="badge">Static</span> copy</h3>
+<pre>copy(text: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank"><span class="identifier">string</span></a>): <span class="identifier">void</span></pre>
+<div class="comment"><p>Copies a string to the clipboard.</p>
+<p>This method only works if invoked immediately after the user 
+pressed a clipboard copy command (such as ctrl+c).</p></div>
+<dl class="dl-horizontal">
+  <dt>Parameters</dt><dd></dd>
+</dl>
+<ul>
+<li><b>text</b>: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank"><span class="identifier">string</span></a><br/><p>Text to copy to the clipboard.</p></li></ul>
+<dl class="dl-horizontal">
+  <dt>Returns</dt><dd><span class="identifier">void</span></dd>
+</dl>
+</div>
+<div id="paste" class="member-panel mmethod">
+<h3><span class="badge">Static</span> paste</h3>
+<pre>paste(callback: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Function" target="_blank"><span class="identifier">Function</span></a>): <span class="identifier">void</span></pre>
+<div class="comment"><p>Gets a string from the clipboard.</p>
+<p>This method only works if invoked immediately after the user 
+pressed a clipboard paste command (such as ctrl+v).</p></div>
+<dl class="dl-horizontal">
+  <dt>Parameters</dt><dd></dd>
+</dl>
+<ul>
+<li><b>callback</b>: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Function" target="_blank"><span class="identifier">Function</span></a><br/><p>Function called when the clipboard content
+has been retrieved. The function receives the clipboard
+content as a parameter.</p></li></ul>
+<dl class="dl-horizontal">
+  <dt>Returns</dt><dd><span class="identifier">void</span></dd>
+</dl>
+</div>
+</div>

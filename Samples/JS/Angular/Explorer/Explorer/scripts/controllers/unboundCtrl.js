@@ -15,7 +15,7 @@ app.controller('unboundCtrl', function appCtrl($scope) {
         if ($scope.ctx.flex) {
             var flex = $scope.ctx.flex;
             flex.allowResizing = wijmo.grid.AllowResizing.Both;
-            flex.allowDragging = wijmo.grid.AllowResizing.Both;
+            flex.allowDragging = wijmo.grid.AllowDragging.Both;
 
             // add 50 rows, 10 columns
             for (var r = 0; r < 50; r++) {

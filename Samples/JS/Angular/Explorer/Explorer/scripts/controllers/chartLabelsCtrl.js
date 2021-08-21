@@ -7,7 +7,8 @@ app.controller('chartLabelsCtrl', function appCtrl($scope) {
     // data context
     $scope.ctx = {
         chart: null,
-        itemsSource: []
+        itemsSource: [],
+        pos : 2
     };
 
     var names = ['c1', 'c2', 'c3', 'c4', 'c5'];
@@ -20,29 +21,19 @@ app.controller('chartLabelsCtrl', function appCtrl($scope) {
         });
     }
 
-    $scope.$watch('ctx.chart', function () {
-        if ($scope.ctx.chart) {
-            var chart = $scope.ctx.chart;
-            chart.tooltip.content = null;
+    $scope.positionClicked = function (sender, args) {
+        var menu = sender;
+        $scope.ctx.chart.dataLabel.position = menu.selectedValue;
+    }
 
-            chart.itemFormatter = function (engine, hitTestInfo, defaultFormat) {
-                if (hitTestInfo.chartElement == wijmo.chart.ChartElement.SeriesSymbol) {
-                    var fsz = engine.fontSize;
-                    engine.fontSize = '10';
-                    defaultFormat();
-                    var point = hitTestInfo.point.clone();
-                    point.y -= 6;
-                    var text = hitTestInfo.x.toString() + '=' + hitTestInfo.y.toFixed(1);
-                    var sz = engine.measureString(text);
-                    var fill = engine.fill;
-                    engine.fill = 'white';
-                    engine.drawRect(point.x - 2 - sz.width / 2, point.y - sz.height - 2, sz.width + 4, sz.height + 4);
-                    engine.fill = fill;
-                    point.x -= sz.width / 2;
-                    engine.drawString(text, point);
-                    engine.fontSize = fsz;
-                }
-            };
-        }
-    });
+    $scope.borderClicked = function (sender, args) {
+        var menu = sender;
+        $scope.ctx.chart.dataLabel.border = menu.selectedValue;
+    }
+
+    $scope.hasLabels = function () {
+        var chart = $scope.ctx.chart;
+        return chart && chart.dataLabel.position != 0;
+    };
+
 });

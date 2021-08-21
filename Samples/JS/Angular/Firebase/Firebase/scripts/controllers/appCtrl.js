@@ -31,7 +31,14 @@ app.controller('appCtrl', function appCtrl($scope, $location) {
 
     // tell scope when tables finish loading
     function loaded() {
-        $scope.$apply();
+        scopeApply();
+    }
+
+    // apply changes to scope (if necessary)
+    function scopeApply() {
+        if (!$scope.$$phase && !$scope.$root.$$phase) {
+            $scope.$apply();
+        }
     }
 
     // create data maps to show related items
@@ -48,7 +55,7 @@ app.controller('appCtrl', function appCtrl($scope, $location) {
     }
     $scope.cvCat.currentChanged.addHandler(function () {
         $scope.cvPrd.refresh();
-        $scope.$apply();
+        scopeApply();
     });
 
     // show orders for selected customer
@@ -58,7 +65,7 @@ app.controller('appCtrl', function appCtrl($scope, $location) {
     }
     $scope.cvCst.currentChanged.addHandler(function () {
         $scope.cvOrd.refresh();
-        $scope.$apply();
+        scopeApply();
     });
 
     // show details for selected order
@@ -68,7 +75,7 @@ app.controller('appCtrl', function appCtrl($scope, $location) {
     }
     $scope.cvOrd.currentChanged.addHandler(function () {
         $scope.cvDtl.refresh();
-        $scope.$apply();
+        scopeApply();
     });
 
     // initialize new categories (new id)

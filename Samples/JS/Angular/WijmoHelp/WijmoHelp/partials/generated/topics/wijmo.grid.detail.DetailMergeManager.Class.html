@@ -1,0 +1,57 @@
+<div class="header-panel member">
+<h2><span class="identifier">DetailMergeManager</span> Class</h2>
+<dl class="dl-horizontal">
+<dt>File</dt><dd class="filename">wijmo.grid.detail.js</dd>
+<dt>Module</dt><dd><a href="topic/wijmo.grid.detail.Module.html"><span class="identifier">wijmo.grid.detail</span></a></dd>
+<dt>Base Class</dt><dd><a href="topic/wijmo.grid.MergeManager.Class.html"><span class="identifier">MergeManager</span></a></dd>
+<dt>Show</dt>
+<dd>
+<label><input type="checkbox" ng-model="ctx.showInherited"> Inherited Members</label>&nbsp;&nbsp;&nbsp;
+<label><input type="checkbox" ng-model="ctx.showRaisers"> Event Raisers</label>
+</dd>
+</dl>
+<div class="comment"><p>Merge manager class used by the <a href="topic/wijmo.grid.detail.FlexGridDetailProvider.Class.html"><span class="identifier">FlexGridDetailProvider</span></a> class.</p>
+<p>The <a href="topic/wijmo.grid.detail.DetailMergeManager.Class.html"><span class="identifier">DetailMergeManager</span></a> merges detail cells (cells in a <a href="topic/wijmo.grid.detail.DetailRow.Class.html"><span class="identifier">DetailRow</span></a>)
+into a single detail cell that spans all grid columns.</p></div>
+</div>
+<div class="member-panel class members" ng-class="{ 'show-inherited' : ctx.showInherited, 'show-raisers' : ctx.showRaisers }">
+<h3 class="node">Constructor</h3>
+<ul>
+<li class="mmethod"><a href="topic/wijmo.grid.detail.DetailMergeManager.Class.html/#constructor">constructor</a></li>
+</ul>
+<h3 class="node">Methods</h3>
+<ul>
+<li class="mmethod"><a href="topic/wijmo.grid.detail.DetailMergeManager.Class.html/#getMergedRange">getMergedRange</a></li>
+</ul>
+</div>
+<h3>Constructor</h3>
+<div id="constructor" class="member-panel mmethod">
+<h3>constructor</h3>
+<pre>constructor(grid: <a href="topic/wijmo.grid.FlexGrid.Class.html"><span class="identifier">FlexGrid</span></a>): <a href="topic/wijmo.grid.detail.DetailMergeManager.Class.html"><span class="identifier">DetailMergeManager</span></a></pre>
+<div class="comment"><p>Initializes a new instance of the <a href="topic/wijmo.grid.detail.DetailMergeManager.Class.html"><span class="identifier">DetailMergeManager</span></a> class.</p></div>
+<dl class="dl-horizontal">
+  <dt>Parameters</dt><dd></dd>
+</dl>
+<ul>
+<li><b>grid</b>: <a href="topic/wijmo.grid.FlexGrid.Class.html"><span class="identifier">FlexGrid</span></a><br/><p>The <a href="topic/wijmo.grid.FlexGrid.Class.html"><span class="identifier">FlexGrid</span></a> object that owns this <a href="topic/wijmo.grid.detail.DetailMergeManager.Class.html"><span class="identifier">DetailMergeManager</span></a>.</p></li></ul>
+<dl class="dl-horizontal">
+  <dt>Returns</dt><dd><a href="topic/wijmo.grid.detail.DetailMergeManager.Class.html"><span class="identifier">DetailMergeManager</span></a></dd>
+</dl>
+</div>
+<h3 class="node">Methods</h3>
+<div class="member-list" ng-class="{ 'show-inherited' : ctx.showInherited, 'show-raisers' : ctx.showRaisers }">
+<div id="getMergedRange" class="member-panel mmethod">
+<h3>getMergedRange</h3>
+<pre>getMergedRange(p: <a href="topic/wijmo.grid.GridPanel.Class.html"><span class="identifier">GridPanel</span></a>, r: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Number" target="_blank"><span class="identifier">number</span></a>, c: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Number" target="_blank"><span class="identifier">number</span></a>, clip?: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a>): <a href="topic/wijmo.grid.CellRange.Class.html"><span class="identifier">CellRange</span></a></pre>
+<div class="comment"><p>Gets a <a href="topic/wijmo.grid.CellRange.Class.html"><span class="identifier">CellRange</span></a> that specifies the merged extent of a cell
+in a <a href="topic/wijmo.grid.GridPanel.Class.html"><span class="identifier">GridPanel</span></a>.</p></div>
+<dl class="dl-horizontal">
+  <dt>Parameters</dt><dd></dd>
+</dl>
+<ul>
+<li><b>p</b>: <a href="topic/wijmo.grid.GridPanel.Class.html"><span class="identifier">GridPanel</span></a><br/><p>The <a href="topic/wijmo.grid.GridPanel.Class.html"><span class="identifier">GridPanel</span></a> that contains the range.</p></li><li><b>r</b>: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Number" target="_blank"><span class="identifier">number</span></a><br/><p>The index of the row that contains the cell.</p></li><li><b>c</b>: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Number" target="_blank"><span class="identifier">number</span></a><br/><p>The index of the column that contains the cell.</p></li><li><b>clip</b>: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a> <span class="badge">Optional</span><br/><p>Whether to clip the merged range to the grid's current view range.</p></li></ul>
+<dl class="dl-horizontal">
+  <dt>Returns</dt><dd><a href="topic/wijmo.grid.CellRange.Class.html"><span class="identifier">CellRange</span></a></dd>
+</dl>
+</div>
+</div>

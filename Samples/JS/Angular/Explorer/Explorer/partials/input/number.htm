@@ -1,16 +1,19 @@
-﻿<div class="row-fluid">
+﻿<div>
 	<div class="copy">
 		<h3>
-			InputNumber
-		</h3>
+			InputNumber</h3>
 		<p>
-			The <b>InputNumber</b> control allows users to edit numbers. It prevents users from
-			accidentally entering invalid data and formats the number as it is edited.
-		</p>
+			The <a href="http://wijmo.com/5/docs/topic/wijmo.input.InputNumber.Class.html" 
+            target="_blank">InputNumber</a> control allows users to edit numbers. It prevents users 
+            from accidentally entering invalid data and formats the number as it is edited.</p>
 		<p>
 			You can specify a valid range using the <b>min</b> and <b>max</b> properties, and
-			provide spinner buttons that increase or decrease the value with a click.
-		</p>
+			provide spinner buttons (<b>showSpinner</b> property) that increase or decrease the 
+            value with a click. You can also use the <b>format</b> property to specify the 
+            .NET-style format string</p>
+        <p>
+            These samples use the <a href="http://wijmo.com/5/docs/topic/wijmo.angular.WjInputNumber.Class.html" 
+            target="_blank">WjInputNumber</a> directive and AngularJS.</p>
 	</div>
 	<div>
 		<wj-menu value="ctx.culture" header="Culture">
@@ -45,11 +48,12 @@
 			HTML input (type='number', range 0-1000)
 		</div>
 		<div class="col-sm-6 col-xs-12">
-			<input class="form-control"
-				   type="number"
-				   min="0"
-				   max="1000"
-				   ng-model="ctx.passengers" />
+			<input 
+                class="form-control"
+				type="number"
+				min="0"
+				max="1000"
+				ng-model="ctx.passengers" />
 		</div>
 		<div class="col-sm-3 col-xs-12">
 			{{ctx.passengers | glbz:'n0'}}
@@ -76,11 +80,12 @@
 			InputNumber (n0: integer, [0-1000], spinner)
 		</div>
 		<div class="col-sm-6 col-xs-12">
-			<wj-input-number value="ctx.passengers"
-							 min="0"
-							 max="1000"
-							 step="1"
-							 format="n0">
+			<wj-input-number 
+                value="ctx.passengers"
+				min="0"
+				max="1000"
+				step="1"
+				format="n0">
 			</wj-input-number>
 		</div>
 		<div class="col-sm-3 col-xs-12">
@@ -92,12 +97,13 @@
 			InputNumber (n0: integer, [0-1000], spinner)
 		</div>
 		<div class="col-sm-6 col-xs-12">
-			<wj-input-number class="customEdit"
-							 value="ctx.passengers"
-							 min="0"
-							 max="1000"
-							 step="1"
-							 format="n0">
+			<wj-input-number 
+                class="customEdit"
+				value="ctx.passengers"
+				min="0"
+				max="1000"
+				step="1"
+				format="n0">
 			</wj-input-number>
 		</div>
 		<div class="col-sm-3 col-xs-12">
@@ -110,10 +116,11 @@
 			InputNumber (c2: currency, [($200)-10,000], format:c2)
 		</div>
 		<div class="col-sm-6 col-xs-12">
-			<wj-input-number value="ctx.price"
-							 min="-200"
-							 max="10000"
-							 format="c2">
+			<wj-input-number 
+                value="ctx.price"
+				min="-200"
+				max="10000"
+				format="c2">
 			</wj-input-number>
 		</div>
 		<div class="col-sm-3 col-xs-12">
@@ -125,11 +132,12 @@
 			InputNumber (c2: currency, [($200)-10,000], spinner)
 		</div>
 		<div class="col-sm-6 col-xs-12">
-			<wj-input-number value="ctx.price"
-							 min="-200"
-							 max="10000"
-							 step="100"
-							 format="c2">
+			<wj-input-number 
+                value="ctx.price"
+				min="-200"
+				max="10000"
+				step="100"
+				format="c2">
 			</wj-input-number>
 		</div>
 		<div class="col-sm-3 col-xs-12">
@@ -141,12 +149,13 @@
 			InputNumber (c2: currency, [($200)-10,000], spinner)
 		</div>
 		<div class="col-sm-6 col-xs-12">
-			<wj-input-number class="customEdit"
-							 value="ctx.price"
-							 min="-200"
-							 max="10000"
-							 step="100"
-							 format="c2">
+			<wj-input-number 
+                class="customEdit"
+				value="ctx.price"
+				min="-200"
+				max="10000"
+				step="100"
+				format="c2">
 			</wj-input-number>
 		</div>
 		<div class="col-sm-3 col-xs-12">
@@ -159,10 +168,11 @@
 			InputNumber (p2: percentage, [0-100%])
 		</div>
 		<div class="col-sm-6 col-xs-12">
-			<wj-input-number value="ctx.tax"
-							 min="0"
-							 max="1"
-							 format="p2">
+			<wj-input-number 
+                value="ctx.tax"
+				min="0"
+				max="1"
+				format="p2">
 			</wj-input-number>
 		</div>
 		<div class="col-sm-3 col-xs-12">
@@ -174,11 +184,12 @@
 			InputNumber (p2: percentage, [0-100%], spinner)
 		</div>
 		<div class="col-sm-6 col-xs-12">
-			<wj-input-number value="ctx.tax"
-							 min="0"
-							 max="1"
-							 step=".005"
-							 format="p2">
+			<wj-input-number 
+                value="ctx.tax"
+				min="0"
+				max="1"
+				step=".005"
+				format="p2">
 			</wj-input-number>
 		</div>
 		<div class="col-sm-3 col-xs-12">
@@ -190,12 +201,13 @@
 			InputNumber (p2: percentage, [0-100%], spinner)
 		</div>
 		<div class="col-sm-6 col-xs-12">
-			<wj-input-number class="customEdit"
-							 value="ctx.tax"
-							 min="0"
-							 max="1"
-							 step=".005"
-							 format="p2">
+			<wj-input-number 
+                class="customEdit"
+				value="ctx.tax"
+				min="0"
+				max="1"
+				step=".005"
+				format="p2">
 			</wj-input-number>
 		</div>
 		<div class="col-sm-3 col-xs-12">
@@ -220,8 +232,9 @@
 			InputNumber (no format, spinner)
 		</div>
 		<div class="col-sm-6 col-xs-12">
-			<wj-input-number value="ctx.price"
-							 step="100">
+			<wj-input-number 
+                value="ctx.price"
+				step="100">
 			</wj-input-number>
 		</div>
 		<div class="col-sm-3 col-xs-12">
@@ -233,9 +246,10 @@
 			InputNumber (no format, spinner)
 		</div>
 		<div class="col-sm-6 col-xs-12">
-			<wj-input-number class="customEdit"
-							 value="ctx.price"
-							 step="100">
+			<wj-input-number 
+                class="customEdit"
+				value="ctx.price"
+				step="100">
 			</wj-input-number>
 		</div>
 		<div class="col-sm-3 col-xs-12">

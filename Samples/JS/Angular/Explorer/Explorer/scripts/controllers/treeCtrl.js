@@ -108,7 +108,7 @@ app.controller('treeCtrl', function appCtrl($scope) {
 
         flex.deferUpdate(function() {
             addPersonToGrid(flex, p, 0);
-            flex.autoSizeCol(0);
+            flex.autoSizeColumn(0);
         });
     }
     function addPersonToGrid(flex, p, level) {

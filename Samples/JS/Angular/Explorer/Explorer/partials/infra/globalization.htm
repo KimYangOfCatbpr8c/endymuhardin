@@ -1,10 +1,12 @@
-﻿<div class="row-fluid">
+﻿<div>
 	<div class="copy">
 		<h3>
 			Globalization</h3>
 		<p>
 			Wijmo has a globalization module built into its core and exposed as a static
-			<b>Globalize</b> class.<p>
+			<a href="http://wijmo.com/5/docs/topic/wijmo.Globalize.Class.html" target="_blank">
+			Globalize</a> class.</p>
+		<p>
 			The <b>wijmo.Globalize</b> class has methods for formatting and parsing numbers and
 			dates. These methods are used by all Wijmo controls, and you can use them in your
 			code as well.</p>
@@ -21,7 +23,9 @@
 	</div>
 	<div>
 		<wj-menu value="ctx.culture" header="Culture">
-			<wj-menu-item value="'en'">English</wj-menu-item>
+			<wj-menu-item value="'en'">English (US)</wj-menu-item>
+			<wj-menu-item value="'en-GB'">English (UK)</wj-menu-item>
+			<wj-menu-item value="'es'">Spanish</wj-menu-item>
 			<wj-menu-item value="'de'">German</wj-menu-item>
 			<wj-menu-item value="'it'">Italian</wj-menu-item>
 			<wj-menu-item value="'fr'">French</wj-menu-item>
@@ -29,22 +33,25 @@
 			<wj-menu-item value="'ru'">Russian</wj-menu-item>
 			<wj-menu-item value="'ja'">Japanese</wj-menu-item>
 			<wj-menu-item value="'ko'">Korean</wj-menu-item>
+			<wj-menu-item value="'zh'">Chinese</wj-menu-item>
 		</wj-menu>
 	</div>
-    <br />
+	<br />
 	<h4>
 		Formatting and parsing numbers, dates, and times</h4>
 	<p>
 		Use the <b>wijmo.Globalize.format</b> method to format dates and values 
-        using .NET-style formatting strings that reflect the current culture. The 
-        format method automatically chooses the formatDate or formatNumber method, 
-        so you need not specify. Here are some examples of formatted values.</p>
+		using .NET-style formatting strings that reflect the current culture. The 
+		format method automatically chooses the formatDate or formatNumber method, 
+		so you need not specify. Here are some examples of formatted values.</p>
 
 	<table class="table table-condensed table-bordered">
 		<thead>
-		<th>Value</th>
-		<th>Format</th>
-		<th>Result</th>
+			<tr>
+				<th>Value</th>
+				<th>Format</th>
+				<th>Result</th>
+			</tr>
 		</thead>
 		<tbody>
 			<tr>
@@ -102,16 +109,16 @@
 		The <b>format</b> and <b>parse</b> methods described above have globalization
 		support built in. But many applications have modules that contain strings which
 		must also be translated. For example, you may have a log-in module that contains 
-        status and error messages, menu systems, buttons with text, and so on.</p>
+		status and error messages, menu systems, buttons with text, and so on.</p>
 	<p>
 		To localize strings in JavaScript, create a single object and use it to store 
-        all of the localizable strings in your app. Then use this object in the app
+		all of the localizable strings in your app. Then use this object in the app
 		instead of string literals.</p>
 	<p>
 		If you want to allow users to switch cultures dynamically, load the localized
 		strings using Ajax calls. For example, when you switch the culture using the
 		menu at the top of this page, the menu below updates to reflect the selected 
-        culture.</p>
+		culture.</p>
 
 	<div>
 		<div class="btn-group">
@@ -159,13 +166,15 @@
 	<br />
 	<p>
 		This table is another example that uses Ajax calls to load 
-        localized strings when the current culture changes.</p>
+		localized strings when the current culture changes.</p>
 
 	<table class="table table-condensed table-bordered">
 		<thead>
-		<th>Path</th>
-		<th>English</th>
-		<th>Current Culture ({{ctx.culture}})</th>
+			<tr>
+				<th>Path</th>
+				<th>English</th>
+				<th>Current Culture ({{ctx.culture}})</th>
+			</tr>
 		</thead>
 		<tbody>
 			<tr>
@@ -196,7 +205,7 @@
 		calendar.</p>
 
 	<wj-calendar 
-        class="calendar"
+		class="calendar"
 		control="ctx.calendar"
 		value="ctx.departureDate">
 	</wj-calendar>

@@ -132,42 +132,35 @@ app.controller('basicCtrl', function appCtrl($scope, $compile, dataSvc) {
         }, 500);
     });
 
-    // connect to flex when it becomes available
+    // connect to flex when it becomes available to update data maps and formatting
     // Don't remove this watcher or DataMaps won't work in Templates sample
     $scope.$watch('ctx.flex', function () {
         var flex = $scope.ctx.flex;
         if (flex) {
-            // update data maps, formatting, paging on FlexGrid initialized with itemssource
             updateDataMaps();
             updateFormatting();
         }
     });
 
+    // update data maps, formatting, paging now and when the itemsSource changes
     $scope.itemsSourceChangedHandler = function (sender, args) {
-        // update data maps, formatting, paging now and when the itemsSource changes
-
         var flex = $scope.ctx.flex;
 
+        // update data maps and formatting
         updateDataMaps();
         updateFormatting();
+
+        // set page size on the grid's internal collectionView
         if (flex.collectionView && $scope.ctx.pageSize != null) {
             flex.collectionView.pageSize = $scope.ctx.pageSize;
         }
     };
 
+    // keep the control in edit mode if 'alwaysEdit' is set to true
     $scope.selectionChangedHandler = function () {
-        var flex = $scope.ctx.flex;
-        // notify AngularJS of selection changes
-        $scope.current = flex.collectionView ? flex.collectionView.currentItem : null;
-        if (!$scope.$$phase) {
-            $scope.$apply('current');
-            $scope.$apply('ctx.flex.selection');
-        }
-
-        // keep the control in edit mode
-        if ($scope.ctx.alwaysEdit == true) {
+        if ($scope.ctx.alwaysEdit == true && $scope.ctx.flex.containsFocus()) {
             setTimeout(function () {
-                flex.startEditing(false);
+                $scope.ctx.flex.startEditing(false);
             }, 50);
         }
     };
@@ -178,14 +171,16 @@ app.controller('basicCtrl', function appCtrl($scope, $compile, dataSvc) {
             url: 'scripts/vendor/wijmo.culture.' + $scope.ctx.culture + '.js',
             dataType: 'script',
             success: function (data) {
-                eval(data); // apply new culture
-                var flex = $scope.ctx.flex;
-                if (flex) {
-                    flex.invalidate(); // show the change in the FlexGrid
-                }
+                invalidateAll(); // invalidate all controls to show new culture
             },
         });
     });
+
+    // invalidate all Wijmo controls
+    // using a separate function to handle strange IE9 scope issues
+    function invalidateAll() {
+        wijmo.Control.invalidateAll();
+    }
 
     // update data maps
     $scope.$watch('ctx.dataMaps', function () {
@@ -206,9 +201,12 @@ app.controller('basicCtrl', function appCtrl($scope, $compile, dataSvc) {
             var colColor = flex.columns.getColumn('colorId');
             if (colCountry && colProduct && colColor) {
                 if ($scope.ctx.dataMaps == true) {
-                    colCountry.dataMap = new wijmo.grid.DataMap(dataSvc.getCountries());
-                    colProduct.dataMap = new wijmo.grid.DataMap(dataSvc.getProducts());
-                    colColor.dataMap = new wijmo.grid.DataMap(dataSvc.getColors());
+                    colCountry.showDropDown = true; // show drop-down for countries
+                    colProduct.showDropDown = false; // don't show it for products
+                    colColor.showDropDown = false; // or colors (just to show how)
+                    colCountry.dataMap = buildDataMap(dataSvc.getCountries());
+                    colProduct.dataMap = buildDataMap(dataSvc.getProducts());
+                    colColor.dataMap = buildDataMap(dataSvc.getColors());
                 } else {
                     colCountry.dataMap = null;
                     colProduct.dataMap = null;
@@ -216,6 +214,15 @@ app.controller('basicCtrl', function appCtrl($scope, $compile, dataSvc) {
                 }
             }
         }
+    }
+
+    // build a data map from a string array using the indices as keys
+    function buildDataMap(items) {
+        var map = [];
+        for (var i = 0; i < items.length; i++) {
+            map.push({ key: i, value: items[i] });
+        }
+        return new wijmo.grid.DataMap(map, 'key', 'value');
     }
 
     // apply/remove column formatting
@@ -247,9 +254,9 @@ app.controller('basicCtrl', function appCtrl($scope, $compile, dataSvc) {
         var flex = $scope.ctx.flex;
         var col = flex.columns[0];
         col.visible = true;
-        col.width = col.width == flex.columns.defaultSize ? 30 : -1;
+        col.width = col.width < 0 ? 60 : -1;
         col = flex.rowHeaders.columns[0];
-        col.width = col.width == flex.headerColumns.defaultSize ? 90 : -1;
+        col.width = col.width < 0 ? 40 : -1;
     };
     $scope.toggleRowVisibility = function () {
         var flex = $scope.ctx.flex;
@@ -260,9 +267,9 @@ app.controller('basicCtrl', function appCtrl($scope, $compile, dataSvc) {
         var flex = $scope.ctx.flex;
         var row = flex.rows[0];
         row.visible = true;
-        row.height = row.height == flex.rows.defaultSize ? 80 : -1;
+        row.height = row.height < 0 ? 80 : -1;
         row = flex.columnHeaders.rows[0];
-        row.height = row.height == flex.headerRows.defaultSize ? 80 : -1;
+        row.height = row.height < 0 ? 80 : -1;
     };
     $scope.changeDefaultRowSize = function () {
         var flex = $scope.ctx.flex;
@@ -293,13 +300,36 @@ app.controller('basicCtrl', function appCtrl($scope, $compile, dataSvc) {
         if (localStorage) {
             var flex = $scope.ctx.flex;
             localStorage['columns'] = flex.columnLayout;
+            console.log('** Saved layout: ' + flex.columnLayout);
         }
     }
     $scope.loadColumnLayout = function () {
         if (localStorage) {
-            var flex = $scope.ctx.flex;
-            flex.columnLayout = localStorage['columns'];
+            if (!localStorage['columns']) {
+                alert('Please save a layout first...');
+            } else {
+                var flex = $scope.ctx.flex;
+                flex.columnLayout = localStorage['columns'];
+                console.log('** Loaded layout: ' + flex.columnLayout);
+            }
         }
+    }
+
+    // ** popup editor: 
+    $scope.editItem = function () {
+        var view = $scope.ctx.flex.collectionView;
+        view.editItem(view.currentItem); // start editing the current item
+        $scope.ctx.dlgEditor.show(true, function (e) { // commit or cancel the changes when done
+            if (e.dialogResult && e.dialogResult.indexOf('ok') > -1) {
+                view.commitEdit();
+            } else {
+                view.cancelEdit();
+            }
+            $scope.$apply();
+        });
+        //setTimeout(function () {
+        //    $scope.$apply();
+        //})
     }
 
     // ** inline editing
@@ -310,8 +340,8 @@ app.controller('basicCtrl', function appCtrl($scope, $compile, dataSvc) {
             // prevent default editing
             flex.isReadOnly = true;
 
-            // make rows taller to accommodate edit buttons
-            flex.rows.defaultSize = 36;
+            // make rows taller to accommodate edit buttons and input controls
+            flex.rows.defaultSize = 44;
 
             // use formatter to create buttons and custom editors
             flex.itemFormatter = itemFormatter;
@@ -332,15 +362,15 @@ app.controller('basicCtrl', function appCtrl($scope, $compile, dataSvc) {
                 switch (col.name) {
                     case 'buttons':
                         html = '<div>' +
-                                '&nbsp;&nbsp;' +
-                                '<button class="btn btn-primary btn-sm" ng-click="commitRow(' + r + ')">' +
-                                    '<span class="glyphicon glyphicon-ok"></span> OK' +
-                                '</button>' +
-                                '&nbsp;&nbsp;' +
-                                '<button class="btn btn-warning btn-sm" ng-click="cancelRow(' + r + ')">' +
-                                    '<span class="glyphicon glyphicon-ban-circle"></span> Cancel' +
-                                '</button>' +
-                            '</div>';
+                               '&nbsp;&nbsp;' +
+                               '<button class="btn btn-primary btn-sm" ng-click="commitRow(' + r + ')">' +
+                                   '<span class="glyphicon glyphicon-ok"></span> OK' +
+                               '</button>' +
+                               '&nbsp;&nbsp;' +
+                               '<button class="btn btn-warning btn-sm" ng-click="cancelRow(' + r + ')">' +
+                                   '<span class="glyphicon glyphicon-ban-circle"></span> Cancel' +
+                               '</button>' +
+                           '</div>';
                         break;
                     case 'date':
                         html = '<input id="theDate" class="form-control" value="' + panel.getCellData(r, c, true) + '"/>';
@@ -354,15 +384,15 @@ app.controller('basicCtrl', function appCtrl($scope, $compile, dataSvc) {
                     case 'buttons':
                         cell.style.padding = '3px';
                         html = '<div>' +
-                                '&nbsp;&nbsp;' +
-                                '<button class="btn btn-default btn-sm" ng-click="editRow(' + r + ')">' +
-                                    '<span class="glyphicon glyphicon-pencil"></span> Edit' +
-                                '</button>' +
-                                '&nbsp;&nbsp;' +
-                                '<button class="btn btn-default btn-sm" ng-click="deleteRow(' + r + ')">' +
-                                    '<span class="glyphicon glyphicon-remove"></span> Delete' +
-                                '</button>' +
-                            '</div>';
+                               '&nbsp;&nbsp;' +
+                               '<button class="btn btn-default btn-sm" ng-click="editRow(' + r + ')">' +
+                                   '<span class="glyphicon glyphicon-pencil"></span> Edit' +
+                               '</button>' +
+                               '&nbsp;&nbsp;' +
+                               '<button class="btn btn-default btn-sm" ng-click="deleteRow(' + r + ')">' +
+                                   '<span class="glyphicon glyphicon-remove"></span> Delete' +
+                               '</button>' +
+                           '</div>';
                         break;
                 }
             }
@@ -378,7 +408,7 @@ app.controller('basicCtrl', function appCtrl($scope, $compile, dataSvc) {
     }
     $scope.editRow = function (row) {
         $scope.ctx.editIndex = row;
-        $scope.ctx.flexInline.rows[row].height = 44;
+        $scope.ctx.flexInline.invalidate();
     }
     $scope.deleteRow = function (row) {
         var ecv = $scope.ctx.flexInline.collectionView;
@@ -396,6 +426,63 @@ app.controller('basicCtrl', function appCtrl($scope, $compile, dataSvc) {
     }
     $scope.cancelRow = function (row) {
         $scope.ctx.editIndex = -1;
-        $scope.ctx.flexInline.rows[row].height = -1;
+        $scope.ctx.flexInline.invalidate();
+    }
+
+    // toggle freezing
+    $scope.toggleFreeze = function (freeze) {
+        var flex = $scope.flex;
+        if (flex) {
+
+            // figure out whether to freeze or unfreeze
+            if (freeze == null) {
+                freeze = (flex.frozenRows || flex.frozenColumns) ? false : true;
+            }
+
+            if (freeze) {
+
+                // hide rows/cols before the viewRange and freeze
+                var vr = flex.viewRange;
+                for (var i = 0; i < vr.topRow; i++) {
+                    flex.rows[i].visible = false;
+                }
+                for (var i = 0; i < vr.leftCol; i++) {
+                    flex.columns[i].visible = false;
+                }
+
+                // freeze based on selection; if there is no selection,
+                // freeze the first couple of rows/columns
+                var sel = flex.selection;
+                if (sel.topRow || flex.leftCol) {
+                    flex.frozenRows = sel.topRow;
+                    flex.frozenColumns = sel.leftCol;
+                } else {
+                    flex.frozenRows = flex.frozenColumns = 2;
+                }
+
+            } else {
+
+                // show all rows/columns and unfreeze
+                for (var i = 0; i < flex.rows.length; i++) {
+                    flex.rows[i].visible = true;
+                }
+                for (var i = 0; i < flex.columns.length; i++) {
+                    flex.columns[i].visible = true;
+                }
+                flex.frozenRows = flex.frozenColumns = 0;
+            }
+
+            // update button caption
+            if (!$scope.$$phase) {
+                $scope.$apply();
+            }
+        }
+    }
+
+    // add a footer row to display column aggregates below the data
+    $scope.addFooterRow = function (s, e) {
+        var row = new wijmo.grid.GroupRow(); // create a GroupRow to show aggregates
+        s.columnFooters.rows.push(row); // add the row to the column footer panel
+        s.bottomLeftCells.setCellData(0, 0, '\u03A3'); // sigma on the header
     }
 });

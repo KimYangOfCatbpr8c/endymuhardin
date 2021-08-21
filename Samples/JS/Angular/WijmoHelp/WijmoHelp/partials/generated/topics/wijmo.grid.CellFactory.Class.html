@@ -1,30 +1,46 @@
-<h2>CellFactory Class</h2>
+<div class="header-panel member">
+<h2><span class="identifier">CellFactory</span> Class</h2>
 <dl class="dl-horizontal">
-<dt>Module</dt><dd>wijmo.grid</dd>
-<dt>File</dt><dd>wijmo.grid.js</dd>
+<dt>File</dt><dd class="filename">wijmo.grid.js</dd>
+<dt>Module</dt><dd><a href="topic/wijmo.grid.Module.html"><span class="identifier">wijmo.grid</span></a></dd>
 </dl>
-<p>Creates HTML elements that represents cells within a <a href="" ng-click="go('wijmo.grid.FlexGrid.Class.html')"><b>FlexGrid</b></a> control.</p>
-<br/>
-<h3>Methods</h3>
-<table class="table table-condensed" style="font:inherit">
-<thead>
-<tr>
-<th></th>
-<th>Name</th>
-<th>Parameters</th>
-<th>Return Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-    <tr>
-      <td></td>
-      <td><b>updateCell</b>(panel, r, c, cell, rng)</td>
-      <td><ul style="margin-left:-25px;list-style-type: none">
-<li><b>panel</b> (<a href="" ng-click="go('wijmo.grid.GridPanel.Class.html')"><b>GridPanel</b></a>): Part of the grid that owns this cell.</li><li><b>r</b> (<b>number</b>): Index of this cell's row.</li><li><b>c</b> (<b>number</b>): Index of this cell's column.</li><li><b>cell</b> (<b>HTMLElement</b>): Element that represents the cell.</li><li><b>rng</b> (<a href="" ng-click="go('wijmo.grid.CellRange.Class.html')"><b>CellRange</b></a>): <a href="" ng-click="go('wijmo.grid.CellRange.Class.html')"><b>CellRange</b></a> that contains the cell's merged range, or null if the cell is not merged.</li></ul>
-</td>
-      <td>void</td>
-      <td>Creates or updates a cell in the grid.</td>
-    </tr>
-</tbody>
-</table>
+<div class="comment"><p>Creates HTML elements that represent cells within a <a href="topic/wijmo.grid.FlexGrid.Class.html"><span class="identifier">FlexGrid</span></a> control.</p></div>
+</div>
+<div class="member-panel class members" ng-class="{ 'show-inherited' : ctx.showInherited, 'show-raisers' : ctx.showRaisers }">
+<h3 class="node">Methods</h3>
+<ul>
+<li class="mmethod"><a href="topic/wijmo.grid.CellFactory.Class.html/#disposeCell">disposeCell</a></li>
+<li class="mmethod"><a href="topic/wijmo.grid.CellFactory.Class.html/#updateCell">updateCell</a></li>
+</ul>
+</div>
+<h3 class="node">Methods</h3>
+<div class="member-list" ng-class="{ 'show-inherited' : ctx.showInherited, 'show-raisers' : ctx.showRaisers }">
+<div id="disposeCell" class="member-panel mmethod">
+<h3>disposeCell</h3>
+<pre>disposeCell(cell: <a href="https://developer.mozilla.org/en/docs/Web/API/HTMLElement" target="_blank"><span class="identifier">HTMLElement</span></a>): <span class="identifier">void</span></pre>
+<div class="comment"><p>Disposes of a cell element and releases all resources associated with it.</p></div>
+<dl class="dl-horizontal">
+  <dt>Parameters</dt><dd></dd>
+</dl>
+<ul>
+<li><b>cell</b>: <a href="https://developer.mozilla.org/en/docs/Web/API/HTMLElement" target="_blank"><span class="identifier">HTMLElement</span></a><br/><p>The element that represents the cell.</p></li></ul>
+<dl class="dl-horizontal">
+  <dt>Returns</dt><dd><span class="identifier">void</span></dd>
+</dl>
+</div>
+<div id="updateCell" class="member-panel mmethod">
+<h3>updateCell</h3>
+<pre>updateCell(p: <a href="topic/wijmo.grid.GridPanel.Class.html"><span class="identifier">GridPanel</span></a>, r: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Number" target="_blank"><span class="identifier">number</span></a>, c: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Number" target="_blank"><span class="identifier">number</span></a>, cell: <a href="https://developer.mozilla.org/en/docs/Web/API/HTMLElement" target="_blank"><span class="identifier">HTMLElement</span></a>, rng?: <a href="topic/wijmo.grid.CellRange.Class.html"><span class="identifier">CellRange</span></a>, updateContent?: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a>): <span class="identifier">void</span></pre>
+<div class="comment"><p>Creates or updates a cell in the grid.</p></div>
+<dl class="dl-horizontal">
+  <dt>Parameters</dt><dd></dd>
+</dl>
+<ul>
+<li><b>p</b>: <a href="topic/wijmo.grid.GridPanel.Class.html"><span class="identifier">GridPanel</span></a><br/><p>The <a href="topic/wijmo.grid.GridPanel.Class.html"><span class="identifier">GridPanel</span></a> that contains the cell.</p></li><li><b>r</b>: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Number" target="_blank"><span class="identifier">number</span></a><br/><p>The index of the row that contains the cell.</p></li><li><b>c</b>: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Number" target="_blank"><span class="identifier">number</span></a><br/><p>The index of the column that contains the cell.</p></li><li><b>cell</b>: <a href="https://developer.mozilla.org/en/docs/Web/API/HTMLElement" target="_blank"><span class="identifier">HTMLElement</span></a><br/><p>The element that represents the cell.</p></li><li><b>rng</b>: <a href="topic/wijmo.grid.CellRange.Class.html"><span class="identifier">CellRange</span></a> <span class="badge">Optional</span><br/><p>The <a href="topic/wijmo.grid.CellRange.Class.html"><span class="identifier">CellRange</span></a> object that contains the cell's 
+merged range, or null if the cell is not merged.</p></li><li><b>updateContent</b>: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a> <span class="badge">Optional</span><br/><p>Whether to update the cell's content as
+well as its position and style.</p></li></ul>
+<dl class="dl-horizontal">
+  <dt>Returns</dt><dd><span class="identifier">void</span></dd>
+</dl>
+</div>
+</div>

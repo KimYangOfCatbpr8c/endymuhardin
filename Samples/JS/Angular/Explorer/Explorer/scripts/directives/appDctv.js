@@ -681,7 +681,7 @@ app.directive('appCalendar', function () {
 });
 
 // FlexGrid directive
-app.directive('appGrid', function ($compile) {
+app.directive('appGrid', function ($compile, $interpolate) {
 
     // functions
     function getCellScope(panel, r, c) {
@@ -786,10 +786,7 @@ app.directive('appGrid', function ($compile) {
 
                         // build cell scope
                         var cellScope = getCellScope(panel, r, c);
-                        var html = tpl.replace(/\{\{(.*)\}\}/g, function (match, expression) {
-                            var value = scope.$parent.$eval(expression, cellScope);
-                            return value != null ? value : '';
-                        });
+                        var html = $interpolate(tpl)(cellScope);
 
                         // assign result to cell and compile it so ng-click works
                         cell.innerHTML = html;

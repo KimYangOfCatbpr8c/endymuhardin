@@ -1,4 +1,4 @@
-﻿<div class="row-fluid">
+﻿<div>
     <div class="copy">
         <h3>
             Selection</h3>
@@ -11,7 +11,7 @@
             Selected elements can be styled using CSS, and the current selection is reflected in
             the <b>series.CollectionView</b> as all list selections in Wijmo controls.</p>
     </div>
-    <div class="row-fluid">
+    <div>
 
         <wj-menu value="ctx.chart.chartType" header="Chart Type">
             <wj-menu-item value="0">Column</wj-menu-item>
@@ -20,6 +20,9 @@
             <wj-menu-item value="3">Line</wj-menu-item>
             <wj-menu-item value="4">LineSymbols</wj-menu-item>
             <wj-menu-item value="5">Area</wj-menu-item>
+            <wj-menu-item value="9">Spline</wj-menu-item>
+            <wj-menu-item value="10">SplineSymbols</wj-menu-item>
+            <wj-menu-item value="11">SplineArea</wj-menu-item>
         </wj-menu>
 
         <wj-menu value="ctx.chart.stacking" header="Stacking">
@@ -39,6 +42,7 @@
             binding-x="name"
             selection-mode="Series"
             items-source="ctx.itemsSource"
+            tooltip-content=""
             control="ctx.chart">
             <wj-flex-chart-series name="Mar" binding="Mar"></wj-flex-chart-series>
             <wj-flex-chart-series name="Apr" binding="Apr"></wj-flex-chart-series>

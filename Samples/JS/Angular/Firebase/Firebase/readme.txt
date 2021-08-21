@@ -1,6 +1,6 @@
 ﻿Firebase
 -------------------------------------------------------------------------------
-Shows how to implement an ICollectionView class based on Firebase databases.
+Shows how you can consume cloud-based Firebase databases with real-time updates. View several instances of this app, change the data in one instance, and see the instant automatic updates on the others.
 
 Firebase is a powerful API to store and sync data in real time (https://www.firebase.com/).
 

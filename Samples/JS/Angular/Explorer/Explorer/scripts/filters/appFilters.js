@@ -4,9 +4,11 @@ var app = angular.module('app');
 
 // Globalize filter
 app.filter('glbz', function () {
-    return function (input, format) {
+    function glbz(input, format, culture) {
         return wijmo.Globalize.format(input, format);
     }
+    glbz.$stateful = true; // required for Angular 1.3+
+    return glbz;
 });
 
 // CellRange filter

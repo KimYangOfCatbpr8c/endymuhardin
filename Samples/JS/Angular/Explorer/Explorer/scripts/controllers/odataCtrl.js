@@ -18,23 +18,23 @@ app.controller('odataCtrl', function appCtrl($scope) {
     // load categories (ID, Name, and Description only; picture is big and we're not using it)
     var urlCategories = urlBase + 'Categories?$format=json&$select=CategoryID,CategoryName,Description';
     $.ajax({
-        dataType: "json",
+        dataType: 'json',
         url: urlCategories,
         success: function (data) {
             $scope.ctx.categories.sourceCollection = data.value;
             $scope.ctx.categories.moveCurrentToFirst();
-            $scope.$apply('ctx.categories');
+            safeApply();
         }
     });
 
     // load suppliers (to show how to build data maps)
     var urlSuppliers = urlBase + 'Suppliers?$format=json&$select=SupplierID,CompanyName';
     $.ajax({
-        dataType: "json",
+        dataType: 'json',
         url: urlSuppliers,
         success: function (data) {
             $scope.ctx.supplierMap = new wijmo.grid.DataMap(data.value, 'SupplierID', 'CompanyName');
-            $scope.$apply('ctx.supplierMap');
+            safeApply();
         }
     });
 
@@ -43,7 +43,7 @@ app.controller('odataCtrl', function appCtrl($scope) {
     // 'yyyy-MM-ddThh:mm:ss', which can be parsed by the Date object constructor.
     var urlOrders = urlBase + 'Orders?$format=json&$top=5';
     $.ajax({
-        dataType: "json",
+        dataType: 'json',
         url: urlOrders,
         success: function (data) {
             var arr = data.value;
@@ -61,14 +61,21 @@ app.controller('odataCtrl', function appCtrl($scope) {
         var id = $scope.ctx.categories.currentItem.CategoryID,
             urlProducts = urlBase + 'Products?$format=json&$select=ProductID,SupplierID,ProductName,QuantityPerUnit,UnitPrice,UnitsInStock,Discontinued&$filter=CategoryID eq ' + id;
         $.ajax({
-            dataType: "json",
+            dataType: 'json',
             url: urlProducts,
             success: function (data) {
                 $scope.ctx.products.sourceCollection = data.value;
                 $scope.ctx.products.moveCurrentToFirst();
-                $scope.$apply('ctx.products');
+                safeApply();
             }
         });
-        $scope.$apply('ctx.categories.currentItem');
+        safeApply();
     });
+
+    // notify scope of changes
+    function safeApply() {
+        if (!$scope.$$phase) {
+            $scope.$apply();
+        }
+    }
 });

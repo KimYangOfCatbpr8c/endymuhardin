@@ -1,5 +1,5 @@
 ﻿<link href="styles/wijmo-custom-theme.css" rel="stylesheet" />
-<div class="row-fluid">
+<div>
 	<div class="copy">
 		<h3>
 			Themes</h3>
@@ -73,6 +73,10 @@
 .wj-state-selected {
   background: #ff6a00;
 }
+/* multiple selected item background - shown in FlexGrid */
+.wj-state-multi-selected {
+	background-color: #ff9f5b;
+}
 /* give all headers (grid, calendar, etc) light text on a dark background */
 .wj-header {
   background-color: #444;
@@ -81,18 +85,26 @@
 /* remove gridlines from non-header grid cells */
 .wj-cell:not(.wj-header) {
     border: none;
-}</pre>
+}
+/* FlexGrid cell background */
+.wj-flexgrid .wj-cell:not(.wj-header):not(.wj-group):not(.wj-alt):not(.wj-state-selected):not(.wj-state-multi-selected) {
+	background: #555;
+}
+.wj-flexgrid .wj-alt:not(.wj-header):not(.wj-group):not(.wj-state-selected):not(.wj-state-multi-selected) {
+	background: #444;
+}
+</pre>
 	<p>
 		These rules are applied in addition to the ones in the base wijmo.css file. You can see in 
 		the following examples how they affect the appearance of different Wijmo controls.</p>
 	<div class="row">
-		<dl class="dl-horizontal col-xs-12 ">
+		<dl class="dl-horizontal col-xs-12">
 			<dt>InputDate</dt>
 			<dd>
 				<wj-input-date 
                     value="ctx.departureDate"
-					min="2014-1-15"
-					max="2014-2-15"
+					min="2014-01-15"
+					max="2014-02-15"
 					format="d">
 				</wj-input-date>
 				<br />

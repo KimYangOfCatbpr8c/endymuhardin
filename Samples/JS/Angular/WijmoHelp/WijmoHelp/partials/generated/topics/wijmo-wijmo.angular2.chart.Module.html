@@ -1,0 +1,40 @@
+<div class="header-panel module">
+<h2><span class="identifier">wijmo/wijmo.angular2.chart</span> Module</h2>
+<dl class="dl-horizontal">
+<dt>File</dt><dd class="filename">wijmo.angular2.js</dd>
+<dt>Module</dt><dd><span class="identifier">wijmo/wijmo.angular2.chart</span></dd>
+</dl>
+<div class="comment"><p>Contains Angular 2 components for the <b>wijmo.chart</b> module. </p>
+<p><b>wijmo.angular2.chart</b> is an external TypeScript module that can be imported to your code
+using its ambient module name. For example:</p>
+
+
+<pre>import * as wjChart from 'wijmo/wijmo.angular2.chart';
+&nbsp;
+&#64;Component({
+    directives: [wjChart.WjFlexChart, wjChart.WjFlexChartSeries],
+    template: `
+      &lt;wj-flex-chart [itemsSource]="data" [bindingX]="'x'"&gt;
+          &lt;wj-flex-chart-series [binding]="'y'"&gt;&lt;/wj-flex-chart-series&gt;
+      &lt;/wj-flex-chart&gt;`,
+    selector: 'my-cmp',
+})
+export class MyCmp {
+    data: any[];
+}</pre></div>
+</div>
+<div class="member-panel module members">
+<h3 class="node">Classes</h3>
+<ul>
+<li class="mclass"><a href="topic/wijmo-wijmo.angular2.chart.WjFlexChart.Class.html">WjFlexChart</a></li>
+<li class="mclass"><a href="topic/wijmo-wijmo.angular2.chart.WjFlexChartAxis.Class.html">WjFlexChartAxis</a></li>
+<li class="mclass"><a href="topic/wijmo-wijmo.angular2.chart.WjFlexChartDataLabel.Class.html">WjFlexChartDataLabel</a></li>
+<li class="mclass"><a href="topic/wijmo-wijmo.angular2.chart.WjFlexChartDataPoint.Class.html">WjFlexChartDataPoint</a></li>
+<li class="mclass"><a href="topic/wijmo-wijmo.angular2.chart.WjFlexChartLegend.Class.html">WjFlexChartLegend</a></li>
+<li class="mclass"><a href="topic/wijmo-wijmo.angular2.chart.WjFlexChartLineMarker.Class.html">WjFlexChartLineMarker</a></li>
+<li class="mclass"><a href="topic/wijmo-wijmo.angular2.chart.WjFlexChartPlotArea.Class.html">WjFlexChartPlotArea</a></li>
+<li class="mclass"><a href="topic/wijmo-wijmo.angular2.chart.WjFlexChartSeries.Class.html">WjFlexChartSeries</a></li>
+<li class="mclass"><a href="topic/wijmo-wijmo.angular2.chart.WjFlexPie.Class.html">WjFlexPie</a></li>
+<li class="mclass"><a href="topic/wijmo-wijmo.angular2.chart.WjFlexPieDataLabel.Class.html">WjFlexPieDataLabel</a></li>
+</ul>
+</div>

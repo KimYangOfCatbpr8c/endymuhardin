@@ -23,6 +23,7 @@
     
     
     
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -42,31 +43,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Web.DynamicData" />
-    <Reference Include="System.Web.Entity" />
-    <Reference Include="System.Web.ApplicationServices" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Web.Extensions" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Web" />
-    <Reference Include="System.Xml" />
-    <Reference Include="System.Configuration" />
-    <Reference Include="System.Web.Services" />
-    <Reference Include="System.EnterpriseServices" />
-  </ItemGroup>
-  <ItemGroup>
     
     
     
     <Content Include="default.htm" />
     <Content Include="readme.txt" />
+    <Content Include="resources\ascending.png" />
     <Content Include="resources\canada.png" />
+    <Content Include="resources\collapsed.png" />
+    <Content Include="resources\descending.png" />
+    <Content Include="resources\expanded.png" />
     <Content Include="resources\germany.png" />
     <Content Include="resources\greece.png" />
     <Content Include="resources\italy.png" />
@@ -79,9 +65,6 @@
     <Content Include="scripts\directives\appDctv.js" />
     <Content Include="styles\app.css" />
     <Content Include="Web.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Web.Debug.config">
@@ -132,5 +115,10 @@
     
     
   </ItemGroup>
-  <ItemGroup />
-<ItemGroup><Content Include="scripts\vendor\wijmo.min.js" /><Content Include="scripts\vendor\wijmo.input.min.js" /><Content Include="scripts\vendor\wijmo.grid.min.js" /><Content Include="scripts\vendor\wijmo.chart.min.js" /><Content Include="scripts\vendor\wijmo.angular.min.js" /><Content Include="styles\vendor\wijmo.min.css" /></ItemGroup></Project>
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    
+  </ItemGroup>
+<ItemGroup><Content Include="scripts\vendor\wijmo.min.js" /><Content Include="scripts\vendor\wijmo.grid.min.js" /><Content Include="scripts\vendor\wijmo.input.min.js" /><Content Include="scripts\vendor\wijmo.angular.min.js" /><Content Include="styles\vendor\wijmo.min.css" /></ItemGroup></Project>

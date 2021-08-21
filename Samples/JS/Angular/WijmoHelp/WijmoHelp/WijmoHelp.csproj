@@ -9,15 +9,28 @@
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <DebugType>full</DebugType>
     <DebugSymbols>true</DebugSymbols>
-    <TypeScriptToolsVersion>1.0</TypeScriptToolsVersion>
+    <TypeScriptToolsVersion>1.8</TypeScriptToolsVersion>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <ItemGroup>
+    <Content Include="images\favicon.ico" />
+    <Content Include="images\intellisense.png" />
+    <Content Include="images\intellisensevs.png" />
     <Content Include="images\wijmo5.png" />
+    <Content Include="partials\static\angular2Components.html" />
+    <Content Include="partials\static\angular2Markup.html" />
+    <Content Include="partials\static\pseudoClasses.html" />
+    <Content Include="partials\static\FlexSheetFunctions.html" />
+    <Content Include="partials\static\events.html" />
+    <Content Include="partials\static\intellisense.html" />
+    <Content Include="partials\static\minMax.html" />
+    <Content Include="partials\static\glyphs.html" />
+    <Content Include="partials\static\toc.html" />
     <Content Include="readme.txt" />
     <Content Include="default.htm" />
     <Content Include="images\chapter.png" />
@@ -39,25 +52,25 @@
     <Content Include="partials\static\home.html" />
     <Content Include="partials\static\references.html" />
     <Content Include="partials\static\sizingAndStyling.html" />
-    <Content Include="partials\static\tocStatic.html" />
     <Content Include="partials\static\whatIsLess.html" />
     <Content Include="scripts\app.js" />
+    <Content Include="styles\print.css" />
     <Content Include="styles\app.css" />
-    <Content Include="web.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="web.Debug.config">
-      <DependentUpon>web.config</DependentUpon>
-    </None>
-    <None Include="web.Release.config">
-      <DependentUpon>web.config</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="partials\generated\templates\" />
     <Folder Include="partials\generated\topics\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="web.Debug.config">
+      <DependentUpon>web.config</DependentUpon>
+    </None>
+    <None Include="web.Release.config">
+      <DependentUpon>web.config</DependentUpon>
+    </None>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -69,6 +82,9 @@
   <PropertyGroup>
     <AssemblyName>WijmoHelp</AssemblyName>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>images\favicon.ico</ApplicationIcon>
+  </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
   <ProjectExtensions>
@@ -79,7 +95,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>40522</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:53439/</IISUrl>
+          <IISUrl>http://localhost:63439/5/docs/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
@@ -89,10 +105,6 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
-  <PropertyGroup>
-  </PropertyGroup>
-  <ItemGroup>
-  </ItemGroup>
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
     <TypeScriptTarget>ES5</TypeScriptTarget>
     <TypeScriptRemoveComments>false</TypeScriptRemoveComments>
@@ -106,5 +118,6 @@
     <TypeScriptModuleKind>AMD</TypeScriptModuleKind>
   </PropertyGroup>
   <ItemGroup>
+    <Content Include="styles\vendor\wijmo.min.css" />
   </ItemGroup>
 </Project>

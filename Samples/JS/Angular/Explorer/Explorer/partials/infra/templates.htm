@@ -1,4 +1,4 @@
-﻿<div class="row-fluid">
+﻿<div>
     <div class="copy">
         <h3>
             Control Templates</h3>
@@ -73,7 +73,7 @@
         InputNumber controls on the page, regardless of class or style, as you 
         can see in these examples.</p>
 
-    <div class="row-fluid">
+    <div class="row">
         <div class="col-md-5">
             <wj-input-number class="form-control"
                 value="ctx.someNumber"
@@ -100,10 +100,10 @@
         Customizing the ComboBox control template</h4>
     <p>
         By default, the <b>ComboBox</b> control shows a button with a simple 
-        triangle on the right of the control. We selected this design to keep 
+        triangle on the right side of the control. We selected this design to keep 
         the control appearance as simple and unobtrusive as possible. If you 
         want to use one of the Bootstrap glyphs instead of the simple triangle, 
-        you can you can create a new HTML template and assign it to the
+        you can create a new HTML template and assign it to the
         <b>ComboBox.controlTemplate</b> property with code like this.</p>
 
     <pre>wijmo.input.ComboBox.controlTemplate = '&lt;div style="..."&gt;' +
@@ -125,7 +125,7 @@
         ComboBox controls on the page, regardless of class or style, as you 
         can see in these examples.</p>
 
-    <div class="row-fluid">
+    <div class="row">
         <div class="col-md-5">
             <wj-combo-box class="form-control"
                 text="ctx.someSize"
@@ -173,13 +173,13 @@
   '&lt;button <b>wj-part="btn-today"</b> style="display:none"/&gt;' +
 '&lt;/div&gt;';</pre>
     <p>
-        Notice how the template specifies a "button-today" part and hides by 
+        Notice how the template specifies a "button-today" part and hides it by 
         giving it a "display:none" style. This is necessary because the control 
         checks the template and throws an exception if any parts are missing.</p>
     <p>
         The result is shown below:</p>
 
-    <div class="row-fluid">
+    <div class="row">
         <div class="col-md-5">
             <wj-calendar class="form-control calendar"
                 value="ctx.someDate">

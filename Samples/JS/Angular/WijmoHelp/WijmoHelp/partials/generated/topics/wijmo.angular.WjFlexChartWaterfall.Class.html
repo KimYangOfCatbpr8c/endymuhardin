@@ -1,0 +1,38 @@
+<div class="header-panel member">
+<h2><span class="identifier">WjFlexChartWaterfall</span> Class</h2>
+<dl class="dl-horizontal">
+<dt>File</dt><dd class="filename">wijmo.angular.js</dd>
+<dt>Module</dt><dd><a href="topic/wijmo.angular.Module.html"><span class="identifier">wijmo.angular</span></a></dd>
+<dt>Show</dt>
+<dd>
+<label><input type="checkbox" ng-model="ctx.showInherited"> Inherited Members</label>&nbsp;&nbsp;&nbsp;
+<label><input type="checkbox" ng-model="ctx.showRaisers"> Event Raisers</label>
+</dd>
+</dl>
+<div class="comment"><p>AngularJS directive for the <a href="topic/wijmo.chart.FlexChart.Class.html"><span class="identifier">FlexChart</span></a> and <a href="topic/wijmo.chart.finance.FinancialChart.Class.html"><span class="identifier">FinancialChart</span></a> <a href="topic/wijmo.chart.analytics.Waterfall.Class.html"><span class="identifier">Waterfall</span></a> object.</p>
+<p>The <b>wj-flex-chart-waterfall</b> directive must be contained in a <a href="topic/wijmo.angular.WjFlexChart.Class.html"><span class="identifier">WjFlexChart</span></a> or <a href="topic/wijmo.angular.WjFinancialChart.Class.html"><span class="identifier">WjFinancialChart</span></a> directive.
+It supports the following attributes:</p>
+<p><dl class="dl-horizontal">
+  <dt>binding</dt>      <dd><code>@</code> The name of the property that contains Y values for the
+                        series. This value overrides any binding set for the chart.</dd>
+  <dt>binding-x</dt>    <dd><code>@</code> The name of the property that contains X values for the
+                        series. This value overrides any binding set for the chart.</dd>
+  <dt>items-source</dt> <dd><code>=</code> An array or <a href="topic/wijmo.collections.ICollectionView.Interface.html"><span class="identifier">ICollectionView</span></a> object that contains
+                        data for this series.</dd>
+  <dt>name</dt>         <dd><code>@</code> The name of the series to show in the legend.</dd>
+  <dt>visibility</dt>   <dd><code>=</code> The <a href="topic/wijmo.chart.SeriesVisibility.Enum.html"><span class="identifier">SeriesVisibility</span></a> value indicating whether and where to
+                        display the series.</dd>
+  <dt>relative-data</dt> <dd><code>@</code> The value that determines whether the given data is relative.</dd>
+  <dt>start</dt>        <dd><code>@</code> The value of the start bar.</dd>
+  <dt>start-label</dt>  <dd><code>@</code> The label of the start bar.</dd>
+  <dt>show-total</dt>   <dd><code>@</code> The value that determines whether the show the total bar.</dd>
+  <dt>total-label</dt>  <dd><code>@</code> The label of the total bar.</dd>
+  <dt>show-intermediate-total</dt>      <dd><code>@</code> The value that determines whether to show the intermediate total bar.</dd>
+  <dt>intermediate-total-positions</dt> <dd><code>@</code> The value that contains the index for positions of the intermediate total bar.</dd>
+  <dt>intermediate-total-labels</dt>    <dd><code>@</code> The value that contains the label of the intermediate total bar.</dd>
+  <dt>connector-lines</dt>  <dd><code>@</code> The value that determines whether to show connector lines.</dd>
+  <dt>styles</dt>       <dd><code>@</code> The value of the waterfall styles.</dd>
+</dl></p></div>
+</div>
+<div class="member-panel class members" ng-class="{ 'show-inherited' : ctx.showInherited, 'show-raisers' : ctx.showRaisers }">
+</div>

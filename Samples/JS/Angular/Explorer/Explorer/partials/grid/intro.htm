@@ -1,51 +1,66 @@
-﻿<div class="row-fluid">
+﻿<div>
     <div class="copy">
         <h3>
-            Introduction
-        </h3>
+            Introduction</h3>
         <p>
-            This view shows the <b>FlexGrid's</b> basic features. It binds the grid to a data source
-            and allows you to select the number of data items, the selection mode, and the culture.
-            Notice how the grid remains fast and fluid even with large numbers of data items.
-            The <b>FlexGrid</b> achieves this performance by automatically virtualizing rows and
-            columns.
-        </p>
+            This view shows the <a href="http://wijmo.com/5/docs/topic/wijmo.grid.FlexGrid.Class.html" 
+            target="_blank">FlexGrid</a> control's basic features. It binds the grid to a data source
+            and has menus below that allow you to select the number of data items, the <a 
+            href="http://wijmo.com/5/docs/topic/wijmo.grid.SelectionMode.Enum.html" target="_blank">
+            selection mode</a>, and the <a href="http://wijmo.com/5/docs/static/globalization.html" 
+            target="_blank">culture</a>, and whether to use <a 
+            href="http://wijmo.com/5/docs/topic/wijmo.grid.DataMap.Class.html" target="_blank">data 
+            mapping</a> and formatting. Notice how the grid remains fast and fluid even with large 
+            numbers of data items. FlexGrid achieves this level of performance by automatically 
+            virtualizing rows and columns.</p>
 
         <div class="collapsed-content collapse">
             <p>
                 You can select cells and ranges with the keyboard and the mouse. The current selection
-                will be updated on the screen automatically.
-            </p>
+                is updated on the screen automatically. Use the Selection menu below to try out the 
+                various selection modes. Note that the ListBox mode allows you to select non-contiguous
+                rows.</p>
             <p>
                 You can resize and move columns by dragging with the mouse, and auto-size columns by
-                double-clicking the column headers. If you press the control key while resizing a
-                selected column, all selected columns will be resized.
-            </p>
+                double-clicking the right edges of column headers. If you press the control key while 
+                resizing a selected column, all selected columns are resized.</p>
             <p>
-                You can sort columns by clicking their headers. If you press the control key when you
-                click the column header, the sort will be removed.
-            </p>
+                You can sort columns by clicking their headers. Press the control key when you
+                click the column header to remove the sort.</p>
             <p>
                 The filter and navigation bars above the grid allow you to filter and navigate through
-                the data. Both are implemented using the <b>ICollectionView</b> interface, exactly as
-                you would write in C# and .NET.
-            </p>
+                the data. Both are implemented using the 
+                <a href="http://wijmo.com/5/docs/topic/wijmo.collections.ICollectionView.Interface.html"
+                target="_blank">ICollectionView</a> interface, as you would do in C# and .NET.</p>
             <p>
                 Notice that unlike the standard AngularJS search filter, this one supports multi-term
-                searches, so if you type <b>us gad red</b>, the grid will show items that contain
-                <b>all</b> these terms (country is 'US', product is 'Gadget', and color is 'red').
-            </p>
+                searches, so if you type <b>us gad red</b>, the grid shows items that contain
+                <b>all</b> of these terms (country is 'US,' product is 'Gadget,' and color is 'red').</p>
+            <p>
+                The navigation bar is created using the <a 
+                href="http://wijmo.com/5/docs/topic/wijmo.angular.WjCollectionViewNavigator.Class.html" 
+                target="_blank">wj-collection-view-navigator</a> directive, and the grid is created using the 
+                <a href="http://wijmo.com/5/docs/topic/wijmo.angular.WjFlexGrid.Class.html" 
+                target="_blank">wj-flex-grid</a> directive and AngularJS.</p>
+            <p>
+                The buttons at the bottom demonstrate the <a 
+                href="http://wijmo.com/5/docs/topic/wijmo.grid.RowCol.Class.html" target="_blank">column and 
+                row</a> isVisible property, and the column width and row height properties, as well as the 
+                <a href="http://wijmo.com/5/docs/topic/wijmo.grid.FlexGrid.Class.html" target="_blank">FlexGrid</a> 
+                scrollPosition property.</p>
         </div>
         <p>
-            <button type="button" data-toggle="collapse"
-                    data-target=".collapsed-content, .btn.btn-default.btn-xs.collapse"
-                    class="btn btn-default btn-xs collapse in">
+            <button 
+                type="button" 
+                data-toggle="collapse"
+                data-target=".collapsed-content, .btn.btn-default.btn-xs.collapse"
+                class="btn btn-default btn-xs collapse in">
                 Read more
             </button>
         </p>
     </div>
 
-    <div class="row-fluid">
+    <div>
 
         <!-- search box -->
         <div class="row">
@@ -61,13 +76,14 @@
         <wj-flex-grid
             class="grid"
             control="ctx.flex"
+            allow-resizing="Both"
             items-source="ctx.data"
             items-source-changed="itemsSourceChangedHandler()">
         </wj-flex-grid>
     </div>
 
     <!-- commands -->
-    <div class="row-fluid well">
+    <div class="well">
         <div class="grid-sort-group">
 
             <!-- current selection -->
@@ -87,8 +103,8 @@
 
             <!-- allow add new -->
             <wj-menu value="ctx.flex.allowAddNew" header="Allow Add">
-                <wj-menu-item value="true">True</wj-menu-item>
-                <wj-menu-item value="false">False</wj-menu-item>
+                <wj-menu-item value="true">Yes</wj-menu-item>
+                <wj-menu-item value="false">No</wj-menu-item>
             </wj-menu>
 
             <!-- selection mode -->
@@ -99,6 +115,28 @@
                 <wj-menu-item value="3">Row</wj-menu-item>
                 <wj-menu-item value="4">RowRange</wj-menu-item>
                 <wj-menu-item value="5">ListBox</wj-menu-item>
+            </wj-menu>
+
+            <!-- headers visibility -->
+            <wj-menu value="ctx.flex.headersVisibility" header="Headers Visibility">
+                <wj-menu-item value="0">None</wj-menu-item>
+                <wj-menu-item value="1">Column</wj-menu-item>
+                <wj-menu-item value="2">Row</wj-menu-item>
+                <wj-menu-item value="3">All</wj-menu-item>
+            </wj-menu>
+
+            <!-- highlight headers -->
+            <wj-menu value="ctx.flex.showSelectedHeaders" header="Show Selected Headers">
+                <wj-menu-item value="0">None</wj-menu-item>
+                <wj-menu-item value="1">Column</wj-menu-item>
+                <wj-menu-item value="2">Row</wj-menu-item>
+                <wj-menu-item value="3">All</wj-menu-item>
+            </wj-menu>
+
+            <!-- show marquee -->
+            <wj-menu value="ctx.flex.showMarquee" header="Show Marquee">
+                <wj-menu-item value="true">On</wj-menu-item>
+                <wj-menu-item value="false">Off</wj-menu-item>
             </wj-menu>
 
             <!-- data maps -->

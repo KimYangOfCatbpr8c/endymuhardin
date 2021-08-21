@@ -1,24 +1,29 @@
-﻿<div class="row-fluid">
+﻿<div>
 	<div class="copy">
 		<h3>
 			CollectionView</h3>
 		<p>
 			Wijmo has a solid infrastructure based on a powerful and familiar data layer.
-			The main data binding interface is <b>ICollectionView</b>, which provides currency,
-			filtering, grouping, and sorting services. Wijmo also includes the
-			<b>IEditableCollectionView</b> and <b>IPagedCollectionView</b> interfaces, which
-			support editing and paging.</p>
+			The main data binding interface is <a target="_blank" 
+            href="http://wijmo.com/5/docs/topic/wijmo.collections.ICollectionView.Interface.html">
+            ICollectionView</a>, which provides currency, filtering, grouping, and sorting 
+			services. Wijmo also includes the <a target="_blank" 
+            href="http://wijmo.com/5/docs/topic/wijmo.collections.IEditableCollectionView.Interface.html">
+            IEditableCollectionView</a> and <a target="_blank"
+            href="http://wijmo.com/5/docs/topic/wijmo.collections.IPagedCollectionView.Interface.html">
+            IPagedCollectionView</a> interfaces, which support editing and paging.</p>
 		<p>
 			Wijmo's <b>ICollectionView</b> interface is virtually identical to the one
-			in .NET, so if you know .NET you will feel right at home.</p>
+			in .NET, so if you know .NET, you will feel right at home.</p>
 		<p>
 			Wijmo includes several classes that implement <b>ICollectionView</b>.
-			The most basic is <b>CollectionView</b>, which uses regular JavaScript arrays
-			as data sources. We also have implementations that use BreezeJS and OData as
-			data sources.</p>
+			The most basic is <a target="_blank"
+            href="http://wijmo.com/5/docs/topic/wijmo.collections.CollectionView.Class.html">
+            CollectionView</a>, which uses regular JavaScript arrays as data sources. 
+			We also have implementations that use BreezeJS and OData as data sources.</p>
 		<p>
 			This page shows how <b>ICollectionView</b> works. It creates a <b>CollectionView</b>
-			based on an array with {{ctx.cv.sourceCollection.length}} items. 
+			object based on an array with {{ctx.cv.sourceCollection.length}} items. 
 			The collection view is configured to show pages with {{ctx.cv.pageSize}}
 			items each. We show the collection in an HTML table that you can filter,
 			sort, and group, using the controls at the top of each column.</p>
@@ -74,7 +79,6 @@
 	</div>
 
 	<div class="table-responsive">
-
 		<table class="table table-condensed table-bordered">
 			<thead>
 				<tr class="active">
@@ -136,7 +140,6 @@
 				</tr>
 			</thead>
 			<tbody>
-
 				<tr ng-repeat="item in groupedList"
 					ng-class="{success: item == ctx.cv.currentItem}"
 					ng-click="moveCurrentTo(item)">
@@ -155,5 +158,5 @@
 				</tr>
 			</tbody>
 		</table>
-		</div>
 	</div>
+</div>

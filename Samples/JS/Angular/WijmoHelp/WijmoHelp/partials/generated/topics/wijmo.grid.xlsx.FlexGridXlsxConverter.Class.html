@@ -1,0 +1,103 @@
+<div class="header-panel member">
+<h2><span class="identifier">FlexGridXlsxConverter</span> Class</h2>
+<dl class="dl-horizontal">
+<dt>File</dt><dd class="filename">wijmo.grid.xlsx.js</dd>
+<dt>Module</dt><dd><a href="topic/wijmo.grid.xlsx.Module.html"><span class="identifier">wijmo.grid.xlsx</span></a></dd>
+</dl>
+<div class="comment"><p>This class provides static <b>load</b> and <b>save</b> methods for loading and saving of the <a href="topic/wijmo.grid.FlexGrid.Class.html"><span class="identifier">FlexGrid</span></a> control 
+from/to Excel xlsx files.</p></div>
+</div>
+<div class="member-panel class members" ng-class="{ 'show-inherited' : ctx.showInherited, 'show-raisers' : ctx.showRaisers }">
+<h3 class="node">Methods</h3>
+<ul>
+<li class="mmethod"><a href="topic/wijmo.grid.xlsx.FlexGridXlsxConverter.Class.html/#load">load</a></li>
+<li class="mmethod"><a href="topic/wijmo.grid.xlsx.FlexGridXlsxConverter.Class.html/#save">save</a></li>
+</ul>
+</div>
+<h3 class="node">Methods</h3>
+<div class="member-list" ng-class="{ 'show-inherited' : ctx.showInherited, 'show-raisers' : ctx.showRaisers }">
+<div id="load" class="member-panel mmethod">
+<h3><span class="badge">Static</span> load</h3>
+<pre>load(grid: <a href="topic/wijmo.grid.FlexGrid.Class.html"><span class="identifier">FlexGrid</span></a>, workbook: <span class="identifier">any</span>, options?: <a href="topic/wijmo.grid.xlsx.IFlexGridXlsxOptions.Interface.html"><span class="identifier">IFlexGridXlsxOptions</span></a>): <span class="identifier">void</span></pre>
+<div class="comment"><p>Loads an <a href="topic/wijmo.xlsx.Workbook.Class.html"><span class="identifier">Workbook</span></a> instance or a Blob object containing xlsx file content to <a href="topic/wijmo.grid.FlexGrid.Class.html"><span class="identifier">FlexGrid</span></a> instance.</p>
+<p>For example:
+</p>
+
+<pre>// This sample opens an xlsx file chosen via Open File
+// dialog and fills FlexGrid with the content of the first
+
+// sheet.
+&nbsp;
+
+// HTML
+&lt;input type="file" 
+    id="importFile" 
+    accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" 
+/&gt;
+&lt;div id="flexHost"&gt;&lt;/&gt;
+&nbsp;
+
+// JavaScript
+var flexGrid = new wijmo.grid.FlexGrid("#flexHost"),
+    importFile = document.getElementById('importFile');
+&nbsp;
+importFile.addEventListener('change', function () {
+    loadWorkbook();
+});
+&nbsp;
+function loadWorkbook() {
+    var reader,
+        file = importFile.files[0];
+    if (file) {
+        reader = new FileReader();
+        reader.onload = function (e) {
+            wijmo.grid.xlsx.FlexGridXlsxConverter.load(flexGrid, reader.result,
+                { includeColumnHeaders: true });
+        };
+        reader.readAsArrayBuffer(file);
+    }
+}</pre></div>
+<dl class="dl-horizontal">
+  <dt>Parameters</dt><dd></dd>
+</dl>
+<ul>
+<li><b>grid</b>: <a href="topic/wijmo.grid.FlexGrid.Class.html"><span class="identifier">FlexGrid</span></a><br/><p>FlexGrid that will load the workBook object.</p></li><li><b>workbook</b>: <span class="identifier">any</span><br/><p>An Workbook instance or a Blob instance or a base 64 stirng or an ArrayBuffer containing xlsx file content.</p></li><li><b>options</b>: <a href="topic/wijmo.grid.xlsx.IFlexGridXlsxOptions.Interface.html"><span class="identifier">IFlexGridXlsxOptions</span></a> <span class="badge">Optional</span><br/><p>Options to use when load the workBook object to <a href="topic/wijmo.grid.FlexGrid.Class.html"><span class="identifier">FlexGrid</span></a> instance (including whether to save row and column headers, sheet name, etc)</p></li></ul>
+<dl class="dl-horizontal">
+  <dt>Returns</dt><dd><span class="identifier">void</span></dd>
+</dl>
+</div>
+<div id="save" class="member-panel mmethod">
+<h3><span class="badge">Static</span> save</h3>
+<pre>save(grid: <a href="topic/wijmo.grid.FlexGrid.Class.html"><span class="identifier">FlexGrid</span></a>, options?: <a href="topic/wijmo.grid.xlsx.IFlexGridXlsxOptions.Interface.html"><span class="identifier">IFlexGridXlsxOptions</span></a>, fileName?): <a href="topic/wijmo.xlsx.Workbook.Class.html"><span class="identifier">Workbook</span></a></pre>
+<div class="comment"><p>Save the <a href="topic/wijmo.grid.FlexGrid.Class.html"><span class="identifier">FlexGrid</span></a> instance to <a href="topic/wijmo.xlsx.Workbook.Class.html"><span class="identifier">Workbook</span></a> instance.</p>
+<p>For example:
+</p>
+
+<pre>// This sample exports FlexGrid content to an xlsx 
+// click.
+&nbsp;
+
+// HTML
+&lt;button 
+    onclick="saveXlsx('FlexGrid.xlsx')"&gt;
+    Save
+&lt;/button&gt;
+&nbsp;
+
+// JavaScript
+function saveXlsx(fileName) {
+
+    // Save the flexGrid to xlsx file.
+    wijmo.grid.xlsx.FlexGridXlsxConverter.save(flexGrid,
+            { includeColumnHeaders: true }, fileName);
+}</pre></div>
+<dl class="dl-horizontal">
+  <dt>Parameters</dt><dd></dd>
+</dl>
+<ul>
+<li><b>grid</b>: <a href="topic/wijmo.grid.FlexGrid.Class.html"><span class="identifier">FlexGrid</span></a><br/><p>FlexGrid that will be saved.</p></li><li><b>options</b>: <a href="topic/wijmo.grid.xlsx.IFlexGridXlsxOptions.Interface.html"><span class="identifier">IFlexGridXlsxOptions</span></a> <span class="badge">Optional</span><br/><p>Options to use when saving the grid (including whether to save row and column headers, sheet name, etc)</p></li><li><b>fileName</b>:  <span class="badge">Optional</span><br/><p>Name of the file that will be generated.</p></li></ul>
+<dl class="dl-horizontal">
+  <dt>Returns</dt><dd><a href="topic/wijmo.xlsx.Workbook.Class.html"><span class="identifier">Workbook</span></a></dd>
+</dl>
+</div>
+</div>

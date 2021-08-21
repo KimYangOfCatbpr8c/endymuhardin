@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 14
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Firebase", "FireBase\Firebase.csproj", "{D43C5E3A-172C-4709-8392-ECED65051AD7}"
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection

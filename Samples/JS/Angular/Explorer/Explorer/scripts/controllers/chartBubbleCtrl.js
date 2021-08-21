@@ -17,4 +17,16 @@ app.controller('chartBubbleCtrl', function appCtrl($scope) {
             size: Math.random() * 100
         });
     }
+
+    $scope.$watch('ctx.chart', function () {
+        if ($scope.ctx.chart) {
+            var chart = $scope.ctx.chart;
+            chart.tooltip.content = function (ht) {
+                return 'x=<b>' + ht.item.x.toFixed(1) + '</b> ' +
+                    'y=<b>' + ht.item.y.toFixed(1) + '</b><br/>' +
+                    'size=<b>' + ht.item.size.toFixed(1) + '</b>';
+            };
+        }
+    });
+
 });

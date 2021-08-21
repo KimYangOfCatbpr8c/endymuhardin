@@ -1,33 +1,46 @@
 ﻿'use strict';
 
-// declare app module
+// get reference to app module
 var app = angular.module('app');
 
-// app controller provides data
+// add controller to app module
 app.controller('appCtrl', function appCtrl($scope) {
 
     // generate some random data
-    var countries = 'US,Germany,UK,Japan,Italy,Greece'.split(','),
-        data = [];
-    for (var i = 0; i < 100; i++) {
-        data.push({
-            id: i,
-            country: countries[i % countries.length],
-            date: new Date(2014, i % 12, i % 28),
-            amount: Math.random() * 10000,
-            active: i % 4 == 0
-        });
+    function getData(count) {
+        var countries = 'US,Germany,UK,Japan,Italy,Greece'.split(','),
+            data = new wijmo.collections.ObservableArray();
+        for (var i = 0; i < count; i++) {
+            data.push({
+                id: i,
+                country: countries[i % countries.length],
+                date: new Date(2014, i % 12, i % 28),
+                amount: Math.random() * 10000,
+                active: i % 4 == 0
+            });
+        }
+        return data;
     }
 
-    // add data array to scope
-    $scope.data = data;
+    // expose data as a CollectionView (to get updates on changes)
+    $scope.data = new wijmo.collections.CollectionView(getData(100));
 
     // initialize selection mode
     $scope.selectionMode = 'CellRange';
 
     // expose the data as a CollectionView to show grouping
-    $scope.cvGroup = new wijmo.collections.CollectionView(data);
+    $scope.cvGroup = new wijmo.collections.CollectionView(getData(100));
     $scope.groupBy = '';
+
+    // toggle frozen rows/columns
+    $scope.toggleFreeze = function () {
+        var flex = $scope.frozenFlex;
+        if (flex) {
+            var frozenCount = flex.frozenRows == 0 ? 2 : 0;
+            flex.frozenRows = frozenCount;
+            flex.frozenColumns = frozenCount;
+        }
+    }
 
     // update CollectionView group descriptions when groupBy changes
     $scope.$watch('groupBy', function () {
@@ -58,12 +71,12 @@ app.controller('appCtrl', function appCtrl($scope) {
     // expose the data as a CollectionView to show filtering
     $scope.filter = '';
     var toFilter, lcFilter;
-    $scope.cvFilter = new wijmo.collections.CollectionView(data);
+    $scope.cvFilter = new wijmo.collections.CollectionView(getData(100));
     $scope.cvFilter.filter = function (item) { // ** filter function
-        if (!$scope.filter) {
-            return true;
+        if ($scope.filter) {
+            return item.country.toLowerCase().indexOf(lcFilter) > -1;
         }
-        return item.country.toLowerCase().indexOf(lcFilter) > -1;
+        return true;
     };
     $scope.$watch('filter', function () { // ** refresh view when filter changes
         if (toFilter) {
@@ -76,7 +89,7 @@ app.controller('appCtrl', function appCtrl($scope) {
     });
 
     // expose the data as a CollectionView to show paging
-    $scope.cvPaging = new wijmo.collections.CollectionView(data);
+    $scope.cvPaging = new wijmo.collections.CollectionView(getData(100));
     $scope.cvPaging.pageSize = 10;
 
     // get the color to be used for displaying an amount
@@ -90,6 +103,26 @@ app.controller('appCtrl', function appCtrl($scope) {
     $scope.cvFilter.currentChanged.addHandler(function () {
         $scope.$apply('cvFilter.currentItem');
     });
+
+    // sorting hierarchical data
+    $scope.sortedColumn = function (s, e) {
+        var view = s.collectionView;
+        if (view && s.childItemsPath) {
+            for (var i = 0; i < view.items.length; i++) {
+                sortItem(view.items[i], view, s.childItemsPath);
+            }
+            view.refresh();
+        }
+    }
+    function sortItem(item, view, childItemsPath) {
+        var children = item[childItemsPath];
+        if (children && wijmo.isArray(children)) {
+            children.sort(view._compareItems());
+            for (var i = 0; i < children.length; i++) {
+                sortItem(children[i], view, childItemsPath);
+            }
+        }
+    }
 
     // hierarchical data
     $scope.treeData = [

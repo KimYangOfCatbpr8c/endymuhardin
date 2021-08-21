@@ -16,7 +16,6 @@
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <DebugType>full</DebugType>
     <DebugSymbols>true</DebugSymbols>
-    <TypeScriptToolsVersion>1.0</TypeScriptToolsVersion>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
@@ -124,17 +123,6 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
-  <!-- 
-  Uncomment the xml snippet below, and correct, if necessary, the relative path specified in the WijmoRootDir property, 
-  so as it reference the WijmoNxt\Main\HTML5 folder.
-  Delete this comment that you're reading after that.
-  IMPORTANT!!!: uncomment this xml *after* (not before) you added this project to TFS; otherwise, VS will add all Wijmo .js and .js.map
-  files to TFS, which is an undesired effect.
-  -->
-  <PropertyGroup>
-  </PropertyGroup>
-  <ItemGroup>
-  </ItemGroup>
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
     <TypeScriptTarget>ES5</TypeScriptTarget>
     <TypeScriptRemoveComments>false</TypeScriptRemoveComments>

@@ -7,7 +7,25 @@ app.controller('chartCtrl', function appCtrl($scope) {
     // data context
     $scope.ctx = {
         chart: null,
-        itemsSource: []
+        pal: 0,
+        palettes: ['standard', 'cocoa', 'coral', 'dark', 'highcontrast', 'light', 'midnight', 'minimal', 'modern', 'organic', 'slate' ],
+        itemsSource: [],
+        groupWidth: '70%'
+    };
+
+    $scope.menuPaletteItemClicked = function (sender, args) {
+        var menu = sender;
+        $scope.ctx.chart.palette = wijmo.chart.Palettes[$scope.ctx.palettes[menu.selectedIndex]];
+    }
+
+    $scope.menuGroupWidthItemClicked = function (sender, args) {
+        var menu = sender;
+        $scope.ctx.chart.options = { groupWidth: menu.selectedValue }; 
+    }
+
+    $scope.isColumnOrBar = function () {
+        var chart = $scope.ctx.chart;
+        return chart && (chart.chartType == wijmo.chart.ChartType.Column || chart.chartType == wijmo.chart.ChartType.Bar);
     };
 
     // populate itemsSource

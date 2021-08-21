@@ -1,0 +1,131 @@
+<div class="header-panel member">
+<h2><span class="identifier">FlexGridPdfConverter</span> Class</h2>
+<dl class="dl-horizontal">
+<dt>File</dt><dd class="filename">wijmo.grid.pdf.js</dd>
+<dt>Module</dt><dd><a href="topic/wijmo.grid.pdf.Module.html"><span class="identifier">wijmo.grid.pdf</span></a></dd>
+</dl>
+<div class="comment"><p>Provides a functionality to export the <a href="topic/wijmo.grid.FlexGrid.Class.html"><span class="identifier">FlexGrid</span></a> to PDF.</p></div>
+</div>
+<div class="member-panel class members" ng-class="{ 'show-inherited' : ctx.showInherited, 'show-raisers' : ctx.showRaisers }">
+<h3 class="node">Methods</h3>
+<ul>
+<li class="mmethod"><a href="topic/wijmo.grid.pdf.FlexGridPdfConverter.Class.html/#draw">draw</a></li>
+<li class="mmethod"><a href="topic/wijmo.grid.pdf.FlexGridPdfConverter.Class.html/#drawToPosition">drawToPosition</a></li>
+<li class="mmethod"><a href="topic/wijmo.grid.pdf.FlexGridPdfConverter.Class.html/#export">export</a></li>
+</ul>
+</div>
+<h3 class="node">Methods</h3>
+<div class="member-list" ng-class="{ 'show-inherited' : ctx.showInherited, 'show-raisers' : ctx.showRaisers }">
+<div id="draw" class="member-panel mmethod">
+<h3><span class="badge">Static</span> draw</h3>
+<pre>draw(flex: <a href="topic/wijmo.grid.FlexGrid.Class.html"><span class="identifier">FlexGrid</span></a>, doc: <a href="topic/wijmo.pdf.PdfDocument.Class.html"><span class="identifier">PdfDocument</span></a>, width?: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Number" target="_blank"><span class="identifier">number</span></a>, height?: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Number" target="_blank"><span class="identifier">number</span></a>, settings?: <a href="topic/wijmo.grid.pdf.IFlexGridDrawSettings.Interface.html"><span class="identifier">IFlexGridDrawSettings</span></a>): <span class="identifier">void</span></pre>
+<div class="comment"><p>Draws the <a href="topic/wijmo.grid.FlexGrid.Class.html"><span class="identifier">FlexGrid</span></a> to an existing <a href="topic/wijmo.pdf.PdfDocument.Class.html"><span class="identifier">PdfDocument</span></a> at the
+(0, @wijmo.pdf.PdfDocument.y) coordinates.</p>
+<p>If width is not specified, then grid will be rendered in actual size, 
+breaking into pages as needed. If height is not specified, then grid will be
+scaled to fit the width, breaking into pages vertically as needed.
+If both, width and height are determined, then grid will be scaled to fit
+the specified rectangle without any page breaks.</p>
+
+
+<pre>var doc = new wijmo.pdf.PdfDocument({
+   ended: function (sender, args) {
+      wijmo.pdf.saveBlob(args.blob, 'FlexGrid.pdf');
+   }
+});
+
+wijmo.grid.pdf.FlexGridPdfConverter.draw(grid, doc, null, null, {
+   maxPages: 10,
+   styles: {
+      cellStyle: {
+         backgroundColor: '#ffffff',
+         borderColor: '#c6c6c6'
+      },
+      headerCellStyle: {
+         backgroundColor: '#eaeaea'
+      }
+   }
+});</pre></div>
+<dl class="dl-horizontal">
+  <dt>Parameters</dt><dd></dd>
+</dl>
+<ul>
+<li><b>flex</b>: <a href="topic/wijmo.grid.FlexGrid.Class.html"><span class="identifier">FlexGrid</span></a><br/><p>The <a href="topic/wijmo.grid.FlexGrid.Class.html"><span class="identifier">FlexGrid</span></a> instance to export.</p></li><li><b>doc</b>: <a href="topic/wijmo.pdf.PdfDocument.Class.html"><span class="identifier">PdfDocument</span></a><br/><p>The <a href="topic/wijmo.pdf.PdfDocument.Class.html"><span class="identifier">PdfDocument</span></a> instance to draw in.</p></li><li><b>width</b>: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Number" target="_blank"><span class="identifier">number</span></a> <span class="badge">Optional</span><br/><p>The width of the drawing area in points.</p></li><li><b>height</b>: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Number" target="_blank"><span class="identifier">number</span></a> <span class="badge">Optional</span><br/><p>The height of the drawing area in points.</p></li><li><b>settings</b>: <a href="topic/wijmo.grid.pdf.IFlexGridDrawSettings.Interface.html"><span class="identifier">IFlexGridDrawSettings</span></a> <span class="badge">Optional</span><br/><p>The draw settings.</p></li></ul>
+<dl class="dl-horizontal">
+  <dt>Returns</dt><dd><span class="identifier">void</span></dd>
+</dl>
+</div>
+<div id="drawToPosition" class="member-panel mmethod">
+<h3><span class="badge">Static</span> drawToPosition</h3>
+<pre>drawToPosition(flex: <a href="topic/wijmo.grid.FlexGrid.Class.html"><span class="identifier">FlexGrid</span></a>, doc: <a href="topic/wijmo.pdf.PdfDocument.Class.html"><span class="identifier">PdfDocument</span></a>, point: <a href="topic/wijmo.Point.Class.html"><span class="identifier">Point</span></a>, width?: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Number" target="_blank"><span class="identifier">number</span></a>, height?: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Number" target="_blank"><span class="identifier">number</span></a>, settings?: <a href="topic/wijmo.grid.pdf.IFlexGridDrawSettings.Interface.html"><span class="identifier">IFlexGridDrawSettings</span></a>): <span class="identifier">void</span></pre>
+<div class="comment"><p>Draws the <a href="topic/wijmo.grid.FlexGrid.Class.html"><span class="identifier">FlexGrid</span></a> to an existing <a href="topic/wijmo.pdf.PdfDocument.Class.html"><span class="identifier">PdfDocument</span></a> instance at the
+specified coordinates.</p>
+<p>If width is not specified, then grid will be rendered in actual size
+without any page breaks.
+If height is not specified, then grid will be scaled to fit the width
+without any page breaks.
+If both, width and height are determined, then grid will be scaled to fit
+the specified rectangle without any page breaks.</p>
+
+
+<pre>var doc = new wijmo.pdf.PdfDocument({
+   ended: function (sender, args) {
+      wijmo.pdf.saveBlob(args.blob, 'FlexGrid.pdf');
+   }
+});
+
+wijmo.grid.pdf.FlexGridPdfConverter.drawToPosition(grid, doc, new wijmo.Point(0, 0), null, null, {
+   maxPages: 10,
+   styles: {
+      cellStyle: {
+         backgroundColor: '#ffffff',
+         borderColor: '#c6c6c6'
+      },
+      headerCellStyle: {
+         backgroundColor: '#eaeaea'
+      }
+   }
+});</pre></div>
+<dl class="dl-horizontal">
+  <dt>Parameters</dt><dd></dd>
+</dl>
+<ul>
+<li><b>flex</b>: <a href="topic/wijmo.grid.FlexGrid.Class.html"><span class="identifier">FlexGrid</span></a><br/><p>The <a href="topic/wijmo.grid.FlexGrid.Class.html"><span class="identifier">FlexGrid</span></a> instance to export.</p></li><li><b>doc</b>: <a href="topic/wijmo.pdf.PdfDocument.Class.html"><span class="identifier">PdfDocument</span></a><br/><p>The <a href="topic/wijmo.pdf.PdfDocument.Class.html"><span class="identifier">PdfDocument</span></a> instance to draw in.</p></li><li><b>point</b>: <a href="topic/wijmo.Point.Class.html"><span class="identifier">Point</span></a><br/><p>The position to draw at, in points.</p></li><li><b>width</b>: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Number" target="_blank"><span class="identifier">number</span></a> <span class="badge">Optional</span><br/><p>The width of the drawing area in points.</p></li><li><b>height</b>: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Number" target="_blank"><span class="identifier">number</span></a> <span class="badge">Optional</span><br/><p>The height of the drawing area in points.</p></li><li><b>settings</b>: <a href="topic/wijmo.grid.pdf.IFlexGridDrawSettings.Interface.html"><span class="identifier">IFlexGridDrawSettings</span></a> <span class="badge">Optional</span><br/><p>The draw settings.</p></li></ul>
+<dl class="dl-horizontal">
+  <dt>Returns</dt><dd><span class="identifier">void</span></dd>
+</dl>
+</div>
+<div id="export" class="member-panel mmethod">
+<h3><span class="badge">Static</span> export</h3>
+<pre>export(flex: <a href="topic/wijmo.grid.FlexGrid.Class.html"><span class="identifier">FlexGrid</span></a>, fileName: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank"><span class="identifier">string</span></a>, settings?: <a href="topic/wijmo.grid.pdf.IFlexGridExportSettings.Interface.html"><span class="identifier">IFlexGridExportSettings</span></a>): <span class="identifier">void</span></pre>
+<div class="comment"><p>Exports the <a href="topic/wijmo.grid.FlexGrid.Class.html"><span class="identifier">FlexGrid</span></a> to PDF.</p>
+
+
+<pre>wijmo.grid.pdf.FlexGridPdfConverter.export(grid, 'FlexGrid.pdf', {
+   scaleMode: wijmo.grid.pdf.ScaleMode.PageWidth,
+   maxPages: 10,
+   styles: {
+      cellStyle: {
+         backgroundColor: '#ffffff',
+         borderColor: '#c6c6c6'
+      },
+      headerCellStyle: {
+         backgroundColor: '#eaeaea'
+      }
+   },
+   documentOptions: {
+      info: {
+         title: 'Sample'
+      }
+   }
+});</pre></div>
+<dl class="dl-horizontal">
+  <dt>Parameters</dt><dd></dd>
+</dl>
+<ul>
+<li><b>flex</b>: <a href="topic/wijmo.grid.FlexGrid.Class.html"><span class="identifier">FlexGrid</span></a><br/><p>The <a href="topic/wijmo.grid.FlexGrid.Class.html"><span class="identifier">FlexGrid</span></a> instance to export.</p></li><li><b>fileName</b>: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank"><span class="identifier">string</span></a><br/><p>Name of the file to export.</p></li><li><b>settings</b>: <a href="topic/wijmo.grid.pdf.IFlexGridExportSettings.Interface.html"><span class="identifier">IFlexGridExportSettings</span></a> <span class="badge">Optional</span><br/><p>The export settings.</p></li></ul>
+<dl class="dl-horizontal">
+  <dt>Returns</dt><dd><span class="identifier">void</span></dd>
+</dl>
+</div>
+</div>

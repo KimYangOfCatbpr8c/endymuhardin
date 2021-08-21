@@ -6,21 +6,21 @@
 	}
 </style>
 
-<div class="row-fluid">
+<div>
 	<div class="copy">
 		<h3>
 			Tooltips</h3>
 		<p>
 			Wijmo provides a 
-            <a href="http://wijmo.com/5/docs/topic/wijmo.Tooltip.Class.html" target="_blank">
-            Tooltip</a> class that allows you to add tooltips to any element on the page.</p>
+			<a href="http://wijmo.com/5/docs/topic/wijmo.Tooltip.Class.html" target="_blank">
+			Tooltip</a> class that allows you to add tooltips to any element on the page.</p>
 		<p>
 			You can use the Tooltip class in two modes:</p>
 		<p>
 			<b>Automatic Mode:</b> Use the <b>setTooltip</b> method to connect the 
-            Tooltip to one or more elements on the page. The Tooltip automatically 
-            monitors events and displays the tooltips when the user performs 
-            actions that trigger the tooltip. For example:</p>
+			Tooltip to one or more elements on the page. The Tooltip automatically 
+			monitors events and displays tooltips when the user performs 
+			actions that trigger them. For example:</p>
 		<pre>// create the tooltip object
 var tt = new wijmo.Tooltip();
 // associate the tooltip with one or more controls
@@ -29,16 +29,16 @@ tt.setTooltip('#tree', 'Explore the hierarchy.');
 tt.setTooltip('#chart', '#idChartTooltip');</pre>
 		<p>
 			<b>Manual Mode:</b> The caller is responsible for showing and hiding the 
-            tooltip using the <b>show</b> and <b>hide</b> methods. For example:
+			tooltip using the <b>show</b> and <b>hide</b> methods. For example:
 		</p>
 		<pre>// create the tooltip object
 var tt = new wijmo.Tooltip();
 // show the tooltip when the user clicks an element
 element.addEventListener('click', function () {
   if (tt.isVisible) {
-    tt.hide();
+	tt.hide();
   } else {
-    tt.show(element, 'Thanks for clicking this important element!');
+	tt.show(element, 'Thanks for clicking this important element!');
   }
 });</pre>
 
@@ -49,20 +49,20 @@ element.addEventListener('click', function () {
 		The paragraph below has some automatic tooltips:</p>
 	<p>
 		We hold these truths to be self-evident, that all men are created equal, 
-        that they are endowed by their
+		that they are endowed by their
 		<span wj-tooltip="#ttCreator">Creator</span> with certain unalienable
 		<span wj-tooltip="#ttRight">Rights</span>, that among these are
 		<span wj-tooltip="#ttLife">Life</span>, <span wj-tooltip="#ttLiberty">Liberty</span>,
 		and the pursuit of <span wj-tooltip="#ttHappiness">Happiness</span>.
 		-- That to secure these rights, Governments are instituted among Men, 
-        deriving their just powers from the consent of the governed, -- That 
-        whenever any Form of <span wj-tooltip="#ttGovernment">Government</span> 
-        becomes destructive of these ends, it is the 
-        <span wj-tooltip="#ttRight">Right</span> of the
+		deriving their just powers from the consent of the governed, -- That 
+		whenever any Form of <span wj-tooltip="#ttGovernment">Government</span> 
+		becomes destructive of these ends, it is the 
+		<span wj-tooltip="#ttRight">Right</span> of the
 		<span wj-tooltip="#ttPeople">People</span> to alter or to abolish it, and 
-        to institute new <span wj-tooltip="#ttGovernment">Government</span>, 
-        laying its foundation on such principles and organizing its powers in 
-        such form, as to them shall seem most likely to effect their
+		to institute new <span wj-tooltip="#ttGovernment">Government</span>, 
+		laying its foundation on such principles and organizing its powers in 
+		such form, as to them shall seem most likely to effect their
 		<span wj-tooltip="#ttSafety">Safety</span> and
 		<span wj-tooltip="#ttHappiness">Happiness</span>.</p>
 
@@ -70,27 +70,27 @@ element.addEventListener('click', function () {
 		Custom Tooltips</h4>
 	<p>
 		In some cases you may want to display dynamic information about an element. 
-        There are several ways to do this:</p>
+		There are several ways to do this:</p>
 	<ol>
 		<li>
 			You can call the <b>setTooltip</b> method to update the tooltip content 
-            for an element. This approach is a good choice if the information doesn't 
-            change often.</li>
+			for an element. This approach is a good choice if the information doesn't 
+			change often.</li>
 		<li>
 			You can handle the <b>popup</b> event to update the tooltip content before 
-            it is shown to the user.</li>
+			it is shown to the user.</li>
 		<li>
 			Or you can call the <b>show</b> and <b>hide</b> methods at any time and 
-            completely customize what is shown to the user and when. You can also 
-            specify the area within the control that the tooltip refers to (e.g. a 
-            grid cell or a chart data point).</li>
+			completely customize what is shown to the user and when. You can also 
+			specify the area within the control that the tooltip refers to (e.g. a 
+			grid cell or a chart data point).</li>
 	</ol>
 	<p>
 		The grid below illustrates the last approach. The controller handles the grid's
 		<b>mousemove</b> event and shows a tooltip with information about the cell
 		under the mouse.</p>
 	<wj-flex-grid 
-        style="height:300px"
+		style="height:300px"
 		control="ctx.flex"
 		items-source="ctx.data">
 	</wj-flex-grid>

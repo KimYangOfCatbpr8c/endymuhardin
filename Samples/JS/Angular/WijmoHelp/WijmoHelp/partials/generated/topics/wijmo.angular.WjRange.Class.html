@@ -1,0 +1,54 @@
+<div class="header-panel member">
+<h2><span class="identifier">WjRange</span> Class</h2>
+<dl class="dl-horizontal">
+<dt>File</dt><dd class="filename">wijmo.angular.js</dd>
+<dt>Module</dt><dd><a href="topic/wijmo.angular.Module.html"><span class="identifier">wijmo.angular</span></a></dd>
+<dt>Show</dt>
+<dd>
+<label><input type="checkbox" ng-model="ctx.showInherited"> Inherited Members</label>&nbsp;&nbsp;&nbsp;
+<label><input type="checkbox" ng-model="ctx.showRaisers"> Event Raisers</label>
+</dd>
+</dl>
+<div class="comment"><p>AngularJS directive for the <a href="topic/wijmo.gauge.Range.Class.html"><span class="identifier">Range</span></a> object.</p>
+<p>The <b>wj-range</b> directive must be contained in a <a href="topic/wijmo.angular.WjLinearGauge.Class.html"><span class="identifier">WjLinearGauge</span></a>, <a href="topic/wijmo.angular.WjRadialGauge.Class.html"><span class="identifier">WjRadialGauge</span></a> 
+or <a href="topic/wijmo.angular.WjBulletGraph.Class.html"><span class="identifier">WjBulletGraph</span></a> directive. It adds the Range object to the 'ranges' array property 
+of the parent directive. You may also initialize other Range type properties of the parent 
+directive by specifying the property name with the wj-property attribute.</p>
+<p>For example:
+</p>
+
+<pre>&lt;wj-radial-gauge 
+    min="0" 
+    max="200" 
+    step="20" 
+    value="theValue" 
+    is-read-only="false"&gt;
+    &lt;wj-range 
+      min="0" 
+      max="100" 
+      color="red"&gt;
+    &lt;/wj-range&gt;
+    &lt;wj-range 
+      min="100" 
+      max="200" 
+      color="green"&gt;
+    &lt;/wj-range&gt;
+    &lt;wj-range 
+      wj-property="pointer" 
+      color="blue"&gt;
+    &lt;/wj-range&gt;
+&lt;/wj-radial-gauge&gt;</pre>
+<p>The <b>wj-range</b> directive supports the following attributes:</p>
+<p><dl class="dl-horizontal">
+  <dt>min</dt>           <dd><code>@</code> The minimum value in the range.</dd>
+  <dt>max</dt>           <dd><code>@</code> The maximum value in the range.</dd>
+  <dt>color</dt>         <dd><code>@</code> The color used to display the range.</dd>
+  <dt>thickness</dt>     <dd><code>@</code> The thickness of the range, on a scale 
+                         of zero to one.</dd>
+  <dt>name</dt>          <dd><code>@</code> The name of the range.</dd>
+  <dt>wj-property</dt>   <dd><code>@</code> The name of the property to initialize 
+                         with this directive.</dd>
+</dl></p></div>
+</div>
+<div class="member-panel class members" ng-class="{ 'show-inherited' : ctx.showInherited, 'show-raisers' : ctx.showRaisers }">
+</div>

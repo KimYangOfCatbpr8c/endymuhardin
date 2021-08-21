@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 14
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmptyWijmoApp", "EmptyWijmoApp\EmptyWijmoApp.csproj", "{846CED9A-7123-4F28-B7EB-5D0E1423A169}"
 EndProject
 Global

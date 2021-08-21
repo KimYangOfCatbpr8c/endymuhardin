@@ -49,7 +49,7 @@ app.controller('templateCtrl', function appCtrl($scope) {
                 '</td>' +
             '</tr>' +
         '</table>' +
-        '<div wj-part="dropdown" style="position:absolute;top:100%;border-radius:4px;border:1px solid #e0e0e0;padding:2px;margin:4px 0px;z-index:100;background-color:inherit;display:none;box-shadow:0 6px 12px rgba(0, 0, 0, 0.175)"/>' +
+        '<div wj-part="dropdown" style="position:fixed;border-radius:4px;border:1px solid #e0e0e0;padding:2px;margin:4px 0px;z-index:100;background-color:inherit;display:none;box-shadow:0 6px 12px rgba(0, 0, 0, 0.175)"/>' +
     '</div>';
 
     // customize Calendar control template

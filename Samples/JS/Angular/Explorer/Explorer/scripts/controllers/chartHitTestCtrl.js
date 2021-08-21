@@ -40,7 +40,7 @@ app.controller('chartHitTestCtrl', function appCtrl($scope) {
         var s = '<div>Chart element: ' + wijmo.chart.ChartElement[hitInfo.chartElement] + '</div>';
         if (hitInfo.series) {
             s += '<div>Series name: ' + hitInfo.series.name;
-            if (hitInfo.pointIndex !== null) {
+            if (hitInfo.chartElement != wijmo.chart.ChartElement.Legend) {
                 s += '<div>Point index: ' + hitInfo.pointIndex + '</div>';
                 s += '<div>Distance: ' + hitInfo.distance.toFixed(0) + '</div>';
 

@@ -7,7 +7,7 @@ app.controller('dataCtrl', function appCtrl($scope, dataSvc) {
 
     // data context
     $scope.ctx = {
-        cv: new wijmo.collections.CollectionView(dataSvc.getData(500))
+        cv: dataSvc.getData(500)
     }
 
     // initialize collection view
@@ -15,7 +15,7 @@ app.controller('dataCtrl', function appCtrl($scope, dataSvc) {
     cv.filter = filter;
     cv.pageSize = 10;
     cv.newItemCreator = function () {
-        var newItem = dataSvc.getData(1)[0];
+        var newItem = dataSvc.getData(1).items[0];
         newItem.id = -1;
         return newItem;
     };

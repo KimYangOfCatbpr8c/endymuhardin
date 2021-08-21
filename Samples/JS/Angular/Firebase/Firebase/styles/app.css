@@ -44,7 +44,7 @@
 .wj-alt:not(.wj-state-selected):not(.wj-state-multi-selected) {
 	background-color: #fff;
 }
-.wj-flexgrid .wj-group {
+.wj-flexgrid .wj-group:not(.wj-state-selected):not(.wj-state-multi-selected) {
 	background: rgba(0, 0, 0, 0.1);
 }
 .wj-state-selected {

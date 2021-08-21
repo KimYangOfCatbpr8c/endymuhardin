@@ -1,0 +1,37 @@
+<div class="header-panel member">
+<h2><span class="identifier">WjContextMenu</span> Class</h2>
+<dl class="dl-horizontal">
+<dt>File</dt><dd class="filename">wijmo.angular.js</dd>
+<dt>Module</dt><dd><a href="topic/wijmo.angular.Module.html"><span class="identifier">wijmo.angular</span></a></dd>
+<dt>Show</dt>
+<dd>
+<label><input type="checkbox" ng-model="ctx.showInherited"> Inherited Members</label>&nbsp;&nbsp;&nbsp;
+<label><input type="checkbox" ng-model="ctx.showRaisers"> Event Raisers</label>
+</dd>
+</dl>
+<div class="comment"><p>AngularJS directive for context menus.</p>
+<p>Use the <b>wj-context-menu</b> directive to add context menus to elements
+on the page. The wj-context-menu directive is based on the <b>wj-menu</b> 
+directive; it displays a popup menu when the user performs a context menu
+request on an element (usually a right-click).</p>
+<p>The wj-context-menu directive is specified as a parameter added to the 
+element that the context menu applies to. The parameter value is a 
+selector for the element that contains the menu. For example:</p>
+
+
+<pre>&lt;!-- paragraph with a context menu --&gt;
+&lt;p wj-context-menu="#idMenu" &gt;
+ This paragraph has a context menu.&lt;/p&gt;
+
+&lt;!-- define the context menu (hidden and with an id) --&gt;
+&lt;wj-menu id="idMenu" ng-show="false"&gt;
+ &lt;wj-menu-item cmd="cmdOpen" cmd-param ="1"&gt;Open...&lt;/wj-menu-item&gt;
+ &lt;wj-menu-item cmd="cmdSave" cmd-param="2"&gt;Save &lt;/wj-menu-item&gt;
+ &lt;wj-menu-item cmd="cmdSave" cmd-param="3"&gt;Save As...&lt;/wj-menu-item&gt;
+ &lt;wj-menu-item cmd="cmdNew" cmd-param ="4"&gt;New...&lt;/wj-menu-item&gt;
+ &lt;wj-menu-separator&gt;&lt;/wj-menu-separator&gt;
+ &lt;wj-menu-item cmd="cmdExit" cmd-param="5"&gt;Exit&lt;/wj-menu-item&gt;
+&lt;/wj-menu &gt;</pre></div>
+</div>
+<div class="member-panel class members" ng-class="{ 'show-inherited' : ctx.showInherited, 'show-raisers' : ctx.showRaisers }">
+</div>

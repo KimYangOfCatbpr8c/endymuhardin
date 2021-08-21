@@ -1,0 +1,103 @@
+<div class="header-panel member">
+<h2><span class="identifier">PdfRunningTitleDeclarativeContent</span> Class</h2>
+<dl class="dl-horizontal">
+<dt>File</dt><dd class="filename">wijmo.pdf.js</dd>
+<dt>Module</dt><dd><a href="topic/wijmo.pdf.Module.html"><span class="identifier">wijmo.pdf</span></a></dd>
+</dl>
+<div class="comment"><p>Represents the declarative content of the running title.</p></div>
+</div>
+<div class="member-panel class members" ng-class="{ 'show-inherited' : ctx.showInherited, 'show-raisers' : ctx.showRaisers }">
+<h3 class="node">Constructor</h3>
+<ul>
+<li class="mmethod"><a href="topic/wijmo.pdf.PdfRunningTitleDeclarativeContent.Class.html/#constructor">constructor</a></li>
+</ul>
+<h3 class="node">Properties</h3>
+<ul>
+<li class="mproperty"><a href="topic/wijmo.pdf.PdfRunningTitleDeclarativeContent.Class.html/#brush">brush</a></li>
+<li class="mproperty"><a href="topic/wijmo.pdf.PdfRunningTitleDeclarativeContent.Class.html/#font">font</a></li>
+<li class="mproperty"><a href="topic/wijmo.pdf.PdfRunningTitleDeclarativeContent.Class.html/#text">text</a></li>
+</ul>
+<h3 class="node">Methods</h3>
+<ul>
+<li class="mmethod"><a href="topic/wijmo.pdf.PdfRunningTitleDeclarativeContent.Class.html/#clone">clone</a></li>
+<li class="mmethod"><a href="topic/wijmo.pdf.PdfRunningTitleDeclarativeContent.Class.html/#equals">equals</a></li>
+</ul>
+</div>
+<h3>Constructor</h3>
+<div id="constructor" class="member-panel mmethod">
+<h3>constructor</h3>
+<pre>constructor(text?: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank"><span class="identifier">string</span></a>, font?: <a href="topic/wijmo.pdf.PdfFont.Class.html"><span class="identifier">PdfFont</span></a>, brushOrColor?: <span class="identifier">any</span>): <a href="topic/wijmo.pdf.PdfRunningTitleDeclarativeContent.Class.html"><span class="identifier">PdfRunningTitleDeclarativeContent</span></a></pre>
+<div class="comment"><p>Initializes a new instance of the <a href="topic/wijmo.pdf.PdfRunningTitleDeclarativeContent.Class.html"><span class="identifier">PdfRunningTitleDeclarativeContent</span></a> class.</p></div>
+<dl class="dl-horizontal">
+  <dt>Parameters</dt><dd></dd>
+</dl>
+<ul>
+<li><b>text</b>: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank"><span class="identifier">string</span></a> <span class="badge">Optional</span><br/><p>The text of the running title.</p></li><li><b>font</b>: <a href="topic/wijmo.pdf.PdfFont.Class.html"><span class="identifier">PdfFont</span></a> <span class="badge">Optional</span><br/><p>Font of the text.</p></li><li><b>brushOrColor</b>: <span class="identifier">any</span> <span class="badge">Optional</span><br/><p>The <a href="topic/wijmo.pdf.PdfBrush.Class.html"><span class="identifier">PdfBrush</span></a> or <a href="topic/wijmo.Color.Class.html"><span class="identifier">Color</span></a> or any string acceptable 
+by the <a href="topic/wijmo.Color.Class.html/#fromString"><span class="identifier">fromString</span></a> method used to fill the text.</p></li></ul>
+<dl class="dl-horizontal">
+  <dt>Returns</dt><dd><a href="topic/wijmo.pdf.PdfRunningTitleDeclarativeContent.Class.html"><span class="identifier">PdfRunningTitleDeclarativeContent</span></a></dd>
+</dl>
+</div>
+<h3 class="node">Properties</h3>
+<div class="member-list" ng-class="{ 'show-inherited' : ctx.showInherited, 'show-raisers' : ctx.showRaisers }">
+<div id="brush" class="member-panel mproperty">
+<h3>brush</h3>
+<div class="comment"><p>Gets or sets the brush used to fill the <a href="topic/wijmo.pdf.PdfRunningTitleDeclarativeContent.Class.html/#text"><span class="identifier">text</span></a>.</p></div>
+<dl class="dl-horizontal">
+  <dt>Type</dt><dd><a href="topic/wijmo.pdf.PdfBrush.Class.html"><span class="identifier">PdfBrush</span></a></dd>
+</dl>
+</div>
+<div id="font" class="member-panel mproperty">
+<h3>font</h3>
+<div class="comment"><p>Gets or sets the font of the <a href="topic/wijmo.pdf.PdfRunningTitleDeclarativeContent.Class.html/#text"><span class="identifier">text</span></a>.</p></div>
+<dl class="dl-horizontal">
+  <dt>Type</dt><dd><a href="topic/wijmo.pdf.PdfFont.Class.html"><span class="identifier">PdfFont</span></a></dd>
+</dl>
+</div>
+<div id="text" class="member-panel mproperty">
+<h3>text</h3>
+<div class="comment"><p>Gets or sets the text of the running title.</p>
+<p>May contain up to 3 tabular characters ('\t') which are used for separating the text
+into the parts that will be aligned within the page area using left, center and right
+alignment.
+Two kinds of macros are supported, '&[Page]' and '&[Pages]'. The former one designates
+the current page index while the latter one designates the page count.</p>
+<p>For example, for the first page of a document having ten pages, the following string:
+</p>
+
+<pre>'&[Page]\\&[Pages]\theader\t&[Page]\\&[Pages]'</pre>
+<p>
+will be translated to:
+</p>
+
+<pre>'1\10 header 1\10'</pre></div>
+<dl class="dl-horizontal">
+  <dt>Type</dt><dd><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank"><span class="identifier">string</span></a></dd>
+</dl>
+</div>
+</div>
+<h3 class="node">Methods</h3>
+<div class="member-list" ng-class="{ 'show-inherited' : ctx.showInherited, 'show-raisers' : ctx.showRaisers }">
+<div id="clone" class="member-panel mmethod">
+<h3>clone</h3>
+<pre>clone(): <a href="topic/wijmo.pdf.PdfRunningTitleDeclarativeContent.Class.html"><span class="identifier">PdfRunningTitleDeclarativeContent</span></a></pre>
+<div class="comment"><p>Creates a copy of this <a href="topic/wijmo.pdf.PdfRunningTitleDeclarativeContent.Class.html"><span class="identifier">PdfRunningTitleDeclarativeContent</span></a>.</p></div>
+<dl class="dl-horizontal">
+  <dt>Returns</dt><dd><a href="topic/wijmo.pdf.PdfRunningTitleDeclarativeContent.Class.html"><span class="identifier">PdfRunningTitleDeclarativeContent</span></a></dd>
+</dl>
+</div>
+<div id="equals" class="member-panel mmethod">
+<h3>equals</h3>
+<pre>equals(value: <a href="topic/wijmo.pdf.PdfRunningTitleDeclarativeContent.Class.html"><span class="identifier">PdfRunningTitleDeclarativeContent</span></a>): <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a></pre>
+<div class="comment"><p>Determines whether the specified <a href="topic/wijmo.pdf.PdfRunningTitleDeclarativeContent.Class.html"><span class="identifier">PdfRunningTitleDeclarativeContent</span></a> instance
+is equal to the current one.</p></div>
+<dl class="dl-horizontal">
+  <dt>Parameters</dt><dd></dd>
+</dl>
+<ul>
+<li><b>value</b>: <a href="topic/wijmo.pdf.PdfRunningTitleDeclarativeContent.Class.html"><span class="identifier">PdfRunningTitleDeclarativeContent</span></a><br/><p><a href="topic/wijmo.pdf.PdfRunningTitleDeclarativeContent.Class.html"><span class="identifier">PdfRunningTitleDeclarativeContent</span></a> to compare.</p></li></ul>
+<dl class="dl-horizontal">
+  <dt>Returns</dt><dd><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a></dd>
+</dl>
+</div>
+</div>

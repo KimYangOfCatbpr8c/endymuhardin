@@ -1,11 +1,11 @@
-﻿<div class="row-fluid">
+﻿<div>
 	<div class="copy">
 		<h3>
 			Templates and Conditional Formatting
 		</h3>
 		<p>
-			Wijmo is about is not opinionated about templating mechanisms. It does however
-			provides a flexible infrastructure that allows you to easily integrate
+			Wijmo is not opinionated about templating mechanisms. It does however
+			provide a flexible infrastructure that allows you to easily integrate
 			templating mechanisms provided by whatever framework you choose.
 		</p>
 		<p>
@@ -52,13 +52,14 @@
 			</a>until version 1.1.5 (a good reason to upgrade to the latest version of Angular).
 		</p>
 	</div>
-	<div class="row-fluid">
+	<div>
 
 		<!-- the grid -->
         <wj-flex-grid class="grid"
                       control="ctx.flex"
                       items-source="ctx.data"
-                      is-read-only="true"
+                      is-read-only="false"
+                      allow-add-new="true"
                       items-source-changed="itemsSourceChangedHandler(s, e)">
             <wj-flex-grid-column header="ID" binding="id" width="80"></wj-flex-grid-column>
             <wj-flex-grid-column header="Date" binding="start"></wj-flex-grid-column>
@@ -71,7 +72,7 @@
             <wj-flex-grid-column header="Revenue" binding="amount" format="n0"></wj-flex-grid-column>
             <wj-flex-grid-column header="Expense" binding="amount2" format="n0"></wj-flex-grid-column>
             <wj-flex-grid-column header="Discount"
-                                 binding="discount"
+                                 binding="discount"                 
                                  format="p0"
                                  ng-style="{true: {color: 'darkred'}, false: {color: 'darkgreen'}}[$item.discount > 0.12]">
             </wj-flex-grid-column>

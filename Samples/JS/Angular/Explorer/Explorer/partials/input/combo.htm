@@ -1,51 +1,59 @@
-﻿<div class="row-fluid" >
+﻿<div>
     <div class="copy">
         <h3>
             ComboBox</h3>
         <p>
-            The <b>ComboBox</b> control is a simple and powerful combo box. These are the main
-            properties of the <b>ComboBox</b> control:</p>
+            The <a href="http://wijmo.com/5/docs/topic/wijmo.input.ComboBox.Class.html" 
+            target="_blank">ComboBox</a> control is simple and powerful. These are the 
+            main properties of the ComboBox:</p>
         <dl class="dl-horizontal">
             <dt>
                 itemsSource</dt>
             <dd>
-                Gets or sets an array or an <b>ICollectionView</b> with the options available.</dd>
+                Gets or sets an 
+                <a href="http://wijmo.com/5/docs/topic/wijmo.collections.ObservableArray.Class.html"
+                target="_blank"> array</a> or an 
+                <a href="http://wijmo.com/5/docs/topic/wijmo.collections.ICollectionView.Interface.html"
+                target="_blank"> ICollectionView</a> that contains the items to display.</dd>
             <dt>
-                displayMember</dt>
+                displayMemberPath</dt>
             <dd>
-                If the items are objects (as opposed to strings), use this property to specify which
-                property of the items should be displayed in the <b>ComboBox</b>.</dd>
+                If the items from the itemsSource are objects (as opposed to strings), use this property to 
+                specify which property of the items to display in the ComboBox.</dd>
             <dt>
                 text</dt>
             <dd>
-                Gets or sets the text in the control.</dd>
+                Gets or sets the text in the control. Use this property to collect text that the user 
+                enters or selects.</dd>
             <dt>
                 selectedIndex</dt>
             <dd>
-                Gets or sets the index of the currently selected item in the <i>itemsSource</i>.</dd>
+                Gets or sets the index of the currently selected item in the itemsSource.</dd>
             <dt>
                 selectedItem</dt>
             <dd>
-                Gets or sets currently selected item in the <i>itemsSource</i>.</dd>
+                Gets or sets currently selected item in the itemsSource.</dd>
             <dt>
                 isEditable</dt>
             <dd>
-                Gets or sets whether the user can type values that are not in the <i>itemsSource</i>.</dd>
+                Gets or sets whether the user can type values that are not in the itemsSource.</dd>
         </dl>
         <p>
-            The <b>itemsSource</b> and <b>displayMember</b> properties are responsible for populating the
+            The <b>itemsSource</b> and <b>displayMemberPath</b> properties are responsible for populating the
             option list. They are mainly input properties. The <b>text</b>, <b>selectedItem</b>, and
-            <b>selectedIndex</b> properties change to reflect the user input. They are mainly output
+            <b>selectedIndex</b> properties change to reflect user input. They are mainly output
             properties.</p>
         <p>
-            The table below contains a regular input element and some <b>ComboBox</b> controls, with and
-            without drop-down items. Try typing the name of some countries. As you type, the <b>ComboBox</b>
-            will automatically complete the entry. You may use the up/down keys to select the previous/next
-            items that match what you have typed.</p>
+            These samples use the <a href="http://wijmo.com/5/docs/topic/wijmo.angular.WjComboBox.Class.html" 
+            target="_blank">WjComboBox</a> directive and AngularJS.</p>
         <p>
-            Notice how the list of items is automatically positioned above or below the control in
-            order to fit the space available. Notice also how the control appearance can be customized
-            using regular css.</p>
+            The table below contains a regular input element and some <b>ComboBox</b> controls, with and
+            without drop-down items. Try typing the names of some countries. As you type, the ComboBox
+            automatically completes the entry. You can use the up and down keys to select the previous 
+            or next item that matches the text you typed.</p>
+        <p>
+            Notice how the list of items automatically positions above or below the control to fit the 
+            available space. Notice also how you can customize the control appearance using regular CSS.</p>
     </div>
 
     <!-- BEGIN -->
@@ -55,10 +63,10 @@
             Description
         </div>
         <div class="col-sm-6 col-xs-12">
-            ComboBox
+            Live Control
         </div>
         <div class="col-sm-3 col-xs-12">
-            Bound value
+            Bound Value
         </div>
     </div>
     <div class="row div-thin">
@@ -93,7 +101,7 @@
     </div>
     <div class="row div-thick">
         <div class="col-sm-3 col-xs-12">
-            No items (no items)
+            ComboBox with no items
         </div>
         <div class="col-sm-6 col-xs-12">
             <wj-combo-box 
@@ -107,7 +115,7 @@
     </div>
     <div class="row div-thin">
         <div class="col-sm-3 col-xs-12">
-            Countries, editable
+            Array source, editable
         </div>
         <div class="col-sm-6 col-xs-12">
             <wj-combo-box
@@ -121,9 +129,9 @@
             {{ctx.country2}}
         </div>
     </div>
-    <div class="row div-thick">
+    <div class="row div-thin">
         <div class="col-sm-3 col-xs-12">
-            Countries, editable, styled
+            Array source, editable, styled
         </div>
         <div class="col-sm-6 col-xs-12">
             <wj-combo-box 
@@ -140,7 +148,7 @@
     </div>
     <div class="row div-thin">
         <div class="col-sm-3 col-xs-12">
-            Countries, non-editable
+            Array source, non-editable
         </div>
         <div class="col-sm-6 col-xs-12">
             <wj-combo-box 
@@ -154,9 +162,9 @@
             {{ctx.country3}}
         </div>
     </div>
-    <div class="row div-thin">
+    <div class="row div-thick">
         <div class="col-sm-3 col-xs-12">
-            Countries, non-editable, styled
+            Array source, non-editable, styled
         </div>
         <div class="col-sm-6 col-xs-12">
             <wj-combo-box 
@@ -173,7 +181,7 @@
     </div>
     <div class="row div-thin">
         <div class="col-sm-3 col-xs-12">
-            CollectionView, editable
+            CollectionView source, editable
         </div>
         <div class="col-sm-6 col-xs-12">
             <wj-combo-box 
@@ -192,7 +200,7 @@
     </div>
     <div class="row div-thin">
         <div class="col-sm-3 col-xs-12">
-            CollectionView, non-editable
+            CollectionView source, non-editable
         </div>
         <div class="col-sm-6 col-xs-12">
             <wj-combo-box 
@@ -202,7 +210,7 @@
                 display-member-path="country"
                 selected-value-path="id"
                 is-editable="false"
-                placeholder="item (displayMember=country, not editable)">
+                placeholder="item (displayMemberPath=country, not editable)">
             </wj-combo-box>
         </div>
         <div class="col-sm-3 col-xs-12">
@@ -211,7 +219,7 @@
     </div>
     <div class="row div-thick">
         <div class="col-sm-3 col-xs-12">
-            CollectionView Items
+            CollectionView in a grid
         </div>
         <div class="col-sm-6 col-xs-12 app-resize-grid">
             <wj-flex-grid 

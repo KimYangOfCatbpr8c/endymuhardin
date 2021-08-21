@@ -1,158 +1,65 @@
-<h2>Module wijmo.chart</h2>
+<div class="header-panel module">
+<h2><span class="identifier">wijmo.chart</span> Module</h2>
 <dl class="dl-horizontal">
-<dt>File</dt><dd>wijmo.chart.js</dd>
+<dt>File</dt><dd class="filename">wijmo.chart.js</dd>
+<dt>Module</dt><dd><span class="identifier">wijmo.chart</span></dd>
 </dl>
-<p><p>Defines the <a href="" ng-click="go('wijmo.chart.FlexChart.Class.html')"><b>FlexChart</b></a> control and associated classes.</p>
-
-<p>The example below creates a <b>FlexChart</b> control and binds it to a 'data' array.
+<div class="comment"><p>Defines the <a href="topic/wijmo.chart.FlexChart.Class.html"><span class="identifier">FlexChart</span></a> control and its associated classes.</p>
+<p>The example below creates a <a href="topic/wijmo.chart.FlexChart.Class.html"><span class="identifier">FlexChart</span></a> control and binds it to a data array.
 The chart has three series, each corresponding to a property in the objects 
-contained in the source array. The last series in the example uses the 
-<b>chartType</b> property to override the default chart type used by the 
-other series.</p>
-
-<p><a href="http://jsfiddle.net/Wijmo5/6GB66/" target="_blank" class="btn btn-info">
-  <img src="../../images/fiddle.png"/>
-  Live Example
-</a>
-</p></p>
-<br/>
-<h3>Classes</h3>
-<table class="table table-condensed" style="font:inherit">
-<thead>
-<tr>
-<th></th>
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-    <tr>
-      <td></td>
-      <td><a href="" ng-click="go('wijmo.chart.Axis.Class.html')"><b>Axis</b></a></td>
-      <td>Represents an axis in the chart.</td>
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="" ng-click="go('wijmo.chart.ChartTooltip.Class.html')"><b>ChartTooltip</b></a></td>
-      <td>Extends the <a href="" ng-click="go('wijmo.Tooltip.Class.html')"><b>Tooltip</b></a> class to provide chart tooltips.</td>
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="" ng-click="go('wijmo.chart.FlexChart.Class.html')"><b>FlexChart</b></a></td>
-      <td><p>The <b>FlexChart</b> control provides a powerful and flexible way to visualize
-data.</p>
-
-<p>You can use the <b>FlexChart</b> control to create charts that display data in
-several formats, including bar, line, symbol, bubble, and others.</p>
-
-<p>To use the <b>FlexChart</b> control, set the <b>itemsSource</b> property to an 
-array containing the data, then add one or more <a href="" ng-click="go('wijmo.chart.Series.Class.html')"><b>Series</b></a> objects
-to the <b>series</b> property.</p>
-
-<p>Use the <b>chartType</b> property to define the chart type used for all series. 
-You may override the chart type for specific series by setting the <b>chartType</b> 
-property on each <b>Series</b> object.</p></td>
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="" ng-click="go('wijmo.chart.HitTestInfo.Class.html')"><b>HitTestInfo</b></a></td>
-      <td>Contains information about a part of a <a href="" ng-click="go('wijmo.chart.FlexChart.Class.html')"><b>FlexChart</b></a> control at 
-a specified page coordinate.</td>
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="" ng-click="go('wijmo.chart.Legend.Class.html')"><b>Legend</b></a></td>
-      <td>Represents chart legend.</td>
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="" ng-click="go('wijmo.chart.Series.Class.html')"><b>Series</b></a></td>
-      <td><p>Represents a series in the chart.</p>
-
-<p>The <b>Series</b> class supports all basic chart types. You may define
-additional chart types by creating classes that derive from <b>Series</b> 
-and override the <b>renderSeries</b> method.</p></td>
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="" ng-click="go('wijmo.chart.SeriesEventArgs.Class.html')"><b>SeriesEventArgs</b></a></td>
-      <td>Provides arguments for <a href="" ng-click="go('wijmo.chart.Series.Class.html')"><b>Series</b></a> events.</td>
-    </tr>
-</tbody>
-</table>
-<br/>
-<h3>Interfaces</h3>
-<table class="table table-condensed" style="font:inherit">
-<thead>
-<tr>
-<th></th>
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-    <tr>
-      <td></td>
-      <td><a href="" ng-click="go('wijmo.chart.IRenderEngine.Interface.html')"><b>IRenderEngine</b></a></td>
-      <td>Represents rendering engine that performs basic drawing routines.</td>
-    </tr>
-</tbody>
-</table>
-<br/>
-<h3>Enumerations</h3>
-<table class="table table-condensed" style="font:inherit">
-<thead>
-<tr>
-<th></th>
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-    <tr>
-      <td></td>
-      <td><a href="" ng-click="go('wijmo.chart.AxisType.Enum.html')"><b>AxisType</b></a></td>
-      <td>Identifies the axis type.</td>
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="" ng-click="go('wijmo.chart.ChartElement.Enum.html')"><b>ChartElement</b></a></td>
-      <td>Chart elements enumeration.</td>
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="" ng-click="go('wijmo.chart.ChartType.Enum.html')"><b>ChartType</b></a></td>
-      <td>Specifies the chart type.</td>
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="" ng-click="go('wijmo.chart.Marker.Enum.html')"><b>Marker</b></a></td>
-      <td>Specifies marker appearance.</td>
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="" ng-click="go('wijmo.chart.Position.Enum.html')"><b>Position</b></a></td>
-      <td>Identifies the position of an axis or legend on the chart.</td>
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="" ng-click="go('wijmo.chart.SelectionMode.Enum.html')"><b>SelectionMode</b></a></td>
-      <td>Specifies the chart's selection mode.</td>
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="" ng-click="go('wijmo.chart.SeriesVisibility.Enum.html')"><b>SeriesVisibility</b></a></td>
-      <td>Specifies Series visibility.</td>
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="" ng-click="go('wijmo.chart.Stacking.Enum.html')"><b>Stacking</b></a></td>
-      <td>Specifies the chart's stacking mode.</td>
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="" ng-click="go('wijmo.chart.TickMark.Enum.html')"><b>TickMark</b></a></td>
-      <td>Identifies the appearance of axis tick marks.</td>
-    </tr>
-</tbody>
-</table>
+contained in the source array.</p>
+<p>The last series in the example uses the <a href="topic/wijmo.chart.Series.Class.html/#chartType"><span class="identifier">chartType</span></a> property to
+override the default chart type used
+by the other series.</p>
+<p><div class="member-panel example"><h3 class="node collapsed">Example</h3><div class="fiddle"><script async src="http://jsfiddle.net/Wijmo5/6GB66/embed/result,html,js,css"></script></div></div></p></div>
+</div>
+<div class="member-panel module members">
+<h3 class="node">Classes</h3>
+<ul>
+<li class="mclass"><a href="topic/wijmo.chart.Axis.Class.html">Axis</a></li>
+<li class="mclass"><a href="topic/wijmo.chart.AxisCollection.Class.html">AxisCollection</a></li>
+<li class="mclass"><a href="topic/wijmo.chart.ChartTooltip.Class.html">ChartTooltip</a></li>
+<li class="mclass"><a href="topic/wijmo.chart.DataLabel.Class.html">DataLabel</a></li>
+<li class="mclass"><a href="topic/wijmo.chart.DataLabelBase.Class.html">DataLabelBase</a></li>
+<li class="mclass"><a href="topic/wijmo.chart.DataLabelRenderEventArgs.Class.html">DataLabelRenderEventArgs</a></li>
+<li class="mclass"><a href="topic/wijmo.chart.DataPoint.Class.html">DataPoint</a></li>
+<li class="mclass"><a href="topic/wijmo.chart.FlexChart.Class.html">FlexChart</a></li>
+<li class="mclass"><a href="topic/wijmo.chart.FlexChartBase.Class.html">FlexChartBase</a></li>
+<li class="mclass"><a href="topic/wijmo.chart.FlexChartCore.Class.html">FlexChartCore</a></li>
+<li class="mclass"><a href="topic/wijmo.chart.FlexPie.Class.html">FlexPie</a></li>
+<li class="mclass"><a href="topic/wijmo.chart.HitTestInfo.Class.html">HitTestInfo</a></li>
+<li class="mclass"><a href="topic/wijmo.chart.Legend.Class.html">Legend</a></li>
+<li class="mclass"><a href="topic/wijmo.chart.LineMarker.Class.html">LineMarker</a></li>
+<li class="mclass"><a href="topic/wijmo.chart.Palettes.Class.html">Palettes</a></li>
+<li class="mclass"><a href="topic/wijmo.chart.PieDataLabel.Class.html">PieDataLabel</a></li>
+<li class="mclass"><a href="topic/wijmo.chart.PlotArea.Class.html">PlotArea</a></li>
+<li class="mclass"><a href="topic/wijmo.chart.PlotAreaCollection.Class.html">PlotAreaCollection</a></li>
+<li class="mclass"><a href="topic/wijmo.chart.RenderEventArgs.Class.html">RenderEventArgs</a></li>
+<li class="mclass"><a href="topic/wijmo.chart.Series.Class.html">Series</a></li>
+<li class="mclass"><a href="topic/wijmo.chart.SeriesBase.Class.html">SeriesBase</a></li>
+<li class="mclass"><a href="topic/wijmo.chart.SeriesEventArgs.Class.html">SeriesEventArgs</a></li>
+</ul>
+<h3 class="node">Interfaces</h3>
+<ul>
+<li class="minterface"><a href="topic/wijmo.chart.IRenderEngine.Interface.html">IRenderEngine</a></li>
+</ul>
+<h3 class="node">Enums</h3>
+<ul>
+<li class="menum"><a href="topic/wijmo.chart.AxisType.Enum.html">AxisType</a></li>
+<li class="menum"><a href="topic/wijmo.chart.ChartElement.Enum.html">ChartElement</a></li>
+<li class="menum"><a href="topic/wijmo.chart.ChartType.Enum.html">ChartType</a></li>
+<li class="menum"><a href="topic/wijmo.chart.ImageFormat.Enum.html">ImageFormat</a></li>
+<li class="menum"><a href="topic/wijmo.chart.LabelPosition.Enum.html">LabelPosition</a></li>
+<li class="menum"><a href="topic/wijmo.chart.LineMarkerAlignment.Enum.html">LineMarkerAlignment</a></li>
+<li class="menum"><a href="topic/wijmo.chart.LineMarkerInteraction.Enum.html">LineMarkerInteraction</a></li>
+<li class="menum"><a href="topic/wijmo.chart.LineMarkerLines.Enum.html">LineMarkerLines</a></li>
+<li class="menum"><a href="topic/wijmo.chart.Marker.Enum.html">Marker</a></li>
+<li class="menum"><a href="topic/wijmo.chart.OverlappingLabels.Enum.html">OverlappingLabels</a></li>
+<li class="menum"><a href="topic/wijmo.chart.PieLabelPosition.Enum.html">PieLabelPosition</a></li>
+<li class="menum"><a href="topic/wijmo.chart.Position.Enum.html">Position</a></li>
+<li class="menum"><a href="topic/wijmo.chart.SelectionMode.Enum.html">SelectionMode</a></li>
+<li class="menum"><a href="topic/wijmo.chart.SeriesVisibility.Enum.html">SeriesVisibility</a></li>
+<li class="menum"><a href="topic/wijmo.chart.Stacking.Enum.html">Stacking</a></li>
+<li class="menum"><a href="topic/wijmo.chart.TickMark.Enum.html">TickMark</a></li>
+</ul>
+</div>

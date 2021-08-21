@@ -1,0 +1,38 @@
+﻿<div>
+    <div class="header">
+        <div class="container">
+            <img src="resources/wijmo5.png" />
+            <h1>
+                FlexChart Animation (Angular 2)
+            </h1>
+            <p>
+                This page shows how to play animation on FlexChart and FlexPie.
+            </p>
+        </div>
+    </div>
+    <!-- Navigation menu -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2">
+                <div class="panel-group" id="accordion">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <ul class="flatList">
+                                <template ngFor let-route [ngForOf]="routes">
+                                    <li *ngIf="route.data?.caption">
+                                        <a [routerLink]="route.path" routerLinkActive="active">
+                                            {{route.data.caption}}
+                                        </a>
+                                    </li>
+                                </template>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-10">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    </div>
+</div>

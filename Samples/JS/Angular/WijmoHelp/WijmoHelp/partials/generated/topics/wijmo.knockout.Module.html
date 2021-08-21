@@ -1,0 +1,262 @@
+<div class="header-panel module">
+<h2><span class="identifier">wijmo.knockout</span> Module</h2>
+<dl class="dl-horizontal">
+<dt>File</dt><dd class="filename">wijmo.knockout.js</dd>
+<dt>Module</dt><dd><span class="identifier">wijmo.knockout</span></dd>
+</dl>
+<div class="comment"><p>Contains KnockoutJS bindings for the Wijmo controls.</p>
+<p>The bindings allow you to add Wijmo controls to
+<a href="http://knockoutjs.com/" target="_blank">KnockoutJS</a>
+applications using simple markup in HTML pages.</p>
+<p>To add a Wijmo control to a certain place in a page's markup, add the <b>&lt;div&gt;</b> 
+element and define a binding for the control in the <b>data-bind</b> attribute.
+The binding name corresponds to the control name with a wj prefix. For example, the <a href="topic/wijmo.knockout.wjInputNumber.Class.html"><span class="identifier">wjInputNumber</span></a> 
+binding represents the Wijmo <a href="topic/wijmo.input.InputNumber.Class.html"><span class="identifier">InputNumber</span></a> control. The binding value is an object literal containing 
+properties corresponding to the control's read-write property and event names, with their values defining 
+the corresponding control property values and event handlers.</p>
+<p>The following markup creates a Wijmo <b>InputNumber</b> control with the <b>value</b> property bound to the 
+view model's <b>theValue</b> property, the <b>step</b> property set to 1 and the <b>inputType</b> property set to 'text':</p>
+
+
+<pre>&lt;div data-bind="wjInputNumber: { value: theValue, step: 1, inputType: 'text' }"&gt;&lt;/div&gt;</pre>
+<p><h3>Custom elements</h3>
+As an alternative to the standard Knockout binding syntax, the Wijmo for Knockout provides a possibility to declare controls 
+in the page markup as custom elements, where the tag name corresponds to the control binding name and the attribute names 
+correspond to the control property names. The element and parameter names must be formatted as lower-case with dashes instead 
+of camel-case. The control in the example above can be defined as follows using the custom element syntax:</p>
+
+
+<pre>&lt;wj-input-number value="theValue" step="1" input-type="'text'"&gt;&lt;/wj-input-number&gt;</pre>
+<p>Note that attribute values should be defined using exactly the same JavaScript expressions syntax as you use in 
+data-bind definitions. The Wijmo for Knockout preprocessor converts such elements to the conventional data-bind form, 
+see the <b>Custom elements preprocessor</b> topic for more details.</p>
+<p><h3>Binding to control properties</h3>
+Wijmo binding for KnockoutJS supports binding to any read-write properties on the control. You can assign any 
+valid KnockoutJS expressions (e.g. constants, view model observable properties, or complex expressions) to the 
+property. </p>
+<p>Most of the properties provide one-way binding, which means that changes in the bound observable view model 
+property cause changes in the control property that the observable is bound to, but not vice versa. 
+But some properties support two-way binding, which means that changes made in the control property are 
+propagated back to an observable bound to the control property as well. Two-way bindings are used for properties 
+that can be changed by the control itself, by user interaction with the control, 
+or by other occurences. For example, the InputNumber control provides two-way binding for the 
+<b>value</b> and <b>text</b> properties, which are changed by the control while a user is typing a new value. 
+The rest of the InputNumber properties operate in the one-way binding mode.</p>
+<p><h3>Binding to control events</h3>
+To attach a handler to a control event, specify the event name as a property of the object literal defining 
+the control binding, and the function to call on this event as a value of this property. 
+Wijmo bindings follow the same rules for defining an event handler as used for the intrinsic KnockoutJS bindings 
+like <b>click</b> and <b>event</b>. The event handler receives the following set of parameters, in the specified order:
+<ul>
+	<li><b>data:</b> The current model value, the same as for native KnockoutJS bindings like <b>click</b> and <b>event</b>. </li>
+	<li><b>sender:</b> The sender of the event. </li>
+	<li><b>args:</b> The event arguments. </li>
+</ul></p>
+<p>The following example creates an <b>InputNumber</b> control and adds an event handler for the <b>valueChanged</b>
+event showing a dialog with a new control value.</p>
+
+
+<pre>&lt;!-- HTML --&gt;
+&lt;div data-bind="wjInputNumber: { value: theValue, step: 1, valueChanged: valueChangedEH }"&gt;&lt;/div&gt;
+&nbsp;
+
+//View Model
+this.valueChangedEH = function (data, sender, args) {
+    alert('The new value is: ' + sender.value);
+}</pre>
+<p>The same control defined using the custom element syntax:</p>
+
+
+<pre>&lt;wj-input-number value="theValue" step="1" value-changed="valueChangedEH"&gt;&lt;/wj-input-number&gt;</pre>
+<p><h3>Binding to undefined observables</h3>
+View model observable properties assigned to an <i>undefined</i> value get special treatment by Wijmo 
+bindings during the initialization phase. For example, if you create an observable as ko.observable(undefined) 
+or ko.observable() and bind it to a control property, Wijmo does not assign a value to the control. Instead,  
+for properties supporting two-way bindings, this is the way to initialize the observable with the control's 
+default value, because after initialization the control binding updates bound observables with the control 
+values of such properties. Note that an observable with a <i>null</i> value, e.g. ko.observable(null), gets 
+the usual treatment and assigns null to the control property that it is bound to. After the primary 
+initialization has finished, observables with undefined values go back to getting the usual treatment from 
+Wijmo, and assign the control property with undefined.</p>
+<p>In the example below, the <b>value</b> property of the <b>InputNumber</b> control has its default value of 0
+after initialization, and this same value is assigned to the view model <b>theValue</b> property:
+</p>
+
+<pre>&lt;!-- HTML --&gt;
+&lt;div data-bind="wjInputNumber: { value: theValue }"&gt;&lt;/div&gt;
+&nbsp;
+
+//View Model
+this.theValue = ko.observable();</pre>
+<p><h3>Defining complex and array properties</h3>
+Some Wijmo controls have properties that contain an array or a complex object. For example, the 
+<a href="topic/wijmo.chart.FlexChart.Class.html"><span class="identifier">FlexChart</span></a> control exposes <b>axisX</b> and <b>axisY</b> properties that represent an <a href="topic/wijmo.chart.Axis.Class.html"><span class="identifier">Axis</span></a> object; 
+and the <b>series</b> property is an array of <a href="topic/wijmo.chart.Series.Class.html"><span class="identifier">Series</span></a> objects. Wijmo provides special 
+bindings for such types that we add to child elements of the control element. If the control exposes
+multiple properties of the same complex type, then the <b>wjProperty</b> property of the complex 
+type binding specifies which control property it defines. </p>
+<p>The following example shows the markup used to create a <b>FlexChart</b> with <b>axisX</b> and <b>axisY</b> 
+properties and two series objects defined:</p>
+
+
+<pre>&lt;div data-bind="wjFlexChart: { itemsSource: data, bindingX: 'country' }"&gt;
+    &lt;div data-bind="wjFlexChartAxis: { wjProperty: 'axisX', title: chartProps.titleX }"&gt;&lt;/div&gt;
+    &lt;div data-bind="wjFlexChartAxis: { wjProperty: 'axisY', title: chartProps.titleY }"&gt;&lt;/div&gt;
+    &lt;div data-bind="wjFlexChartSeries: { name: 'Sales', binding: 'sales' }"&gt;&lt;/div&gt;
+    &lt;div data-bind="wjFlexChartSeries: { name: 'Downloads', binding: 'downloads' }"&gt;&lt;/div&gt;
+&lt;/div&gt;</pre>
+<p>The same control defined using the custom element syntax:</p>
+
+
+<pre>&lt;wj-flex-chart items-source="data" binding-x="'country'"&gt;
+    &lt;wj-flex-chart-axis wj-property="'axisX'" title="chartProps.titleX"&gt;&lt;/wj-flex-chart-axis&gt;
+    &lt;wj-flex-chart-axis wj-property="'axisY'" title="chartProps.titleY"&gt;&lt;/wj-flex-chart-axis&gt;
+    &lt;wj-flex-chart-series name="'Sales'" binding"'sales'"&gt;&lt;/wj-flex-chart-series&gt;
+    &lt;wj-flex-chart-series name="'Downloads'" binding"'downloads'"&gt;&lt;/wj-flex-chart-series&gt;
+&lt;/wj-flex-chart&gt;</pre>
+<p><h3>The <b>control</b> property </h3>
+Each Wijmo control binding exposes a <b>control</b> property that references the Wijmo control instance created 
+by the binding. This allows you to reference the control in view model code or in other bindings.
+ 
+For example, the following markup creates a <a href="topic/wijmo.grid.FlexGrid.Class.html"><span class="identifier">FlexGrid</span></a> control whose reference is stored in the <b>flex</b> 
+observable property of a view model and is used in the button click event handler to move to the next grid record:</p>
+
+
+<pre>&lt;!-- HTML --&gt;
+&lt;div data-bind="'wjFlexGrid': { itemsSource: data, control: flex }"&gt;&lt;/div&gt;
+&lt;button data-bind="click: moveToNext"&gt;Next&lt;/button&gt;
+&nbsp;
+
+//View Model
+this.flex = ko.observable();
+this.moveToNext = function () {
+    this.flex().collectionView.moveCurrentToNext();
+}</pre>
+<p><h3>The <b>initialized</b> event</h3>
+Each Wijmo control binding exposes an <b>initialized</b> event and a Boolean <b>isInitialized</b> 
+property. The event occurs right after the binding creates the control and fully initializes it 
+with the values specified in the binding attributes. For bindings containing child bindings, for 
+example, a <b>wjFlexGrid</b> with child <b>wjFlexGridColumn</b> bindings, this also means that 
+child bindings have fully initialized and have been applied to the control represented by the 
+parent binding. The isInitialized property is set to true right before triggering the initialized 
+event. You can bind a view model observable property to the binding’s <b>isInitialized</b> property 
+to access its value.</p>
+<p>The following example adjusts FlexGridColumn formatting after the control fully initializes with its 
+bindings, which guarantees that these formats are not overwritten with formats defined in the bindings:</p>
+
+
+<pre>&lt;!-- HTML --&gt;
+&lt;div data-bind="'wjFlexGrid': { itemsSource: dataArray, initialized: flexInitialized }"&gt;
+     &lt;div data-bind="wjFlexGridColumn: { binding: 'sales', format: 'n2' }"&gt;&lt;/div&gt;
+     &lt;div data-bind="wjFlexGridColumn: { binding: 'downloads', format: 'n2' }"&gt;&lt;/div&gt;
+&lt;/div&gt;
+&nbsp;
+
+//View Model
+this.flexInitialized = function (data, sender, args) {
+    var columns = sender.columns;
+    for (var i = 0; i &lt; columns.length; i++) {
+        if (columns[i].dataType = wijmo.DataType.Number) {
+            columns[i].format = 'n0’;
+        }
+    }
+}</pre>
+<p><h3 id="custom_elem_preproc">Custom elements preprocessor</h3>
+The Wijmo Knockout preprocessor uses the standard Knockout <a target="_blank" 
+href="http://knockoutjs.com/documentation/binding-preprocessing.html">ko.bindingProvider.instance.preprocessNode</a> 
+API. This may cause problems in cases where other custom preprocessors are used on the same page, because Knockout 
+offers a single instance property for attaching a preprocessor function, and the next registering preprocessor 
+removes the registration of the previous one.</p>
+<p>To honor another attached preprocessor, the Wijmo Knockout preprocessor stores the currently registered preprocessor 
+during initialization and delegates the work to it in cases where another processing node is not recognized 
+as a Wijmo control element, thus organizing a preprocessor stack. But if you register another preprocessor 
+after the Wijmo for Knockout preprocessor (that is, after the &lt;script&gt; reference to the <b>wijmo.knockout.js</b> 
+module is executed) then you need to ensure that the other preprocessor behaves in a similar way; 
+otherwise, the Wijmo Knockout preprocessor is disabled.</p>
+<p>If you prefer to disable the Wijmo Knockout preprocessor, set the <b>wijmo.disableKnockoutTags</b> property 
+to false before the <b>wijmo.knockout.js</b> module reference and after the references to the core Wijmo 
+modules, for example:</p>
+
+
+<pre>&lt;script src="scripts/wijmo.js"&gt;&lt;/script&gt;
+&lt;script src="scripts/wijmo.input.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+    wijmo.disableKnockoutTags = true;
+&lt;/script&gt;
+&lt;script src="scripts/wijmo.knockout.js"&gt;&lt;/script&gt;</pre>
+<p>Note that in this case you can use only the conventional data-bind syntax for adding Wijmo controls to the page 
+markup; the Wijmo custom elements are not recognized.</p></div>
+</div>
+<div class="member-panel module members">
+<h3 class="node">Classes</h3>
+<ul>
+<li class="mclass"><a href="topic/wijmo.knockout.wjAutoComplete.Class.html">wjAutoComplete</a></li>
+<li class="mclass"><a href="topic/wijmo.knockout.wjBulletGraph.Class.html">wjBulletGraph</a></li>
+<li class="mclass"><a href="topic/wijmo.knockout.wjCalendar.Class.html">wjCalendar</a></li>
+<li class="mclass"><a href="topic/wijmo.knockout.wjCollectionViewNavigator.Class.html">wjCollectionViewNavigator</a></li>
+<li class="mclass"><a href="topic/wijmo.knockout.wjCollectionViewPager.Class.html">wjCollectionViewPager</a></li>
+<li class="mclass"><a href="topic/wijmo.knockout.wjColorPicker.Class.html">wjColorPicker</a></li>
+<li class="mclass"><a href="topic/wijmo.knockout.wjComboBox.Class.html">wjComboBox</a></li>
+<li class="mclass"><a href="topic/wijmo.knockout.wjContextMenu.Class.html">wjContextMenu</a></li>
+<li class="mclass"><a href="topic/wijmo.knockout.wjFinancialChart.Class.html">wjFinancialChart</a></li>
+<li class="mclass"><a href="topic/wijmo.knockout.wjFinancialChartSeries.Class.html">wjFinancialChartSeries</a></li>
+<li class="mclass"><a href="topic/wijmo.knockout.wjFlexChart.Class.html">wjFlexChart</a></li>
+<li class="mclass"><a href="topic/wijmo.knockout.wjFlexChartAnimation.Class.html">wjFlexChartAnimation</a></li>
+<li class="mclass"><a href="topic/wijmo.knockout.wjFlexChartAnnotation.Class.html">wjFlexChartAnnotation</a></li>
+<li class="mclass"><a href="topic/wijmo.knockout.wjFlexChartAnnotationLayer.Class.html">wjFlexChartAnnotationLayer</a></li>
+<li class="mclass"><a href="topic/wijmo.knockout.wjFlexChartAtr.Class.html">wjFlexChartAtr</a></li>
+<li class="mclass"><a href="topic/wijmo.knockout.wjFlexChartAxis.Class.html">wjFlexChartAxis</a></li>
+<li class="mclass"><a href="topic/wijmo.knockout.wjFlexChartBollingerBands.Class.html">wjFlexChartBollingerBands</a></li>
+<li class="mclass"><a href="topic/wijmo.knockout.wjFlexChartCci.Class.html">wjFlexChartCci</a></li>
+<li class="mclass"><a href="topic/wijmo.knockout.wjFlexChartDataPoint.Class.html">wjFlexChartDataPoint</a></li>
+<li class="mclass"><a href="topic/wijmo.knockout.wjFlexChartEnvelopes.Class.html">wjFlexChartEnvelopes</a></li>
+<li class="mclass"><a href="topic/wijmo.knockout.wjFlexChartFibonacci.Class.html">wjFlexChartFibonacci</a></li>
+<li class="mclass"><a href="topic/wijmo.knockout.wjFlexChartFibonacciArcs.Class.html">wjFlexChartFibonacciArcs</a></li>
+<li class="mclass"><a href="topic/wijmo.knockout.wjFlexChartFibonacciFans.Class.html">wjFlexChartFibonacciFans</a></li>
+<li class="mclass"><a href="topic/wijmo.knockout.wjFlexChartFibonacciTimeZones.Class.html">wjFlexChartFibonacciTimeZones</a></li>
+<li class="mclass"><a href="topic/wijmo.knockout.wjFlexChartGestures.Class.html">wjFlexChartGestures</a></li>
+<li class="mclass"><a href="topic/wijmo.knockout.wjFlexChartLegend.Class.html">wjFlexChartLegend</a></li>
+<li class="mclass"><a href="topic/wijmo.knockout.wjFlexChartLineMarker.Class.html">wjFlexChartLineMarker</a></li>
+<li class="mclass"><a href="topic/wijmo.knockout.wjFlexChartMacd.Class.html">wjFlexChartMacd</a></li>
+<li class="mclass"><a href="topic/wijmo.knockout.wjFlexChartMacdHistogram.Class.html">wjFlexChartMacdHistogram</a></li>
+<li class="mclass"><a href="topic/wijmo.knockout.wjFlexChartMovingAverage.Class.html">wjFlexChartMovingAverage</a></li>
+<li class="mclass"><a href="topic/wijmo.knockout.wjFlexChartParametricFunctionSeries.Class.html">wjFlexChartParametricFunctionSeries</a></li>
+<li class="mclass"><a href="topic/wijmo.knockout.wjFlexChartPlotArea.Class.html">wjFlexChartPlotArea</a></li>
+<li class="mclass"><a href="topic/wijmo.knockout.wjFlexChartRangeSelector.Class.html">wjFlexChartRangeSelector</a></li>
+<li class="mclass"><a href="topic/wijmo.knockout.wjFlexChartRsi.Class.html">wjFlexChartRsi</a></li>
+<li class="mclass"><a href="topic/wijmo.knockout.wjFlexChartSeries.Class.html">wjFlexChartSeries</a></li>
+<li class="mclass"><a href="topic/wijmo.knockout.wjFlexChartStochastic.Class.html">wjFlexChartStochastic</a></li>
+<li class="mclass"><a href="topic/wijmo.knockout.wjFlexChartTrendLine.Class.html">wjFlexChartTrendLine</a></li>
+<li class="mclass"><a href="topic/wijmo.knockout.wjFlexChartWaterfall.Class.html">wjFlexChartWaterfall</a></li>
+<li class="mclass"><a href="topic/wijmo.knockout.wjFlexChartWilliamsR.Class.html">wjFlexChartWilliamsR</a></li>
+<li class="mclass"><a href="topic/wijmo.knockout.wjFlexChartYFunctionSeries.Class.html">wjFlexChartYFunctionSeries</a></li>
+<li class="mclass"><a href="topic/wijmo.knockout.wjFlexGrid.Class.html">wjFlexGrid</a></li>
+<li class="mclass"><a href="topic/wijmo.knockout.wjFlexGridColumn.Class.html">wjFlexGridColumn</a></li>
+<li class="mclass"><a href="topic/wijmo.knockout.wjFlexGridFilter.Class.html">wjFlexGridFilter</a></li>
+<li class="mclass"><a href="topic/wijmo.knockout.wjFlexPie.Class.html">wjFlexPie</a></li>
+<li class="mclass"><a href="topic/wijmo.knockout.wjFlexSheet.Class.html">wjFlexSheet</a></li>
+<li class="mclass"><a href="topic/wijmo.knockout.wjGroupPanel.Class.html">wjGroupPanel</a></li>
+<li class="mclass"><a href="topic/wijmo.knockout.wjInputColor.Class.html">wjInputColor</a></li>
+<li class="mclass"><a href="topic/wijmo.knockout.wjInputDate.Class.html">wjInputDate</a></li>
+<li class="mclass"><a href="topic/wijmo.knockout.wjInputDateTime.Class.html">wjInputDateTime</a></li>
+<li class="mclass"><a href="topic/wijmo.knockout.wjInputMask.Class.html">wjInputMask</a></li>
+<li class="mclass"><a href="topic/wijmo.knockout.wjInputNumber.Class.html">wjInputNumber</a></li>
+<li class="mclass"><a href="topic/wijmo.knockout.wjInputTime.Class.html">wjInputTime</a></li>
+<li class="mclass"><a href="topic/wijmo.knockout.wjLinearGauge.Class.html">wjLinearGauge</a></li>
+<li class="mclass"><a href="topic/wijmo.knockout.wjListBox.Class.html">wjListBox</a></li>
+<li class="mclass"><a href="topic/wijmo.knockout.wjMenu.Class.html">wjMenu</a></li>
+<li class="mclass"><a href="topic/wijmo.knockout.wjMenuItem.Class.html">wjMenuItem</a></li>
+<li class="mclass"><a href="topic/wijmo.knockout.wjMenuSeparator.Class.html">wjMenuSeparator</a></li>
+<li class="mclass"><a href="topic/wijmo.knockout.wjMultiRow.Class.html">wjMultiRow</a></li>
+<li class="mclass"><a href="topic/wijmo.knockout.wjMultiSelect.Class.html">wjMultiSelect</a></li>
+<li class="mclass"><a href="topic/wijmo.knockout.wjPivotChart.Class.html">wjPivotChart</a></li>
+<li class="mclass"><a href="topic/wijmo.knockout.wjPivotGrid.Class.html">wjPivotGrid</a></li>
+<li class="mclass"><a href="topic/wijmo.knockout.wjPivotPanel.Class.html">wjPivotPanel</a></li>
+<li class="mclass"><a href="topic/wijmo.knockout.wjPopup.Class.html">wjPopup</a></li>
+<li class="mclass"><a href="topic/wijmo.knockout.wjRadialGauge.Class.html">wjRadialGauge</a></li>
+<li class="mclass"><a href="topic/wijmo.knockout.wjRange.Class.html">wjRange</a></li>
+<li class="mclass"><a href="topic/wijmo.knockout.wjSheet.Class.html">wjSheet</a></li>
+<li class="mclass"><a href="topic/wijmo.knockout.wjStyle.Class.html">wjStyle</a></li>
+<li class="mclass"><a href="topic/wijmo.knockout.wjTooltip.Class.html">wjTooltip</a></li>
+</ul>
+</div>

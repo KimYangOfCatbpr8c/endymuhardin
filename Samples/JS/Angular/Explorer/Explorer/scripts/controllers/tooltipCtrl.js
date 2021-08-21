@@ -24,13 +24,13 @@ app.controller('tooltipCtrl', function appCtrl($scope, dataSvc) {
             // monitor the mouse over the grid
             flex.hostElement.addEventListener('mousemove', function (evt) {
                 var ht = flex.hitTest(evt);
-                if (!ht.cellRange.equals(rng)) {
+                if (!ht.range.equals(rng)) {
 
                     // new cell selected, show tooltip
                     if (ht.cellType == wijmo.grid.CellType.Cell) {
-                        rng = ht.cellRange;
+                        rng = ht.range;
                         var cellElement = document.elementFromPoint(evt.clientX, evt.clientY),
-                            cellBounds = wijmo.Rect.fromBoundingRect(cellElement.getBoundingClientRect()),
+                            cellBounds = flex.getCellBoundingRect(ht.row, ht.col),
                             data = wijmo.escapeHtml(flex.getCellData(rng.row, rng.col, true)),
                             tipContent = 'cell (' + rng.row + ' ' + rng.col + ') contains "<b>' + data + '</b>"';
                         if (cellElement.className.indexOf('wj-cell') > -1) {
