@@ -1,0 +1,39 @@
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>使用 Angular 2 来创建FlexGrid控件</title>
+
+	<!--angular 2 模块开始 -->
+	<!--用于填充旧版浏览器-->
+	<script src="node_modules/core-js/client/shim.min.js"></script>
+
+	<script src="node_modules/zone.js/dist/zone.js"></script>
+	<script src="node_modules/reflect-metadata/Reflect.js"></script>
+	<script src="node_modules/systemjs/dist/system.src.js"></script>
+
+	<!--systemjs 配置开始-->
+	<script src="systemjs.config.js"></script>
+	
+	<!--wijmo 模块开始-->
+	<script src="scripts/vendor/wijmo.min.js"></script>
+	<script src="scripts/vendor/wijmo.grid.min.js"></script>
+	<link rel="stylesheet" href="styles/wijmo.min.css">
+	<script src="scripts/vendor/wijmo.angular2.min.js"></script>
+	<!--mine-->
+
+	<script>
+      System.import('./app/main').catch(function(err){ console.error(err); });
+    </script>
+</head>
+
+<body>
+	<!--申明根组件-->
+	<app-cmp>
+		Loading
+	</app-cmp>
+
+
+</body>
+
+</html>

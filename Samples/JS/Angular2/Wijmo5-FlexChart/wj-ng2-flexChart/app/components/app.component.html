@@ -1,0 +1,13 @@
+<div class="header">
+	<h2>
+		这个页面展示了如何在angular 2上使用 Wijmo。
+	</h2>
+</div>
+
+<div>
+	<wj-flex-chart [itemsSource]="data" [bindingX]="'country'">
+		<wj-flex-chart-series [name]="'Sales'" [binding]="'sales'"></wj-flex-chart-series>
+		<wj-flex-chart-series [name]="'Expenses'" [binding]="'expenses'"></wj-flex-chart-series>
+		<wj-flex-chart-series [name]="'Downloads'" [binding]="'downloads'"></wj-flex-chart-series>
+	</wj-flex-chart>
+</div>
