@@ -1,11 +1,10 @@
 #Wijmo 5
 
-**官网**：[http://wijmo.gcpowertools.com.cn/5/](http://wijmo.gcpowertools.com.cn/5/)
+**官网**：http://wijmo.gcpowertools.com.cn/5/
 
-**社区**：[http://gcdn.gcpowertools.com.cn/showforum-140.html](http://gcdn.gcpowertools.com.cn/showforum-140.html)
+**社区**：http://gcdn.gcpowertools.com.cn/showforum-140.html
 
-**演示**：[http://wijmo.gcpowertools.com.cn/5/#demos](http://wijmo.gcpowertools.com.cn/5/#demos)
-![](http://i.imgur.com/8AX138u.png)
+**演示**：http://wijmo.gcpowertools.com.cn/products/wijmo-5/#demos
 
 ![葡萄城控件微信服务号](http://weixin.gcpowertools.com.cn/images/public_Signature.png "葡萄城控件微信服务号")
 
