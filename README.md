@@ -2,6 +2,8 @@
 
 **官网**：http://wijmo.gcpowertools.com.cn/5/
 
+**下载**：http://www.gcpowertools.com.cn/products/download.aspx?pid=52
+
 **社区**：http://gcdn.gcpowertools.com.cn/showforum-140.html
 
 **演示**：http://wijmo.gcpowertools.com.cn/products/wijmo-5/#demos
