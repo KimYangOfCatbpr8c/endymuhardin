@@ -38,6 +38,7 @@ app.config(['$routeProvider', function ($routeProvider) {
     when('/input/combo', { templateUrl: 'partials/input/combo.htm', controller: 'inputCtrl' }).
     when('/input/autocomplete', { templateUrl: 'partials/input/autocomplete.htm', controller: 'inputCtrl' }).
     when('/input/multiselect', { templateUrl: 'partials/input/multiselect.htm', controller: 'inputCtrl' }).
+    when('/input/multiautocomplete', { templateUrl: 'partials/input/multiautocomplete.htm', controller: 'inputCtrl' }).
     when('/input/menu', { templateUrl: 'partials/input/menu.htm', controller: 'inputCtrl' }).
     when('/input/number', { templateUrl: 'partials/input/number.htm', controller: 'inputCtrl' }).
     when('/input/datetime', { templateUrl: 'partials/input/datetime.htm', controller: 'inputCtrl' }).
@@ -97,11 +98,19 @@ app.config(['$routeProvider', function ($routeProvider) {
     when('/piechart/itemFormatter', { templateUrl: 'partials/piechart/itemFormatter.htm', controller: 'pieChartItemFormatterCtrl' }).
     when('/piechart/animation', { templateUrl: 'partials/piechart/animation.htm', controller: 'pieChartAnimationCtrl' }).
 
+    //TreeView 
+    when('/nav/intro', { templateUrl: 'partials/nav/intro.htm', controller: 'treeViewCtrl' }).
+    when('/nav/navTree', { templateUrl: 'partials/nav/navTree.htm', controller: 'treeViewCtrl' }).
+    when('/nav/ckbTree', { templateUrl: 'partials/nav/ckbTree.htm', controller: 'treeViewCtrl' }).
+    when('/nav/customNodeContent', { templateUrl: 'partials/nav/customNodeContent.htm', controller: 'treeViewCtrl' }).
+    when('/nav/lazyLoading', { templateUrl: 'partials/nav/lazyLoading.htm', controller: 'treeViewCtrl' }).
+
     // Gauge
     when('/gauge/intro', { templateUrl: 'partials/gauge/intro.htm', controller: 'gaugeCtrl' }).
     when('/gauge/linear', { templateUrl: 'partials/gauge/linear.htm', controller: 'gaugeCtrl' }).
     when('/gauge/radial', { templateUrl: 'partials/gauge/radial.htm', controller: 'gaugeCtrl' }).
     when('/gauge/bullet', { templateUrl: 'partials/gauge/bullet.htm', controller: 'gaugeCtrl' }).
+
 
     // default...
     when('/', { templateUrl: 'partials/infra/intro.htm', controller: 'basicCtrl' }).

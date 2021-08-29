@@ -11,28 +11,34 @@ var DataSvc = (function () {
     function DataSvc() {
     }
     // data used to generate random items
-    DataSvc.prototype.getData = function () {
-        var countries = 'US,Germany,UK,Japan,Italy,Greece'.split(','), data = [];
-        for (var i = 0; i < 30; i++) {
-            data.push({
+    DataSvc.prototype.getData = function (count) {
+        var data = [], dt = new Date();
+        // add count items
+        for (var i = 0; i < count; i++) {
+            // constants used to create data items
+            var date = new Date(dt.getFullYear(), i % 12, 25, i % 24, i % 60, i % 60), countryId = Math.floor(Math.random() * DataSvc.countries.length), productId = Math.floor(Math.random() * DataSvc.products.length), colorId = Math.floor(Math.random() * DataSvc.colors.length);
+            // create the item
+            var item = {
                 id: i,
-                date: new Date(2015, Math.floor(i / countries.length) % 12, (Math.floor(i / countries.length) + 1) % 28),
-                country: countries[i % countries.length],
-                countryMapped: i % countries.length,
-                downloads: Math.round(Math.random() * 20000),
-                sales: Math.random() * 10000,
-                expenses: Math.random() * 5000,
-                checked: i % 9 == 0
-            });
+                start: date,
+                end: date,
+                country: DataSvc.countries[countryId],
+                product: DataSvc.products[productId],
+                color: DataSvc.colors[colorId],
+                amount: Math.random() * 10000 - 5000,
+                active: i % 4 === 0,
+            };
+            // add the item to the list
+            data.push(item);
         }
         return data;
     };
-    DataSvc.prototype.getCv = function (data) {
-        var dataCv = new wijmo.collections.CollectionView(data);
-        dataCv.sortDescriptions.push(new wijmo.collections.SortDescription('date', true));
-        dataCv.groupDescriptions.push(new wijmo.collections.PropertyGroupDescription('country'));
-        return dataCv;
+    DataSvc.prototype.getNames = function () {
+        return ['id', 'start', 'end', 'country', 'product', 'color', 'amount', 'active'];
     };
+    DataSvc.countries = ['US', 'Germany', 'UK', 'Japan', 'Italy', 'Greece'];
+    DataSvc.products = ['Widget', 'Gadget', 'Doohickey'];
+    DataSvc.colors = ['Black', 'White', 'Red', 'Green', 'Blue'];
     DataSvc = __decorate([
         core_1.Injectable()
     ], DataSvc);

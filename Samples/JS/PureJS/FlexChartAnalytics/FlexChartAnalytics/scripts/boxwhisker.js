@@ -1,0 +1,142 @@
+﻿(function (wijmo) {
+    'use strict';
+    //create chart
+    var boxwhiskerChart = new wijmo.chart.FlexChart('#boxwhiskerChart'),
+        groupWidth = new wijmo.input.InputNumber('#boxGroupWidth'),
+        gapWidth = new wijmo.input.InputNumber('#boxGapWidth'),
+        quartileCalculation = new wijmo.input.Menu('#boxQuartileCalculation');
+    // populate itemsSource
+    // generate some random data
+    var countries = 'US,Germany,UK,Japan,Italy,Greece'.split(','),
+        funnelData = [], boxData = [];
+    for (var i = 0; i < countries.length; i++) {
+        boxData.push({
+            country: countries[i],
+            downloads: [getData(), getData(), getData(), getData(), getData(), getData(), getData(), getData(), getData(), getData(), getData(), getData()],
+            sales: [getData(), getData(), getData(), getData(), getData(), getData(), getData(), getData(), getData(), getData(), getData()],
+            expenses: [getData(), getData(), getData(), getData(), getData(), getData(), getData(), getData(), getData(), getData(), getData(), getData(), getData()]
+        });
+    }
+
+    function getData() {
+        return Math.round(Math.random() * 100);
+    }
+    //create Box & Whisker series
+    boxwhiskerChart.beginUpdate();
+    boxwhiskerChart.tooltip.content = function (hti) {
+        return '<b>' + hti.name + '</b> - <b>' + hti.x + '</b></br>' +
+            '<b>min</b>: ' + hti.item.min + '</br>' +
+            '<b>firstQuartile</b>: ' + hti.item.firstQuartile + '</br>' +
+            '<b>median</b>: ' + hti.item.median + '</br>' +
+            '<b>thirdQuartile</b>: ' + hti.item.thirdQuartile + '</br>' +
+            '<b>max</b>: ' + hti.item.max + '</br>' +
+            '<b>mean</b>: ' + hti.item.mean + '</br>';
+    }
+
+    boxwhiskerChart.itemsSource = boxData;
+    boxwhiskerChart.bindingX = 'country';
+    var boxwhisker1 = new wijmo.chart.analytics.BoxWhisker();
+    boxwhisker1.name = 'downloads';
+    boxwhisker1.binding = 'downloads';
+    boxwhiskerChart.series.push(boxwhisker1);
+    var boxwhisker2 = new wijmo.chart.analytics.BoxWhisker();
+    boxwhisker2.name = 'sales';
+    boxwhisker2.binding = 'sales';
+    boxwhiskerChart.series.push(boxwhisker2);
+    var boxwhisker3 = new wijmo.chart.analytics.BoxWhisker();
+    boxwhisker3.name = 'expenses';
+    boxwhisker3.binding = 'expenses';
+    boxwhiskerChart.series.push(boxwhisker3);
+    boxwhiskerChart.endUpdate();
+
+    // groupWidth - initialize InputNumber's properties
+    groupWidth.min = 0;
+    groupWidth.max = 1;
+    groupWidth.step = 0.1;
+    groupWidth.valueChanged.addHandler(function (sender) {
+        if (sender.value < sender.min || sender.value > sender.max) {
+            return;
+        }
+        boxwhisker1.groupWidth = sender.value;
+        boxwhisker2.groupWidth = sender.value;
+        boxwhisker3.groupWidth = sender.value;
+        boxwhiskerChart.refresh(true);
+    });
+    groupWidth.value = 0.8;
+
+    // gapWidth - initialize InputNumber's properties
+    gapWidth.min = 0;
+    gapWidth.max = 1;
+    gapWidth.step = 0.1;
+    gapWidth.valueChanged.addHandler(function (sender) {
+        if (sender.value < sender.min || sender.value > sender.max) {
+            return;
+        }
+        boxwhisker1.gapWidth = sender.value;
+        boxwhisker2.gapWidth = sender.value;
+        boxwhisker3.gapWidth = sender.value;
+        boxwhiskerChart.refresh(true);
+    });
+    gapWidth.value = 0.1;
+
+    updateMenuHeader(quartileCalculation);
+    quartileCalculation.selectedIndexChanged.addHandler(function () {
+        if (quartileCalculation.selectedValue) {
+            var val = +quartileCalculation.selectedValue;
+            boxwhisker1.quartileCalculation = val;
+            boxwhisker2.quartileCalculation = val;
+            boxwhisker3.quartileCalculation = val;
+            updateMenuHeader(quartileCalculation);
+            boxwhiskerChart.refresh(true);
+        }
+    });
+
+    var showMeanLine = document.getElementById('boxShowMeanLine');
+    showMeanLine.addEventListener('click', function () {
+        boxwhisker1.showMeanLine = this.checked;
+        boxwhisker2.showMeanLine = this.checked;
+        boxwhisker3.showMeanLine = this.checked;
+        boxwhiskerChart.refresh(true);
+    });
+
+    var showMeanMarker = document.getElementById('boxShowMeanMarker');
+    showMeanMarker.addEventListener('click', function () {
+        boxwhisker1.showMeanMarker = this.checked;
+        boxwhisker2.showMeanMarker = this.checked;
+        boxwhisker3.showMeanMarker = this.checked;
+        boxwhiskerChart.refresh(true);
+    });
+
+    var boxShowInnerPoints = document.getElementById('boxShowInnerPoints');
+    boxShowInnerPoints.addEventListener('click', function () {
+        boxwhisker1.showInnerPoints = this.checked;
+        boxwhisker2.showInnerPoints = this.checked;
+        boxwhisker3.showInnerPoints = this.checked;
+        boxwhiskerChart.refresh(true);
+    });
+
+    var boxShowOutliers = document.getElementById('boxShowOutliers');
+    boxShowOutliers.addEventListener('click', function () {
+        boxwhisker1.showOutliers = this.checked;
+        boxwhisker2.showOutliers = this.checked;
+        boxwhisker3.showOutliers = this.checked;
+        boxwhiskerChart.refresh(true);
+    });
+
+    var boxRotated = document.getElementById('boxRotated');
+    boxRotated.addEventListener('click', function () {
+        boxwhiskerChart.rotated = this.checked;
+        boxwhiskerChart.refresh(true);
+    });
+
+    var boxShowLabel = document.getElementById('boxShowLabel');
+    boxShowLabel.addEventListener('click', function () {
+        boxwhiskerChart.dataLabel.content = this.checked ? '{y}' : '';
+        boxwhiskerChart.refresh(true);
+    });
+
+    // helper function for Menu headers
+    function updateMenuHeader(menu) {
+        menu.header = menu.text;
+    }
+})(wijmo);

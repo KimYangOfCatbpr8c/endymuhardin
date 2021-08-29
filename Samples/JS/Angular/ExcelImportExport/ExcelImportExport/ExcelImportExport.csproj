@@ -19,6 +19,7 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -60,6 +61,7 @@
     <Content Include="default.htm" />
     <Content Include="drawWorkbook.html" />
     <Content Include="expenseReportExport.htm" />
+    <Content Include="FlexGridImportExportAsync.htm" />
     <Content Include="scripts\app.js" />
     <Content Include="FlexGridImportExport.htm" />
     <None Include="readme.txt" />

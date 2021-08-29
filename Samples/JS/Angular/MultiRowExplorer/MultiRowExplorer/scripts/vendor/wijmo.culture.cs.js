@@ -1,18 +1,18 @@
 ﻿/*
     *
-    * Wijmo Library 5.20162.211
+    * Wijmo Library 5.20171.282
     * http://wijmo.com/
     *
     * Copyright(c) GrapeCity, Inc.  All rights reserved.
     *
     * Licensed under the Wijmo Commercial License.
     * sales@wijmo.com
-    * http://wijmo.com/products/wijmo-5/license/
+    * wijmo.com/products/wijmo-5/license/
     *
     */
 /*
-* Wijmo culture file: cs (Czech)
-*/
+ * Wijmo culture file: cs (Czech)
+ */
 var wijmo;
 (function (wijmo) {
     wijmo.culture = {
@@ -51,7 +51,7 @@ var wijmo;
             itemsSelected: '{count:n0} položek vybraného'
         },
         FlexGrid: {
-            groupHeaderFormat: '{name}: <b>{value} </b>({count:n0} položky)'
+            groupHeaderFormat: '{name}: <b>{value}</b> ({count:n0} položky)'
         },
         FlexGridFilter: {
             // filter
@@ -68,7 +68,7 @@ var wijmo;
             // condition filter
             header: 'Zobrazit položky s hodnotou',
             and: 'A',
-            or: 'Nebo',
+            or: 'NEBO',
             stringOperators: [
                 { name: '(nenastaveno)', op: null },
                 { name: 'Rovná se', op: 0 },
@@ -101,104 +101,237 @@ var wijmo;
         },
         olap: {
             PivotFieldEditor: {
-                dialogHeader: 'Field settings:',
-                header: 'Header:',
-                summary: 'Summary:',
-                showAs: 'Show As:',
-                weighBy: 'Weigh by:',
-                sort: 'Sort:',
-                filter: 'Filter:',
-                format: 'Format:',
-                sample: 'Sample:',
-                edit: 'Edit...',
-                clear: 'Clear',
+                dialogHeader: 'Nastavení pole:',
+                header: 'Záhlaví:',
+                summary: 'Shrnutí:',
+                showAs: 'Zobrazit jako:',
+                weighBy: 'Hmotnost od:',
+                sort: 'Řazení:',
+                filter: 'Filtr:',
+                format: 'Formát:',
+                sample: 'Příklad:',
+                edit: 'Upravit…',
+                clear: 'Vymazat',
                 ok: 'OK',
-                cancel: 'Cancel',
-                none: '(none)',
+                cancel: 'Storno',
+                none: '(nikdy)',
                 sorts: {
-                    asc: 'Ascending',
-                    desc: 'Descending'
+                    asc: 'Vzestupně',
+                    desc: 'Sestupně'
                 },
                 aggs: {
-                    sum: 'Sum',
-                    cnt: 'Count',
-                    avg: 'Average',
-                    max: 'Max',
-                    min: 'Min',
-                    rng: 'Range',
-                    std: 'StdDev',
+                    sum: 'Součet',
+                    cnt: 'Počet',
+                    avg: 'Průměr',
+                    max: 'Maximum',
+                    min: 'Minimum',
+                    rng: 'Oblast',
+                    std: 'Směrodatná odchylka',
                     var: 'Var',
                     stdp: 'StdDevPop',
                     varp: 'VarPop'
                 },
                 calcs: {
-                    noCalc: 'No Calculation',
-                    dRow: 'Difference from previous row',
-                    dRowPct: '% Difference from previous row',
-                    dCol: 'Difference from previous column',
-                    dColPct: '% Difference from previous column'
+                    noCalc: 'Bez výpočtu',
+                    dRow: 'Rozdíl od předchozího řádku',
+                    dRowPct: '% Rozdíl z předchozího řádku',
+                    dCol: 'Rozdíl od předchozího sloupce',
+                    dColPct: '% Rozdíl z předchozího sloupce',
+                    dPctGrand: '% z celkového součtu',
+                    dPctRow: '% řádku celkem',
+                    dPctCol: '% sloupce celkem',
+                    dRunTot: 'Průběžný součet',
+                    dRunTotPct: '% celkové'
                 },
                 formats: {
-                    n0: 'Integer (n0)',
-                    n2: 'Float (n2)',
-                    c: 'Currency (c)',
-                    p0: 'Percentage (p0)',
-                    p2: 'Percentage (p2)',
-                    n2c: 'Thousands (n2,)',
-                    n2cc: 'Millions (n2,,)',
-                    n2ccc: 'Billions (n2,,,)',
-                    d: 'Date (d)',
-                    MMMMddyyyy: 'Month Day Year (MMMM dd, yyyy)',
-                    dMyy: 'Day Month Year (d/M/yy)',
-                    ddMyy: 'Day Month Year (dd/M/yy)',
-                    dMyyyy: 'Day Month Year (dd/M/yyyy)',
-                    MMMyyyy: 'Month Year (MMM yyyy)',
-                    MMMMyyyy: 'Month Year (MMMM yyyy)',
-                    yyyyQq: 'Year Quarter (yyyy "Q"q)',
-                    FYEEEEQU: 'Fiscal Year Quarter ("FY"EEEE "Q"U)'
+                    n0: 'Celé číslo (n0)',
+                    n2: 'Desetinný (n2)',
+                    c: 'Měna (c)',
+                    p0: 'Procento (p0)',
+                    p2: 'Procento (p2)',
+                    n2c: 'Tisíc (n2,)',
+                    n2cc: 'Miliony (n2,,)',
+                    n2ccc: 'Miliardy (n2,,,)',
+                    d: 'Datum (d)',
+                    MMMMddyyyy: 'Měsíc den rok (MMMM dd, yyyy)',
+                    dMyy: 'Den měsíc rok (d/M/RR)',
+                    ddMyy: 'Den měsíc rok (M/dd/rr)',
+                    dMyyyy: 'Den měsíc rok (dd/M/rrrr)',
+                    MMMyyyy: 'Měsíc rok (MMM yyyy)',
+                    MMMMyyyy: 'Měsíc rok (MMMM yyyy)',
+                    yyyyQq: 'Čtvrtletí rok (yyyy "Q"q)',
+                    FYEEEEQU: 'Čtvrtletí fiskálního roku ("FY"EEEE "Q"U)'
                 }
             },
             PivotEngine: {
-                grandTotal: 'Grand Total',
-                subTotal: 'Subtotal'
+                grandTotal: 'Celkový součet',
+                subTotal: 'Mezisoučet'
             },
             PivotPanel: {
-                fields: 'Choose fields to add to report',
-                drag: 'Drag fields between areas below:',
-                filters: 'Filters',
-                cols: 'Columns',
-                rows: 'Rows',
-                vals: 'Values',
-                defer: 'Defer Updates',
-                update: 'Update'
+                fields: 'Zvolte pole, které chcete přidat do sestavy:',
+                drag: 'Přetáhněte pole do jedné z následujících oblastí:',
+                filters: 'Filtry',
+                cols: 'Sloupce',
+                rows: 'Řádky',
+                vals: 'Hodnoty',
+                defer: 'Odložení aktualizací',
+                update: 'Aktualizovat'
             },
             _ListContextMenu: {
-                up: 'Move Up',
-                down: 'Move Down',
-                first: 'Move do Beginning',
-                last: 'Move to End',
-                filter: 'Move to Report Filter',
-                rows: 'Move to Row Labels',
-                cols: 'Move to Column Labels',
-                vals: 'Move to Values',
-                remove: 'Remove Field',
-                edit: 'Field Settings...',
-                detail: 'Show Detail...'
+                up: 'Přesunout nahoru',
+                down: 'Dolů',
+                first: 'Přesunout na začátek',
+                last: 'Přesunout na konec',
+                filter: 'Přejít k filtru sestavy',
+                rows: 'Přesunout k popiskům řádků',
+                cols: 'Přesunout k popiskům sloupců',
+                vals: 'Přejít k hodnotám',
+                remove: 'Odebrat pole',
+                edit: 'Nastavení pole…',
+                detail: 'Zobrazit Detail…'
             },
             PivotChart: {
-                by: 'by',
+                by: 'podle',
                 and: 'and'
             },
             DetailDialog: {
-                header: 'Detail View:',
+                header: 'Detailní pohled:',
                 ok: 'OK',
-                items: '{cnt:n0} items',
-                item: '{cnt} item',
-                row: 'Row',
-                col: 'Column'
+                items: '{cnt:n0} položek',
+                item: 'položka {cnt}',
+                row: 'Řádek',
+                col: 'Sloupec'
             }
+        },
+        Viewer: {
+            cancel: 'Storno',
+            ok: 'OK',
+            bottom: 'Dolní:',
+            top: 'Nahoře:',
+            right: 'Vpravo:',
+            left: 'Vlevo:',
+            margins: 'Okraje (palce)',
+            orientation: 'Orientace:',
+            paperKind: 'Druh papíru:',
+            pageSetup: 'Nastavení stránky',
+            landscape: 'Na šířku',
+            portrait: 'Na výšku',
+            pageNumber: 'Číslo stránky',
+            zoomFactor: 'Faktor zvětšení',
+            paginated: 'Rozložení při tisku',
+            print: 'Tisk',
+            search: 'Hledat',
+            matchCase: 'Rozlišovat malá a velká písmena',
+            wholeWord: 'Pouze celá slova',
+            searchResults: 'Výsledky hledání',
+            previousPage: 'Předchozí stránka',
+            nextPage: 'Další stránka',
+            firstPage: 'První stránka',
+            lastPage: 'Poslední stránka',
+            backwardHistory: 'Zpět',
+            forwardHistory: 'Vpřed',
+            pageCount: 'Počet stránek',
+            selectTool: 'Vyberte nástroj',
+            moveTool: 'Nástroj pro přesun',
+            continuousMode: 'Souvislé zobrazení celé stránky',
+            singleMode: 'Zobrazení Jedna stránka',
+            wholePage: 'Přizpůsobit celé stránky',
+            pageWidth: 'Přizpůsobit šířce stránky',
+            zoomOut: 'Oddálit',
+            zoomIn: 'Přiblížit',
+            exports: 'Exportovat',
+            fullScreen: 'Celá obrazovka',
+            exitFullScreen: 'Ukončit režim celé obrazovky',
+            hamburgerMenu: 'Nástroje',
+            showSearchBar: 'Zobrazit panel hledání',
+            viewMenu: 'Možnosti rozložení',
+            searchOptions: 'Možnosti hledání',
+            matchCaseMenuItem: 'Rozlišovat malá a velká písmena',
+            wholeWordMenuItem: 'Celá slova',
+            thumbnails: 'Miniatury stránek',
+            outlines: 'Rozložení dokumentu',
+            loading: 'Načítání…',
+            pdfExportName: 'Adobe PDF',
+            docxExportName: 'Open XML Word',
+            xlsxExportName: 'Open XML Excel',
+            docExportName: 'Microsoft Word',
+            xlsExportName: 'Microsoft Excel',
+            mhtmlExportName: 'Webový archiv (MHTML)',
+            htmlExportName: 'Dokument HTML',
+            rtfExportName: 'Dokument RTF',
+            metafileExportName: 'Komprimované soubory',
+            csvExportName: 'CSV',
+            tiffExportName: 'Obrázky TIFF',
+            bmpExportName: 'Obrázky BMP',
+            emfExportName: 'Rozšířený metasoubor',
+            gifExportName: 'GIF obrázky',
+            jpgExportName: 'Obrázky ve formátu JPEG',
+            jpegExportName: 'Obrázky ve formátu JPEG',
+            pngExportName: 'PNG obrázky',
+            abstractMethodException: 'Jedná se o abstraktní metodu, implementovat jej.',
+            cannotRenderPageNoViewPage: 'Nelze vykreslit stránku bez zdrojový dokument a zobrazit stránku.',
+            cannotRenderPageNoDoc: 'Nelze vykreslit stránku bez zdrojový dokument a zobrazit stránku.',
+            exportFormat: 'Formát exportu:',
+            exportOptionTitle: 'Možnosti exportu',
+            documentRestrictionsGroup: 'Omezení dokumentu',
+            passwordSecurityGroup: 'Zabezpečení hesla',
+            outputRangeGroup: 'Výstupní oblast',
+            documentInfoGroup: 'Informace o dokumentu',
+            generalGroup: 'Obecné',
+            docInfoTitle: 'Název',
+            docInfoAuthor: 'Autor',
+            docInfoManager: 'Nadřízený',
+            docInfoOperator: 'Operátor',
+            docInfoCompany: 'Společnost',
+            docInfoSubject: 'Předmět',
+            docInfoComment: 'Poznámka',
+            docInfoCreator: 'Vytvořil',
+            docInfoProducer: 'Producent',
+            docInfoCreationTime: 'Čas vytvoření',
+            docInfoRevisionTime: 'Čas Revize',
+            docInfoKeywords: 'Klíčová slova',
+            embedFonts: 'Vložit písma TrueType',
+            pdfACompatible: 'Kompatibilní s PDF/A (úrovně 2B)',
+            useCompression: 'Použít kompresi',
+            useOutlines: 'Generovat obrysy',
+            allowCopyContent: 'Povolit kopírování obsahu nebo extrakce',
+            allowEditAnnotations: 'Povolit úpravy poznámek',
+            allowEditContent: 'Povolit úpravy obsahu',
+            allowPrint: 'Povolit tisk',
+            ownerPassword: 'Heslo oprávnění (majitel):',
+            userPassword: 'Heslo pro otevření (uživatel) dokumentu:',
+            encryptionType: 'Úroveň šifrování:',
+            paged: 'Stránkováno',
+            showNavigator: 'Zobrazit navigátor',
+            singleFile: 'Jeden soubor',
+            tolerance: 'Tolerance při zjišťování hranice textu (body):',
+            pictureLayer: 'Použití samostatných obrázek vrstva',
+            metafileType: 'Obrázky formátu Metafile:',
+            monochrome: 'Monochromatický',
+            resolution: 'Řešení:',
+            outputRange: 'Rozsah stránek:',
+            outputRangeInverted: 'Obrácený',
+            showZoomBar: 'Zvětšovací lišta',
+            searchPrev: 'Hledat předchozí',
+            searchNext: 'Hledat další',
+            checkMark: '\u2713',
+            exportOk: 'Exportujte…',
+            parameters: 'Parameters',
+            requiringParameters: 'Prosím vstupní parametry.',
+            nullParameterError: 'Hodnota nemůže být null.',
+            invalidParameterError: 'Neplatný vstup.',
+            parameterNoneItemsSelected: '(nikdy)',
+            parameterAllItemsSelected: '(vše)',
+            parameterSelectAllItemText: '(Vybrat vše)',
+            selectParameterValue: '(vyberte hodnotu)',
+            apply: 'Použít',
+            errorOccured: 'Došlo k chybě.'
         }
     };
+    var updc = window['wijmo']._updateCulture;
+    if (updc) {
+        updc();
+    }
 })(wijmo || (wijmo = {}));
 ;
-//# sourceMappingURL=wijmo.culture.cs.js.map
+

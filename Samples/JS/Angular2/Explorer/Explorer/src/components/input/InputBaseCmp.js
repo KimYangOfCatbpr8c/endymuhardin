@@ -1,10 +1,12 @@
-'use strict';
+"use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var wjcCore = require('wijmo/wijmo');
+'use strict';
 var core_1 = require('@angular/core');
 // Base class for all components demonstrating wijmo.input controls.
 var InputBaseCmp = (function () {
@@ -18,13 +20,12 @@ var InputBaseCmp = (function () {
             var c = this.countries[i];
             items.push({ id: i, country: c, length: c.length, selected: i < 10 && (i % 3 == 0) });
         }
-        this.items = new wijmo.collections.CollectionView(items);
-        this.items.moveCurrentToPosition(-1);
+        this.items = new wjcCore.CollectionView(items);
         this.htmlItems = [];
         for (var i = 0; i < 100; i++) {
             this.htmlItems.push('item <b>' + (i + 1) + '</b> of 100');
         }
-        this.palettes = new wijmo.collections.CollectionView(dataSvc.getPalettes());
+        this.palettes = new wjcCore.CollectionView(dataSvc.getPalettes());
         var musicianNames = dataSvc.getMusicians();
         this.musicians = [];
         for (var i = 0; i < musicianNames.length; i++) {
@@ -66,7 +67,7 @@ var InputBaseCmp = (function () {
                     success: function (data) {
                         self.i18n = data;
                         // update controls to reflect changes
-                        wijmo.Control.invalidateAll();
+                        wjcCore.Control.invalidateAll();
                     }
                 });
             },

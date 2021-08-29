@@ -1,4 +1,3 @@
-///<reference path="../typings/globals/core-js/index.d.ts"/>
 "use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -9,6 +8,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
+///<reference path="../typings/globals/core-js/index.d.ts"/>
+var wjcCore = require('wijmo/wijmo');
+var wjcGrid = require('wijmo/wijmo.grid');
 // Angular
 var core_1 = require('@angular/core');
 var forms_1 = require('@angular/forms');
@@ -24,19 +26,19 @@ var DataSvc_1 = require('./services/DataSvc');
 var AppCmp = (function () {
     function AppCmp(dataSvc) {
         this.dataSvc = dataSvc;
-        this.data = new wijmo.collections.CollectionView(this.dataSvc.getData(10));
+        this.data = new wjcCore.CollectionView(this.dataSvc.getData(10));
     }
     AppCmp.prototype.groupBy = function (groupBy) {
         this.data.groupDescriptions.clear();
         var groups = groupBy ? groupBy.split(',') : [];
         for (var i = 0; i < groups.length; i++) {
-            this.data.groupDescriptions.push(new wijmo.collections.PropertyGroupDescription(groups[i]));
+            this.data.groupDescriptions.push(new wjcCore.PropertyGroupDescription(groups[i]));
         }
     };
     // add a footer row to the grid
     AppCmp.prototype.initGrid = function (s) {
         // create a GroupRow to show aggregates automatically
-        var row = new wijmo.grid.GroupRow();
+        var row = new wjcGrid.GroupRow();
         // add the new GroupRow to the grid's 'columnFooters' panel
         s.columnFooters.rows.push(row);
         // add a sigma to the header to show that this is a summary row

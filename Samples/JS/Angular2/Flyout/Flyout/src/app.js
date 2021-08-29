@@ -1,4 +1,3 @@
-///<reference path="../typings/globals/core-js/index.d.ts"/>
 "use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -9,6 +8,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
+var wjcFlexgridflyout = require('./FlexGridFlyout');
+var wjcCore = require('wijmo/wijmo');
 // Angular
 var core_1 = require('@angular/core');
 var platform_browser_dynamic_1 = require('@angular/platform-browser-dynamic');
@@ -26,7 +27,7 @@ var AppCmp = (function () {
     };
     AppCmp.prototype._initializeFlyout = function (s) {
         // create the FlexGridFlyout
-        var f = new wijmo.grid.FlexGridFlyout(s);
+        var f = new wjcFlexgridflyout.FlexGridFlyout(s);
         // add some content to the flyout element
         f.flyout.innerHTML =
             '<span id="fo-size"    title="Auto Size Column" class="glyphicon glyphicon-resize-horizontal"></span>' +
@@ -44,7 +45,7 @@ var AppCmp = (function () {
                 case 'fo-sortd':
                     var sd = s.collectionView.sortDescriptions;
                     sd.clear();
-                    sd.push(new wijmo.collections.SortDescription(f.column.binding, e.target.id == 'fo-sorta'));
+                    sd.push(new wjcCore.SortDescription(f.column.binding, e.target.id == 'fo-sorta'));
                     break;
                 case 'fo-refresh':
                     s.collectionView.refresh();
@@ -53,7 +54,7 @@ var AppCmp = (function () {
                     alert('Showing detail for column ' + f.column.header + '...');
                     break;
             }
-            wijmo.hidePopup(f.flyout);
+            wjcCore.hidePopup(f.flyout);
         });
     };
     ;

@@ -1,7 +1,7 @@
 ﻿<!--
     Log In form
 -->
-<form>
+<form name="login" ng-submit="submit($event)">
     <h4 class="modal-header">
         Log in
         <button type="button" tabindex="-1" class="close wj-hide">&times;</button>
@@ -29,7 +29,7 @@
             <img src="resources/facebook.png" title="Log in using your Facebook account"/>
             <img src="resources/google.png" title="Log in using your Google account"/>
         </div>
-        <button class="btn btn-primary wj-hide-ok">
+        <button class="btn btn-primary" type="submit">
             Log in
         </button>
     </div>

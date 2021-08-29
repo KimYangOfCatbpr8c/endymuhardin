@@ -63,12 +63,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="default.htm" />
-    <Content Include="ReportInfos.xml" />
     <Content Include="resources\wijmo5.png" />
     <Content Include="scripts\app.js" />
-    <Content Include="scripts\wijmo.viewer.js" />
+    <Content Include="ssrsReport.config.json" />
+    <Content Include="flexReport.config.json" />
     <Content Include="styles\app.css" />
-    <Content Include="styles\wjreportviewer.css" />
     <Content Include="Web.config" />
     
     
@@ -141,4 +140,4 @@
     </Content>
   </ItemGroup>-->
   
-<ItemGroup><Content Include="scripts\vendor\wijmo.min.js" /><Content Include="scripts\vendor\wijmo.input.min.js" /><Content Include="scripts\vendor\wijmo.grid.min.js" /><Content Include="styles\vendor\wijmo.min.css" /></ItemGroup></Project>
+<ItemGroup><Content Include="scripts\vendor\wijmo.min.js" /><Content Include="scripts\vendor\wijmo.input.min.js" /><Content Include="scripts\vendor\wijmo.grid.min.js" /><Content Include="scripts\vendor\wijmo.viewer.min.js" /><Content Include="styles\vendor\wijmo.min.css" /></ItemGroup></Project>

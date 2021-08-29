@@ -136,7 +136,7 @@ app.controller('appCtrl', function appCtrl($scope) {
                     if (focused) {
                         focused.focus();
                     }
-                }, 10);
+                }, 100); // << let the grid refresh, then move focus
             }, 600);
         }
     }

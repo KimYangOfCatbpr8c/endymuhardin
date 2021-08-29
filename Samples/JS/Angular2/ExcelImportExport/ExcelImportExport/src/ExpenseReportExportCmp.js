@@ -1,4 +1,3 @@
-///<reference path="../typings/globals/core-js/index.d.ts"/>
 "use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -9,6 +8,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
+var expenseReportExport_1 = require('./xlsxExport/expenseReportExport');
 // Angular
 var core_1 = require('@angular/core');
 var platform_browser_dynamic_1 = require('@angular/platform-browser-dynamic');
@@ -21,7 +21,7 @@ var ExpenseReportExportCmp = (function () {
         this.dataSvc = dataSvc;
     }
     ExpenseReportExportCmp.prototype.saveExpenses = function () {
-        var workbook = XlsxExport.exportExpenseReport(this.dataSvc.getEmployeesWithExpences());
+        var workbook = expenseReportExport_1.exportExpenseReport(this.dataSvc.getEmployeesWithExpences());
         //var xlsx = wijmo.xlsx.XlsxConverter.exportToFile(workbook, 'ExpenseReport.xlsx');
         workbook.save('ExpenseReport.xlsx');
     };

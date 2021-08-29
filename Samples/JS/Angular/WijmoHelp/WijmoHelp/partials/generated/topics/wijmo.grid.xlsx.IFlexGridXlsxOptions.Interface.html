@@ -12,6 +12,7 @@
 <li class="mproperty"><a href="topic/wijmo.grid.xlsx.IFlexGridXlsxOptions.Interface.html/#activeWorksheet">activeWorksheet</a></li>
 <li class="mproperty"><a href="topic/wijmo.grid.xlsx.IFlexGridXlsxOptions.Interface.html/#includeCellStyles">includeCellStyles</a></li>
 <li class="mproperty"><a href="topic/wijmo.grid.xlsx.IFlexGridXlsxOptions.Interface.html/#includeColumnHeaders">includeColumnHeaders</a></li>
+<li class="mproperty"><a href="topic/wijmo.grid.xlsx.IFlexGridXlsxOptions.Interface.html/#includeColumns">includeColumns</a></li>
 <li class="mproperty"><a href="topic/wijmo.grid.xlsx.IFlexGridXlsxOptions.Interface.html/#includeRowHeaders">includeRowHeaders</a></li>
 <li class="mproperty"><a href="topic/wijmo.grid.xlsx.IFlexGridXlsxOptions.Interface.html/#sheetIndex">sheetIndex</a></li>
 <li class="mproperty"><a href="topic/wijmo.grid.xlsx.IFlexGridXlsxOptions.Interface.html/#sheetName">sheetName</a></li>
@@ -39,6 +40,25 @@
 <div class="comment"><p>Indicates whether to include column headers as first rows in the generated xlsx file.</p></div>
 <dl class="dl-horizontal">
   <dt>Type</dt><dd><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a></dd>
+</dl>
+</div>
+<div id="includeColumns" class="member-panel mproperty">
+<h3>includeColumns</h3>
+<div class="comment"><p>A callback to indicate which columns of FlexGrid need be included or omitted during exporting.</p>
+<p>For example:
+</p>
+
+<pre>// This sample excludes the 'country' column from export.
+&nbsp;
+
+// JavaScript
+wijmo.grid.xlsx.FlexGridXlsxConverter.save(grid, {
+  includeColumns: function(column) {
+     return column.binding !== 'country';
+  }
+}</pre></div>
+<dl class="dl-horizontal">
+  <dt>Type</dt><dd></dd>
 </dl>
 </div>
 <div id="includeRowHeaders" class="member-panel mproperty">

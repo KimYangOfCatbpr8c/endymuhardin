@@ -1,10 +1,13 @@
-'use strict';
+"use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var wjcChart = require('wijmo/wijmo.chart');
+var wjcCore = require('wijmo/wijmo');
+'use strict';
 var core_1 = require('@angular/core');
 var common_1 = require('@angular/common');
 var router_1 = require('@angular/router');
@@ -22,7 +25,7 @@ var ChartMarkerCmp = (function () {
                 input: Math.floor(Math.random() * 10 + 10)
             });
         }
-        this._pt = new wijmo.Point();
+        this._pt = new wjcCore.Point();
         this.changeContent = this._changeContent.bind(this);
     }
     Object.defineProperty(ChartMarkerCmp.prototype, "lines", {
@@ -47,7 +50,7 @@ var ChartMarkerCmp = (function () {
         this._pt = point;
     };
     ChartMarkerCmp.prototype.ngAfterViewInit = function () {
-        this.lineMarker.alignment = wijmo.chart.LineMarkerAlignment.Auto;
+        this.lineMarker.alignment = wjcChart.LineMarkerAlignment.Auto;
     };
     ChartMarkerCmp.prototype._changeContent = function () {
         var html = '', chart = this.chart;
@@ -56,13 +59,13 @@ var ChartMarkerCmp = (function () {
         }
         for (var i = 0; i < chart.series.length; i++) {
             var s = chart.series[i];
-            var ht = s.hitTest(new wijmo.Point(this._pt.x, NaN));
+            var ht = s.hitTest(new wjcCore.Point(this._pt.x, NaN));
             // find series lines to get its color
             var polyline = $(s.hostElement).find('polyline')[0];
             // add series info to the marker content
             if (ht.x && ht.y !== null) {
                 if (i == 0) {
-                    html += wijmo.Globalize.formatDate(ht.x, 'dd-MMM');
+                    html += wjcCore.Globalize.formatDate(ht.x, 'dd-MMM');
                 }
                 html += '<div style="color:' + polyline.getAttribute('stroke') + '">' + ht.name + ' = ' + ht.y.toFixed(2) + '</div>';
             }

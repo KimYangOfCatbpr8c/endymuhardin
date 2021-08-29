@@ -1,0 +1,53 @@
+<div class="header-panel member">
+<h2><span class="identifier">WjReportViewer</span> Class</h2>
+<dl class="dl-horizontal">
+<dt>File</dt><dd class="filename">wijmo.angular.js</dd>
+<dt>Module</dt><dd><a href="topic/wijmo.angular.Module.html"><span class="identifier">wijmo.angular</span></a></dd>
+<dt>Show</dt>
+<dd>
+<label><input type="checkbox" ng-model="ctx.showInherited"> Inherited Members</label>&nbsp;&nbsp;&nbsp;
+<label><input type="checkbox" ng-model="ctx.showRaisers"> Event Raisers</label>
+</dd>
+</dl>
+<div class="comment"><p>AngularJS directive for the <a href="topic/wijmo.viewer.ReportViewer.Class.html"><span class="identifier">ReportViewer</span></a> control.</p>
+<p>Use the <b>wj-report-viewer</b> directive to add report viewer to your AngularJS applications.
+Note that directive and parameter names must be formatted in lower-case with dashes 
+instead of camel-case. For example:</p>
+
+
+<pre>&lt;wj-report-viewer paginated="true"
+  service-url="ctx.serviceUrl"
+  file-path="ctx.path"
+  report-name="ctx.reportName"&gt;
+&lt;/wj-report-viewer;</pre>
+<p>The <b>wj-report-viewer</b> directive supports the following attributes:</p>
+<p><dl class="dl-horizontal">
+  <dt>service-url</dt>  <dd><code>@</code>A value indicating the address of C1 Web API service. </dd>
+  <dt>file-path</dt>  <dd><code>@</code> A value indicating full path to the document on the server.</dd>
+  <dt>report-name</dt>   <dd><code>@</code> For FlexReport, sets it with the
+                         report name defined in the FlexReport definition file.
+                         For SSRS report, please leave it as empty string. </dd>
+  <dt>control</dt>       <dd><code>=</code> A reference to the <a href="topic/wijmo.viewer.ReportViewer.Class.html"><span class="identifier">ReportViewer</span></a>
+                         control created by this directive. </dd>
+  <dt>full-screen</dt>   <dd><code>@</code> A value indicating whether viewer is under full screen mode. </dd>
+  <dt>zoom-factor</dt>   <dd><code>@</code> A value indicating the current zoom factor to
+                          show the document pages </dd>
+  <dt>select-mouse-mode</dt>  <dd><code>@</code> A value indicating whether clicking and
+                              dragging with the mouse in the view panel selects text. </dd>
+  <dt>initialized</dt>   <dd><code>&</code> This event occurs after the binding has finished
+                         initializing the control with attribute values.</dd>
+  <dt>is-initialized</dt> <dd><code>=</code> A value indicating whether the binding has finished
+                          initializing the control with attribute values. </dd>
+  <dt>view-mode</dt>   <dd><code>@</code> A value indicating how to show the document pages. </dd>
+  <dt>paginated</dt>    <dd><code>@</code> A value indicating whether the content should
+                         be represented as set of fixed sized pages.</dd>
+  <dt>page-index-changed</dt>     <dd><code>&</code> The <a href="topic/wijmo.viewer.ReportViewer.Class.html/#pageIndexChanged"><span class="identifier">pageIndexChanged</span></a> event handler.</dd>
+  <dt>view-mode-changed</dt>    <dd><code>&</code> The <a href="topic/wijmo.viewer.ReportViewer.Class.html/#viewModeChanged"><span class="identifier">viewModeChanged</span></a> event handler.</dd>
+  <dt>select-mouse-mode-changed</dt>    <dd><code>&</code> The <a href="topic/wijmo.viewer.ReportViewer.Class.html/#selectMouseModeChanged"><span class="identifier">selectMouseModeChanged</span></a> event handler.</dd>
+  <dt>full-screen-changed</dt>    <dd><code>&</code> The <a href="topic/wijmo.viewer.ReportViewer.Class.html/#fullScreenChanged"><span class="identifier">fullScreenChanged</span></a> event handler.</dd>
+  <dt>zoom-factor-changed</dt>    <dd><code>&</code> The <a href="topic/wijmo.viewer.ReportViewer.Class.html/#zoomFactorChanged"><span class="identifier">zoomFactorChanged</span></a> event handler.</dd>
+  <dt>query-loading-data</dt>    <dd><code>&</code> The <span class="identifier">queryLoadingData</span> event handler.</dd>
+</dl></p></div>
+</div>
+<div class="member-panel class members" ng-class="{ 'show-inherited' : ctx.showInherited, 'show-raisers' : ctx.showRaisers }">
+</div>

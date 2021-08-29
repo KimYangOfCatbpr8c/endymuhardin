@@ -1,0 +1,98 @@
+﻿<div>
+    <h2 id="EventAnnotation">
+        Event Annotation
+    </h2>
+    <p>
+        Annotations are used to mark important news or events that can be attached to a specific data point on FinancialChart. Users can hover over the event to display the full annotation text.
+    </p>
+    <p>
+        There are <b>Circle</b>, <b>Ellipse</b>, <b>Image</b>, <b>Line</b>, <b>Polygon</b>, <b>Rectangle</b>, <b>Square</b> and <b>Text</b> annotations that can be used to mark an event.
+    </p>
+    <div class="row">
+        <div class="col-md-6">
+            <app-tab>
+                <app-tab-pane title="HTML">
+                    <div ng-non-bindable class="pane-content">
+&lt;wj-financial-chart [header]="header"
+                    [itemsSource]="data"
+                    chart-type="Line"
+                    bindingX="date"&gt;
+    &lt;wj-financial-chart-series name="Close" binding="close"&gt;&lt;/wj-financial-chart-series&gt;
+    &lt;wj-flex-chart-annotation-layer&gt;
+        &lt;wj-flex-chart-annotation-rectangle content="E" [height]="30" [width]="40" [pointIndex]="16" position="Center" attachment="DataIndex"
+                                            tooltip="FACEBOOK INC Files SEC form 8-K, Results of Operations and Financial Condition"&gt;
+        &lt;/wj-flex-chart-annotation-rectangle&gt;
+        &lt;wj-flex-chart-annotation-ellipse content="E" [height]="30" [width]="40" [pointIndex]="17" position="Center" attachment="DataIndex"
+                                            tooltip="FACEBOOK INC Files SEC form 10-K, Annual Report"&gt;
+        &lt;/wj-flex-chart-annotation-ellipse&gt;
+        &lt;wj-flex-chart-annotation-circle content="E" [radius]="20" [pointIndex]="49" position="Center" attachment="DataIndex"
+                                            tooltip="Coverage initiated on Facebook by Brean Capital"&gt;
+        &lt;/wj-flex-chart-annotation-circle&gt;
+        &lt;wj-flex-chart-annotation-square content="E" [length]="30" [width]="40" [pointIndex]="75" position="Center" attachment="DataIndex"
+                                            tooltip="FACEBOOK INC Files SEC form 8-K, Results of Operations and Financial Condition"&gt;
+        &lt;/wj-flex-chart-annotation-square&gt;
+    &lt;/wj-flex-chart-annotation-layer&gt;
+&lt;/wj-financial-chart&gt;
+                    </div>
+                </app-tab-pane>
+                <app-tab-pane title="TS">
+                    <div class="pane-content">
+
+import &#123; Component, ViewChild, Inject} from '@angular/core';
+
+import &#123; DataSvc } from './../services/DataSvc';
+
+//EventAnnotation sample component
+@Component(&#123;
+    selector: 'event-annotation-cmp',
+    templateUrl: 'src/components/EventAnnotationCmp.html'
+})
+
+export class EventAnnotationCmp &#123;
+    dataSvc: DataSvc;
+    data: any[];
+    header: string;
+
+    constructor( @Inject(DataSvc) dataSvc: DataSvc) &#123;
+        this.data = [];
+        this.dataSvc = dataSvc;
+        this.setDataSource();
+        this.header = 'Facebook, Inc. (FB)';
+    }
+
+    private setDataSource() &#123;
+        this.dataSvc.getData().subscribe(data => &#123;
+            this.data = data;
+        });
+    }
+}
+                    </div>
+                </app-tab-pane>
+            </app-tab>
+        </div>
+        <div class="col-md-6">
+            <h4>Result (live):</h4>
+            <wj-financial-chart [header]="header"
+                                [itemsSource]="data"
+                                chart-type="Line"
+                                bindingX="date">
+                <wj-financial-chart-series name="Close" binding="close"></wj-financial-chart-series>
+                <wj-flex-chart-annotation-layer>
+                    <wj-flex-chart-annotation-rectangle content="E" [height]="30" [width]="40" [pointIndex]="16" position="Center" attachment="DataIndex"
+                                                        tooltip="FACEBOOK INC Files SEC form 8-K, Results of Operations and Financial Condition">
+                    </wj-flex-chart-annotation-rectangle>
+                    <wj-flex-chart-annotation-ellipse content="E" [height]="30" [width]="40" [pointIndex]="17" position="Center" attachment="DataIndex"
+                                                        tooltip="FACEBOOK INC Files SEC form 10-K, Annual Report">
+                    </wj-flex-chart-annotation-ellipse>
+                    <wj-flex-chart-annotation-circle content="E" [radius]="20" [pointIndex]="49" position="Center" attachment="DataIndex"
+                                                      tooltip="Coverage initiated on Facebook by Brean Capital">
+                    </wj-flex-chart-annotation-circle>
+                    <wj-flex-chart-annotation-square content="E" [length]="30" [width]="40" [pointIndex]="75" position="Center" attachment="DataIndex"
+                                                      tooltip="FACEBOOK INC Files SEC form 8-K, Results of Operations and Financial Condition">
+                    </wj-flex-chart-annotation-square>
+                </wj-flex-chart-annotation-layer>
+            </wj-financial-chart>
+        </div>
+    </div>
+
+</div>

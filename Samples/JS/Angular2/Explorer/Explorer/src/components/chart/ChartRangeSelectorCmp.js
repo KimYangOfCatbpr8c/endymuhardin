@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,6 +8,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
+var wjcCore = require('wijmo/wijmo');
+'use strict';
 var core_1 = require('@angular/core');
 var common_1 = require('@angular/common');
 var forms_1 = require('@angular/forms');
@@ -35,11 +37,11 @@ var ChartRangeSelectorCmp = (function () {
         stChart.plotMargin = '60 30 0 50';
         stChart.tooltip.content = function (ht) {
             return 'Date: ' + ht.x + '<br/>' +
-                'Open: ' + wijmo.Globalize.format(ht.item.open, 'n2') + '<br/>' +
-                'High: ' + wijmo.Globalize.format(ht.item.high, 'n2') + '<br/>' +
-                'Low: ' + wijmo.Globalize.format(ht.item.low, 'n2') + '<br/>' +
-                'Close: ' + wijmo.Globalize.format(ht.item.close, 'n2') + '<br/>' +
-                'Volume: ' + wijmo.Globalize.format(ht.item.volume, 'n0');
+                'Open: ' + wjcCore.Globalize.format(ht.item.open, 'n2') + '<br/>' +
+                'High: ' + wjcCore.Globalize.format(ht.item.high, 'n2') + '<br/>' +
+                'Low: ' + wjcCore.Globalize.format(ht.item.low, 'n2') + '<br/>' +
+                'Close: ' + wjcCore.Globalize.format(ht.item.close, 'n2') + '<br/>' +
+                'Volume: ' + wjcCore.Globalize.format(ht.item.volume, 'n0');
         };
     };
     ChartRangeSelectorCmp.prototype.rsRendered = function () {

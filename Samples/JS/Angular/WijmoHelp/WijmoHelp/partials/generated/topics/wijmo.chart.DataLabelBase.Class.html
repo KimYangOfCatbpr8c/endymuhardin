@@ -45,7 +45,7 @@ labels to the data points.</p></div>
 <h3>content</h3>
 <div class="comment"><p>Gets or sets the content of data labels.</p>
 <p>The content can be specified as a string or as a function that
-takes <a href="topic/wijmo.chart.HitTestInfo.Class.html"><span class="identifier">HitTestInfo</span></a> object as a parameter. </p>
+takes <a href="topic/wijmo.chart.HitTestInfo.Class.html"><span class="identifier">HitTestInfo</span></a> object as a parameter.</p>
 <p>When the label content is a string, it can contain any of the following
 parameters:</p>
 <p><ul>
@@ -62,14 +62,14 @@ parameters:</p>
 
 
 <pre>// Create a chart and show y data in labels positioned above the data point.
- var chart = new wijmo.chart.FlexChart('#theChart');          
+ var chart = new wijmo.chart.FlexChart('#theChart');
  chart.initialize({
      itemsSource: data,
      bindingX: 'country',
      series: [
          { name: 'Sales', binding: 'sales' },
          { name: 'Expenses', binding: 'expenses' },
-         { name: 'Downloads', binding: 'downloads' }],                            
+         { name: 'Downloads', binding: 'downloads' }],
  });
  chart.dataLabel.position = "Top";
  chart.dataLabel.content = "{country} {seriesName}:{y}";</pre>

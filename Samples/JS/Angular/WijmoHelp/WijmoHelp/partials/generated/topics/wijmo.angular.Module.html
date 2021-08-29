@@ -47,7 +47,24 @@ the attribute value in single quotes (for example, <code>text="'constant'"</code
 <p>Notice also that the <b>selected-index-changed</b> event is bound to a controller
 method called "selChanged," and that the binding includes the two event parameters
 (without the parameters, the method is not called).
-Whenever the control raises the event, the directive invokes the controller method.</p></div>
+Whenever the control raises the event, the directive invokes the controller method.</p>
+<p>All Wijmo Angular directives include an "initialized" event that is
+raised after the control has been added to the page and initialized.
+You can use this event to perform additional initialization in addition
+to setting properties in markup. For example:</p>
+
+
+<pre>&lt;wj-flex-grid initialized="initGrid(s,e)"&gt;
+&lt;/wj-flex-grid&gt;</pre>
+
+
+<pre>// controller
+$scope.initGrid: function(s, e) {
+
+  // assign a custom MergeManager to the grid
+  s.mergeManager = new CustomMergeManager(s);
+
+}</pre></div>
 </div>
 <div class="member-panel module members">
 <h3 class="node">Classes</h3>
@@ -69,11 +86,13 @@ Whenever the control raises the event, the directive invokes the controller meth
 <li class="mclass"><a href="topic/wijmo.angular.WjFlexChartAtr.Class.html">WjFlexChartAtr</a></li>
 <li class="mclass"><a href="topic/wijmo.angular.WjFlexChartAxis.Class.html">WjFlexChartAxis</a></li>
 <li class="mclass"><a href="topic/wijmo.angular.WjFlexChartBollingerBands.Class.html">WjFlexChartBollingerBands</a></li>
+<li class="mclass"><a href="topic/wijmo.angular.WjFlexChartBoxWhisker.Class.html">WjFlexChartBoxWhisker</a></li>
 <li class="mclass"><a href="topic/wijmo.angular.WjFlexChartCci.Class.html">WjFlexChartCci</a></li>
 <li class="mclass"><a href="topic/wijmo.angular.WjFlexChartChartGestures.Class.html">WjFlexChartChartGestures</a></li>
 <li class="mclass"><a href="topic/wijmo.angular.WjFlexChartDataLabel.Class.html">WjFlexChartDataLabel</a></li>
 <li class="mclass"><a href="topic/wijmo.angular.WjFlexChartDataPoint.Class.html">WjFlexChartDataPoint</a></li>
 <li class="mclass"><a href="topic/wijmo.angular.WjFlexChartEnvelopes.Class.html">WjFlexChartEnvelopes</a></li>
+<li class="mclass"><a href="topic/wijmo.angular.WjFlexChartErrorBar.Class.html">WjFlexChartErrorBar</a></li>
 <li class="mclass"><a href="topic/wijmo.angular.WjFlexChartFibonacci.Class.html">WjFlexChartFibonacci</a></li>
 <li class="mclass"><a href="topic/wijmo.angular.WjFlexChartFibonacciArcs.Class.html">WjFlexChartFibonacciArcs</a></li>
 <li class="mclass"><a href="topic/wijmo.angular.WjFlexChartFibonacciFans.Class.html">WjFlexChartFibonacciFans</a></li>
@@ -116,17 +135,21 @@ Whenever the control raises the event, the directive invokes the controller meth
 <li class="mclass"><a href="topic/wijmo.angular.WjMenu.Class.html">WjMenu</a></li>
 <li class="mclass"><a href="topic/wijmo.angular.WjMenuItem.Class.html">WjMenuItem</a></li>
 <li class="mclass"><a href="topic/wijmo.angular.WjMenuSeparator.Class.html">WjMenuSeparator</a></li>
+<li class="mclass"><a href="topic/wijmo.angular.WjMultiAutoComplete.Class.html">WjMultiAutoComplete</a></li>
 <li class="mclass"><a href="topic/wijmo.angular.WjMultiRow.Class.html">WjMultiRow</a></li>
 <li class="mclass"><a href="topic/wijmo.angular.WjMultiSelect.Class.html">WjMultiSelect</a></li>
+<li class="mclass"><a href="topic/wijmo.angular.WjPdfViewer.Class.html">WjPdfViewer</a></li>
 <li class="mclass"><a href="topic/wijmo.angular.WjPivotChart.Class.html">WjPivotChart</a></li>
 <li class="mclass"><a href="topic/wijmo.angular.WjPivotGrid.Class.html">WjPivotGrid</a></li>
 <li class="mclass"><a href="topic/wijmo.angular.WjPivotPanel.Class.html">WjPivotPanel</a></li>
 <li class="mclass"><a href="topic/wijmo.angular.WjPopup.Class.html">WjPopup</a></li>
 <li class="mclass"><a href="topic/wijmo.angular.WjRadialGauge.Class.html">WjRadialGauge</a></li>
 <li class="mclass"><a href="topic/wijmo.angular.WjRange.Class.html">WjRange</a></li>
+<li class="mclass"><a href="topic/wijmo.angular.WjReportViewer.Class.html">WjReportViewer</a></li>
 <li class="mclass"><a href="topic/wijmo.angular.WjSheet.Class.html">WjSheet</a></li>
 <li class="mclass"><a href="topic/wijmo.angular.WjSunburst.Class.html">WjSunburst</a></li>
 <li class="mclass"><a href="topic/wijmo.angular.WjTooltip.Class.html">WjTooltip</a></li>
+<li class="mclass"><a href="topic/wijmo.angular.WjTreeView.Class.html">WjTreeView</a></li>
 <li class="mclass"><a href="topic/wijmo.angular.WjValidationError.Class.html">WjValidationError</a></li>
 </ul>
 <h3 class="node">Enums</h3>

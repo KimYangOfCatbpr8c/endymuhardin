@@ -174,3 +174,7 @@ h1, h2, h3, h4, h5, h6 {
 .wj-inputnumber {
     margin-bottom: 10px;
 }
+
+.row {
+    padding: 5px;
+}

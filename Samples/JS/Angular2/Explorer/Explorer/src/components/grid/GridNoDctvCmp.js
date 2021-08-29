@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
@@ -13,6 +13,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
+var wjcGrid = require('wijmo/wijmo.grid');
+var wjcCore = require('wijmo/wijmo');
+'use strict';
 var core_1 = require('@angular/core');
 var common_1 = require('@angular/common');
 var router_1 = require('@angular/router');
@@ -29,7 +32,7 @@ var GridNoDctvCmp = (function (_super) {
     GridNoDctvCmp.prototype.ngAfterViewInit = function () {
         if (!this.flex) {
             // create flex using a jQuery id selector
-            this.flex = new wijmo.grid.FlexGrid('#flexNoDctv');
+            this.flex = new wjcGrid.FlexGrid('#flexNoDctv');
             // create flex using an element (same thing really)
             //var e = $('#flexNoDctv')[0];
             //flex = new wijmo.grid.FlexGrid(e);
@@ -38,13 +41,13 @@ var GridNoDctvCmp = (function (_super) {
             for (var prop in this.flex) {
                 if (prop.indexOf('_') != 0) {
                     var val = this.flex[prop];
-                    var type = val instanceof wijmo.Event ? 'Event'
-                        : val instanceof wijmo.grid.CellRange ? 'CellRange'
-                            : val instanceof wijmo.Point ? 'Point'
-                                : val instanceof wijmo.Size ? 'Size'
-                                    : val instanceof wijmo.collections.ObservableArray ? 'ObservableArray'
+                    var type = val instanceof wjcCore.Event ? 'Event'
+                        : val instanceof wjcGrid.CellRange ? 'CellRange'
+                            : val instanceof wjcCore.Point ? 'Point'
+                                : val instanceof wjcCore.Size ? 'Size'
+                                    : val instanceof wjcCore.ObservableArray ? 'ObservableArray'
                                         : typeof (val);
-                    if (!wijmo.isFunction(val)) {
+                    if (!wjcCore.isFunction(val)) {
                         data.push({
                             name: prop,
                             type: type,

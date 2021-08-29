@@ -12,7 +12,7 @@ var CustomizingAxes = React.createClass({
                 gridlines.</p>
             <p>
                 The <b>Axis</b> class has boolean properties that allow you to turn features on
-                or off (<b>axisLine</b>, <b>labels</b>, <b>majorTickMarks</b>, and <b>majorGrid</b>.)
+                or off (<b>axisLine</b>, <b>labels</b>, <b>majorTickMarks</b>, and <b>majorGrid</b>).
                 You can style the appearance of the features that are turned on using CSS.</p>
 
             <div className="row">

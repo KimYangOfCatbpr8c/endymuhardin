@@ -44,11 +44,13 @@ on whatever criteria your application requires (<a href="topic/wijmo.input.Multi
 <li class="mproperty inherited"><a href="topic/wijmo.input.MultiSelect.Class.html/#displayMemberPath">displayMemberPath</a></li>
 <li class="mproperty inherited"><a href="topic/wijmo.input.MultiSelect.Class.html/#dropDown">dropDown</a></li>
 <li class="mproperty inherited"><a href="topic/wijmo.input.MultiSelect.Class.html/#dropDownCssClass">dropDownCssClass</a></li>
+<li class="mproperty inherited"><a href="topic/wijmo.input.MultiSelect.Class.html/#formatItem">formatItem</a></li>
 <li class="mproperty"><a href="topic/wijmo.input.MultiSelect.Class.html/#headerFormat">headerFormat</a></li>
 <li class="mproperty"><a href="topic/wijmo.input.MultiSelect.Class.html/#headerFormatter">headerFormatter</a></li>
 <li class="mproperty inherited"><a href="topic/wijmo.input.MultiSelect.Class.html/#headerPath">headerPath</a></li>
 <li class="mproperty inherited"><a href="topic/wijmo.input.MultiSelect.Class.html/#hostElement">hostElement</a></li>
 <li class="mproperty inherited"><a href="topic/wijmo.input.MultiSelect.Class.html/#inputElement">inputElement</a></li>
+<li class="mproperty inherited"><a href="topic/wijmo.input.MultiSelect.Class.html/#isAnimated">isAnimated</a></li>
 <li class="mproperty inherited"><a href="topic/wijmo.input.MultiSelect.Class.html/#isContentHtml">isContentHtml</a></li>
 <li class="mproperty inherited"><a href="topic/wijmo.input.MultiSelect.Class.html/#isDisabled">isDisabled</a></li>
 <li class="mproperty inherited"><a href="topic/wijmo.input.MultiSelect.Class.html/#isDroppedDown">isDroppedDown</a></li>
@@ -64,6 +66,7 @@ on whatever criteria your application requires (<a href="topic/wijmo.input.Multi
 <li class="mproperty inherited"><a href="topic/wijmo.input.MultiSelect.Class.html/#maxDropDownWidth">maxDropDownWidth</a></li>
 <li class="mproperty"><a href="topic/wijmo.input.MultiSelect.Class.html/#maxHeaderItems">maxHeaderItems</a></li>
 <li class="mproperty inherited"><a href="topic/wijmo.input.MultiSelect.Class.html/#placeholder">placeholder</a></li>
+<li class="mproperty inherited"><a href="topic/wijmo.input.MultiSelect.Class.html/#rightToLeft">rightToLeft</a></li>
 <li class="mproperty inherited"><a href="topic/wijmo.input.MultiSelect.Class.html/#selectedIndex">selectedIndex</a></li>
 <li class="mproperty inherited"><a href="topic/wijmo.input.MultiSelect.Class.html/#selectedItem">selectedItem</a></li>
 <li class="mproperty inherited"><a href="topic/wijmo.input.MultiSelect.Class.html/#selectedValue">selectedValue</a></li>
@@ -196,6 +199,16 @@ itself, which prevents using CSS selectors based on the parent control.</p></div
   <dt>Type</dt><dd><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank"><span class="identifier">string</span></a></dd>
 </dl>
 </div>
+<div id="formatItem" class="member-panel mproperty inherited">
+<h3>formatItem</h3>
+<div class="comment"><p>Event that fires when items in the drop-down list are created.</p>
+<p>You can use this event to modify the HTML in the list items.
+For details, see the <a href="topic/wijmo.input.ListBox.Class.html/#formatItem"><span class="identifier">formatItem</span></a> event.</p></div>
+<dl class="dl-horizontal">
+  <dt>Inherited From</dt><dd><a href="topic/wijmo.input.ComboBox.Class.html"><span class="identifier">ComboBox</span></a></dd>
+  <dt>Type</dt><dd><a href="topic/wijmo.Event.Class.html"><span class="identifier">Event</span></a></dd>
+</dl>
+</div>
 <div id="headerFormat" class="member-panel mproperty">
 <h3>headerFormat</h3>
 <div class="comment"><p>Gets or sets the format string used to create the header content
@@ -250,6 +263,15 @@ attributes of the input element.</p></div>
 <dl class="dl-horizontal">
   <dt>Inherited From</dt><dd><a href="topic/wijmo.input.DropDown.Class.html"><span class="identifier">DropDown</span></a></dd>
   <dt>Type</dt><dd><a href="https://developer.mozilla.org/en/docs/Web/API/HTMLInputElement" target="_blank"><span class="identifier">HTMLInputElement</span></a></dd>
+</dl>
+</div>
+<div id="isAnimated" class="member-panel mproperty inherited">
+<h3>isAnimated</h3>
+<div class="comment"><p>Gets or sets a value that indicates whether the control should use a fade-in animation
+when displaying the drop-down.</p></div>
+<dl class="dl-horizontal">
+  <dt>Inherited From</dt><dd><a href="topic/wijmo.input.DropDown.Class.html"><span class="identifier">DropDown</span></a></dd>
+  <dt>Type</dt><dd><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a></dd>
 </dl>
 </div>
 <div id="isContentHtml" class="member-panel mproperty inherited">
@@ -398,6 +420,15 @@ header displays the selected item count instead.</p></div>
 <dl class="dl-horizontal">
   <dt>Inherited From</dt><dd><a href="topic/wijmo.input.DropDown.Class.html"><span class="identifier">DropDown</span></a></dd>
   <dt>Type</dt><dd><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank"><span class="identifier">string</span></a></dd>
+</dl>
+</div>
+<div id="rightToLeft" class="member-panel mproperty inherited">
+<h3>rightToLeft</h3>
+<div class="comment"><p>Gets a value indicating whether the control is hosted in an element
+with right-to-left layout.</p></div>
+<dl class="dl-horizontal">
+  <dt>Inherited From</dt><dd><a href="topic/wijmo.Control.Class.html"><span class="identifier">Control</span></a></dd>
+  <dt>Type</dt><dd><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a></dd>
 </dl>
 </div>
 <div id="selectedIndex" class="member-panel mproperty inherited">
@@ -840,13 +871,13 @@ on the page will be invalidated.</p></li></ul>
 </div>
 <div id="removeEventListener" class="member-panel mmethod inherited">
 <h3>removeEventListener</h3>
-<pre>removeEventListener(target?: <a href="https://developer.mozilla.org/en/docs/Web/API/EventTarget" target="_blank"><span class="identifier">EventTarget</span></a>, type?: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank"><span class="identifier">string</span></a>, capture?: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a>): <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Number" target="_blank"><span class="identifier">number</span></a></pre>
+<pre>removeEventListener(target?: <a href="https://developer.mozilla.org/en/docs/Web/API/EventTarget" target="_blank"><span class="identifier">EventTarget</span></a>, type?: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank"><span class="identifier">string</span></a>, fn?: <span class="identifier">any</span>, capture?: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a>): <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Number" target="_blank"><span class="identifier">number</span></a></pre>
 <div class="comment"><p>Removes one or more event listeners attached to elements owned by this <a href="topic/wijmo.Control.Class.html"><span class="identifier">Control</span></a>.</p></div>
 <dl class="dl-horizontal">
   <dt>Parameters</dt><dd></dd>
 </dl>
 <ul>
-<li><b>target</b>: <a href="https://developer.mozilla.org/en/docs/Web/API/EventTarget" target="_blank"><span class="identifier">EventTarget</span></a> <span class="badge">Optional</span><br/><p>Target element for the event. If null, removes listeners attached to all targets.</p></li><li><b>type</b>: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank"><span class="identifier">string</span></a> <span class="badge">Optional</span><br/><p>String that specifies the event. If null, removes listeners attached to all events.</p></li><li><b>capture</b>: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a> <span class="badge">Optional</span><br/><p>Whether the listener is capturing. If null, removes capturing and non-capturing listeners.</p></li></ul>
+<li><b>target</b>: <a href="https://developer.mozilla.org/en/docs/Web/API/EventTarget" target="_blank"><span class="identifier">EventTarget</span></a> <span class="badge">Optional</span><br/><p>Target element for the event. If null, removes listeners attached to all targets.</p></li><li><b>type</b>: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank"><span class="identifier">string</span></a> <span class="badge">Optional</span><br/><p>String that specifies the event. If null, removes listeners attached to all events.</p></li><li><b>fn</b>: <span class="identifier">any</span> <span class="badge">Optional</span><br/><p>Handler to remove. If null, removes all handlers.</p></li><li><b>capture</b>: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a> <span class="badge">Optional</span><br/><p>Whether the listener is capturing. If null, removes capturing and non-capturing listeners.</p></li></ul>
 <dl class="dl-horizontal">
   <dt>Inherited From</dt><dd><a href="topic/wijmo.Control.Class.html"><span class="identifier">Control</span></a></dd>
   <dt>Returns</dt><dd><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Number" target="_blank"><span class="identifier">number</span></a></dd>

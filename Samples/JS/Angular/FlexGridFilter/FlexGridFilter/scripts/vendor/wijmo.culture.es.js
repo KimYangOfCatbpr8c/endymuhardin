@@ -1,18 +1,18 @@
 ﻿/*
     *
-    * Wijmo Library 5.20162.211
+    * Wijmo Library 5.20171.282
     * http://wijmo.com/
     *
     * Copyright(c) GrapeCity, Inc.  All rights reserved.
     *
     * Licensed under the Wijmo Commercial License.
     * sales@wijmo.com
-    * http://wijmo.com/products/wijmo-5/license/
+    * wijmo.com/products/wijmo-5/license/
     *
     */
 /*
-* Wijmo culture file: es (Spanish)
-*/
+ * Wijmo culture file: es (Spanish)
+ */
 var wijmo;
 (function (wijmo) {
     wijmo.culture = {
@@ -40,7 +40,7 @@ var wijmo;
                     d: 'dd/MM/yyyy', D: 'dddd, d" de "MMMM" de "yyyy',
                     f: 'dddd, d" de "MMMM" de "yyyy H:mm', F: 'dddd, d" de "MMMM" de "yyyy H:mm:ss',
                     t: 'H:mm', T: 'H:mm:ss',
-                    m: 'd "de" MMMM', M: 'd "de" MMMM',
+                    m: 'd" de "MMMM', M: 'd" de "MMMM',
                     y: 'MMMM" de "yyyy', Y: 'MMMM" de "yyyy',
                     g: 'dd/MM/yyyy H:mm', G: 'dd/MM/yyyy H:mm:ss',
                     s: 'yyyy"-"MM"-"dd"T"HH":"mm":"ss'
@@ -51,7 +51,7 @@ var wijmo;
             itemsSelected: '{count:n0} ítems seleccionados'
         },
         FlexGrid: {
-            groupHeaderFormat: '<b>{value} </b>({count:n0} ítems)'
+            groupHeaderFormat: '{name}: <b>{value}</b> ({count:n0} ítems)'
         },
         FlexGridFilter: {
             // filter
@@ -90,8 +90,8 @@ var wijmo;
             dateOperators: [
                 { name: '(ninguno)', op: null },
                 { name: 'Es igual a', op: 0 },
-                { name: 'Es anterior a', op: 4 },
-                { name: 'Es posterior a', op: 3 }
+                { name: 'es anterior a', op: 4 },
+                { name: 'es posterior a', op: 3 }
             ],
             booleanOperators: [
                 { name: '(ninguno)', op: null },
@@ -109,8 +109,8 @@ var wijmo;
                 sort: 'Ordenar:',
                 filter: 'Filtrar:',
                 format: 'Formato:',
-                sample: 'Mustra:',
-                edit: 'Editar...',
+                sample: 'Muestra:',
+                edit: 'Editar…',
                 clear: 'Borrar',
                 ok: 'Aceptar',
                 cancel: 'Cancelar',
@@ -127,7 +127,7 @@ var wijmo;
                     min: 'Mínimo',
                     rng: 'Rango',
                     std: 'StdDev',
-                    var: 'Var',
+                    var: 'VAR',
                     stdp: 'StdDevPop',
                     varp: 'VarPop'
                 },
@@ -136,7 +136,12 @@ var wijmo;
                     dRow: 'Diferencia con el renglón anterior',
                     dRowPct: '% de diferencia con el renglón anterior',
                     dCol: 'Diferencia con la columna anterior',
-                    dColPct: '% de diferencia con la columna anterior'
+                    dColPct: '% de diferencia con la columna anterior',
+                    dPctGrand: '% del gran total',
+                    dPctRow: '% del total del renglón',
+                    dPctCol: '% del total de la columna',
+                    dRunTot: 'Total acumulativo',
+                    dRunTotPct: '% del total acumulativo'
                 },
                 formats: {
                     n0: 'Entero (n0)',
@@ -148,14 +153,14 @@ var wijmo;
                     n2cc: 'Millones (n2,,)',
                     n2ccc: 'Billones (n2,,,)',
                     d: 'Fecha (d)',
-                    MMMMddyyyy: 'Mes Día Año (MMMM dd, yyyy)',
-                    dMyy: 'Día Mes Año (d/M/yy)',
-                    ddMyy: 'Día Mes Año (dd/M/yy)',
-                    dMyyyy: 'Día Mes Año (dd/M/yyyy)',
-                    MMMyyyy: 'Mes Año (MMM yyyy)',
-                    MMMMyyyy: 'Mes Año (MMMM yyyy)',
-                    yyyyQq: 'Cuatrimestre (yyyy "Q"q)',
-                    FYEEEEQU: 'Cuatrimestre fiscal ("FY"EEEE "Q"U)'
+                    MMMMddyyyy: 'Mes día año (MMMM dd, yyyy)',
+                    dMyy: 'Día mes año (d/M/yy)',
+                    ddMyy: 'Día mes año (dd/M/yy)',
+                    dMyyyy: 'Día mes año (dd/M/yyyy)',
+                    MMMyyyy: 'Mes año (MMM yyyy)',
+                    MMMMyyyy: 'Mes año (MMMM yyyy)',
+                    yyyyQq: 'Cuatrimestre (yyyy "Q" q)',
+                    FYEEEEQU: 'Cuatrimestre fiscal ("FY" EEEE "Q" U)'
                 }
             },
             PivotEngine: {
@@ -163,7 +168,7 @@ var wijmo;
                 subTotal: 'Subtotal'
             },
             PivotPanel: {
-                fields: 'Elegir campos para agregar al reporte',
+                fields: 'Elegir campos para agregar al reporte:',
                 drag: 'Arrastrar campos entre las áreas debajo:',
                 filters: 'Filtros',
                 cols: 'Columnas',
@@ -182,8 +187,8 @@ var wijmo;
                 cols: 'Mover a las etiquetas de la columna',
                 vals: 'Mover a los valores',
                 remove: 'Eliminar campo',
-                edit: 'Configuración de los campos...',
-                detail: 'Mostrar detalles...'
+                edit: 'Configuración de los campos…',
+                detail: 'Mostrar detalles…'
             },
             PivotChart: {
                 by: 'por',
@@ -197,8 +202,136 @@ var wijmo;
                 row: 'Renglón',
                 col: 'Columna'
             }
+        },
+        Viewer: {
+            cancel: 'Cancelar',
+            ok: 'Aceptar',
+            bottom: 'Inferior:',
+            top: 'Superior:',
+            right: 'Derecha:',
+            left: 'Izquierda:',
+            margins: 'Márgenes (pulgadas)',
+            orientation: 'Orientación:',
+            paperKind: 'Tipo de papel:',
+            pageSetup: 'Configuración de página',
+            landscape: 'Horizontal',
+            portrait: 'Vertical',
+            pageNumber: 'Número de página',
+            zoomFactor: 'Factor de zoom',
+            paginated: 'Diseño de impresión',
+            print: 'Imprimir',
+            search: 'Buscar',
+            matchCase: 'Coincidir mayúsculas y minúsculas',
+            wholeWord: 'Sólo palabras completas',
+            searchResults: 'Resultados de la búsqueda',
+            previousPage: 'Página anterior',
+            nextPage: 'Página siguiente',
+            firstPage: 'Primera página',
+            lastPage: 'Última página',
+            backwardHistory: 'Hacia atrás',
+            forwardHistory: 'Adelante',
+            pageCount: 'Número de páginas',
+            selectTool: 'Seleccione la herramienta',
+            moveTool: 'Herramienta mover',
+            continuousMode: 'Continua la vista de página',
+            singleMode: 'Vista de página única',
+            wholePage: 'Ajuste toda la página',
+            pageWidth: 'Ajuste ancho de página',
+            zoomOut: 'Alejar',
+            zoomIn: 'Acercar',
+            exports: 'Exportar',
+            fullScreen: 'Pantalla completa',
+            exitFullScreen: 'Salir de pantalla completa',
+            hamburgerMenu: 'Herramientas',
+            showSearchBar: 'Mostrar barra de búsqueda',
+            viewMenu: 'Opciones de diseño',
+            searchOptions: 'Opciones de búsqueda',
+            matchCaseMenuItem: 'Coincidir mayúsculas y minúsculas',
+            wholeWordMenuItem: 'Coincidir toda la palabra',
+            thumbnails: 'Miniaturas de página',
+            outlines: 'Mapa del documento',
+            loading: 'Cargando…',
+            pdfExportName: 'Adobe PDF',
+            docxExportName: 'Open XML Word',
+            xlsxExportName: 'Open XML Excel',
+            docExportName: 'Microsoft Word',
+            xlsExportName: 'Microsoft Excel',
+            mhtmlExportName: 'Archivo de la web (MHTML)',
+            htmlExportName: 'Documento HTML',
+            rtfExportName: 'Documento RTF',
+            metafileExportName: 'Comprimido metarchivos',
+            csvExportName: 'CSV',
+            tiffExportName: 'Imágenes TIFF',
+            bmpExportName: 'Imágenes BMP',
+            emfExportName: 'Metarchivo mejorado',
+            gifExportName: 'Imágenes GIF',
+            jpgExportName: 'Imágenes JPEG',
+            jpegExportName: 'Imágenes JPEG',
+            pngExportName: 'Imágenes PNG',
+            abstractMethodException: 'Se trata de un método abstracto, por favor ponerlo.',
+            cannotRenderPageNoViewPage: 'No puede procesar página sin fuente de documento y vista.',
+            cannotRenderPageNoDoc: 'No puede procesar página sin fuente de documento y vista.',
+            exportFormat: 'Formato de exportación:',
+            exportOptionTitle: 'Opciones de exportación',
+            documentRestrictionsGroup: 'Restricciones del documento',
+            passwordSecurityGroup: 'Seguridad de contraseñas',
+            outputRangeGroup: 'Rango de salida',
+            documentInfoGroup: 'Información del documento',
+            generalGroup: 'General',
+            docInfoTitle: 'Título',
+            docInfoAuthor: 'Autor',
+            docInfoManager: 'Administrador',
+            docInfoOperator: 'Operador',
+            docInfoCompany: 'Compañía',
+            docInfoSubject: 'Asunto',
+            docInfoComment: 'Comentar',
+            docInfoCreator: 'Creador',
+            docInfoProducer: 'Productor',
+            docInfoCreationTime: 'Hora de creación',
+            docInfoRevisionTime: 'Tiempo de revisión',
+            docInfoKeywords: 'Palabras clave',
+            embedFonts: 'Incrustar fuentes TrueType',
+            pdfACompatible: 'Compatibles con PDF/A (nivel 2B)',
+            useCompression: 'Utilizar compresión',
+            useOutlines: 'Generar esquemas',
+            allowCopyContent: 'Permite copiar contenido o extracción',
+            allowEditAnnotations: 'Permite edición de anotación',
+            allowEditContent: 'Permite editar contenido',
+            allowPrint: 'Permitir la impresión',
+            ownerPassword: 'Contraseña de permisos (propietario):',
+            userPassword: 'Contraseña de documento abierto (usuario):',
+            encryptionType: 'Nivel de cifrado:',
+            paged: 'Paginado',
+            showNavigator: 'Mostrar explorador',
+            singleFile: 'Solo archivo',
+            tolerance: 'Tolerancia al detectar límites de texto (puntos):',
+            pictureLayer: 'Capa de imagen independiente del uso',
+            metafileType: 'Tipo de metarchivo:',
+            monochrome: 'Monocromático',
+            resolution: 'Resolución:',
+            outputRange: 'Intervalo de páginas:',
+            outputRangeInverted: 'Invertido',
+            showZoomBar: 'Barra de zoom',
+            searchPrev: 'Buscar anterior',
+            searchNext: 'Buscar siguiente',
+            checkMark: '\u2713',
+            exportOk: '[j4Jaz]Exportar…',
+            parameters: 'Parámetros',
+            requiringParameters: 'Parámetros de entrada por favor.',
+            nullParameterError: 'El valor no puede ser nulo.',
+            invalidParameterError: 'Entrada no válida.',
+            parameterNoneItemsSelected: '(ninguno)',
+            parameterAllItemsSelected: '(todos)',
+            parameterSelectAllItemText: '(Seleccionar todo)',
+            selectParameterValue: '(seleccionar el valor)',
+            apply: 'Aplicar',
+            errorOccured: 'Se ha producido un error.'
         }
     };
+    var updc = window['wijmo']._updateCulture;
+    if (updc) {
+        updc();
+    }
 })(wijmo || (wijmo = {}));
 ;
-//# sourceMappingURL=wijmo.culture.es.js.map
+

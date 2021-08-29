@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
@@ -13,6 +13,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
+var wjcGrid = require('wijmo/wijmo.grid');
+'use strict';
 var core_1 = require('@angular/core');
 var common_1 = require('@angular/common');
 var router_1 = require('@angular/router');
@@ -42,24 +44,24 @@ var GridTreeCmp = (function (_super) {
         flex.rows.clear();
         flex.columns.clear();
         // add columns we want to show
-        var c = new wijmo.grid.Column();
+        var c = new wjcGrid.Column();
         c.header = 'Name';
         c.binding = 'name';
         c.width = '*';
         c.minWidth = 120;
         c.allowDragging = false;
         flex.columns.push(c);
-        c = new wijmo.grid.Column();
+        c = new wjcGrid.Column();
         c.header = 'Level';
         c.binding = 'level';
         c.align = 'right';
         flex.columns.push(c);
-        c = new wijmo.grid.Column();
+        c = new wjcGrid.Column();
         c.header = 'Children';
         c.binding = 'childCount';
         c.align = 'right';
         flex.columns.push(c);
-        c = new wijmo.grid.Column();
+        c = new wjcGrid.Column();
         c.header = 'Descendants';
         c.binding = 'descendantCount';
         c.align = 'right';
@@ -71,7 +73,7 @@ var GridTreeCmp = (function (_super) {
     };
     GridTreeCmp.prototype._addPersonToGrid = function (flex, p, level) {
         // create a row for this person
-        var gr = new wijmo.grid.GroupRow();
+        var gr = new wjcGrid.GroupRow();
         gr.level = level;
         gr.dataItem = p;
         // add this person to the grid

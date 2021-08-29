@@ -4,7 +4,7 @@
                     [isReadOnly]="false"
                     [headersVisibility]="'None'"
                     [selectionMode]="'Cell'"
-                    style="height:142px;width:200px">
+                    style="height:160px;width:200px">
         <wj-flex-grid-column 
             binding="date" 
             [width]="'*'">
@@ -19,7 +19,7 @@
         [itemsSource]="cell.item.items" 
         [binding]="cell.col.binding" 
         tooltipContent="<b>{value:{{cell.col.format}}}</b><br/>{date:MMM yyyy}" 
-        style="height:140px;width:140px;display:inline-block;font-size:9px">
+        style="height:160px;width:140px;display:inline-block;font-size:9px">
         <wj-flex-chart-legend [position]="'None'"></wj-flex-chart-legend>
         <wj-flex-pie-data-label 
             [content]="'{date:MMM}'" 

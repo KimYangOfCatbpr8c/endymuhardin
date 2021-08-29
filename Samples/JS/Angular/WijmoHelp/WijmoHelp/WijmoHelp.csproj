@@ -9,7 +9,7 @@
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <DebugType>full</DebugType>
     <DebugSymbols>true</DebugSymbols>
-    <TypeScriptToolsVersion>1.8</TypeScriptToolsVersion>
+    <TypeScriptToolsVersion>2.0</TypeScriptToolsVersion>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
@@ -23,6 +23,7 @@
     <Content Include="images\intellisensevs.png" />
     <Content Include="images\wijmo5.png" />
     <Content Include="partials\static\angular2Components.html" />
+    <Content Include="partials\static\angular2ComponentsGlobalModules.html" />
     <Content Include="partials\static\angular2Markup.html" />
     <Content Include="partials\static\pseudoClasses.html" />
     <Content Include="partials\static\FlexSheetFunctions.html" />

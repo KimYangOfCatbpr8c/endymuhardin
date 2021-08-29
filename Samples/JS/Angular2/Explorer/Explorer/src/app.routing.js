@@ -72,6 +72,10 @@ exports.routeTree = [
                 loadChildren: 'src/components/input/MultiSelectCmp#MultiSelectModule'
             },
             {
+                path: 'input/multiautocomplete', data: { caption: 'MultiAutoComplete' },
+                loadChildren: 'src/components/input/MultiAutoCompleteCmp#MultiAutoCompleteModule'
+            },
+            {
                 path: 'input/menu', data: { caption: 'Menu' },
                 loadChildren: 'src/components/input/MenuCmp#MenuModule'
             },
@@ -301,6 +305,31 @@ exports.routeTree = [
             {
                 path: 'piechart/animation', data: { caption: 'Animation' },
                 loadChildren: 'src/components/piechart/PieChartAnimationCmp#PieChartAnimationModule'
+            },
+        ]
+    },
+    {
+        section: "TreeView",
+        routes: [
+            {
+                path: 'nav/intro', data: { caption: 'Introduction' },
+                loadChildren: 'src/components/nav/TreeViewIntroCmp#TreeViewIntroModule'
+            },
+            {
+                path: 'nav/navTree', data: { caption: 'Navigation Trees' },
+                loadChildren: 'src/components/nav/NavTreeCmp#NavTreeModule'
+            },
+            {
+                path: 'nav/ckbTree', data: { caption: 'Checkboxes' },
+                loadChildren: 'src/components/nav/CkbTreeCmp#CkbTreeModule'
+            },
+            {
+                path: 'nav/customNode', data: { caption: 'Custom Nodes' },
+                loadChildren: 'src/components/nav/CustomNodeCmp#CustomNodeModule'
+            },
+            {
+                path: 'nav/lazyLoading', data: { caption: 'Lazy Loading' },
+                loadChildren: 'src/components/nav/LazyLoadingCmp#LazyLoadingModule'
             },
         ]
     },

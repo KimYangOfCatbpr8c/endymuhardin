@@ -1,10 +1,12 @@
-'use strict';
+"use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var wjcChart = require('wijmo/wijmo.chart');
+'use strict';
 var core_1 = require('@angular/core');
 var common_1 = require('@angular/common');
 var router_1 = require('@angular/router');
@@ -17,7 +19,7 @@ var ChartIntroCmp = (function () {
         this.pal = 0;
         this.palettes = ['standard', 'cocoa', 'coral', 'dark', 'highcontrast', 'light', 'midnight', 'minimal', 'modern', 'organic', 'slate'];
         this.isColumnOrBar = function (chart) {
-            return chart && (chart.chartType == wijmo.chart.ChartType.Column || chart.chartType == wijmo.chart.ChartType.Bar);
+            return chart && (chart.chartType == wjcChart.ChartType.Column || chart.chartType == wjcChart.ChartType.Bar);
         };
         var names = ['Oranges', 'Apples', 'Pears', 'Bananas', 'Pineapples'], data = [];
         this.itemsSource = [];
@@ -46,7 +48,7 @@ var ChartIntroCmp = (function () {
         configurable: true
     });
     ChartIntroCmp.prototype.getPalette = function (palIdx) {
-        return wijmo.chart.Palettes[this.palettes[palIdx]];
+        return wjcChart.Palettes[this.palettes[palIdx]];
     };
     __decorate([
         core_1.ViewChild('chart')

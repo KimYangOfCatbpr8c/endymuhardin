@@ -7,23 +7,23 @@ var app = angular.module('app');
 app.controller('appCtrl', function ($scope) {
     $scope.dialogs = {};
 
-    // submit or ignore the dialog when it is closed
+    // submit form
+    $scope.submit = function (e) {
+
+        // process the form variables here...
+        var form = e.target;
+        console.log('** submitting form ' + form.name);
+
+        // hide the dialog
+        var popup = wijmo.Control.getControl(wijmo.closest(form, '.wj-popup'));
+        popup.hide('submit');
+    }
+
+    // show create account form based on dialog-result
     $scope.hiding = function (s, e) {
         switch (s.dialogResult) {
-
-            // process the form variables here...
-            case 'wj-hide-ok':
-                console.log('** Submitting **');
-                break;
-
-            // close this dialog and show 'create account' dialog
             case 'wj-hide-create':
                 $scope.dialogs.create.show(true);
-                break;
-
-            // ignore the form changes...
-            default:
-                console.log('Closing without submitting...');
                 break;
         }
     }
@@ -57,6 +57,7 @@ app.controller('appCtrl', function ($scope) {
             });
     }
 
+    // get a promise for a popup
     function getPopupPromise() {
         var p = new Promise(function (resolve, reject) {
             var popup = $scope.dialogs.login;

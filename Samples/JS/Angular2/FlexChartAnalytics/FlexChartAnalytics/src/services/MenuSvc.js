@@ -19,7 +19,9 @@ var MenuSvc = (function () {
                     { "text": "MovingAverage", "url": "#/movingaverage", "alias": "MovingAverage" },
                     { "text": "YFunctionSeries", "url": "#/yfunctionseries", "alias": "YFunctionSeries" },
                     { "text": "Parametric FunctionSeries", "url": "#/parametricfunctionseries", "alias": "ParametricFunctionSeries" },
-                    { "text": "Waterfall", "url": "#/waterfall", "alias": "Waterfall" }
+                    { "text": "Waterfall", "url": "#/waterfall", "alias": "Waterfall" },
+                    { "text": "Box&Whisker", "url": "#/boxwhisker", "alias": "BoxWhisker" },
+                    { "text": "ErrorBar", "url": "#/errorbar", "alias": "ErrorBar" }
                 ]
             }];
         return ret;

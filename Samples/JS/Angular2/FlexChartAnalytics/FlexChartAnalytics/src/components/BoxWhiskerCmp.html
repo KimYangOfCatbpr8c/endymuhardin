@@ -1,0 +1,99 @@
+﻿<div>
+    <h2>FlexChart {{title}}</h2>
+
+    <p>
+        This view shows {{title}} in FlexChart.
+    </p>
+    <p>
+        The {{title}} series is normally used to compare distributions between different sets of numerical data.
+    </p>
+    <!-- Settings -->
+    <div class="panel-group" id="settings">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <ul class="list-inline">
+                    <li>
+                        <label>Group Width</label>
+                        <wj-input-number #ipt (valueChanged)="groupWidthChanged(ipt)"
+                                         [value]="0.8"
+                                         [min]="0"
+                                         [max]="1"
+                                         [step]="0.1">
+                        </wj-input-number>
+                    </li>
+                    <li>
+                        <label>Gap Width</label>
+                        <wj-input-number #ipt2 (valueChanged)="gapWidthChanged(ipt2)"
+                                         [value]="0.1"
+                                         [min]="0"
+                                         [max]="1"
+                                         [step]="0.1">
+                        </wj-input-number>
+                    </li>
+                    <li>
+                        <wj-menu [(value)]="quartileCalculation" header="Quartile Calculation" text="quartileCalculation">
+                            <wj-menu-item value="InclusiveMedian">InclusiveMedian</wj-menu-item>
+                            <wj-menu-item value="ExclusiveMedian">ExclusiveMedian</wj-menu-item>
+                        </wj-menu>
+                    </li>
+                    <li>
+                        <label for="checkboxShowMeanLine">Show Mean Line:</label>
+                        <input type="checkbox" id="checkboxShowMeanLine" [(ngModel)]="showMeanLine" />
+                    </li>
+                    <li>
+                        <label for="checkboxShowMeanMarker">Show Mean Marker:</label>
+                        <input type="checkbox" id="checkboxShowMeanMarker" [(ngModel)]="showMeanMarker" />
+                    </li>
+                    <li>
+                        <label for="checkboxShowInnerPoints">Show Inner Points:</label>
+                        <input type="checkbox" id="checkboxShowInnerPoints" [(ngModel)]="showInnerPoints" />
+                    </li>
+                    <li>
+                        <label for="checkboxShowOutliers">Show Outliers:</label>
+                        <input type="checkbox" id="checkboxShowOutliers" [(ngModel)]="showOutliers" />
+                    </li>
+                    <li>
+                        <label for="checkboxRotated">Rotated:</label>
+                        <input type="checkbox" id="checkboxRotated" [(ngModel)]="rotated" />
+                    </li>
+                    <li>
+                        <label for="checkboxShowLabel">Show Label:</label>
+                        <input type="checkbox" #chkLabel id="checkboxShowLabel" [(ngModel)]="showLabel" (change)="showLabelChanged(chkLabel)"/>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div>
+        <wj-flex-chart #boxwhiskerChart [itemsSource]="itemsSource" bindingX="country" [rotated]="rotated">
+            <wj-flex-chart-box-whisker #boxwhisker binding="downloads" name="downloads"
+                                     [groupWidth]="groupWidth"
+                                     [gapWidth]="gapWidth"
+                                     [quartileCalculation]="quartileCalculation"
+                                     [showMeanLine]="showMeanLine"
+                                     [showMeanMarker]="showMeanMarker"
+                                     [showInnerPoints]="showInnerPoints"
+                                     [showOutliers]="showOutliers">
+            </wj-flex-chart-box-whisker>
+            <wj-flex-chart-box-whisker #boxwhisker2 binding="sales" name="sales"
+                                       [groupWidth]="groupWidth"
+                                       [gapWidth]="gapWidth"
+                                       [quartileCalculation]="quartileCalculation"
+                                       [showMeanLine]="showMeanLine"
+                                       [showMeanMarker]="showMeanMarker"
+                                       [showInnerPoints]="showInnerPoints"
+                                       [showOutliers]="showOutliers">
+            </wj-flex-chart-box-whisker>
+            <wj-flex-chart-box-whisker #boxwhisker3 binding="expenses" name="expenses"
+                                       [groupWidth]="groupWidth"
+                                       [gapWidth]="gapWidth"
+                                       [quartileCalculation]="quartileCalculation"
+                                       [showMeanLine]="showMeanLine"
+                                       [showMeanMarker]="showMeanMarker"
+                                       [showInnerPoints]="showInnerPoints"
+                                       [showOutliers]="showOutliers">
+            </wj-flex-chart-box-whisker>
+        </wj-flex-chart>
+    </div>
+
+</div>

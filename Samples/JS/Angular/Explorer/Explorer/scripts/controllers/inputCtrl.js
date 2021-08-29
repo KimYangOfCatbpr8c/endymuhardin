@@ -213,7 +213,6 @@ app.controller('inputCtrl', function appCtrl($scope) {
         items.push({ id: i, country: c, length: c.length, selected: i < 10 && (i % 3 == 0) });
     }
     $scope.ctx.items = new wijmo.collections.CollectionView(items);
-    $scope.ctx.items.moveCurrentToPosition(-1);
 
     // as a collection of HTML items
     $scope.ctx.htmlItems = [];
@@ -274,4 +273,7 @@ app.controller('inputCtrl', function appCtrl($scope) {
         };
         $scope.ctx.musicians.push(item);
     }
+
+    // MultiAutoComplete
+    $scope.ctx.selectedCountries = ['Belgium', 'Vietnam'];
 });

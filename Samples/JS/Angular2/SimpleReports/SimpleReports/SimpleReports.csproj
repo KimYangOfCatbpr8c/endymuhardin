@@ -10,7 +10,7 @@
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <DebugType>full</DebugType>
     <DebugSymbols>true</DebugSymbols>
-    <TypeScriptToolsVersion>1.8</TypeScriptToolsVersion>
+    <TypeScriptToolsVersion>2.0</TypeScriptToolsVersion>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
@@ -48,8 +48,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="src\app.routing.js" />
     <Content Include="src\app.js" />
     <Content Include="src\components\AlphabeticalListOfProductsCmp.js" />
@@ -61,6 +59,8 @@
     <Content Include="src\components\SalesByCategoryCmp.js" />
     <Content Include="src\components\SalesChartCmp.js" />
     <Content Include="src\services\DataSvc.js" />
+  </ItemGroup>
+  <ItemGroup>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">12.0</VisualStudioVersion>
@@ -117,11 +117,6 @@
     <PreBuildEvent>REM copy /B /Y $(ProjectDir)scripts\wijmo.angular2\ControlMetaFactory_Internal.ts+$(ProjectDir)scripts\wijmo.angular2\ControlMetaFactory_External.ts $(ProjectDir)scripts\wijmo.angular2\ControlMetaFactory.ts</PreBuildEvent>
   </PropertyGroup>
   <ItemGroup>
-    <Content Include="scripts\vendor\wijmo.min.js" />
-    <Content Include="scripts\vendor\wijmo.input.min.js" />
-    <Content Include="scripts\vendor\wijmo.chart.min.js" />
-    <Content Include="scripts\vendor\wijmo.odata.min.js" />
-    <Content Include="scripts\vendor\wijmo.angular2.min.js" />
     <Content Include="styles\vendor\wijmo.min.css" />
   </ItemGroup>
 </Project>

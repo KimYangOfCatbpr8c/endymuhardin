@@ -1,0 +1,36 @@
+<div class="header-panel member">
+<h2><span class="identifier">WjMultiAutoComplete</span> Class</h2>
+<dl class="dl-horizontal">
+<dt>File</dt><dd class="filename">wijmo.angular.js</dd>
+<dt>Module</dt><dd><a href="topic/wijmo.angular.Module.html"><span class="identifier">wijmo.angular</span></a></dd>
+<dt>Base Class</dt><dd><a href="topic/wijmo.angular.WjAutoComplete.Class.html"><span class="identifier">WjAutoComplete</span></a></dd>
+<dt>Show</dt>
+<dd>
+<label><input type="checkbox" ng-model="ctx.showInherited"> Inherited Members</label>&nbsp;&nbsp;&nbsp;
+<label><input type="checkbox" ng-model="ctx.showRaisers"> Event Raisers</label>
+</dd>
+</dl>
+<div class="comment"><p>AngularJS directive for the <a href="topic/wijmo.input.MultiAutoComplete.Class.html"><span class="identifier">MultiAutoComplete</span></a> control.</p>
+<p>Use the <b>wj-multi-auto-complete</b> directive to add <b>MultiAutoComplete</b> controls to your AngularJS applications.
+Note that directive and parameter names must be formatted as lower-case with dashes 
+instead of camel-case. For example:</p>
+
+
+<pre>&lt;p&gt;Here is a InputTags bound to a collection of objects:&lt;/p&gt;
+&lt;wj-multi-auto-complete
+    max-selected-items="8"
+    items-source="ctx.items"
+    selected-Member-path="selected"&gt;
+&lt;/wj-multi-auto-complete&gt;</pre>
+<p>
+The <b>wj-multi-auto-complete</b> directive extends <a href="topic/wijmo.angular.WjAutoComplete.Class.html"><span class="identifier">WjAutoComplete</span></a> with the following attributes:</p>
+<p><dl class="dl-horizontal">
+  <dt>max-selected-items</dt>   <dd><code>@</code> The maximum number of items that can be selected.</dd>
+  <dt>selected-member-path</dt> <dd><code>@</code> The name of the property used to control which 
+                                item will be selected.</dd>
+  <dt>selected-items</dt>       <dd><code>@</code> An array containing the items that are currently selected.
+  <dt>selected-items-changed</dt> <dd><code>&</code> The <a href="topic/wijmo.input.MultiAutoComplete.Class.html/#selectedItemsChanged"><span class="identifier">selectedItemsChanged</span></a> event handler.</dd>
+</dl></p></div>
+</div>
+<div class="member-panel class members" ng-class="{ 'show-inherited' : ctx.showInherited, 'show-raisers' : ctx.showRaisers }">
+</div>

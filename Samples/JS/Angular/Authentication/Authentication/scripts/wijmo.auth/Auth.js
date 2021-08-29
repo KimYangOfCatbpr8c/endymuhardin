@@ -1,5 +1,5 @@
 /**
-*/
+ */
 var wijmo;
 (function (wijmo) {
     var auth;

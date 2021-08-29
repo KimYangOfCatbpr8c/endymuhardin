@@ -1,55 +1,129 @@
 ﻿var reportView = new wijmo.viewer.ReportViewer('#reportViewer'),
-    serviceUrl = 'http://demos.componentone.com/aspnet/webapi/',
-    reportsCombo = document.querySelector('#reports');
+    serviceUrl = 'http://demos.componentone.com/ASPNET/c1webapi/4.0.20171.91/api/report',
+    flexReportsCombo = document.querySelector('#flexReports'),
+    ssrsReportsCombo = document.querySelector('#ssrsReports');
 
-$.get("ReportInfos.xml", function (data) {
-    fillReportList(data);
+addNoneOption(flexReportsCombo);
+addNoneOption(ssrsReportsCombo);
+
+$(function () {
+    $('.service-url').text(serviceUrl);
+});
+
+//Fill FlexReport combo.
+$.get("flexReport.config.json", function (data) {
+    fillFlexReportList(data);
     loadFlexReport();
 });
 
-function sortElements(elements, valFunc) {
-    return elements.sort(function (a, b) {
-        return valFunc(a) === valFunc(b)? 0: valFunc(a) > valFunc(b) ? 1 : -1;
+//Fill SsrsReport combo.
+$.get("ssrsReport.config.json", function (data) {
+    fillSsrsReportList(data);
+});
+
+function fillFlexReportList(reports) {
+    var selectedReport = reports.selectedReport,
+        selectedCategoryName = selectedReport.categoryName,
+        selectedReportName = selectedReport.reportName;
+
+    reports.categories.forEach(function (category) {
+        var categoryName = category.name,
+            optGroup = createComboOptionGroup(category.text);
+
+        category.reports.forEach(function (report) {
+            var reportName = report.reportName,
+                fileName = 'ReportsRoot/' + categoryName + '/' + report.fileName,
+                option = createComboOption(report.reportTitle, fileName);
+
+            option.setAttribute("ReportName", reportName);
+
+            if (categoryName === selectedCategoryName && reportName === selectedReportName) {
+                option.selected = true;
+            }
+
+            optGroup.appendChild(option);
+        });
+
+        flexReportsCombo.appendChild(optGroup);
     });
 }
 
-function fillReportList(reportInfos) {
-    var categories = sortElements($.makeArray($(reportInfos).find("Category")), function (ele) {
-        return $(ele).attr("Name")
-    });
+function fillSsrsReportList(reports) {
+    reports.categories.forEach(function (category) {
+        var optGroup = createComboOptionGroup(category.text);
 
-    for (var i = 0; i < categories.length; i++) {
-        var category = categories[i];
-        var categoryName = $(category).attr("Name");
-        var optGroup = document.createElement('optgroup');
-        optGroup.label = categoryName;
-        var reports = sortElements($.makeArray($(category).find("Report")), function (ele) {
-            return $(ele).find("ReportTitle").text();
+        category.reports.forEach(function (report) {
+            var option = createComboOption(report.reportTitle, 'c1ssrs/' + report.reportPath);
+            optGroup.appendChild(option);
         });
 
-        for (var j = 0; j < reports.length; j++) {
-            var report = $(reports[j]);
-            var option = document.createElement('option');
-            option.value = '/ReportsRoot/' + categoryName
-                + '/' + report.find("FileName").text();
-            $(option).attr("ReportName", report.find("ReportName").text());
-            option.innerHTML = report.find("ReportTitle").text();
-            optGroup.appendChild(option);
-        }
-        reportsCombo.appendChild(optGroup);
-    }
+        ssrsReportsCombo.appendChild(optGroup);
+    });
 }
 
 function loadFlexReport() {
+    if (isNoneOptionSelected(flexReportsCombo)) {
+        return;
+    }
+
     if (reportView) {
-        reportView.deferUpdate(function () {
-            reportView.serviceUrl = serviceUrl;
-            reportView.filePath = $(reportsCombo).val();
-            reportView.reportName = $(reportsCombo).find("option:selected").attr("ReportName");
-        });
+        reportView.serviceUrl = serviceUrl;
+        reportView.filePath = flexReportsCombo.value;
+        reportView.reportName = $(flexReportsCombo).find('option:selected').attr('ReportName');
+        reportView.paginated = true;
     }
 }
 
-reportsCombo.onchange = function () {
+function loadSsrsReport() {
+    if (isNoneOptionSelected(ssrsReportsCombo)) {
+        return;
+    }
+
+    if (reportView) {
+        reportView.serviceUrl = serviceUrl;
+        reportView.filePath = ssrsReportsCombo.value;;
+        reportView.reportName = '';
+        reportView.paginated = false;
+    }
+}
+
+function addNoneOption(combo) {
+    var optNone = document.createElement('option');
+    optNone.value = 'None';
+    optNone.innerHTML = '(None)';
+    combo.appendChild(optNone);
+}
+
+function selectNoneOption(combo) {
+    combo.selectedIndex = 0;
+}
+
+function isNoneOptionSelected(combo) {
+    return combo.selectedIndex === 0;
+}
+
+function createComboOptionGroup(text) {
+    var optGroup = document.createElement('optgroup');
+    optGroup.label = text;
+
+    return optGroup;
+}
+
+function createComboOption(text, value) {
+    var option = document.createElement('option');
+
+    option.innerHTML = text;
+    option.value = value;
+
+    return option;
+}
+
+flexReportsCombo.onchange = function () {
+    selectNoneOption(ssrsReportsCombo);
     loadFlexReport();
+}
+
+ssrsReportsCombo.onchange = function () {
+    selectNoneOption(flexReportsCombo);
+    loadSsrsReport();
 }

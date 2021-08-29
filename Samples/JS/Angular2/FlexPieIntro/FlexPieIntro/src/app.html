@@ -91,6 +91,9 @@ export class DataSvc &#123;
 }
 ----------------Component---------
 // Angular
+import * as wjcChart from 'wijmo/wijmo.chart';
+import * as wjcInput from 'wijmo/wijmo.input';
+
 import &#123; Component, EventEmitter, Input, Inject, enableProdMode, NgModule } from '@angular/core';
 import &#123; FormsModule } from '@angular/forms';
 import &#123; CommonModule } from '@angular/common';
@@ -252,34 +255,34 @@ export class AppCmp &#123;
     reversed = false;
     palette = 'standard';
     palettes = ['standard', 'cocoa', 'coral', 'dark', 'highcontrast', 'light', 'midnight', 'minimal', 'modern', 'organic', 'slate'];
-    chartPalette: wijmo.chart.Palettes;
+    chartPalette: wjcChart.Palettes;
 
     constructor( @Inject(DataSvc) dataSvc: DataSvc) &#123;
         this.dataSvc = dataSvc;
         this.itemsSource = this.dataSvc.getData();
     }
 
-    paletteChanged = (sender: wijmo.input.Menu) => &#123;
+    paletteChanged = (sender: wjcInput.Menu) => &#123;
         var p = this.palettes[sender.selectedIndex];
         this.palette = p;
-        this.chartPalette = wijmo.chart.Palettes[p];
+        this.chartPalette = wjcChart.Palettes[p];
     };
 
-    innerRadiusChanged = (sender: wijmo.input.InputNumber) => &#123;
+    innerRadiusChanged = (sender: wjcInput.InputNumber) => &#123;
         if (sender.value < sender.min || sender.value > sender.max) &#123;
             return;
         }
         this.innerRadius = sender.value;
     };
 
-    offsetChanged = (sender: wijmo.input.InputNumber) => &#123;
+    offsetChanged = (sender: wjcInput.InputNumber) => &#123;
         if (sender.value < sender.min || sender.value > sender.max) &#123;
             return;
         }
         this.offset = sender.value;
     };
 
-    startAngleChanged = (sender: wijmo.input.InputNumber) => &#123;
+    startAngleChanged = (sender: wjcInput.InputNumber) => &#123;
         if (sender.value < sender.min || sender.value > sender.max) &#123;
             return;
         }
@@ -556,7 +559,7 @@ export class AppCmp &#123;
          this.itemsSource = this.dataSvc.getData();
      }
 
-     selectedOffsetChanged = (sender: wijmo.input.InputNumber) => &#123;
+     selectedOffsetChanged = (sender: wjcInput.InputNumber) => &#123;
          if (sender.value < sender.min || sender.value > sender.max) &#123;
              return;
          }

@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,6 +8,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
+var wjcChart = require('wijmo/wijmo.chart');
+'use strict';
 var core_1 = require('@angular/core');
 var common_1 = require('@angular/common');
 var forms_1 = require('@angular/forms');
@@ -47,7 +49,7 @@ var FlexChartAnimationCmp = (function () {
             if (len >= 5) {
                 return;
             }
-            var series = new wijmo.chart.Series();
+            var series = new wjcChart.Series();
             series.binding = len ? 'y' + len : 'y';
             series.name = 'Y' + (chart.series.length + 1);
             chart.series.push(series);

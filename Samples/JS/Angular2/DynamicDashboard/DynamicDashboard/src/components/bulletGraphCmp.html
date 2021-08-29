@@ -1,0 +1,42 @@
+﻿<div class="tile" draggable="true" #tileBarChart>
+
+    <!-- caption -->
+    <div style="border-bottom:1px solid #e0e0e0; padding:4px; display:flex; cursor: move">
+        <div style="flex-grow:1; color:#005c9c; font-weight:bold">
+            Bullet Graph
+        </div>
+        <div class="buttons">
+            <span class="glyphicon glyphicon-pencil" title="Edit Tile"></span>
+            <span class="glyphicon glyphicon-remove" title="Close Tile"></span>
+        </div>
+    </div>
+
+    <!-- content -->
+    <div style="display:flex; align-items:center; justify-content:center; padding:4px">
+        <div>
+            <h3>Profits</h3>
+
+            <table class="table condensed">
+                <tr *ngFor="let item of data.items">
+                    <td>
+                        {{ item.date | date:'MMM yyyy' }}
+                    </td>
+                    <td>
+                        <span *ngIf="item.profit <= 400"
+                              class="label label-danger"
+                              style="border-radius:1em">!</span>
+                    </td>
+                    <td>
+                        <wj-bullet-graph [value]="item.profit"
+                                         [min]="0"
+                                         [bad]="400"
+                                         [target]="600"
+                                         [good]="600"
+                                         [max]="1000">
+                        </wj-bullet-graph>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

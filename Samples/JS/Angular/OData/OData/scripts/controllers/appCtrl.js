@@ -40,11 +40,11 @@ app.controller('appCtrl', function appCtrl($scope, $location) {
             return cat && item.Category_ID == cat.Category_ID;
         },
         newItemCreator: function () { // initialize new products based on current category
-        	return {
-        		Category_ID: $scope.cvCat.currentItem.Category_ID,
-				Product_Name: '',
-				Discontinued: false
-        	};
+            return {
+                Category_ID: $scope.cvCat.currentItem.Category_ID,
+                Product_Name: '',
+                Discontinued: false
+            };
         },
         loaded: function (s, e) {
 
@@ -83,10 +83,10 @@ app.controller('appCtrl', function appCtrl($scope, $location) {
             $scope.$apply();
         },
         newItemCreator: function () { // initialize new products based on current category
-        	return {
-        		First_Name: '',
-        		Last_Name: ''
-        	};
+            return {
+                First_Name: '',
+                Last_Name: ''
+            };
         }
     });
 
@@ -160,10 +160,10 @@ app.controller('appCtrl', function appCtrl($scope, $location) {
                     return item.Order_ID == orderID
                 },
                 newItemCreator: function () { // initialize new OrderDetail based on current order
-                	return {
-                		Order_ID: $scope.cvOrd.currentItem.Order_ID,
-                		Product_ID: 1
-                	};
+                    return {
+                        Order_ID: $scope.cvOrd.currentItem.Order_ID,
+                        Product_ID: 1
+                    };
                 }
             });
         }

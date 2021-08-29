@@ -11,7 +11,7 @@
 </dd>
 </dl>
 <div class="comment"><p>Angular 2 component for the <a href="topic/wijmo.grid.FlexGrid.Class.html"><span class="identifier">FlexGrid</span></a> control.</p>
-<p>Use the <b>wj-flex-grid</b> component to add <b>FlexGrid</b> controls to your 
+<p>Use the <b>wj-flex-grid</b> component to add <b>FlexGrid</b> controls to your
 Angular 2 applications. For details about Angular 2 markup syntax, see 
 <a href="static/angular2Markup.html">Angular 2 Markup</a>. For example:</p>
 
@@ -35,12 +35,13 @@ Angular 2 applications. For details about Angular 2 markup syntax, see
     [binding]="'downloads'"&gt;
   &lt;/wj-flex-grid-column&gt;
 &lt;/wj-flex-grid&gt;</pre>
+
 <p>The <b>WjFlexGrid</b> component is derived from the <b>FlexGrid</b> control and
-inherits all its properties, events and methods.</p>
-<p>The <b>wj-flex-grid</b> component may contain <a href="topic/wijmo-wijmo.angular2.grid.WjFlexGridColumn.Class.html"><span class="identifier">WjFlexGridColumn</span></a>, 
-<a href="topic/wijmo-wijmo.angular2.grid.WjFlexGridCellTemplate.Class.html"><span class="identifier">WjFlexGridCellTemplate</span></a>, 
-<a href="topic/wijmo-wijmo.angular2.grid.detail.WjFlexGridDetail.Class.html"><span class="identifier">WjFlexGridDetail</span></a> and 
-<a href="topic/wijmo-wijmo.angular2.grid.filter.WjFlexGridFilter.Class.html"><span class="identifier">WjFlexGridFilter</span></a> child components.</p></div>
+inherits all its properties, events and methods. </p>
+<p>The <b>wj-flex-grid</b> component may contain the following child components:
+<a href="topic/wijmo-wijmo.angular2.grid.detail.WjFlexGridDetail.Class.html"><span class="identifier">WjFlexGridDetail</span></a>
+, <a href="topic/wijmo-wijmo.angular2.grid.filter.WjFlexGridFilter.Class.html"><span class="identifier">WjFlexGridFilter</span></a>
+ and <a href="topic/wijmo-wijmo.angular2.grid.WjFlexGridColumn.Class.html"><span class="identifier">WjFlexGridColumn</span></a>.</p></div>
 </div>
 <div class="member-panel class members" ng-class="{ 'show-inherited' : ctx.showInherited, 'show-raisers' : ctx.showRaisers }">
 <h3 class="node">Constructor</h3>
@@ -58,8 +59,15 @@ inherits all its properties, events and methods.</p>
 <li class="mproperty inherited"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#allowSorting">allowSorting</a></li>
 <li class="mproperty inherited"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#autoClipboard">autoClipboard</a></li>
 <li class="mproperty inherited"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#autoGenerateColumns">autoGenerateColumns</a></li>
+<li class="mproperty"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#autoSizedColumnNg">autoSizedColumnNg</a></li>
+<li class="mproperty"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#autoSizedRowNg">autoSizedRowNg</a></li>
 <li class="mproperty inherited"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#autoSizeMode">autoSizeMode</a></li>
+<li class="mproperty"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#autoSizingColumnNg">autoSizingColumnNg</a></li>
+<li class="mproperty"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#autoSizingRowNg">autoSizingRowNg</a></li>
+<li class="mproperty"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#beginningEditNg">beginningEditNg</a></li>
 <li class="mproperty inherited"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#bottomLeftCells">bottomLeftCells</a></li>
+<li class="mproperty"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#cellEditEndedNg">cellEditEndedNg</a></li>
+<li class="mproperty"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#cellEditEndingNg">cellEditEndingNg</a></li>
 <li class="mproperty inherited"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#cellFactory">cellFactory</a></li>
 <li class="mproperty inherited"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#cells">cells</a></li>
 <li class="mproperty inherited"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#childItemsPath">childItemsPath</a></li>
@@ -70,42 +78,88 @@ inherits all its properties, events and methods.</p>
 <li class="mproperty inherited"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#columnLayout">columnLayout</a></li>
 <li class="mproperty inherited"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#columns">columns</a></li>
 <li class="mproperty inherited"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#controlRect">controlRect</a></li>
+<li class="mproperty"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#copiedNg">copiedNg</a></li>
+<li class="mproperty"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#copyingNg">copyingNg</a></li>
 <li class="mproperty inherited"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#deferResizing">deferResizing</a></li>
+<li class="mproperty"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#deletingRowNg">deletingRowNg</a></li>
+<li class="mproperty"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#draggedColumnNg">draggedColumnNg</a></li>
+<li class="mproperty"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#draggedRowNg">draggedRowNg</a></li>
+<li class="mproperty"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#draggingColumnNg">draggingColumnNg</a></li>
+<li class="mproperty"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#draggingColumnOverNg">draggingColumnOverNg</a></li>
+<li class="mproperty"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#draggingRowNg">draggingRowNg</a></li>
+<li class="mproperty"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#draggingRowOverNg">draggingRowOverNg</a></li>
 <li class="mproperty inherited"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#editRange">editRange</a></li>
+<li class="mproperty"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#formatItemNg">formatItemNg</a></li>
 <li class="mproperty inherited"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#frozenColumns">frozenColumns</a></li>
 <li class="mproperty inherited"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#frozenRows">frozenRows</a></li>
+<li class="mproperty"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#gotFocusNg">gotFocusNg</a></li>
+<li class="mproperty"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#groupCollapsedChangedNg">groupCollapsedChangedNg</a></li>
+<li class="mproperty"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#groupCollapsedChangingNg">groupCollapsedChangingNg</a></li>
 <li class="mproperty inherited"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#groupHeaderFormat">groupHeaderFormat</a></li>
 <li class="mproperty inherited"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#headersVisibility">headersVisibility</a></li>
 <li class="mproperty inherited"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#hostElement">hostElement</a></li>
 <li class="mproperty inherited"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#imeEnabled">imeEnabled</a></li>
+<li class="mproperty"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#initialized">initialized</a></li>
 <li class="mproperty inherited"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#isDisabled">isDisabled</a></li>
+<li class="mproperty"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#isInitialized">isInitialized</a></li>
 <li class="mproperty inherited"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#isReadOnly">isReadOnly</a></li>
 <li class="mproperty inherited"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#isTouching">isTouching</a></li>
 <li class="mproperty inherited"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#isUpdating">isUpdating</a></li>
 <li class="mproperty inherited"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#itemFormatter">itemFormatter</a></li>
 <li class="mproperty inherited"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#itemsSource">itemsSource</a></li>
+<li class="mproperty"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#itemsSourceChangedNg">itemsSourceChangedNg</a></li>
+<li class="mproperty"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#loadedRowsNg">loadedRowsNg</a></li>
+<li class="mproperty"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#loadingRowsNg">loadingRowsNg</a></li>
+<li class="mproperty"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#lostFocusNg">lostFocusNg</a></li>
 <li class="mproperty inherited"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#mergeManager">mergeManager</a></li>
 <li class="mproperty inherited"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#newRowAtTop">newRowAtTop</a></li>
+<li class="mproperty"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#pastedCellNg">pastedCellNg</a></li>
+<li class="mproperty"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#pastedNg">pastedNg</a></li>
+<li class="mproperty"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#pastingCellNg">pastingCellNg</a></li>
+<li class="mproperty"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#pastingNg">pastingNg</a></li>
+<li class="mproperty"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#prepareCellForEditNg">prepareCellForEditNg</a></li>
 <li class="mproperty inherited"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#preserveOutlineState">preserveOutlineState</a></li>
 <li class="mproperty inherited"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#preserveSelectedState">preserveSelectedState</a></li>
+<li class="mproperty"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#resizedColumnNg">resizedColumnNg</a></li>
+<li class="mproperty"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#resizedRowNg">resizedRowNg</a></li>
+<li class="mproperty"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#resizingColumnNg">resizingColumnNg</a></li>
+<li class="mproperty"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#resizingRowNg">resizingRowNg</a></li>
+<li class="mproperty inherited"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#rightToLeft">rightToLeft</a></li>
+<li class="mproperty"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#rowAddedNg">rowAddedNg</a></li>
+<li class="mproperty"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#rowEditEndedNg">rowEditEndedNg</a></li>
+<li class="mproperty"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#rowEditEndingNg">rowEditEndingNg</a></li>
+<li class="mproperty"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#rowEditStartedNg">rowEditStartedNg</a></li>
+<li class="mproperty"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#rowEditStartingNg">rowEditStartingNg</a></li>
 <li class="mproperty inherited"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#rowHeaders">rowHeaders</a></li>
 <li class="mproperty inherited"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#rows">rows</a></li>
 <li class="mproperty inherited"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#scrollPosition">scrollPosition</a></li>
+<li class="mproperty"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#scrollPositionChangedNg">scrollPositionChangedNg</a></li>
 <li class="mproperty inherited"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#scrollSize">scrollSize</a></li>
 <li class="mproperty inherited"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#selectedItems">selectedItems</a></li>
 <li class="mproperty inherited"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#selectedRows">selectedRows</a></li>
 <li class="mproperty inherited"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#selection">selection</a></li>
+<li class="mproperty"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#selectionChangedNg">selectionChangedNg</a></li>
+<li class="mproperty"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#selectionChangingNg">selectionChangingNg</a></li>
 <li class="mproperty inherited"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#selectionMode">selectionMode</a></li>
 <li class="mproperty inherited"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#showAlternatingRows">showAlternatingRows</a></li>
+<li class="mproperty inherited"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#showErrors">showErrors</a></li>
 <li class="mproperty inherited"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#showGroups">showGroups</a></li>
 <li class="mproperty inherited"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#showMarquee">showMarquee</a></li>
 <li class="mproperty inherited"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#showSelectedHeaders">showSelectedHeaders</a></li>
 <li class="mproperty inherited"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#showSort">showSort</a></li>
+<li class="mproperty"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#sortedColumnNg">sortedColumnNg</a></li>
+<li class="mproperty"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#sortingColumnNg">sortingColumnNg</a></li>
 <li class="mproperty inherited"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#sortRowIndex">sortRowIndex</a></li>
 <li class="mproperty inherited"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#stickyHeaders">stickyHeaders</a></li>
 <li class="mproperty inherited"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#topLeftCells">topLeftCells</a></li>
 <li class="mproperty inherited"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#treeIndent">treeIndent</a></li>
+<li class="mproperty"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#updatedLayoutNg">updatedLayoutNg</a></li>
+<li class="mproperty"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#updatedViewNg">updatedViewNg</a></li>
+<li class="mproperty"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#updatingLayoutNg">updatingLayoutNg</a></li>
+<li class="mproperty"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#updatingViewNg">updatingViewNg</a></li>
+<li class="mproperty inherited"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#validateEdits">validateEdits</a></li>
 <li class="mproperty inherited"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#viewRange">viewRange</a></li>
+<li class="mproperty"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#wjModelProperty">wjModelProperty</a></li>
 </ul>
 <h3 class="node">Methods</h3>
 <ul>
@@ -116,8 +170,10 @@ inherits all its properties, events and methods.</p>
 <li class="mmethod inherited"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#autoSizeRow">autoSizeRow</a></li>
 <li class="mmethod inherited"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#autoSizeRows">autoSizeRows</a></li>
 <li class="mmethod inherited"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#beginUpdate">beginUpdate</a></li>
+<li class="mmethod inherited"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#canEditCell">canEditCell</a></li>
 <li class="mmethod inherited"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#collapseGroupsToLevel">collapseGroupsToLevel</a></li>
 <li class="mmethod inherited"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#containsFocus">containsFocus</a></li>
+<li class="mmethod"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#created">created</a></li>
 <li class="mmethod inherited"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#deferUpdate">deferUpdate</a></li>
 <li class="mmethod inherited"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#dispose">dispose</a></li>
 <li class="mmethod inherited"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#disposeAll">disposeAll</a></li>
@@ -151,7 +207,9 @@ inherits all its properties, events and methods.</p>
 <li class="mmethod inherited raiser"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#onDraggedColumn">onDraggedColumn</a></li>
 <li class="mmethod inherited raiser"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#onDraggedRow">onDraggedRow</a></li>
 <li class="mmethod inherited raiser"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#onDraggingColumn">onDraggingColumn</a></li>
+<li class="mmethod inherited raiser"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#onDraggingColumnOver">onDraggingColumnOver</a></li>
 <li class="mmethod inherited raiser"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#onDraggingRow">onDraggingRow</a></li>
+<li class="mmethod inherited raiser"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#onDraggingRowOver">onDraggingRowOver</a></li>
 <li class="mmethod inherited raiser"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#onFormatItem">onFormatItem</a></li>
 <li class="mmethod inherited raiser"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#onGotFocus">onGotFocus</a></li>
 <li class="mmethod inherited raiser"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#onGroupCollapsedChanged">onGroupCollapsedChanged</a></li>
@@ -172,6 +230,8 @@ inherits all its properties, events and methods.</p>
 <li class="mmethod inherited raiser"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#onRowAdded">onRowAdded</a></li>
 <li class="mmethod inherited raiser"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#onRowEditEnded">onRowEditEnded</a></li>
 <li class="mmethod inherited raiser"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#onRowEditEnding">onRowEditEnding</a></li>
+<li class="mmethod inherited raiser"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#onRowEditStarted">onRowEditStarted</a></li>
+<li class="mmethod inherited raiser"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#onRowEditStarting">onRowEditStarting</a></li>
 <li class="mmethod inherited raiser"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#onScrollPositionChanged">onScrollPositionChanged</a></li>
 <li class="mmethod inherited raiser"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#onSelectionChanged">onSelectionChanged</a></li>
 <li class="mmethod inherited raiser"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#onSelectionChanging">onSelectionChanging</a></li>
@@ -207,7 +267,9 @@ inherits all its properties, events and methods.</p>
 <li class="mevent inherited"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#draggedColumn">draggedColumn</a></li>
 <li class="mevent inherited"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#draggedRow">draggedRow</a></li>
 <li class="mevent inherited"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#draggingColumn">draggingColumn</a></li>
+<li class="mevent inherited"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#draggingColumnOver">draggingColumnOver</a></li>
 <li class="mevent inherited"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#draggingRow">draggingRow</a></li>
+<li class="mevent inherited"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#draggingRowOver">draggingRowOver</a></li>
 <li class="mevent inherited"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#formatItem">formatItem</a></li>
 <li class="mevent inherited"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#gotFocus">gotFocus</a></li>
 <li class="mevent inherited"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#groupCollapsedChanged">groupCollapsedChanged</a></li>
@@ -228,6 +290,8 @@ inherits all its properties, events and methods.</p>
 <li class="mevent inherited"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#rowAdded">rowAdded</a></li>
 <li class="mevent inherited"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#rowEditEnded">rowEditEnded</a></li>
 <li class="mevent inherited"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#rowEditEnding">rowEditEnding</a></li>
+<li class="mevent inherited"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#rowEditStarted">rowEditStarted</a></li>
+<li class="mevent inherited"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#rowEditStarting">rowEditStarting</a></li>
 <li class="mevent inherited"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#scrollPositionChanged">scrollPositionChanged</a></li>
 <li class="mevent inherited"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#selectionChanged">selectionChanged</a></li>
 <li class="mevent inherited"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#selectionChanging">selectionChanging</a></li>
@@ -373,6 +437,24 @@ the columns explicitly. For example:</p>
   <dt>Type</dt><dd><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a></dd>
 </dl>
 </div>
+<div id="autoSizedColumnNg" class="member-panel mproperty">
+<h3>autoSizedColumnNg</h3>
+<div class="comment"><p>Angular (EventEmitter) version of the Wijmo <b>autoSizedColumn</b> event for programmatic access.
+Use this event name if you want to subscribe to the Angular version of the event in code.
+In template bindings use the conventional <b>autoSizedColumn</b> Wijmo event name.</p></div>
+<dl class="dl-horizontal">
+  <dt>Type</dt><dd><span class="identifier">EventEmitter</span></dd>
+</dl>
+</div>
+<div id="autoSizedRowNg" class="member-panel mproperty">
+<h3>autoSizedRowNg</h3>
+<div class="comment"><p>Angular (EventEmitter) version of the Wijmo <b>autoSizedRow</b> event for programmatic access.
+Use this event name if you want to subscribe to the Angular version of the event in code.
+In template bindings use the conventional <b>autoSizedRow</b> Wijmo event name.</p></div>
+<dl class="dl-horizontal">
+  <dt>Type</dt><dd><span class="identifier">EventEmitter</span></dd>
+</dl>
+</div>
 <div id="autoSizeMode" class="member-panel mproperty inherited">
 <h3>autoSizeMode</h3>
 <div class="comment"><p>Gets or sets which cells should be taken into account when auto-sizing a
@@ -387,6 +469,33 @@ you to change that to include only the headers or only the data.</p></div>
   <dt>Type</dt><dd><a href="topic/wijmo.grid.AutoSizeMode.Enum.html"><span class="identifier">AutoSizeMode</span></a></dd>
 </dl>
 </div>
+<div id="autoSizingColumnNg" class="member-panel mproperty">
+<h3>autoSizingColumnNg</h3>
+<div class="comment"><p>Angular (EventEmitter) version of the Wijmo <b>autoSizingColumn</b> event for programmatic access.
+Use this event name if you want to subscribe to the Angular version of the event in code.
+In template bindings use the conventional <b>autoSizingColumn</b> Wijmo event name.</p></div>
+<dl class="dl-horizontal">
+  <dt>Type</dt><dd><span class="identifier">EventEmitter</span></dd>
+</dl>
+</div>
+<div id="autoSizingRowNg" class="member-panel mproperty">
+<h3>autoSizingRowNg</h3>
+<div class="comment"><p>Angular (EventEmitter) version of the Wijmo <b>autoSizingRow</b> event for programmatic access.
+Use this event name if you want to subscribe to the Angular version of the event in code.
+In template bindings use the conventional <b>autoSizingRow</b> Wijmo event name.</p></div>
+<dl class="dl-horizontal">
+  <dt>Type</dt><dd><span class="identifier">EventEmitter</span></dd>
+</dl>
+</div>
+<div id="beginningEditNg" class="member-panel mproperty">
+<h3>beginningEditNg</h3>
+<div class="comment"><p>Angular (EventEmitter) version of the Wijmo <b>beginningEdit</b> event for programmatic access.
+Use this event name if you want to subscribe to the Angular version of the event in code.
+In template bindings use the conventional <b>beginningEdit</b> Wijmo event name.</p></div>
+<dl class="dl-horizontal">
+  <dt>Type</dt><dd><span class="identifier">EventEmitter</span></dd>
+</dl>
+</div>
 <div id="bottomLeftCells" class="member-panel mproperty inherited">
 <h3>bottomLeftCells</h3>
 <div class="comment"><p>Gets the <a href="topic/wijmo.grid.GridPanel.Class.html"><span class="identifier">GridPanel</span></a> that contains the bottom left cells.</p>
@@ -395,6 +504,24 @@ left of the <a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#colu
 <dl class="dl-horizontal">
   <dt>Inherited From</dt><dd><a href="topic/wijmo.grid.FlexGrid.Class.html"><span class="identifier">FlexGrid</span></a></dd>
   <dt>Type</dt><dd><a href="topic/wijmo.grid.GridPanel.Class.html"><span class="identifier">GridPanel</span></a></dd>
+</dl>
+</div>
+<div id="cellEditEndedNg" class="member-panel mproperty">
+<h3>cellEditEndedNg</h3>
+<div class="comment"><p>Angular (EventEmitter) version of the Wijmo <b>cellEditEnded</b> event for programmatic access.
+Use this event name if you want to subscribe to the Angular version of the event in code.
+In template bindings use the conventional <b>cellEditEnded</b> Wijmo event name.</p></div>
+<dl class="dl-horizontal">
+  <dt>Type</dt><dd><span class="identifier">EventEmitter</span></dd>
+</dl>
+</div>
+<div id="cellEditEndingNg" class="member-panel mproperty">
+<h3>cellEditEndingNg</h3>
+<div class="comment"><p>Angular (EventEmitter) version of the Wijmo <b>cellEditEnding</b> event for programmatic access.
+Use this event name if you want to subscribe to the Angular version of the event in code.
+In template bindings use the conventional <b>cellEditEnding</b> Wijmo event name.</p></div>
+<dl class="dl-horizontal">
+  <dt>Type</dt><dd><span class="identifier">EventEmitter</span></dd>
 </dl>
 </div>
 <div id="cellFactory" class="member-panel mproperty inherited">
@@ -510,6 +637,24 @@ data maps are not serializable.</p></div>
   <dt>Type</dt><dd><a href="topic/wijmo.Rect.Class.html"><span class="identifier">Rect</span></a></dd>
 </dl>
 </div>
+<div id="copiedNg" class="member-panel mproperty">
+<h3>copiedNg</h3>
+<div class="comment"><p>Angular (EventEmitter) version of the Wijmo <b>copied</b> event for programmatic access.
+Use this event name if you want to subscribe to the Angular version of the event in code.
+In template bindings use the conventional <b>copied</b> Wijmo event name.</p></div>
+<dl class="dl-horizontal">
+  <dt>Type</dt><dd><span class="identifier">EventEmitter</span></dd>
+</dl>
+</div>
+<div id="copyingNg" class="member-panel mproperty">
+<h3>copyingNg</h3>
+<div class="comment"><p>Angular (EventEmitter) version of the Wijmo <b>copying</b> event for programmatic access.
+Use this event name if you want to subscribe to the Angular version of the event in code.
+In template bindings use the conventional <b>copying</b> Wijmo event name.</p></div>
+<dl class="dl-horizontal">
+  <dt>Type</dt><dd><span class="identifier">EventEmitter</span></dd>
+</dl>
+</div>
 <div id="deferResizing" class="member-panel mproperty inherited">
 <h3>deferResizing</h3>
 <div class="comment"><p>Gets or sets a value that determines whether row and column resizing 
@@ -523,6 +668,69 @@ only when the user releases the mouse button.</p></div>
   <dt>Type</dt><dd><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a></dd>
 </dl>
 </div>
+<div id="deletingRowNg" class="member-panel mproperty">
+<h3>deletingRowNg</h3>
+<div class="comment"><p>Angular (EventEmitter) version of the Wijmo <b>deletingRow</b> event for programmatic access.
+Use this event name if you want to subscribe to the Angular version of the event in code.
+In template bindings use the conventional <b>deletingRow</b> Wijmo event name.</p></div>
+<dl class="dl-horizontal">
+  <dt>Type</dt><dd><span class="identifier">EventEmitter</span></dd>
+</dl>
+</div>
+<div id="draggedColumnNg" class="member-panel mproperty">
+<h3>draggedColumnNg</h3>
+<div class="comment"><p>Angular (EventEmitter) version of the Wijmo <b>draggedColumn</b> event for programmatic access.
+Use this event name if you want to subscribe to the Angular version of the event in code.
+In template bindings use the conventional <b>draggedColumn</b> Wijmo event name.</p></div>
+<dl class="dl-horizontal">
+  <dt>Type</dt><dd><span class="identifier">EventEmitter</span></dd>
+</dl>
+</div>
+<div id="draggedRowNg" class="member-panel mproperty">
+<h3>draggedRowNg</h3>
+<div class="comment"><p>Angular (EventEmitter) version of the Wijmo <b>draggedRow</b> event for programmatic access.
+Use this event name if you want to subscribe to the Angular version of the event in code.
+In template bindings use the conventional <b>draggedRow</b> Wijmo event name.</p></div>
+<dl class="dl-horizontal">
+  <dt>Type</dt><dd><span class="identifier">EventEmitter</span></dd>
+</dl>
+</div>
+<div id="draggingColumnNg" class="member-panel mproperty">
+<h3>draggingColumnNg</h3>
+<div class="comment"><p>Angular (EventEmitter) version of the Wijmo <b>draggingColumn</b> event for programmatic access.
+Use this event name if you want to subscribe to the Angular version of the event in code.
+In template bindings use the conventional <b>draggingColumn</b> Wijmo event name.</p></div>
+<dl class="dl-horizontal">
+  <dt>Type</dt><dd><span class="identifier">EventEmitter</span></dd>
+</dl>
+</div>
+<div id="draggingColumnOverNg" class="member-panel mproperty">
+<h3>draggingColumnOverNg</h3>
+<div class="comment"><p>Angular (EventEmitter) version of the Wijmo <b>draggingColumnOver</b> event for programmatic access.
+Use this event name if you want to subscribe to the Angular version of the event in code.
+In template bindings use the conventional <b>draggingColumnOver</b> Wijmo event name.</p></div>
+<dl class="dl-horizontal">
+  <dt>Type</dt><dd><span class="identifier">EventEmitter</span></dd>
+</dl>
+</div>
+<div id="draggingRowNg" class="member-panel mproperty">
+<h3>draggingRowNg</h3>
+<div class="comment"><p>Angular (EventEmitter) version of the Wijmo <b>draggingRow</b> event for programmatic access.
+Use this event name if you want to subscribe to the Angular version of the event in code.
+In template bindings use the conventional <b>draggingRow</b> Wijmo event name.</p></div>
+<dl class="dl-horizontal">
+  <dt>Type</dt><dd><span class="identifier">EventEmitter</span></dd>
+</dl>
+</div>
+<div id="draggingRowOverNg" class="member-panel mproperty">
+<h3>draggingRowOverNg</h3>
+<div class="comment"><p>Angular (EventEmitter) version of the Wijmo <b>draggingRowOver</b> event for programmatic access.
+Use this event name if you want to subscribe to the Angular version of the event in code.
+In template bindings use the conventional <b>draggingRowOver</b> Wijmo event name.</p></div>
+<dl class="dl-horizontal">
+  <dt>Type</dt><dd><span class="identifier">EventEmitter</span></dd>
+</dl>
+</div>
 <div id="editRange" class="member-panel mproperty inherited">
 <h3>editRange</h3>
 <div class="comment"><p>Gets a <a href="topic/wijmo.grid.CellRange.Class.html"><span class="identifier">CellRange</span></a> that identifies the cell currently being edited.</p></div>
@@ -531,10 +739,19 @@ only when the user releases the mouse button.</p></div>
   <dt>Type</dt><dd><a href="topic/wijmo.grid.CellRange.Class.html"><span class="identifier">CellRange</span></a></dd>
 </dl>
 </div>
+<div id="formatItemNg" class="member-panel mproperty">
+<h3>formatItemNg</h3>
+<div class="comment"><p>Angular (EventEmitter) version of the Wijmo <b>formatItem</b> event for programmatic access.
+Use this event name if you want to subscribe to the Angular version of the event in code.
+In template bindings use the conventional <b>formatItem</b> Wijmo event name.</p></div>
+<dl class="dl-horizontal">
+  <dt>Type</dt><dd><span class="identifier">EventEmitter</span></dd>
+</dl>
+</div>
 <div id="frozenColumns" class="member-panel mproperty inherited">
 <h3>frozenColumns</h3>
 <div class="comment"><p>Gets or sets the number of frozen columns.</p>
-<p>Frozen columns do not scroll, but the cells they contain 
+<p>Frozen columns do not scroll horizontally, but the cells they contain 
 may be selected and edited.</p></div>
 <dl class="dl-horizontal">
   <dt>Inherited From</dt><dd><a href="topic/wijmo.grid.FlexGrid.Class.html"><span class="identifier">FlexGrid</span></a></dd>
@@ -544,11 +761,38 @@ may be selected and edited.</p></div>
 <div id="frozenRows" class="member-panel mproperty inherited">
 <h3>frozenRows</h3>
 <div class="comment"><p>Gets or sets the number of frozen rows.</p>
-<p>Frozen rows do not scroll, but the cells they contain 
+<p>Frozen rows do not scroll vertically, but the cells they contain 
 may be selected and edited.</p></div>
 <dl class="dl-horizontal">
   <dt>Inherited From</dt><dd><a href="topic/wijmo.grid.FlexGrid.Class.html"><span class="identifier">FlexGrid</span></a></dd>
   <dt>Type</dt><dd><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Number" target="_blank"><span class="identifier">number</span></a></dd>
+</dl>
+</div>
+<div id="gotFocusNg" class="member-panel mproperty">
+<h3>gotFocusNg</h3>
+<div class="comment"><p>Angular (EventEmitter) version of the Wijmo <b>gotFocus</b> event for programmatic access.
+Use this event name if you want to subscribe to the Angular version of the event in code.
+In template bindings use the conventional <b>gotFocus</b> Wijmo event name.</p></div>
+<dl class="dl-horizontal">
+  <dt>Type</dt><dd><span class="identifier">EventEmitter</span></dd>
+</dl>
+</div>
+<div id="groupCollapsedChangedNg" class="member-panel mproperty">
+<h3>groupCollapsedChangedNg</h3>
+<div class="comment"><p>Angular (EventEmitter) version of the Wijmo <b>groupCollapsedChanged</b> event for programmatic access.
+Use this event name if you want to subscribe to the Angular version of the event in code.
+In template bindings use the conventional <b>groupCollapsedChanged</b> Wijmo event name.</p></div>
+<dl class="dl-horizontal">
+  <dt>Type</dt><dd><span class="identifier">EventEmitter</span></dd>
+</dl>
+</div>
+<div id="groupCollapsedChangingNg" class="member-panel mproperty">
+<h3>groupCollapsedChangingNg</h3>
+<div class="comment"><p>Angular (EventEmitter) version of the Wijmo <b>groupCollapsedChanging</b> event for programmatic access.
+Use this event name if you want to subscribe to the Angular version of the event in code.
+In template bindings use the conventional <b>groupCollapsedChanging</b> Wijmo event name.</p></div>
+<dl class="dl-horizontal">
+  <dt>Type</dt><dd><span class="identifier">EventEmitter</span></dd>
 </dl>
 </div>
 <div id="groupHeaderFormat" class="member-panel mproperty inherited">
@@ -605,12 +849,28 @@ Chinese, Korean, and other languages that require IME support.</p></div>
   <dt>Type</dt><dd><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a></dd>
 </dl>
 </div>
+<div id="initialized" class="member-panel mproperty">
+<h3>initialized</h3>
+<div class="comment"><p>This event is triggered after the component has been initialized by Angular, that is
+all bound properties have been assigned and child components (if any) have been initialized.</p></div>
+<dl class="dl-horizontal">
+  <dt>Type</dt><dd><span class="identifier">EventEmitter</span></dd>
+</dl>
+</div>
 <div id="isDisabled" class="member-panel mproperty inherited">
 <h3>isDisabled</h3>
 <div class="comment"><p>Gets or sets a value that determines whether the control is disabled.</p>
 <p>Disabled controls cannot get mouse or keyboard events.</p></div>
 <dl class="dl-horizontal">
   <dt>Inherited From</dt><dd><a href="topic/wijmo.Control.Class.html"><span class="identifier">Control</span></a></dd>
+  <dt>Type</dt><dd><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a></dd>
+</dl>
+</div>
+<div id="isInitialized" class="member-panel mproperty">
+<h3>isInitialized</h3>
+<div class="comment"><p>Indicates whether the component has been initialized by Angular.
+Changes its value from false to true right before triggering the <b>initialized</b> event.</p></div>
+<dl class="dl-horizontal">
   <dt>Type</dt><dd><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a></dd>
 </dl>
 </div>
@@ -693,6 +953,42 @@ clients to attach their own handlers.</p></div>
   <dt>Type</dt><dd><span class="identifier">any</span></dd>
 </dl>
 </div>
+<div id="itemsSourceChangedNg" class="member-panel mproperty">
+<h3>itemsSourceChangedNg</h3>
+<div class="comment"><p>Angular (EventEmitter) version of the Wijmo <b>itemsSourceChanged</b> event for programmatic access.
+Use this event name if you want to subscribe to the Angular version of the event in code.
+In template bindings use the conventional <b>itemsSourceChanged</b> Wijmo event name.</p></div>
+<dl class="dl-horizontal">
+  <dt>Type</dt><dd><span class="identifier">EventEmitter</span></dd>
+</dl>
+</div>
+<div id="loadedRowsNg" class="member-panel mproperty">
+<h3>loadedRowsNg</h3>
+<div class="comment"><p>Angular (EventEmitter) version of the Wijmo <b>loadedRows</b> event for programmatic access.
+Use this event name if you want to subscribe to the Angular version of the event in code.
+In template bindings use the conventional <b>loadedRows</b> Wijmo event name.</p></div>
+<dl class="dl-horizontal">
+  <dt>Type</dt><dd><span class="identifier">EventEmitter</span></dd>
+</dl>
+</div>
+<div id="loadingRowsNg" class="member-panel mproperty">
+<h3>loadingRowsNg</h3>
+<div class="comment"><p>Angular (EventEmitter) version of the Wijmo <b>loadingRows</b> event for programmatic access.
+Use this event name if you want to subscribe to the Angular version of the event in code.
+In template bindings use the conventional <b>loadingRows</b> Wijmo event name.</p></div>
+<dl class="dl-horizontal">
+  <dt>Type</dt><dd><span class="identifier">EventEmitter</span></dd>
+</dl>
+</div>
+<div id="lostFocusNg" class="member-panel mproperty">
+<h3>lostFocusNg</h3>
+<div class="comment"><p>Angular (EventEmitter) version of the Wijmo <b>lostFocus</b> event for programmatic access.
+Use this event name if you want to subscribe to the Angular version of the event in code.
+In template bindings use the conventional <b>lostFocus</b> Wijmo event name.</p></div>
+<dl class="dl-horizontal">
+  <dt>Type</dt><dd><span class="identifier">EventEmitter</span></dd>
+</dl>
+</div>
 <div id="mergeManager" class="member-panel mproperty inherited">
 <h3>mergeManager</h3>
 <div class="comment"><p>Gets or sets the <a href="topic/wijmo.grid.MergeManager.Class.html"><span class="identifier">MergeManager</span></a> object responsible for determining how cells
@@ -704,13 +1000,62 @@ should be merged.</p></div>
 </div>
 <div id="newRowAtTop" class="member-panel mproperty inherited">
 <h3>newRowAtTop</h3>
-<div class="comment"><p>Gets or sets a value that indicates whether the new row template should be located
-at the top of the grid or at the bottom.</p>
-<p>The new row template will be displayed only if the <a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#allowAddNew"><span class="identifier">allowAddNew</span></a> property is set
-to true and if the <a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#itemsSource"><span class="identifier">itemsSource</span></a> object supports adding new items.</p></div>
+<div class="comment"><p>Gets or sets a value that indicates whether the new row template should be
+located at the top of the grid or at the bottom.</p>
+<p>If you set the <a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#newRowAtTop"><span class="identifier">newRowAtTop</span></a> property to true, and you want the new
+row template to remain visible at all times, set the <a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#frozenRows"><span class="identifier">frozenRows</span></a>
+property to one. This will freeze the new row template at the top so
+it won't scroll off the view.</p>
+<p>The new row template will be displayed only if the <a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#allowAddNew"><span class="identifier">allowAddNew</span></a> property
+is set to true and if the <a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#itemsSource"><span class="identifier">itemsSource</span></a> object supports adding new items.</p></div>
 <dl class="dl-horizontal">
   <dt>Inherited From</dt><dd><a href="topic/wijmo.grid.FlexGrid.Class.html"><span class="identifier">FlexGrid</span></a></dd>
   <dt>Type</dt><dd><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a></dd>
+</dl>
+</div>
+<div id="pastedCellNg" class="member-panel mproperty">
+<h3>pastedCellNg</h3>
+<div class="comment"><p>Angular (EventEmitter) version of the Wijmo <b>pastedCell</b> event for programmatic access.
+Use this event name if you want to subscribe to the Angular version of the event in code.
+In template bindings use the conventional <b>pastedCell</b> Wijmo event name.</p></div>
+<dl class="dl-horizontal">
+  <dt>Type</dt><dd><span class="identifier">EventEmitter</span></dd>
+</dl>
+</div>
+<div id="pastedNg" class="member-panel mproperty">
+<h3>pastedNg</h3>
+<div class="comment"><p>Angular (EventEmitter) version of the Wijmo <b>pasted</b> event for programmatic access.
+Use this event name if you want to subscribe to the Angular version of the event in code.
+In template bindings use the conventional <b>pasted</b> Wijmo event name.</p></div>
+<dl class="dl-horizontal">
+  <dt>Type</dt><dd><span class="identifier">EventEmitter</span></dd>
+</dl>
+</div>
+<div id="pastingCellNg" class="member-panel mproperty">
+<h3>pastingCellNg</h3>
+<div class="comment"><p>Angular (EventEmitter) version of the Wijmo <b>pastingCell</b> event for programmatic access.
+Use this event name if you want to subscribe to the Angular version of the event in code.
+In template bindings use the conventional <b>pastingCell</b> Wijmo event name.</p></div>
+<dl class="dl-horizontal">
+  <dt>Type</dt><dd><span class="identifier">EventEmitter</span></dd>
+</dl>
+</div>
+<div id="pastingNg" class="member-panel mproperty">
+<h3>pastingNg</h3>
+<div class="comment"><p>Angular (EventEmitter) version of the Wijmo <b>pasting</b> event for programmatic access.
+Use this event name if you want to subscribe to the Angular version of the event in code.
+In template bindings use the conventional <b>pasting</b> Wijmo event name.</p></div>
+<dl class="dl-horizontal">
+  <dt>Type</dt><dd><span class="identifier">EventEmitter</span></dd>
+</dl>
+</div>
+<div id="prepareCellForEditNg" class="member-panel mproperty">
+<h3>prepareCellForEditNg</h3>
+<div class="comment"><p>Angular (EventEmitter) version of the Wijmo <b>prepareCellForEdit</b> event for programmatic access.
+Use this event name if you want to subscribe to the Angular version of the event in code.
+In template bindings use the conventional <b>prepareCellForEdit</b> Wijmo event name.</p></div>
+<dl class="dl-horizontal">
+  <dt>Type</dt><dd><span class="identifier">EventEmitter</span></dd>
 </dl>
 </div>
 <div id="preserveOutlineState" class="member-panel mproperty inherited">
@@ -731,6 +1076,96 @@ the selected state of rows when the data is refreshed.</p></div>
 <dl class="dl-horizontal">
   <dt>Inherited From</dt><dd><a href="topic/wijmo.grid.FlexGrid.Class.html"><span class="identifier">FlexGrid</span></a></dd>
   <dt>Type</dt><dd><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a></dd>
+</dl>
+</div>
+<div id="resizedColumnNg" class="member-panel mproperty">
+<h3>resizedColumnNg</h3>
+<div class="comment"><p>Angular (EventEmitter) version of the Wijmo <b>resizedColumn</b> event for programmatic access.
+Use this event name if you want to subscribe to the Angular version of the event in code.
+In template bindings use the conventional <b>resizedColumn</b> Wijmo event name.</p></div>
+<dl class="dl-horizontal">
+  <dt>Type</dt><dd><span class="identifier">EventEmitter</span></dd>
+</dl>
+</div>
+<div id="resizedRowNg" class="member-panel mproperty">
+<h3>resizedRowNg</h3>
+<div class="comment"><p>Angular (EventEmitter) version of the Wijmo <b>resizedRow</b> event for programmatic access.
+Use this event name if you want to subscribe to the Angular version of the event in code.
+In template bindings use the conventional <b>resizedRow</b> Wijmo event name.</p></div>
+<dl class="dl-horizontal">
+  <dt>Type</dt><dd><span class="identifier">EventEmitter</span></dd>
+</dl>
+</div>
+<div id="resizingColumnNg" class="member-panel mproperty">
+<h3>resizingColumnNg</h3>
+<div class="comment"><p>Angular (EventEmitter) version of the Wijmo <b>resizingColumn</b> event for programmatic access.
+Use this event name if you want to subscribe to the Angular version of the event in code.
+In template bindings use the conventional <b>resizingColumn</b> Wijmo event name.</p></div>
+<dl class="dl-horizontal">
+  <dt>Type</dt><dd><span class="identifier">EventEmitter</span></dd>
+</dl>
+</div>
+<div id="resizingRowNg" class="member-panel mproperty">
+<h3>resizingRowNg</h3>
+<div class="comment"><p>Angular (EventEmitter) version of the Wijmo <b>resizingRow</b> event for programmatic access.
+Use this event name if you want to subscribe to the Angular version of the event in code.
+In template bindings use the conventional <b>resizingRow</b> Wijmo event name.</p></div>
+<dl class="dl-horizontal">
+  <dt>Type</dt><dd><span class="identifier">EventEmitter</span></dd>
+</dl>
+</div>
+<div id="rightToLeft" class="member-panel mproperty inherited">
+<h3>rightToLeft</h3>
+<div class="comment"><p>Gets a value indicating whether the control is hosted in an element
+with right-to-left layout.</p></div>
+<dl class="dl-horizontal">
+  <dt>Inherited From</dt><dd><a href="topic/wijmo.Control.Class.html"><span class="identifier">Control</span></a></dd>
+  <dt>Type</dt><dd><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a></dd>
+</dl>
+</div>
+<div id="rowAddedNg" class="member-panel mproperty">
+<h3>rowAddedNg</h3>
+<div class="comment"><p>Angular (EventEmitter) version of the Wijmo <b>rowAdded</b> event for programmatic access.
+Use this event name if you want to subscribe to the Angular version of the event in code.
+In template bindings use the conventional <b>rowAdded</b> Wijmo event name.</p></div>
+<dl class="dl-horizontal">
+  <dt>Type</dt><dd><span class="identifier">EventEmitter</span></dd>
+</dl>
+</div>
+<div id="rowEditEndedNg" class="member-panel mproperty">
+<h3>rowEditEndedNg</h3>
+<div class="comment"><p>Angular (EventEmitter) version of the Wijmo <b>rowEditEnded</b> event for programmatic access.
+Use this event name if you want to subscribe to the Angular version of the event in code.
+In template bindings use the conventional <b>rowEditEnded</b> Wijmo event name.</p></div>
+<dl class="dl-horizontal">
+  <dt>Type</dt><dd><span class="identifier">EventEmitter</span></dd>
+</dl>
+</div>
+<div id="rowEditEndingNg" class="member-panel mproperty">
+<h3>rowEditEndingNg</h3>
+<div class="comment"><p>Angular (EventEmitter) version of the Wijmo <b>rowEditEnding</b> event for programmatic access.
+Use this event name if you want to subscribe to the Angular version of the event in code.
+In template bindings use the conventional <b>rowEditEnding</b> Wijmo event name.</p></div>
+<dl class="dl-horizontal">
+  <dt>Type</dt><dd><span class="identifier">EventEmitter</span></dd>
+</dl>
+</div>
+<div id="rowEditStartedNg" class="member-panel mproperty">
+<h3>rowEditStartedNg</h3>
+<div class="comment"><p>Angular (EventEmitter) version of the Wijmo <b>rowEditStarted</b> event for programmatic access.
+Use this event name if you want to subscribe to the Angular version of the event in code.
+In template bindings use the conventional <b>rowEditStarted</b> Wijmo event name.</p></div>
+<dl class="dl-horizontal">
+  <dt>Type</dt><dd><span class="identifier">EventEmitter</span></dd>
+</dl>
+</div>
+<div id="rowEditStartingNg" class="member-panel mproperty">
+<h3>rowEditStartingNg</h3>
+<div class="comment"><p>Angular (EventEmitter) version of the Wijmo <b>rowEditStarting</b> event for programmatic access.
+Use this event name if you want to subscribe to the Angular version of the event in code.
+In template bindings use the conventional <b>rowEditStarting</b> Wijmo event name.</p></div>
+<dl class="dl-horizontal">
+  <dt>Type</dt><dd><span class="identifier">EventEmitter</span></dd>
 </dl>
 </div>
 <div id="rowHeaders" class="member-panel mproperty inherited">
@@ -755,6 +1190,15 @@ the selected state of rows when the data is refreshed.</p></div>
 <dl class="dl-horizontal">
   <dt>Inherited From</dt><dd><a href="topic/wijmo.grid.FlexGrid.Class.html"><span class="identifier">FlexGrid</span></a></dd>
   <dt>Type</dt><dd><a href="topic/wijmo.Point.Class.html"><span class="identifier">Point</span></a></dd>
+</dl>
+</div>
+<div id="scrollPositionChangedNg" class="member-panel mproperty">
+<h3>scrollPositionChangedNg</h3>
+<div class="comment"><p>Angular (EventEmitter) version of the Wijmo <b>scrollPositionChanged</b> event for programmatic access.
+Use this event name if you want to subscribe to the Angular version of the event in code.
+In template bindings use the conventional <b>scrollPositionChanged</b> Wijmo event name.</p></div>
+<dl class="dl-horizontal">
+  <dt>Type</dt><dd><span class="identifier">EventEmitter</span></dd>
 </dl>
 </div>
 <div id="scrollSize" class="member-panel mproperty inherited">
@@ -793,6 +1237,24 @@ set only when <a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#se
   <dt>Type</dt><dd><a href="topic/wijmo.grid.CellRange.Class.html"><span class="identifier">CellRange</span></a></dd>
 </dl>
 </div>
+<div id="selectionChangedNg" class="member-panel mproperty">
+<h3>selectionChangedNg</h3>
+<div class="comment"><p>Angular (EventEmitter) version of the Wijmo <b>selectionChanged</b> event for programmatic access.
+Use this event name if you want to subscribe to the Angular version of the event in code.
+In template bindings use the conventional <b>selectionChanged</b> Wijmo event name.</p></div>
+<dl class="dl-horizontal">
+  <dt>Type</dt><dd><span class="identifier">EventEmitter</span></dd>
+</dl>
+</div>
+<div id="selectionChangingNg" class="member-panel mproperty">
+<h3>selectionChangingNg</h3>
+<div class="comment"><p>Angular (EventEmitter) version of the Wijmo <b>selectionChanging</b> event for programmatic access.
+Use this event name if you want to subscribe to the Angular version of the event in code.
+In template bindings use the conventional <b>selectionChanging</b> Wijmo event name.</p></div>
+<dl class="dl-horizontal">
+  <dt>Type</dt><dd><span class="identifier">EventEmitter</span></dd>
+</dl>
+</div>
 <div id="selectionMode" class="member-panel mproperty inherited">
 <h3>selectionMode</h3>
 <div class="comment"><p>Gets or sets the current selection mode.</p></div>
@@ -807,6 +1269,17 @@ set only when <a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#se
 class to cells in alternating rows.</p>
 <p>Setting this property to false disables alternate row styles without any
 changes to the CSS.</p></div>
+<dl class="dl-horizontal">
+  <dt>Inherited From</dt><dd><a href="topic/wijmo.grid.FlexGrid.Class.html"><span class="identifier">FlexGrid</span></a></dd>
+  <dt>Type</dt><dd><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a></dd>
+</dl>
+</div>
+<div id="showErrors" class="member-panel mproperty inherited">
+<h3>showErrors</h3>
+<div class="comment"><p>Gets or sets a value that determines whether the grid should add the 'wj-state-invalid'
+class to cells that contain validation errors, and tooltips with error descriptions.</p>
+<p>The grid detects validation errors using the <a href="topic/wijmo.collections.CollectionView.Class.html/#getError"><span class="identifier">getError</span></a> property
+on the grid's <a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#itemsSource"><span class="identifier">itemsSource</span></a>.</p></div>
 <dl class="dl-horizontal">
   <dt>Inherited From</dt><dd><a href="topic/wijmo.grid.FlexGrid.Class.html"><span class="identifier">FlexGrid</span></a></dd>
   <dt>Type</dt><dd><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a></dd>
@@ -853,6 +1326,24 @@ property of the <a href="topic/wijmo.collections.ICollectionView.Interface.html"
   <dt>Type</dt><dd><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a></dd>
 </dl>
 </div>
+<div id="sortedColumnNg" class="member-panel mproperty">
+<h3>sortedColumnNg</h3>
+<div class="comment"><p>Angular (EventEmitter) version of the Wijmo <b>sortedColumn</b> event for programmatic access.
+Use this event name if you want to subscribe to the Angular version of the event in code.
+In template bindings use the conventional <b>sortedColumn</b> Wijmo event name.</p></div>
+<dl class="dl-horizontal">
+  <dt>Type</dt><dd><span class="identifier">EventEmitter</span></dd>
+</dl>
+</div>
+<div id="sortingColumnNg" class="member-panel mproperty">
+<h3>sortingColumnNg</h3>
+<div class="comment"><p>Angular (EventEmitter) version of the Wijmo <b>sortingColumn</b> event for programmatic access.
+Use this event name if you want to subscribe to the Angular version of the event in code.
+In template bindings use the conventional <b>sortingColumn</b> Wijmo event name.</p></div>
+<dl class="dl-horizontal">
+  <dt>Type</dt><dd><span class="identifier">EventEmitter</span></dd>
+</dl>
+</div>
 <div id="sortRowIndex" class="member-panel mproperty inherited">
 <h3>sortRowIndex</h3>
 <div class="comment"><p>Gets or sets the index of row in the column header panel that
@@ -890,12 +1381,67 @@ visible when the user scrolls the document.</p></div>
   <dt>Type</dt><dd><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Number" target="_blank"><span class="identifier">number</span></a></dd>
 </dl>
 </div>
+<div id="updatedLayoutNg" class="member-panel mproperty">
+<h3>updatedLayoutNg</h3>
+<div class="comment"><p>Angular (EventEmitter) version of the Wijmo <b>updatedLayout</b> event for programmatic access.
+Use this event name if you want to subscribe to the Angular version of the event in code.
+In template bindings use the conventional <b>updatedLayout</b> Wijmo event name.</p></div>
+<dl class="dl-horizontal">
+  <dt>Type</dt><dd><span class="identifier">EventEmitter</span></dd>
+</dl>
+</div>
+<div id="updatedViewNg" class="member-panel mproperty">
+<h3>updatedViewNg</h3>
+<div class="comment"><p>Angular (EventEmitter) version of the Wijmo <b>updatedView</b> event for programmatic access.
+Use this event name if you want to subscribe to the Angular version of the event in code.
+In template bindings use the conventional <b>updatedView</b> Wijmo event name.</p></div>
+<dl class="dl-horizontal">
+  <dt>Type</dt><dd><span class="identifier">EventEmitter</span></dd>
+</dl>
+</div>
+<div id="updatingLayoutNg" class="member-panel mproperty">
+<h3>updatingLayoutNg</h3>
+<div class="comment"><p>Angular (EventEmitter) version of the Wijmo <b>updatingLayout</b> event for programmatic access.
+Use this event name if you want to subscribe to the Angular version of the event in code.
+In template bindings use the conventional <b>updatingLayout</b> Wijmo event name.</p></div>
+<dl class="dl-horizontal">
+  <dt>Type</dt><dd><span class="identifier">EventEmitter</span></dd>
+</dl>
+</div>
+<div id="updatingViewNg" class="member-panel mproperty">
+<h3>updatingViewNg</h3>
+<div class="comment"><p>Angular (EventEmitter) version of the Wijmo <b>updatingView</b> event for programmatic access.
+Use this event name if you want to subscribe to the Angular version of the event in code.
+In template bindings use the conventional <b>updatingView</b> Wijmo event name.</p></div>
+<dl class="dl-horizontal">
+  <dt>Type</dt><dd><span class="identifier">EventEmitter</span></dd>
+</dl>
+</div>
+<div id="validateEdits" class="member-panel mproperty inherited">
+<h3>validateEdits</h3>
+<div class="comment"><p>Gets or sets a value that determines whether the grid should remain
+in edit mode when the user tries to commit edits that fail validation.</p>
+<p>The grid detects validation errors by calling the <a href="topic/wijmo.collections.CollectionView.Class.html/#getError"><span class="identifier">getError</span></a>
+method on the grid's <a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#itemsSource"><span class="identifier">itemsSource</span></a>.</p></div>
+<dl class="dl-horizontal">
+  <dt>Inherited From</dt><dd><a href="topic/wijmo.grid.FlexGrid.Class.html"><span class="identifier">FlexGrid</span></a></dd>
+  <dt>Type</dt><dd><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a></dd>
+</dl>
+</div>
 <div id="viewRange" class="member-panel mproperty inherited">
 <h3>viewRange</h3>
 <div class="comment"><p>Gets the range of cells currently in view.</p></div>
 <dl class="dl-horizontal">
   <dt>Inherited From</dt><dd><a href="topic/wijmo.grid.FlexGrid.Class.html"><span class="identifier">FlexGrid</span></a></dd>
   <dt>Type</dt><dd><a href="topic/wijmo.grid.CellRange.Class.html"><span class="identifier">CellRange</span></a></dd>
+</dl>
+</div>
+<div id="wjModelProperty" class="member-panel mproperty">
+<h3>wjModelProperty</h3>
+<div class="comment"><p>Defines a name of a property represented by [(ngModel)] directive (if specified). 
+Default value is ''.</p></div>
+<dl class="dl-horizontal">
+  <dt>Type</dt><dd><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank"><span class="identifier">string</span></a></dd>
 </dl>
 </div>
 </div>
@@ -1017,6 +1563,20 @@ then not all rows will be measured since that could potentially take a long time
   <dt>Returns</dt><dd><span class="identifier">void</span></dd>
 </dl>
 </div>
+<div id="canEditCell" class="member-panel mmethod inherited">
+<h3>canEditCell</h3>
+<pre>canEditCell(r: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Number" target="_blank"><span class="identifier">number</span></a>, c: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Number" target="_blank"><span class="identifier">number</span></a>): <span class="identifier">void</span></pre>
+<div class="comment"><p>Gets a value that indicates whether a given cell can be edited.</p></div>
+<dl class="dl-horizontal">
+  <dt>Parameters</dt><dd></dd>
+</dl>
+<ul>
+<li><b>r</b>: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Number" target="_blank"><span class="identifier">number</span></a><br/><p>Index of the row that contains the cell.</p></li><li><b>c</b>: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Number" target="_blank"><span class="identifier">number</span></a><br/><p>Index of the column that contains the cell.</p></li></ul>
+<dl class="dl-horizontal">
+  <dt>Inherited From</dt><dd><a href="topic/wijmo.grid.FlexGrid.Class.html"><span class="identifier">FlexGrid</span></a></dd>
+  <dt>Returns</dt><dd><span class="identifier">void</span></dd>
+</dl>
+</div>
 <div id="collapseGroupsToLevel" class="member-panel mmethod inherited">
 <h3>collapseGroupsToLevel</h3>
 <pre>collapseGroupsToLevel(level: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Number" target="_blank"><span class="identifier">number</span></a>): <span class="identifier">void</span></pre>
@@ -1038,6 +1598,18 @@ then not all rows will be measured since that could potentially take a long time
 <dl class="dl-horizontal">
   <dt>Inherited From</dt><dd><a href="topic/wijmo.grid.FlexGrid.Class.html"><span class="identifier">FlexGrid</span></a></dd>
   <dt>Returns</dt><dd><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a></dd>
+</dl>
+</div>
+<div id="created" class="member-panel mmethod">
+<h3>created</h3>
+<pre>created(): <span class="identifier">void</span></pre>
+<div class="comment"><p>If you create a custom component inherited from a Wijmo component, you can override this  
+method and perform necessary initializations that you usually do in a class constructor. 
+This method is called in the last line of a Wijmo component constructor and allows you
+to not declare your custom component's constructor at all, thus preventing you from a necessity 
+to maintain constructor parameters and keep them in synch with Wijmo component's constructor parameters.</p></div>
+<dl class="dl-horizontal">
+  <dt>Returns</dt><dd><span class="identifier">void</span></dd>
 </dl>
 </div>
 <div id="deferUpdate" class="member-panel mmethod inherited">
@@ -1106,7 +1678,8 @@ an exception.</p></div>
 <div id="focus" class="member-panel mmethod inherited">
 <h3>focus</h3>
 <pre>focus(): <span class="identifier">void</span></pre>
-<div class="comment"><p>Overridden to set the focus to the grid without scrolling the whole grid into view.</p></div>
+<div class="comment"><p>Overridden to set the focus to the grid without scrolling the
+whole grid into view.</p></div>
 <dl class="dl-horizontal">
   <dt>Inherited From</dt><dd><a href="topic/wijmo.grid.FlexGrid.Class.html"><span class="identifier">FlexGrid</span></a></dd>
   <dt>Returns</dt><dd><span class="identifier">void</span></dd>
@@ -1433,29 +2006,13 @@ on the page will be invalidated.</p></li></ul>
 </div>
 <div id="onCellEditEnding" class="member-panel mmethod inherited raiser">
 <h3>onCellEditEnding</h3>
-<pre>onCellEditEnding(e: <a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><span class="identifier">CellRangeEventArgs</span></a>): <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a></pre>
-<div class="comment"><p>Raises the <a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#cellEditEnding"><span class="identifier">cellEditEnding</span></a> event.</p>
-<p>You can use this event to perform validation and prevent invalid edits.
-For example, the code below prevents users from entering values that
-do not contain the letter 'a'. The code demonstrates how you can obtain
-the old and new values before the edits are applied.</p>
-
-
-<pre>function cellEditEnding (sender, e) {
-
-  // get old and new values
-  var flex = sender,
-      oldVal = flex.getCellData(e.row, e.col),
-      newVal = flex.activeEditor.value;
-
-  // cancel edits if newVal doesn't contain 'a'
-  e.cancel = newVal.indexOf('a') &lt; 0;
-}</pre></div>
+<pre>onCellEditEnding(e: <a href="topic/wijmo.grid.CellEditEndingEventArgs.Class.html"><span class="identifier">CellEditEndingEventArgs</span></a>): <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a></pre>
+<div class="comment"><p>Raises the <a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#cellEditEnding"><span class="identifier">cellEditEnding</span></a> event.</p></div>
 <dl class="dl-horizontal">
   <dt>Parameters</dt><dd></dd>
 </dl>
 <ul>
-<li><b>e</b>: <a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><span class="identifier">CellRangeEventArgs</span></a><br/><p><a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><span class="identifier">CellRangeEventArgs</span></a> that contains the event data.</p></li></ul>
+<li><b>e</b>: <a href="topic/wijmo.grid.CellEditEndingEventArgs.Class.html"><span class="identifier">CellEditEndingEventArgs</span></a><br/><p><a href="topic/wijmo.grid.CellEditEndingEventArgs.Class.html"><span class="identifier">CellEditEndingEventArgs</span></a> that contains the event data.</p></li></ul>
 <dl class="dl-horizontal">
   <dt>Inherited From</dt><dd><a href="topic/wijmo.grid.FlexGrid.Class.html"><span class="identifier">FlexGrid</span></a></dd>
   <dt>Returns</dt><dd><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a></dd>
@@ -1559,10 +2116,38 @@ the old and new values before the edits are applied.</p>
   <dt>Returns</dt><dd><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a></dd>
 </dl>
 </div>
+<div id="onDraggingColumnOver" class="member-panel mmethod inherited raiser">
+<h3>onDraggingColumnOver</h3>
+<pre>onDraggingColumnOver(e: <a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><span class="identifier">CellRangeEventArgs</span></a>): <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a></pre>
+<div class="comment"><p>Raises the <a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#draggingColumnOver"><span class="identifier">draggingColumnOver</span></a> event.</p></div>
+<dl class="dl-horizontal">
+  <dt>Parameters</dt><dd></dd>
+</dl>
+<ul>
+<li><b>e</b>: <a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><span class="identifier">CellRangeEventArgs</span></a><br/><p><a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><span class="identifier">CellRangeEventArgs</span></a> that contains the event data.</p></li></ul>
+<dl class="dl-horizontal">
+  <dt>Inherited From</dt><dd><a href="topic/wijmo.grid.FlexGrid.Class.html"><span class="identifier">FlexGrid</span></a></dd>
+  <dt>Returns</dt><dd><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a></dd>
+</dl>
+</div>
 <div id="onDraggingRow" class="member-panel mmethod inherited raiser">
 <h3>onDraggingRow</h3>
 <pre>onDraggingRow(e: <a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><span class="identifier">CellRangeEventArgs</span></a>): <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a></pre>
 <div class="comment"><p>Raises the <a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#draggingRow"><span class="identifier">draggingRow</span></a> event.</p></div>
+<dl class="dl-horizontal">
+  <dt>Parameters</dt><dd></dd>
+</dl>
+<ul>
+<li><b>e</b>: <a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><span class="identifier">CellRangeEventArgs</span></a><br/><p><a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><span class="identifier">CellRangeEventArgs</span></a> that contains the event data.</p></li></ul>
+<dl class="dl-horizontal">
+  <dt>Inherited From</dt><dd><a href="topic/wijmo.grid.FlexGrid.Class.html"><span class="identifier">FlexGrid</span></a></dd>
+  <dt>Returns</dt><dd><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a></dd>
+</dl>
+</div>
+<div id="onDraggingRowOver" class="member-panel mmethod inherited raiser">
+<h3>onDraggingRowOver</h3>
+<pre>onDraggingRowOver(e: <a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><span class="identifier">CellRangeEventArgs</span></a>): <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a></pre>
+<div class="comment"><p>Raises the <a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#draggingRowOver"><span class="identifier">draggingRowOver</span></a> event.</p></div>
 <dl class="dl-horizontal">
   <dt>Parameters</dt><dd></dd>
 </dl>
@@ -1853,6 +2438,34 @@ the old and new values before the edits are applied.</p>
   <dt>Returns</dt><dd><span class="identifier">void</span></dd>
 </dl>
 </div>
+<div id="onRowEditStarted" class="member-panel mmethod inherited raiser">
+<h3>onRowEditStarted</h3>
+<pre>onRowEditStarted(e: <a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><span class="identifier">CellRangeEventArgs</span></a>): <span class="identifier">void</span></pre>
+<div class="comment"><p>Raises the <a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#rowEditStarted"><span class="identifier">rowEditStarted</span></a> event.</p></div>
+<dl class="dl-horizontal">
+  <dt>Parameters</dt><dd></dd>
+</dl>
+<ul>
+<li><b>e</b>: <a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><span class="identifier">CellRangeEventArgs</span></a><br/><p><a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><span class="identifier">CellRangeEventArgs</span></a> that contains the event data.</p></li></ul>
+<dl class="dl-horizontal">
+  <dt>Inherited From</dt><dd><a href="topic/wijmo.grid.FlexGrid.Class.html"><span class="identifier">FlexGrid</span></a></dd>
+  <dt>Returns</dt><dd><span class="identifier">void</span></dd>
+</dl>
+</div>
+<div id="onRowEditStarting" class="member-panel mmethod inherited raiser">
+<h3>onRowEditStarting</h3>
+<pre>onRowEditStarting(e: <a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><span class="identifier">CellRangeEventArgs</span></a>): <span class="identifier">void</span></pre>
+<div class="comment"><p>Raises the <a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#rowEditStarting"><span class="identifier">rowEditStarting</span></a> event.</p></div>
+<dl class="dl-horizontal">
+  <dt>Parameters</dt><dd></dd>
+</dl>
+<ul>
+<li><b>e</b>: <a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><span class="identifier">CellRangeEventArgs</span></a><br/><p><a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><span class="identifier">CellRangeEventArgs</span></a> that contains the event data.</p></li></ul>
+<dl class="dl-horizontal">
+  <dt>Inherited From</dt><dd><a href="topic/wijmo.grid.FlexGrid.Class.html"><span class="identifier">FlexGrid</span></a></dd>
+  <dt>Returns</dt><dd><span class="identifier">void</span></dd>
+</dl>
+</div>
 <div id="onScrollPositionChanged" class="member-panel mmethod inherited raiser">
 <h3>onScrollPositionChanged</h3>
 <pre>onScrollPositionChanged(e?: <a href="topic/wijmo.EventArgs.Class.html"><span class="identifier">EventArgs</span></a>): <span class="identifier">void</span></pre>
@@ -2026,13 +2639,13 @@ on the page will be invalidated.</p></li></ul>
 </div>
 <div id="removeEventListener" class="member-panel mmethod inherited">
 <h3>removeEventListener</h3>
-<pre>removeEventListener(target?: <a href="https://developer.mozilla.org/en/docs/Web/API/EventTarget" target="_blank"><span class="identifier">EventTarget</span></a>, type?: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank"><span class="identifier">string</span></a>, capture?: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a>): <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Number" target="_blank"><span class="identifier">number</span></a></pre>
+<pre>removeEventListener(target?: <a href="https://developer.mozilla.org/en/docs/Web/API/EventTarget" target="_blank"><span class="identifier">EventTarget</span></a>, type?: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank"><span class="identifier">string</span></a>, fn?: <span class="identifier">any</span>, capture?: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a>): <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Number" target="_blank"><span class="identifier">number</span></a></pre>
 <div class="comment"><p>Removes one or more event listeners attached to elements owned by this <a href="topic/wijmo.Control.Class.html"><span class="identifier">Control</span></a>.</p></div>
 <dl class="dl-horizontal">
   <dt>Parameters</dt><dd></dd>
 </dl>
 <ul>
-<li><b>target</b>: <a href="https://developer.mozilla.org/en/docs/Web/API/EventTarget" target="_blank"><span class="identifier">EventTarget</span></a> <span class="badge">Optional</span><br/><p>Target element for the event. If null, removes listeners attached to all targets.</p></li><li><b>type</b>: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank"><span class="identifier">string</span></a> <span class="badge">Optional</span><br/><p>String that specifies the event. If null, removes listeners attached to all events.</p></li><li><b>capture</b>: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a> <span class="badge">Optional</span><br/><p>Whether the listener is capturing. If null, removes capturing and non-capturing listeners.</p></li></ul>
+<li><b>target</b>: <a href="https://developer.mozilla.org/en/docs/Web/API/EventTarget" target="_blank"><span class="identifier">EventTarget</span></a> <span class="badge">Optional</span><br/><p>Target element for the event. If null, removes listeners attached to all targets.</p></li><li><b>type</b>: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank"><span class="identifier">string</span></a> <span class="badge">Optional</span><br/><p>String that specifies the event. If null, removes listeners attached to all events.</p></li><li><b>fn</b>: <span class="identifier">any</span> <span class="badge">Optional</span><br/><p>Handler to remove. If null, removes all handlers.</p></li><li><b>capture</b>: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a> <span class="badge">Optional</span><br/><p>Whether the listener is capturing. If null, removes capturing and non-capturing listeners.</p></li></ul>
 <dl class="dl-horizontal">
   <dt>Inherited From</dt><dd><a href="topic/wijmo.Control.Class.html"><span class="identifier">Control</span></a></dd>
   <dt>Returns</dt><dd><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Number" target="_blank"><span class="identifier">number</span></a></dd>
@@ -2178,10 +2791,32 @@ bottom edge of a row header cell.</p></div>
 </div>
 <div id="cellEditEnding" class="member-panel mevent inherited">
 <h3>cellEditEnding</h3>
-<div class="comment"><p>Occurs when a cell edit is ending.</p></div>
+<div class="comment"><p>Occurs when a cell edit is ending.</p>
+<p>You can use this event to perform validation and prevent invalid edits.
+For example, the code below prevents users from entering values that
+do not contain the letter 'a'. The code demonstrates how you can obtain
+the old and new values before the edits are applied.</p>
+
+
+<pre>function cellEditEnding (sender, e) {
+
+  // get old and new values
+  var flex = sender,
+      oldVal = flex.getCellData(e.row, e.col),
+      newVal = flex.activeEditor.value;
+
+  // cancel edits if newVal doesn't contain 'a'
+  e.cancel = newVal.indexOf('a') &lt; 0;
+}</pre>
+<p>Setting the <a href="topic/wijmo.grid.CellEditEndingEventArgs.Class.html/#cancel"><span class="identifier">cancel</span></a> parameter to
+true causes the grid to discard the edited value and keep the
+cell's original value.</p>
+<p>If you also set the <a href="topic/wijmo.grid.CellEditEndingEventArgs.Class.html/#stayInEditMode"><span class="identifier">stayInEditMode</span></a>
+parameter to true, the grid will remain in edit mode so the user
+can correct invalid entries before committing the edits.</p></div>
 <dl class="dl-horizontal">
   <dt>Inherited From</dt><dd><a href="topic/wijmo.grid.FlexGrid.Class.html"><span class="identifier">FlexGrid</span></a></dd>
-  <dt>Arguments</dt><dd><a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><span class="identifier">CellRangeEventArgs</span></a></dd>
+  <dt>Arguments</dt><dd><a href="topic/wijmo.grid.CellEditEndingEventArgs.Class.html"><span class="identifier">CellEditEndingEventArgs</span></a></dd>
 </dl>
 </div>
 <div id="copied" class="member-panel mevent inherited">
@@ -2248,9 +2883,40 @@ key (see the <a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#all
   <dt>Arguments</dt><dd><a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><span class="identifier">CellRangeEventArgs</span></a></dd>
 </dl>
 </div>
+<div id="draggingColumnOver" class="member-panel mevent inherited">
+<h3>draggingColumnOver</h3>
+<div class="comment"><p>Occurs as the user drags a column to a new position.</p>
+<p>The handler may cancel the event to prevent users from
+dropping columns at certain positions. For example:</p>
+
+
+<pre>// remember column being dragged
+flex.draggingColumn.addHandler(function (s, e) {
+    theColumn = s.columns[e.col].binding;
+});
+
+// prevent 'sales' column from being dragged to index 0
+s.draggingColumnOver.addHandler(function (s, e) {
+    if (theColumn == 'sales' && e.col == 0) {
+        e.cancel = true;
+    }
+});</pre></div>
+<dl class="dl-horizontal">
+  <dt>Inherited From</dt><dd><a href="topic/wijmo.grid.FlexGrid.Class.html"><span class="identifier">FlexGrid</span></a></dd>
+  <dt>Arguments</dt><dd><a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><span class="identifier">CellRangeEventArgs</span></a></dd>
+</dl>
+</div>
 <div id="draggingRow" class="member-panel mevent inherited">
 <h3>draggingRow</h3>
 <div class="comment"><p>Occurs when the user starts dragging a row.</p></div>
+<dl class="dl-horizontal">
+  <dt>Inherited From</dt><dd><a href="topic/wijmo.grid.FlexGrid.Class.html"><span class="identifier">FlexGrid</span></a></dd>
+  <dt>Arguments</dt><dd><a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><span class="identifier">CellRangeEventArgs</span></a></dd>
+</dl>
+</div>
+<div id="draggingRowOver" class="member-panel mevent inherited">
+<h3>draggingRowOver</h3>
+<div class="comment"><p>Occurs as the user drags a row to a new position.</p></div>
 <dl class="dl-horizontal">
   <dt>Inherited From</dt><dd><a href="topic/wijmo.grid.FlexGrid.Class.html"><span class="identifier">FlexGrid</span></a></dd>
   <dt>Arguments</dt><dd><a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><span class="identifier">CellRangeEventArgs</span></a></dd>
@@ -2433,7 +3099,51 @@ the new item creation.</p></div>
 </div>
 <div id="rowEditEnding" class="member-panel mevent inherited">
 <h3>rowEditEnding</h3>
-<div class="comment"><p>Occurs when a row edit is ending, before the changes are committed or canceled.</p></div>
+<div class="comment"><p>Occurs when a row edit is ending, before the changes are committed or canceled.</p>
+<p>This event can be used in conjunction with the <a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html/#rowEditStarted"><span class="identifier">rowEditStarted</span></a> event to
+implement deep-binding edit undos. For example:</p>
+
+
+<pre>// save deep bound values when editing starts
+var itemData = {};
+s.rowEditStarted.addHandler(function (s, e) {
+  var item = s.collectionView.currentEditItem;
+  itemData = {};
+  s.columns.forEach(function (col) {
+    if (col.binding.indexOf('.') &gt; -1) { // deep binding
+      var binding = new wijmo.Binding(col.binding);
+      itemData[col.binding] = binding.getValue(item);
+    }
+  })
+});
+
+// restore deep bound values when edits are canceled
+s.rowEditEnded.addHandler(function (s, e) {
+  if (e.cancel) { // edits were canceled by the user
+    var item = s.collectionView.currentEditItem;
+    for (var k in itemData) {
+      var binding = new wijmo.Binding(k);
+      binding.setValue(item, itemData[k]);
+    }
+  }
+  itemData = {};
+});</pre></div>
+<dl class="dl-horizontal">
+  <dt>Inherited From</dt><dd><a href="topic/wijmo.grid.FlexGrid.Class.html"><span class="identifier">FlexGrid</span></a></dd>
+  <dt>Arguments</dt><dd><a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><span class="identifier">CellRangeEventArgs</span></a></dd>
+</dl>
+</div>
+<div id="rowEditStarted" class="member-panel mevent inherited">
+<h3>rowEditStarted</h3>
+<div class="comment"><p>Occurs after a row enters edit mode.</p></div>
+<dl class="dl-horizontal">
+  <dt>Inherited From</dt><dd><a href="topic/wijmo.grid.FlexGrid.Class.html"><span class="identifier">FlexGrid</span></a></dd>
+  <dt>Arguments</dt><dd><a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><span class="identifier">CellRangeEventArgs</span></a></dd>
+</dl>
+</div>
+<div id="rowEditStarting" class="member-panel mevent inherited">
+<h3>rowEditStarting</h3>
+<div class="comment"><p>Occurs before a row enters edit mode.</p></div>
 <dl class="dl-horizontal">
   <dt>Inherited From</dt><dd><a href="topic/wijmo.grid.FlexGrid.Class.html"><span class="identifier">FlexGrid</span></a></dd>
   <dt>Arguments</dt><dd><a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><span class="identifier">CellRangeEventArgs</span></a></dd>

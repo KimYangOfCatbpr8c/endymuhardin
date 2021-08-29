@@ -1,4 +1,8 @@
 /// <reference path="../typings/globals/core-js/index.d.ts" />
+import * as wjcChart from 'wijmo/wijmo.chart';
+import * as wjcChartInteraction from 'wijmo/wijmo.chart.interaction';
+import * as wjcChartAnnotation from 'wijmo/wijmo.chart.annotation';
+import * as wjcInput from 'wijmo/wijmo.input';
 import { DataSvc } from './services/DataSvc';
 import { Portfolio } from './services/Portfolio';
 export declare class AppCmp {
@@ -21,16 +25,16 @@ export declare class AppCmp {
     chartType: string;
     dateRange: string;
     volSeriesIsVisible: boolean;
-    volYAxis: wijmo.chart.Axis;
+    volYAxis: wjcChart.Axis;
     markerVisible: boolean;
     details: string;
     hasData: boolean;
     mainquote: any;
-    rsChart: wijmo.chart.FlexChart;
-    stChart: wijmo.chart.FlexChart;
-    rangeSelector: wijmo.chart.interaction.RangeSelector;
-    volSeries: wijmo.chart.Series;
-    al: wijmo.chart.annotation.AnnotationLayer;
+    rsChart: wjcChart.FlexChart;
+    stChart: wjcChart.FlexChart;
+    rangeSelector: wjcChartInteraction.RangeSelector;
+    volSeries: wjcChart.Series;
+    al: wjcChartAnnotation.AnnotationLayer;
     constructor(dataSvc: DataSvc);
     _init(): void;
     itemsChanged(): void;
@@ -50,7 +54,7 @@ export declare class AppCmp {
     private _getAxixYValue(y);
     getPointIndex(xVal: any): any;
     exportImage(exportMenu: any): void;
-    periodChanged: (input: wijmo.input.InputNumber) => void;
+    periodChanged: (input: wjcInput.InputNumber) => void;
 }
 export declare class AppModule {
 }

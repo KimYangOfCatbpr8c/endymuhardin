@@ -32,13 +32,13 @@ var SortingTrees = React.createClass({
                 Sorting Trees
             </h2>
             <p>
-                By default, sorting a grid containing hierarchical data only sorts the top-level items.
+                By default, sorting a grid that contains hierarchical data only sorts the top-level items.
                 This is because the <b>CollectionView</b> does not know about the data hierarchy, 
                 since the <b>childItemsPath</b> property belongs to the grid and not to the 
                 underlying <b>CollectionView</b>.</p>
             <p>
                 If you do want to sort some or all of the grid's child items, you should handle the
-                grid's <b>sortedColumn</b> event to enumerate the items and perform the additional
+                grid's <b>sortedColumn</b> event to enumerate the items and perform additional
                 sorting on the child items yourself.</p>
             <p>
                 This example shows how to do this assuming you want the child items sorted in the same

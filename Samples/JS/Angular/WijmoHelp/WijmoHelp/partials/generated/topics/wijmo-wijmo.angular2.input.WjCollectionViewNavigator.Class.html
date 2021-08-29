@@ -16,4 +16,56 @@ For details about Angular 2 markup syntax, see
 &lt;/wj-collection-view-navigator&gt;</pre></div>
 </div>
 <div class="member-panel class members" ng-class="{ 'show-inherited' : ctx.showInherited, 'show-raisers' : ctx.showRaisers }">
+<h3 class="node">Properties</h3>
+<ul>
+<li class="mproperty"><a href="topic/wijmo-wijmo.angular2.input.WjCollectionViewNavigator.Class.html/#initialized">initialized</a></li>
+<li class="mproperty"><a href="topic/wijmo-wijmo.angular2.input.WjCollectionViewNavigator.Class.html/#isInitialized">isInitialized</a></li>
+<li class="mproperty"><a href="topic/wijmo-wijmo.angular2.input.WjCollectionViewNavigator.Class.html/#wjModelProperty">wjModelProperty</a></li>
+</ul>
+<h3 class="node">Methods</h3>
+<ul>
+<li class="mmethod"><a href="topic/wijmo-wijmo.angular2.input.WjCollectionViewNavigator.Class.html/#created">created</a></li>
+</ul>
+</div>
+<h3 class="node">Properties</h3>
+<div class="member-list" ng-class="{ 'show-inherited' : ctx.showInherited, 'show-raisers' : ctx.showRaisers }">
+<div id="initialized" class="member-panel mproperty">
+<h3>initialized</h3>
+<div class="comment"><p>This event is triggered after the component has been initialized by Angular, that is
+all bound properties have been assigned and child components (if any) have been initialized.</p></div>
+<dl class="dl-horizontal">
+  <dt>Type</dt><dd><span class="identifier">EventEmitter</span></dd>
+</dl>
+</div>
+<div id="isInitialized" class="member-panel mproperty">
+<h3>isInitialized</h3>
+<div class="comment"><p>Indicates whether the component has been initialized by Angular.
+Changes its value from false to true right before triggering the <b>initialized</b> event.</p></div>
+<dl class="dl-horizontal">
+  <dt>Type</dt><dd><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a></dd>
+</dl>
+</div>
+<div id="wjModelProperty" class="member-panel mproperty">
+<h3>wjModelProperty</h3>
+<div class="comment"><p>Defines a name of a property represented by [(ngModel)] directive (if specified). 
+Default value is ''.</p></div>
+<dl class="dl-horizontal">
+  <dt>Type</dt><dd><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank"><span class="identifier">string</span></a></dd>
+</dl>
+</div>
+</div>
+<h3 class="node">Methods</h3>
+<div class="member-list" ng-class="{ 'show-inherited' : ctx.showInherited, 'show-raisers' : ctx.showRaisers }">
+<div id="created" class="member-panel mmethod">
+<h3>created</h3>
+<pre>created(): <span class="identifier">void</span></pre>
+<div class="comment"><p>If you create a custom component inherited from a Wijmo component, you can override this  
+method and perform necessary initializations that you usually do in a class constructor. 
+This method is called in the last line of a Wijmo component constructor and allows you
+to not declare your custom component's constructor at all, thus preventing you from a necessity 
+to maintain constructor parameters and keep them in synch with Wijmo component's constructor parameters.</p></div>
+<dl class="dl-horizontal">
+  <dt>Returns</dt><dd><span class="identifier">void</span></dd>
+</dl>
+</div>
 </div>

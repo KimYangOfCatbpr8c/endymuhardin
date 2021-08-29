@@ -1,24 +1,24 @@
 ﻿/*
     *
-    * Wijmo Library 5.20162.211
+    * Wijmo Library 5.20171.282
     * http://wijmo.com/
     *
     * Copyright(c) GrapeCity, Inc.  All rights reserved.
     *
     * Licensed under the Wijmo Commercial License.
     * sales@wijmo.com
-    * http://wijmo.com/products/wijmo-5/license/
+    * wijmo.com/products/wijmo-5/license/
     *
     */
 /*
-* Wijmo culture file: sr (Serbian)
-*/
+ * Wijmo culture file: sr-Latn (Serbian (Latin))
+ */
 var wijmo;
 (function (wijmo) {
     wijmo.culture = {
         Globalize: {
-            name: 'sr',
-            displayName: 'Serbian',
+            name: 'sr-Latn',
+            displayName: 'Serbian (Latin)',
             numberFormat: {
                 '.': ',',
                 ',': '.',
@@ -27,7 +27,7 @@ var wijmo;
             },
             calendar: {
                 '/': '.',
-                ':': '.',
+                ':': ':',
                 firstDay: 1,
                 days: ['nedelja', 'ponedeljak', 'utorak', 'sreda', 'četvrtak', 'petak', 'subota'],
                 daysAbbr: ['ned', 'pon', 'uto', 'sre', 'čet', 'pet', 'sub'],
@@ -51,7 +51,7 @@ var wijmo;
             itemsSelected: '{count:n0} stavki odabrano'
         },
         FlexGrid: {
-            groupHeaderFormat: '{name}: <b>{value} </b>({count:n0} stavke)'
+            groupHeaderFormat: '{name}: <b>{value}</b> ({count:n0} stavke)'
         },
         FlexGridFilter: {
             // filter
@@ -101,104 +101,237 @@ var wijmo;
         },
         olap: {
             PivotFieldEditor: {
-                dialogHeader: 'Field settings:',
-                header: 'Header:',
-                summary: 'Summary:',
-                showAs: 'Show As:',
-                weighBy: 'Weigh by:',
-                sort: 'Sort:',
-                filter: 'Filter:',
-                format: 'Format:',
-                sample: 'Sample:',
-                edit: 'Edit...',
-                clear: 'Clear',
-                ok: 'OK',
-                cancel: 'Cancel',
-                none: '(none)',
+                dialogHeader: 'Postavke polja:',
+                header: 'Zaglav.:',
+                summary: 'Rezime:',
+                showAs: 'Predstaviti kao:',
+                weighBy: 'Teћi od strane:',
+                sort: 'Sortiraj:',
+                filter: 'Filter za:',
+                format: 'Oblikovanje:',
+                sample: 'Uzorak:',
+                edit: 'Uredi…',
+                clear: 'Obriši',
+                ok: 'U redu',
+                cancel: 'Otkaži',
+                none: '(nijedno)',
                 sorts: {
-                    asc: 'Ascending',
-                    desc: 'Descending'
+                    asc: 'Rastući redosled',
+                    desc: 'Opadajući redosled'
                 },
                 aggs: {
-                    sum: 'Sum',
-                    cnt: 'Count',
-                    avg: 'Average',
-                    max: 'Max',
-                    min: 'Min',
-                    rng: 'Range',
+                    sum: 'Zbir',
+                    cnt: 'Broj',
+                    avg: 'Prosek',
+                    max: 'Maksimum',
+                    min: 'MIN',
+                    rng: 'Opseg',
                     std: 'StdDev',
-                    var: 'Var',
+                    var: 'VAR',
                     stdp: 'StdDevPop',
                     varp: 'VarPop'
                 },
                 calcs: {
-                    noCalc: 'No Calculation',
-                    dRow: 'Difference from previous row',
-                    dRowPct: '% Difference from previous row',
-                    dCol: 'Difference from previous column',
-                    dColPct: '% Difference from previous column'
+                    noCalc: 'Bez izračunavanja',
+                    dRow: 'Razliku u odnosu na prethodni red',
+                    dRowPct: '% Razlika od prethodni red',
+                    dCol: 'Razliku iz prethodne kolone',
+                    dColPct: '% Razlika iz prethodne kolone',
+                    dPctGrand: '% od konačnog zbira',
+                    dPctRow: '% reda ukupno',
+                    dPctCol: '% Ukupni kolone',
+                    dRunTot: 'Rastući zbir',
+                    dRunTotPct: '% tekućeg zbira'
                 },
                 formats: {
-                    n0: 'Integer (n0)',
-                    n2: 'Float (n2)',
-                    c: 'Currency (c)',
-                    p0: 'Percentage (p0)',
-                    p2: 'Percentage (p2)',
-                    n2c: 'Thousands (n2,)',
-                    n2cc: 'Millions (n2,,)',
-                    n2ccc: 'Billions (n2,,,)',
-                    d: 'Date (d)',
-                    MMMMddyyyy: 'Month Day Year (MMMM dd, yyyy)',
-                    dMyy: 'Day Month Year (d/M/yy)',
-                    ddMyy: 'Day Month Year (dd/M/yy)',
-                    dMyyyy: 'Day Month Year (dd/M/yyyy)',
-                    MMMyyyy: 'Month Year (MMM yyyy)',
-                    MMMMyyyy: 'Month Year (MMMM yyyy)',
-                    yyyyQq: 'Year Quarter (yyyy "Q"q)',
-                    FYEEEEQU: 'Fiscal Year Quarter ("FY"EEEE "Q"U)'
+                    n0: 'Ceo broj (n0)',
+                    n2: 'Decimal (n2)',
+                    c: 'Valuta (c)',
+                    p0: 'Procenat (p0)',
+                    p2: 'Procenat (p2)',
+                    n2c: 'Na hiljade (n2,)',
+                    n2cc: 'Milioni (n2,,)',
+                    n2ccc: 'Milijarde (n2,,,)',
+                    d: 'Datum (d)',
+                    MMMMddyyyy: 'Mesec dana godina (MMMM dd, yyyy)',
+                    dMyy: 'Godine mesec dana (d/M/yy)',
+                    ddMyy: 'Godine mesec dana (dd/M/yy)',
+                    dMyyyy: 'Godine mesec dana (dd/M/yyyy)',
+                    MMMyyyy: 'Mesec godina (MMM yyyy)',
+                    MMMMyyyy: 'Mesec godina (MMMM yyyy)',
+                    yyyyQq: 'Kvartal godine (yyyy "Q" q)',
+                    FYEEEEQU: 'Kvartal fiskalne godine ("FY"EEEE "Q"U)'
                 }
             },
             PivotEngine: {
-                grandTotal: 'Grand Total',
-                subTotal: 'Subtotal'
+                grandTotal: 'Sveukupno',
+                subTotal: 'Međuvrednost'
             },
             PivotPanel: {
-                fields: 'Choose fields to add to report',
-                drag: 'Drag fields between areas below:',
-                filters: 'Filters',
-                cols: 'Columns',
-                rows: 'Rows',
-                vals: 'Values',
-                defer: 'Defer Updates',
-                update: 'Update'
+                fields: 'Odaberite polja da biste dodali izveštaj:',
+                drag: 'Prevlačite polja sa jedne na drugu oblast ispod:',
+                filters: 'Filteri',
+                cols: 'Kolone',
+                rows: 'Redovi',
+                vals: 'Vrednosti',
+                defer: 'Odgodim ispravke',
+                update: 'Ažuriraj'
             },
             _ListContextMenu: {
-                up: 'Move Up',
-                down: 'Move Down',
-                first: 'Move do Beginning',
-                last: 'Move to End',
-                filter: 'Move to Report Filter',
-                rows: 'Move to Row Labels',
-                cols: 'Move to Column Labels',
-                vals: 'Move to Values',
-                remove: 'Remove Field',
-                edit: 'Field Settings...',
-                detail: 'Show Detail...'
+                up: 'Premesti nagore',
+                down: 'Premesti nadole',
+                first: 'Premesti na početak',
+                last: 'Premesti na kraj',
+                filter: 'Premesti u filter izveštaja',
+                rows: 'Premesti u oznake redova',
+                cols: 'Premesti u oznake kolona',
+                vals: 'Premesti u vrednosti',
+                remove: 'Ukloni polje',
+                edit: 'Postavke polja…',
+                detail: 'Predstavljanje detalja…'
             },
             PivotChart: {
-                by: 'by',
-                and: 'and'
+                by: 'po',
+                and: 'i'
             },
             DetailDialog: {
-                header: 'Detail View:',
-                ok: 'OK',
-                items: '{cnt:n0} items',
-                item: '{cnt} item',
-                row: 'Row',
-                col: 'Column'
+                header: 'Prikaz detalja:',
+                ok: 'U redu',
+                items: '{cnt:n0} stavki',
+                item: '{cnt} artikla',
+                row: 'Red',
+                col: 'Kolona'
             }
+        },
+        Viewer: {
+            cancel: 'Otkaži',
+            ok: 'U redu',
+            bottom: 'Donja:',
+            top: 'Najbolji:',
+            right: 'Desna:',
+            left: 'Leva:',
+            margins: 'Margine (u inčima)',
+            orientation: 'Položaj:',
+            paperKind: 'Vrsta papira:',
+            pageSetup: 'Podešavanje parametara stranice',
+            landscape: 'Položeno',
+            portrait: 'Uspravno',
+            pageNumber: 'Broj stranice',
+            zoomFactor: 'Faktor zumiranja',
+            paginated: 'Raspored štampanja',
+            print: 'Odštampaj',
+            search: 'Traži',
+            matchCase: 'Podudari slova',
+            wholeWord: 'Podudaranje samo celih reči',
+            searchResults: 'Rezultati pretrage',
+            previousPage: 'Prethodna stranica',
+            nextPage: 'Sledeća stranica',
+            firstPage: 'Prva stranica',
+            lastPage: 'Poslednja stranica',
+            backwardHistory: 'nazad',
+            forwardHistory: 'Napred',
+            pageCount: 'Broj stranica',
+            selectTool: 'Alatke za izbor',
+            moveTool: 'Alatka za potez',
+            continuousMode: 'Kontinuirani prikaz stranice',
+            singleMode: 'Prikaz jedne stranice',
+            wholePage: 'Fit čitava stranica',
+            pageWidth: 'Prilagodi širinu stranice',
+            zoomOut: 'Smanji',
+            zoomIn: 'Povećaj',
+            exports: 'Izvezi',
+            fullScreen: 'Ceo ekran',
+            exitFullScreen: 'Izađi iz režima celog ekrana',
+            hamburgerMenu: 'Alatke',
+            showSearchBar: 'Prikaz trake za pretraživanje',
+            viewMenu: 'Opcije rasporeda',
+            searchOptions: 'Opcije pretraživanja',
+            matchCaseMenuItem: 'Podudaranje malih i velikih slova',
+            wholeWordMenuItem: 'Podudaranje celu reč',
+            thumbnails: 'Sličice stranica',
+            outlines: 'Mapa dokumenta',
+            loading: 'Učitavanje…',
+            pdfExportName: 'Adobe PDF',
+            docxExportName: 'Open XML Word',
+            xlsxExportName: 'Open XML Excel',
+            docExportName: 'Microsoft Word',
+            xlsExportName: 'Microsoft Excel',
+            mhtmlExportName: 'Web arhiva (MHTML)',
+            htmlExportName: 'HTML dokument',
+            rtfExportName: 'RTF dokument',
+            metafileExportName: 'Komprimovane metadatoteke',
+            csvExportName: 'CSV',
+            tiffExportName: 'TIFF slika',
+            bmpExportName: 'BMP slike',
+            emfExportName: 'Poboljšana metadatoteka',
+            gifExportName: 'GIF slike',
+            jpgExportName: 'JPEG slike',
+            jpegExportName: 'JPEG slike',
+            pngExportName: 'PNG slika',
+            abstractMethodException: 'Ovo je apstraktna metod, molim vas da ga sprovedu.',
+            cannotRenderPageNoViewPage: 'Ne mogu da bi prikazao stranicu bez izvornog dokumenta i prikaz stranice.',
+            cannotRenderPageNoDoc: 'Ne mogu da bi prikazao stranicu bez izvornog dokumenta i prikaz stranice.',
+            exportFormat: 'Format za izvoz:',
+            exportOptionTitle: 'Opcije izvoza',
+            documentRestrictionsGroup: 'Dokument ograničenja',
+            passwordSecurityGroup: 'Bezbednost lozinke',
+            outputRangeGroup: 'Izlazni opseg',
+            documentInfoGroup: 'Informacije o dokumentu',
+            generalGroup: 'Opšte',
+            docInfoTitle: 'Naslov',
+            docInfoAuthor: 'Autor',
+            docInfoManager: 'Menadžer',
+            docInfoOperator: 'Operator',
+            docInfoCompany: 'Preduzeće',
+            docInfoSubject: 'Tema',
+            docInfoComment: 'Komentarisanje',
+            docInfoCreator: 'Autor',
+            docInfoProducer: 'Producent',
+            docInfoCreationTime: 'Datum nastanka',
+            docInfoRevisionTime: 'Revizija vremena',
+            docInfoKeywords: 'Ključne reči',
+            embedFonts: 'Ugradi TrueType fontove',
+            pdfACompatible: 'Kompatibilan sa PDF/A (nivoa 2B)',
+            useCompression: 'Koristi komprimovanje',
+            useOutlines: 'Generisanje obrise',
+            allowCopyContent: 'Dozvoli sadržaja kopiranje ili vađenje',
+            allowEditAnnotations: 'Omogućavanje uređivanja primjedbi',
+            allowEditContent: 'Omogućavanje uređivanja sadržaja',
+            allowPrint: 'Dozvoljavaju štampanje',
+            ownerPassword: 'Dozvole (vlasnik) lozinka:',
+            userPassword: 'Dokument otvori (korisnik) lozinka:',
+            encryptionType: 'Nivo šifriranja:',
+            paged: 'Na disku',
+            showNavigator: 'Prikaži Navigator',
+            singleFile: 'Jednu datoteku',
+            tolerance: 'Tolerancija, kada otkrivanje granice teksta (tačke):',
+            pictureLayer: 'Koristi zasebna slika sloj',
+            metafileType: 'Metafile tip:',
+            monochrome: 'Monohromatska',
+            resolution: 'Rezolucija:',
+            outputRange: 'Opseg stranica:',
+            outputRangeInverted: 'Preokrenuto',
+            showZoomBar: 'Traka za zumiranje',
+            searchPrev: 'Prethodna pretraga',
+            searchNext: 'Pretraži dalje',
+            checkMark: '\u2713',
+            exportOk: 'Izvoz…',
+            parameters: 'Parametri',
+            requiringParameters: 'Unesite parametre.',
+            nullParameterError: 'Vrednost ne može biti „null“.',
+            invalidParameterError: 'Nevažeći unos.',
+            parameterNoneItemsSelected: '(nijedno)',
+            parameterAllItemsSelected: '(sve)',
+            parameterSelectAllItemText: '(Izaberi sve)',
+            selectParameterValue: '(izaberite vrednost)',
+            apply: 'Primeni',
+            errorOccured: 'Došlo je do greške.'
         }
     };
+    var updc = window['wijmo']._updateCulture;
+    if (updc) {
+        updc();
+    }
 })(wijmo || (wijmo = {}));
 ;
-//# sourceMappingURL=wijmo.culture.sr.js.map
+

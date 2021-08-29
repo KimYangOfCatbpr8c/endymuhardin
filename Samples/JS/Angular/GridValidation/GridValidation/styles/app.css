@@ -1,0 +1,7 @@
+﻿.wj-flexgrid {
+    max-height: 350px;
+}
+
+.wj-cell.wj-state-invalid:not(.wj-header):not(.wj-group):not(.wj-alt):not(.wj-state-selected):not(.wj-state-multi-selected) {
+    background-color: rgba(255, 0, 0, 0.05);
+}

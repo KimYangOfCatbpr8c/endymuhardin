@@ -1,17 +1,20 @@
 /// <reference path="../typings/globals/core-js/index.d.ts" />
+import * as wjcCore from 'wijmo/wijmo';
+import * as wjcChart from 'wijmo/wijmo.chart';
+import * as wjcChartInteraction from 'wijmo/wijmo.chart.interaction';
 import { AfterViewInit } from '@angular/core';
 import { DataSvc } from './services/DataSvc';
 export declare class AppCmp implements AfterViewInit {
     isViewInitialized: boolean;
     data: any[];
     palette: any[];
-    pt: wijmo.Point;
+    pt: wjcCore.Point;
     props: any[];
     markerContent: Function;
-    chart1: wijmo.chart.FlexChart;
-    chart2: wijmo.chart.FlexChart;
-    chart3: wijmo.chart.FlexChart;
-    selector: wijmo.chart.interaction.RangeSelector;
+    chart1: wjcChart.FlexChart;
+    chart2: wjcChart.FlexChart;
+    chart3: wjcChart.FlexChart;
+    selector: wjcChartInteraction.RangeSelector;
     constructor(dataSvc: DataSvc);
     ngAfterViewInit(): void;
     rangeChanged(): void;

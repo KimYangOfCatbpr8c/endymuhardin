@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
@@ -13,6 +13,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
+var wjcGridXlsx = require('wijmo/wijmo.grid.xlsx');
+var wjcCore = require('wijmo/wijmo');
+'use strict';
 var core_1 = require('@angular/core');
 var common_1 = require('@angular/common');
 var forms_1 = require('@angular/forms');
@@ -28,12 +31,12 @@ var GridExcelImportExportCmp = (function (_super) {
         this.includeColumnHeader = true;
     }
     GridExcelImportExportCmp.prototype.exportExcel = function () {
-        wijmo.grid.xlsx.FlexGridXlsxConverter.save(this.flexGrid, { includeColumnHeaders: this.includeColumnHeader, includeCellStyles: false }, 'FlexGrid.xlsx');
+        wjcGridXlsx.FlexGridXlsxConverter.save(this.flexGrid, { includeColumnHeaders: this.includeColumnHeader, includeCellStyles: false }, 'FlexGrid.xlsx');
     };
     GridExcelImportExportCmp.prototype.importExcel = function () {
         var fileInput = document.getElementById('importFile');
         if (fileInput.files[0]) {
-            wijmo.grid.xlsx.FlexGridXlsxConverter.load(this.flexGrid, fileInput.files[0], { includeColumnHeaders: this.includeColumnHeader });
+            wjcGridXlsx.FlexGridXlsxConverter.load(this.flexGrid, fileInput.files[0], { includeColumnHeaders: this.includeColumnHeader });
         }
     };
     GridExcelImportExportCmp.prototype.updateGroup = function (flex) {
@@ -51,7 +54,7 @@ var GridExcelImportExportCmp = (function (_super) {
                     // group amounts in ranges
                     // (could use the mapping function to group countries into continents, 
                     // names into initials, etc)
-                    groupDesc = new wijmo.collections.PropertyGroupDescription(propName, function (item, prop) {
+                    groupDesc = new wjcCore.PropertyGroupDescription(propName, function (item, prop) {
                         var value = item[prop];
                         if (value > 1000)
                             return 'Large Amounts';
@@ -65,7 +68,7 @@ var GridExcelImportExportCmp = (function (_super) {
                 }
                 else if (propName) {
                     // group other properties by their specific values
-                    groupDesc = new wijmo.collections.PropertyGroupDescription(propName);
+                    groupDesc = new wjcCore.PropertyGroupDescription(propName);
                     cv.groupDescriptions.push(groupDesc);
                 }
             }

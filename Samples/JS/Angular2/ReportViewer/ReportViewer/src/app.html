@@ -1,0 +1,72 @@
+﻿
+<div class="header">
+    <div class="container">
+        <img src="resources/wijmo5.png" alt="Wijmo 5" />
+        <h1>
+            ReportViewer
+        </h1>
+        <p>
+            This page shows how to use the C1 Report Service to display the content.
+        </p>
+    </div>
+    </div>
+<div class="container">
+    <div class="descriptions">
+        <p>
+            The <a target="_blank" href="http://helpcentral.componentone.com/nethelp/C1WebAPI/ReportServices.html">C1 Web API Report Services</a> is an API which can render and export <a target="_blank" href="http://www.componentone.com/Studio/FlexReport?platform=WinForms">FlexReport</a> and <a target="_blank" href="https://msdn.microsoft.com/en-us/library/ms159106.aspx">SSRS</a> report.
+            It uses <a target="_blank" href="http://helpcentral.componentone.com/nethelp/FlexReport/C1.Win.FlexReport.4~C1.Win.FlexReport.C1FlexReport.html">C1FlexReport</a> to render the <a target="_blank" href="http://www.componentone.com/Studio/FlexReport?platform=WinForms">FlexReport</a>, and uses <a target="_blank" href="http://helpcentral.componentone.com/nethelp/FlexReport/C1.Win.C1Document.4~C1.Win.C1Document.C1SSRSDocumentSource.html">C1SSRSDocumentSource</a> to connect with SSRS server and render the SSRS report.
+            Please see <a target="_blank" href="https://grapecity.sharepoint.com/teams/C1/C1Studio/Rhino/_layouts/15/WopiFrame.aspx?sourcedoc=%7BC7E2A01F-5D83-49BD-99AF-A3B60CE43215%7D&file=How%20to%20Set%20Up%20C1%20Web%20API%20Report%20Services.docx&action=default&IsList=1&ListId=%7BDFFA5B8D-3C57-433C-B25F-A31FAB3602EF%7D&ListItemId=646">How to Set Up C1 Web API Report Services</a> for details.
+        </p>
+        <p>
+            To show the report content in Wijmo ReportViewer control from the C1 Report Services, set the following basic properties:
+        </p>
+        <ol>
+            <li>
+                <b>serviceUrl:</b> The url of C1 Web API Report Services.
+                For example, 'http://demos.componentone.com/ASPNET/c1webapi/4.0.20171.91/api/report'.
+            </li>
+            <li>
+                <b>filePath:</b> The full path to the FlexReport definition file or SSRS report on the server.
+                For example, 'ReportsRoot/Formatting/AlternateBackground.flxr' for FlexReport, and 'c1ssrs/AdventureWorks/Company Sales' for SSRS report.
+                <p>
+                    The 'ReportsRoot' and 'c1ssrs' are the keys of the report providers which are registered at server for locating specified report.
+                </p>
+            </li>
+            <li>
+                <b>reportName:</b> (only for FlexReport) The report name defined in the FlexReport definition file.
+                For example, 'AlternateBackground' for the report named 'AlternateBackground' in the AlternateBackground.flxr file.
+            </li>
+        </ol>
+    </div>
+    <br />
+    <div class="report-names">
+        <span>Selected FlexReport:</span>
+        <select id="reports" class="combobox" #flexReportsCombo  [(ngModel)]="reportInfo">     
+            <option value="None">
+                None
+            </option>    
+            <template ngFor let-item [ngForOf]="reportItems">        
+                <optgroup *ngIf="item.reports" label="{{item.text}}">
+                    <option *ngFor="let report of item.reports"  [value]="'ReportsRoot/' + item.name + '/' + report.fileName + '*' + report.reportName" >
+                        {{report.reportTitle}}
+                    </option>
+                </optgroup>                
+            </template>
+        </select>
+        <span>Selected SSRS Report:</span>
+        <select id="ssrsReports" class="combobox" #ssrsReportsCombo [(ngModel)]="ssrsReportInfo">
+            <option value="None">
+                None
+            </option> 
+                <template ngFor let-item [ngForOf]="ssrsItems">
+                    <optgroup *ngIf="item.reports" label="{{item.text}}">
+                        <option *ngFor="let report of item.reports" [value]="'c1ssrs/' + report.reportPath">
+                            {{report.reportTitle}}
+                        </option>
+                    </optgroup>
+                </template>
+</select>
+    </div>
+    <br />
+ <wj-report-viewer #reportView [serviceUrl]="serviceUrl" [filePath]="filePath" [reportName]="reportName" [paginated]="paginated"></wj-report-viewer>
+</div>

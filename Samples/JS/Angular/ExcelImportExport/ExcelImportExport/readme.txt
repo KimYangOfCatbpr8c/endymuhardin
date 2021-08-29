@@ -25,6 +25,9 @@ importExcel function in the basicController file reads the selected file content
 disk and passes it to the ExcelConverter.import function, along with the grid instance 
 defined on the html page.
 
+The sample also implements support for HTML drag/drop. Simply drag an XLSX file onto the
+FlexGrid and it will be loaded automatically.
+
 <b>Adding it to your application</b>
 
 In order to add Excel import or export support to your application, please perform the following steps:

@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
@@ -13,6 +13,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
+var wjcGridPdf = require('wijmo/wijmo.grid.pdf');
+var wjcPdf = require('wijmo/wijmo.pdf');
+var wjcCore = require('wijmo/wijmo');
+'use strict';
 var core_1 = require('@angular/core');
 var common_1 = require('@angular/common');
 var router_1 = require('@angular/router');
@@ -25,12 +29,12 @@ var GridPdfExportCmp = (function (_super) {
     __extends(GridPdfExportCmp, _super);
     function GridPdfExportCmp(dataSvc) {
         _super.call(this, dataSvc);
-        this.exportMode = wijmo.grid.pdf.ExportMode.All;
-        this.orientation = wijmo.pdf.PdfPageOrientation.Portrait;
-        this.scaleMode = wijmo.grid.pdf.ScaleMode.ActualSize;
+        this.exportMode = wjcGridPdf.ExportMode.All;
+        this.orientation = wjcPdf.PdfPageOrientation.Portrait;
+        this.scaleMode = wjcGridPdf.ScaleMode.ActualSize;
     }
     GridPdfExportCmp.prototype.export = function () {
-        wijmo.grid.pdf.FlexGridPdfConverter.export(this.flexGrid, 'FlexGrid.pdf', {
+        wjcGridPdf.FlexGridPdfConverter.export(this.flexGrid, 'FlexGrid.pdf', {
             maxPages: 10,
             exportMode: this.exportMode,
             scaleMode: this.scaleMode,
@@ -88,7 +92,7 @@ var GridPdfExportCmp = (function (_super) {
                     // group amounts in ranges
                     // (could use the mapping function to group countries into continents, 
                     // names into initials, etc)
-                    groupDesc = new wijmo.collections.PropertyGroupDescription(propName, function (item, prop) {
+                    groupDesc = new wjcCore.PropertyGroupDescription(propName, function (item, prop) {
                         var value = item[prop];
                         if (value > 1000)
                             return 'Large Amounts';
@@ -102,7 +106,7 @@ var GridPdfExportCmp = (function (_super) {
                 }
                 else if (propName) {
                     // group other properties by their specific values
-                    groupDesc = new wijmo.collections.PropertyGroupDescription(propName);
+                    groupDesc = new wjcCore.PropertyGroupDescription(propName);
                     cv.groupDescriptions.push(groupDesc);
                 }
             }

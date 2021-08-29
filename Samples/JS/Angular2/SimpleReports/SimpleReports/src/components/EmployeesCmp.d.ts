@@ -1,6 +1,7 @@
+import * as wjcOdata from 'wijmo/wijmo.odata';
 import { DataSvc } from '../services/DataSvc';
 export declare class EmployeesCmp {
-    employees: wijmo.odata.ODataCollectionView;
+    employees: wjcOdata.ODataCollectionView;
     images: string[];
     constructor(dataSvc: DataSvc);
 }

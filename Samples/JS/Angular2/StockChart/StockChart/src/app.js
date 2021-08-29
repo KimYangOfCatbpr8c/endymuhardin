@@ -1,4 +1,3 @@
-///<reference path="../typings/globals/core-js/index.d.ts"/>
 "use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -9,6 +8,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
+///<reference path="../typings/globals/core-js/index.d.ts"/>
+var wjcCore = require('wijmo/wijmo');
+var wjcChart = require('wijmo/wijmo.chart');
+var wjcChartAnalytics = require('wijmo/wijmo.chart.analytics');
 var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
 var forms_1 = require('@angular/forms');
@@ -43,7 +46,7 @@ var AppCmp = (function () {
         var cache = this.cache;
         this.hasData = false;
         this.markerVisible = false;
-        this.volYAxis = new wijmo.chart.Axis(0);
+        this.volYAxis = new wjcChart.Axis(0);
         this.volSeriesIsVisible = true;
         this.showAnnotation = false;
         this.showLineMarker = false;
@@ -85,7 +88,7 @@ var AppCmp = (function () {
     };
     AppCmp.prototype.itemsChanged = function () {
         if (this.rsChart && this.portfolio && this.rsChart.series.length === 0) {
-            var paneOffset = wijmo.getElementRect(document.querySelector('.chartcontainer')), overlapEle = document.querySelector('.overlap');
+            var paneOffset = wjcCore.getElementRect(document.querySelector('.chartcontainer')), overlapEle = document.querySelector('.overlap');
             if (overlapEle) {
                 overlapEle.style.top = paneOffset.top + 'px';
                 overlapEle.style.left = paneOffset.left + 'px';
@@ -124,7 +127,7 @@ var AppCmp = (function () {
                 item = this.portfolio.view.items[1];
                 this.hasData = !!(item.chartData && item.chartData.length && item.chart);
             }
-            this.pOffset = wijmo.getElementRect(ele.querySelector('.wj-plot-area'));
+            this.pOffset = wjcCore.getElementRect(ele.querySelector('.wj-plot-area'));
             if (!this._chartRendered) {
                 this._chartRendered = true;
                 chart.tooltip.content = '';
@@ -163,13 +166,13 @@ var AppCmp = (function () {
         }
         if (e) {
             point = e instanceof MouseEvent ?
-                new wijmo.Point(e.pageX, e.pageY) :
-                new wijmo.Point(e.changedTouches[0].pageX, e.changedTouches[0].pageY);
+                new wjcCore.Point(e.pageX, e.pageY) :
+                new wjcCore.Point(e.changedTouches[0].pageX, e.changedTouches[0].pageY);
         }
         series.forEach(function (ser) {
             if (e) {
                 // each series has different data range
-                hitTest = ser.hitTest(new wijmo.Point(point.x, NaN));
+                hitTest = ser.hitTest(new wjcCore.Point(point.x, NaN));
                 if (hitTest == null || hitTest.x == null || hitTest.y == null) {
                     return;
                 }
@@ -179,7 +182,7 @@ var AppCmp = (function () {
                 pointIndex = ser.itemsSource.length - 1;
             }
             var itm = ser.itemsSource[pointIndex], dateStr;
-            if (!itm || ser instanceof wijmo.chart.analytics.MovingAverage ||
+            if (!itm || ser instanceof wjcChartAnalytics.MovingAverage ||
                 ser.binding === 'volume') {
                 return;
             }
@@ -189,7 +192,7 @@ var AppCmp = (function () {
                     annoItem.pointIndex = pointIndex;
                 }
             }
-            dateStr = wijmo.Globalize.format(itm.date, 'MMM dd, yyyy');
+            dateStr = wjcCore.Globalize.format(itm.date, 'MMM dd, yyyy');
             if (displaySeriesNum === 1) {
                 if (ser.binding === 'high,low,open,close' && e) {
                     detail = dateStr +
@@ -243,13 +246,13 @@ var AppCmp = (function () {
     AppCmp.prototype.rangeChanged = function (event) {
         var dateRangeSelector = this.rangeSelector, activeBtn = document.querySelector('.btn-group-xs .btn.active');
         if (!this.chartPeriodClicked && activeBtn) {
-            wijmo.removeClass(activeBtn, 'active');
+            wjcCore.removeClass(activeBtn, 'active');
             activeBtn.blur();
         }
         this._updateStChartRange(dateRangeSelector.min, dateRangeSelector.max);
         //update the date range
-        this.dateRange = wijmo.Globalize.format(new Date(dateRangeSelector.min), 'MMM dd, yyyy') +
-            ' - ' + wijmo.Globalize.format(new Date(dateRangeSelector.max), 'MMM dd, yyyy');
+        this.dateRange = wjcCore.Globalize.format(new Date(dateRangeSelector.min), 'MMM dd, yyyy') +
+            ' - ' + wjcCore.Globalize.format(new Date(dateRangeSelector.max), 'MMM dd, yyyy');
     };
     //update stock chart range
     AppCmp.prototype._updateStChartRange = function (min, max) {
@@ -261,7 +264,7 @@ var AppCmp = (function () {
     };
     ;
     AppCmp.prototype._changeYContent = function (hitTest, pt) {
-        var contents = this._getMarkerContents(new wijmo.Point(pt.x, pt.y));
+        var contents = this._getMarkerContents(new wjcCore.Point(pt.x, pt.y));
         return contents && contents.y ? contents.y.toString() : '';
     };
     AppCmp.prototype.changeXContent = function () {
@@ -269,12 +272,12 @@ var AppCmp = (function () {
     };
     ;
     AppCmp.prototype._changeXContent = function (hitTest, pt) {
-        var contents = this._getMarkerContents(new wijmo.Point(pt.x, pt.y));
+        var contents = this._getMarkerContents(new wjcCore.Point(pt.x, pt.y));
         return contents && contents.x ? contents.x.toString() : '';
     };
     //get line marker content
     AppCmp.prototype._getMarkerContents = function (pt) {
-        var chart = this.stChart, ht, xContent, yContent, newHitPoint = new wijmo.Point(pt.x, NaN), content = '';
+        var chart = this.stChart, ht, xContent, yContent, newHitPoint = new wjcCore.Point(pt.x, NaN), content = '';
         if (!chart) {
             return;
         }
@@ -285,7 +288,7 @@ var AppCmp = (function () {
         yContent = this._getAxixYValue(pt.y);
         ht = chart.series[0].hitTest(newHitPoint);
         if (ht.x && ht.y !== null) {
-            xContent = wijmo.Globalize.formatDate(ht.x, 'MM-dd-yyyy');
+            xContent = wjcCore.Globalize.formatDate(ht.x, 'MM-dd-yyyy');
         }
         return { x: xContent, y: yContent };
     };

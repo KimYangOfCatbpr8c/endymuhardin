@@ -1,18 +1,18 @@
 ﻿/*
     *
-    * Wijmo Library 5.20162.211
+    * Wijmo Library 5.20171.282
     * http://wijmo.com/
     *
     * Copyright(c) GrapeCity, Inc.  All rights reserved.
     *
     * Licensed under the Wijmo Commercial License.
     * sales@wijmo.com
-    * http://wijmo.com/products/wijmo-5/license/
+    * wijmo.com/products/wijmo-5/license/
     *
     */
 /*
-* Wijmo culture file: uk (Ukrainian)
-*/
+ * Wijmo culture file: uk (Ukrainian)
+ */
 var wijmo;
 (function (wijmo) {
     wijmo.culture = {
@@ -23,7 +23,7 @@ var wijmo;
                 '.': ',',
                 ',': ' ',
                 percent: { pattern: ['-n%', 'n%'] },
-                currency: { decimals: 2, symbol: '₴', pattern: ['-n$', 'n$'] }
+                currency: { decimals: 2, symbol: '₴', pattern: ['-n $', 'n $'] }
             },
             calendar: {
                 '/': '.',
@@ -51,7 +51,7 @@ var wijmo;
             itemsSelected: '{count:n0} пунктів обраний'
         },
         FlexGrid: {
-            groupHeaderFormat: '{name}: <b>{value} </b>({count:n0} елементи)'
+            groupHeaderFormat: '{name}: <b>{value}</b> ({count:n0} елементи)'
         },
         FlexGridFilter: {
             // filter
@@ -67,13 +67,13 @@ var wijmo;
             null: '(нічого)',
             // condition filter
             header: 'Показати елементи зі значенням',
-            and: 'Та',
+            and: 'Ta',
             or: 'Або',
             stringOperators: [
                 { name: '(не встановлено)', op: null },
                 { name: 'Дорівнює', op: 0 },
                 { name: 'Не дорівнює', op: 1 },
-                { name: 'Починається з', op: 6 },
+                { name: 'починається з', op: 6 },
                 { name: 'Закінчується на', op: 7 },
                 { name: 'Містить', op: 8 },
                 { name: 'Не містить', op: 9 }
@@ -101,104 +101,237 @@ var wijmo;
         },
         olap: {
             PivotFieldEditor: {
-                dialogHeader: 'Field settings:',
-                header: 'Header:',
-                summary: 'Summary:',
-                showAs: 'Show As:',
-                weighBy: 'Weigh by:',
-                sort: 'Sort:',
-                filter: 'Filter:',
-                format: 'Format:',
-                sample: 'Sample:',
-                edit: 'Edit...',
-                clear: 'Clear',
-                ok: 'OK',
-                cancel: 'Cancel',
-                none: '(none)',
+                dialogHeader: 'Параметри поля:',
+                header: 'верхнього колонтитула:',
+                summary: 'Резюме:',
+                showAs: 'Відобразити як:',
+                weighBy: 'Важити по:',
+                sort: 'Сортування:',
+                filter: 'Фільтр:',
+                format: 'Формат:',
+                sample: 'Зразок:',
+                edit: 'Редагування…',
+                clear: 'Очистити',
+                ok: 'ОК',
+                cancel: 'Скасувати',
+                none: '(немає)',
                 sorts: {
-                    asc: 'Ascending',
-                    desc: 'Descending'
+                    asc: 'За зростанням',
+                    desc: 'За спаданням'
                 },
                 aggs: {
-                    sum: 'Sum',
-                    cnt: 'Count',
-                    avg: 'Average',
-                    max: 'Max',
-                    min: 'Min',
-                    rng: 'Range',
-                    std: 'StdDev',
-                    var: 'Var',
+                    sum: 'Сума',
+                    cnt: 'Лічильник',
+                    avg: 'Середня',
+                    max: 'MAX',
+                    min: 'MIN',
+                    rng: 'Діапазон',
+                    std: 'Зсунене відхилення',
+                    var: 'VAR',
                     stdp: 'StdDevPop',
                     varp: 'VarPop'
                 },
                 calcs: {
-                    noCalc: 'No Calculation',
-                    dRow: 'Difference from previous row',
-                    dRowPct: '% Difference from previous row',
-                    dCol: 'Difference from previous column',
-                    dColPct: '% Difference from previous column'
+                    noCalc: 'Без обчислення',
+                    dRow: 'Відмінність від попереднього рядка',
+                    dRowPct: '% Відмінність від попереднього рядка',
+                    dCol: 'Відмінність від попереднього стовпця',
+                    dColPct: '% Відмінність від попереднього стовпця',
+                    dPctGrand: '% від підсумка',
+                    dPctRow: '% загальної рядка',
+                    dPctCol: '% всього стовпця',
+                    dRunTot: 'З накопичувальним підсумком',
+                    dRunTotPct: '% працює загальна'
                 },
                 formats: {
-                    n0: 'Integer (n0)',
+                    n0: 'Ціле число (n0)',
                     n2: 'Float (n2)',
-                    c: 'Currency (c)',
-                    p0: 'Percentage (p0)',
-                    p2: 'Percentage (p2)',
-                    n2c: 'Thousands (n2,)',
-                    n2cc: 'Millions (n2,,)',
-                    n2ccc: 'Billions (n2,,,)',
-                    d: 'Date (d)',
-                    MMMMddyyyy: 'Month Day Year (MMMM dd, yyyy)',
-                    dMyy: 'Day Month Year (d/M/yy)',
-                    ddMyy: 'Day Month Year (dd/M/yy)',
-                    dMyyyy: 'Day Month Year (dd/M/yyyy)',
-                    MMMyyyy: 'Month Year (MMM yyyy)',
-                    MMMMyyyy: 'Month Year (MMMM yyyy)',
-                    yyyyQq: 'Year Quarter (yyyy "Q"q)',
-                    FYEEEEQU: 'Fiscal Year Quarter ("FY"EEEE "Q"U)'
+                    c: 'Грошова одиниця (c)',
+                    p0: 'Відсоток (p0)',
+                    p2: 'Відсоток (p2)',
+                    n2c: 'Тисячі (n2)',
+                    n2cc: 'Мільйони (n2,)',
+                    n2ccc: 'Мільярди (n2),,',
+                    d: 'Дата (d)',
+                    MMMMddyyyy: 'Місяць дня року (ММММ dd, рррр)',
+                    dMyy: 'День місяць рік (д/М/рр)',
+                    ddMyy: 'День місяць рік (M/ДД/РР)',
+                    dMyyyy: 'День місяць рік (дд/М/рррр)',
+                    MMMyyyy: 'Місяць рік (МММ рррр)',
+                    MMMMyyyy: 'Місяць рік (натискань ММММ. рррр)',
+                    yyyyQq: 'Роком чверть (yyyy "Q"q)',
+                    FYEEEEQU: 'Квартал фінансового року ("FY" EEEE "Q" U)'
                 }
             },
             PivotEngine: {
-                grandTotal: 'Grand Total',
-                subTotal: 'Subtotal'
+                grandTotal: 'Загальний підсумок',
+                subTotal: 'SUBTOTAL'
             },
             PivotPanel: {
-                fields: 'Choose fields to add to report',
-                drag: 'Drag fields between areas below:',
-                filters: 'Filters',
-                cols: 'Columns',
-                rows: 'Rows',
-                vals: 'Values',
-                defer: 'Defer Updates',
-                update: 'Update'
+                fields: 'Виберіть поля для додавання до звіту:',
+                drag: 'Перетягніть поля між такими областями:',
+                filters: 'Фільтри',
+                cols: 'Стовпці',
+                rows: 'Рядки',
+                vals: 'Значення',
+                defer: 'Відкласти оновлення',
+                update: 'Оновити'
             },
             _ListContextMenu: {
-                up: 'Move Up',
-                down: 'Move Down',
-                first: 'Move do Beginning',
-                last: 'Move to End',
-                filter: 'Move to Report Filter',
-                rows: 'Move to Row Labels',
-                cols: 'Move to Column Labels',
-                vals: 'Move to Values',
-                remove: 'Remove Field',
-                edit: 'Field Settings...',
-                detail: 'Show Detail...'
+                up: 'Вгору',
+                down: 'Вниз',
+                first: 'переміщення на початок',
+                last: 'Перейти до кінця',
+                filter: 'Перейти до фільтру звіту',
+                rows: 'Перейти до підписів рядків',
+                cols: 'Перейти до підписів стовпців',
+                vals: 'Перейти до значень',
+                remove: 'Видалити поля',
+                edit: 'Параметри поля…',
+                detail: 'Показати подробиці…'
             },
             PivotChart: {
-                by: 'by',
-                and: 'and'
+                by: 'за',
+                and: 'та'
             },
             DetailDialog: {
-                header: 'Detail View:',
-                ok: 'OK',
-                items: '{cnt:n0} items',
-                item: '{cnt} item',
-                row: 'Row',
-                col: 'Column'
+                header: 'Докладне подання:',
+                ok: 'ОК',
+                items: '{cnt:n0} елементів',
+                item: '{cnt} елемент',
+                row: 'Рядок',
+                col: 'Стовпець'
             }
+        },
+        Viewer: {
+            cancel: 'Скасувати',
+            ok: 'ОК',
+            bottom: 'Вниз:',
+            top: 'Зверху:',
+            right: 'Справа:',
+            left: 'Зліва:',
+            margins: 'Поля (дюйми)',
+            orientation: 'Напрямок:',
+            paperKind: 'Вид паперу:',
+            pageSetup: 'зміну розмітки сторінки',
+            landscape: 'Альбомна',
+            portrait: 'Книжкова',
+            pageNumber: 'Номер сторінки',
+            zoomFactor: 'Коефіцієнт масштабування',
+            paginated: 'Надрукувати макет',
+            print: 'Друк',
+            search: 'Пошук',
+            matchCase: 'Враховувати регістр',
+            wholeWord: 'Слово цілком',
+            searchResults: 'Результати пошуку',
+            previousPage: 'Попередня сторінка',
+            nextPage: 'Наступна сторінка',
+            firstPage: 'Перша сторінка',
+            lastPage: 'Остання сторінка',
+            backwardHistory: 'повернутий',
+            forwardHistory: 'Вперед',
+            pageCount: 'Кількість сторінок',
+            selectTool: 'Виберіть інструмент',
+            moveTool: 'Інструмент "переміщення"',
+            continuousMode: 'Безперервний режим перегляду',
+            singleMode: 'Суцільне подання сторінки',
+            wholePage: 'Fit цілу сторінку',
+            pageWidth: 'Шириною сторінки',
+            zoomOut: 'Зменшити',
+            zoomIn: 'Збільшити',
+            exports: 'Експорт',
+            fullScreen: 'На весь екран',
+            exitFullScreen: 'Вийти з повноекранного режиму',
+            hamburgerMenu: 'Знаряддя',
+            showSearchBar: 'Відображати рядок пошуку',
+            viewMenu: 'Параметри макета',
+            searchOptions: 'Параметри пошуку',
+            matchCaseMenuItem: 'Враховувати регістр',
+            wholeWordMenuItem: 'Слово повністю',
+            thumbnails: 'Мініатюри сторінок',
+            outlines: 'Схема документа',
+            loading: 'Завантаження…',
+            pdfExportName: 'Adobe PDF',
+            docxExportName: 'Слово Open XML',
+            xlsxExportName: 'Excel Open XML',
+            docExportName: 'Microsoft Word',
+            xlsExportName: 'Microsoft Excel',
+            mhtmlExportName: 'Веб-архів (MHTML)',
+            htmlExportName: 'HTML-документа',
+            rtfExportName: 'RTF документ',
+            metafileExportName: 'Стиснутий метафайли',
+            csvExportName: 'CSV',
+            tiffExportName: 'TIFF-зображень',
+            bmpExportName: 'Для Бітових зображень',
+            emfExportName: 'Розширений метафайл',
+            gifExportName: 'GIF зображень',
+            jpgExportName: 'Зображення JPEG',
+            jpegExportName: 'Зображення JPEG',
+            pngExportName: 'PNG зображення',
+            abstractMethodException: 'Анотація метод, будь ласка, здійснити його.',
+            cannotRenderPageNoViewPage: 'Не вдається візуалізації сторінки без вихідного документа і переглянути сторінці.',
+            cannotRenderPageNoDoc: 'Не вдається візуалізації сторінки без вихідного документа і переглянути сторінці.',
+            exportFormat: 'Формат експорту:',
+            exportOptionTitle: 'Параметри експорту',
+            documentRestrictionsGroup: 'Документ обмежень',
+            passwordSecurityGroup: 'Безпека паролів',
+            outputRangeGroup: 'Вихідний діапазон',
+            documentInfoGroup: 'Інформація про документ',
+            generalGroup: 'Загальні',
+            docInfoTitle: 'Заголовок',
+            docInfoAuthor: 'Автор',
+            docInfoManager: 'Керівник',
+            docInfoOperator: 'Оператор',
+            docInfoCompany: 'Установа',
+            docInfoSubject: 'Суб\'єкт',
+            docInfoComment: 'Зауваження',
+            docInfoCreator: 'Автор',
+            docInfoProducer: 'Продюсер',
+            docInfoCreationTime: 'Час створення',
+            docInfoRevisionTime: 'Редакція час',
+            docInfoKeywords: 'Ключові слова',
+            embedFonts: 'вбудовувати шрифти TrueType',
+            pdfACompatible: 'Сумісний з PDF/A (рівень 2-б)',
+            useCompression: 'Використовуйте стиснення',
+            useOutlines: 'Створення контурів',
+            allowCopyContent: 'Дозволити вмісту копіювання або витягнення',
+            allowEditAnnotations: 'Дозволити редагування анотацій',
+            allowEditContent: 'Дозволити редагування вмісту',
+            allowPrint: 'Дозволити друк',
+            ownerPassword: 'Пароль дозволу (власник):',
+            userPassword: 'Документ відкрите (користувач) пароль:',
+            encryptionType: 'Рівень шифрування:',
+            paged: 'Вивантажувана',
+            showNavigator: 'Показати Навігатор',
+            singleFile: 'Один файл',
+            tolerance: 'Толерантності при виявленні межі (точки):',
+            pictureLayer: 'Використання окремого зображення шару',
+            metafileType: 'Метафайл типу:',
+            monochrome: 'Монохромна',
+            resolution: 'Роздільна здатність:',
+            outputRange: 'Діапазон сторінок:',
+            outputRangeInverted: 'Перевернутий',
+            showZoomBar: 'Зум бар',
+            searchPrev: 'Пошук попереднього',
+            searchNext: 'Шукати далі',
+            checkMark: '\u2713',
+            exportOk: 'Експорт…',
+            parameters: 'Параметрів',
+            requiringParameters: 'Будь ласка, введіть параметри.',
+            nullParameterError: 'Значення не може бути пустим.',
+            invalidParameterError: 'Неприпустимий ввід.',
+            parameterNoneItemsSelected: '(немає)',
+            parameterAllItemsSelected: '(всі)',
+            parameterSelectAllItemText: '(Виділити все)',
+            selectParameterValue: '(виберіть значення)',
+            apply: 'Застосувати',
+            errorOccured: 'Сталася помилка.'
         }
     };
+    var updc = window['wijmo']._updateCulture;
+    if (updc) {
+        updc();
+    }
 })(wijmo || (wijmo = {}));
 ;
-//# sourceMappingURL=wijmo.culture.uk.js.map
+

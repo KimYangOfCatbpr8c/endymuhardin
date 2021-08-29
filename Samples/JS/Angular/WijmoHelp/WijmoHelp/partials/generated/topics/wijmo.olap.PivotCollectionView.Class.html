@@ -33,6 +33,7 @@ when sorting.</p></div>
 <li class="mproperty inherited"><a href="topic/wijmo.olap.PivotCollectionView.Class.html/#currentPosition">currentPosition</a></li>
 <li class="mproperty"><a href="topic/wijmo.olap.PivotCollectionView.Class.html/#engine">engine</a></li>
 <li class="mproperty inherited"><a href="topic/wijmo.olap.PivotCollectionView.Class.html/#filter">filter</a></li>
+<li class="mproperty inherited"><a href="topic/wijmo.olap.PivotCollectionView.Class.html/#getError">getError</a></li>
 <li class="mproperty inherited"><a href="topic/wijmo.olap.PivotCollectionView.Class.html/#groupDescriptions">groupDescriptions</a></li>
 <li class="mproperty inherited"><a href="topic/wijmo.olap.PivotCollectionView.Class.html/#groups">groups</a></li>
 <li class="mproperty inherited"><a href="topic/wijmo.olap.PivotCollectionView.Class.html/#isAddingNew">isAddingNew</a></li>
@@ -237,6 +238,42 @@ the 'this' object. For example:
   <dt>Type</dt><dd><a href="topic/wijmo.collections.IPredicate.Interface.html"><span class="identifier">IPredicate</span></a></dd>
 </dl>
 </div>
+<div id="getError" class="member-panel mproperty inherited">
+<h3>getError</h3>
+<div class="comment"><p>Gets or sets a callback that determines whether a specific property
+of an item contains validation errors.</p>
+<p>If provided, the callback should take two parameters containing the
+item and the property to validate, and should return a string describing
+the error (or null if there are no errors).</p>
+<p>For example:</p>
+
+
+<pre>var view = new wijmo.collections.CollectionView(data, {
+    getError: function (item, property) {
+        switch (property) {
+            case 'country':
+                return countries.indexOf(item.country) &lt; 0
+                    ? 'Invalid Country'
+                    : null;
+            case 'downloads':
+            case 'sales':
+            case 'expenses':
+                return item[property] &lt; 0
+                    ? 'Cannot be negative!'
+                    : null;
+            case 'active':
+                return item.active && item.country.match(/US|UK/)
+                    ? 'No active items allowed in the US or UK!'
+                    : null;
+        }
+        return null;
+    }
+});</pre></div>
+<dl class="dl-horizontal">
+  <dt>Inherited From</dt><dd><a href="topic/wijmo.collections.CollectionView.Class.html"><span class="identifier">CollectionView</span></a></dd>
+  <dt>Type</dt><dd><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Function" target="_blank"><span class="identifier">Function</span></a></dd>
+</dl>
+</div>
 <div id="groupDescriptions" class="member-panel mproperty inherited">
 <h3>groupDescriptions</h3>
 <div class="comment"><p>Gets a collection of <a href="topic/wijmo.collections.GroupDescription.Class.html"><span class="identifier">GroupDescription</span></a> objects that describe how the 
@@ -387,7 +424,8 @@ comparer is used.</p>
 <p>This <a href="topic/wijmo.olap.PivotCollectionView.Class.html/#sortComparer"><span class="identifier">sortComparer</span></a> property allows you to use custom comparison
 algorithms that in some cases result in sorting sequences that are
 more consistent with user's expectations than plain string comparisons.</p>
-<p>For example, see <a href="http://www.davekoelle.com/alphanum.html">Dave Koele's Alphanum algorithm</a>.
+<p>For example, see
+<a href="http://www.davekoelle.com/alphanum.html">Dave Koele's Alphanum algorithm</a>.
 It breaks up strings into chunks composed of strings or numbers, then
 sorts number chunks in value order and string chunks in ASCII order.
 Dave calls the result a "natural sorting order".</p>
@@ -504,7 +542,7 @@ can be significant for large collections.</p></div>
 <pre>addNew(): <span class="identifier">any</span></pre>
 <div class="comment"><p>Creates a new item and adds it to the collection.</p>
 <p>This method takes no parameters. It creates a new item, adds it to the
-collection, and prevents refresh operations until the new item is
+collection, and defers refresh operations until the new item is
 committed using the <a href="topic/wijmo.olap.PivotCollectionView.Class.html/#commitNew"><span class="identifier">commitNew</span></a> method or canceled using the 
 <a href="topic/wijmo.olap.PivotCollectionView.Class.html/#cancelNew"><span class="identifier">cancelNew</span></a> method.</p>
 <p>The code below shows how the <a href="topic/wijmo.olap.PivotCollectionView.Class.html/#addNew"><span class="identifier">addNew</span></a> method is typically used:</p>

@@ -1,3 +1,2 @@
-declare module xlsxImport {
-    function drawWorksheet(workbook: wijmo.xlsx.IWorkbook, sheetIndex: number, rootElement: HTMLElement, maxRows: any, maxColumns: any): void;
-}
+import * as wjcXlsx from 'wijmo/wijmo.xlsx';
+export declare function drawWorksheet(workbook: wjcXlsx.IWorkbook, sheetIndex: number, rootElement: HTMLElement, maxRows: any, maxColumns: any): void;

@@ -65,6 +65,16 @@ form input:invalid {
     font-weight: bold;
 }
 
+/* default trees on this sample */
+.wj-treeview {
+    display:block;
+    height: 350px;
+    width: 40%;
+    font-size: 120%;
+    margin-bottom: 8px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
 .radialgauge {
     height:150px;
     padding:3px;

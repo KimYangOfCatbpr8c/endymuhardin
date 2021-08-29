@@ -1,4 +1,3 @@
-///<reference path="../typings/globals/core-js/index.d.ts"/>
 "use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -9,6 +8,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
+///<reference path="../typings/globals/core-js/index.d.ts"/>
+var wjcChart = require('wijmo/wijmo.chart');
 // Angular
 var core_1 = require('@angular/core');
 var forms_1 = require('@angular/forms');
@@ -41,7 +42,7 @@ var AppCmp = (function () {
         this.paletteChanged = function (sender) {
             var p = _this.palettes[sender.selectedIndex];
             _this.palette = p;
-            _this.chartPalette = wijmo.chart.Palettes[p];
+            _this.chartPalette = wjcChart.Palettes[p];
         };
         this.innerRadiusChanged = function (sender) {
             if (sender.value < sender.min || sender.value > sender.max) {
@@ -70,6 +71,7 @@ var AppCmp = (function () {
         this.dataSvc = dataSvc;
         this.data = this.dataSvc.getData();
         this.hierarchicalData = this.dataSvc.getHierarchicalData();
+        this.groupCVData = this.dataSvc.getGroupCVData();
         this.themingData = this.dataSvc.getThemingData();
     }
     AppCmp = __decorate([

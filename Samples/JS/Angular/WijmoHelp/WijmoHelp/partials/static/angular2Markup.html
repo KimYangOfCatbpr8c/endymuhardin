@@ -60,3 +60,27 @@
     (deletingRow)="beforeDelete(flex, $event)"&gt; // pass sender ('flex') and event arguments ($event) to the handler
 &lt;/wj-flex-grid&gt;</pre>
 
+<h3>The "initialized" Event</h3>
+<p>
+    All Wijmo Angular 2 components include an "initialized" event that is raised after the control 
+    has been added to the page and initialized.
+</p>
+<p>
+    You can use this event to perform additional initalization in addition
+    to setting properties in markup. For example:
+</p>
+<pre>&lt;wj-flex-grid #flex (initialized)="initGrid(flex)"&gt;
+&lt;/wj-flex-grid&gt;</pre>
+
+<pre>// implementation
+export class AppComponent {
+    constructor() {
+        this.data = ...;
+    }
+  
+    // add custom merge manager to the FlexGrid
+    initGrid(flex) {
+        flex.mergeManager = new CustomMerge(flex);
+    }
+}</pre>
+

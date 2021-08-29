@@ -7,7 +7,7 @@ var Trees = React.createClass({
                 Trees and Hierarchical Data
             </h2>
             <p>
-                In addition to grouping, FlexGrid supports hierarchical data, that is, data with items
+                In addition to grouping, FlexGrid supports hierarchical data, that is the data with items
                 that have lists of subitems. This type of hierarchical structure is very common, and is
                 usually displayed in a tree-view control.
             </p>

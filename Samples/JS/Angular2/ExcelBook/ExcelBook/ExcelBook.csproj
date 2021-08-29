@@ -54,6 +54,8 @@
   <ItemGroup>
     <Folder Include="resources\ribbon\" />
   </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">12.0</VisualStudioVersion>
   </PropertyGroup>
@@ -103,14 +105,6 @@
     </VisualStudio>
   </ProjectExtensions>
   <ItemGroup>
-    <Content Include="scripts\vendor\wijmo.min.js" />
-    <Content Include="scripts\vendor\wijmo.input.min.js" />
-    <Content Include="scripts\vendor\wijmo.grid.min.js" />
-    <Content Include="scripts\vendor\wijmo.grid.filter.min.js" />
-    <Content Include="scripts\vendor\wijmo.grid.sheet.min.js" />
-    <Content Include="scripts\vendor\wijmo.grid.xlsx.min.js" />
-    <Content Include="scripts\vendor\wijmo.xlsx.min.js" />
-    <Content Include="scripts\vendor\wijmo.angular2.min.js" />
     <Content Include="styles\vendor\wijmo.min.css" />
     <Content Include="styles\vendor\wijmo.theme.office.min.css" />
   </ItemGroup>

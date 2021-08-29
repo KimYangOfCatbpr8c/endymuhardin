@@ -1,0 +1,50 @@
+<div class="header-panel member">
+<h2><span class="identifier">IPromise</span> Interface</h2>
+<dl class="dl-horizontal">
+<dt>File</dt><dd class="filename">wijmo.viewer.js</dd>
+<dt>Module</dt><dd><a href="topic/wijmo.viewer.Module.html"><span class="identifier">wijmo.viewer</span></a></dd>
+</dl>
+<div class="comment"><p>Defines the interface of promise which is used for asynchronous calling.</p></div>
+</div>
+<div class="member-panel class members" ng-class="{ 'show-inherited' : ctx.showInherited, 'show-raisers' : ctx.showRaisers }">
+<h3 class="node">Methods</h3>
+<ul>
+<li class="mmethod"><a href="topic/wijmo.viewer.IPromise.Interface.html/#catch">catch</a></li>
+<li class="mmethod"><a href="topic/wijmo.viewer.IPromise.Interface.html/#then">then</a></li>
+</ul>
+</div>
+<h3 class="node">Methods</h3>
+<div class="member-list" ng-class="{ 'show-inherited' : ctx.showInherited, 'show-raisers' : ctx.showRaisers }">
+<div id="catch" class="member-panel mmethod">
+<h3>catch</h3>
+<pre>catch(onRejected?: <span class="identifier">(reason?: any)</span>): <a href="topic/wijmo.viewer.IPromise.Interface.html"><span class="identifier">IPromise</span></a></pre>
+<div class="comment"><p>Call the function after a promise is rejected.</p></div>
+<dl class="dl-horizontal">
+  <dt>Parameters</dt><dd></dd>
+</dl>
+<ul>
+<li><b>onRejected</b>: <span class="identifier">(reason?: any)</span> <span class="badge">Optional</span><br/><p>The function which will be executed when a promise is rejected.
+This has a single parameter, the rejection reason. The return value will be 
+passed to the next callback function.</p></li></ul>
+<dl class="dl-horizontal">
+  <dt>Returns</dt><dd><a href="topic/wijmo.viewer.IPromise.Interface.html"><span class="identifier">IPromise</span></a></dd>
+</dl>
+</div>
+<div id="then" class="member-panel mmethod">
+<h3>then</h3>
+<pre>then(onFulfilled?: <span class="identifier">(value?: any)</span>, onRejected?: <span class="identifier">(reason?: any)</span>): <a href="topic/wijmo.viewer.IPromise.Interface.html"><span class="identifier">IPromise</span></a></pre>
+<div class="comment"><p>Call the function after a promise is fulfilled or rejected.</p></div>
+<dl class="dl-horizontal">
+  <dt>Parameters</dt><dd></dd>
+</dl>
+<ul>
+<li><b>onFulfilled</b>: <span class="identifier">(value?: any)</span> <span class="badge">Optional</span><br/><p>The function which will be executed when a promise is fulfilled.
+This has a single parameter, the fulfillment value. If a value is returned, it will be 
+passed to the next callback function. If no value is returned, the original value will be passed.</p></li><li><b>onRejected</b>: <span class="identifier">(reason?: any)</span> <span class="badge">Optional</span><br/><p>The function which will be executed when a promise is rejected.
+This has a single parameter, the rejection reason. If a value is returned, it will be 
+passed to the next callback function. If no value is returned, the original value will be passed.</p></li></ul>
+<dl class="dl-horizontal">
+  <dt>Returns</dt><dd><a href="topic/wijmo.viewer.IPromise.Interface.html"><span class="identifier">IPromise</span></a></dd>
+</dl>
+</div>
+</div>

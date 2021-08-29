@@ -28,7 +28,7 @@ var ToggleSeries = React.createClass({
                 only in the legend, or completely hidden.</p>
             <p>
                 This sample shows how you can use the <b>visibility</b> property to toggle 
-                the visibility of a series using two methods:</p>
+                the visibility of a series in two ways:</p>
 
             <div className="row">
                 <div className="col-md-6">

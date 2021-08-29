@@ -1,0 +1,31 @@
+<div class="header-panel module">
+<h2><span class="identifier">wijmo/wijmo.angular2.viewer</span> Module</h2>
+<dl class="dl-horizontal">
+<dt>File</dt><dd class="filename">wijmo.angular2.js</dd>
+<dt>Module</dt><dd><span class="identifier">wijmo/wijmo.angular2.viewer</span></dd>
+</dl>
+<div class="comment"><p>Contains Angular 2 components for the <b>wijmo.viewer</b> module.</p>
+<p><b>wijmo.angular2.viewer</b> is an external TypeScript module that can be imported to your code
+using its ambient module name. For example:</p>
+
+
+<pre>import * as wjViewer from 'wijmo/wijmo.angular2.viewer';
+&nbsp;
+&#64;Component({
+    directives: [wjViewer.WjReportViewer, wjViewer.WjPdfViewer],
+    template: `
+      &lt;wj-report-viewer [reportName]="sales" [serviceUrl]="'webserviceApi'"&gt;
+      &lt;/wj-report-viewer;`,
+    selector: 'my-cmp',
+})
+export class MyCmp {
+    data: any[];
+}</pre></div>
+</div>
+<div class="member-panel module members">
+<h3 class="node">Classes</h3>
+<ul>
+<li class="mclass"><a href="topic/wijmo-wijmo.angular2.viewer.WjPdfViewer.Class.html">WjPdfViewer</a></li>
+<li class="mclass"><a href="topic/wijmo-wijmo.angular2.viewer.WjReportViewer.Class.html">WjReportViewer</a></li>
+</ul>
+</div>

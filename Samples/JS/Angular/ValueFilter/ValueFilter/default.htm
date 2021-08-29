@@ -47,20 +47,21 @@
             allow-add-new="true"
             defer-resizing="true"
             initialized="initialized(s, e)">
-            <wj-flex-grid-column required="false" binding="id"></wj-flex-grid-column>
-            <wj-flex-grid-column required="false" binding="name"></wj-flex-grid-column>
-            <wj-flex-grid-column required="false" binding="date"></wj-flex-grid-column>
-            <wj-flex-grid-column required="false" binding="country"></wj-flex-grid-column>
-            <wj-flex-grid-column required="false" binding="countryMapped" data-map="countryMap"></wj-flex-grid-column>
-            <wj-flex-grid-column required="false" binding="downloads"></wj-flex-grid-column>
-            <wj-flex-grid-column required="false" binding="sales"></wj-flex-grid-column>
-            <wj-flex-grid-column required="false" binding="expenses"></wj-flex-grid-column>
-            <wj-flex-grid-column required="false" binding="checked"></wj-flex-grid-column>
+            <wj-flex-grid-column is-required="false" binding="id"></wj-flex-grid-column>
+            <wj-flex-grid-column is-required="false" binding="name"></wj-flex-grid-column>
+            <wj-flex-grid-column is-required="false" binding="date"></wj-flex-grid-column>
+            <wj-flex-grid-column is-required="false" binding="country"></wj-flex-grid-column>
+            <wj-flex-grid-column is-required="false" binding="countryMapped" data-map="countryMap"></wj-flex-grid-column>
+            <wj-flex-grid-column is-required="false" binding="downloads"></wj-flex-grid-column>
+            <wj-flex-grid-column is-required="false" binding="sales"></wj-flex-grid-column>
+            <wj-flex-grid-column is-required="false" binding="expenses"></wj-flex-grid-column>
+            <wj-flex-grid-column is-required="false" binding="checked"></wj-flex-grid-column>
         </wj-flex-grid>
 
         <p>
             Now showing {{data.items.length | number:0}} items.</p>
 
     </div>
+    <script src="http://cdn.wijmo.com/wijmo.sample.toolbar.js" type="text/javascript"></script>
 </body>
 </html>

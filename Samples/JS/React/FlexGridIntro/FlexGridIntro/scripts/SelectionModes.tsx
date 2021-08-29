@@ -20,7 +20,7 @@ var SelectionModes = React.createClass({
             </h2>
             <p>
                 By default, FlexGrid allows you to select a range of cells with the mouse or keyboard,
-                just like Excel. The <b>selectionMode</b> property allows you to change that so that you
+                just like Microsoft Excel. The <b>selectionMode</b> property allows you to change that, so that you
                 can select a row, a range of rows, non-contiguous rows (like in a list-box), a single cell,
                 or disable selection altogether.
             </p>

@@ -27,14 +27,17 @@ app.controller('appCtrl', function ($scope) {
         // show the dialog
         // and undo changes if the user didn't click the OK button
         $scope.modalDialog.show(true, function (e) {
-            if (e.dialogResult == 'submit') {
-                // process form data
-            } else { // restore original values
+            if (e.dialogResult != 'wj-hide-ok') {
                 for (var k in original) {
                     $scope.dlgItem[k] = original[k];
                 }
             }
-        })
+        });
+    }
+
+    // changes have been accepted, hide dialog
+    $scope.submitForm = function () {
+        $scope.modalDialog.hide('wj-hide-ok');
     }
 
     function clone(obj) {

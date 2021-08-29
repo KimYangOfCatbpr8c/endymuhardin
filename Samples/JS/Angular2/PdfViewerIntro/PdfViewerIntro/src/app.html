@@ -1,0 +1,297 @@
+﻿<div class="header">
+    <div class="container">
+        <img src="resources/wijmo5.png" alt="Wijmo 5" />
+        <h1>
+            PdfViewer 101
+        </h1>
+        <p>
+            This page shows how to get started with Wijmo's PdfViewer control for Angular.
+        </p>
+    </div>
+</div>
+<div class="container">
+    <!-- Overview -->
+    <!-- Getting Started -->
+    <div>
+        <h2>Getting Started</h2>
+        <p>
+            Steps for getting started with the PdfViewer control in AngularJS applications:
+        </p>
+        <ol>
+            <li>Set up C1 Web API Pdf Services.  Please refer to <a target="_blank" href="https://grapecity.sharepoint.com/teams/C1/C1Studio/Rhino/_layouts/15/WopiFrame.aspx?sourcedoc=%7B2A584525-1FE5-4DDF-9250-BFFBDCEF7ACD%7D&file=%5BHowTo%5DSet%20Up%20C1%20Web%20Api%20Pdf%20Services.docx&action=default&IsList=1&ListId=%7BDFFA5B8D-3C57-433C-B25F-A31FAB3602EF%7D&ListItemId=644">How to set up C1 Web API Pdf Services</a>.</li>
+            <li>Add references to AngularJS, Wijmo, and Wijmo's AngularJS directives.</li>
+            <li>
+                Add a component to provide data and logic.<br />
+            </li>
+            <li>Add a PdfViewer to the page and set its <b>serviceUrl</b> and <b>filePath</b> properties.</li>
+        </ol>
+        <p>
+            The <a target="_blank" href="http://helpcentral.componentone.com/nethelp/C1WebAPI/ReportServices.html">C1 Web API Pdf Services</a> uses <a target="_blank" href="http://helpcentral.componentone.com/nethelp/FlexReport/C1.Win.C1Document.4~C1.Win.C1Document.C1PdfDocumentSource.html">C1PdfDocumentSource</a> to render and export pdf files.
+            Please refer to <a target="_blank" href="https://grapecity.sharepoint.com/teams/C1/C1Studio/Rhino/_layouts/15/WopiFrame.aspx?sourcedoc=%7B2A584525-1FE5-4DDF-9250-BFFBDCEF7ACD%7D&file=%5BHowTo%5DSet%20Up%20C1%20Web%20Api%20Pdf%20Services.docx&action=default&IsList=1&ListId=%7BDFFA5B8D-3C57-433C-B25F-A31FAB3602EF%7D&ListItemId=644">How to set up C1 Web API Pdf Services</a> for details.
+        </p>
+        <p>
+            To show the pdf file from C1 Web API Pdf Services, set the following basic properties:
+        </p>
+        <ol>
+            <li>
+                <b>serviceUrl:</b> The url of C1 Web API Pdf Services.
+                For example, 'http://demos.componentone.com/ASPNET/c1webapi/4.0.20171.91/api/pdf'.
+            </li>
+            <li>
+                <b>filePath:</b> The full path to the pdf file.
+                For example, 'PdfRoot/C1XapOptimizer.pdf'.
+                <p>
+                    The 'PdfRoot' is the key of the pdf file disk storage provider which is registered at server for locating specified pdf file.
+                    <br />
+                    The 'C1XapOptimizer.pdf' is the relative path of the pdf file which can be located by the disk storage provider.
+                </p>
+            </li>
+        </ol>
+        <div class="row">
+            <div class="col-md-12">
+                <h4>Result (live):</h4>
+                <wj-pdf-viewer [serviceUrl]="serviceUrl" [filePath]="filePath"></wj-pdf-viewer>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+
+            <div class="col-md-12">
+                <app-tab>
+                    <app-tab-pane title="HTML">
+                        <div class="pane-content">
+ &lt;!DOCTYPE html&gt;
+ &lt;html&gt;
+     &lt;head&gt;
+        &lt;!-- Polyfill(s) for older browsers --&gt;
+        &lt;script src="node_modules/core-js/client/shim.min.js"&gt;&lt;/script&gt;
+
+        &lt;script src="node_modules/zone.js/dist/zone.js"&gt;&lt;/script&gt;
+        &lt;script src="node_modules/reflect-metadata/Reflect.js"&gt;&lt;/script&gt;
+        &lt;script src="node_modules/systemjs/dist/system.src.js"&gt;&lt;/script&gt;
+
+
+        &lt;!-- Configure SystemJS --&gt;
+        &lt;script src="systemjs.config.js"&gt;&lt;/script&gt;
+        &lt;!-- Load the root application module --&gt;
+        &lt;script&gt;
+            System.import('./src/app');
+        &lt;/script&gt;
+     &lt;/head&gt;
+     &lt;body&gt;
+         &lt;!-- Add root application component --&gt;
+         &lt;app-cmp&gt;
+         &lt;wj-pdf-viewer [serviceUrl]="serviceUrl" [filePath]="filePath"&gt; &lt;/wj-pdf-viewer&gt;
+         &lt;/app-cmp&gt;
+     &lt;/body&gt;
+ &lt;/html&gt;
+                        </div>
+                    </app-tab-pane>
+                    <app-tab-pane title="TS">
+                        <div class="pane-content">
+  import * as wjcViewer from 'wijmo/wijmo.viewer';
+
+  // Angular
+  import &#123; Component, EventEmitter, Input, Inject, enableProdMode} from '@angular/core';
+  import &#123; FormsModule } from '@angular/forms';
+  import &#123; CommonModule } from '@angular/common';
+  import &#123; platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+  import &#123; BrowserModule } from '@angular/platform-browser';
+  import &#123; WjGridModule } from 'wijmo/wijmo.angular2.grid';
+  import &#123; WjInputModule } from 'wijmo/wijmo.angular2.input';
+  import &#123; WjViewerModule } from 'wijmo/wijmo.angular2.viewer';
+
+  'use strict';
+
+  // The Explorer application root component.
+  @Component(&#123;
+  selector: 'app-cmp',
+  templateUrl: 'src/app.html'
+  })
+
+  export class AppCmp &#123;
+
+      serviceUrl = 'http://demos.componentone.com/ASPNET/c1webapi/4.0.20171.91/api/pdf';
+      filePath = 'PdfRoot/C1XapOptimizer.pdf';
+
+      constructor() &#123;
+      }
+  }
+
+  @NgModule(&#123;
+  imports: [WjInputModule, WjGridModule, WjViewerModule, BrowserModule],
+      declarations: [AppCmp],
+      bootstrap: [AppCmp]
+  })
+  export class AppModule &#123;
+  }
+
+
+  enableProdMode();
+  // Bootstrap application with hash style navigation and global services.
+  platformBrowserDynamic().bootstrapModule(AppModule);
+                        </div>
+                    </app-tab-pane>
+                </app-tab>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Basic Features -->
+    <div>
+        <h2 id="Legend">Basic Features</h2>
+        <p>
+            The PdfViewer control has four basic properties that allow you to customize its appearance and behavior:
+        </p>
+        <ul>
+            <li>
+                <b>fullScreen</b>:  Indicates whether viewer is under full screen mode.
+            </li>
+            <li>
+                <b>selectMouseMode</b>:  Indicates whether clicking and dragging with the mouse in the view panel selects text.
+            </li>
+            <li>
+                <b>viewMode</b>:  Indicates how to show the document pages.
+            </li>
+            <li>
+                <b>zoomFactor</b>:  Indicates the current zoom factor to show the document pages.
+            </li>
+        </ul>
+        <p>
+            The example below allows you to see what happens when you change these properties.
+        </p>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                    <h4>Result (live):</h4>
+                    <wj-pdf-viewer #pdfViewer [serviceUrl]="serviceUrl" [filePath]="filePath" 
+                                      [fullScreen]="fullScreen" [selectMouseMode]="selectMouseMode" [zoomFactor]="zoomFactor">
+                    </wj-pdf-viewer>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <div class="col-md-3">
+                                <div class="checkbox">
+                                    <label>
+                                        <input id="basicContinuousViewMode" type="checkbox" [(ngModel)]="continuousViewMode" /> Continuous View Mode?
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="checkbox">
+                                    <label>
+                                        <input id="basicSelectMouseMode" type="checkbox" [(ngModel)]="selectMouseMode" /> Select Mouse Mode?
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="checkbox">
+                                    <label>
+                                        <input id="basicFullScreen" type="checkbox" [(ngModel)]="fullScreen" /> Full Screen?
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-mod-4">
+                                <label class="col-md-2 control-label">Zoom Factor</label>
+                                <div class="col-md-2">
+                                    <wj-input-number [(value)]="zoomFactor"
+                                                     [min]="0.05"
+                                                     [max]="10"
+                                                     [step]=".1"
+                                                     [format]="'n2'">
+                                    </wj-input-number>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <app-tab>
+                    <app-tab-pane title="HTML">
+                        <div class="pane-content">
+
+ &lt;wj-pdf-viewer #pdfViewer [serviceUrl]="serviceUrl" [filePath]="filePath" 
+                                      [fullScreen]="fullScreen" [selectMouseMode]="selectMouseMode" [zoomFactor]="zoomFactor"&gt;
+ &lt;/wj-pdf-viewer&gt;
+
+  &lt;br /&gt;
+  &lt;div class="row"&gt;
+      &lt;div class="form-horizontal"&gt;
+          &lt;div class="form-group"&gt;
+              &lt;div class="col-md-3"&gt;
+                  &lt;div class="checkbox"&gt;
+                      &lt;label&gt;
+                          &lt;input id="basicContinuousViewMode" type="checkbox" [(ngModel)]="continuousViewMode" /&gt; Continuous View Mode?
+                      &lt;/label&gt;
+                  &lt;/div&gt;
+              &lt;/div&gt;
+              &lt;div class="col-md-3"&gt;
+                  &lt;div class="checkbox"&gt;
+                      &lt;label&gt;
+                          &lt;input id="basicSelectMouseMode" type="checkbox" [(ngModel)]="selectMouseMode" /&gt; Select Mouse Mode?
+                      &lt;/label&gt;
+                  &lt;/div&gt;
+              &lt;/div&gt;
+              &lt;div class="col-md-2"&gt;
+                  &lt;div class="checkbox"&gt;
+                      &lt;label&gt;
+                          &lt;input id="basicFullScreen" type="checkbox" [(ngModel)]="fullScreen" /&gt; Full Screen?
+                      &lt;/label&gt;
+                  &lt;/div&gt;
+              &lt;/div&gt;
+              &lt;div class="col-mod-4"&gt;
+                  &lt;label class="col-md-2 control-label"&gt;Zoom Factor&lt;/label&gt;
+                  &lt;div class="col-md-2"&gt;
+                      &lt;wj-input-number [(value)]="zoomFactor"
+                                       [min]="0.05"
+                                       [max]="10"
+                                       [step]=".1"
+                                       [format]="'n2'"&gt;
+                      &lt;/wj-input-number&gt;
+                  &lt;/div&gt;
+              &lt;/div&gt;
+          &lt;/div&gt;
+      &lt;/div&gt;
+  &lt;/div&gt;
+                        </div>
+                    </app-tab-pane>
+                    <app-tab-pane title="TS">
+                        <div class="pane-content">
+export class AppCmp &#123;
+
+    serviceUrl = 'http://demos.componentone.com/ASPNET/c1webapi/4.0.20171.91/api/pdf';
+    filePath = 'PdfRoot/C1XapOptimizer.pdf';
+    fullScreen = false;
+    selectMouseMode = true;
+    zoomFactor = 1;
+
+    @ViewChild('pdfViewer') pdfViewer: wjcViewer.PdfViewer;
+
+    private _continuousViewMode = false;
+
+    constructor() &#123;
+    }
+
+    get continuousViewMode(): boolean &#123;
+        return this._continuousViewMode;
+    }
+    set continuousViewMode(value: boolean) &#123;
+        if (this._continuousViewMode != value) &#123;
+            this._continuousViewMode = value;
+            this.pdfViewer.viewMode = value ? wjcViewer.ViewMode.Continuous : wjcViewer.ViewMode.Single;
+        }
+    }
+}
+                        </div>
+                    </app-tab-pane>
+                </app-tab>
+            </div>
+
+        </div>
+
+    </div>
+</div>

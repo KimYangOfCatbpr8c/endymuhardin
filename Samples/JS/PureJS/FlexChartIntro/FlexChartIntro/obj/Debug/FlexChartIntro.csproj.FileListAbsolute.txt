@@ -1,0 +1,6 @@
+E:\Wijmo Package\2017V1\Wijmo-Enterprise-Eval.20171.282\C1Wijmo-Enterprise-Eval_5.20171.282\Samples\JS\PureJS\FlexChartIntro\FlexChartIntro\bin\FlexChartIntro.dll.config
+E:\Wijmo Package\2017V1\Wijmo-Enterprise-Eval.20171.282\C1Wijmo-Enterprise-Eval_5.20171.282\Samples\JS\PureJS\FlexChartIntro\FlexChartIntro\bin\FlexChartIntro.dll
+E:\Wijmo Package\2017V1\Wijmo-Enterprise-Eval.20171.282\C1Wijmo-Enterprise-Eval_5.20171.282\Samples\JS\PureJS\FlexChartIntro\FlexChartIntro\bin\FlexChartIntro.pdb
+E:\Wijmo Package\2017V1\Wijmo-Enterprise-Eval.20171.282\C1Wijmo-Enterprise-Eval_5.20171.282\Samples\JS\PureJS\FlexChartIntro\FlexChartIntro\obj\Debug\FlexChartIntro.csprojResolveAssemblyReference.cache
+E:\Wijmo Package\2017V1\Wijmo-Enterprise-Eval.20171.282\C1Wijmo-Enterprise-Eval_5.20171.282\Samples\JS\PureJS\FlexChartIntro\FlexChartIntro\obj\Debug\FlexChartIntro.dll
+E:\Wijmo Package\2017V1\Wijmo-Enterprise-Eval.20171.282\C1Wijmo-Enterprise-Eval_5.20171.282\Samples\JS\PureJS\FlexChartIntro\FlexChartIntro\obj\Debug\FlexChartIntro.pdb

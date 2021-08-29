@@ -1,11 +1,13 @@
+import * as wjcOdata from 'wijmo/wijmo.odata';
+import * as wjcCore from 'wijmo/wijmo';
 export declare class DataSvc {
-    products: wijmo.odata.ODataCollectionView;
-    categories: wijmo.odata.ODataCollectionView;
-    employees: wijmo.odata.ODataCollectionView;
-    customers: wijmo.odata.ODataCollectionView;
-    productSales: wijmo.odata.ODataCollectionView;
-    invoices: wijmo.odata.ODataCollectionView;
-    reports: wijmo.collections.CollectionView;
+    products: wjcOdata.ODataCollectionView;
+    categories: wjcOdata.ODataCollectionView;
+    employees: wjcOdata.ODataCollectionView;
+    customers: wjcOdata.ODataCollectionView;
+    productSales: wjcOdata.ODataCollectionView;
+    invoices: wjcOdata.ODataCollectionView;
+    reports: wjcCore.CollectionView;
     minInvoiceAmount: number;
     viewsLoaded: number;
     viewsLoadedFun: Function;

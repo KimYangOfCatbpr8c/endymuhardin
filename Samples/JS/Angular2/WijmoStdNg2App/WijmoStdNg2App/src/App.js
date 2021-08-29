@@ -15,22 +15,19 @@ var wijmo_angular2_input_1 = require('wijmo/wijmo.angular2.input');
 var DataSvc_1 = require('./services/DataSvc');
 var Component1Cmp_1 = require('./components/Component1Cmp');
 var Component2Cmp_1 = require('./components/Component2Cmp');
-var WijmoStdNg2App;
-(function (WijmoStdNg2App) {
-    //// AppCmp  component.
-    var AppCmp = (function () {
-        function AppCmp() {
-        }
-        AppCmp = __decorate([
-            core_1.Component({
-                selector: 'app-cmp',
-                templateUrl: 'src/app.html'
-            })
-        ], AppCmp);
-        return AppCmp;
-    }());
-    WijmoStdNg2App.AppCmp = AppCmp;
-})(WijmoStdNg2App = exports.WijmoStdNg2App || (exports.WijmoStdNg2App = {}));
+//// AppCmp  component.
+var AppCmp = (function () {
+    function AppCmp() {
+    }
+    AppCmp = __decorate([
+        core_1.Component({
+            selector: 'app-cmp',
+            templateUrl: 'src/app.html'
+        })
+    ], AppCmp);
+    return AppCmp;
+}());
+exports.AppCmp = AppCmp;
 exports.routes = [
     { path: '', redirectTo: 'component1', pathMatch: 'full' },
     { path: 'component1', data: { caption: 'Component1' }, component: Component1Cmp_1.Component1Cmp },
@@ -43,9 +40,9 @@ var AppModule = (function () {
     AppModule = __decorate([
         core_1.NgModule({
             imports: [platform_browser_1.BrowserModule, exports.routing, wijmo_angular2_grid_1.WjGridModule, wijmo_angular2_input_1.WjInputModule],
-            declarations: [WijmoStdNg2App.AppCmp, Component1Cmp_1.Component1Cmp, Component2Cmp_1.Component2Cmp],
+            declarations: [AppCmp, Component1Cmp_1.Component1Cmp, Component2Cmp_1.Component2Cmp],
             providers: [DataSvc_1.DataSvc],
-            bootstrap: [WijmoStdNg2App.AppCmp]
+            bootstrap: [AppCmp]
         })
     ], AppModule);
     return AppModule;

@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
@@ -13,8 +13,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
+var wjcCore = require('wijmo/wijmo');
+'use strict';
 var core_1 = require('@angular/core');
 var common_1 = require('@angular/common');
+var platform_browser_1 = require('@angular/platform-browser');
 var GaugeBaseCmp_1 = require('./GaugeBaseCmp');
 var router_1 = require('@angular/router');
 var wijmo_angular2_core_1 = require('wijmo/wijmo.angular2.core');
@@ -24,8 +27,9 @@ var SparkSvc_1 = require('../../services/SparkSvc');
 var BulletGaugeCmp = (function (_super) {
     __extends(BulletGaugeCmp, _super);
     // Injects SparkSvc service that provides us with sparklines SVG
-    function BulletGaugeCmp(sparkSvc) {
+    function BulletGaugeCmp(sparkSvc, domSanitizer) {
         _super.call(this);
+        this.domSanitizer = domSanitizer;
         this.sparkSvc = sparkSvc;
         // dashboard data
         this.keyMetrics = [
@@ -59,12 +63,14 @@ var BulletGaugeCmp = (function (_super) {
     }
     // get html string with SVG representing sparklines for the data
     BulletGaugeCmp.prototype.getSparklines = function (data) {
-        return this.sparkSvc.getSparklines(data, '100%', '1.5em');
+        var svg = this.sparkSvc.getSparklines(data, '100%', '1.5em');
+        var ret = this.domSanitizer.bypassSecurityTrustHtml(svg);
+        return ret;
     };
     ;
     // get tooltip for an item
     BulletGaugeCmp.prototype.getTooltip = function (item) {
-        return wijmo.format('{name} {ia} <b>{delta:p0} {ab}</b> the target', {
+        return wjcCore.format('{name} {ia} <b>{delta:p0} {ab}</b> the target', {
             name: item.name,
             ia: (item.name[item.name.length - 1] == 's') ? 'are' : 'is',
             ab: (item.current > item.target) ? 'above' : 'below',
@@ -76,7 +82,8 @@ var BulletGaugeCmp = (function (_super) {
             selector: 'bullet-gauge-cmp',
             templateUrl: 'src/components/gauge/bulletGaugeCmp.html'
         }),
-        __param(0, core_1.Inject(SparkSvc_1.SparkSvc))
+        __param(0, core_1.Inject(SparkSvc_1.SparkSvc)),
+        __param(1, core_1.Inject(platform_browser_1.DomSanitizer))
     ], BulletGaugeCmp);
     return BulletGaugeCmp;
 }(GaugeBaseCmp_1.GaugeBaseCmp));

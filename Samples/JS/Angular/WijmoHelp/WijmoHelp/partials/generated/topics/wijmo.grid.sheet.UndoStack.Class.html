@@ -46,14 +46,14 @@
 <div class="member-list" ng-class="{ 'show-inherited' : ctx.showInherited, 'show-raisers' : ctx.showRaisers }">
 <div id="canRedo" class="member-panel mproperty">
 <h3>canRedo</h3>
-<div class="comment"><p>Checks whether the redo action can be performed.</p></div>
+<div class="comment"><p>Checks whether a redo action can be performed.</p></div>
 <dl class="dl-horizontal">
   <dt>Type</dt><dd><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a></dd>
 </dl>
 </div>
 <div id="canUndo" class="member-panel mproperty">
 <h3>canUndo</h3>
-<div class="comment"><p>Checks whether the undo action can be performed.</p></div>
+<div class="comment"><p>Checks whether an undo action can be performed.</p></div>
 <dl class="dl-horizontal">
   <dt>Type</dt><dd><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a></dd>
 </dl>
@@ -72,7 +72,7 @@
 <div id="onUndoStackChanged" class="member-panel mmethod">
 <h3>onUndoStackChanged</h3>
 <pre>onUndoStackChanged(): <span class="identifier">void</span></pre>
-<div class="comment"><p>Raises the <b>undoStackChanged</b> event.</p></div>
+<div class="comment"><p>Raises the <a href="topic/wijmo.grid.sheet.UndoStack.Class.html/#undoStackChanged"><span class="identifier">undoStackChanged</span></a> event.</p></div>
 <dl class="dl-horizontal">
   <dt>Returns</dt><dd><span class="identifier">void</span></dd>
 </dl>
@@ -80,7 +80,7 @@
 <div id="redo" class="member-panel mmethod">
 <h3>redo</h3>
 <pre>redo(): <span class="identifier">void</span></pre>
-<div class="comment"><p>Redo the latest undone action.</p></div>
+<div class="comment"><p>Redo the last undone action.</p></div>
 <dl class="dl-horizontal">
   <dt>Returns</dt><dd><span class="identifier">void</span></dd>
 </dl>
@@ -88,7 +88,7 @@
 <div id="undo" class="member-panel mmethod">
 <h3>undo</h3>
 <pre>undo(): <span class="identifier">void</span></pre>
-<div class="comment"><p>Undo the latest action.</p></div>
+<div class="comment"><p>Undo the last action.</p></div>
 <dl class="dl-horizontal">
   <dt>Returns</dt><dd><span class="identifier">void</span></dd>
 </dl>

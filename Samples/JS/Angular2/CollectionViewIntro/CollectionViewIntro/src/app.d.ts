@@ -1,47 +1,42 @@
 /// <reference path="../typings/globals/core-js/index.d.ts" />
-import { AfterViewInit } from '@angular/core';
+import * as wjcCore from 'wijmo/wijmo';
 import { DataSvc } from './services/DataSvc';
-import { CountryGroupHeaderTemplate } from './CellTemplates/CountryGroupHeaderTemplate';
-import { StatGroupTemplate } from './CellTemplates/StatGroupTemplate';
-import { StatHeaderTemplate } from './CellTemplates/StatHeaderTemplate';
-export declare class AppCmp implements AfterViewInit {
-    countries: string[];
-    data1: wijmo.collections.CollectionView;
-    data2: wijmo.collections.CollectionView;
-    data3: wijmo.collections.CollectionView;
-    customTopLeft: boolean;
-    customRowHeader: boolean;
-    customRowHeaderEdit: boolean;
-    customCell: boolean;
-    customCellEdit: boolean;
-    customColumnHeader: boolean;
-    customGroupHeader: boolean;
-    customGroup: boolean;
-    customColumnFooter: boolean;
-    customBottomLeft: boolean;
-    statisticsColumns: {
-        binding: string;
-        header: string;
-        width: number;
-        align: string;
-        format: string;
-        columnHeaderTemplate: typeof StatHeaderTemplate;
-        groupTemplate: typeof StatGroupTemplate;
-        reportType: string;
-        isAvailable: boolean;
-    }[];
-    uiCtx: {
-        highlightDownloads: boolean;
-        reportType: string;
-    };
-    countryGroupHeaderTemplate: typeof CountryGroupHeaderTemplate;
+export declare class AppCmp {
+    cvGettingStarted: wjcCore.CollectionView;
+    cvCRM: wjcCore.CollectionView;
+    cvSorting: wjcCore.CollectionView;
+    cvFiltering: wjcCore.CollectionView;
+    cvGrouping: wjcCore.CollectionView;
+    cvEditing: wjcCore.CollectionView;
+    cvPaging: wjcCore.CollectionView;
+    cvTrackingChanges: wjcCore.CollectionView;
+    cvTrackingChangesExtra: wjcCore.CollectionView;
+    groupItems: any;
+    fieldNames: string[];
+    currentItem: any;
+    current: any;
     protected dataSvc: DataSvc;
-    flex1: wijmo.grid.FlexGrid;
-    flex2: wijmo.grid.FlexGrid;
-    flex3: wijmo.grid.FlexGrid;
+    private _selectedGroupOpt;
+    private _toFilter;
+    private _thisFilterFunction;
+    private _filter;
     constructor(dataSvc: DataSvc);
-    ngAfterViewInit(): void;
-    private _dynaColumnsFlexInit(flex);
+    filter: string;
+    selectedGroupOpt: string;
+    isGroupItem(item: any): boolean;
+    avgAmount(item: any): string;
+    private _addGroup(g);
+    stopCurrent(): void;
+    reset(): void;
+    toggleSort(fieldName: string): void;
+    getSort(propName: string): string;
+    confirmUpdate(): void;
+    cancelUpdate(): void;
+    private _applyFilter();
+    private _filterFunction(item);
+    private _stopCurrentIn4th(sender, e);
+    private _applyGrouping();
+    private _findGroup(propName);
 }
 export declare class AppModule {
 }

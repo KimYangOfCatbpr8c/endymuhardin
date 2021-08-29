@@ -1,18 +1,18 @@
 ﻿/*
     *
-    * Wijmo Library 5.20162.211
+    * Wijmo Library 5.20171.282
     * http://wijmo.com/
     *
     * Copyright(c) GrapeCity, Inc.  All rights reserved.
     *
     * Licensed under the Wijmo Commercial License.
     * sales@wijmo.com
-    * http://wijmo.com/products/wijmo-5/license/
+    * wijmo.com/products/wijmo-5/license/
     *
     */
 /*
-* Wijmo culture file: ru (Russian)
-*/
+ * Wijmo culture file: ru (Russian)
+ */
 var wijmo;
 (function (wijmo) {
     wijmo.culture = {
@@ -51,7 +51,7 @@ var wijmo;
             itemsSelected: '{count:n0} пунктов выбрано'
         },
         FlexGrid: {
-            groupHeaderFormat: '{name}: <b>{value} </b>({count:n0} наименований)'
+            groupHeaderFormat: '{name}: <b>{value}</b> ({count:n0} наименований)'
         },
         FlexGridFilter: {
             // filter
@@ -62,40 +62,40 @@ var wijmo;
             conditions: 'Фильтр по условию',
             values: 'Фильтр по значению',
             // value filter
-            search: 'Поиск',
+            search: 'поиск',
             selectAll: 'Выбрать все',
             null: '(ничего)',
             // condition filter
             header: 'Показать элементы, значение которых',
             and: 'И',
-            or: 'Или',
+            or: 'или',
             stringOperators: [
                 { name: '(не задано)', op: null },
-                { name: 'равно', op: 0 },
+                { name: 'Равно', op: 0 },
                 { name: 'не равно', op: 1 },
                 { name: 'начинается с', op: 6 },
                 { name: 'заканчивается на', op: 7 },
                 { name: 'содержит', op: 8 },
-                { name: 'не содержит', op: 9 }
+                { name: 'Не содержит', op: 9 }
             ],
             numberOperators: [
                 { name: '(не задано)', op: null },
-                { name: 'равно', op: 0 },
+                { name: 'Равно', op: 0 },
                 { name: 'не равно', op: 1 },
-                { name: 'больше, чем', op: 2 },
-                { name: 'больше или равно', op: 3 },
+                { name: 'Больше, чем', op: 2 },
+                { name: 'Больше или равно', op: 3 },
                 { name: 'меньше, чем', op: 4 },
-                { name: 'меньше или равно', op: 5 }
+                { name: 'Меньше или равно', op: 5 }
             ],
             dateOperators: [
                 { name: '(не задано)', op: null },
-                { name: 'равно', op: 0 },
+                { name: 'Равно', op: 0 },
                 { name: 'до', op: 4 },
                 { name: 'после', op: 3 }
             ],
             booleanOperators: [
                 { name: '(не задано)', op: null },
-                { name: 'равно', op: 0 },
+                { name: 'Равно', op: 0 },
                 { name: 'не равно', op: 1 }
             ]
         },
@@ -110,7 +110,7 @@ var wijmo;
                 filter: 'Фильтр:',
                 format: 'Формат:',
                 sample: 'Пример:',
-                edit: 'Редактировать...',
+                edit: 'Редактировать…',
                 clear: 'Отменить',
                 ok: 'ОК',
                 cancel: 'Отказаться',
@@ -136,7 +136,12 @@ var wijmo;
                     dRow: 'Разница с предыдущей строкой',
                     dRowPct: 'Разница с предыдущей строкой в %',
                     dCol: 'Разница с предыдущей колонкой',
-                    dColPct: 'Разница с предыдущей колонкой в %'
+                    dColPct: 'Разница с предыдущей колонкой в %',
+                    dPctGrand: '% от всего',
+                    dPctRow: '% всего строк',
+                    dPctCol: '% всего столбца',
+                    dRunTot: 'Нарастающий итог',
+                    dRunTotPct: '% работает всего'
                 },
                 formats: {
                     n0: 'Целое (n0)',
@@ -150,7 +155,7 @@ var wijmo;
                     d: 'Дата (d)',
                     MMMMddyyyy: 'Месяц День Год (MMMM dd, yyyy)',
                     dMyy: 'День Месяц Год (d/M/yy)',
-                    ddMyy: 'День Месяц Год (dd/M/yy)',
+                    ddMyy: 'День месяц год (dd/M/yy)',
                     dMyyyy: 'День Месяц Год (dd/M/yyyy)',
                     MMMyyyy: 'Месяц Год (MMM yyyy)',
                     MMMMyyyy: 'Месяц Год (MMMM yyyy)',
@@ -163,11 +168,11 @@ var wijmo;
                 subTotal: 'Подытог'
             },
             PivotPanel: {
-                fields: 'Выберите поля отчета',
+                fields: 'Выберите поля отчета:',
                 drag: 'Перетаскивайте поля между областями:',
                 filters: 'Фильтры',
                 cols: 'Колонки',
-                rows: 'Строки',
+                rows: 'строки',
                 vals: 'Значения',
                 defer: 'Отложить обновление',
                 update: 'Обновить'
@@ -182,8 +187,8 @@ var wijmo;
                 cols: 'В Колонки',
                 vals: 'В Значения',
                 remove: 'Удалить поле',
-                edit: 'Настройки поля...',
-                detail: 'Детализация...'
+                edit: 'Настройки поля…',
+                detail: 'Детализация…'
             },
             PivotChart: {
                 by: 'по',
@@ -197,8 +202,136 @@ var wijmo;
                 row: 'Строка',
                 col: 'Колонка'
             }
+        },
+        Viewer: {
+            cancel: 'Отказаться',
+            ok: 'ОК',
+            bottom: 'Внизу:',
+            top: 'Вверх:',
+            right: 'Правильно:',
+            left: 'Слева:',
+            margins: 'Поля (дюймы)',
+            orientation: 'Направление:',
+            paperKind: 'Вид бумаги:',
+            pageSetup: 'изменение разметки страницы',
+            landscape: 'альбомная',
+            portrait: 'книжная',
+            pageNumber: 'Номер страницы',
+            zoomFactor: 'Коэффициент масштабирования',
+            paginated: 'Разметка страницы',
+            print: 'Печать',
+            search: 'поиск',
+            matchCase: 'С учетом регистра',
+            wholeWord: 'Только слово целиком',
+            searchResults: 'Результаты поиска',
+            previousPage: 'Предыдущая страница',
+            nextPage: 'Следующая страница',
+            firstPage: 'Первая страница',
+            lastPage: 'Последняя страница',
+            backwardHistory: 'Назад',
+            forwardHistory: 'вперед',
+            pageCount: 'Число страниц',
+            selectTool: 'Выберите инструмент',
+            moveTool: 'Инструмент "Переместить"',
+            continuousMode: 'Непрерывное представление страницы',
+            singleMode: 'Просмотр одной страницы',
+            wholePage: 'Fit вся страница',
+            pageWidth: 'Fit ширины страницы',
+            zoomOut: 'Уменьшить',
+            zoomIn: 'Увеличить',
+            exports: 'Экспорт',
+            fullScreen: 'Во весь экран',
+            exitFullScreen: 'Выйти из полноэкранного режима',
+            hamburgerMenu: 'Сервис',
+            showSearchBar: 'Показать строку поиска',
+            viewMenu: 'Параметры макета',
+            searchOptions: 'Параметры поиска',
+            matchCaseMenuItem: 'С учетом регистра',
+            wholeWordMenuItem: 'Слово целиком',
+            thumbnails: 'Миниатюры страниц',
+            outlines: 'схема документа',
+            loading: 'Загрузка…',
+            pdfExportName: 'Adobe PDF',
+            docxExportName: 'Open XML Word',
+            xlsxExportName: 'Excel Open XML',
+            docExportName: 'Microsoft Word',
+            xlsExportName: 'Microsoft Excel',
+            mhtmlExportName: 'Веб-архив (MHTML)',
+            htmlExportName: 'HTML-документ',
+            rtfExportName: 'RTF-документ',
+            metafileExportName: 'Сжатые метафайлы',
+            csvExportName: 'CSV',
+            tiffExportName: 'Изображения TIFF',
+            bmpExportName: 'BMP изображения',
+            emfExportName: 'Расширенный метафайл',
+            gifExportName: 'GIF изображения',
+            jpgExportName: 'Изображения JPEG',
+            jpegExportName: 'Изображения JPEG',
+            pngExportName: 'Изображения PNG',
+            abstractMethodException: 'Это абстрактный метод, пожалуйста его реализации.',
+            cannotRenderPageNoViewPage: 'Не удается отобразить без исходного документа и представления страницы.',
+            cannotRenderPageNoDoc: 'Не удается отобразить без исходного документа и представления страницы.',
+            exportFormat: 'Формат экспорта:',
+            exportOptionTitle: 'Параметры экспорта',
+            documentRestrictionsGroup: 'Документ ограничения',
+            passwordSecurityGroup: 'Безопасность паролей',
+            outputRangeGroup: 'Диапазон выходных',
+            documentInfoGroup: 'Информация о документе',
+            generalGroup: 'Общие',
+            docInfoTitle: 'Название',
+            docInfoAuthor: 'Автор',
+            docInfoManager: 'Руководитель',
+            docInfoOperator: 'Оператор',
+            docInfoCompany: 'организация',
+            docInfoSubject: 'Subject',
+            docInfoComment: 'Комментарий',
+            docInfoCreator: 'Создатель',
+            docInfoProducer: 'Продюсер',
+            docInfoCreationTime: 'Время создания',
+            docInfoRevisionTime: 'Редакция время',
+            docInfoKeywords: 'Ключевые слова',
+            embedFonts: 'внедрять шрифты TrueType',
+            pdfACompatible: 'PDF/A совместимый (уровень 2B)',
+            useCompression: 'Использовать сжатие',
+            useOutlines: 'Создание контуров',
+            allowCopyContent: 'Разрешить копирование или извлечение',
+            allowEditAnnotations: 'Разрешить редактирование аннотации',
+            allowEditContent: 'Разрешить редактирование контента',
+            allowPrint: 'Разрешить печать',
+            ownerPassword: 'Пароль разрешения (владелец):',
+            userPassword: 'Пароль открытым (пользователь) документа:',
+            encryptionType: 'Уровень шифрования:',
+            paged: 'Paged',
+            showNavigator: 'Показать навигатор',
+            singleFile: 'Один файл',
+            tolerance: 'Допуск при обнаружении границ текста (баллов):',
+            pictureLayer: 'Использование отдельного изображения слой',
+            metafileType: 'Тип Metafile:',
+            monochrome: 'Монохромный',
+            resolution: 'Разрешение:',
+            outputRange: 'Диапазон страниц:',
+            outputRangeInverted: 'Обратные оси',
+            showZoomBar: 'Зум бар',
+            searchPrev: 'Поиск предыдущих',
+            searchNext: 'Найти далее',
+            checkMark: '\u2713',
+            exportOk: 'Экспорт…',
+            parameters: 'Parameters',
+            requiringParameters: 'Пожалуйста, введите параметры.',
+            nullParameterError: 'Значение не может быть неопределенным.',
+            invalidParameterError: 'Недопустимый ввод.',
+            parameterNoneItemsSelected: '(нет)',
+            parameterAllItemsSelected: '(все)',
+            parameterSelectAllItemText: '(Выбрать все)',
+            selectParameterValue: '(выберите значение)',
+            apply: 'Применить',
+            errorOccured: 'Произошла ошибка.'
         }
     };
+    var updc = window['wijmo']._updateCulture;
+    if (updc) {
+        updc();
+    }
 })(wijmo || (wijmo = {}));
 ;
-//# sourceMappingURL=wijmo.culture.ru.js.map
+

@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
@@ -13,6 +13,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
+var wjcGrid = require('wijmo/wijmo.grid');
+'use strict';
 var core_1 = require('@angular/core');
 var common_1 = require('@angular/common');
 var GridBaseCmp_1 = require('./GridBaseCmp');
@@ -27,7 +29,7 @@ var GridColumnFooterCmp = (function (_super) {
     }
     // add a footer row to display column aggregates below the data
     GridColumnFooterCmp.prototype.addFooterRow = function (flexGrid) {
-        var row = new wijmo.grid.GroupRow(); // create a GroupRow to show aggregates
+        var row = new wjcGrid.GroupRow(); // create a GroupRow to show aggregates
         flexGrid.columnFooters.rows.push(row); // add the row to the column footer panel
         flexGrid.bottomLeftCells.setCellData(0, 0, '\u03A3'); // sigma on the header
     };

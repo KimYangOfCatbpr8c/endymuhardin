@@ -1,5 +1,8 @@
 ﻿<h2>Inherit from WjFlexGrid</h2>
 <p>
+    <b>IMPORTANT:</b> this example requires Angular version 2.3.1 or higher.
+</p>
+<p>
     This sample demonstrates how to create a custom FlexGrid component by deriving it from 
     the WjFlexGrid component. It implements the InheritedGrid component which is a customized grid 
     with cells immediately available
@@ -10,15 +13,15 @@
     Cell editing can be disabled, but row selection functionality is always available.
 </p>
 <p>
-    The InheritedGrid component is derived from the WjFlexGrid component and uses @WjComponent decorator
-    instead of the standard @Component decorator to specify component specific properties. WjComponent
-    allows to specify all the properties pertain to the Component decorator plus several Wijmo specific
-    properties. The main advantage of WjComponent over Component is that it merges options defined for 
-    this component with the options defined by the decorator of the base class, while Component fully
-    overrides settings defined in the base class decorator. As a result, with WjComponent you don't
-    need to specify all the properties like 'inputs' and 'outputs' from scratch, you only need to specify
-    the ones specific to this component, and they will be merged with the properties defined in the
-    base component class.  
+    In order to have all the Angular specific features implemented in the base WjFlexGrid component
+    in our InheritedGrid component, we have to duplicate the whole @Component decorator definition
+    of the base class in the derived class, and add definitions specific to our custom component,
+    for example add isEditable and selectionType property names to the 'inputs' array to make them
+    available for binding in templates. To simplify this task, we import the wjFlexGridMeta variable
+    from the WjFlexGrid's module. This variable contains an object that stores all the @Component 
+    metadata properties declared by WjFlexGrid. We merge this property values with the new ones 
+    specific to the InheritedGrid component. The @Component definition that we use in the derived
+    component is Angular AoT compiler compliant.
 </p>
 <p>
     Because the Select column should be embedded in the grid, we redefine the component template

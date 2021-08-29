@@ -6,6 +6,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 var core_1 = require('@angular/core');
+var wijmo = require('wijmo/wijmo');
 // Common data service
 var DataSvc = (function () {
     function DataSvc() {
@@ -120,6 +121,70 @@ var DataSvc = (function () {
                     }]
             }];
         return data;
+    };
+    DataSvc.prototype.getGroupCVData = function () {
+        var data = [], quarters = ['Q1', 'Q2', 'Q3', 'Q4'], months = [[{
+                    name: 'Jan',
+                    value: 1
+                }, {
+                    name: 'Feb',
+                    value: 2
+                }, {
+                    name: 'Mar',
+                    value: 3
+                }], [{
+                    name: 'Apr',
+                    value: 4
+                }, {
+                    name: 'May',
+                    value: 5
+                }, {
+                    name: 'June',
+                    value: 6
+                }], [{
+                    name: 'Jul',
+                    value: 7
+                }, {
+                    name: 'Aug',
+                    value: 8
+                }, {
+                    name: 'Sep',
+                    value: 9
+                }], [{
+                    name: 'Oct',
+                    value: 10
+                }, {
+                    name: 'Nov',
+                    value: 11
+                }, {
+                    name: 'Dec',
+                    value: 12
+                }]], years = [], year = new Date().getFullYear(), yearLen, i, len = 100;
+        yearLen = 3;
+        for (i = yearLen; i > 0; i--) {
+            years.push(year - i);
+        }
+        var y, q, m;
+        for (i = 0; i < len; i++) {
+            y = Math.floor(Math.random() * yearLen);
+            q = Math.floor(Math.random() * 4);
+            m = Math.floor(Math.random() * 3);
+            data.push({
+                year: years[y],
+                quarter: quarters[q],
+                month: months[q][m].name,
+                monthVal: months[q][m].value,
+                value: Math.round(Math.random() * 100)
+            });
+        }
+        var cv = new wijmo.CollectionView(data);
+        cv.sortDescriptions.push(new wijmo.SortDescription('year', false));
+        cv.sortDescriptions.push(new wijmo.SortDescription('quarter', false));
+        cv.sortDescriptions.push(new wijmo.SortDescription('monthVal', false));
+        cv.groupDescriptions.push(new wijmo.PropertyGroupDescription('year'));
+        cv.groupDescriptions.push(new wijmo.PropertyGroupDescription('quarter'));
+        cv.groupDescriptions.push(new wijmo.PropertyGroupDescription('month'));
+        return cv;
     };
     DataSvc = __decorate([
         core_1.Injectable()

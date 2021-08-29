@@ -33,6 +33,7 @@
             // other libraries
             'rxjs': 'npm:rxjs',
             'angular2-in-memory-web-api': 'npm:angular2-in-memory-web-api',
+            'wijmo': 'npm:wijmo'
         },
         // packages tells the System loader how to load when no filename and/or no extension
         packages: {
@@ -46,6 +47,9 @@
             src: {
                 defaultExtension: 'js'
             },
+            wijmo: {
+                defaultExtension: 'js'
+            }
         }
     });
 })(this);

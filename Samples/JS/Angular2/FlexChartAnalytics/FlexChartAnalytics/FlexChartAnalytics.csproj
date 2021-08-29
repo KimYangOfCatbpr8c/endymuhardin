@@ -26,6 +26,8 @@
     <Content Include="default.htm" />
     <Content Include="readme.txt" />
     <Content Include="src\app.html" />
+    <Content Include="src\components\BoxWhiskerCmp.html" />
+    <Content Include="src\components\ErrorBarCmp.html" />
     <Content Include="src\components\MovingAverageCmp.html" />
     <Content Include="src\components\ParametricFunctionSeriesCmp.html" />
     <Content Include="src\components\TrendLineCmp.html" />
@@ -39,6 +41,8 @@
   <ItemGroup>
     <Content Include="src\app.routing.js" />
     <Content Include="src\app.js" />
+    <Content Include="src\components\BoxWhiskerCmp.js" />
+    <Content Include="src\components\ErrorBarCmp.js" />
     <Content Include="src\components\MovingAverageCmp.js" />
     <Content Include="src\components\ParametricFunctionSeriesCmp.js" />
     <Content Include="src\components\TrendLineCmp.js" />
@@ -109,11 +113,6 @@
     </VisualStudio>
   </ProjectExtensions>
   <ItemGroup>
-    <Content Include="scripts\vendor\wijmo.min.js" />
-    <Content Include="scripts\vendor\wijmo.input.min.js" />
-    <Content Include="scripts\vendor\wijmo.chart.min.js" />
-    <Content Include="scripts\vendor\wijmo.chart.analytics.min.js" />
-    <Content Include="scripts\vendor\wijmo.angular2.min.js" />
     <Content Include="styles\vendor\wijmo.min.css" />
   </ItemGroup>
 </Project>

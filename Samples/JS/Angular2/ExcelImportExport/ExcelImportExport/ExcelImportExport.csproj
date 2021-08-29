@@ -26,9 +26,11 @@
     <Content Include="default.htm" />
     <Content Include="DrawWorkbook.htm" />
     <Content Include="ExpenseReportExport.htm" />
+    <Content Include="FlexGridImportExportAsync.htm" />
     <Content Include="src\drawWorkbookCmp.html" />
     <Content Include="src\expenseReportExportCmp.html" />
     <Content Include="FlexGridImportExport.htm" />
+    <Content Include="src\FlexGridImportExportAsyncCmp.html" />
     <Content Include="src\flexGridImportExportCmp.html" />
     <Content Include="src\styles\app.css" />
     <Content Include="resources\wijmo5.png" />
@@ -39,6 +41,8 @@
     <Content Include="src\components\AppTab.js" />
     <Content Include="src\DrawWorkbookCmp.js" />
     <Content Include="src\ExpenseReportExportCmp.js" />
+    <Content Include="src\flexGridImportExportAsyncCmp.js" />
+    <Content Include="src\flexGridImportExportBaseCmp.js" />
     <Content Include="src\FlexGridImportExportCmp.js" />
     <Content Include="src\services\DataSvc.js" />
     <Content Include="src\xlsxExport\expenseReportExport.js" />
@@ -55,7 +59,8 @@
       <DependentUpon>web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">12.0</VisualStudioVersion>
   </PropertyGroup>
@@ -105,12 +110,6 @@
     </VisualStudio>
   </ProjectExtensions>
   <ItemGroup>
-    <Content Include="scripts\vendor\wijmo.min.js" />
-    <Content Include="scripts\vendor\wijmo.xlsx.min.js" />
-    <Content Include="scripts\vendor\wijmo.angular2.min.js" />
-    <Content Include="scripts\vendor\wijmo.input.min.js" />
-    <Content Include="scripts\vendor\wijmo.grid.min.js" />
-    <Content Include="scripts\vendor\wijmo.grid.xlsx.min.js" />
     <Content Include="styles\vendor\wijmo.min.css" />
   </ItemGroup>
 </Project>

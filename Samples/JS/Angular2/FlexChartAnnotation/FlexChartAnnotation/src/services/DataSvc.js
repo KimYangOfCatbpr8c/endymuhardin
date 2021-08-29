@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,6 +8,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
+var wjcCore = require('wijmo/wijmo');
+'use strict';
 var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
 //import 'rxjs/Rx';
@@ -23,7 +25,7 @@ var DataSvc = (function () {
         var data = map_1.map.call(this.http.get('data/fb.json'), function (res) {
             var d = res.json(), len = d.length, i, dateStr;
             for (i = 0; i < len; i++) {
-                d[i].date = wijmo.Globalize.parseDate(d[i].date, 'MM/dd/yy');
+                d[i].date = wjcCore.Globalize.parseDate(d[i].date, 'MM/dd/yy');
             }
             return d;
         });

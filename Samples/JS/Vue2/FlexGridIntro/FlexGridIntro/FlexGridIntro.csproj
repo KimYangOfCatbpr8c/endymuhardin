@@ -21,7 +21,7 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
-    <TypeScriptToolsVersion>1.8</TypeScriptToolsVersion>
+    <TypeScriptToolsVersion>2.0</TypeScriptToolsVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -102,8 +102,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="scripts\vendor\wijmo.min.js" />
-    <Content Include="scripts\vendor\wijmo.grid.min.js" />
     <Content Include="scripts\vendor\wijmo.input.min.js" />
+    <Content Include="scripts\vendor\wijmo.grid.min.js" />
+    <Content Include="scripts\vendor\wijmo.grid.grouppanel.min.js" />
     <Content Include="scripts\vendor\wijmo.vue2.min.js" />
     <Content Include="styles\vendor\wijmo.min.css" />
   </ItemGroup>

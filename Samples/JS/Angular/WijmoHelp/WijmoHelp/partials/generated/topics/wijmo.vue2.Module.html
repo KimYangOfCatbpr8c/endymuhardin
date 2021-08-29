@@ -48,7 +48,29 @@ function salesChanged(sender, eventArgs) {
      event handler is responsible for updating the value of the "sales"
      property in the model. This is a change from Vue 1, where two-way bindings
      could be created by adding the ".sync" suffix to any attribute.</li>
-</ol></p></div>
+</ol></p>
+<p>All Wijmo Vue components include an "initialized" event that is
+raised after the control has been added to the page and initialized.
+You can use this event to perform additional initialization in addition
+to setting properties in markup. For example:</p>
+
+
+<pre>&lt;wj-flex-grid :initialized="initGrid"&gt;
+&lt;/wj-flex-grid&gt;</pre>
+
+
+<pre>// Vue application
+var app = new Vue({
+  el: '#app',
+  methods: {
+    initGrid: function(s, e) {
+
+      // assign a custom MergeManager to the grid
+      s.mergeManager = new CustomMergeManager(s);
+
+    }
+  }
+});</pre></div>
 </div>
 <div class="member-panel module members">
 <h3 class="node">Properties</h3>
@@ -66,6 +88,7 @@ function salesChanged(sender, eventArgs) {
 <li class="mproperty"><a href="topic/wijmo.vue2.Module.html/#WjFlexGridColumn">WjFlexGridColumn</a></li>
 <li class="mproperty"><a href="topic/wijmo.vue2.Module.html/#WjFlexGridFilter">WjFlexGridFilter</a></li>
 <li class="mproperty"><a href="topic/wijmo.vue2.Module.html/#WjFormat">WjFormat</a></li>
+<li class="mproperty"><a href="topic/wijmo.vue2.Module.html/#WjGroupPanel">WjGroupPanel</a></li>
 <li class="mproperty"><a href="topic/wijmo.vue2.Module.html/#WjInclude">WjInclude</a></li>
 <li class="mproperty"><a href="topic/wijmo.vue2.Module.html/#WjInputColor">WjInputColor</a></li>
 <li class="mproperty"><a href="topic/wijmo.vue2.Module.html/#WjInputDate">WjInputDate</a></li>
@@ -76,6 +99,7 @@ function salesChanged(sender, eventArgs) {
 <li class="mproperty"><a href="topic/wijmo.vue2.Module.html/#WjLinearGauge">WjLinearGauge</a></li>
 <li class="mproperty"><a href="topic/wijmo.vue2.Module.html/#WjListBox">WjListBox</a></li>
 <li class="mproperty"><a href="topic/wijmo.vue2.Module.html/#WjMenu">WjMenu</a></li>
+<li class="mproperty"><a href="topic/wijmo.vue2.Module.html/#WjMultiAutoComplete">WjMultiAutoComplete</a></li>
 <li class="mproperty"><a href="topic/wijmo.vue2.Module.html/#WjMultiSelect">WjMultiSelect</a></li>
 <li class="mproperty"><a href="topic/wijmo.vue2.Module.html/#WjPivotChart">WjPivotChart</a></li>
 <li class="mproperty"><a href="topic/wijmo.vue2.Module.html/#WjPivotGrid">WjPivotGrid</a></li>
@@ -83,6 +107,7 @@ function salesChanged(sender, eventArgs) {
 <li class="mproperty"><a href="topic/wijmo.vue2.Module.html/#WjPopup">WjPopup</a></li>
 <li class="mproperty"><a href="topic/wijmo.vue2.Module.html/#WjRadialGauge">WjRadialGauge</a></li>
 <li class="mproperty"><a href="topic/wijmo.vue2.Module.html/#WjRange">WjRange</a></li>
+<li class="mproperty"><a href="topic/wijmo.vue2.Module.html/#WjTreeView">WjTreeView</a></li>
 </ul>
 </div>
 <h3 class="node">Properties</h3>
@@ -250,6 +275,39 @@ current Wijmo culture:</p>
   <dt>Type</dt><dd></dd>
 </dl>
 </div>
+<div id="WjGroupPanel" class="member-panel mproperty">
+<h3>WjGroupPanel</h3>
+<div class="comment"><p>Vue component that represents a <a href="topic/wijmo.grid.grouppanel.GroupPanel.Class.html"><span class="identifier">GroupPanel</span></a>
+control.</p>
+<p>The example below shows how to instantiate and connect a
+<a href="topic/wijmo.grid.grouppanel.GroupPanel.Class.html"><span class="identifier">GroupPanel</span></a> and a <a href="topic/wijmo.grid.FlexGrid.Class.html"><span class="identifier">FlexGrid</span></a>
+in Vue:</p>
+
+
+<pre>&lt;wj-group-panel
+  id="thePanel"
+  placeholder="Drag columns here to create Groups"&gt;
+&lt;/wj-group-panel&gt;
+&lt;wj-flex-grid
+  id="theGrid"
+  :items-source="data"&gt;
+&lt;/wj-flex-grid&gt;</pre>
+
+
+<pre>var app = new Vue({
+  el: '#app',
+
+  // connect group panel and grid
+  mounted: function () {
+    var panel = wijmo.Control.getControl(document.getElementById('thePanel'));
+    var grid = wijmo.Control.getControl(document.getElementById('theGrid'));
+    panel.grid = grid;
+  }
+});</pre></div>
+<dl class="dl-horizontal">
+  <dt>Type</dt><dd></dd>
+</dl>
+</div>
 <div id="WjInclude" class="member-panel mproperty">
 <h3>WjInclude</h3>
 <div class="comment"><p>Vue component that includes a given HTML fragment into the document.</p>
@@ -357,6 +415,13 @@ current value.</p></div>
   <dt>Type</dt><dd></dd>
 </dl>
 </div>
+<div id="WjMultiAutoComplete" class="member-panel mproperty">
+<h3>WjMultiAutoComplete</h3>
+<div class="comment"><p>Vue component that encapsulates the <a href="topic/wijmo.input.MultiAutoComplete.Class.html"><span class="identifier">MultiAutoComplete</span></a> control.</p></div>
+<dl class="dl-horizontal">
+  <dt>Type</dt><dd></dd>
+</dl>
+</div>
 <div id="WjMultiSelect" class="member-panel mproperty">
 <h3>WjMultiSelect</h3>
 <div class="comment"><p>Vue component that encapsulates the <a href="topic/wijmo.input.MultiSelect.Class.html"><span class="identifier">MultiSelect</span></a> control.</p></div>
@@ -433,6 +498,13 @@ current value.</p></div>
 <h3>WjRange</h3>
 <div class="comment"><p>Vue component that represents a <a href="topic/wijmo.gauge.Range.Class.html"><span class="identifier">Range</span></a> in a
 <a href="topic/wijmo.gauge.Gauge.Class.html"><span class="identifier">Gauge</span></a> control.</p></div>
+<dl class="dl-horizontal">
+  <dt>Type</dt><dd></dd>
+</dl>
+</div>
+<div id="WjTreeView" class="member-panel mproperty">
+<h3>WjTreeView</h3>
+<div class="comment"><p>Vue component that encapsulates the <a href="topic/wijmo.nav.TreeView.Class.html"><span class="identifier">TreeView</span></a> control.</p></div>
 <dl class="dl-horizontal">
   <dt>Type</dt><dd></dd>
 </dl>

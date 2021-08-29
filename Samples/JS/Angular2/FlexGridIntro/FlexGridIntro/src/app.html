@@ -68,15 +68,16 @@
                 </app-tab-pane>
                 <app-tab-pane title="TS">
                     <div class="pane-content">
+import * as wjcCore from 'wijmo/wijmo';
  import &#123; Injectable } from '@angular/core';
 
  // Common data service
  @Injectable()
  export class DataSvc &#123;
      // data used to generate random items
-     getData(count: number): wijmo.collections.ObservableArray &#123;
+     getData(count: number): wjcCore.ObservableArray &#123;
          var countries = 'US,Germany,UK,Japan,Italy,Greece'.split(','),
-         data = new wijmo.collections.ObservableArray();
+         data = new wjcCore.ObservableArray();
          for (var i = 0; i < count; i++) &#123;
          data.push(&#123;
                  id: i,
@@ -91,6 +92,9 @@
 
 ---------------------Component-------------------
  // Angular
+import * as wjcCore from 'wijmo/wijmo';
+import * as wjcGrid from 'wijmo/wijmo.grid';
+
 import &#123; Component, EventEmitter, Input, Inject, enableProdMode, NgModule } from '@angular/core';
 import &#123; FormsModule } from '@angular/forms';
 import &#123; CommonModule } from '@angular/common';
@@ -109,11 +113,11 @@ import &#123; DataSvc } from './services/DataSvc';
  export class AppCmp &#123;
      // generate some random data
      protected dataSvc: DataSvc;
-     data: wijmo.collections.CollectionView;
+     data: wjcCore.CollectionView;
 
      constructor(@Inject(DataSvc) dataSvc: DataSvc) &#123;
         this.dataSvc = dataSvc;
-        this.data = new wijmo.collections.CollectionView(this.dataSvc.getData(100));
+        this.data = new wjcCore.CollectionView(this.dataSvc.getData(100));
       }
 }
 
@@ -243,13 +247,13 @@ platformBrowserDynamic().bootstrapModule(AppModule);
  export class AppCmp &#123;
      // generate some random data
      protected dataSvc: DataSvc;
-     data: wijmo.collections.CollectionView;
+     data: wjcCore.CollectionView;
      // grid property
      selectionMode = 'CellRange';
 
      constructor(@Inject(DataSvc) dataSvc: DataSvc) &#123;
          this.dataSvc = dataSvc;
-         this.data = new wijmo.collections.CollectionView(this.dataSvc.getData(100));
+         this.data = new wjcCore.CollectionView(this.dataSvc.getData(100));
      }
  }
                     </div>
@@ -308,14 +312,14 @@ platformBrowserDynamic().bootstrapModule(AppModule);
  export class AppCmp &#123;
      // generate some random data
      protected dataSvc: DataSvc;
-     data: wijmo.collections.CollectionView;
+     data: wjcCore.CollectionView;
 
      constructor(@Inject(DataSvc) dataSvc: DataSvc) &#123;
          this.dataSvc = dataSvc;
-         this.data = new wijmo.collections.CollectionView(this.dataSvc.getData(100));
+         this.data = new wjcCore.CollectionView(this.dataSvc.getData(100));
      }
 
-     toggleFreeze(flex: wijmo.grid.FlexGrid) &#123;
+     toggleFreeze(flex: wjcGrid.FlexGrid) &#123;
          if (flex) &#123;
              var frozenCount = flex.frozenRows == 0 ? 2 : 0;
              flex.frozenRows = frozenCount;
@@ -465,12 +469,12 @@ platformBrowserDynamic().bootstrapModule(AppModule);
 export class AppCmp &#123;
     // generate some random data
     protected dataSvc: DataSvc;
-    cvGroup: wijmo.collections.CollectionView;
+    cvGroup: wjcCore.CollectionView;
     private _groupBy = '';
 
     constructor(@Inject(DataSvc) dataSvc: DataSvc) &#123;
         this.dataSvc = dataSvc;
-        this.cvGroup = new wijmo.collections.CollectionView(this.dataSvc.getData(100));
+        this.cvGroup = new wjcCore.CollectionView(this.dataSvc.getData(100));
     }
 
     get groupBy(): string &#123;
@@ -491,17 +495,17 @@ export class AppCmp &#123;
             for (var i = 0; i < groupNames.length; i++) &#123;
                 var groupName = groupNames[i];
                 if (groupName == 'date') &#123; // group dates by year
-                    var groupDesc = new wijmo.collections.PropertyGroupDescription(groupName, function (item, prop) &#123;
+                    var groupDesc = new wjcCore.PropertyGroupDescription(groupName, function (item, prop) &#123;
                     return item.date.getFullYear();
                 });
                      cv.groupDescriptions.push(groupDesc);
                 } else if (groupName == 'amount') &#123; // group amounts in ranges
-                    var groupDesc = new wijmo.collections.PropertyGroupDescription(groupName, function (item, prop) &#123;
+                    var groupDesc = new wjcCore.PropertyGroupDescription(groupName, function (item, prop) &#123;
                     return item.amount >= 5000 ? '> 5,000' : item.amount >= 500 ? '500 to 5,000' : '< 500';
                     });
                     cv.groupDescriptions.push(groupDesc);
                 } else &#123; // group everything else by value
-                    var groupDesc = new wijmo.collections.PropertyGroupDescription(groupName);
+                    var groupDesc = new wjcCore.PropertyGroupDescription(groupName);
                     cv.groupDescriptions.push(groupDesc);
                 }
              }
@@ -567,13 +571,13 @@ export class AppCmp &#123;
 export class AppCmp &#123;
     // generate some random data
     protected dataSvc: DataSvc;
-    cvFilter: wijmo.collections.CollectionView;
+    cvFilter: wjcCore.CollectionView;
     //private
     private _filter = '';
     private _toFilter: any;
 
     constructor(@Inject(DataSvc) dataSvc: DataSvc) &#123;
-        this.cvFilter = new wijmo.collections.CollectionView(this.dataSvc.getData(100));
+        this.cvFilter = new wjcCore.CollectionView(this.dataSvc.getData(100));
         this.cvFilter.filter = this._filterFunction.bind(this);
     }
 
@@ -672,11 +676,11 @@ export class AppCmp &#123;
 export class AppCmp &#123;
     // generate some random data
     protected dataSvc: DataSvc;
-    cvPaging: wijmo.collections.CollectionView;
+    cvPaging: wjcCore.CollectionView;
 
     constructor(@Inject(DataSvc) dataSvc: DataSvc) &#123;
         this.dataSvc = dataSvc;
-        this.cvPaging = new wijmo.collections.CollectionView(this.dataSvc.getData(100));
+        this.cvPaging = new wjcCore.CollectionView(this.dataSvc.getData(100));
         this.cvPaging.pageSize = 10;
     }
 }
@@ -870,11 +874,11 @@ export class AppCmp &#123;
  export class AppCmp &#123;
      // generate some random data
      protected dataSvc: DataSvc;
-     data: wijmo.collections.CollectionView;
+     data: wjcCore.CollectionView;
 
      constructor(@Inject(DataSvc) dataSvc: DataSvc) &#123;
          this.dataSvc = dataSvc;
-         this.data = new wijmo.collections.CollectionView(this.dataSvc.getData(100));
+         this.data = new wjcCore.CollectionView(this.dataSvc.getData(100));
      }
 
       getAmountColor(amount: number) &#123;
@@ -1201,14 +1205,14 @@ export class AppCmp &#123;
          var view = flex.collectionView;
          if (view && flex.childItemsPath) &#123;
              for (var i = 0; i < view.items.length; i++) &#123;
-             this._sortItem(view.items[i], &lt;wijmo.collections.CollectionView&gt;
+             this._sortItem(view.items[i], &lt;wjcCore.CollectionView&gt;
                 view, flex.childItemsPath);
             }
                 view.refresh();
             }
         }
 
-     private _sortItem(item: any, view: wijmo.collections.CollectionView, childItemsPath: any) &#123;
+     private _sortItem(item: any, view: wjcCore.CollectionView, childItemsPath: any) &#123;
          var children = item[childItemsPath];
          if (children && wijmo.isArray(children)) &#123;
              children.sort(view._compareItems());

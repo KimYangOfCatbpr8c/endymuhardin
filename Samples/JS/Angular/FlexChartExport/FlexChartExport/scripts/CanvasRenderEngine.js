@@ -39,10 +39,10 @@ var wijmo;
                     if (enableFont) {
                         if (eleStyles) {
                             ctx.fillStyle = eleStyles.fill;
-                            font = eleStyles.fontSize + ' ' + eleStyles.fontFamily;
+                            font = eleStyles.fontStyle + ' ' + eleStyles.fontSize + ' ' + eleStyles.fontFamily;
                             ctx.font = font;
                             if (ctx.font.replace(/\"/g, "'") !== font.replace(/\"/g, "'")) {
-                                font = eleStyles.fontSize + ' ' + (ctx.font.split(' ')[1] || 'sans-serif');
+                                font = eleStyles.fontStyle + ' ' + eleStyles.fontSize + ' ' + (ctx.font.split(' ')[1] || 'sans-serif');
                                 ctx.font = font;
                             }
                         }
@@ -376,6 +376,9 @@ var wijmo;
             };
             _CanvasRenderEngine.prototype.measureString = function (s, className, groupName, style) {
                 var ctx = ctx = this._canvas.getContext('2d'), width;
+                if (this._applyCSSStyles) {
+                    return this._svgEngine.measureString(s, className, groupName, style);
+                }
                 this._applyCanvasStyles(null, null, className, true, true);
                 width = ctx.measureText(s).width;
                 return new wijmo.Size(width, parseInt(ctx.font) * 1.5);

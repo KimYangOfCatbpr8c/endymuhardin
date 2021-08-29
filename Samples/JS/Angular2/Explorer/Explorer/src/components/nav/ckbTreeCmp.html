@@ -1,0 +1,29 @@
+﻿<div>
+    <div class="copy">
+        <h2>Checkboxes</h2>
+        <p>
+            Set the <b>showCheckboxes</b> property to true and the TreeView will
+            add checkboxes to each node.
+        </p>
+        <p>
+            When checkboxes are displayed, the TreeView manages their
+            hierarchy so that when a checkbox is checked or cleared, the new
+            value is automatically applied to all child nodes, and reflected
+            on the state of the parent nodes.
+        </p>
+    </div>
+    <div>
+        <wj-tree-view #tvChk
+                      [itemsSource]="items"
+                      [displayMemberPath]="'header'"
+                      [childItemsPath]="'items'"
+                      [showCheckboxes]="true">
+        </wj-tree-view>
+        <button id="btnCheckAll" class="btn btn-default" (click)="tvChk.checkAllItems(true);">
+            Check All
+        </button>
+        <button id="btnUncheckAll" class="btn btn-default" (click)="tvChk.checkAllItems(false);">
+            Uncheck All
+        </button>
+    </div>
+</div>

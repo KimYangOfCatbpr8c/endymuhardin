@@ -10,7 +10,7 @@
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <DebugType>full</DebugType>
     <DebugSymbols>true</DebugSymbols>
-    <TypeScriptToolsVersion>1.8</TypeScriptToolsVersion>
+    <TypeScriptToolsVersion>2.0</TypeScriptToolsVersion>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
@@ -83,7 +83,6 @@
       <DependentUpon>web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
   </ItemGroup>
   <PropertyGroup>
@@ -144,9 +143,6 @@
     <PreBuildEvent>REM copy /B /Y $(ProjectDir)scripts\wijmo.angular2\ControlMetaFactory_Internal.ts+$(ProjectDir)scripts\wijmo.angular2\ControlMetaFactory_External.ts $(ProjectDir)scripts\wijmo.angular2\ControlMetaFactory.ts</PreBuildEvent>
   </PropertyGroup>
   <ItemGroup>
-    <Content Include="scripts\vendor\wijmo.min.js" />
-    <Content Include="scripts\vendor\wijmo.input.min.js" />
-    <Content Include="scripts\vendor\wijmo.angular2.min.js" />
     <Content Include="styles\vendor\wijmo.min.css" />
   </ItemGroup>
 </Project>

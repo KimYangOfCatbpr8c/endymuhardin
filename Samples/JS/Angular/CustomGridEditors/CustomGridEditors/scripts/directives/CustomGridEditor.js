@@ -87,8 +87,14 @@ var CustomGridEditor = (function () {
     // initializing the custom editor and giving it the focus.
     CustomGridEditor.prototype._beginningEdit = function (grid, args) {
         var _this = this;
-        // check that this is our column
-        if (grid.columns[args.col] == this._col) {
+        // check that this is not the Delete key 
+        // (which is used to clear cells and should not be messed with)
+        var evt = args.data;
+        if (evt && evt.keyCode == wijmo.Key.Delete) {
+            return;
+        }
+        // check that we really want to edit and that this is our column
+        if (!args.cancel && grid.columns[args.col] == this._col) {
             // cancel built-in editor
             args.cancel = true;
             // save cell being edited
@@ -105,7 +111,11 @@ var CustomGridEditor = (function () {
             });
             // initialize editor content
             if (this._ctl != null) {
-                if (!wijmo.isUndefined(this._ctl['value'])) {
+                if (!wijmo.isUndefined(this._ctl['checkedItems'])) {
+                    var items = grid.getCellData(this._rng.row, this._rng.col, false);
+                    this._ctl['checkedItems'] = items ? items : [];
+                }
+                else if (!wijmo.isUndefined(this._ctl['value'])) {
                     this._ctl['value'] = grid.getCellData(this._rng.row, this._rng.col, false);
                 }
                 else if (!wijmo.isUndefined(this._ctl['text'])) {
@@ -130,15 +140,21 @@ var CustomGridEditor = (function () {
                 if (_this._key) {
                     var input = _this._edt.querySelector('input');
                     if (input instanceof HTMLInputElement) {
-                        input.value = _this._key;
-                        wijmo.setSelectionRange(input, _this._key.length, _this._key.length);
-                        input.dispatchEvent(_this._evtInput);
+                        if (input.readOnly) {
+                            _this._openDropDown = true;
+                        }
+                        else {
+                            input.value = _this._key;
+                            wijmo.setSelectionRange(input, _this._key.length, _this._key.length);
+                            input.dispatchEvent(_this._evtInput);
+                        }
                     }
                 }
                 _this._key = null;
                 // open drop-down on F4/alt-down
                 if (_this._openDropDown && _this._ctl instanceof wijmo.input.DropDown) {
                     _this._ctl.isDroppedDown = true;
+                    _this._ctl.dropDown.focus();
                 }
             }, 50);
         }
@@ -149,12 +165,19 @@ var CustomGridEditor = (function () {
         var parent = this._edt.parentElement, grid = this._grid, edt = wijmo.Control.getControl(this._edt);
         if (parent) {
             // raise grid's cellEditEnding event
-            var e = new wijmo.grid.CellRangeEventArgs(grid.cells, this._rng);
+            var e = new wijmo.grid.CellEditEndingEventArgs(grid.cells, this._rng);
             grid.onCellEditEnding(e);
             // save editor value into grid
             if (saveEdits && !e.cancel) {
                 if (edt != null) {
-                    if (!wijmo.isUndefined(edt['text'])) {
+                    if (!wijmo.isUndefined(edt['checkedItems'])) {
+                        var items = edt['checkedItems'];
+                        this._grid.setCellData(this._rng.row, this._rng.col, items.length ? items.splice(0) : null);
+                    }
+                    else if (!wijmo.isUndefined(edt['value'])) {
+                        this._grid.setCellData(this._rng.row, this._rng.col, edt['value']);
+                    }
+                    else if (!wijmo.isUndefined(edt['text'])) {
                         this._grid.setCellData(this._rng.row, this._rng.col, edt['text']);
                     }
                     else {

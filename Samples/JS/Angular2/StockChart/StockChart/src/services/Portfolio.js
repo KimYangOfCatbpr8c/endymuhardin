@@ -1,4 +1,5 @@
 "use strict";
+var wjcCore = require('wijmo/wijmo');
 var Company_1 = require('./Company');
 var PortfolioItem_1 = require('./PortfolioItem');
 /**
@@ -29,11 +30,11 @@ var Portfolio = (function () {
         this._mainQuoteUpdated = true;
         // raise event when items change 
         // (on a timeout to avoid too many updates)
-        this.itemsChanged = new wijmo.Event();
+        this.itemsChanged = new wjcCore.Event();
         this._dataSvc = dataSvc;
         // initialize items collection/view
-        this._items = new wijmo.collections.ObservableArray();
-        this._cv = new wijmo.collections.CollectionView(this._items);
+        this._items = new wjcCore.ObservableArray();
+        this._cv = new wjcCore.CollectionView(this._items);
         this._cv.collectionChanged.addHandler(this.viewChanged.bind(this));
         // load the portfolio from storage
         this.loadItems();
@@ -241,7 +242,7 @@ var Portfolio = (function () {
                     }
                 }
                 if (data.sort) {
-                    var sd = new wijmo.collections.SortDescription(data.sort.property, data.sort.ascending);
+                    var sd = new wjcCore.SortDescription(data.sort.property, data.sort.ascending);
                     this.view.sortDescriptions.push(sd);
                 }
             }

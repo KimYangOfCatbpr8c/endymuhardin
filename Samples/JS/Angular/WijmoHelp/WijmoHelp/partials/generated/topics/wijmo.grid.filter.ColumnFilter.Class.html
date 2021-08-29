@@ -20,6 +20,7 @@ rarely use it directly.</p></div>
 <ul>
 <li class="mproperty"><a href="topic/wijmo.grid.filter.ColumnFilter.Class.html/#column">column</a></li>
 <li class="mproperty"><a href="topic/wijmo.grid.filter.ColumnFilter.Class.html/#conditionFilter">conditionFilter</a></li>
+<li class="mproperty"><a href="topic/wijmo.grid.filter.ColumnFilter.Class.html/#dataMap">dataMap</a></li>
 <li class="mproperty"><a href="topic/wijmo.grid.filter.ColumnFilter.Class.html/#filterType">filterType</a></li>
 <li class="mproperty"><a href="topic/wijmo.grid.filter.ColumnFilter.Class.html/#isActive">isActive</a></li>
 <li class="mproperty"><a href="topic/wijmo.grid.filter.ColumnFilter.Class.html/#valueFilter">valueFilter</a></li>
@@ -59,6 +60,28 @@ rarely use it directly.</p></div>
 <div class="comment"><p>Gets the <a href="topic/wijmo.grid.filter.ConditionFilter.Class.html"><span class="identifier">ConditionFilter</span></a> in this <a href="topic/wijmo.grid.filter.ColumnFilter.Class.html"><span class="identifier">ColumnFilter</span></a>.</p></div>
 <dl class="dl-horizontal">
   <dt>Type</dt><dd><a href="topic/wijmo.grid.filter.ConditionFilter.Class.html"><span class="identifier">ConditionFilter</span></a></dd>
+</dl>
+</div>
+<div id="dataMap" class="member-panel mproperty">
+<h3>dataMap</h3>
+<div class="comment"><p>Gets or sets the <a href="topic/wijmo.grid.DataMap.Class.html"><span class="identifier">DataMap</span></a> used to convert raw values into display
+values shown when editing this filter.</p>
+<p>The example below assigns a <a href="topic/wijmo.grid.DataMap.Class.html"><span class="identifier">DataMap</span></a> to Boolean column filters
+so the filter editor displays 'Yes' and 'No' instead of 'true' and 'false':</p>
+
+
+<pre>var filter = new wijmo.grid.filter.FlexGridFilter(grid),
+    map = new wijmo.grid.DataMap([
+            { value: true, caption: 'Yes' },
+            { value: false, caption: 'No' },
+        ], 'value', 'caption');
+for (var c = 0; c &lt; grid.columns.length; c++) {
+    if (grid.columns[c].dataType == wijmo.DataType.Boolean) {
+        filter.getColumnFilter(c).dataMap = map;
+    }
+}</pre></div>
+<dl class="dl-horizontal">
+  <dt>Type</dt><dd><a href="topic/wijmo.grid.DataMap.Class.html"><span class="identifier">DataMap</span></a></dd>
 </dl>
 </div>
 <div id="filterType" class="member-panel mproperty">

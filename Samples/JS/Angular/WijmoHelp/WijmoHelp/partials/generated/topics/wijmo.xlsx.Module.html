@@ -4,11 +4,21 @@
 <dt>File</dt><dd class="filename">wijmo.xlsx.js</dd>
 <dt>Module</dt><dd><span class="identifier">wijmo.xlsx</span></dd>
 </dl>
-<div class="comment"><p>The module has a dependency on the <a href="https://stuk.github.io/jszip" target="_blank">JSZip</a> library,
-which should be referenced in html page with the markup like this:
+<div class="comment"><p>The module has a dependency on the <a href="https://stuk.github.io/jszip" target="_blank">JSZip</a>
+library which can be referenced as follows:
+<ul>
+<li>In order to invoke the synchronous save and load methods, JSZip2 library should be
+referenced in html page with the markup like this:
 </p>
 
-<pre>&lt;script src="http://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"&gt;&lt;/script&gt;</pre></div>
+<pre>&lt;script src="http://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"&gt;&lt;/script&gt;</pre>
+<p></li>
+<li>In order to invoke the asynchronous save and load methods, JSZip3 library should be
+referenced in html page with the markup like this:
+</p>
+
+<pre>&lt;script src="http://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"&gt;&lt;/script&gt;</pre>
+<p></li></ul></p></div>
 </div>
 <div class="member-panel module members">
 <h3 class="node">Classes</h3>
@@ -61,28 +71,30 @@ which should be referenced in html page with the markup like this:
 <div class="member-list" ng-class="{ 'show-inherited' : ctx.showInherited, 'show-raisers' : ctx.showRaisers }">
 <div id="absCol" class="member-panel mproperty">
 <h3>absCol</h3>
-<div class="comment"><p>Indicates whether the original column index is absolute (for example "$D") or relative (for example "D").</p></div>
+<div class="comment"><p>Indicates whether the original column index is absolute (for example: "$D")
+or relative (for example: "D").</p></div>
 <dl class="dl-horizontal">
   <dt>Type</dt><dd><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a></dd>
 </dl>
 </div>
 <div id="absRow" class="member-panel mproperty">
 <h3>absRow</h3>
-<div class="comment"><p>Indicates whether the original row index is absolute (for example "$15") or relative (for example "15").</p></div>
+<div class="comment"><p>Indicates whether the original row index is absolute (for example: "$15")
+or relative (for example: "15").</p></div>
 <dl class="dl-horizontal">
   <dt>Type</dt><dd><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a></dd>
 </dl>
 </div>
 <div id="base64" class="member-panel mproperty">
 <h3>base64</h3>
-<div class="comment"><p>base64 string for the exporting result</p></div>
+<div class="comment"><p>base64 string for the exported result.</p></div>
 <dl class="dl-horizontal">
   <dt>Type</dt><dd><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank"><span class="identifier">string</span></a></dd>
 </dl>
 </div>
 <div id="base64Array" class="member-panel mproperty">
 <h3>base64Array</h3>
-<div class="comment"><p>converted int array for base64 string result.</p></div>
+<div class="comment"><p>Converted int array for base64 string result.</p></div>
 <dl class="dl-horizontal">
   <dt>Type</dt><dd><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array" target="_blank"><span class="identifier">Uint8Array</span></a></dd>
 </dl>
@@ -96,7 +108,7 @@ which should be referenced in html page with the markup like this:
 </div>
 <div id="href" class="member-panel mproperty">
 <h3>href</h3>
-<div class="comment"><p>download link for the exported result.</p></div>
+<div class="comment"><p>Download link for the exported result.</p></div>
 <dl class="dl-horizontal">
   <dt>Type</dt><dd><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Function" target="_blank"><span class="identifier">Function</span></a></dd>
 </dl>

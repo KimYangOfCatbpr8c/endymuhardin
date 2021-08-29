@@ -20,7 +20,7 @@ var AutoComplete = React.createClass({
                 AutoComplete
             </h2>
             <p>
-                The AutoComplete control is an auto-complete control that allows you to filter its
+                The AutoComplete control is a word completion control that allows you to filter its
                 item list as you type, as well as select a value directly from its drop-down list.
             </p>
             <p>

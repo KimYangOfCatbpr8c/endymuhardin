@@ -1,0 +1,38 @@
+﻿<div class="container">
+
+    <h1>ServerCollectionView (Angular 2)</h1>
+
+    <p>
+        This sample implements a <b>ServerCollectionView</b> class that 
+        extends the base <b>CollectionView</b> to show how you can connect 
+        that to server data.</p>
+    <p>
+        The <b>ServerCollectionView</b> class supports sorting, filtering,
+        and paging on the server.</p>
+    <p>
+        For a more detailed implementation, please see the 
+        <b>ODataCollectionView</b> code.</p>
+
+    <wj-flex-grid 
+        [itemsSource]="view"
+        [isReadOnly]="false"
+        [allowAddNew]="true"
+        [allowDelete]="true">
+        <wj-flex-grid-filter></wj-flex-grid-filter>
+    </wj-flex-grid>
+
+    <div class="row">
+        <div class="col-md-6">
+            <wj-collection-view-pager [cv]="view"></wj-collection-view-pager>
+        </div>
+        <div class="col-md-6">
+            <label>
+                Page Size:
+                <wj-combo-box
+                    [itemsSource]="[6, 8, 10, 12, 20, 25, 50, 1000]"
+                    [(selectedValue)]="view.pageSize">
+                </wj-combo-box>
+            </label>
+        </div>
+    </div>
+</div>

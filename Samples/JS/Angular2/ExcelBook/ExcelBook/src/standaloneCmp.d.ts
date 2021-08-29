@@ -1,13 +1,14 @@
 /// <reference path="../typings/globals/core-js/index.d.ts" />
+import * as wjcGridSheet from 'wijmo/wijmo.grid.sheet';
 import { DataSvc } from './services/DataSvc';
 export declare class StandaloneCmp {
     protected dataSvc: DataSvc;
     data: any[];
     sheets: any[];
     selectedSheetIndex: number;
-    flexSheet: wijmo.grid.sheet.FlexSheet;
+    flexSheet: wjcGridSheet.FlexSheet;
     constructor(dataSvc: DataSvc);
-    flexInitialized(flexSheet: wijmo.grid.sheet.FlexSheet): void;
+    flexInitialized(flexSheet: wjcGridSheet.FlexSheet): void;
     save(): void;
     load(): void;
     changeSelectedSheet(e: any): void;

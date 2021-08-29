@@ -1,0 +1,809 @@
+﻿<div class="header">
+    <div class="container">
+        <img src="resources/wijmo5.png" alt="Wijmo 5" />
+        <h1>
+            FlexRadar 101
+        </h1>
+        <p>
+            This page shows how to get started with Wijmo's FlexRadar control.
+        </p>
+    </div>
+</div>
+<div class="container">
+
+    <!-- getting started -->
+    <h2>Getting Started</h2>
+    <p>
+        Steps for getting started with the FlexRadar control in JavaScript applications:
+    </p>
+    <ol>
+        <li>Add references to Wijmo.</li>
+        <li>Add markup to serve as the Wijmo control's host.</li>
+        <li>Initialize the Wijmo control(s) via JavaScript.</li>
+        <li>(Optional) Add some CSS to customize the input control's appearance.</li>
+    </ol>
+    <div class="row">
+        <div class="col-md-6">
+            <app-tab>
+                <app-tab-pane title="HTML">
+                    <div class="pane-content">
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;link rel="stylesheet" type="text/css" href="css/bootstrap.css" /&gt;
+&lt;link rel="stylesheet" type="text/css" href="css/wijmo.css" /&gt;
+&lt;link rel="stylesheet" type="text/css" href="css/app.css"/&gt;
+&lt;!-- Angular 2 --/&gt;
+&lt;!-- Polyfill(s) for older browsers --&gt;
+&lt;script src="node_modules/core-js/client/shim.min.js"&gt;&lt;/script&gt;
+
+&lt;script src="node_modules/zone.js/dist/zone.js"&gt;&lt;/script&gt;
+&lt;script src="node_modules/reflect-metadata/Reflect.js"&gt;&lt;/script&gt;
+&lt;script src="node_modules/systemjs/dist/system.src.js"&gt;&lt;/script&gt;
+
+
+&lt;!-- Configure SystemJS -->
+&lt;script src="systemjs.config.js"&gt;&lt;/script&gt;
+
+&lt;!-- JQuery/Bootstrap --&gt;
+&lt;script src="bin/Devel/external/jquery.js" type="text/javascript"&gt;&lt;/script&gt;
+&lt;script src="bin/Devel/external/bootstrap.js" type="text/javascript"&gt;&lt;/script&gt;
+&lt;link rel="stylesheet" type="text/css" href="bin/Devel/external/bootstrap/css/bootstrap.css" /&gt;
+&lt;script src="scripts/wijmo.js" type="text/javascript"/&gt;&lt;/script/&gt;
+&lt;script src="scripts/wijmo.input.js" type="text/javascript"/&gt;&lt;/script/&gt;
+&lt;script src="scripts/wijmo.chart.js" type="text/javascript"/&gt;&lt;/script/&gt;
+&lt;script src="scripts/wijmo.chart.radar.js" type="text/javascript"/&gt;&lt;/script/&gt;
+&lt;script src="scripts/wijmo.chart.animation.js" type="text/javascript"/&gt;&lt;/script/&gt;
+&lt;script src="scripts/wijmo.angular2.js" type="text/javascript"/&gt;&lt;/script/&gt;
+&lt;!-- Load the root application module --&gt;
+&lt;script&gt;
+    System.import('./src/app');
+&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;!-- Add root application component --&gt;
+&lt;app-cmp&gt;
+ &lt;wj-flex-radar [itemsSource]="basicData" bindingX="country"&gt;
+     &lt;wj-flex-radar-series name="Sales" binding="sales"&gt;&lt;/wj-flex-radar-series&gt;
+     &lt;wj-flex-radar-series name="Downloads" binding="downloads"&gt;&lt;/wj-flex-radar-series&gt;
+     &lt;wj-flex-radar-axis wjProperty="axisY" [min]="0" [max]="100"&gt;&lt;/wj-flex-radar-axis&gt;
+ &lt;/wj-flex-radar&gt;
+&lt;/app-cmp&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+                    </div>
+                </app-tab-pane>
+                <app-tab-pane title="TS">
+                    <div class="pane-content">
+import &#123; Injectable } from '@angular/core';
+
+// Common data service
+@Injectable()
+export class DataSvc &#123;
+    getData(): any[] &#123;
+        var data = [],
+            countries = 'US,Germany,UK,Japan,Italy,Greece'.split(',');
+
+        // populate itemsSource
+        for (var i = 0; i < countries.length; i++) &#123;
+            data.push(&#123;
+                country: countries[i],
+                downloads: Math.ceil(Math.random() * 80) + 20,
+                sales: Math.ceil(Math.random() * 80) + 20
+            });
+        }
+        return data;
+    }
+}
+--------------------Component-----------------------
+ // Angular
+import * as wjcChartRadar from 'wijmo/wijmo.chart.radar';
+import * as wjcInput from 'wijmo/wijmo.input';
+
+import &#123; Component, EventEmitter, Input, Inject, enableProdMode, ViewChild, NgModule } from '@angular/core';
+import &#123; FormsModule } from '@angular/forms';
+import &#123; CommonModule } from '@angular/common';
+import &#123; platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import &#123; BrowserModule } from '@angular/platform-browser';
+import &#123; WjChartModule } from 'wijmo/wijmo.angular2.chart';
+import &#123; WjChartRadarModule } from 'wijmo/wijmo.angular2.chart.radar';
+import &#123; WjChartAnimationModule } from 'wijmo/wijmo.angular2.chart.animation';
+import &#123; WjInputModule } from 'wijmo/wijmo.angular2.input';
+import &#123; TabsModule } from './components/AppTab';
+import &#123; DataSvc } from './services/DataSvc';
+
+// The Explorer application root component.
+@Component(&#123;
+    selector: 'app-cmp',
+    templateUrl: 'src/app.html'
+})
+
+
+export class AppCmp &#123;
+    // generate some random data
+    basicData: any[];
+
+    protected dataSvc: DataSvc;
+
+    constructor( @Inject(DataSvc) dataSvc: DataSvc) &#123;
+        this.dataSvc = dataSvc;
+        this.basicData = this.dataSvc.getData();
+    }
+
+}
+
+
+@NgModule(&#123;
+    imports: [WjInputModule, WjChartModule, WjChartRadarModule, WjChartAnimationModule, BrowserModule, FormsModule, TabsModule],
+    declarations: [AppCmp],
+    providers: [DataSvc],
+    bootstrap: [AppCmp]
+})
+export class AppModule &#123;
+}
+
+
+enableProdMode();
+// Bootstrap application with hash style navigation and global services.
+platformBrowserDynamic().bootstrapModule(AppModule);
+                    </div>
+                </app-tab-pane>
+                <app-tab-pane title="CSS">
+                    <div class="pane-content">
+ /* set default chart style */
+ .wj-flexchart &#123;
+     height: 400px;
+     background-color: white;
+     box-shadow: 4px 4px 10px 0px rgba(50, 50, 50, 0.75);
+     padding: 8px;
+     margin-bottom: 12px;
+     display:block;
+ }
+                    </div>
+                </app-tab-pane>
+            </app-tab>
+        </div>
+        <div class="col-md-6">
+            <h4>Result (live):</h4>
+            <wj-flex-radar [itemsSource]="basicData" bindingX="country">
+                <wj-flex-radar-series name="Sales" binding="sales"></wj-flex-radar-series>
+                <wj-flex-radar-series name="Downloads" binding="downloads"></wj-flex-radar-series>
+                <wj-flex-radar-axis wjProperty="axisY" [min]="0" [max]="100"></wj-flex-radar-axis>
+            </wj-flex-radar>
+        </div>
+    </div>
+    
+    <!-- Basic Features -->
+    <div>
+        <h2 id="Features">Basic Features</h2>
+            <p>
+                The FlexRadar control has some basic properties that allow you to customize its layout and appearance:
+            </p>
+            <ul>
+                <li>
+                    <b>chartType</b>:  Specifies the control's chart type.
+                </li>
+                <li>
+                    <b>startAngle</b>:  Starting at the 12 o'clock position, specifies the angle to start drawing radar.
+                </li>
+                <li>
+                    <b>totalAngle</b>:  Specifies the total angle to draw radar.
+                </li>
+                <li>
+                    <b>reversed</b>:  Determines whether the control should draw radar clockwise (false) or counterclockwise (true).
+                </li>
+                <li>
+                    <b>stacking</b>:  Determines whether and how the series objects are stacked.
+                </li>
+            </ul>
+            <p>
+                The example below allows you to see what happens when you change these properties.
+            </p>
+        <div class="row">
+            <div class="col-md-6">
+                <app-tab>
+                    <app-tab-pane title="HTML">
+                        <div class="pane-content">
+&lt;wj-flex-radar [itemsSource]="basicData"
+        bindingX="country"
+        [chartType]="basicChartType"
+        [totalAngle]="basicTotalAngle"
+        [startAngle]="basicStartAngle"
+        [stacking]="basicStacking"
+        [reversed]="basicReversed"
+        [labelContent]="showDataLabel ? '&#123;y}' : ''"&gt;
+    &lt;wj-flex-radar-series name="Sales" binding="sales"&gt;&lt;/wj-flex-radar-series&gt;
+    &lt;wj-flex-radar-series name="Downloads" binding="downloads"&gt;&lt;/wj-flex-radar-series&gt;
+&lt;/wj-flex-radar&gt;
+&lt;div class="form-horizontal"&gt;
+    &lt;div class="form-group"&gt;
+        &lt;div class="col-md-offset-3 col-md-9"&gt;
+            &lt;wj-menu header="Chart Type" [(value)]="basicChartType"&gt;
+                &lt;wj-menu-item value="Line"&gt;Line&lt;/wj-menu-item&gt;
+                &lt;wj-menu-item value="LineSymbols"&gt;LineSymbols&lt;/wj-menu-item&gt;
+                &lt;wj-menu-item value="Area"&gt;Area&lt;/wj-menu-item&gt;
+                &lt;wj-menu-item value="Scatter"&gt;Scatter&lt;/wj-menu-item&gt;
+                &lt;wj-menu-item value="Column"&gt;Column&lt;/wj-menu-item&gt;
+            &lt;/wj-menu&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="form-group"&gt;
+        &lt;div class="col-md-offset-3 col-md-9"&gt;
+            &lt;wj-menu header="Stacking" [(value)]="basicStacking"&gt;
+                &lt;wj-menu-item value="None"&gt;None&lt;/wj-menu-item&gt;
+                &lt;wj-menu-item value="Stacked"&gt;Stacked&lt;/wj-menu-item&gt;
+                &lt;wj-menu-item value="Stacked100pc"&gt;Stacked100pc&lt;/wj-menu-item&gt;
+            &lt;/wj-menu&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="form-group"&gt;
+        &lt;label class="col-md-3 control-label"&gt;Start Angle&lt;/label&gt;
+        &lt;div class="col-md-9"&gt;
+            &lt;wj-input-number #iptBasicStartAngle
+                                (valueChanged)="basicStartAngleChanged(iptBasicStartAngle)"
+                                [min]="0"
+                                [max]="360"
+                                [step]="60"&gt;
+            &lt;/wj-input-number&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="form-group"&gt;
+        &lt;label class="col-md-3 control-label"&gt;Total Angle&lt;/label&gt;
+        &lt;div class="col-md-9"&gt;
+            &lt;wj-input-number #iptBasicTotalAngle
+                                (valueChanged)="basicTotalAngleChanged(iptBasicTotalAngle)"
+                                [value]="360"
+                                [min]="90"
+                                [max]="360"
+                                [step]="90"&gt;
+            &lt;/wj-input-number&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="form-group"&gt;
+        &lt;div class="col-md-offset-3 col-md-9"&gt;
+            &lt;div class="checkbox"&gt;
+                &lt;label&gt;
+                    &lt;input type="checkbox" [(ngModel)]="basicReversed"&gt; Reversed?
+                &lt;/label&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="form-group"&gt;
+        &lt;div class="col-md-offset-3 col-md-9"&gt;
+            &lt;div class="checkbox"&gt;
+                &lt;label&gt;
+                    &lt;input type="checkbox" [(ngModel)]="showDataLabel"&gt; Show DataLabel?
+                &lt;/label&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+                        </div>
+                    </app-tab-pane>
+                    <app-tab-pane title="TS">
+                        <div class="pane-content">
+export class AppCmp &#123;
+    basicData: any[];
+    protected dataSvc: DataSvc;
+    basicChartType = 'Line';
+    basicTotalAngle = 360;
+    basicStartAngle = 0;
+    basicStacking = 'None';
+    basicReversed = false;
+
+    constructor( @Inject(DataSvc) dataSvc: DataSvc) &#123;
+        this.dataSvc = dataSvc;
+        this.basicData = this.dataSvc.getData();
+    }
+
+    basicStartAngleChanged = (sender: wjcInput.InputNumber) => &#123;
+        if (sender.value < sender.min || sender.value > sender.max) &#123;
+            return;
+        }
+        this.basicStartAngle = sender.value;
+    };
+
+    basicTotalAngleChanged = (sender: wjcInput.InputNumber) => &#123;
+        if (sender.value < sender.min || sender.value > sender.max) &#123;
+            return;
+        }
+        this.basicTotalAngle = sender.value;
+    };
+
+}
+                        </div>
+                    </app-tab-pane>
+                </app-tab>
+            </div>
+            <div class="col-md-6">
+                <h4>Result (live):</h4>
+                <wj-flex-radar [itemsSource]="basicData"
+                               bindingX="country"
+                               [chartType]="basicChartType"
+                               [totalAngle]="basicTotalAngle"
+                               [startAngle]="basicStartAngle"
+                               [stacking]="basicStacking"
+                               [reversed]="basicReversed"
+                               [labelContent]="showDataLabel ? '{y}' : ''">
+                    <wj-flex-radar-series name="Sales" binding="sales"></wj-flex-radar-series>
+                    <wj-flex-radar-series name="Downloads" binding="downloads"></wj-flex-radar-series>
+                </wj-flex-radar>
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <div class="col-md-offset-3 col-md-9">
+                            <wj-menu header="Chart Type" [(value)]="basicChartType">
+                                <wj-menu-item value="Line">Line</wj-menu-item>
+                                <wj-menu-item value="LineSymbols">LineSymbols</wj-menu-item>
+                                <wj-menu-item value="Area">Area</wj-menu-item>
+                                <wj-menu-item value="Scatter">Scatter</wj-menu-item>
+                                <wj-menu-item value="Column">Column</wj-menu-item>
+                            </wj-menu>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-3 col-md-9">
+                            <wj-menu header="Stacking" [(value)]="basicStacking">
+                                <wj-menu-item value="None">None</wj-menu-item>
+                                <wj-menu-item value="Stacked">Stacked</wj-menu-item>
+                                <wj-menu-item value="Stacked100pc">Stacked100pc</wj-menu-item>
+                            </wj-menu>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Start Angle</label>
+                        <div class="col-md-9">
+                            <wj-input-number #iptBasicStartAngle
+                                             (valueChanged)="basicStartAngleChanged(iptBasicStartAngle)"
+                                             [min]="0"
+                                             [max]="360"
+                                             [step]="60">
+                            </wj-input-number>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Total Angle</label>
+                        <div class="col-md-9">
+                            <wj-input-number #iptBasicTotalAngle
+                                             (valueChanged)="basicTotalAngleChanged(iptBasicTotalAngle)"
+                                             [value]="360"
+                                             [min]="90"
+                                             [max]="360"
+                                             [step]="90">
+                            </wj-input-number>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-3 col-md-9">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" [(ngModel)]="basicReversed"> Reversed?
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-3 col-md-9">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" [(ngModel)]="showDataLabel"> Show DataLabel?
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Polar Basic Features -->
+    <div>
+        <h2 id="Features">Polar Basic Features</h2>
+        <p>
+            The FlexRadar control can be a polar chart if xValues are number, it has some basic properties that allow you to customize its layout and appearance:
+        </p>
+        <ul>
+            <li>
+                <b>chartType</b>:  Specifies the control's chart type.
+            </li>
+            <li>
+                <b>startAngle</b>:  Starting at the 12 o'clock position, specifies the angle to start drawing radar.
+            </li>
+            <li>
+                <b>totalAngle</b>:  Specifies the total angle to draw radar.
+            </li>
+            <li>
+                <b>reversed</b>:  Determines whether the control should draw radar clockwise (false) or counterclockwise (true).
+            </li>
+            <li>
+                <b>stacking</b>:  Determines whether and how the series objects are stacked.
+            </li>
+        </ul>
+        <p>
+            The example below allows you to see what happens when you change these properties.
+        </p>
+        <div class="row">
+            <div class="col-md-6">
+                <app-tab>
+                    <app-tab-pane title="HTML">
+                        <div class="pane-content">
+&lt;wj-flex-radar [itemsSource]="basicPolarData"
+        bindingX="longitude"
+        [chartType]="polarChartType"
+        [totalAngle]="polarTotalAngle"
+        [startAngle]="polarStartAngle"
+        [stacking]="polarStacking"
+        [reversed]="polarReversed"&gt;
+    &lt;wj-flex-radar-series name="Latitude1" binding="latitude1"&gt;&lt;/wj-flex-radar-series&gt;
+    &lt;wj-flex-radar-series name="Latitude2" binding="latitude2"&gt;&lt;/wj-flex-radar-series&gt;
+&lt;/wj-flex-radar&gt;
+&lt;div class="form-horizontal"&gt;
+    &lt;div class="form-group"&gt;
+        &lt;div class="col-md-offset-3 col-md-9"&gt;
+            &lt;wj-menu header="Chart Type" [(value)]="polarChartType"&gt;
+                &lt;wj-menu-item value="Line"&gt;Line&lt;/wj-menu-item&gt;
+                &lt;wj-menu-item value="LineSymbols"&gt;LineSymbols&lt;/wj-menu-item&gt;
+                &lt;wj-menu-item value="Area"&gt;Area&lt;/wj-menu-item&gt;
+                &lt;wj-menu-item value="Scatter"&gt;Scatter&lt;/wj-menu-item&gt;
+            &lt;/wj-menu&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="form-group"&gt;
+        &lt;div class="col-md-offset-3 col-md-9"&gt;
+            &lt;wj-menu header="Stacking" [(value)]="polarStacking"&gt;
+                &lt;wj-menu-item value="None"&gt;None&lt;/wj-menu-item&gt;
+                &lt;wj-menu-item value="Stacked"&gt;Stacked&lt;/wj-menu-item&gt;
+                &lt;wj-menu-item value="Stacked100pc"&gt;Stacked100pc&lt;/wj-menu-item&gt;
+            &lt;/wj-menu&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="form-group"&gt;
+        &lt;label class="col-md-3 control-label"&gt;Start Angle&lt;/label&gt;
+        &lt;div class="col-md-9"&gt;
+            &lt;wj-input-number #iptPolarStartAngle
+                                (valueChanged)="polarStartAngleChanged(iptPolarStartAngle)"
+                                [min]="0"
+                                [max]="360"
+                                [step]="60"&gt;
+            &lt;/wj-input-number&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="form-group"&gt;
+        &lt;label class="col-md-3 control-label"&gt;Total Angle&lt;/label&gt;
+        &lt;div class="col-md-9"&gt;
+            &lt;wj-input-number #iptPolarTotalAngle
+                                (valueChanged)="PolarTotalAngleChanged(iptPolarTotalAngle)"
+                                [value]="360"
+                                [min]="90"
+                                [max]="360"
+                                [step]="90"&gt;
+            &lt;/wj-input-number&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="form-group"&gt;
+        &lt;div class="col-md-offset-3 col-md-9"&gt;
+            &lt;div class="checkbox"&gt;
+                &lt;label&gt;
+                    &lt;input type="checkbox" [(ngModel)]="polarReversed"&gt; Reversed?
+                &lt;/label&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+                        </div>
+                    </app-tab-pane>
+                    <app-tab-pane title="TS">
+                        <div class="pane-content">
+export class AppCmp &#123;
+    basicPolarData: any[];
+    protected dataSvc: DataSvc;
+    polarChartType = 'Line';
+    polarTotalAngle = 360;
+    polarStartAngle = 0;
+    polarStacking = 'None';
+    polarReversed = false;
+
+    constructor( @Inject(DataSvc) dataSvc: DataSvc) &#123;
+        this.dataSvc = dataSvc;
+        this.basicPolarData = this.dataSvc.getData();
+    }
+
+    polarStartAngleChanged = (sender: wjcInput.InputNumber) => &#123;
+        if (sender.value < sender.min || sender.value > sender.max) &#123;
+            return;
+        }
+        this.polarStartAngle = sender.value;
+    };
+
+    polarTotalAngleChanged = (sender: wjcInput.InputNumber) => &#123;
+        if (sender.value < sender.min || sender.value > sender.max) &#123;
+            return;
+        }
+        this.polarTotalAngle = sender.value;
+    };
+
+}
+                        </div>
+                    </app-tab-pane>
+                </app-tab>
+            </div>
+            <div class="col-md-6">
+                <h4>Result (live):</h4>
+                <wj-flex-radar [itemsSource]="basicPolarData"
+                               bindingX="longitude"
+                               [chartType]="polarChartType"
+                               [totalAngle]="polarTotalAngle"
+                               [startAngle]="polarStartAngle"
+                               [stacking]="polarStacking"
+                               [reversed]="polarReversed"
+                               [labelContent]="showDataLabel ? '{y}' : ''">
+                    <wj-flex-radar-series name="Latitude1" binding="latitude1"></wj-flex-radar-series>
+                    <wj-flex-radar-series name="Latitude2" binding="latitude2"></wj-flex-radar-series>
+                </wj-flex-radar>
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <div class="col-md-offset-3 col-md-9">
+                            <wj-menu header="Chart Type" [(value)]="polarChartType">
+                                <wj-menu-item value="Line">Line</wj-menu-item>
+                                <wj-menu-item value="LineSymbols">LineSymbols</wj-menu-item>
+                                <wj-menu-item value="Area">Area</wj-menu-item>
+                                <wj-menu-item value="Scatter">Scatter</wj-menu-item>
+                            </wj-menu>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-3 col-md-9">
+                            <wj-menu header="Stacking" [(value)]="polarStacking">
+                                <wj-menu-item value="None">None</wj-menu-item>
+                                <wj-menu-item value="Stacked">Stacked</wj-menu-item>
+                                <wj-menu-item value="Stacked100pc">Stacked100pc</wj-menu-item>
+                            </wj-menu>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Start Angle</label>
+                        <div class="col-md-9">
+                            <wj-input-number #iptPolarStartAngle
+                                             (valueChanged)="polarStartAngleChanged(iptPolarStartAngle)"
+                                             [min]="0"
+                                             [max]="360"
+                                             [step]="60">
+                            </wj-input-number>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Total Angle</label>
+                        <div class="col-md-9">
+                            <wj-input-number #iptPolarTotalAngle
+                                             (valueChanged)="polarTotalAngleChanged(iptPolarTotalAngle)"
+                                             [value]="360"
+                                             [min]="90"
+                                             [max]="360"
+                                             [step]="90">
+                            </wj-input-number>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-3 col-md-9">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" [(ngModel)]="polarReversed"> Reversed?
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Animation -->
+    <div>
+        <h2 id="Features">Animation</h2>
+        <p>
+            The FlexRadar control works with ChartAnimation.
+        </p>
+        <p>
+            You can use different animation modes for FlexRadar control by setting the <b>animationMode</b> property of the ChartAnimation.
+        </p>
+        <div class="row">
+            <div class="col-md-6">
+                <app-tab>
+                    <app-tab-pane title="HTML">
+                        <div class="pane-content">
+&lt;wj-flex-radar [itemsSource]="basicPolarData"
+        bindingX="longitude"
+        [chartType]="polarChartType"
+        [totalAngle]="polarTotalAngle"
+        [startAngle]="polarStartAngle"
+        [stacking]="polarStacking"
+        [reversed]="polarReversed"&gt;
+    &lt;wj-flex-radar-series name="Latitude1" binding="latitude1"&gt;&lt;/wj-flex-radar-series&gt;
+    &lt;wj-flex-radar-series name="Latitude2" binding="latitude2"&gt;&lt;/wj-flex-radar-series&gt;
+&lt;/wj-flex-radar&gt;
+&lt;div class="form-horizontal"&gt;
+    &lt;div class="form-group"&gt;
+        &lt;div class="col-md-offset-3 col-md-9"&gt;
+            &lt;wj-menu header="Chart Type" [(value)]="polarChartType"&gt;
+                &lt;wj-menu-item value="Line"&gt;Line&lt;/wj-menu-item&gt;
+                &lt;wj-menu-item value="LineSymbols"&gt;LineSymbols&lt;/wj-menu-item&gt;
+                &lt;wj-menu-item value="Area"&gt;Area&lt;/wj-menu-item&gt;
+                &lt;wj-menu-item value="Scatter"&gt;Scatter&lt;/wj-menu-item&gt;
+            &lt;/wj-menu&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="form-group"&gt;
+        &lt;div class="col-md-offset-3 col-md-9"&gt;
+            &lt;wj-menu header="Stacking" [(value)]="polarStacking"&gt;
+                &lt;wj-menu-item value="None"&gt;None&lt;/wj-menu-item&gt;
+                &lt;wj-menu-item value="Stacked"&gt;Stacked&lt;/wj-menu-item&gt;
+                &lt;wj-menu-item value="Stacked100pc"&gt;Stacked100pc&lt;/wj-menu-item&gt;
+            &lt;/wj-menu&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="form-group"&gt;
+        &lt;label class="col-md-3 control-label"&gt;Start Angle&lt;/label&gt;
+        &lt;div class="col-md-9"&gt;
+            &lt;wj-input-number #iptPolarStartAngle
+                                (valueChanged)="polarStartAngleChanged(iptPolarStartAngle)"
+                                [min]="0"
+                                [max]="360"
+                                [step]="60"&gt;
+            &lt;/wj-input-number&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="form-group"&gt;
+        &lt;label class="col-md-3 control-label"&gt;Total Angle&lt;/label&gt;
+        &lt;div class="col-md-9"&gt;
+            &lt;wj-input-number #iptPolarTotalAngle
+                                (valueChanged)="PolarTotalAngleChanged(iptPolarTotalAngle)"
+                                [value]="360"
+                                [min]="90"
+                                [max]="360"
+                                [step]="90"&gt;
+            &lt;/wj-input-number&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="form-group"&gt;
+        &lt;div class="col-md-offset-3 col-md-9"&gt;
+            &lt;div class="checkbox"&gt;
+                &lt;label&gt;
+                    &lt;input type="checkbox" [(ngModel)]="polarReversed"&gt; Reversed?
+                &lt;/label&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+                        </div>
+                    </app-tab-pane>
+                    <app-tab-pane title="TS">
+                        <div class="pane-content">
+export class AppCmp &#123;
+    basicPolarData: any[];
+    protected dataSvc: DataSvc;
+    polarChartType = 'Line';
+    polarTotalAngle = 360;
+    polarStartAngle = 0;
+    polarStacking = 'None';
+    polarReversed = false;
+
+    constructor( @Inject(DataSvc) dataSvc: DataSvc) &#123;
+        this.dataSvc = dataSvc;
+        this.basicPolarData = this.dataSvc.getData();
+    }
+
+    polarStartAngleChanged = (sender: wjcInput.InputNumber) => &#123;
+        if (sender.value < sender.min || sender.value > sender.max) &#123;
+            return;
+        }
+        this.polarStartAngle = sender.value;
+    };
+
+    polarTotalAngleChanged = (sender: wjcInput.InputNumber) => &#123;
+        if (sender.value < sender.min || sender.value > sender.max) &#123;
+            return;
+        }
+        this.polarTotalAngle = sender.value;
+    };
+
+}
+                        </div>
+                    </app-tab-pane>
+                </app-tab>
+            </div>
+            <div class="col-md-6">
+                <h4>Result (live):</h4>
+                <wj-flex-radar #animationChart
+                               [itemsSource]="animationData"
+                               [bindingX]="animationBindingX"
+                               [chartType]="animationChartType">
+                    <wj-flex-radar-series name="Sales" binding="sales"></wj-flex-radar-series>
+                    <wj-flex-radar-series name="Downloads" binding="downloads"></wj-flex-radar-series>
+                    <wj-flex-radar-axis wjProperty="axisY" [min]="0" [max]="100"></wj-flex-radar-axis>
+                    <wj-flex-chart-animation [animationMode]="animationMode" [easing]="easing" [duration]="duration"></wj-flex-chart-animation>
+                </wj-flex-radar>
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <div class="col-md-offset-3 col-md-9">
+                            <wj-menu header="Chart Type" [(value)]="animationChartType">
+                                <wj-menu-item value="Line">Line</wj-menu-item>
+                                <wj-menu-item value="LineSymbols">LineSymbols</wj-menu-item>
+                                <wj-menu-item value="Area">Area</wj-menu-item>
+                                <wj-menu-item value="Scatter">Scatter</wj-menu-item>
+                                <wj-menu-item value="Column">Column</wj-menu-item>
+                            </wj-menu>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-3 col-md-9">
+                            <wj-menu header="Animation Mode" [(value)]="animationMode" (itemClicked)="animationChanged()">
+                                <wj-menu-item value="Point">Point</wj-menu-item>
+                                <wj-menu-item value="Series">Series</wj-menu-item>
+                                <wj-menu-item value="All">All</wj-menu-item>
+                            </wj-menu>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-3 col-md-9">
+                            <wj-menu header="Easing" [(value)]="easing" (itemClicked)="animationChanged()">
+                                <wj-menu-item value="Linear">Linear</wj-menu-item>
+                                <wj-menu-item value="Swing">Swing</wj-menu-item>
+                                <wj-menu-item value="EaseInQuad">EaseInQuad</wj-menu-item>
+                                <wj-menu-item value="EaseOutQuad">EaseOutQuad</wj-menu-item>
+                                <wj-menu-item value="EaseInOutQuad">EaseInOutQuad</wj-menu-item>
+                                <wj-menu-item value="EaseInCubic">EaseInCubic</wj-menu-item>
+                                <wj-menu-item value="EaseOutCubic">EaseOutCubic</wj-menu-item>
+                                <wj-menu-item value="EaseInOutCubic">EaseInOutCubic</wj-menu-item>
+                                <wj-menu-item value="EaseInQuart">EaseInQuart</wj-menu-item>
+                                <wj-menu-item value="EaseOutQuart">EaseOutQuart</wj-menu-item>
+                                <wj-menu-item value="EaseInOutQuart">EaseInOutQuart</wj-menu-item>
+                                <wj-menu-item value="EaseInQuint">EaseInQuint</wj-menu-item>
+                                <wj-menu-item value="EaseOutQuint">EaseOutQuint</wj-menu-item>
+                                <wj-menu-item value="EaseInOutQuint">EaseInOutQuint</wj-menu-item>
+                                <wj-menu-item value="EaseInSine">EaseInSine</wj-menu-item>
+                                <wj-menu-item value="EaseOutSine">EaseOutSine</wj-menu-item>
+                                <wj-menu-item value="EaseInOutSine">EaseInOutSine</wj-menu-item>
+                                <wj-menu-item value="EaseInExpo">EaseInExpo</wj-menu-item>
+                                <wj-menu-item value="EaseOutExpo">EaseOutExpo</wj-menu-item>
+                                <wj-menu-item value="EaseInOutExpo">EaseInOutExpo</wj-menu-item>
+                                <wj-menu-item value="EaseInCirc">EaseInCirc</wj-menu-item>
+                                <wj-menu-item value="EaseOutCirc">EaseOutCirc</wj-menu-item>
+                                <wj-menu-item value="EaseInOutCirc">EaseInOutCirc</wj-menu-item>
+                                <wj-menu-item value="EaseInBack">EaseInBack</wj-menu-item>
+                                <wj-menu-item value="EaseOutBack">EaseOutBack</wj-menu-item>
+                                <wj-menu-item value="EaseInOutBack">EaseInOutBack</wj-menu-item>
+                                <wj-menu-item value="EaseInBounce">EaseInBounce</wj-menu-item>
+                                <wj-menu-item value="EaseOutBounce">EaseOutBounce</wj-menu-item>
+                                <wj-menu-item value="EaseInOutBounce">EaseInOutBounce</wj-menu-item>
+                                <wj-menu-item value="EaseInElastic">EaseInElastic</wj-menu-item>
+                                <wj-menu-item value="EaseOutElastic">EaseOutElastic</wj-menu-item>
+                                <wj-menu-item value="EaseInOutElastic">EaseInOutElastic</wj-menu-item>
+                            </wj-menu>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Duration</label>
+                        <div class="col-md-9">
+                            <wj-input-number #iptDuration
+                                             (valueChanged)="durationChanged(iptDuration)"
+                                             [min]="200"
+                                             [max]="5000"
+                                             [value]="400"
+                                             [step]="200">
+                            </wj-input-number>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-3 col-md-9">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" #isPolarChart (change)="isPolarChanged(isPolarChart)"> Is Polar Chart?
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

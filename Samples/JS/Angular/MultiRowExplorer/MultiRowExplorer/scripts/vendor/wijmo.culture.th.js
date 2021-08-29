@@ -1,18 +1,18 @@
 ﻿/*
     *
-    * Wijmo Library 5.20162.211
+    * Wijmo Library 5.20171.282
     * http://wijmo.com/
     *
     * Copyright(c) GrapeCity, Inc.  All rights reserved.
     *
     * Licensed under the Wijmo Commercial License.
     * sales@wijmo.com
-    * http://wijmo.com/products/wijmo-5/license/
+    * wijmo.com/products/wijmo-5/license/
     *
     */
 /*
-* Wijmo culture file: th (Thai)
-*/
+ * Wijmo culture file: th (Thai)
+ */
 var wijmo;
 (function (wijmo) {
     wijmo.culture = {
@@ -22,7 +22,7 @@ var wijmo;
             numberFormat: {
                 '.': '.',
                 ',': ',',
-                percent: { pattern: ['-n %', 'n %'] },
+                percent: { pattern: ['-n%', 'n%'] },
                 currency: { decimals: 2, symbol: '฿', pattern: ['-$n', '$n'] }
             },
             calendar: {
@@ -45,14 +45,14 @@ var wijmo;
                     g: 'd/M/yyyy H:mm', G: 'd/M/yyyy H:mm:ss',
                     s: 'yyyy"-"MM"-"dd"T"HH":"mm":"ss'
                 },
-                fiscalYearOffsets: [-3, -3],
+                fiscalYearOffsets: [-3, -3]
             }
         },
         MultiSelect: {
             itemsSelected: '{count:n0} รายการที่เลือก'
         },
         FlexGrid: {
-            groupHeaderFormat: '{name}: <b>{value} </b>({count:n0} รายการ)'
+            groupHeaderFormat: '{name}: <b>{value}</b> ({count:n0} รายการ)'
         },
         FlexGridFilter: {
             // filter
@@ -102,104 +102,237 @@ var wijmo;
         },
         olap: {
             PivotFieldEditor: {
-                dialogHeader: 'Field settings:',
-                header: 'Header:',
-                summary: 'Summary:',
-                showAs: 'Show As:',
-                weighBy: 'Weigh by:',
-                sort: 'Sort:',
-                filter: 'Filter:',
-                format: 'Format:',
-                sample: 'Sample:',
-                edit: 'Edit...',
-                clear: 'Clear',
-                ok: 'OK',
-                cancel: 'Cancel',
-                none: '(none)',
+                dialogHeader: 'ตั้งค่าเขตข้อมูล:',
+                header: 'หัวข้อ:',
+                summary: 'สรุป:',
+                showAs: 'แสดงเป็น:',
+                weighBy: 'มีน้ำหนักโดย:',
+                sort: 'เรียงลำดับ:',
+                filter: 'ตัวกรอง:',
+                format: 'รูปแบบ:',
+                sample: 'ตัวอย่าง:',
+                edit: 'แก้ไข…',
+                clear: 'ล้าง',
+                ok: 'ตกลง',
+                cancel: 'ยกเลิก',
+                none: '(ไม่มี)',
                 sorts: {
-                    asc: 'Ascending',
-                    desc: 'Descending'
+                    asc: 'จากน้อยไปหามาก',
+                    desc: 'จากมากไปหาน้อย'
                 },
                 aggs: {
-                    sum: 'Sum',
-                    cnt: 'Count',
-                    avg: 'Average',
-                    max: 'Max',
-                    min: 'Min',
-                    rng: 'Range',
-                    std: 'StdDev',
+                    sum: 'ผลรวม',
+                    cnt: 'จำนวน',
+                    avg: 'ค่าเฉลี่ย',
+                    max: 'แม็กซ์',
+                    min: 'นาที',
+                    rng: 'ช่วง',
+                    std: 'ส่วนเบี่ยงเบนมาตรฐาน',
                     var: 'Var',
                     stdp: 'StdDevPop',
                     varp: 'VarPop'
                 },
                 calcs: {
-                    noCalc: 'No Calculation',
-                    dRow: 'Difference from previous row',
-                    dRowPct: '% Difference from previous row',
-                    dCol: 'Difference from previous column',
-                    dColPct: '% Difference from previous column'
+                    noCalc: 'ไม่มีการคำนวณ',
+                    dRow: 'ความแตกต่างจากแถวก่อนหน้านี้',
+                    dRowPct: '%ความแตกต่างจากแถวก่อนหน้านี้',
+                    dCol: 'ความแตกต่างจากคอลัมน์ก่อนหน้า',
+                    dColPct: '%ความแตกต่างจากคอลัมน์ก่อนหน้า',
+                    dPctGrand: '%ของยอดรวมทั้งหมด',
+                    dPctRow: '%ของผลรวมแถว',
+                    dPctCol: '%ของผลรวมคอลัมน์',
+                    dRunTot: 'ทำงานทั้งหมด',
+                    dRunTotPct: 'ทำงานรวม%'
                 },
                 formats: {
-                    n0: 'Integer (n0)',
-                    n2: 'Float (n2)',
-                    c: 'Currency (c)',
-                    p0: 'Percentage (p0)',
-                    p2: 'Percentage (p2)',
-                    n2c: 'Thousands (n2,)',
-                    n2cc: 'Millions (n2,,)',
-                    n2ccc: 'Billions (n2,,,)',
-                    d: 'Date (d)',
-                    MMMMddyyyy: 'Month Day Year (MMMM dd, yyyy)',
-                    dMyy: 'Day Month Year (d/M/yy)',
-                    ddMyy: 'Day Month Year (dd/M/yy)',
-                    dMyyyy: 'Day Month Year (dd/M/yyyy)',
-                    MMMyyyy: 'Month Year (MMM yyyy)',
-                    MMMMyyyy: 'Month Year (MMMM yyyy)',
-                    yyyyQq: 'Year Quarter (yyyy "Q"q)',
-                    FYEEEEQU: 'Fiscal Year Quarter ("FY"EEEE "Q"U)'
+                    n0: 'จำนวนเต็ม (n0)',
+                    n2: 'ลอย (n2)',
+                    c: 'สกุลเงิน (c)',
+                    p0: 'เปอร์เซ็นต์ (p0)',
+                    p2: 'เปอร์เซ็นต์ (p2)',
+                    n2c: 'พัน (n2,)',
+                    n2cc: 'ล้าน (n2,,)',
+                    n2ccc: 'พันล้าน (n2,,,)',
+                    d: 'วัน (d)',
+                    MMMMddyyyy: 'วันเดือนปี (MMMM dd, yyyy)',
+                    dMyy: 'วันเดือนปี (d/M/yy)',
+                    ddMyy: 'วันเดือนปี (dd/M/yy)',
+                    dMyyyy: 'วันเดือนปี (dd/M/yyyy)',
+                    MMMyyyy: 'เดือนปี (MMM yyyy)',
+                    MMMMyyyy: 'เดือนปี (MMMM yyyy)',
+                    yyyyQq: 'ไตรมาสของปี (yyyy "Q"q)',
+                    FYEEEEQU: 'ไตรมาสปี ("FY"EEEE "Q"U)'
                 }
             },
             PivotEngine: {
-                grandTotal: 'Grand Total',
-                subTotal: 'Subtotal'
+                grandTotal: 'ผลรวมทั้งหมด',
+                subTotal: 'ผลรวมย่อย'
             },
             PivotPanel: {
-                fields: 'Choose fields to add to report',
-                drag: 'Drag fields between areas below:',
-                filters: 'Filters',
-                cols: 'Columns',
-                rows: 'Rows',
-                vals: 'Values',
-                defer: 'Defer Updates',
-                update: 'Update'
+                fields: 'เลือกเขตข้อมูลการเพิ่มรายงาน:',
+                drag: 'ลากเขตข้อมูลไปมาระหว่างพื้นที่ด้านล่าง:',
+                filters: 'ตัวกรอง',
+                cols: 'คอลัมน์',
+                rows: 'แถว',
+                vals: 'ค่า',
+                defer: 'เลื่อนการปรับปรุง',
+                update: 'ปรับปรุง'
             },
             _ListContextMenu: {
-                up: 'Move Up',
-                down: 'Move Down',
-                first: 'Move do Beginning',
-                last: 'Move to End',
-                filter: 'Move to Report Filter',
-                rows: 'Move to Row Labels',
-                cols: 'Move to Column Labels',
-                vals: 'Move to Values',
-                remove: 'Remove Field',
-                edit: 'Field Settings...',
-                detail: 'Show Detail...'
+                up: 'ย้ายขึ้น',
+                down: 'ย้ายลง',
+                first: 'ย้ายไปจุดเริ่มต้น',
+                last: 'ย้ายไปจุดสุดท้าย',
+                filter: 'ย้ายไปยังตัวกรองรายงาน',
+                rows: 'ย้ายไปยังป้ายชื่อแถว',
+                cols: 'ย้ายไปยังป้ายชื่อคอลัมน์',
+                vals: 'ย้ายไปยังค่า',
+                remove: 'เอาเขตข้อมูลออก',
+                edit: 'การตั้งค่าเขตข้อมูล…',
+                detail: 'แสดงรายละเอียด…'
             },
             PivotChart: {
                 by: 'by',
-                and: 'and'
+                and: 'และ'
             },
             DetailDialog: {
-                header: 'Detail View:',
-                ok: 'OK',
-                items: '{cnt:n0} items',
-                item: '{cnt} item',
-                row: 'Row',
-                col: 'Column'
+                header: 'ดูรายละเอียด:',
+                ok: 'ตกลง',
+                items: 'สินค้า {cnt:n0}',
+                item: 'สินค้า {cnt}',
+                row: 'แถว',
+                col: 'คอลัมน์'
             }
+        },
+        Viewer: {
+            cancel: 'ยกเลิก',
+            ok: 'ตกลง',
+            bottom: 'ล่าง:',
+            top: 'บน:',
+            right: 'ขวา:',
+            left: 'ซ้าย:',
+            margins: 'ระยะขอบ (นิ้ว)',
+            orientation: 'การวางแนว:',
+            paperKind: 'ชนิดกระดาษ:',
+            pageSetup: 'ตั้งค่าหน้ากระดาษ',
+            landscape: 'แนวนอน',
+            portrait: 'แนวตั้ง',
+            pageNumber: 'หมายเลขหน้า',
+            zoomFactor: 'การซูมระดับ',
+            paginated: 'เค้าโครงเหมือนพิมพ์',
+            print: 'พิมพ์',
+            search: 'ค้นหา',
+            matchCase: 'ตรงตามตัวพิมพ์ใหญ่-เล็ก',
+            wholeWord: 'ตรงกันทั้งคำเท่านั้น',
+            searchResults: 'ผลลัพธ์การค้นหา',
+            previousPage: 'หน้าก่อน',
+            nextPage: 'หน้าถัดไป',
+            firstPage: 'หน้าแรก',
+            lastPage: 'หน้าสุดท้าย',
+            backwardHistory: 'กลับหลัง',
+            forwardHistory: 'ไปข้างหน้า',
+            pageCount: 'จำนวนหน้า',
+            selectTool: 'เลือกเครื่องมือ',
+            moveTool: 'ย้ายเครื่องมือ',
+            continuousMode: 'ดูหน้าอย่างต่อเนื่อง',
+            singleMode: 'มองหน้าเดียว',
+            wholePage: 'หน้าทั้งหมดพอดี',
+            pageWidth: 'พอดีหน้ากว้าง',
+            zoomOut: 'ย่อ',
+            zoomIn: 'ขยาย',
+            exports: 'ส่งออก',
+            fullScreen: 'เต็มหน้าจอ',
+            exitFullScreen: 'ออกจากโหมดเต็มหน้าจอ',
+            hamburgerMenu: 'เครื่องมือ',
+            showSearchBar: 'แสดงแถบค้นหา',
+            viewMenu: 'ตัวเลือกเค้าโครง',
+            searchOptions: 'ตัวเลือกการค้นหา',
+            matchCaseMenuItem: 'ตรงตามตัวพิมพ์ใหญ่-เล็ก',
+            wholeWordMenuItem: 'ตรงกันทั้งคำ',
+            thumbnails: 'รูปขนาดย่อของหน้า',
+            outlines: 'ผังเอกสาร',
+            loading: 'กำลังโหลด…',
+            pdfExportName: 'Adobe PDF',
+            docxExportName: 'Open XML Word',
+            xlsxExportName: 'Open XML Excel',
+            docExportName: 'Microsoft Word',
+            xlsExportName: 'Microsoft Excel',
+            mhtmlExportName: 'แฟ้มเก็บถาวรเว็บ (MHTML)',
+            htmlExportName: 'เอกสาร HTML',
+            rtfExportName: 'เอกสาร RTF',
+            metafileExportName: 'บีบอัดแฟ้ม metafile',
+            csvExportName: 'CSV',
+            tiffExportName: 'รูปภาพ tiff',
+            bmpExportName: 'ภาพ BMP',
+            emfExportName: 'ขั้นสูง metafile',
+            gifExportName: 'ภาพ GIF',
+            jpgExportName: 'ภาพ JPEG',
+            jpegExportName: 'ภาพ JPEG',
+            pngExportName: 'รูปแบบ PNG',
+            abstractMethodException: 'นี้เป็นวิธีการนามธรรม โปรดใช้',
+            cannotRenderPageNoViewPage: 'ไม่สามารถแสดงหน้า โดยไม่มีเอกสารแหล่งที่มาและมุมมองหน้า',
+            cannotRenderPageNoDoc: 'ไม่สามารถแสดงหน้า โดยไม่มีเอกสารแหล่งที่มาและมุมมองหน้า',
+            exportFormat: 'รูปแบบการส่งออก:',
+            exportOptionTitle: 'ตัวเลือกการส่งออก',
+            documentRestrictionsGroup: 'ข้อจำกัดของเอกสาร',
+            passwordSecurityGroup: 'ความปลอดภัยของรหัสผ่าน',
+            outputRangeGroup: 'ช่วงการแสดงผล',
+            documentInfoGroup: 'เอกสารข้อมูล',
+            generalGroup: 'ทั่วไป',
+            docInfoTitle: 'ชื่อเรื่อง',
+            docInfoAuthor: 'ผู้เขียน',
+            docInfoManager: 'ผู้จัดการ',
+            docInfoOperator: 'ตัวดำเนินการ',
+            docInfoCompany: 'บริษัท',
+            docInfoSubject: 'ชื่อเรื่อง',
+            docInfoComment: 'Comment',
+            docInfoCreator: 'ผู้สร้าง',
+            docInfoProducer: 'Producer',
+            docInfoCreationTime: 'เวลาที่สร้าง',
+            docInfoRevisionTime: 'เวลา revision',
+            docInfoKeywords: 'คีย์เวิร์ด',
+            embedFonts: 'ฝังแบบอักษร TrueType',
+            pdfACompatible: 'PDF/A เข้ากันได้ (ระดับที่ 2B)',
+            useCompression: 'ใช้การรวมรายการ',
+            useOutlines: 'สร้างเค้าร่าง',
+            allowCopyContent: 'อนุญาตให้คัดลอกเนื้อหาหรือสกัด',
+            allowEditAnnotations: 'อนุญาตให้แก้ไขข้อมูลกำกับ',
+            allowEditContent: 'อนุญาตให้แก้ไขเนื้อหา',
+            allowPrint: 'อนุญาตการพิมพ์',
+            ownerPassword: 'รหัสผ่านที่อนุญาต (เจ้าของ):',
+            userPassword: 'เอกสารรหัสผ่านเปิด (ผู้ใช้):',
+            encryptionType: 'ระดับการเข้ารหัส:',
+            paged: 'ใช้เพจ',
+            showNavigator: 'แสดงนำ',
+            singleFile: 'แฟ้มเดี่ยว',
+            tolerance: 'ความอดทนเมื่อตรวจจับขอบเขตข้อความ (จุด):',
+            pictureLayer: 'ใช้รูปภาพแยกชั้น',
+            metafileType: 'Metafile ชนิด:',
+            monochrome: 'ขาวดำ',
+            resolution: 'ความละเอียด:',
+            outputRange: 'ช่วงหน้ากระดาษ:',
+            outputRangeInverted: 'คว่ำ',
+            showZoomBar: 'แถบซูม',
+            searchPrev: 'ค้นหาก่อนหน้านี้',
+            searchNext: 'ค้นหาถัดไป',
+            checkMark: '\u2713',
+            exportOk: 'ส่งออก…',
+            parameters: 'พารามิเตอร์',
+            requiringParameters: 'โปรดป้อนพารามิเตอร์',
+            nullParameterError: 'ค่าต้องไม่เป็น Null',
+            invalidParameterError: 'ป้อนข้อมูลไม่ถูกต้อง',
+            parameterNoneItemsSelected: '(ไม่มี)',
+            parameterAllItemsSelected: '(ทั้งหมด)',
+            parameterSelectAllItemText: '(เลือกทั้งหมด)',
+            selectParameterValue: '(เลือกค่า)',
+            apply: 'ใช้',
+            errorOccured: 'มีข้อผิดพลาดเกิดขึ้น'
         }
     };
+    var updc = window['wijmo']._updateCulture;
+    if (updc) {
+        updc();
+    }
 })(wijmo || (wijmo = {}));
 ;
-//# sourceMappingURL=wijmo.culture.th.js.map
+

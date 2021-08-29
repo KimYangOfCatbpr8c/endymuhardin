@@ -1,4 +1,3 @@
-///<reference path="../typings/globals/core-js/index.d.ts"/>
 "use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -9,6 +8,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
+///<reference path="../typings/globals/core-js/index.d.ts"/>
+var wjcGridSheet = require('wijmo/wijmo.grid.sheet');
+var wjcGrid = require('wijmo/wijmo.grid');
 // Angular
 var core_1 = require('@angular/core');
 var forms_1 = require('@angular/forms');
@@ -156,6 +158,11 @@ var ExcellikeSheetCmp = (function () {
                     }
                 }, 0);
             });
+            colorPicker.hostElement.addEventListener('keydown', function (e) {
+                if (e.keyCode === 27) {
+                    colorPicker.hostElement.style.display = 'none';
+                }
+            });
             // Initialize the value changed event handler for the color picker control.
             colorPicker.valueChanged.addHandler(function () {
                 if (self._applyFillColor) {
@@ -271,8 +278,8 @@ var ExcellikeSheetCmp = (function () {
         }
         else {
             if (className) {
-                this._appliedClass = className;
-                this.flexSheet.applyCellsStyle({ className: className }, undefined, true);
+                this._appliedClass = className + '-style';
+                this.flexSheet.applyCellsStyle({ className: this._appliedClass }, undefined, true);
             }
             else if (this._appliedClass) {
                 this.flexSheet.applyCellsStyle({ className: this._appliedClass });
@@ -362,7 +369,7 @@ var ExcellikeSheetCmp = (function () {
             }
             else {
                 flexSheet.setCellData(selection.row, selection.col, e.target.value, true);
-                if (this._pendingAction instanceof wijmo.grid.sheet._EditAction && this._pendingAction.saveNewState()) {
+                if (this._pendingAction instanceof wjcGridSheet._EditAction && this._pendingAction.saveNewState()) {
                     flexSheet.undoStack._addAction(this._pendingAction);
                 }
                 this._pendingAction = null;
@@ -373,7 +380,7 @@ var ExcellikeSheetCmp = (function () {
     ;
     // Pending the cell edit undo action.
     ExcellikeSheetCmp.prototype.pendingCellEditAction = function () {
-        this._pendingAction = new wijmo.grid.sheet._EditAction(this.flexSheet);
+        this._pendingAction = new wjcGridSheet._EditAction(this.flexSheet);
     };
     // Open the function list
     ExcellikeSheetCmp.prototype.showFunctionList = function (e) {
@@ -382,6 +389,16 @@ var ExcellikeSheetCmp = (function () {
         }
     };
     ;
+    ExcellikeSheetCmp.prototype.hidePopup = function (e) {
+        var modals = document.querySelectorAll('.modal'), i;
+        if (e.keyCode === 27) {
+            if (modals && modals.length > 0) {
+                for (i = 0; i < modals.length; i++) {
+                    $(modals[i])['modal']('hide');
+                }
+            }
+        }
+    };
     ExcellikeSheetCmp.prototype._generateCountrySheet = function (flexSheet) {
         flexSheet.selectedSheet.itemsSource = this.data;
         this._initDataMapForBindingSheet(flexSheet);
@@ -411,13 +428,13 @@ var ExcellikeSheetCmp = (function () {
         for (var i = 0; i < items.length; i++) {
             map.push({ key: i, value: items[i] });
         }
-        return new wijmo.grid.DataMap(map, 'key', 'value');
+        return new wjcGrid.DataMap(map, 'key', 'value');
     };
     ExcellikeSheetCmp.prototype._getColumns = function () {
         var columns = [], i = 0;
         if (this.flexSheet) {
             for (; i < this.flexSheet.columns.length; i++) {
-                columns.push('Column ' + wijmo.grid.sheet.FlexSheet.convertNumberToAlpha(i));
+                columns.push('Column ' + wjcGridSheet.FlexSheet.convertNumberToAlpha(i));
             }
         }
         return columns;
@@ -432,7 +449,7 @@ var ExcellikeSheetCmp = (function () {
             r = sel.row >= rowCnt ? rowCnt - 1 : sel.row;
             c = sel.col >= colCnt ? colCnt - 1 : sel.col;
             this.selection.content = flexSheet.getCellData(r, c, true);
-            this.selection.position = wijmo.grid.sheet.FlexSheet.convertNumberToAlpha(sel.col) + (sel.row + 1);
+            this.selection.position = wjcGridSheet.FlexSheet.convertNumberToAlpha(sel.col) + (sel.row + 1);
             cellStyle = flexSheet.selectedSheet.getCellStyle(sel.row, sel.col);
             if (cellStyle) {
                 this.cboFontName.selectedIndex = this._checkFontfamily(cellStyle.fontFamily);
@@ -443,7 +460,7 @@ var ExcellikeSheetCmp = (function () {
                 this.cboFontSize.selectedIndex = 5;
             }
             if (sel.col !== -1 && sel.col2 !== -1 && sel.row !== -1 && sel.row2 !== -1) {
-                cellRange = wijmo.grid.sheet.FlexSheet.convertNumberToAlpha(sel.leftCol) + (sel.topRow + 1) + ':' + wijmo.grid.sheet.FlexSheet.convertNumberToAlpha(sel.rightCol) + (sel.bottomRow + 1);
+                cellRange = wjcGridSheet.FlexSheet.convertNumberToAlpha(sel.leftCol) + (sel.topRow + 1) + ':' + wjcGridSheet.FlexSheet.convertNumberToAlpha(sel.rightCol) + (sel.bottomRow + 1);
                 rangeSum = flexSheet.evaluate('sum(' + cellRange + ')');
                 rangeAvg = flexSheet.evaluate('average(' + cellRange + ')');
                 rangeCnt = flexSheet.evaluate('count(' + cellRange + ')');
@@ -589,7 +606,7 @@ var ExcellikeSheetCmp = (function () {
             for (colIndex = 1; colIndex <= 11; colIndex++) {
                 if (rowIndex === 17) {
                     if (colIndex >= 4 && colIndex <= 11) {
-                        rowAlpha = wijmo.grid.sheet.FlexSheet.convertNumberToAlpha(colIndex);
+                        rowAlpha = wjcGridSheet.FlexSheet.convertNumberToAlpha(colIndex);
                         cellRange = rowAlpha + '11' + ':' + rowAlpha + '17';
                         flexSheet.setCellData(rowIndex, colIndex, '=sum(' + cellRange + ')');
                     }
@@ -638,54 +655,54 @@ var ExcellikeSheetCmp = (function () {
         flexSheet.applyCellsStyle({
             fontStyle: 'italic',
             backgroundColor: '#E1DFDF'
-        }, [new wijmo.grid.CellRange(0, 9, 0, 11)]);
-        flexSheet.mergeRange(new wijmo.grid.CellRange(0, 9, 0, 11));
+        }, [new wjcGrid.CellRange(0, 9, 0, 11)]);
+        flexSheet.mergeRange(new wjcGrid.CellRange(0, 9, 0, 11));
         flexSheet.applyCellsStyle({
             fontSize: '24px',
             fontWeight: 'bold',
             color: '#696964'
-        }, [new wijmo.grid.CellRange(1, 1, 1, 3)]);
-        flexSheet.mergeRange(new wijmo.grid.CellRange(1, 1, 1, 3));
+        }, [new wjcGrid.CellRange(1, 1, 1, 3)]);
+        flexSheet.mergeRange(new wjcGrid.CellRange(1, 1, 1, 3));
         flexSheet.applyCellsStyle({
             fontWeight: 'bold',
             color: '#808097'
-        }, [new wijmo.grid.CellRange(3, 1, 3, 1),
-            new wijmo.grid.CellRange(3, 5, 3, 5),
-            new wijmo.grid.CellRange(3, 9, 3, 9),
-            new wijmo.grid.CellRange(5, 1, 5, 2)]);
+        }, [new wjcGrid.CellRange(3, 1, 3, 1),
+            new wjcGrid.CellRange(3, 5, 3, 5),
+            new wjcGrid.CellRange(3, 9, 3, 9),
+            new wjcGrid.CellRange(5, 1, 5, 2)]);
         flexSheet.applyCellsStyle({
             textAlign: 'right'
-        }, [new wijmo.grid.CellRange(3, 10, 4, 10),
-            new wijmo.grid.CellRange(6, 1, 7, 1),
-            new wijmo.grid.CellRange(6, 5, 7, 5),
-            new wijmo.grid.CellRange(6, 9, 7, 9)]);
+        }, [new wjcGrid.CellRange(3, 10, 4, 10),
+            new wjcGrid.CellRange(6, 1, 7, 1),
+            new wjcGrid.CellRange(6, 5, 7, 5),
+            new wjcGrid.CellRange(6, 9, 7, 9)]);
         flexSheet.applyCellsStyle({
             backgroundColor: '#E1DFDF',
             format: 'yyyy-M-d'
-        }, [new wijmo.grid.CellRange(3, 11, 4, 11)]);
-        flexSheet.mergeRange(new wijmo.grid.CellRange(5, 1, 5, 2));
+        }, [new wjcGrid.CellRange(3, 11, 4, 11)]);
+        flexSheet.mergeRange(new wjcGrid.CellRange(5, 1, 5, 2));
         flexSheet.applyCellsStyle({
             fontWeight: 'bold',
             backgroundColor: '#FAD9CD'
-        }, [new wijmo.grid.CellRange(9, 1, 9, 11),
-            new wijmo.grid.CellRange(17, 1, 17, 11)]);
+        }, [new wjcGrid.CellRange(9, 1, 9, 11),
+            new wjcGrid.CellRange(17, 1, 17, 11)]);
         flexSheet.applyCellsStyle({
             backgroundColor: '#F4B19B'
-        }, [new wijmo.grid.CellRange(10, 1, 16, 11)]);
+        }, [new wjcGrid.CellRange(10, 1, 16, 11)]);
         flexSheet.applyCellsStyle({
             format: 'yyyy-M-d'
-        }, [new wijmo.grid.CellRange(10, 1, 16, 1)]);
+        }, [new wjcGrid.CellRange(10, 1, 16, 1)]);
         flexSheet.applyCellsStyle({
             fontWeight: 'bold',
             textAlign: 'right'
-        }, [new wijmo.grid.CellRange(18, 9, 20, 10)]);
-        flexSheet.mergeRange(new wijmo.grid.CellRange(19, 9, 19, 10));
+        }, [new wjcGrid.CellRange(18, 9, 20, 10)]);
+        flexSheet.mergeRange(new wjcGrid.CellRange(19, 9, 19, 10));
         flexSheet.applyCellsStyle({
             fontWeight: 'bold',
             color: '#808097',
             textAlign: 'center'
-        }, [new wijmo.grid.CellRange(20, 1, 20, 1),
-            new wijmo.grid.CellRange(20, 5, 20, 5)]);
+        }, [new wjcGrid.CellRange(20, 1, 20, 1),
+            new wjcGrid.CellRange(20, 5, 20, 5)]);
     };
     // Generate the formulas sheet.
     ExcellikeSheetCmp.prototype._generateFormulasSheet = function (flexSheet) {
@@ -1524,425 +1541,429 @@ var ExcellikeSheetCmp = (function () {
         flexSheet.applyCellsStyle({
             fontSize: '16px',
             fontWeight: 'bold'
-        }, [new wijmo.grid.CellRange(0, 0, 0, 2),
-            new wijmo.grid.CellRange(32, 0, 32, 1),
-            new wijmo.grid.CellRange(118, 0, 118, 1),
-            new wijmo.grid.CellRange(148, 0, 148, 1),
-            new wijmo.grid.CellRange(227, 0, 227, 1),
-            new wijmo.grid.CellRange(297, 0, 297, 1),
-            new wijmo.grid.CellRange(314, 0, 314, 1),
-            new wijmo.grid.CellRange(341, 0, 342, 1),
-            new wijmo.grid.CellRange(385, 0, 385, 1),
-            new wijmo.grid.CellRange(488, 0, 488, 1),
-            new wijmo.grid.CellRange(514, 0, 514, 0)]);
+        }, [new wjcGrid.CellRange(0, 0, 0, 2),
+            new wjcGrid.CellRange(32, 0, 32, 1),
+            new wjcGrid.CellRange(118, 0, 118, 1),
+            new wjcGrid.CellRange(148, 0, 148, 1),
+            new wjcGrid.CellRange(227, 0, 227, 1),
+            new wjcGrid.CellRange(297, 0, 297, 1),
+            new wjcGrid.CellRange(314, 0, 314, 1),
+            new wjcGrid.CellRange(341, 0, 342, 1),
+            new wjcGrid.CellRange(385, 0, 385, 1),
+            new wjcGrid.CellRange(488, 0, 488, 1),
+            new wjcGrid.CellRange(514, 0, 514, 0)]);
         flexSheet.applyCellsStyle({
             fontWeight: 'bold'
-        }, [new wijmo.grid.CellRange(1, 1, 1, 2),
-            new wijmo.grid.CellRange(5, 1, 5, 2),
-            new wijmo.grid.CellRange(10, 1, 10, 2),
-            new wijmo.grid.CellRange(15, 1, 15, 2),
-            new wijmo.grid.CellRange(19, 1, 19, 2),
-            new wijmo.grid.CellRange(24, 1, 24, 2),
-            new wijmo.grid.CellRange(28, 1, 28, 1),
-            new wijmo.grid.CellRange(33, 1, 33, 1),
-            new wijmo.grid.CellRange(37, 1, 37, 1),
-            new wijmo.grid.CellRange(41, 1, 41, 1),
-            new wijmo.grid.CellRange(45, 1, 45, 1),
-            new wijmo.grid.CellRange(49, 1, 49, 1),
-            new wijmo.grid.CellRange(53, 1, 53, 1),
-            new wijmo.grid.CellRange(57, 1, 57, 1),
-            new wijmo.grid.CellRange(61, 1, 61, 1),
-            new wijmo.grid.CellRange(65, 1, 65, 1),
-            new wijmo.grid.CellRange(69, 1, 69, 1),
-            new wijmo.grid.CellRange(73, 1, 73, 1),
-            new wijmo.grid.CellRange(77, 1, 77, 1),
-            new wijmo.grid.CellRange(81, 1, 81, 1),
-            new wijmo.grid.CellRange(86, 1, 86, 1),
-            new wijmo.grid.CellRange(90, 1, 90, 1),
-            new wijmo.grid.CellRange(94, 1, 94, 1),
-            new wijmo.grid.CellRange(98, 1, 98, 1),
-            new wijmo.grid.CellRange(102, 1, 102, 1),
-            new wijmo.grid.CellRange(106, 1, 106, 1),
-            new wijmo.grid.CellRange(110, 1, 110, 1),
-            new wijmo.grid.CellRange(114, 1, 114, 1),
-            new wijmo.grid.CellRange(119, 1, 119, 1),
-            new wijmo.grid.CellRange(123, 1, 123, 1),
-            new wijmo.grid.CellRange(127, 1, 127, 1),
-            new wijmo.grid.CellRange(131, 1, 131, 1),
-            new wijmo.grid.CellRange(135, 1, 135, 1),
-            new wijmo.grid.CellRange(139, 1, 139, 1),
-            new wijmo.grid.CellRange(143, 1, 143, 1),
-            new wijmo.grid.CellRange(149, 1, 149, 1),
-            new wijmo.grid.CellRange(153, 1, 153, 1),
-            new wijmo.grid.CellRange(157, 1, 157, 1),
-            new wijmo.grid.CellRange(162, 1, 162, 1),
-            new wijmo.grid.CellRange(166, 1, 166, 1),
-            new wijmo.grid.CellRange(170, 1, 170, 1),
-            new wijmo.grid.CellRange(175, 1, 175, 1),
-            new wijmo.grid.CellRange(179, 1, 179, 1),
-            new wijmo.grid.CellRange(184, 1, 184, 1),
-            new wijmo.grid.CellRange(189, 1, 189, 1),
-            new wijmo.grid.CellRange(193, 1, 193, 1),
-            new wijmo.grid.CellRange(197, 1, 197, 1),
-            new wijmo.grid.CellRange(201, 1, 201, 1),
-            new wijmo.grid.CellRange(205, 1, 205, 1),
-            new wijmo.grid.CellRange(210, 1, 210, 1),
-            new wijmo.grid.CellRange(215, 1, 215, 1),
-            new wijmo.grid.CellRange(219, 1, 219, 1),
-            new wijmo.grid.CellRange(223, 1, 223, 1),
-            new wijmo.grid.CellRange(234, 1, 234, 1),
-            new wijmo.grid.CellRange(241, 1, 241, 1),
-            new wijmo.grid.CellRange(248, 1, 248, 1),
-            new wijmo.grid.CellRange(255, 1, 255, 1),
-            new wijmo.grid.CellRange(262, 1, 262, 1),
-            new wijmo.grid.CellRange(269, 1, 269, 1),
-            new wijmo.grid.CellRange(276, 1, 276, 1),
-            new wijmo.grid.CellRange(283, 1, 283, 1),
-            new wijmo.grid.CellRange(290, 1, 290, 1),
-            new wijmo.grid.CellRange(298, 1, 298, 1),
-            new wijmo.grid.CellRange(302, 1, 302, 1),
-            new wijmo.grid.CellRange(306, 1, 306, 1),
-            new wijmo.grid.CellRange(310, 1, 310, 1),
-            new wijmo.grid.CellRange(315, 1, 315, 1),
-            new wijmo.grid.CellRange(319, 1, 319, 1),
-            new wijmo.grid.CellRange(324, 1, 324, 1),
-            new wijmo.grid.CellRange(328, 1, 328, 1),
-            new wijmo.grid.CellRange(332, 1, 332, 1),
-            new wijmo.grid.CellRange(336, 1, 336, 1),
-            new wijmo.grid.CellRange(343, 1, 343, 1),
-            new wijmo.grid.CellRange(347, 1, 347, 1),
-            new wijmo.grid.CellRange(352, 1, 352, 1),
-            new wijmo.grid.CellRange(357, 1, 357, 1),
-            new wijmo.grid.CellRange(362, 1, 362, 1),
-            new wijmo.grid.CellRange(366, 1, 371, 1),
-            new wijmo.grid.CellRange(403, 1, 403, 1),
-            new wijmo.grid.CellRange(408, 1, 408, 2),
-            new wijmo.grid.CellRange(413, 1, 413, 1),
-            new wijmo.grid.CellRange(421, 1, 421, 1),
-            new wijmo.grid.CellRange(427, 1, 427, 1),
-            new wijmo.grid.CellRange(433, 1, 433, 1),
-            new wijmo.grid.CellRange(442, 1, 442, 1),
-            new wijmo.grid.CellRange(448, 1, 448, 1),
-            new wijmo.grid.CellRange(458, 1, 458, 1),
-            new wijmo.grid.CellRange(465, 1, 465, 1),
-            new wijmo.grid.CellRange(470, 2, 471, 6),
-            new wijmo.grid.CellRange(489, 1, 489, 1),
-            new wijmo.grid.CellRange(498, 1, 498, 1),
-            new wijmo.grid.CellRange(515, 1, 515, 1),
-            new wijmo.grid.CellRange(519, 2, 526, 2)]);
+        }, [new wjcGrid.CellRange(1, 1, 1, 2),
+            new wjcGrid.CellRange(5, 1, 5, 2),
+            new wjcGrid.CellRange(10, 1, 10, 2),
+            new wjcGrid.CellRange(15, 1, 15, 2),
+            new wjcGrid.CellRange(19, 1, 19, 2),
+            new wjcGrid.CellRange(24, 1, 24, 2),
+            new wjcGrid.CellRange(28, 1, 28, 1),
+            new wjcGrid.CellRange(33, 1, 33, 1),
+            new wjcGrid.CellRange(37, 1, 37, 1),
+            new wjcGrid.CellRange(41, 1, 41, 1),
+            new wjcGrid.CellRange(45, 1, 45, 1),
+            new wjcGrid.CellRange(49, 1, 49, 1),
+            new wjcGrid.CellRange(53, 1, 53, 1),
+            new wjcGrid.CellRange(57, 1, 57, 1),
+            new wjcGrid.CellRange(61, 1, 61, 1),
+            new wjcGrid.CellRange(65, 1, 65, 1),
+            new wjcGrid.CellRange(69, 1, 69, 1),
+            new wjcGrid.CellRange(73, 1, 73, 1),
+            new wjcGrid.CellRange(77, 1, 77, 1),
+            new wjcGrid.CellRange(81, 1, 81, 1),
+            new wjcGrid.CellRange(86, 1, 86, 1),
+            new wjcGrid.CellRange(90, 1, 90, 1),
+            new wjcGrid.CellRange(94, 1, 94, 1),
+            new wjcGrid.CellRange(98, 1, 98, 1),
+            new wjcGrid.CellRange(102, 1, 102, 1),
+            new wjcGrid.CellRange(106, 1, 106, 1),
+            new wjcGrid.CellRange(110, 1, 110, 1),
+            new wjcGrid.CellRange(114, 1, 114, 1),
+            new wjcGrid.CellRange(119, 1, 119, 1),
+            new wjcGrid.CellRange(123, 1, 123, 1),
+            new wjcGrid.CellRange(127, 1, 127, 1),
+            new wjcGrid.CellRange(131, 1, 131, 1),
+            new wjcGrid.CellRange(135, 1, 135, 1),
+            new wjcGrid.CellRange(139, 1, 139, 1),
+            new wjcGrid.CellRange(143, 1, 143, 1),
+            new wjcGrid.CellRange(149, 1, 149, 1),
+            new wjcGrid.CellRange(153, 1, 153, 1),
+            new wjcGrid.CellRange(157, 1, 157, 1),
+            new wjcGrid.CellRange(162, 1, 162, 1),
+            new wjcGrid.CellRange(166, 1, 166, 1),
+            new wjcGrid.CellRange(170, 1, 170, 1),
+            new wjcGrid.CellRange(175, 1, 175, 1),
+            new wjcGrid.CellRange(179, 1, 179, 1),
+            new wjcGrid.CellRange(184, 1, 184, 1),
+            new wjcGrid.CellRange(189, 1, 189, 1),
+            new wjcGrid.CellRange(193, 1, 193, 1),
+            new wjcGrid.CellRange(197, 1, 197, 1),
+            new wjcGrid.CellRange(201, 1, 201, 1),
+            new wjcGrid.CellRange(205, 1, 205, 1),
+            new wjcGrid.CellRange(210, 1, 210, 1),
+            new wjcGrid.CellRange(215, 1, 215, 1),
+            new wjcGrid.CellRange(219, 1, 219, 1),
+            new wjcGrid.CellRange(223, 1, 223, 1),
+            new wjcGrid.CellRange(234, 1, 234, 1),
+            new wjcGrid.CellRange(241, 1, 241, 1),
+            new wjcGrid.CellRange(248, 1, 248, 1),
+            new wjcGrid.CellRange(255, 1, 255, 1),
+            new wjcGrid.CellRange(262, 1, 262, 1),
+            new wjcGrid.CellRange(269, 1, 269, 1),
+            new wjcGrid.CellRange(276, 1, 276, 1),
+            new wjcGrid.CellRange(283, 1, 283, 1),
+            new wjcGrid.CellRange(290, 1, 290, 1),
+            new wjcGrid.CellRange(298, 1, 298, 1),
+            new wjcGrid.CellRange(302, 1, 302, 1),
+            new wjcGrid.CellRange(306, 1, 306, 1),
+            new wjcGrid.CellRange(310, 1, 310, 1),
+            new wjcGrid.CellRange(315, 1, 315, 1),
+            new wjcGrid.CellRange(319, 1, 319, 1),
+            new wjcGrid.CellRange(324, 1, 324, 1),
+            new wjcGrid.CellRange(328, 1, 328, 1),
+            new wjcGrid.CellRange(332, 1, 332, 1),
+            new wjcGrid.CellRange(336, 1, 336, 1),
+            new wjcGrid.CellRange(343, 1, 343, 1),
+            new wjcGrid.CellRange(347, 1, 347, 1),
+            new wjcGrid.CellRange(352, 1, 352, 1),
+            new wjcGrid.CellRange(357, 1, 357, 1),
+            new wjcGrid.CellRange(362, 1, 362, 1),
+            new wjcGrid.CellRange(366, 1, 371, 1),
+            new wjcGrid.CellRange(403, 1, 403, 1),
+            new wjcGrid.CellRange(408, 1, 408, 2),
+            new wjcGrid.CellRange(413, 1, 413, 1),
+            new wjcGrid.CellRange(421, 1, 421, 1),
+            new wjcGrid.CellRange(427, 1, 427, 1),
+            new wjcGrid.CellRange(433, 1, 433, 1),
+            new wjcGrid.CellRange(442, 1, 442, 1),
+            new wjcGrid.CellRange(448, 1, 448, 1),
+            new wjcGrid.CellRange(458, 1, 458, 1),
+            new wjcGrid.CellRange(465, 1, 465, 1),
+            new wjcGrid.CellRange(470, 2, 471, 6),
+            new wjcGrid.CellRange(489, 1, 489, 1),
+            new wjcGrid.CellRange(498, 1, 498, 1),
+            new wjcGrid.CellRange(515, 1, 515, 1),
+            new wjcGrid.CellRange(519, 2, 526, 2)]);
         flexSheet.applyCellsStyle({
             textAlign: 'right'
-        }, [new wijmo.grid.CellRange(3, 1, 3, 1), new wijmo.grid.CellRange(3, 3, 3, 3),
-            new wijmo.grid.CellRange(7, 1, 8, 1), new wijmo.grid.CellRange(7, 3, 8, 3),
-            new wijmo.grid.CellRange(12, 1, 13, 1), new wijmo.grid.CellRange(12, 3, 13, 3),
-            new wijmo.grid.CellRange(17, 1, 17, 1), new wijmo.grid.CellRange(17, 3, 17, 3),
-            new wijmo.grid.CellRange(21, 1, 22, 1),
-            new wijmo.grid.CellRange(22, 1, 22, 1), new wijmo.grid.CellRange(22, 3, 22, 3),
-            new wijmo.grid.CellRange(26, 1, 26, 1), new wijmo.grid.CellRange(26, 3, 26, 3),
-            new wijmo.grid.CellRange(30, 1, 30, 1), new wijmo.grid.CellRange(30, 3, 30, 3),
-            new wijmo.grid.CellRange(35, 1, 35, 1), new wijmo.grid.CellRange(35, 3, 35, 3),
-            new wijmo.grid.CellRange(39, 1, 39, 1), new wijmo.grid.CellRange(39, 3, 39, 3),
-            new wijmo.grid.CellRange(43, 1, 43, 1), new wijmo.grid.CellRange(43, 3, 43, 3),
-            new wijmo.grid.CellRange(47, 1, 47, 1), new wijmo.grid.CellRange(47, 3, 47, 3),
-            new wijmo.grid.CellRange(51, 1, 51, 1), new wijmo.grid.CellRange(51, 3, 51, 3),
-            new wijmo.grid.CellRange(55, 1, 55, 1), new wijmo.grid.CellRange(55, 3, 55, 3),
-            new wijmo.grid.CellRange(59, 1, 59, 1), new wijmo.grid.CellRange(59, 3, 59, 3),
-            new wijmo.grid.CellRange(63, 1, 63, 1), new wijmo.grid.CellRange(63, 3, 63, 3),
-            new wijmo.grid.CellRange(67, 1, 67, 1), new wijmo.grid.CellRange(67, 3, 67, 3),
-            new wijmo.grid.CellRange(71, 1, 71, 1), new wijmo.grid.CellRange(71, 3, 71, 3),
-            new wijmo.grid.CellRange(75, 1, 75, 1), new wijmo.grid.CellRange(75, 3, 75, 3),
-            new wijmo.grid.CellRange(79, 1, 80, 1), new wijmo.grid.CellRange(79, 3, 80, 3),
-            new wijmo.grid.CellRange(83, 1, 84, 1), new wijmo.grid.CellRange(83, 3, 84, 3),
-            new wijmo.grid.CellRange(88, 1, 88, 1), new wijmo.grid.CellRange(88, 3, 88, 3),
-            new wijmo.grid.CellRange(92, 1, 92, 1), new wijmo.grid.CellRange(92, 3, 92, 3),
-            new wijmo.grid.CellRange(96, 1, 96, 1), new wijmo.grid.CellRange(96, 3, 96, 3),
-            new wijmo.grid.CellRange(100, 1, 100, 1), new wijmo.grid.CellRange(100, 3, 100, 3),
-            new wijmo.grid.CellRange(104, 1, 104, 1), new wijmo.grid.CellRange(104, 3, 104, 3),
-            new wijmo.grid.CellRange(108, 1, 108, 1), new wijmo.grid.CellRange(108, 4, 108, 4),
-            new wijmo.grid.CellRange(112, 1, 112, 1), new wijmo.grid.CellRange(112, 4, 112, 4),
-            new wijmo.grid.CellRange(116, 1, 116, 1), new wijmo.grid.CellRange(116, 3, 116, 3),
-            new wijmo.grid.CellRange(121, 1, 121, 1), new wijmo.grid.CellRange(121, 3, 121, 3),
-            new wijmo.grid.CellRange(125, 1, 125, 1), new wijmo.grid.CellRange(125, 3, 125, 3),
-            new wijmo.grid.CellRange(129, 1, 129, 1), new wijmo.grid.CellRange(129, 3, 129, 3),
-            new wijmo.grid.CellRange(133, 1, 133, 1), new wijmo.grid.CellRange(133, 3, 133, 3),
-            new wijmo.grid.CellRange(137, 1, 137, 1), new wijmo.grid.CellRange(137, 3, 137, 3),
-            new wijmo.grid.CellRange(141, 1, 141, 1), new wijmo.grid.CellRange(141, 3, 141, 3),
-            new wijmo.grid.CellRange(145, 1, 146, 1),
-            new wijmo.grid.CellRange(151, 1, 151, 1), new wijmo.grid.CellRange(151, 3, 151, 3),
-            new wijmo.grid.CellRange(155, 1, 155, 1), new wijmo.grid.CellRange(155, 3, 155, 3),
-            new wijmo.grid.CellRange(159, 1, 160, 1),
-            new wijmo.grid.CellRange(164, 1, 164, 1), new wijmo.grid.CellRange(164, 3, 164, 3),
-            new wijmo.grid.CellRange(168, 1, 168, 1), new wijmo.grid.CellRange(168, 3, 168, 3),
-            new wijmo.grid.CellRange(172, 1, 173, 1),
-            new wijmo.grid.CellRange(177, 1, 177, 1), new wijmo.grid.CellRange(177, 3, 177, 3),
-            new wijmo.grid.CellRange(181, 1, 182, 1),
-            new wijmo.grid.CellRange(186, 1, 187, 1),
-            new wijmo.grid.CellRange(191, 1, 191, 1), new wijmo.grid.CellRange(191, 3, 191, 3),
-            new wijmo.grid.CellRange(195, 1, 195, 1), new wijmo.grid.CellRange(195, 3, 195, 3),
-            new wijmo.grid.CellRange(199, 1, 199, 1), new wijmo.grid.CellRange(199, 3, 199, 3),
-            new wijmo.grid.CellRange(203, 1, 203, 1), new wijmo.grid.CellRange(203, 3, 203, 3),
-            new wijmo.grid.CellRange(207, 1, 208, 1),
-            new wijmo.grid.CellRange(212, 1, 213, 1),
-            new wijmo.grid.CellRange(217, 1, 217, 1), new wijmo.grid.CellRange(217, 3, 217, 3),
-            new wijmo.grid.CellRange(221, 1, 221, 1), new wijmo.grid.CellRange(221, 3, 221, 3),
-            new wijmo.grid.CellRange(225, 1, 225, 1), new wijmo.grid.CellRange(225, 3, 225, 3),
-            new wijmo.grid.CellRange(236, 1, 239, 1),
-            new wijmo.grid.CellRange(243, 1, 246, 1),
-            new wijmo.grid.CellRange(250, 1, 253, 1),
-            new wijmo.grid.CellRange(257, 1, 260, 1),
-            new wijmo.grid.CellRange(264, 1, 267, 1),
-            new wijmo.grid.CellRange(271, 1, 274, 1),
-            new wijmo.grid.CellRange(278, 1, 281, 1),
-            new wijmo.grid.CellRange(285, 1, 288, 1),
-            new wijmo.grid.CellRange(292, 1, 295, 1),
-            new wijmo.grid.CellRange(300, 1, 300, 1), new wijmo.grid.CellRange(300, 3, 300, 3),
-            new wijmo.grid.CellRange(304, 1, 304, 1), new wijmo.grid.CellRange(304, 3, 304, 3),
-            new wijmo.grid.CellRange(308, 1, 308, 1), new wijmo.grid.CellRange(308, 3, 308, 3),
-            new wijmo.grid.CellRange(312, 1, 312, 1), new wijmo.grid.CellRange(312, 3, 312, 3),
-            new wijmo.grid.CellRange(317, 1, 317, 1), new wijmo.grid.CellRange(317, 3, 317, 3),
-            new wijmo.grid.CellRange(321, 1, 322, 1),
-            new wijmo.grid.CellRange(326, 1, 326, 1), new wijmo.grid.CellRange(326, 3, 326, 3),
-            new wijmo.grid.CellRange(330, 1, 330, 1), new wijmo.grid.CellRange(330, 3, 330, 3),
-            new wijmo.grid.CellRange(334, 1, 334, 1), new wijmo.grid.CellRange(334, 3, 334, 3),
-            new wijmo.grid.CellRange(338, 1, 338, 1), new wijmo.grid.CellRange(338, 3, 338, 3),
-            new wijmo.grid.CellRange(345, 1, 345, 1), new wijmo.grid.CellRange(345, 3, 345, 3),
-            new wijmo.grid.CellRange(349, 1, 350, 1),
-            new wijmo.grid.CellRange(354, 1, 355, 1),
-            new wijmo.grid.CellRange(359, 1, 360, 1), new wijmo.grid.CellRange(359, 3, 360, 3),
-            new wijmo.grid.CellRange(364, 1, 364, 1),
-            new wijmo.grid.CellRange(366, 1, 383, 1),
-            new wijmo.grid.CellRange(405, 1, 406, 1),
-            new wijmo.grid.CellRange(410, 1, 411, 1),
-            new wijmo.grid.CellRange(415, 1, 419, 1),
-            new wijmo.grid.CellRange(423, 1, 425, 1),
-            new wijmo.grid.CellRange(429, 1, 431, 1),
-            new wijmo.grid.CellRange(435, 1, 440, 1),
-            new wijmo.grid.CellRange(444, 1, 446, 1),
-            new wijmo.grid.CellRange(450, 1, 451, 1), new wijmo.grid.CellRange(453, 1, 456, 1),
-            new wijmo.grid.CellRange(460, 1, 463, 1),
-            new wijmo.grid.CellRange(467, 1, 468, 1), new wijmo.grid.CellRange(483, 1, 486, 1),
-            new wijmo.grid.CellRange(491, 1, 496, 1),
-            new wijmo.grid.CellRange(500, 1, 504, 1), new wijmo.grid.CellRange(509, 1, 512, 1),
-            new wijmo.grid.CellRange(517, 1, 517, 1), new wijmo.grid.CellRange(519, 2, 526, 2), new wijmo.grid.CellRange(527, 1, 528, 1)]);
+        }, [new wjcGrid.CellRange(3, 1, 3, 1), new wjcGrid.CellRange(3, 3, 3, 3),
+            new wjcGrid.CellRange(7, 1, 8, 1), new wjcGrid.CellRange(7, 3, 8, 3),
+            new wjcGrid.CellRange(12, 1, 13, 1), new wjcGrid.CellRange(12, 3, 13, 3),
+            new wjcGrid.CellRange(17, 1, 17, 1), new wjcGrid.CellRange(17, 3, 17, 3),
+            new wjcGrid.CellRange(21, 1, 22, 1),
+            new wjcGrid.CellRange(22, 1, 22, 1), new wjcGrid.CellRange(22, 3, 22, 3),
+            new wjcGrid.CellRange(26, 1, 26, 1), new wjcGrid.CellRange(26, 3, 26, 3),
+            new wjcGrid.CellRange(30, 1, 30, 1), new wjcGrid.CellRange(30, 3, 30, 3),
+            new wjcGrid.CellRange(35, 1, 35, 1), new wjcGrid.CellRange(35, 3, 35, 3),
+            new wjcGrid.CellRange(39, 1, 39, 1), new wjcGrid.CellRange(39, 3, 39, 3),
+            new wjcGrid.CellRange(43, 1, 43, 1), new wjcGrid.CellRange(43, 3, 43, 3),
+            new wjcGrid.CellRange(47, 1, 47, 1), new wjcGrid.CellRange(47, 3, 47, 3),
+            new wjcGrid.CellRange(51, 1, 51, 1), new wjcGrid.CellRange(51, 3, 51, 3),
+            new wjcGrid.CellRange(55, 1, 55, 1), new wjcGrid.CellRange(55, 3, 55, 3),
+            new wjcGrid.CellRange(59, 1, 59, 1), new wjcGrid.CellRange(59, 3, 59, 3),
+            new wjcGrid.CellRange(63, 1, 63, 1), new wjcGrid.CellRange(63, 3, 63, 3),
+            new wjcGrid.CellRange(67, 1, 67, 1), new wjcGrid.CellRange(67, 3, 67, 3),
+            new wjcGrid.CellRange(71, 1, 71, 1), new wjcGrid.CellRange(71, 3, 71, 3),
+            new wjcGrid.CellRange(75, 1, 75, 1), new wjcGrid.CellRange(75, 3, 75, 3),
+            new wjcGrid.CellRange(79, 1, 80, 1), new wjcGrid.CellRange(79, 3, 80, 3),
+            new wjcGrid.CellRange(83, 1, 84, 1), new wjcGrid.CellRange(83, 3, 84, 3),
+            new wjcGrid.CellRange(88, 1, 88, 1), new wjcGrid.CellRange(88, 3, 88, 3),
+            new wjcGrid.CellRange(92, 1, 92, 1), new wjcGrid.CellRange(92, 3, 92, 3),
+            new wjcGrid.CellRange(96, 1, 96, 1), new wjcGrid.CellRange(96, 3, 96, 3),
+            new wjcGrid.CellRange(100, 1, 100, 1), new wjcGrid.CellRange(100, 3, 100, 3),
+            new wjcGrid.CellRange(104, 1, 104, 1), new wjcGrid.CellRange(104, 3, 104, 3),
+            new wjcGrid.CellRange(108, 1, 108, 1), new wjcGrid.CellRange(108, 4, 108, 4),
+            new wjcGrid.CellRange(112, 1, 112, 1), new wjcGrid.CellRange(112, 4, 112, 4),
+            new wjcGrid.CellRange(116, 1, 116, 1), new wjcGrid.CellRange(116, 3, 116, 3),
+            new wjcGrid.CellRange(121, 1, 121, 1), new wjcGrid.CellRange(121, 3, 121, 3),
+            new wjcGrid.CellRange(125, 1, 125, 1), new wjcGrid.CellRange(125, 3, 125, 3),
+            new wjcGrid.CellRange(129, 1, 129, 1), new wjcGrid.CellRange(129, 3, 129, 3),
+            new wjcGrid.CellRange(133, 1, 133, 1), new wjcGrid.CellRange(133, 3, 133, 3),
+            new wjcGrid.CellRange(137, 1, 137, 1), new wjcGrid.CellRange(137, 3, 137, 3),
+            new wjcGrid.CellRange(141, 1, 141, 1), new wjcGrid.CellRange(141, 3, 141, 3),
+            new wjcGrid.CellRange(145, 1, 146, 1),
+            new wjcGrid.CellRange(151, 1, 151, 1), new wjcGrid.CellRange(151, 3, 151, 3),
+            new wjcGrid.CellRange(155, 1, 155, 1), new wjcGrid.CellRange(155, 3, 155, 3),
+            new wjcGrid.CellRange(159, 1, 160, 1),
+            new wjcGrid.CellRange(164, 1, 164, 1), new wjcGrid.CellRange(164, 3, 164, 3),
+            new wjcGrid.CellRange(168, 1, 168, 1), new wjcGrid.CellRange(168, 3, 168, 3),
+            new wjcGrid.CellRange(172, 1, 173, 1),
+            new wjcGrid.CellRange(177, 1, 177, 1), new wjcGrid.CellRange(177, 3, 177, 3),
+            new wjcGrid.CellRange(181, 1, 182, 1),
+            new wjcGrid.CellRange(186, 1, 187, 1),
+            new wjcGrid.CellRange(191, 1, 191, 1), new wjcGrid.CellRange(191, 3, 191, 3),
+            new wjcGrid.CellRange(195, 1, 195, 1), new wjcGrid.CellRange(195, 3, 195, 3),
+            new wjcGrid.CellRange(199, 1, 199, 1), new wjcGrid.CellRange(199, 3, 199, 3),
+            new wjcGrid.CellRange(203, 1, 203, 1), new wjcGrid.CellRange(203, 3, 203, 3),
+            new wjcGrid.CellRange(207, 1, 208, 1),
+            new wjcGrid.CellRange(212, 1, 213, 1),
+            new wjcGrid.CellRange(217, 1, 217, 1), new wjcGrid.CellRange(217, 3, 217, 3),
+            new wjcGrid.CellRange(221, 1, 221, 1), new wjcGrid.CellRange(221, 3, 221, 3),
+            new wjcGrid.CellRange(225, 1, 225, 1), new wjcGrid.CellRange(225, 3, 225, 3),
+            new wjcGrid.CellRange(236, 1, 239, 1),
+            new wjcGrid.CellRange(243, 1, 246, 1),
+            new wjcGrid.CellRange(250, 1, 253, 1),
+            new wjcGrid.CellRange(257, 1, 260, 1),
+            new wjcGrid.CellRange(264, 1, 267, 1),
+            new wjcGrid.CellRange(271, 1, 274, 1),
+            new wjcGrid.CellRange(278, 1, 281, 1),
+            new wjcGrid.CellRange(285, 1, 288, 1),
+            new wjcGrid.CellRange(292, 1, 295, 1),
+            new wjcGrid.CellRange(300, 1, 300, 1), new wjcGrid.CellRange(300, 3, 300, 3),
+            new wjcGrid.CellRange(304, 1, 304, 1), new wjcGrid.CellRange(304, 3, 304, 3),
+            new wjcGrid.CellRange(308, 1, 308, 1), new wjcGrid.CellRange(308, 3, 308, 3),
+            new wjcGrid.CellRange(312, 1, 312, 1), new wjcGrid.CellRange(312, 3, 312, 3),
+            new wjcGrid.CellRange(317, 1, 317, 1), new wjcGrid.CellRange(317, 3, 317, 3),
+            new wjcGrid.CellRange(321, 1, 322, 1),
+            new wjcGrid.CellRange(326, 1, 326, 1), new wjcGrid.CellRange(326, 3, 326, 3),
+            new wjcGrid.CellRange(330, 1, 330, 1), new wjcGrid.CellRange(330, 3, 330, 3),
+            new wjcGrid.CellRange(334, 1, 334, 1), new wjcGrid.CellRange(334, 3, 334, 3),
+            new wjcGrid.CellRange(338, 1, 338, 1), new wjcGrid.CellRange(338, 3, 338, 3),
+            new wjcGrid.CellRange(345, 1, 345, 1), new wjcGrid.CellRange(345, 3, 345, 3),
+            new wjcGrid.CellRange(349, 1, 350, 1),
+            new wjcGrid.CellRange(354, 1, 355, 1),
+            new wjcGrid.CellRange(359, 1, 360, 1), new wjcGrid.CellRange(359, 3, 360, 3),
+            new wjcGrid.CellRange(364, 1, 364, 1),
+            new wjcGrid.CellRange(366, 1, 383, 1),
+            new wjcGrid.CellRange(405, 1, 406, 1),
+            new wjcGrid.CellRange(410, 1, 411, 1),
+            new wjcGrid.CellRange(415, 1, 419, 1),
+            new wjcGrid.CellRange(423, 1, 425, 1),
+            new wjcGrid.CellRange(429, 1, 431, 1),
+            new wjcGrid.CellRange(435, 1, 440, 1),
+            new wjcGrid.CellRange(444, 1, 446, 1),
+            new wjcGrid.CellRange(450, 1, 451, 1), new wjcGrid.CellRange(453, 1, 456, 1),
+            new wjcGrid.CellRange(460, 1, 463, 1),
+            new wjcGrid.CellRange(467, 1, 468, 1), new wjcGrid.CellRange(483, 1, 486, 1),
+            new wjcGrid.CellRange(491, 1, 496, 1),
+            new wjcGrid.CellRange(500, 1, 504, 1), new wjcGrid.CellRange(509, 1, 512, 1),
+            new wjcGrid.CellRange(517, 1, 517, 1), new wjcGrid.CellRange(519, 2, 526, 2), new wjcGrid.CellRange(527, 1, 528, 1)]);
         flexSheet.applyCellsStyle({
             textAlign: 'center',
             fontWeight: 'bold'
-        }, [new wijmo.grid.CellRange(387, 1, 387, 6),
-            new wijmo.grid.CellRange(391, 1, 391, 5),
-            new wijmo.grid.CellRange(506, 1, 506, 5)]);
-        flexSheet.mergeRange(new wijmo.grid.CellRange(0, 0, 0, 1));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(1, 1, 1, 2));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(2, 1, 2, 2));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(5, 1, 5, 2));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(6, 1, 6, 2));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(10, 1, 10, 3));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(11, 1, 11, 2));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(15, 1, 15, 2));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(16, 1, 16, 2));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(20, 1, 20, 3));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(21, 2, 21, 3));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(24, 1, 24, 2));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(25, 1, 25, 3));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(28, 1, 28, 2));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(29, 1, 29, 3));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(32, 0, 32, 1));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(34, 1, 34, 2));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(38, 1, 38, 3));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(42, 1, 42, 3));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(46, 1, 46, 3));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(50, 1, 50, 2));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(54, 1, 54, 3));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(58, 1, 58, 2));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(62, 1, 62, 3));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(66, 1, 66, 2));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(70, 1, 70, 3));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(74, 1, 74, 5));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(78, 1, 78, 3));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(82, 1, 82, 3));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(87, 1, 87, 3));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(91, 1, 91, 3));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(95, 1, 95, 2));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(99, 1, 99, 3));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(103, 1, 103, 3));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(106, 1, 106, 2));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(107, 1, 107, 3));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(108, 2, 108, 3));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(110, 1, 110, 2));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(111, 1, 111, 3));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(112, 2, 112, 3));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(115, 1, 115, 2));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(118, 0, 118, 1));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(119, 1, 119, 2));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(120, 1, 120, 5));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(124, 1, 124, 2));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(128, 1, 128, 2));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(132, 1, 132, 3));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(136, 1, 136, 3));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(140, 1, 140, 3));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(144, 1, 144, 2));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(145, 2, 145, 4));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(148, 0, 148, 1));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(150, 1, 150, 4));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(154, 1, 154, 4));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(157, 1, 157, 2));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(158, 1, 158, 3));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(159, 2, 159, 3));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(163, 1, 163, 3));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(167, 1, 167, 3));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(171, 1, 171, 6));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(172, 2, 172, 3));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(176, 1, 176, 3));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(180, 1, 180, 3));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(181, 2, 181, 3));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(185, 1, 185, 4));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(186, 2, 186, 3));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(190, 1, 190, 2));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(194, 1, 194, 2));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(198, 1, 198, 4));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(202, 1, 202, 2));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(206, 1, 206, 2));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(207, 2, 207, 3));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(210, 1, 210, 2));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(211, 1, 211, 3));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(212, 2, 212, 4));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(216, 1, 216, 3));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(220, 1, 220, 3));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(224, 1, 224, 3));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(227, 0, 227, 1));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(235, 1, 235, 2));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(236, 2, 236, 3));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(238, 2, 238, 3));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(242, 1, 242, 3));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(243, 2, 243, 3));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(245, 2, 245, 3));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(249, 1, 249, 4));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(250, 2, 250, 3));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(252, 2, 252, 3));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(256, 1, 256, 3));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(257, 2, 257, 3));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(259, 2, 259, 3));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(263, 1, 263, 3));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(266, 2, 266, 3));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(270, 1, 270, 3));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(271, 2, 271, 3));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(273, 2, 273, 3));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(277, 1, 277, 4));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(278, 2, 278, 3));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(280, 2, 280, 3));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(284, 1, 284, 3));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(285, 2, 285, 3));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(287, 2, 287, 3));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(291, 1, 291, 3));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(292, 2, 292, 3));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(294, 2, 294, 3));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(297, 0, 297, 1));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(299, 1, 299, 4));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(300, 4, 300, 5));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(303, 1, 303, 3));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(307, 1, 307, 3));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(311, 1, 311, 3));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(314, 0, 314, 1));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(315, 1, 315, 2));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(316, 1, 316, 3));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(317, 4, 317, 6));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(320, 1, 320, 3));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(321, 2, 321, 4));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(325, 1, 325, 3));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(329, 1, 329, 3));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(333, 1, 333, 3));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(337, 1, 337, 3));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(341, 0, 341, 1));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(342, 0, 342, 1));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(344, 1, 344, 3));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(348, 1, 348, 3));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(349, 2, 349, 3));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(353, 1, 353, 3));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(354, 2, 354, 3));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(358, 1, 358, 3));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(363, 1, 363, 4));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(364, 2, 364, 4));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(365, 1, 365, 3));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(366, 2, 366, 4));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(367, 2, 367, 4));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(368, 2, 368, 3));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(369, 2, 369, 8));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(370, 2, 370, 8));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(371, 2, 371, 7));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(372, 2, 372, 4));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(374, 2, 374, 4));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(376, 2, 376, 4));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(378, 2, 378, 4));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(380, 2, 380, 4));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(382, 2, 382, 4));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(385, 0, 385, 1));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(404, 1, 404, 4));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(405, 2, 405, 3));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(408, 1, 408, 2));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(409, 1, 409, 3));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(410, 2, 410, 3));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(414, 1, 414, 4));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(415, 2, 415, 3));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(416, 2, 416, 3));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(418, 2, 418, 3));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(422, 1, 422, 4));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(423, 2, 423, 5));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(424, 2, 424, 4));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(428, 1, 428, 4));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(429, 2, 429, 4));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(430, 2, 430, 4));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(434, 1, 434, 3));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(435, 2, 435, 4));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(436, 2, 436, 7));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(437, 2, 437, 4));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(439, 2, 439, 3));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(443, 1, 443, 3));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(444, 2, 444, 6));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(445, 2, 445, 5));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(449, 1, 449, 3));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(450, 2, 450, 3));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(451, 2, 451, 7));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(452, 2, 452, 7));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(453, 2, 453, 3));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(455, 2, 455, 3));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(459, 1, 459, 2));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(460, 2, 460, 3));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(462, 2, 462, 3));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(466, 1, 466, 3));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(467, 2, 467, 4));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(468, 2, 468, 6));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(469, 2, 469, 5));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(470, 2, 470, 3));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(470, 4, 470, 5));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(471, 2, 471, 3));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(471, 4, 471, 5));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(483, 2, 483, 4));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(485, 2, 485, 3));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(488, 0, 488, 1));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(490, 1, 490, 3));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(491, 2, 491, 3));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(492, 2, 492, 7));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(493, 2, 493, 3));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(495, 2, 495, 3));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(499, 1, 499, 5));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(500, 2, 500, 5));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(501, 2, 501, 9));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(502, 2, 502, 11));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(503, 2, 503, 4));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(504, 2, 504, 9));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(509, 2, 509, 3));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(511, 2, 511, 4));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(516, 1, 516, 3));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(517, 2, 517, 4));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(518, 1, 518, 4));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(519, 3, 519, 5));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(520, 3, 520, 7));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(521, 3, 521, 6));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(522, 3, 522, 7));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(523, 3, 523, 6));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(524, 3, 524, 5));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(525, 3, 525, 5));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(526, 3, 526, 7));
-        flexSheet.mergeRange(new wijmo.grid.CellRange(527, 2, 527, 3));
+        }, [new wjcGrid.CellRange(387, 1, 387, 6),
+            new wjcGrid.CellRange(391, 1, 391, 5),
+            new wjcGrid.CellRange(506, 1, 506, 5)]);
+        flexSheet.applyCellsStyle({
+            format: 'n2'
+        }, [new wjcGrid.CellRange(229, 1, 232, 8),
+            new wjcGrid.CellRange(392, 5, 401, 5)]);
+        flexSheet.mergeRange(new wjcGrid.CellRange(0, 0, 0, 1));
+        flexSheet.mergeRange(new wjcGrid.CellRange(1, 1, 1, 2));
+        flexSheet.mergeRange(new wjcGrid.CellRange(2, 1, 2, 2));
+        flexSheet.mergeRange(new wjcGrid.CellRange(5, 1, 5, 2));
+        flexSheet.mergeRange(new wjcGrid.CellRange(6, 1, 6, 2));
+        flexSheet.mergeRange(new wjcGrid.CellRange(10, 1, 10, 3));
+        flexSheet.mergeRange(new wjcGrid.CellRange(11, 1, 11, 2));
+        flexSheet.mergeRange(new wjcGrid.CellRange(15, 1, 15, 2));
+        flexSheet.mergeRange(new wjcGrid.CellRange(16, 1, 16, 2));
+        flexSheet.mergeRange(new wjcGrid.CellRange(20, 1, 20, 3));
+        flexSheet.mergeRange(new wjcGrid.CellRange(21, 2, 21, 3));
+        flexSheet.mergeRange(new wjcGrid.CellRange(24, 1, 24, 2));
+        flexSheet.mergeRange(new wjcGrid.CellRange(25, 1, 25, 3));
+        flexSheet.mergeRange(new wjcGrid.CellRange(28, 1, 28, 2));
+        flexSheet.mergeRange(new wjcGrid.CellRange(29, 1, 29, 3));
+        flexSheet.mergeRange(new wjcGrid.CellRange(32, 0, 32, 1));
+        flexSheet.mergeRange(new wjcGrid.CellRange(34, 1, 34, 2));
+        flexSheet.mergeRange(new wjcGrid.CellRange(38, 1, 38, 3));
+        flexSheet.mergeRange(new wjcGrid.CellRange(42, 1, 42, 3));
+        flexSheet.mergeRange(new wjcGrid.CellRange(46, 1, 46, 3));
+        flexSheet.mergeRange(new wjcGrid.CellRange(50, 1, 50, 2));
+        flexSheet.mergeRange(new wjcGrid.CellRange(54, 1, 54, 3));
+        flexSheet.mergeRange(new wjcGrid.CellRange(58, 1, 58, 2));
+        flexSheet.mergeRange(new wjcGrid.CellRange(62, 1, 62, 3));
+        flexSheet.mergeRange(new wjcGrid.CellRange(66, 1, 66, 2));
+        flexSheet.mergeRange(new wjcGrid.CellRange(70, 1, 70, 3));
+        flexSheet.mergeRange(new wjcGrid.CellRange(74, 1, 74, 5));
+        flexSheet.mergeRange(new wjcGrid.CellRange(78, 1, 78, 3));
+        flexSheet.mergeRange(new wjcGrid.CellRange(82, 1, 82, 3));
+        flexSheet.mergeRange(new wjcGrid.CellRange(87, 1, 87, 3));
+        flexSheet.mergeRange(new wjcGrid.CellRange(91, 1, 91, 3));
+        flexSheet.mergeRange(new wjcGrid.CellRange(95, 1, 95, 2));
+        flexSheet.mergeRange(new wjcGrid.CellRange(99, 1, 99, 3));
+        flexSheet.mergeRange(new wjcGrid.CellRange(103, 1, 103, 3));
+        flexSheet.mergeRange(new wjcGrid.CellRange(106, 1, 106, 2));
+        flexSheet.mergeRange(new wjcGrid.CellRange(107, 1, 107, 3));
+        flexSheet.mergeRange(new wjcGrid.CellRange(108, 2, 108, 3));
+        flexSheet.mergeRange(new wjcGrid.CellRange(110, 1, 110, 2));
+        flexSheet.mergeRange(new wjcGrid.CellRange(111, 1, 111, 3));
+        flexSheet.mergeRange(new wjcGrid.CellRange(112, 2, 112, 3));
+        flexSheet.mergeRange(new wjcGrid.CellRange(115, 1, 115, 2));
+        flexSheet.mergeRange(new wjcGrid.CellRange(118, 0, 118, 1));
+        flexSheet.mergeRange(new wjcGrid.CellRange(119, 1, 119, 2));
+        flexSheet.mergeRange(new wjcGrid.CellRange(120, 1, 120, 5));
+        flexSheet.mergeRange(new wjcGrid.CellRange(124, 1, 124, 2));
+        flexSheet.mergeRange(new wjcGrid.CellRange(128, 1, 128, 2));
+        flexSheet.mergeRange(new wjcGrid.CellRange(132, 1, 132, 3));
+        flexSheet.mergeRange(new wjcGrid.CellRange(136, 1, 136, 3));
+        flexSheet.mergeRange(new wjcGrid.CellRange(140, 1, 140, 3));
+        flexSheet.mergeRange(new wjcGrid.CellRange(144, 1, 144, 2));
+        flexSheet.mergeRange(new wjcGrid.CellRange(145, 2, 145, 4));
+        flexSheet.mergeRange(new wjcGrid.CellRange(148, 0, 148, 1));
+        flexSheet.mergeRange(new wjcGrid.CellRange(150, 1, 150, 4));
+        flexSheet.mergeRange(new wjcGrid.CellRange(154, 1, 154, 4));
+        flexSheet.mergeRange(new wjcGrid.CellRange(157, 1, 157, 2));
+        flexSheet.mergeRange(new wjcGrid.CellRange(158, 1, 158, 3));
+        flexSheet.mergeRange(new wjcGrid.CellRange(159, 2, 159, 3));
+        flexSheet.mergeRange(new wjcGrid.CellRange(163, 1, 163, 3));
+        flexSheet.mergeRange(new wjcGrid.CellRange(167, 1, 167, 3));
+        flexSheet.mergeRange(new wjcGrid.CellRange(171, 1, 171, 6));
+        flexSheet.mergeRange(new wjcGrid.CellRange(172, 2, 172, 3));
+        flexSheet.mergeRange(new wjcGrid.CellRange(176, 1, 176, 3));
+        flexSheet.mergeRange(new wjcGrid.CellRange(180, 1, 180, 3));
+        flexSheet.mergeRange(new wjcGrid.CellRange(181, 2, 181, 3));
+        flexSheet.mergeRange(new wjcGrid.CellRange(185, 1, 185, 4));
+        flexSheet.mergeRange(new wjcGrid.CellRange(186, 2, 186, 3));
+        flexSheet.mergeRange(new wjcGrid.CellRange(190, 1, 190, 2));
+        flexSheet.mergeRange(new wjcGrid.CellRange(194, 1, 194, 2));
+        flexSheet.mergeRange(new wjcGrid.CellRange(198, 1, 198, 4));
+        flexSheet.mergeRange(new wjcGrid.CellRange(202, 1, 202, 2));
+        flexSheet.mergeRange(new wjcGrid.CellRange(206, 1, 206, 2));
+        flexSheet.mergeRange(new wjcGrid.CellRange(207, 2, 207, 3));
+        flexSheet.mergeRange(new wjcGrid.CellRange(210, 1, 210, 2));
+        flexSheet.mergeRange(new wjcGrid.CellRange(211, 1, 211, 3));
+        flexSheet.mergeRange(new wjcGrid.CellRange(212, 2, 212, 4));
+        flexSheet.mergeRange(new wjcGrid.CellRange(216, 1, 216, 3));
+        flexSheet.mergeRange(new wjcGrid.CellRange(220, 1, 220, 3));
+        flexSheet.mergeRange(new wjcGrid.CellRange(224, 1, 224, 3));
+        flexSheet.mergeRange(new wjcGrid.CellRange(227, 0, 227, 1));
+        flexSheet.mergeRange(new wjcGrid.CellRange(235, 1, 235, 2));
+        flexSheet.mergeRange(new wjcGrid.CellRange(236, 2, 236, 3));
+        flexSheet.mergeRange(new wjcGrid.CellRange(238, 2, 238, 3));
+        flexSheet.mergeRange(new wjcGrid.CellRange(242, 1, 242, 3));
+        flexSheet.mergeRange(new wjcGrid.CellRange(243, 2, 243, 3));
+        flexSheet.mergeRange(new wjcGrid.CellRange(245, 2, 245, 3));
+        flexSheet.mergeRange(new wjcGrid.CellRange(249, 1, 249, 4));
+        flexSheet.mergeRange(new wjcGrid.CellRange(250, 2, 250, 3));
+        flexSheet.mergeRange(new wjcGrid.CellRange(252, 2, 252, 3));
+        flexSheet.mergeRange(new wjcGrid.CellRange(256, 1, 256, 3));
+        flexSheet.mergeRange(new wjcGrid.CellRange(257, 2, 257, 3));
+        flexSheet.mergeRange(new wjcGrid.CellRange(259, 2, 259, 3));
+        flexSheet.mergeRange(new wjcGrid.CellRange(263, 1, 263, 3));
+        flexSheet.mergeRange(new wjcGrid.CellRange(266, 2, 266, 3));
+        flexSheet.mergeRange(new wjcGrid.CellRange(270, 1, 270, 3));
+        flexSheet.mergeRange(new wjcGrid.CellRange(271, 2, 271, 3));
+        flexSheet.mergeRange(new wjcGrid.CellRange(273, 2, 273, 3));
+        flexSheet.mergeRange(new wjcGrid.CellRange(277, 1, 277, 4));
+        flexSheet.mergeRange(new wjcGrid.CellRange(278, 2, 278, 3));
+        flexSheet.mergeRange(new wjcGrid.CellRange(280, 2, 280, 3));
+        flexSheet.mergeRange(new wjcGrid.CellRange(284, 1, 284, 3));
+        flexSheet.mergeRange(new wjcGrid.CellRange(285, 2, 285, 3));
+        flexSheet.mergeRange(new wjcGrid.CellRange(287, 2, 287, 3));
+        flexSheet.mergeRange(new wjcGrid.CellRange(291, 1, 291, 3));
+        flexSheet.mergeRange(new wjcGrid.CellRange(292, 2, 292, 3));
+        flexSheet.mergeRange(new wjcGrid.CellRange(294, 2, 294, 3));
+        flexSheet.mergeRange(new wjcGrid.CellRange(297, 0, 297, 1));
+        flexSheet.mergeRange(new wjcGrid.CellRange(299, 1, 299, 4));
+        flexSheet.mergeRange(new wjcGrid.CellRange(300, 4, 300, 5));
+        flexSheet.mergeRange(new wjcGrid.CellRange(303, 1, 303, 3));
+        flexSheet.mergeRange(new wjcGrid.CellRange(307, 1, 307, 3));
+        flexSheet.mergeRange(new wjcGrid.CellRange(311, 1, 311, 3));
+        flexSheet.mergeRange(new wjcGrid.CellRange(314, 0, 314, 1));
+        flexSheet.mergeRange(new wjcGrid.CellRange(315, 1, 315, 2));
+        flexSheet.mergeRange(new wjcGrid.CellRange(316, 1, 316, 3));
+        flexSheet.mergeRange(new wjcGrid.CellRange(317, 4, 317, 6));
+        flexSheet.mergeRange(new wjcGrid.CellRange(320, 1, 320, 3));
+        flexSheet.mergeRange(new wjcGrid.CellRange(321, 2, 321, 4));
+        flexSheet.mergeRange(new wjcGrid.CellRange(325, 1, 325, 3));
+        flexSheet.mergeRange(new wjcGrid.CellRange(329, 1, 329, 3));
+        flexSheet.mergeRange(new wjcGrid.CellRange(333, 1, 333, 3));
+        flexSheet.mergeRange(new wjcGrid.CellRange(337, 1, 337, 3));
+        flexSheet.mergeRange(new wjcGrid.CellRange(341, 0, 341, 1));
+        flexSheet.mergeRange(new wjcGrid.CellRange(342, 0, 342, 1));
+        flexSheet.mergeRange(new wjcGrid.CellRange(344, 1, 344, 3));
+        flexSheet.mergeRange(new wjcGrid.CellRange(348, 1, 348, 3));
+        flexSheet.mergeRange(new wjcGrid.CellRange(349, 2, 349, 3));
+        flexSheet.mergeRange(new wjcGrid.CellRange(353, 1, 353, 3));
+        flexSheet.mergeRange(new wjcGrid.CellRange(354, 2, 354, 3));
+        flexSheet.mergeRange(new wjcGrid.CellRange(358, 1, 358, 3));
+        flexSheet.mergeRange(new wjcGrid.CellRange(363, 1, 363, 4));
+        flexSheet.mergeRange(new wjcGrid.CellRange(364, 2, 364, 4));
+        flexSheet.mergeRange(new wjcGrid.CellRange(365, 1, 365, 3));
+        flexSheet.mergeRange(new wjcGrid.CellRange(366, 2, 366, 4));
+        flexSheet.mergeRange(new wjcGrid.CellRange(367, 2, 367, 4));
+        flexSheet.mergeRange(new wjcGrid.CellRange(368, 2, 368, 3));
+        flexSheet.mergeRange(new wjcGrid.CellRange(369, 2, 369, 8));
+        flexSheet.mergeRange(new wjcGrid.CellRange(370, 2, 370, 8));
+        flexSheet.mergeRange(new wjcGrid.CellRange(371, 2, 371, 7));
+        flexSheet.mergeRange(new wjcGrid.CellRange(372, 2, 372, 4));
+        flexSheet.mergeRange(new wjcGrid.CellRange(374, 2, 374, 4));
+        flexSheet.mergeRange(new wjcGrid.CellRange(376, 2, 376, 4));
+        flexSheet.mergeRange(new wjcGrid.CellRange(378, 2, 378, 4));
+        flexSheet.mergeRange(new wjcGrid.CellRange(380, 2, 380, 4));
+        flexSheet.mergeRange(new wjcGrid.CellRange(382, 2, 382, 4));
+        flexSheet.mergeRange(new wjcGrid.CellRange(385, 0, 385, 1));
+        flexSheet.mergeRange(new wjcGrid.CellRange(404, 1, 404, 4));
+        flexSheet.mergeRange(new wjcGrid.CellRange(405, 2, 405, 3));
+        flexSheet.mergeRange(new wjcGrid.CellRange(408, 1, 408, 2));
+        flexSheet.mergeRange(new wjcGrid.CellRange(409, 1, 409, 3));
+        flexSheet.mergeRange(new wjcGrid.CellRange(410, 2, 410, 3));
+        flexSheet.mergeRange(new wjcGrid.CellRange(414, 1, 414, 4));
+        flexSheet.mergeRange(new wjcGrid.CellRange(415, 2, 415, 3));
+        flexSheet.mergeRange(new wjcGrid.CellRange(416, 2, 416, 3));
+        flexSheet.mergeRange(new wjcGrid.CellRange(418, 2, 418, 3));
+        flexSheet.mergeRange(new wjcGrid.CellRange(422, 1, 422, 4));
+        flexSheet.mergeRange(new wjcGrid.CellRange(423, 2, 423, 5));
+        flexSheet.mergeRange(new wjcGrid.CellRange(424, 2, 424, 4));
+        flexSheet.mergeRange(new wjcGrid.CellRange(428, 1, 428, 4));
+        flexSheet.mergeRange(new wjcGrid.CellRange(429, 2, 429, 4));
+        flexSheet.mergeRange(new wjcGrid.CellRange(430, 2, 430, 4));
+        flexSheet.mergeRange(new wjcGrid.CellRange(434, 1, 434, 3));
+        flexSheet.mergeRange(new wjcGrid.CellRange(435, 2, 435, 4));
+        flexSheet.mergeRange(new wjcGrid.CellRange(436, 2, 436, 7));
+        flexSheet.mergeRange(new wjcGrid.CellRange(437, 2, 437, 4));
+        flexSheet.mergeRange(new wjcGrid.CellRange(439, 2, 439, 3));
+        flexSheet.mergeRange(new wjcGrid.CellRange(443, 1, 443, 3));
+        flexSheet.mergeRange(new wjcGrid.CellRange(444, 2, 444, 6));
+        flexSheet.mergeRange(new wjcGrid.CellRange(445, 2, 445, 5));
+        flexSheet.mergeRange(new wjcGrid.CellRange(449, 1, 449, 3));
+        flexSheet.mergeRange(new wjcGrid.CellRange(450, 2, 450, 3));
+        flexSheet.mergeRange(new wjcGrid.CellRange(451, 2, 451, 7));
+        flexSheet.mergeRange(new wjcGrid.CellRange(452, 2, 452, 7));
+        flexSheet.mergeRange(new wjcGrid.CellRange(453, 2, 453, 3));
+        flexSheet.mergeRange(new wjcGrid.CellRange(455, 2, 455, 3));
+        flexSheet.mergeRange(new wjcGrid.CellRange(459, 1, 459, 2));
+        flexSheet.mergeRange(new wjcGrid.CellRange(460, 2, 460, 3));
+        flexSheet.mergeRange(new wjcGrid.CellRange(462, 2, 462, 3));
+        flexSheet.mergeRange(new wjcGrid.CellRange(466, 1, 466, 3));
+        flexSheet.mergeRange(new wjcGrid.CellRange(467, 2, 467, 4));
+        flexSheet.mergeRange(new wjcGrid.CellRange(468, 2, 468, 6));
+        flexSheet.mergeRange(new wjcGrid.CellRange(469, 2, 469, 5));
+        flexSheet.mergeRange(new wjcGrid.CellRange(470, 2, 470, 3));
+        flexSheet.mergeRange(new wjcGrid.CellRange(470, 4, 470, 5));
+        flexSheet.mergeRange(new wjcGrid.CellRange(471, 2, 471, 3));
+        flexSheet.mergeRange(new wjcGrid.CellRange(471, 4, 471, 5));
+        flexSheet.mergeRange(new wjcGrid.CellRange(483, 2, 483, 4));
+        flexSheet.mergeRange(new wjcGrid.CellRange(485, 2, 485, 3));
+        flexSheet.mergeRange(new wjcGrid.CellRange(488, 0, 488, 1));
+        flexSheet.mergeRange(new wjcGrid.CellRange(490, 1, 490, 3));
+        flexSheet.mergeRange(new wjcGrid.CellRange(491, 2, 491, 3));
+        flexSheet.mergeRange(new wjcGrid.CellRange(492, 2, 492, 7));
+        flexSheet.mergeRange(new wjcGrid.CellRange(493, 2, 493, 3));
+        flexSheet.mergeRange(new wjcGrid.CellRange(495, 2, 495, 3));
+        flexSheet.mergeRange(new wjcGrid.CellRange(499, 1, 499, 5));
+        flexSheet.mergeRange(new wjcGrid.CellRange(500, 2, 500, 5));
+        flexSheet.mergeRange(new wjcGrid.CellRange(501, 2, 501, 9));
+        flexSheet.mergeRange(new wjcGrid.CellRange(502, 2, 502, 11));
+        flexSheet.mergeRange(new wjcGrid.CellRange(503, 2, 503, 4));
+        flexSheet.mergeRange(new wjcGrid.CellRange(504, 2, 504, 9));
+        flexSheet.mergeRange(new wjcGrid.CellRange(509, 2, 509, 3));
+        flexSheet.mergeRange(new wjcGrid.CellRange(511, 2, 511, 4));
+        flexSheet.mergeRange(new wjcGrid.CellRange(516, 1, 516, 3));
+        flexSheet.mergeRange(new wjcGrid.CellRange(517, 2, 517, 4));
+        flexSheet.mergeRange(new wjcGrid.CellRange(518, 1, 518, 4));
+        flexSheet.mergeRange(new wjcGrid.CellRange(519, 3, 519, 5));
+        flexSheet.mergeRange(new wjcGrid.CellRange(520, 3, 520, 7));
+        flexSheet.mergeRange(new wjcGrid.CellRange(521, 3, 521, 6));
+        flexSheet.mergeRange(new wjcGrid.CellRange(522, 3, 522, 7));
+        flexSheet.mergeRange(new wjcGrid.CellRange(523, 3, 523, 6));
+        flexSheet.mergeRange(new wjcGrid.CellRange(524, 3, 524, 5));
+        flexSheet.mergeRange(new wjcGrid.CellRange(525, 3, 525, 5));
+        flexSheet.mergeRange(new wjcGrid.CellRange(526, 3, 526, 7));
+        flexSheet.mergeRange(new wjcGrid.CellRange(527, 2, 527, 3));
     };
     // adjust the size of the elements in the sample
     ExcellikeSheetCmp.prototype._adjustSize = function () {

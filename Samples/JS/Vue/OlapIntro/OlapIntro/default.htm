@@ -1,0 +1,692 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>wijmo.olap Introduction</title>
+
+    <!-- Vue -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.min.js"></script>
+
+    <!-- Material Lite -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <link rel="stylesheet" href="https://code.getmdl.io/1.1.1/material.indigo-red.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en" />
+    <script defer src="https://code.getmdl.io/1.1.1/material.min.js"></script>
+
+    <!-- Syntax Highlighter -->
+    <!-- <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/styles/default.min.css"> -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/styles/github.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/highlight.min.js"></script>
+
+    <!-- Wijmo -->
+    <link rel="stylesheet" href="styles/vendor/wijmo.min.css" />
+    <link rel="stylesheet" href="styles/vendor/wijmo.theme.material.min.css" />
+    <script src="scripts/vendor/wijmo.min.js"></script>
+    <script src="scripts/vendor/wijmo.input.min.js"></script>
+    <script src="scripts/vendor/wijmo.grid.min.js"></script>
+    <script src="scripts/vendor/wijmo.grid.filter.min.js"></script>
+    <script src="scripts/vendor/wijmo.chart.min.js"></script>
+    <script src="scripts/vendor/wijmo.xlsx.min.js"></script>
+    <script src="scripts/vendor/wijmo.grid.xlsx.min.js"></script>
+    <script src="scripts/vendor/wijmo.odata.min.js"></script>
+    <script src="scripts/vendor/wijmo.olap.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+
+    <!-- Wijmo-Vue interop -->
+    <script src="scripts/vendor/wijmo.vue.min.js" type="text/javascript"></script>
+
+    <!-- sample styles and scripts -->
+    <link rel="stylesheet" href="styles/app.css" />
+    <script src="scripts/app.js"></script>
+</head>
+
+<body>
+    <div id="app" class="mdl-layout mdl-js-layout">
+
+        <header class="mdl-layout__header mdl-layout__header--waterfall">
+            <div class="mdl-layout__header-row">
+                <img src="resources/wijmo5.png" alt="Wijmo 5" />
+                <span class="mdl-layout-title">
+                    Olap 101 (Vue)
+                </span>
+            </div>
+        </header>
+
+        <main class="mdl-layout__content">
+            <div class="container">
+
+                <h3>
+                    Introducing wijmo.olap</h3>
+                <p>
+                    The <b>wijmo.olap</b> module contains controls that allow you to add Microsoft Excel-like pivot
+                    table and pivot chart features to your applications.
+                    To use it, follow these steps:</p>
+                <ul>
+                    <li>
+                        Add references to the <b>wijmo</b> and <b>wijmo.olap</b> modules to the page.</li>
+                    <li>
+                        Add a <b>PivotPanel</b> control to the page.</li>
+                    <li>
+                        Add one or more <b>PivotGrid</b> and <b>PivotChart</b> controls to the page,
+                        and connect them to the <b>PivotPanel</b> by setting their <b>itemsSource</b>
+                        property to the <b>PivotPanel</b> control.</li>
+                    <li>
+                        Set the PivotPanel's <b>itemsSource</b> property to an array containing the
+                        raw data that you want to analyze.</li>
+                    <li>
+                        (Optional) Add code to print, export, save and load views and view definitions.</li>
+                </ul>
+                <p>
+                    That is all. The <b>PivotPanel</b> will show a list of the fields available, and
+                    users will be able to drag fields between summary areas to generate data summaries
+                    (AKA "views").
+                    Users can also configure the fields by setting their headers, summary functions,
+                    filters, and formats.</p>
+                <p>
+                    Users can analyze the data and print the results, export the results to XLSX or PDF,
+                    and save view definitions to be re-used later.</p>
+                <p>
+                    Here is a simple example:</p>
+
+                <h4>
+                    Add a PivotPanel and a PivotGrid to the page</h4>
+                <p>
+                    The <b>PivotPanel</b> control is similar to Microsoft Excel's "field list" window
+                    that is associated with pivot tables and charts.</p>
+                <ul>
+                    <li>
+                        Add fields to the view by dragging or using the checkboxes.</li>
+                    <li>
+                        Remove fields from the view by dragging them back to the top area or by using their
+                        context menu.</li>
+                    <li>
+                        Configure fields using their context menu. You can modify their header, summary function,
+                        and format. Note that the format is used when grouping the data, so you can group data
+                        by day, month, quarter or year by changing the format of the date fields for example.</li>
+                </ul>
+
+                <p>
+                    The <b>PivotGrid</b> control extends the <b>FlexGrid</b> to support pivoting features
+                    including custom cell merging, hierarchical row and column groups, and a custom
+                    context menu that allows users to configure the pivot fields and to drill-down
+                    into the data items that were used in the computation of specific summary cells.</p>
+
+                <div class="mdl-grid" id="theView">
+                    <div class="mdl-cell mdl-cell--4-col">
+                        <wj-pivot-panel
+                            control="thePanel"
+                            :items-source="rawData"
+                            :initialized="initPanel">
+                        </wj-pivot-panel>
+                    </div>
+                    <div class="mdl-cell mdl-cell--8-col">
+                        <wj-pivot-grid
+                            control="pivotGrid"
+                            :items-source="thePanel"
+                            show-selected-headers="All">
+                        </wj-pivot-grid>
+                    </div>
+                </div>
+
+                <div class="source-card mdl-card mdl-shadow--2dp">
+                    <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+                        <div class="mdl-tabs__tab-bar">
+                            <a href="#html-1" class="mdl-tabs__tab">HTML</a>
+                            <a href="#js-1" class="mdl-tabs__tab">JS</a>
+                            <a href="#close-1" class="mdl-tabs__tab is-active">X</a>
+                        </div>
+                        <div class="mdl-tabs__panel" id="html-1">
+                            <code class="pane-content">
+&lt;div class="mdl-grid" id="theView"&gt;
+    &lt;div class="mdl-cell mdl-cell--4-col"&gt;
+        &lt;wj-pivot-panel
+            control="thePanel"
+            :items-source="rawData"
+            :initialized="initPanel"&gt;
+        &lt;/wj-pivot-panel&gt;
+    &lt;/div&gt;
+    &lt;div class="mdl-cell mdl-cell--8-col"&gt;
+        &lt;wj-pivot-grid
+            control="pivotGrid"
+            :items-source="thePanel"
+            show-selected-headers="All"&gt;
+        &lt;/wj-pivot-grid&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+                            </code>
+                        </div>
+                        <div class="mdl-tabs__panel" id="js-1">
+                            <code class="pane-content">
+// app view (main component)
+new Vue({
+    el: '#app',
+    data: {
+
+        // define sample data sets
+        dataSets: [
+            { name: 'Simple (1,000 items)', value: getSimpleDataSet(1000) },
+            // ...
+        ],
+        rawData: [],
+    },
+    methods: {
+
+        // initialize the view definition
+        initPanel: function (sender, e) {
+            var ng = sender.engine;
+            this.rawData = this.dataSets[0].value;
+            ng.itemsSource = this.rawData;
+            ng.rowFields.push('Product', 'Country');
+            ng.valueFields.push('Sales', 'Downloads');
+            ng.showRowTotals = wijmo.olap.ShowTotals.Subtotals;
+            ng.showColumnTotals = wijmo.olap.ShowTotals.Subtotals;
+        }
+    }
+});
+                            </code>
+                        </div>
+                        <div class="mdl-tabs__panel" id="close-1">
+                        </div>
+                    </div>
+                </div>
+
+                <p>
+                    Use the <b>viewDefinition</b> property to save and restore view definitions. For example:</p>
+
+                <button
+                    class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect"
+                    @click="saveView()">
+                    Save View
+                </button>
+                <button
+                    class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect"
+                    @click="loadView()">
+                    Load View
+                </button>
+
+                <p></p>
+                <p>
+                    Or build a list of pre-defined views for the user to pick from. For example:</p>
+                <ul>
+                    <li v-for="view in viewDefs">
+                        <a href="#theView" @click="loadView(view.def)">
+                            {{ view.name }}
+                        </a>
+                    </li>
+                </ul>
+
+                <div class="source-card mdl-card mdl-shadow--2dp">
+                    <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+                        <div class="mdl-tabs__tab-bar">
+                            <a href="#html-2" class="mdl-tabs__tab">HTML</a>
+                            <a href="#js-2" class="mdl-tabs__tab">JS</a>
+                            <a href="#close-2" class="mdl-tabs__tab is-active">X</a>
+                        </div>
+                        <div class="mdl-tabs__panel" id="html-2">
+                            <code class="pane-content">
+&lt;button
+    class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect"
+    @click="saveView()"&gt;
+    Save View
+&lt;/button&gt;
+&lt;button
+    class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect"
+    @click="loadView()"&gt;
+    Load View
+&lt;/button&gt;
+
+&lt;ul&gt;
+    &lt;li v-for="view in viewDefs"&gt;
+        &lt;a href="#theView" @click="loadView(view.def)"&gt;
+            {&#8203;{ view.name }}
+        &lt;/a&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;
+                            </code>
+                        </div>
+                        <div class="mdl-tabs__panel" id="js-2">
+                            <code class="pane-content">
+// app view (main component)
+new Vue({
+    el: '#app',
+    data: {
+
+        // define sample data sets
+        dataSets: [
+            { name: 'Simple (1,000 items)', value: getSimpleDataSet(1000) },
+            // ...
+        ],
+        rawData: [],
+    },
+    methods: {
+
+        // save/restore view definitions
+        saveView: function () {
+            var ng = this.thePanel.engine;
+            if (ng.isViewDefined) {
+                localStorage.viewDefinition = ng.viewDefinition;
+            }
+        },
+        loadView: function (def) {
+            var ng = this.thePanel.engine;
+            if (def) {
+                // load pre-defined view (against specific dataset)
+                this.rawData = this.dataSets[3].value;
+                ng.itemsSource = this.rawData;
+                ng.viewDefinition = def;
+            } else if (localStorage.viewDefinition) {
+                // load view from localStorage (whatever the user saved)
+                ng.viewDefinition = localStorage.viewDefinition;
+            }
+        }
+    }
+});
+                            </code>
+                        </div>
+                        <div class="mdl-tabs__panel" id="close-2">
+                        </div>
+                    </div>
+                </div>
+
+                <h4>
+                    Configure the PivotPanel properties</h4>
+                <p>
+                    The <b>PivotPanel</b> control has properties that allow you to customize
+                    the view. Use the controls below to modify the value of some properties
+                    and see their effect:</p>
+                <dl class="dl-horizontal">
+                    <dt>Dataset</dt>
+                    <dd>
+                        <wj-combo-box 
+                            :items-source="dataSets"
+                            display-member-path="name"
+                            selected-value-path="value"
+                            :selected-index-changed="dataSetChanged">
+                        </wj-combo-box>
+                    </dd>
+                    <dt>Row totals</dt>
+                    <dd>
+                        <wj-combo-box
+                            :items-source="showTotals"
+                            text="Subtotals"
+                            :text-changed="showRowTotalsChanged">
+                        </wj-combo-box>
+                    </dd>
+                    <dt>Column totals</dt>
+                    <dd>
+                        <wj-combo-box 
+                            :items-source="showTotals"
+                            text="Subtotals"
+                            :text-changed="showColumnTotalsChanged">
+                        </wj-combo-box>
+                    </dd>
+                    <dt>Show Zeros</dt>
+                    <dd>
+                        <input v-model="thePanel.engine.showZeros" type="checkbox" />
+                    </dd>
+                    <dt>Totals Before Data</dt>
+                    <dd>
+                        <input v-model="thePanel.engine.totalsBeforeData" type="checkbox" />
+                    </dd>
+                </dl>
+
+                <div class="source-card mdl-card mdl-shadow--2dp">
+                    <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+                        <div class="mdl-tabs__tab-bar">
+                            <a href="#html-3" class="mdl-tabs__tab">HTML</a>
+                            <a href="#js-3" class="mdl-tabs__tab">JS</a>
+                            <a href="#close-3" class="mdl-tabs__tab is-active">X</a>
+                        </div>
+                        <div class="mdl-tabs__panel" id="html-3">
+                            <code class="pane-content">
+&lt;dl class="dl-horizontal"&gt;
+    &lt;dt&gt;Dataset&lt;/dt&gt;
+    &lt;dd&gt;
+        &lt;wj-combo-box 
+            :items-source="dataSets"
+            display-member-path="name"
+            selected-value-path="value"
+            :selected-index-changed="dataSetChanged"&gt;
+        &lt;/wj-combo-box&gt;
+    &lt;/dd&gt;
+    &lt;dt&gt;Row totals&lt;/dt&gt;
+    &lt;dd&gt;
+        &lt;wj-combo-box
+            :items-source="showTotals"
+            text="Subtotals"
+            :text-changed="showRowTotalsChanged"&gt;
+        &lt;/wj-combo-box&gt;
+    &lt;/dd&gt;
+    &lt;dt&gt;Column totals&lt;/dt&gt;
+    &lt;dd&gt;
+        &lt;wj-combo-box 
+            :items-source="showTotals"
+            text="Subtotals"
+            :text-changed="showColumnTotalsChanged"&gt;
+        &lt;/wj-combo-box&gt;
+    &lt;/dd&gt;
+    &lt;dt&gt;Show Zeros&lt;/dt&gt;
+    &lt;dd&gt;
+        &lt;input v-model="thePanel.engine.showZeros" type="checkbox" /&gt;
+    &lt;/dd&gt;
+    &lt;dt&gt;Totals Before Data&lt;/dt&gt;
+    &lt;dd&gt;
+        &lt;input v-model="thePanel.engine.totalsBeforeData" type="checkbox" /&gt;
+    &lt;/dd&gt;
+&lt;/dl&gt;
+                            </code>
+                        </div>
+                        <div class="mdl-tabs__panel" id="js-3">
+                            <code class="pane-content">
+// no code required!
+                            </code>
+                        </div>
+                        <div class="mdl-tabs__panel" id="close-3">
+                        </div>
+                    </div>
+                </div>
+
+                <h4>
+                    Show the results in a PivotChart</h4>
+                <p>
+                    The <b>PivotChart</b> control provides a graphical visualization of the results.
+                    It is similar to Microsoft Excel's pivot charts, and includes support for multiple chart
+                    types and hierarchical axes.</p>
+                <p>
+                    To use the <b>PivotChart</b> control, connect it to a <b>PivotPanel</b> using
+                    the <b>itemsSource</b> property:</p>
+                <div v-show="thePanel && thePanel.isViewDefined">
+                    <dl class="dl-horizontal">
+                        <dt>Chart Type</dt>
+                        <dd>
+                            <wj-combo-box 
+                                :items-source="chartTypes"
+                                text="Column"
+                                :text-changed="chartTypeChanged">
+                            </wj-combo-box>
+                        </dd>
+                    </dl>
+                    <wj-pivot-chart 
+                        control="theChart"
+                        :items-source="thePanel">
+                    </wj-pivot-chart>
+                </div>
+                <p v-else>
+                    Please create a view in order to see the chart.</p>
+                
+                <div class="source-card mdl-card mdl-shadow--2dp">
+                    <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+                        <div class="mdl-tabs__tab-bar">
+                            <a href="#html-c" class="mdl-tabs__tab">HTML</a>
+                            <a href="#js-c" class="mdl-tabs__tab">JS</a>
+                            <a href="#close-c" class="mdl-tabs__tab is-active">X</a>
+                        </div>
+                        <div class="mdl-tabs__panel" id="html-c">
+                            <code class="pane-content">
+&lt;div v-show="thePanel && thePanel.isViewDefined"&gt;
+    &lt;dl class="dl-horizontal"&gt;
+        &lt;dt&gt;Chart Type&lt;/dt&gt;
+        &lt;dd&gt;
+            &lt;wj-combo-box 
+                :items-source="chartTypes"
+                text="Column"
+                :text-changed="chartTypeChanged"&gt;
+            &lt;/wj-combo-box&gt;
+        &lt;/dd&gt;
+    &lt;/dl&gt;
+    &lt;wj-pivot-chart 
+        control="theChart"
+        :items-source="thePanel"&gt;
+    &lt;/wj-pivot-chart&gt;
+&lt;/div&gt;
+&lt;p v-else&gt;
+    Please create a view in order to see the chart.&lt;/p&gt;
+                            </code>
+                        </div>
+                        <div class="mdl-tabs__panel" id="js-c">
+                            <code class="pane-content">
+// no code required!
+                            </code>
+                        </div>
+                        <div class="mdl-tabs__panel" id="close-c">
+                        </div>
+                    </div>
+                </div>
+
+                <h4>
+                    View and edit the source data</h4>
+                <p>
+                    The pivot view is live. If you edit any of the {{ rawData.items.length | wj-format 'c0' }}
+                    items, the pivot view will be updated automatically.
+                    <span v-if="rawData.tableName" class="text-info">
+                        (This grid is read-only because it is bound to a read-only data source.)
+                    </span></p>
+                <wj-flex-grid
+                    style="border:none"
+                    control="rawGrid"
+                    :items-source="rawData"
+                    show-selected-headers="All">
+                    <wj-flex-grid-filter></wj-flex-grid-filter>
+                </wj-flex-grid>
+
+                <div class="source-card mdl-card mdl-shadow--2dp">
+                    <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+                        <div class="mdl-tabs__tab-bar">
+                            <a href="#html-4" class="mdl-tabs__tab">HTML</a>
+                            <a href="#js-4" class="mdl-tabs__tab">JS</a>
+                            <a href="#close-4" class="mdl-tabs__tab is-active">X</a>
+                        </div>
+                        <div class="mdl-tabs__panel" id="html-4">
+                            <code class="pane-content">
+&lt;wj-flex-grid
+    style="border:none"
+    control="rawGrid"
+    :items-source="rawData"
+    show-selected-headers="All"&gt;
+    &lt;wj-flex-grid-filter&gt;&lt;/wj-flex-grid-filter&gt;
+&lt;/wj-flex-grid&gt;
+                            </code>
+                        </div>
+                        <div class="mdl-tabs__panel" id="js-4">
+                            <code class="pane-content">
+// no code required!
+                            </code>
+                        </div>
+                        <div class="mdl-tabs__panel" id="close-4">
+                        </div>
+                    </div>
+                </div>
+
+                <h4>
+                    Export the results to Spreadsheet</h4>
+                <p>
+                    The <b>PivotGrid</b> control extends the <b>FlexGrid</b>, so you can export it to any of
+                    the formats supported by the extension modules provided with the <b>FlexGrid</b>. The
+                    list of supported formats includes XLSLX, CSV, and PDF.</p>
+                <p>
+                    For example, the button below creates an Excel file with three sheets: the current view,
+                    a transposed version of the current view, and the raw data:</p>
+                <button
+                    class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect"
+                    @click="exportXlsx()">
+                    Export to XLSX
+                </button>
+
+                <div class="source-card mdl-card mdl-shadow--2dp">
+                    <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+                        <div class="mdl-tabs__tab-bar">
+                            <a href="#html-5" class="mdl-tabs__tab">HTML</a>
+                            <a href="#js-5" class="mdl-tabs__tab">JS</a>
+                            <a href="#close-5" class="mdl-tabs__tab is-active">X</a>
+                        </div>
+                        <div class="mdl-tabs__panel" id="html-5">
+                            <code class="pane-content">
+&lt;button
+    class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect"
+    @click="exportXlsx()"&gt;
+    Export to XLSX
+&lt;/button&gt;
+                            </code>
+                        </div>
+                        <div class="mdl-tabs__panel" id="js-5">
+                            <code class="pane-content">
+// app view (main component)
+new Vue({
+    el: '#app',
+    data: {
+
+        // define sample data sets
+        dataSets: [
+            { name: 'Simple (1,000 items)', value: getSimpleDataSet(1000) },
+            // ...
+        ],
+        rawData: [],
+    },
+    methods: {
+
+        // export pivot table and raw data to Excel
+        exportXlsx: function () {
+            var ng = this.thePanel.engine;
+
+            // create book with current view
+            var book = wijmo.grid.xlsx.FlexGridXlsxConverter.save(this.pivotGrid, {
+                includeColumnHeaders: true,
+                includeRowHeaders: true
+            });
+            book.sheets[0].name = 'Main View';
+            addTitleCell(book.sheets[0], getViewTitle(ng));
+
+            // add sheet with transposed view
+            transposeView(ng);
+            var transposed = wijmo.grid.xlsx.FlexGridXlsxConverter.save(this.pivotGrid, {
+                includeColumnHeaders: true,
+                includeRowHeaders: true
+            });
+            transposed.sheets[0].name = 'Transposed View';
+            addTitleCell(transposed.sheets[0], getViewTitle(ng));
+            book.sheets.push(transposed.sheets[0]);
+            transposeView(ng);
+
+            // add sheet with raw data (unless there's too much data)
+            if (this.rawGrid.rows.length &lt; 20000) {
+                var raw = wijmo.grid.xlsx.FlexGridXlsxConverter.save(this.rawGrid, {
+                    includeColumnHeaders: true,
+                    includeRowHeaders: false
+                });
+                raw.sheets[0].name = 'Raw Data';
+                book.sheets.push(raw.sheets[0]);
+            }
+
+            // save the book
+            book.save('wijmo.olap.xlsx');
+        }
+    }
+});
+                            </code>
+                        </div>
+                        <div class="mdl-tabs__panel" id="close-5">
+                        </div>
+                    </div>
+                </div>
+
+                <h4>
+                    Customize the PivotGrid cells</h4>
+                <p>
+                    The <b>PivotGrid</b> control extends the <b>FlexGrid</b>, so you can customize the display
+                    of the grid cells using the <b>formatItem</b> event and modifying the content of each
+                    cell with complete flexibility.</p>
+                <p>
+                    For example, the <b>PivotGrid</b> below uses colors and icons similar to the ones in Microsoft Excel's
+                    icons set to show how sales changed from quarter to quarter:</p>
+
+                <wj-pivot-grid 
+                    :items-source="ngFmt"
+                    :format-item="formatItem"
+                    show-selected-headers="All"
+                    style="border:none">
+                </wj-pivot-grid>
+
+                <div class="source-card mdl-card mdl-shadow--2dp">
+                    <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+                        <div class="mdl-tabs__tab-bar">
+                            <a href="#html-6" class="mdl-tabs__tab">HTML</a>
+                            <a href="#js-6" class="mdl-tabs__tab">JS</a>
+                            <a href="#close-6" class="mdl-tabs__tab is-active">X</a>
+                        </div>
+                        <div class="mdl-tabs__panel" id="html-6">
+                            <code class="pane-content">
+&lt;wj-pivot-grid 
+    :items-source="ngFmt"
+    :format-item="formatItem"
+    show-selected-headers="All"
+    style="border:none"&gt;
+&lt;/wj-pivot-grid&gt;
+                            </code>
+                        </div>
+                        <div class="mdl-tabs__panel" id="js-6">
+                            <code class="pane-content">
+    // app view (main component)
+    new Vue({
+        el: '#app',
+        data: {
+
+            // custom Olap engine
+            ngFmt: new wijmo.olap.PivotEngine({
+                autoGenerateFields: false,
+                itemsSource: getSimpleDataSet(10000),
+                showColumnTotals: wijmo.olap.ShowTotals.GrandTotals,
+                showRowTotals: wijmo.olap.ShowTotals.None,
+                fields: [
+                    { binding: 'product', header: 'Product' },
+                    { binding: 'date', header: 'Date', format: 'yyyy \"Q\"q' },
+                    { binding: 'sales', header: 'Sales', format: 'n0' },
+                    { binding: 'sales', header: 'Diff', format: 'p0', showAs: wijmo.olap.ShowAs.DiffRowPct }
+                ],
+                rowFields: ['Date'],
+                columnFields: ['Product'],
+                valueFields: ['Sales', 'Diff']
+            })
+        },
+        methods: {
+
+            // custom item formatter for PivotGrid
+            formatItem: function (s, e) {
+                if (e.panel == s.cells && e.col % 2 == 1) {
+                    var value = s.getCellData(e.row, e.col),
+                        color = '#d8b400',
+                        glyph = 'circle';
+                    if (value != null) {
+                        if (value &lt; 0) { // negative variation
+                            color = '#9f0000';
+                            glyph = 'down';
+                        } else if (value &gt; 0.05) { // positive variation
+                            color = '#4c8f00';
+                            glyph = 'down';
+                        }
+                        e.cell.style.color = color;
+                        e.cell.innerHTML += ' &lt;span style="font-size:120%" class="wj-glyph-' + glyph + '"&gt;&lt;/span&gt;';
+                    }
+                }
+            },
+        }
+    }
+});
+                            </code>
+                        </div>
+                        <div class="mdl-tabs__panel" id="close-6">
+                        </div>
+                    </div>
+                </div>
+
+                <p>
+                    Note that in this example we only have one pre-defined view, and do not require a <b>PivotPanel</b>
+                    at all. Instead, the code creates a <b>PivotEngine</b> directly and uses that as the grid's
+                    <b>itemsSource</b>.</p>
+            </div>
+        </main>
+    </div>
+    <script src="http://cdn.wijmo.com/wijmo.sample.toolbar.js" type="text/javascript"></script>
+</body>
+</html>

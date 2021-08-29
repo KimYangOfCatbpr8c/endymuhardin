@@ -1,18 +1,18 @@
 ﻿/*
     *
-    * Wijmo Library 5.20162.211
+    * Wijmo Library 5.20171.282
     * http://wijmo.com/
     *
     * Copyright(c) GrapeCity, Inc.  All rights reserved.
     *
     * Licensed under the Wijmo Commercial License.
     * sales@wijmo.com
-    * http://wijmo.com/products/wijmo-5/license/
+    * wijmo.com/products/wijmo-5/license/
     *
     */
 /*
-* Wijmo culture file: de (German)
-*/
+ * Wijmo culture file: de (German)
+ */
 var wijmo;
 (function (wijmo) {
     wijmo.culture = {
@@ -51,7 +51,7 @@ var wijmo;
             itemsSelected: '{count:n0} Artikel ausgewählt'
         },
         FlexGrid: {
-            groupHeaderFormat: '{name}: <b>{value} </b>({count:n0} Elemente)'
+            groupHeaderFormat: '{name}: <b>{value}</b> ({count:n0} Elemente)'
         },
         FlexGridFilter: {
             // filter
@@ -71,7 +71,7 @@ var wijmo;
             or: 'Oder',
             stringOperators: [
                 { name: '(nicht eingestellt)', op: null },
-                { name: 'Gleich', op: 0 },
+                { name: 'Ist gleich', op: 0 },
                 { name: 'Ist nicht gleich', op: 1 },
                 { name: 'Fängt an mit', op: 6 },
                 { name: 'Endet mit', op: 7 },
@@ -80,125 +80,258 @@ var wijmo;
             ],
             numberOperators: [
                 { name: '(nicht eingestellt)', op: null },
-                { name: 'Gleich', op: 0 },
+                { name: 'Ist gleich', op: 0 },
                 { name: 'Ist nicht gleich', op: 1 },
-                { name: 'Größer als', op: 2 },
-                { name: 'Größer oder gleich', op: 3 },
-                { name: 'ist weniger als', op: 4 },
+                { name: 'Ist größer als', op: 2 },
+                { name: 'Ist größer als oder gleich', op: 3 },
+                { name: 'Weniger als', op: 4 },
                 { name: 'Kleiner oder gleich', op: 5 }
             ],
             dateOperators: [
                 { name: '(nicht eingestellt)', op: null },
-                { name: 'Gleich', op: 0 },
+                { name: 'Ist gleich', op: 0 },
                 { name: 'Ist vor', op: 4 },
-                { name: 'Ist nach', op: 3 }
+                { name: 'ist nach', op: 3 }
             ],
             booleanOperators: [
                 { name: '(nicht eingestellt)', op: null },
-                { name: 'Gleich', op: 0 },
+                { name: 'Ist gleich', op: 0 },
                 { name: 'Ist nicht gleich', op: 1 }
             ]
         },
         olap: {
             PivotFieldEditor: {
-                dialogHeader: 'Field settings:',
+                dialogHeader: 'Feldeinstellungen:',
                 header: 'Header:',
-                summary: 'Summary:',
-                showAs: 'Show As:',
-                weighBy: 'Weigh by:',
-                sort: 'Sort:',
+                summary: 'Zusammenfassung:',
+                showAs: 'Zeigen Sie als an:',
+                weighBy: 'Wiegen von:',
+                sort: 'Sortieren:',
                 filter: 'Filter:',
-                format: 'Format:',
-                sample: 'Sample:',
-                edit: 'Edit...',
-                clear: 'Clear',
+                format: 'Formatierung:',
+                sample: 'Sampling:',
+                edit: 'Bearbeiten…',
+                clear: 'Löschen',
                 ok: 'OK',
-                cancel: 'Cancel',
-                none: '(none)',
+                cancel: 'Abbrechen',
+                none: '(kein)',
                 sorts: {
-                    asc: 'Ascending',
-                    desc: 'Descending'
+                    asc: 'Aufsteigend',
+                    desc: 'Absteigend'
                 },
                 aggs: {
-                    sum: 'Sum',
-                    cnt: 'Count',
-                    avg: 'Average',
+                    sum: 'Summe',
+                    cnt: 'Anzahl',
+                    avg: 'Mittelwert',
                     max: 'Max',
-                    min: 'Min',
-                    rng: 'Range',
-                    std: 'StdDev',
-                    var: 'Var',
+                    min: 'Min.',
+                    rng: 'Bereich',
+                    std: 'Standardabweichung (Stichprobe)',
+                    var: 'Varianz',
                     stdp: 'StdDevPop',
                     varp: 'VarPop'
                 },
                 calcs: {
-                    noCalc: 'No Calculation',
-                    dRow: 'Difference from previous row',
-                    dRowPct: '% Difference from previous row',
-                    dCol: 'Difference from previous column',
-                    dColPct: '% Difference from previous column'
+                    noCalc: 'Keine Berechnung',
+                    dRow: 'Unterschied zu vorherigen Zeile',
+                    dRowPct: '% Unterschied zu vorherigen Zeile',
+                    dCol: 'Unterschied zu vorherigen Spalte',
+                    dColPct: '% Unterschied zu vorherigen Spalte',
+                    dPctGrand: '% der Gesamtsumme',
+                    dPctRow: '% der gesamten Zeile',
+                    dPctCol: '% der Spalte Gesamt',
+                    dRunTot: 'Laufende Summe',
+                    dRunTotPct: 'laufende Summe %'
                 },
                 formats: {
-                    n0: 'Integer (n0)',
-                    n2: 'Float (n2)',
-                    c: 'Currency (c)',
-                    p0: 'Percentage (p0)',
-                    p2: 'Percentage (p2)',
-                    n2c: 'Thousands (n2,)',
-                    n2cc: 'Millions (n2,,)',
-                    n2ccc: 'Billions (n2,,,)',
-                    d: 'Date (d)',
-                    MMMMddyyyy: 'Month Day Year (MMMM dd, yyyy)',
-                    dMyy: 'Day Month Year (d/M/yy)',
-                    ddMyy: 'Day Month Year (dd/M/yy)',
-                    dMyyyy: 'Day Month Year (dd/M/yyyy)',
-                    MMMyyyy: 'Month Year (MMM yyyy)',
-                    MMMMyyyy: 'Month Year (MMMM yyyy)',
-                    yyyyQq: 'Year Quarter (yyyy "Q"q)',
-                    FYEEEEQU: 'Fiscal Year Quarter ("FY"EEEE "Q"U)'
+                    n0: 'Ganzzahl (n0)',
+                    n2: 'Schwimmer (n2)',
+                    c: 'Währung (c)',
+                    p0: 'Prozentsatz (p0)',
+                    p2: 'Prozentsatz (p2)',
+                    n2c: 'Tausende (n2)',
+                    n2cc: 'Millionen (n2),,',
+                    n2ccc: 'Milliarden (n2,,,)',
+                    d: 'Datum (d)',
+                    MMMMddyyyy: 'Monat Tag Jahr (MMMM Dd, Yyyy)',
+                    dMyy: 'Tag Monat Jahr (d/M/Yy)',
+                    ddMyy: 'Tag Monat Jahr (Dd/M/Yy)',
+                    dMyyyy: 'Tag Monat Jahr (M/TT/JJJJ)',
+                    MMMyyyy: 'Monat Jahr (MMM Yyyy)',
+                    MMMMyyyy: 'Monat Jahr (MMMM Yyyy)',
+                    yyyyQq: 'Quartal des Jahres (Yyyy "Q" Q)',
+                    FYEEEEQU: 'Geschäftsjahr-Viertel ("FY" EEEE "Q" U)'
                 }
             },
             PivotEngine: {
-                grandTotal: 'Grand Total',
-                subTotal: 'Subtotal'
+                grandTotal: 'Gesamtsumme',
+                subTotal: 'Teilergebnis'
             },
             PivotPanel: {
-                fields: 'Choose fields to add to report',
-                drag: 'Drag fields between areas below:',
-                filters: 'Filters',
-                cols: 'Columns',
-                rows: 'Rows',
-                vals: 'Values',
-                defer: 'Defer Updates',
-                update: 'Update'
+                fields: 'Wählen Sie Felder zum Bericht hinzufügen:',
+                drag: 'Felder zwischen den Bereichen unten ziehen:',
+                filters: 'Filter',
+                cols: 'Spalten',
+                rows: 'Zeilen',
+                vals: 'Werte',
+                defer: 'Updates zu verschieben',
+                update: 'Aktualisieren'
             },
             _ListContextMenu: {
-                up: 'Move Up',
-                down: 'Move Down',
-                first: 'Move do Beginning',
-                last: 'Move to End',
-                filter: 'Move to Report Filter',
-                rows: 'Move to Row Labels',
-                cols: 'Move to Column Labels',
-                vals: 'Move to Values',
-                remove: 'Remove Field',
-                edit: 'Field Settings...',
-                detail: 'Show Detail...'
+                up: 'Nach oben',
+                down: 'Nach unten',
+                first: 'An den Anfang',
+                last: 'Zum Ende bewegen',
+                filter: 'Wechseln zu Berichtsfilter',
+                rows: 'Wechseln zu Zeilenbeschriftungen',
+                cols: 'Wechseln zu Spaltenbeschriftungen',
+                vals: 'Wechseln zu Werten',
+                remove: 'Feld entfernen',
+                edit: 'Feldeinstellungen…',
+                detail: 'Details anzeigen…'
             },
             PivotChart: {
-                by: 'by',
-                and: 'and'
+                by: 'von',
+                and: 'und'
             },
             DetailDialog: {
-                header: 'Detail View:',
+                header: 'Detailansicht:',
                 ok: 'OK',
-                items: '{cnt:n0} items',
-                item: '{cnt} item',
-                row: 'Row',
-                col: 'Column'
+                items: '{cnt:n0} Elemente',
+                item: '{cnt} Element',
+                row: 'ROW',
+                col: 'Spalte'
             }
+        },
+        Viewer: {
+            cancel: 'Abbrechen',
+            ok: 'OK',
+            bottom: 'Unten:',
+            top: 'Oben:',
+            right: 'Rechts:',
+            left: 'Links:',
+            margins: 'Ränder (Zoll)',
+            orientation: 'Orientierung:',
+            paperKind: 'Papierart:',
+            pageSetup: 'Seiteneinrichtung',
+            landscape: 'Querformat',
+            portrait: 'Hochformat',
+            pageNumber: 'Seitenzahl',
+            zoomFactor: 'Zoom-Faktor',
+            paginated: 'Drucklayout',
+            print: 'Drucken',
+            search: 'Suche',
+            matchCase: 'Groß-/Kleinschreibung beachten',
+            wholeWord: 'Nur ganzes Wort suchen',
+            searchResults: 'Suchergebnisse',
+            previousPage: 'Vorherige Seite',
+            nextPage: 'Nächste Seite',
+            firstPage: 'Erste Seite',
+            lastPage: 'Letzte Seite',
+            backwardHistory: 'Rückwärts',
+            forwardHistory: 'Vorwärts',
+            pageCount: 'Seitenanzahl',
+            selectTool: 'Werkzeug auswählen',
+            moveTool: 'Verschieben-Werkzeug',
+            continuousMode: 'Kontinuierliche Seitenansicht',
+            singleMode: 'Seite Einzelansicht',
+            wholePage: 'Fit ganze Seite',
+            pageWidth: 'Seitenbreite passen',
+            zoomOut: 'Verkleinern Sie die Ansicht',
+            zoomIn: 'Zoom In',
+            exports: 'Exportieren',
+            fullScreen: 'Vollbild',
+            exitFullScreen: 'Vollbildmodus beenden',
+            hamburgerMenu: 'Extras',
+            showSearchBar: 'Suchleiste anzeigen',
+            viewMenu: 'Layout-Optionen',
+            searchOptions: 'Suchoptionen',
+            matchCaseMenuItem: 'Groß-/Kleinschreibung beachten',
+            wholeWordMenuItem: 'Ganzes Wort',
+            thumbnails: 'Seitenminiaturen',
+            outlines: 'Dokumentstruktur',
+            loading: 'Werden geladen…',
+            pdfExportName: 'Adobe-PDF',
+            docxExportName: 'Open XML-Wort',
+            xlsxExportName: 'Open XML-Excel',
+            docExportName: 'Microsoft Word',
+            xlsExportName: 'Microsoft Excel',
+            mhtmlExportName: 'Webarchiv (MHTML)',
+            htmlExportName: 'HTML-Dokument',
+            rtfExportName: 'RTF-Dokument',
+            metafileExportName: 'Komprimierte Metadateien',
+            csvExportName: 'CSV',
+            tiffExportName: 'TIFF-Bilder',
+            bmpExportName: 'BMP-Bilder',
+            emfExportName: 'Erweiterte Metadatei',
+            gifExportName: 'GIF-Bilder',
+            jpgExportName: 'JPEG-Bilder',
+            jpegExportName: 'JPEG-Bilder',
+            pngExportName: 'PNG-Bilder',
+            abstractMethodException: 'Dies ist eine abstrakte Methode, bitte zu implementieren.',
+            cannotRenderPageNoViewPage: 'Seite ohne Dokumentquelle und Ansichtsseite kann nicht gerendert werden.',
+            cannotRenderPageNoDoc: 'Seite ohne Dokumentquelle und Ansichtsseite kann nicht gerendert werden.',
+            exportFormat: 'Export-Format:',
+            exportOptionTitle: 'Exportoptionen',
+            documentRestrictionsGroup: 'Dokument-Einschränkungen',
+            passwordSecurityGroup: 'Kennwortsicherheit',
+            outputRangeGroup: 'Leistungsbereich',
+            documentInfoGroup: 'Dokument-info',
+            generalGroup: 'Allgemein',
+            docInfoTitle: 'Titel',
+            docInfoAuthor: 'Im Autorenmodus öffnen',
+            docInfoManager: 'Manager',
+            docInfoOperator: 'Operator',
+            docInfoCompany: 'Firma',
+            docInfoSubject: 'Betreff',
+            docInfoComment: 'Ko&mmentar',
+            docInfoCreator: 'Ersteller',
+            docInfoProducer: 'Produzent',
+            docInfoCreationTime: 'Erstellzeit',
+            docInfoRevisionTime: 'Revision-Zeit',
+            docInfoKeywords: 'Schlüsselwörter',
+            embedFonts: 'TrueType-Schriftarten einbetten',
+            pdfACompatible: 'PDF/A kompatible (Level 2 b)',
+            useCompression: 'Verwenden Sie die Komprimierung',
+            useOutlines: 'Umrisse zu generieren',
+            allowCopyContent: 'Lassen Sie Inhalte kopieren oder Extraktion',
+            allowEditAnnotations: 'Annotation bearbeiten zulassen',
+            allowEditContent: 'Bearbeitung der Inhalte zu ermöglichen',
+            allowPrint: 'Kann gedruckt werden',
+            ownerPassword: 'Berechtigungskennwort (Besitzer):',
+            userPassword: 'Dokument öffnen (Benutzer) Passwort:',
+            encryptionType: 'Verschlüsselungsstufe:',
+            paged: 'Ausgelagert',
+            showNavigator: 'Navigator anzeigen',
+            singleFile: 'Einzelne Datei',
+            tolerance: 'Toleranz bei der Erkennung von Textbegrenzungen (Punkte):',
+            pictureLayer: 'Verwendung separater Bild Schicht',
+            metafileType: 'Metafile-Typ:',
+            monochrome: 'Monochrom',
+            resolution: 'Auflösung:',
+            outputRange: 'Seitenbereich:',
+            outputRangeInverted: 'Umgekehrt',
+            showZoomBar: 'Zoom-Leiste',
+            searchPrev: 'Vorherigen Suchen',
+            searchNext: 'Nächsten suchen',
+            checkMark: '\u2713',
+            exportOk: 'Exportieren…',
+            parameters: 'Parameter',
+            requiringParameters: 'Bitte geben Sie Parameter.',
+            nullParameterError: 'Der Wert darf nicht NULL sein.',
+            invalidParameterError: 'Ungültige Eingabe.',
+            parameterNoneItemsSelected: '(kein)',
+            parameterAllItemsSelected: '(alle)',
+            parameterSelectAllItemText: '(Alle auswählen)',
+            selectParameterValue: '(Wählen Sie Wert)',
+            apply: 'Anwenden',
+            errorOccured: 'Es ist ein Fehler aufgetreten.'
         }
     };
+    var updc = window['wijmo']._updateCulture;
+    if (updc) {
+        updc();
+    }
 })(wijmo || (wijmo = {}));
 ;
-//# sourceMappingURL=wijmo.culture.de.js.map
+

@@ -1,7 +1,7 @@
 ﻿<!--
     Edit Account form
 -->
-<form>
+<form name="edit" ng-submit="submit($event)">
     <h4 class="modal-header">
         Edit Account
         <button type="button" tabindex="-1" class="close wj-hide">&times;</button>
@@ -45,7 +45,7 @@
         </label>
     </div>
     <div class="modal-footer">
-        <button class="btn btn-primary wj-hide-ok">
+        <button class="btn btn-primary" type="submit">
             Update Account
         </button>
     </div>

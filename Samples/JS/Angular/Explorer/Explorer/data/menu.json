@@ -22,6 +22,7 @@
             { "text": "ComboBox", "url": "#/input/combo" },
             { "text": "AutoComplete", "url": "#/input/autocomplete" },
             { "text": "MultiSelect", "url": "#/input/multiselect" },
+            { "text": "MultiAutoComplete", "url": "#/input/multiautocomplete" },
             { "text": "Menu", "url": "#/input/menu" },
             { "text": "Date, Time", "url": "#/input/datetime" },
             { "text": "Numbers", "url": "#/input/number" },
@@ -48,7 +49,7 @@
             { "text": "Column Footers", "url": "#/grid/footers" },
             { "text": "Right To Left", "url": "#/grid/rtl" },
             { "text": "Templates", "url": "#/grid/templates" },
-            {"text": "No Directive","url": "#/grid/nodctv"},
+            { "text": "No Directive","url": "#/grid/nodctv"},
             { "text": "Filter", "url": "#/grid/filter" },
             { "text": "Group Panel", "url": "#/grid/groupPanel" },
             { "text": "Row Details", "url": "#/grid/rowDetails" },
@@ -92,6 +93,16 @@
         ]
     },
     {
+        "section": "TreeView",
+        "links":  [
+            { "text": "Introduction", "url": "#/nav/intro" },
+            { "text": "Navigation Trees", "url": "#/nav/navTree" },
+            { "text": "Checkboxes", "url": "#/nav/ckbTree" },
+            { "text": "Custom Nodes", "url": "#/nav/customNodeContent" },
+            { "text": "Lazy Loading", "url": "#/nav/lazyLoading" }
+        ]
+    },
+    {
         "section": "Gauges",
         "links":  [
             { "text": "Introduction", "url": "#/gauge/intro" },
@@ -100,4 +111,5 @@
             { "text": "BulletGraph", "url": "#/gauge/bullet" }
         ]
     }
+
 ]

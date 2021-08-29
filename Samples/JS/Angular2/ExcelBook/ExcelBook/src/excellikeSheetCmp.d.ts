@@ -1,15 +1,17 @@
 /// <reference path="../typings/globals/core-js/index.d.ts" />
+import * as wjcGridSheet from 'wijmo/wijmo.grid.sheet';
+import * as wjcInput from 'wijmo/wijmo.input';
 import { OnInit } from '@angular/core';
 import { DataSvc } from './services/DataSvc';
 export declare class ExcellikeSheetCmp implements OnInit {
     protected dataSvc: DataSvc;
     data: any[];
-    undoStack: wijmo.grid.sheet.UndoStack;
+    undoStack: wjcGridSheet.UndoStack;
     fonts: any[];
     fontSizeList: any[];
-    selectionFormatState: wijmo.grid.sheet.IFormatState;
+    selectionFormatState: wjcGridSheet.IFormatState;
     isFrozen: boolean;
-    sortManager: wijmo.grid.sheet.SortManager;
+    sortManager: wjcGridSheet.SortManager;
     columns: string[];
     selection: any;
     private _updatingSelection;
@@ -18,16 +20,16 @@ export declare class ExcellikeSheetCmp implements OnInit {
     private _appliedClass;
     private _cellStyleApplying;
     private _pendingAction;
-    flexSheet: wijmo.grid.sheet.FlexSheet;
-    cboFontName: wijmo.input.ComboBox;
-    cboFontSize: wijmo.input.ComboBox;
-    colorPicker: wijmo.input.ColorPicker;
+    flexSheet: wjcGridSheet.FlexSheet;
+    cboFontName: wjcInput.ComboBox;
+    cboFontSize: wjcInput.ComboBox;
+    colorPicker: wjcInput.ColorPicker;
     constructor(dataSvc: DataSvc);
     ngOnInit(): void;
-    flexInitialized(flexSheet: wijmo.grid.sheet.FlexSheet): void;
-    cboFontNameInit(cboFontName: wijmo.input.ComboBox): void;
-    cboFontSizeInit(cboFontSize: wijmo.input.ComboBox): void;
-    colorPickerInit(colorPicker: wijmo.input.ColorPicker): void;
+    flexInitialized(flexSheet: wjcGridSheet.FlexSheet): void;
+    cboFontNameInit(cboFontName: wjcInput.ComboBox): void;
+    cboFontSizeInit(cboFontSize: wjcInput.ComboBox): void;
+    colorPickerInit(colorPicker: wjcInput.ColorPicker): void;
     exportExcel(): void;
     importExcel(event: any): void;
     newFile(): void;
@@ -53,6 +55,7 @@ export declare class ExcellikeSheetCmp implements OnInit {
     updateSelectionContent(e: any): void;
     pendingCellEditAction(): void;
     showFunctionList(e: any): void;
+    hidePopup(e: any): void;
     private _generateCountrySheet(flexSheet);
     private _initDataMapForBindingSheet(flexSheet);
     private _buildDataMap(items);

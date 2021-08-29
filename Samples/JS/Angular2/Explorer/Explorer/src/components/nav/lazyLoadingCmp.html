@@ -1,0 +1,30 @@
+﻿<div>
+    <div class="copy">
+        <h2>Lazy Loading</h2>
+        <p>
+            Lazy loading is useful when you are dealing with large hierarchical data sources
+            and would like to avoid the delays involved in loading the entire data set at once.
+        </p>
+        <p>
+            The TreeView control makes lazy-loading super easy. Only two steps are required:
+        </p>
+        <ol>
+            <li>
+                Set the <b>items</b> property in the parent node data item to an empty array.
+            </li>
+            <li>
+                Set the TreeView's <b>lazyLoadFunction</b> property to a function to be called
+                when the user expands the node. This function takes two parameters: the parent node
+                and a callback function to be invoked when the data becomes available.
+            </li>
+        </ol>
+    </div>
+    <div>
+        <wj-tree-view #tvLazyLoad
+                      [itemsSource]="lazyItems"
+                      [displayMemberPath]="'header'"
+                      [childItemsPath]="'items'"
+                      [lazyLoadFunction]="lazyLoadFunction">
+        </wj-tree-view>
+    </div>
+</div>

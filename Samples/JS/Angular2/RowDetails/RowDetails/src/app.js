@@ -1,4 +1,3 @@
-///<reference path="../typings/globals/core-js/index.d.ts"/>
 "use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -9,6 +8,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
+///<reference path="../typings/globals/core-js/index.d.ts"/>
+var wjcGridDetail = require('wijmo/wijmo.grid.detail');
+var wjcCore = require('wijmo/wijmo');
+var wjcGrid = require('wijmo/wijmo.grid');
 // Angular
 var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
@@ -25,9 +28,9 @@ var AppCmp = (function () {
         this._dataSvc = _dataSvc;
         this._http = _http;
         this._productsCache = {};
-        this.detailMode = wijmo.grid.detail.DetailVisibilityMode[wijmo.grid.detail.DetailVisibilityMode.ExpandSingle];
-        this.categories = new wijmo.collections.CollectionView();
-        this.products = new wijmo.collections.CollectionView();
+        this.detailMode = wjcGridDetail.DetailVisibilityMode[wjcGridDetail.DetailVisibilityMode.ExpandSingle];
+        this.categories = new wjcCore.CollectionView();
+        this.products = new wjcCore.CollectionView();
         this.getData(this.categories, 'Categories');
         this.getData(this.products, 'Products');
     }
@@ -38,14 +41,14 @@ var AppCmp = (function () {
     };
     AppCmp.prototype._initDetailProvider = function (grid) {
         var _this = this;
-        var dp = new wijmo.grid.detail.FlexGridDetailProvider(grid);
+        var dp = new wjcGridDetail.FlexGridDetailProvider(grid);
         dp.maxHeight = 250;
         // create detail cells for a given row
         dp.createDetailCell = function (row) {
             var cell = document.createElement('div');
             grid.hostElement.appendChild(cell);
-            var detailGrid = new wijmo.grid.FlexGrid(cell, {
-                headersVisibility: wijmo.grid.HeadersVisibility.Column,
+            var detailGrid = new wjcGrid.FlexGrid(cell, {
+                headersVisibility: wjcGrid.HeadersVisibility.Column,
                 autoGenerateColumns: false,
                 itemsSource: _this.getProducts(row.dataItem.CategoryID),
                 columns: [
@@ -92,7 +95,7 @@ var AppCmp = (function () {
     AppCmp.prototype.getProducts = function (categoryID) {
         var view = this._productsCache[categoryID];
         if (!view) {
-            view = new wijmo.collections.CollectionView(this.products.sourceCollection);
+            view = new wjcCore.CollectionView(this.products.sourceCollection);
             view.filter = function (item) {
                 return item.CategoryID == categoryID;
             };

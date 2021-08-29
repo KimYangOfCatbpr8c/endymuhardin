@@ -53,8 +53,7 @@ dp.rowHasDetail = function (row) &#123;
     return row.dataItem.CategoryID % 2 == 0;
 }</pre>
         <wj-flex-grid #flex1
-                      [itemsSource]="categories"
-                      initialized="initDetailProvider(s,e)">
+                      [itemsSource]="categories">
             <wj-flex-grid-column [header]="'Name'" [binding]="'CategoryName'"></wj-flex-grid-column>
             <wj-flex-grid-column [header]="'Description'" [binding]="'Description'" [width]="'*'"></wj-flex-grid-column>
         </wj-flex-grid>
@@ -101,6 +100,7 @@ dp.rowHasDetail = function (row) &#123;
                 </wj-flex-grid>
             </template>
         </wj-flex-grid>
+
 
         <!-- select detailVisibilityMode -->
         <p>
@@ -172,9 +172,9 @@ dp.rowHasDetail = function (row) &#123;
               [selectionMode]="'Row'"&gt;
     &lt;template wjFlexGridDetail #dp="wjFlexGridDetail" [detailVisibilityMode]="'Code'" let-item="item"&gt;
         &lt;div style="padding:12px;background-color:#cee6f7;color:#000"&gt;
-            ID: &lt;b&gt;&#123;&#123;item.CategoryID}}&lt;/b&gt;&lt;br /&gt;
-            Name: &lt;b&gt;&#123;&#123;item.CategoryName}}&lt;/b&gt;&lt;br /&gt;
-            Description: &lt;b&gt;&#123;&#123;item.Description}}&lt;/b&gt;&lt;br /&gt;
+            ID: &lt;b&gt;&#123;&#8203;&#123;item.CategoryID}}&lt;/b&gt;&lt;br /&gt;
+            Name: &lt;b&gt;&#123;&#8203;&#123;item.CategoryName}}&lt;/b&gt;&lt;br /&gt;
+            Description: &lt;b&gt;&#123;&#8203;&#123;item.Description}}&lt;/b&gt;&lt;br /&gt;
             &lt;button class="btn btn-default" (click)="dp.hideDetail(row)"&gt;Hide Detail&lt;/button&gt;
         &lt;/div&gt;
     &lt;/template&gt;
@@ -184,7 +184,7 @@ dp.rowHasDetail = function (row) &#123;
                 &lt;img [ngStyle]="&#123;display: dp.isDetailVisible(row) ? '' : 'none'}" (click)="dp.hideDetail(row)" src="resources/hide.png" /&gt;
                 &lt;img [ngStyle]="&#123;display: !dp?.isDetailVisible(row) ? '' : 'none'}" (click)="dp.showDetail(row, true)" src="resources/show.png" /&gt;
             &lt;/span&gt;
-            &#123;&#123;item.CategoryName}} - &#123;&#123;dp.isDetailAvailable(row)}}
+                        &#123;&#8203;&#123;item.CategoryName}} -&#123;&#8203;&#123;dp.isDetailAvailable(row)}}
         &lt;/template&gt;
     &lt;/wj-flex-grid-column&gt;
     &lt;wj-flex-grid-column [header]="'Description'" [binding]="'Description'" [width]="'2*'"&gt;&lt;/wj-flex-grid-column&gt;

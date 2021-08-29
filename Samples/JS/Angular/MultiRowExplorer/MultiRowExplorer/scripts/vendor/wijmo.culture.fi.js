@@ -1,18 +1,18 @@
 ﻿/*
     *
-    * Wijmo Library 5.20162.211
+    * Wijmo Library 5.20171.282
     * http://wijmo.com/
     *
     * Copyright(c) GrapeCity, Inc.  All rights reserved.
     *
     * Licensed under the Wijmo Commercial License.
     * sales@wijmo.com
-    * http://wijmo.com/products/wijmo-5/license/
+    * wijmo.com/products/wijmo-5/license/
     *
     */
 /*
-* Wijmo culture file: fi (Finnish)
-*/
+ * Wijmo culture file: fi (Finnish)
+ */
 var wijmo;
 (function (wijmo) {
     wijmo.culture = {
@@ -27,9 +27,9 @@ var wijmo;
             },
             calendar: {
                 '/': '.',
-                ':': '.',
+                ':': ':',
                 firstDay: 1,
-                days: ['sunnuntaina', 'maanantaina', 'tiistaina', 'keskiviikkona', 'torstaina', 'perjantaina', 'lauantaina'],
+                days: ['sunnuntai', 'maanantai', 'tiistai', 'keskiviikko', 'torstai', 'perjantai', 'lauantai'],
                 daysAbbr: ['su', 'ma', 'ti', 'ke', 'to', 'pe', 'la'],
                 months: ['tammikuu', 'helmikuu', 'maaliskuu', 'huhtikuu', 'toukokuu', 'kesäkuu', 'heinäkuu', 'elokuu', 'syyskuu', 'lokakuu', 'marraskuu', 'joulukuu'],
                 monthsAbbr: ['tammi', 'helmi', 'maalis', 'huhti', 'touko', 'kesä', 'heinä', 'elo', 'syys', 'loka', 'marras', 'joulu'],
@@ -37,12 +37,12 @@ var wijmo;
                 pm: ['ip.', 'i'],
                 eras: ['jKr.'],
                 patterns: {
-                    d: 'd.M.yyyy', D: 'dddd d. MMMM yyyy',
-                    f: 'dddd d. MMMM yyyy H.mm', F: 'dddd d. MMMM yyyy H.mm.ss',
-                    t: 'H.mm', T: 'H.mm.ss',
-                    m: 'd. MMMM', M: 'd. MMMM',
+                    d: 'd.M.yyyy', D: 'd. MMMM yyyy',
+                    f: 'd. MMMM yyyy H:mm', F: 'd. MMMM yyyy H:mm:ss',
+                    t: 'H:mm', T: 'H:mm:ss',
+                    m: 'd"." MMMM', M: 'd"." MMMM',
                     y: 'MMMM yyyy', Y: 'MMMM yyyy',
-                    g: 'd.M.yyyy H.mm', G: 'd.M.yyyy H.mm.ss',
+                    g: 'd.M.yyyy H:mm', G: 'd.M.yyyy H:mm:ss',
                     s: 'yyyy"-"MM"-"dd"T"HH":"mm":"ss'
                 },
             }
@@ -51,7 +51,7 @@ var wijmo;
             itemsSelected: '{count:n0} kohdetta valittu'
         },
         FlexGrid: {
-            groupHeaderFormat: '{name}: <b>{value} </b>({count:n0} tuotteet)'
+            groupHeaderFormat: '{name}: <b>{value}</b> ({count:n0} tuotteet)'
         },
         FlexGridFilter: {
             // filter
@@ -90,8 +90,8 @@ var wijmo;
             dateOperators: [
                 { name: '(ei asetettu)', op: null },
                 { name: 'On yhtä kuin', op: 0 },
-                { name: 'On ennen', op: 4 },
-                { name: 'On jälkeen', op: 3 }
+                { name: 'on ennen', op: 4 },
+                { name: 'on jälkeen', op: 3 }
             ],
             booleanOperators: [
                 { name: '(ei asetettu)', op: null },
@@ -101,104 +101,237 @@ var wijmo;
         },
         olap: {
             PivotFieldEditor: {
-                dialogHeader: 'Field settings:',
-                header: 'Header:',
-                summary: 'Summary:',
-                showAs: 'Show As:',
-                weighBy: 'Weigh by:',
-                sort: 'Sort:',
-                filter: 'Filter:',
-                format: 'Format:',
-                sample: 'Sample:',
-                edit: 'Edit...',
-                clear: 'Clear',
+                dialogHeader: 'Asetukset:',
+                header: 'Otsikkolähde:',
+                summary: 'Yhteenveto:',
+                showAs: 'Näytä muodossa:',
+                weighBy: 'Painavat:',
+                sort: 'Lajittelu:',
+                filter: 'Suodatus:',
+                format: 'Muotoilu:',
+                sample: 'Näyte:',
+                edit: 'Muokkaa…',
+                clear: 'Tyhjennä',
                 ok: 'OK',
-                cancel: 'Cancel',
-                none: '(none)',
+                cancel: 'Peruuta',
+                none: '(ei mitään)',
                 sorts: {
-                    asc: 'Ascending',
-                    desc: 'Descending'
+                    asc: 'Nouseva',
+                    desc: 'Laskeva'
                 },
                 aggs: {
-                    sum: 'Sum',
-                    cnt: 'Count',
-                    avg: 'Average',
-                    max: 'Max',
+                    sum: 'Summa',
+                    cnt: 'Määrä',
+                    avg: 'Keskiarvo',
+                    max: 'Maks.',
                     min: 'Min',
-                    rng: 'Range',
-                    std: 'StdDev',
+                    rng: 'Alue',
+                    std: 'Keskihajonta',
                     var: 'Var',
                     stdp: 'StdDevPop',
                     varp: 'VarPop'
                 },
                 calcs: {
-                    noCalc: 'No Calculation',
-                    dRow: 'Difference from previous row',
-                    dRowPct: '% Difference from previous row',
-                    dCol: 'Difference from previous column',
-                    dColPct: '% Difference from previous column'
+                    noCalc: 'Ei laskentaa',
+                    dRow: 'Ero edellisen krs',
+                    dRowPct: '% Ero edellisen krs',
+                    dCol: 'Eroa edelliseen sarakkeeseen',
+                    dColPct: '% Ero edelliseen sarakkeeseen',
+                    dPctGrand: 'prosenttia kokonaissummasta',
+                    dPctRow: 'prosenttia rivin kokonaissumman',
+                    dPctCol: 'prosenttia sarakkeesta yhteensä',
+                    dRunTot: 'Juokseva summa',
+                    dRunTotPct: '% summa'
                 },
                 formats: {
-                    n0: 'Integer (n0)',
-                    n2: 'Float (n2)',
-                    c: 'Currency (c)',
-                    p0: 'Percentage (p0)',
-                    p2: 'Percentage (p2)',
-                    n2c: 'Thousands (n2,)',
-                    n2cc: 'Millions (n2,,)',
-                    n2ccc: 'Billions (n2,,,)',
-                    d: 'Date (d)',
-                    MMMMddyyyy: 'Month Day Year (MMMM dd, yyyy)',
-                    dMyy: 'Day Month Year (d/M/yy)',
-                    ddMyy: 'Day Month Year (dd/M/yy)',
-                    dMyyyy: 'Day Month Year (dd/M/yyyy)',
-                    MMMyyyy: 'Month Year (MMM yyyy)',
-                    MMMMyyyy: 'Month Year (MMMM yyyy)',
-                    yyyyQq: 'Year Quarter (yyyy "Q"q)',
-                    FYEEEEQU: 'Fiscal Year Quarter ("FY"EEEE "Q"U)'
+                    n0: 'Kokonaisluku (n0)',
+                    n2: 'Desimaalin (n2)',
+                    c: 'Valuutta (c)',
+                    p0: 'Prosenttiosuus (p0)',
+                    p2: 'Prosenttiosuus (p2)',
+                    n2c: 'Tuhansia (n2,)',
+                    n2cc: 'Miljoonia (n2,,)',
+                    n2ccc: 'Miljardeja (n2,,,)',
+                    d: 'Päivämäärä (d)',
+                    MMMMddyyyy: 'Kuukausi päivä vuosi (MMMM dd, yyyy)',
+                    dMyy: 'Päivä kuukausi vuosi (d/M/yy)',
+                    ddMyy: 'Päivä kuukausi vuosi (dd/M/yy)',
+                    dMyyyy: 'Päivä kuukausi vuosi (dd/M/yyyy)',
+                    MMMyyyy: 'Kuukausi vuosi (MMM yyyy)',
+                    MMMMyyyy: 'Kuukausi vuosi (MMMM yyyy)',
+                    yyyyQq: 'Vuoden neljänneksellä (yyyy "Q"q)',
+                    FYEEEEQU: 'Tilikauden neljännes ("FY"EEEE "Q"U)'
                 }
             },
             PivotEngine: {
-                grandTotal: 'Grand Total',
-                subTotal: 'Subtotal'
+                grandTotal: 'Kokonaissumma',
+                subTotal: 'Välisumma'
             },
             PivotPanel: {
-                fields: 'Choose fields to add to report',
-                drag: 'Drag fields between areas below:',
-                filters: 'Filters',
-                cols: 'Columns',
-                rows: 'Rows',
-                vals: 'Values',
-                defer: 'Defer Updates',
-                update: 'Update'
+                fields: 'Valitse raporttiin lisättävät kentät:',
+                drag: 'Vedä kenttiä alla olevien alueiden välillä:',
+                filters: 'Suodattimet',
+                cols: 'Sarakkeet',
+                rows: 'Rivit',
+                vals: 'arvoa',
+                defer: 'Lykätä päivitykset',
+                update: 'Päivitä'
             },
             _ListContextMenu: {
-                up: 'Move Up',
-                down: 'Move Down',
-                first: 'Move do Beginning',
-                last: 'Move to End',
-                filter: 'Move to Report Filter',
-                rows: 'Move to Row Labels',
-                cols: 'Move to Column Labels',
-                vals: 'Move to Values',
-                remove: 'Remove Field',
-                edit: 'Field Settings...',
-                detail: 'Show Detail...'
+                up: 'Siirrä ylös',
+                down: 'Siirrä alas',
+                first: 'Siirrä alkuun',
+                last: 'Siirrä loppuun',
+                filter: 'Siirrä raporttisuodattimeen',
+                rows: 'Siirrä riviotsikoihin',
+                cols: 'Siirrä sarakeotsikoihin',
+                vals: 'Siirrä arvoihin',
+                remove: 'Poista kenttä',
+                edit: 'Kentän asetukset…',
+                detail: 'Näytä tiedot…'
             },
             PivotChart: {
                 by: 'by',
-                and: 'and'
+                and: '–'
             },
             DetailDialog: {
-                header: 'Detail View:',
+                header: 'Yksityiskohtaisessa näkymässä:',
                 ok: 'OK',
-                items: '{cnt:n0} items',
-                item: '{cnt} item',
-                row: 'Row',
-                col: 'Column'
+                items: '{cnt:n0}-kohteet',
+                item: '{cnt} kohdetta',
+                row: 'Rivi',
+                col: 'Sarake'
             }
+        },
+        Viewer: {
+            cancel: 'Peruuta',
+            ok: 'OK',
+            bottom: 'Alhaalla:',
+            top: 'Ylhäällä:',
+            right: 'Oikealla:',
+            left: 'Vasemmalla:',
+            margins: 'Reunukset (tuumina)',
+            orientation: 'Suunta:',
+            paperKind: 'Paperin tyyppi:',
+            pageSetup: 'Sivun asetukset',
+            landscape: 'Vaaka',
+            portrait: 'Pysty',
+            pageNumber: 'Sivunumero',
+            zoomFactor: 'Zoomauskerroin',
+            paginated: 'Tulostusasettelu',
+            print: 'Tulostaminen',
+            search: 'Haku',
+            matchCase: 'Sama kirjainkoko',
+            wholeWord: 'Koko sana',
+            searchResults: 'Hakutulokset',
+            previousPage: 'Edellinen sivu',
+            nextPage: 'Seuraava sivu',
+            firstPage: 'Ensimmäinen sivu',
+            lastPage: 'Viimeinen sivu',
+            backwardHistory: 'Taaksepäin',
+            forwardHistory: 'Seuraava',
+            pageCount: 'Sivumäärä',
+            selectTool: 'Valitse työkalu',
+            moveTool: 'Siirtotyökalu',
+            continuousMode: 'Jatkuva sivunäkymässä',
+            singleMode: 'Yhden sivun näkymä',
+            wholePage: 'Sovita koko sivu',
+            pageWidth: 'Sovita sivun leveys',
+            zoomOut: 'Loitonna',
+            zoomIn: 'Lähennä',
+            exports: 'Vie',
+            fullScreen: 'Koko näyttö',
+            exitFullScreen: 'Poistu koko näytön tilasta',
+            hamburgerMenu: 'Työkalut',
+            showSearchBar: 'Näytä etsintäpalkki',
+            viewMenu: 'Asetteluasetukset',
+            searchOptions: 'Hakuasetukset',
+            matchCaseMenuItem: 'Sama kirjainkoko',
+            wholeWordMenuItem: 'Koko sana',
+            thumbnails: 'Sivujen pikkukuvia',
+            outlines: 'asiakirjan rakenneruutu',
+            loading: 'Ladataan…',
+            pdfExportName: 'Adobe PDF',
+            docxExportName: 'Open XML sana',
+            xlsxExportName: 'Open XML Excel',
+            docExportName: 'Microsoft Word',
+            xlsExportName: 'Microsoft Excel',
+            mhtmlExportName: 'Web-arkisto (MHTML)',
+            htmlExportName: 'HTML-asiakirja',
+            rtfExportName: 'RTF-asiakirja',
+            metafileExportName: 'Pakattu metatiedostojen',
+            csvExportName: 'CSV',
+            tiffExportName: 'TIFF-kuvien',
+            bmpExportName: 'BMP kuvia',
+            emfExportName: 'Laajennettu metatiedosto',
+            gifExportName: 'GIF-kuvia',
+            jpgExportName: 'JPEG-kuvat',
+            jpegExportName: 'JPEG-kuvat',
+            pngExportName: 'PNG-kuvia',
+            abstractMethodException: 'Tämä on abstrakti menetelmä, toteuta se.',
+            cannotRenderPageNoViewPage: 'Ei voi tehdä ilman asiakirjan lähde ja katso sivu.',
+            cannotRenderPageNoDoc: 'Ei voi tehdä ilman asiakirjan lähde ja katso sivu.',
+            exportFormat: 'Vientimuoto:',
+            exportOptionTitle: 'Viennin asetukset',
+            documentRestrictionsGroup: 'Asiakirjan rajoitukset',
+            passwordSecurityGroup: 'Salasanasuojaus',
+            outputRangeGroup: 'Tulostusalueen',
+            documentInfoGroup: 'Asiakirjan tiedot',
+            generalGroup: 'Yleiset',
+            docInfoTitle: 'Otsikko',
+            docInfoAuthor: 'Tekijä',
+            docInfoManager: 'Vastuuhenkilö',
+            docInfoOperator: 'Operaattori',
+            docInfoCompany: 'Yritys',
+            docInfoSubject: 'Hakija',
+            docInfoComment: 'Kommentoi',
+            docInfoCreator: 'Tekijä',
+            docInfoProducer: 'Tuottaja',
+            docInfoCreationTime: 'Luontiaika',
+            docInfoRevisionTime: 'Tarkistaminen aikaa',
+            docInfoKeywords: 'Avainsanat',
+            embedFonts: 'Upota TrueType-fontit',
+            pdfACompatible: 'PDF/A-yhteensopiva (tason 2B)',
+            useCompression: 'Käytä pakkausta',
+            useOutlines: 'Luo ääriviivat',
+            allowCopyContent: 'Sisällön kopioiminen tai louhinta',
+            allowEditAnnotations: 'Huomautus muokkausta',
+            allowEditContent: 'Sisällön muokkaamisen salliminen',
+            allowPrint: 'Salli tulostus',
+            ownerPassword: 'Käyttöoikeudet (omistaja) salasana:',
+            userPassword: 'Asiakirja Avaa (käyttäjän) salasana:',
+            encryptionType: 'Salaustaso:',
+            paged: 'Sivutettu',
+            showNavigator: 'Näytä etsintä',
+            singleFile: 'Yhteen tiedostoon',
+            tolerance: 'Toleranssi, jos se havaitsee tekstin rajat (pistettä):',
+            pictureLayer: 'Käytä erillistä kuvakerros',
+            metafileType: 'Metafile tyyppi:',
+            monochrome: 'Yksivärinen',
+            resolution: 'Tarkkuus:',
+            outputRange: 'Sivualue:',
+            outputRangeInverted: 'Käänteinen',
+            showZoomBar: 'Zoom pylväs',
+            searchPrev: 'Etsi edellinen',
+            searchNext: 'Etsi seuraava',
+            checkMark: '\u2713',
+            exportOk: 'Vie…',
+            parameters: 'parameters',
+            requiringParameters: 'Anna parametrit.',
+            nullParameterError: 'Arvo ei voi olla null.',
+            invalidParameterError: 'Virheellinen syöte.',
+            parameterNoneItemsSelected: '(ei mitään)',
+            parameterAllItemsSelected: '(kaikki)',
+            parameterSelectAllItemText: '(Valitse kaikki)',
+            selectParameterValue: '(Valitse arvo)',
+            apply: 'Käytä',
+            errorOccured: 'Järjestelmässä on ilmennyt virhe.'
         }
     };
+    var updc = window['wijmo']._updateCulture;
+    if (updc) {
+        updc();
+    }
 })(wijmo || (wijmo = {}));
 ;
-//# sourceMappingURL=wijmo.culture.fi.js.map
+

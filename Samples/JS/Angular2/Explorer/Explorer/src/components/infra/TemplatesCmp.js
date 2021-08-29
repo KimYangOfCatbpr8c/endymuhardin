@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
@@ -13,6 +13,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
+var wjcInput = require('wijmo/wijmo.input');
+'use strict';
 var core_1 = require('@angular/core');
 var common_1 = require('@angular/common');
 var forms_1 = require('@angular/forms');
@@ -66,7 +68,7 @@ var TemplatesCmp = (function (_super) {
             '</table>' +
             '<div wj-part="dropdown" style="position:fixed;border-radius:4px;border:1px solid #e0e0e0;padding:2px;margin:4px 0px;z-index:100;background-color:inherit;display:none;box-shadow:0 6px 12px rgba(0, 0, 0, 0.175)"/>' +
             '</div>';
-        wijmo.input.ComboBox.controlTemplate = '<div style="position:relative;background-color:inherit;">' +
+        wjcInput.ComboBox.controlTemplate = '<div style="position:relative;background-color:inherit;">' +
             '<table style="width:100%;border-collapse:collapse;font:inherit;color:inherit;background-color:transparent;margin:0px;padding:0px">' +
             '<tr>' +
             '<td style="padding:0px;border:none">' +
@@ -79,7 +81,7 @@ var TemplatesCmp = (function (_super) {
             '</table>' +
             '<div wj-part="dropdown" style="position:fixed;border-radius:4px;border:1px solid #e0e0e0;padding:2px;margin:4px 0px;z-index:100;background-color:inherit;display:none;box-shadow:0 6px 12px rgba(0, 0, 0, 0.175)"/>' +
             '</div>';
-        this._tplCalendar = wijmo.input.Calendar.controlTemplate;
+        this._tplCalendar = wjcInput.Calendar.controlTemplate;
         wjNg2Input.WjCalendar.controlTemplate = '<div style="cursor:default">' +
             '<table wj-part="tbl-header" style="border-collapse:collapse;font:inherit;width:100%;box-sizing:border-box">' +
             '<tr style="background-color:#eaeaea;cursor:pointer">' +

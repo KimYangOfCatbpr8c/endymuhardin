@@ -1,15 +1,19 @@
+import * as wjcCore from 'wijmo/wijmo';
+import * as wjcChartAnalytics from 'wijmo/wijmo.chart.analytics';
+import * as wjcChart from 'wijmo/wijmo.chart';
+import * as wjcInput from 'wijmo/wijmo.input';
 import { AfterViewInit } from '@angular/core';
 import { DataSvc } from './../services/DataSvc';
 export declare class TrendLineCmp implements AfterViewInit {
-    itemsSource: wijmo.collections.ObservableArray;
+    itemsSource: wjcCore.ObservableArray;
     title: string;
     order: number;
     fitType: string;
     name: string;
     showEquation: boolean;
     markerContent: Function;
-    trendLine: wijmo.chart.analytics.TrendLine;
-    trendLineChart: wijmo.chart.FlexChart;
+    trendLine: wjcChartAnalytics.TrendLine;
+    trendLineChart: wjcChart.FlexChart;
     constructor(dataSvc: DataSvc);
     ngAfterViewInit(): void;
     moving: boolean;
@@ -20,7 +24,7 @@ export declare class TrendLineCmp implements AfterViewInit {
     ptIdx: any;
     mouseMove(e: any): void;
     mouseDown(e: any): void;
-    orderChanged: (input: wijmo.input.InputNumber) => void;
+    orderChanged: (input: wjcInput.InputNumber) => void;
     update(): void;
 }
 export declare class TrendLineModule {

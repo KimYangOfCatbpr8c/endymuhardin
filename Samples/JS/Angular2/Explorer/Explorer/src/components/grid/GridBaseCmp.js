@@ -1,10 +1,13 @@
-'use strict';
+"use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var wjcCore = require('wijmo/wijmo');
+var wjcGrid = require('wijmo/wijmo.grid');
+'use strict';
 //import {Component, EventEmitter, Inject, Input, ViewChild, AfterViewInit } from '@angular/core';
 //import { CORE_DIRECTIVES } from '@angular/common';
 //import { DataSvc } from '../../services/DataSvc';
@@ -184,10 +187,10 @@ var GridBaseCmp = (function () {
         var flex = this.flex;
         if (flex.scrollPosition.y == 0) {
             var sz = flex.scrollSize;
-            flex.scrollPosition = new wijmo.Point(-sz.width / 2, -sz.height / 2);
+            flex.scrollPosition = new wjcCore.Point(-sz.width / 2, -sz.height / 2);
         }
         else {
-            flex.scrollPosition = new wijmo.Point(0, 0);
+            flex.scrollPosition = new wjcCore.Point(0, 0);
         }
     };
     ;
@@ -221,7 +224,7 @@ var GridBaseCmp = (function () {
         for (var i = 0; i < items.length; i++) {
             map.push({ key: i, value: items[i] });
         }
-        return new wijmo.grid.DataMap(map, 'key', 'value');
+        return new wjcGrid.DataMap(map, 'key', 'value');
     };
     // apply/remove column formatting
     GridBaseCmp.prototype._updateFormatting = function () {
@@ -246,7 +249,7 @@ var GridBaseCmp = (function () {
             url: 'bin/Devel/sources/cultures/wijmo.culture.' + this.culture + '.js',
             dataType: 'script',
             success: function (data) {
-                wijmo.Control.invalidateAll(); // invalidate all controls to show new culture
+                wjcCore.Control.invalidateAll(); // invalidate all controls to show new culture
             },
         });
     };
@@ -261,7 +264,7 @@ var GridBaseCmp = (function () {
                 var termFound = false;
                 for (var key in item) {
                     var value = item[key];
-                    if (wijmo.isString(value) && value.toUpperCase().indexOf(terms[i]) > -1) {
+                    if (wjcCore.isString(value) && value.toUpperCase().indexOf(terms[i]) > -1) {
                         termFound = true;
                         break;
                     }
@@ -311,7 +314,7 @@ var GridBaseCmp = (function () {
                     // group amounts in ranges
                     // (could use the mapping function to group countries into continents, 
                     // names into initials, etc)
-                    groupDesc = new wijmo.collections.PropertyGroupDescription(propName, function (item, prop) {
+                    groupDesc = new wjcCore.PropertyGroupDescription(propName, function (item, prop) {
                         var value = item[prop];
                         if (value > 1000)
                             return 'Large Amounts';
@@ -325,7 +328,7 @@ var GridBaseCmp = (function () {
                 }
                 else if (propName) {
                     // group other properties by their specific values
-                    groupDesc = new wijmo.collections.PropertyGroupDescription(propName);
+                    groupDesc = new wjcCore.PropertyGroupDescription(propName);
                     cv.groupDescriptions.push(groupDesc);
                 }
             }

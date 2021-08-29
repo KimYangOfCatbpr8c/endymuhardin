@@ -9,36 +9,45 @@ app.controller('appCtrl', function ($scope, $http, $interval) {
     // initialize detail visibility mode
     $scope.detailMode = wijmo.grid.detail.DetailVisibilityMode.ExpandSingle;
 
+    // initialize animation mode
+    $scope.isAnimated = true;
+
     // initialize detail row FlexGrid with Northwind data, DetailProvider version
     // this is used to show how to use the FlexGridDetailProvider without a directive
     $scope.initDetailProvider = function (s, e) {
-        var dp = new wijmo.grid.detail.FlexGridDetailProvider(s);
-        dp.maxHeight = 250;
+        var dp = new wijmo.grid.detail.FlexGridDetailProvider(s, {
 
-        // create detail cells for a given row
-        dp.createDetailCell = function (row) {
-            var cell = document.createElement('div');
-            s.hostElement.appendChild(cell);
-            var detailGrid = new wijmo.grid.FlexGrid(cell, {
-                headersVisibility: wijmo.grid.HeadersVisibility.Column,
-                autoGenerateColumns: false,
-                itemsSource: $scope.getProducts(row.dataItem.CategoryID),
-                columns: [
-                    { header: 'ID', binding: 'ProductID'},
-                    { header: 'Name', binding: 'ProductName'},
-                    { header: 'Qty/Unit', binding: 'QuantityPerUnit'},
-                    { header: 'Unit Price', binding: 'UnitPrice' },
-                    { header: 'Discontinued', binding: 'Discontinued'}
-                ]
-            });
-            cell.parentElement.removeChild(cell);
-            return cell;
-        };
+            // use animation when showing details
+            isAnimated: true,
 
-        // remove details from items with odd CategoryID
-        dp.rowHasDetail = function (row) {
-            return row.dataItem.CategoryID % 2 == 0;
-        };
+            // limit height of detail rows
+            maxHeight: 250,
+
+            // create detail cells for a given row
+            createDetailCell: function (row) {
+                var cell = document.createElement('div');
+                s.hostElement.appendChild(cell);
+                var detailGrid = new wijmo.grid.FlexGrid(cell, {
+                    headersVisibility: wijmo.grid.HeadersVisibility.Column,
+                    autoGenerateColumns: false,
+                    itemsSource: $scope.getProducts(row.dataItem.CategoryID),
+                    columns: [
+                        { header: 'ID', binding: 'ProductID' },
+                        { header: 'Name', binding: 'ProductName' },
+                        { header: 'Qty/Unit', binding: 'QuantityPerUnit' },
+                        { header: 'Unit Price', binding: 'UnitPrice' },
+                        { header: 'Discontinued', binding: 'Discontinued' }
+                    ]
+                });
+                cell.parentElement.removeChild(cell);
+                return cell;
+            },
+
+            // remove details from items with odd CategoryID
+            rowHasDetail: function (row) {
+                return row.dataItem.CategoryID % 2 == 0;
+            }
+        });
     }
 
     // ** get NorthWind data to demonstrate

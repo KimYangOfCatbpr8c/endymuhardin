@@ -1,18 +1,18 @@
 ﻿/*
     *
-    * Wijmo Library 5.20162.211
+    * Wijmo Library 5.20171.282
     * http://wijmo.com/
     *
     * Copyright(c) GrapeCity, Inc.  All rights reserved.
     *
     * Licensed under the Wijmo Commercial License.
     * sales@wijmo.com
-    * http://wijmo.com/products/wijmo-5/license/
+    * wijmo.com/products/wijmo-5/license/
     *
     */
 /*
-* Wijmo culture file: ro (Romanian)
-*/
+ * Wijmo culture file: ro (Romanian)
+ */
 var wijmo;
 (function (wijmo) {
     wijmo.culture = {
@@ -30,8 +30,8 @@ var wijmo;
                 ':': ':',
                 firstDay: 1,
                 days: ['duminică', 'luni', 'marți', 'miercuri', 'joi', 'vineri', 'sâmbătă'],
-                daysAbbr: ['Dum', 'Lun', 'Mar', 'Mie', 'Joi', 'Vin', 'Sâm'],
-                months: ['Ianuarie', 'Februarie', 'Martie', 'Aprilie', 'Mai', 'Iunie', 'Iulie', 'August', 'Septembrie', 'Octombrie', 'Noiembrie', 'Decembrie'],
+                daysAbbr: ['dum.', 'lun.', 'mar.', 'mie.', 'joi', 'vin.', 'sâm.'],
+                months: ['ianuarie', 'februarie', 'martie', 'aprilie', 'mai', 'iunie', 'iulie', 'august', 'septembrie', 'octombrie', 'noiembrie', 'decembrie'],
                 monthsAbbr: ['ian.', 'feb.', 'mar.', 'apr.', 'mai', 'iun.', 'iul.', 'aug.', 'sept.', 'oct.', 'nov.', 'dec.'],
                 am: ['a.m.', 'a'],
                 pm: ['p.m.', 'p'],
@@ -51,7 +51,7 @@ var wijmo;
             itemsSelected: '{count:n0} articole selectat'
         },
         FlexGrid: {
-            groupHeaderFormat: '{name}: <b>{value} </b>({count:n0} articole)'
+            groupHeaderFormat: '{name}: <b>{value}</b> ({count:n0} articole)'
         },
         FlexGridFilter: {
             // filter
@@ -91,7 +91,7 @@ var wijmo;
                 { name: '(nu este setat)', op: null },
                 { name: 'Este egal cu', op: 0 },
                 { name: 'Este înainte de', op: 4 },
-                { name: 'Este după', op: 3 }
+                { name: 'este după', op: 3 }
             ],
             booleanOperators: [
                 { name: '(nu este setat)', op: null },
@@ -101,104 +101,237 @@ var wijmo;
         },
         olap: {
             PivotFieldEditor: {
-                dialogHeader: 'Field settings:',
-                header: 'Header:',
-                summary: 'Summary:',
-                showAs: 'Show As:',
-                weighBy: 'Weigh by:',
-                sort: 'Sort:',
-                filter: 'Filter:',
+                dialogHeader: 'Setările de câmp:',
+                header: 'Antet:',
+                summary: 'Rezumat:',
+                showAs: 'Arată ca:',
+                weighBy: 'Cântărească:',
+                sort: 'Sortare:',
+                filter: 'Filtru:',
                 format: 'Format:',
-                sample: 'Sample:',
-                edit: 'Edit...',
-                clear: 'Clear',
+                sample: 'Eşantion:',
+                edit: 'Editare…',
+                clear: 'Golire',
                 ok: 'OK',
-                cancel: 'Cancel',
-                none: '(none)',
+                cancel: 'Revocare',
+                none: '(nici unul)',
                 sorts: {
-                    asc: 'Ascending',
-                    desc: 'Descending'
+                    asc: 'Ascendent',
+                    desc: 'Descendent'
                 },
                 aggs: {
-                    sum: 'Sum',
-                    cnt: 'Count',
-                    avg: 'Average',
+                    sum: 'SUMĂ',
+                    cnt: 'Contor',
+                    avg: 'Medie',
                     max: 'Max',
                     min: 'Min',
-                    rng: 'Range',
+                    rng: 'Interval',
                     std: 'StdDev',
                     var: 'Var',
                     stdp: 'StdDevPop',
                     varp: 'VarPop'
                 },
                 calcs: {
-                    noCalc: 'No Calculation',
-                    dRow: 'Difference from previous row',
-                    dRowPct: '% Difference from previous row',
-                    dCol: 'Difference from previous column',
-                    dColPct: '% Difference from previous column'
+                    noCalc: 'Fără calcule',
+                    dRow: 'Diferenţa din rândul precedent',
+                    dRowPct: '% Diferența din rândul precedent',
+                    dCol: 'Spre deosebire de coloană anterioară',
+                    dColPct: '% Diferența din coloană anterioară',
+                    dPctGrand: '% din total general',
+                    dPctRow: '% din total rând',
+                    dPctCol: '% din total coloana',
+                    dRunTot: 'Total cumulat',
+                    dRunTotPct: 'Total cumulat %'
                 },
                 formats: {
-                    n0: 'Integer (n0)',
-                    n2: 'Float (n2)',
-                    c: 'Currency (c)',
-                    p0: 'Percentage (p0)',
-                    p2: 'Percentage (p2)',
-                    n2c: 'Thousands (n2,)',
-                    n2cc: 'Millions (n2,,)',
-                    n2ccc: 'Billions (n2,,,)',
-                    d: 'Date (d)',
-                    MMMMddyyyy: 'Month Day Year (MMMM dd, yyyy)',
-                    dMyy: 'Day Month Year (d/M/yy)',
-                    ddMyy: 'Day Month Year (dd/M/yy)',
-                    dMyyyy: 'Day Month Year (dd/M/yyyy)',
-                    MMMyyyy: 'Month Year (MMM yyyy)',
-                    MMMMyyyy: 'Month Year (MMMM yyyy)',
-                    yyyyQq: 'Year Quarter (yyyy "Q"q)',
-                    FYEEEEQU: 'Fiscal Year Quarter ("FY"EEEE "Q"U)'
+                    n0: 'Întreg (n0)',
+                    n2: 'Zecimal (n2)',
+                    c: 'Moneda (c)',
+                    p0: 'Procent (p0)',
+                    p2: 'Procent (p2)',
+                    n2c: 'Mii (n2,)',
+                    n2cc: 'Milioane de oameni (n2,,)',
+                    n2ccc: 'Miliarde (n2,,,)',
+                    d: 'Data (d)',
+                    MMMMddyyyy: 'Luna ziua anul (MMMM dd, yyyy)',
+                    dMyy: 'Ziua luna anul (d/M/yy)',
+                    ddMyy: 'Zi lună an (dd/M/yy)',
+                    dMyyyy: 'Ziua luna anul (dd/M/yyyy)',
+                    MMMyyyy: 'Lună an (MMM yyyy)',
+                    MMMMyyyy: 'Lună an (MMMM yyyy)',
+                    yyyyQq: 'Anul vechi (yyyy "Q"q)',
+                    FYEEEEQU: 'Anul fiscal trimestru ("FY"EEEE "Q"U)'
                 }
             },
             PivotEngine: {
-                grandTotal: 'Grand Total',
+                grandTotal: 'Total general',
                 subTotal: 'Subtotal'
             },
             PivotPanel: {
-                fields: 'Choose fields to add to report',
-                drag: 'Drag fields between areas below:',
-                filters: 'Filters',
-                cols: 'Columns',
-                rows: 'Rows',
-                vals: 'Values',
-                defer: 'Defer Updates',
-                update: 'Update'
+                fields: 'Alegere câmpuri pentru a adăuga la raport:',
+                drag: 'Glisați câmpuri între zonele de mai jos:',
+                filters: 'Filtre',
+                cols: 'Coloane',
+                rows: 'Rânduri',
+                vals: 'Valorile',
+                defer: 'Amâna actualizări',
+                update: 'Actualizare'
             },
             _ListContextMenu: {
-                up: 'Move Up',
-                down: 'Move Down',
-                first: 'Move do Beginning',
-                last: 'Move to End',
-                filter: 'Move to Report Filter',
-                rows: 'Move to Row Labels',
-                cols: 'Move to Column Labels',
-                vals: 'Move to Values',
-                remove: 'Remove Field',
-                edit: 'Field Settings...',
-                detail: 'Show Detail...'
+                up: 'Mutare în sus',
+                down: 'Mutare în jos',
+                first: 'Mutare la început',
+                last: 'Mutare la sfârșit',
+                filter: 'Se mută la filtrul de raport',
+                rows: 'Se mută la etichetele de rând',
+                cols: 'Se mută la etichetele de coloană',
+                vals: 'Se mută la valori',
+                remove: 'Eliminare câmp',
+                edit: 'Setări câmp…',
+                detail: 'Arată detalii…'
             },
             PivotChart: {
-                by: 'by',
-                and: 'and'
+                by: 'după',
+                and: 'și'
             },
             DetailDialog: {
-                header: 'Detail View:',
+                header: 'Vezi detalii:',
                 ok: 'OK',
-                items: '{cnt:n0} items',
-                item: '{cnt} item',
-                row: 'Row',
-                col: 'Column'
+                items: '{cnt:n0} elemente',
+                item: 'element {cnt}',
+                row: 'Rând',
+                col: 'Coloană'
             }
+        },
+        Viewer: {
+            cancel: 'Revocare',
+            ok: 'OK',
+            bottom: 'Partea de jos:',
+            top: 'Top:',
+            right: 'Dreapta:',
+            left: 'Stânga:',
+            margins: 'Margini (in)',
+            orientation: 'Orientare:',
+            paperKind: 'Tip hârtie:',
+            pageSetup: 'Configurare pagină',
+            landscape: 'Vedere',
+            portrait: 'Portret',
+            pageNumber: 'Număr de pagină',
+            zoomFactor: 'Factor de zoom',
+            paginated: 'Aspect pagină imprimată',
+            print: 'Imprimare',
+            search: 'Căutare',
+            matchCase: 'Potrivire litere',
+            wholeWord: 'Potrivire cuvinte complete',
+            searchResults: 'Rezultate căutare',
+            previousPage: 'Pagina anterioară',
+            nextPage: 'Pagina următoare',
+            firstPage: 'Prima pagină',
+            lastPage: 'Ultima pagină',
+            backwardHistory: 'Desiş de pădure',
+            forwardHistory: 'Înainte',
+            pageCount: 'Contor de pagini',
+            selectTool: 'Selectaţi instrumentul',
+            moveTool: 'Instrumentul deplasare',
+            continuousMode: 'Continuă vizualizare de pagină',
+            singleMode: 'Vizualizarea unei singure pagini',
+            wholePage: 'Potrivire toată pagina',
+            pageWidth: 'Potrivire lăţime de filme',
+            zoomOut: 'Micșorare',
+            zoomIn: 'Mărire',
+            exports: 'Export',
+            fullScreen: 'Ecran complet',
+            exitFullScreen: 'Ieșire ecran complet',
+            hamburgerMenu: 'Instrumente',
+            showSearchBar: 'Afișare bară de căutare',
+            viewMenu: 'Opţiuni de aspect',
+            searchOptions: 'Opțiuni căutare',
+            matchCaseMenuItem: 'Potrivire litere mari și mici',
+            wholeWordMenuItem: 'Cuvintele întregi',
+            thumbnails: 'Miniaturi de pagini',
+            outlines: 'Plan document',
+            loading: 'Incarcare…',
+            pdfExportName: 'PDF Adobe',
+            docxExportName: 'Cuvântul de deschidere XML',
+            xlsxExportName: 'Excel Open XML',
+            docExportName: 'Microsoft Word',
+            xlsExportName: 'Microsoft Excel',
+            mhtmlExportName: 'Arhivă web (MHTML)',
+            htmlExportName: 'HTML document',
+            rtfExportName: 'Document RTF',
+            metafileExportName: 'Metafişierele comprimat',
+            csvExportName: 'CSV',
+            tiffExportName: 'Imagini TIFF',
+            bmpExportName: 'Imaginile BMP',
+            emfExportName: 'Metafișier extins',
+            gifExportName: 'Imagini GIF',
+            jpgExportName: 'Imagini JPEG',
+            jpegExportName: 'Imagini JPEG',
+            pngExportName: 'PNG imagini',
+            abstractMethodException: 'Aceasta este o metoda abstracta, vă rugăm să pună în aplicare.',
+            cannotRenderPageNoViewPage: 'Nu se poate reda filme fără documentul sursă şi Vezi pagina.',
+            cannotRenderPageNoDoc: 'Nu se poate reda filme fără documentul sursă şi Vezi pagina.',
+            exportFormat: 'Format export:',
+            exportOptionTitle: 'Opțiuni export',
+            documentRestrictionsGroup: 'Restricţii de document',
+            passwordSecurityGroup: 'Securitate parolă',
+            outputRangeGroup: 'Gama de ieşire',
+            documentInfoGroup: 'Document info',
+            generalGroup: 'General',
+            docInfoTitle: 'Funcție',
+            docInfoAuthor: 'Autor',
+            docInfoManager: 'Manager',
+            docInfoOperator: 'Operatorul',
+            docInfoCompany: 'Firmă',
+            docInfoSubject: 'Subiect',
+            docInfoComment: 'Comentariu',
+            docInfoCreator: 'Creator',
+            docInfoProducer: 'Producător',
+            docInfoCreationTime: 'Momentul creării',
+            docInfoRevisionTime: 'Timp de revizuire',
+            docInfoKeywords: 'Cuvinte cheie',
+            embedFonts: 'Încorporare fonturi TrueType',
+            pdfACompatible: 'Compatibil cu PDF/A (nivelul 2B)',
+            useCompression: 'Utilizare comprimare',
+            useOutlines: 'Genera contururi',
+            allowCopyContent: 'Permite conţinut sau extragere',
+            allowEditAnnotations: 'Permite editarea de adnotare',
+            allowEditContent: 'Permite editarea conţinutului',
+            allowPrint: 'Permite imprimarea',
+            ownerPassword: 'Permisiuni (proprietarul) parola:',
+            userPassword: 'Document deschis (utilizator) parola:',
+            encryptionType: 'Nivel de criptare:',
+            paged: 'Paginat',
+            showNavigator: 'Arată Navigator',
+            singleFile: 'Singur fişier',
+            tolerance: 'Toleranta atunci când detectează limitele de text (puncte):',
+            pictureLayer: 'Strat de poze separate pentru utilizarea',
+            metafileType: 'Tipul metafişier',
+            monochrome: 'Monocrom',
+            resolution: 'Rezoluţie:',
+            outputRange: 'Zonă pagină:',
+            outputRangeInverted: 'Inversat',
+            showZoomBar: 'Bara de zoom',
+            searchPrev: 'Căutaţi anterioare',
+            searchNext: 'Cautare Next',
+            checkMark: '\u2713',
+            exportOk: 'Export…',
+            parameters: 'Parametri',
+            requiringParameters: 'Vă rugăm să intrare parametrii.',
+            nullParameterError: 'Valoarea nu poate fi NULL.',
+            invalidParameterError: 'Nevalidă de intrare.',
+            parameterNoneItemsSelected: '(nici unul)',
+            parameterAllItemsSelected: '(toate)',
+            parameterSelectAllItemText: '(Selectați tot)',
+            selectParameterValue: '(selectaţi valoarea)',
+            apply: 'Aplicare',
+            errorOccured: 'A apărut o eroare.'
         }
     };
+    var updc = window['wijmo']._updateCulture;
+    if (updc) {
+        updc();
+    }
 })(wijmo || (wijmo = {}));
 ;
-//# sourceMappingURL=wijmo.culture.ro.js.map
+

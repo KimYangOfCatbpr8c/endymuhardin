@@ -1,0 +1,6 @@
+E:\Wijmo Package\2017V1\Wijmo-Enterprise-Eval.20171.282\C1Wijmo-Enterprise-Eval_5.20171.282\Samples\JS\Angular\ExcelImportExport\ExcelImportExport\bin\FlexGridExportToExcel.dll.config
+E:\Wijmo Package\2017V1\Wijmo-Enterprise-Eval.20171.282\C1Wijmo-Enterprise-Eval_5.20171.282\Samples\JS\Angular\ExcelImportExport\ExcelImportExport\bin\FlexGridExportToExcel.dll
+E:\Wijmo Package\2017V1\Wijmo-Enterprise-Eval.20171.282\C1Wijmo-Enterprise-Eval_5.20171.282\Samples\JS\Angular\ExcelImportExport\ExcelImportExport\bin\FlexGridExportToExcel.pdb
+E:\Wijmo Package\2017V1\Wijmo-Enterprise-Eval.20171.282\C1Wijmo-Enterprise-Eval_5.20171.282\Samples\JS\Angular\ExcelImportExport\ExcelImportExport\obj\Debug\ExcelImportExport.csprojResolveAssemblyReference.cache
+E:\Wijmo Package\2017V1\Wijmo-Enterprise-Eval.20171.282\C1Wijmo-Enterprise-Eval_5.20171.282\Samples\JS\Angular\ExcelImportExport\ExcelImportExport\obj\Debug\FlexGridExportToExcel.dll
+E:\Wijmo Package\2017V1\Wijmo-Enterprise-Eval.20171.282\C1Wijmo-Enterprise-Eval_5.20171.282\Samples\JS\Angular\ExcelImportExport\ExcelImportExport\obj\Debug\FlexGridExportToExcel.pdb

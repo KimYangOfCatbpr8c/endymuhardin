@@ -1,6 +1,7 @@
+import * as wjcCore from 'wijmo/wijmo';
 export declare class DataSvc {
     constructor();
-    getData(count: number): wijmo.collections.ObservableArray;
+    getData(count: number): wjcCore.ObservableArray;
     getRandomData(idx: any): {
         x: any;
         y: number;

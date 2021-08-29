@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
@@ -13,6 +13,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
+var wjcCore = require('wijmo/wijmo');
+'use strict';
 var core_1 = require('@angular/core');
 var common_1 = require('@angular/common');
 var forms_1 = require('@angular/forms');
@@ -26,7 +28,7 @@ var DataCmp = (function (_super) {
     function DataCmp(dataSvc) {
         var _this = this;
         _super.call(this, dataSvc);
-        this.cv = new wijmo.collections.CollectionView(dataSvc.getData(500));
+        this.cv = new wjcCore.CollectionView(dataSvc.getData(500));
         this.cv.pageSize = 10;
         this.groupedList = this.cv.items;
         this.cv.filter = this._filterFun.bind(this);
@@ -96,7 +98,7 @@ var DataCmp = (function (_super) {
         if (sd.length > 0 && sd[0].property == propName) {
             ascending = !sd[0].ascending;
         }
-        var sdNew = new wijmo.collections.SortDescription(propName, ascending);
+        var sdNew = new wjcCore.SortDescription(propName, ascending);
         // remove any old sort descriptors and add the new one
         sd.splice(0, sd.length, sdNew);
     };
@@ -116,7 +118,7 @@ var DataCmp = (function (_super) {
         else {
             if (propName == 'amount') {
                 // when grouping by amount, use ranges instead of specific values
-                gd.push(new wijmo.collections.PropertyGroupDescription(propName, function (item, propName) {
+                gd.push(new wjcCore.PropertyGroupDescription(propName, function (item, propName) {
                     var value = item[propName]; // amount
                     if (value > 1000)
                         return 'Large Amounts';
@@ -129,12 +131,12 @@ var DataCmp = (function (_super) {
             }
             else {
                 // group by specific property values
-                gd.push(new wijmo.collections.PropertyGroupDescription(propName));
+                gd.push(new wjcCore.PropertyGroupDescription(propName));
             }
         }
     };
     DataCmp.prototype.isGroup = function (item) {
-        return item instanceof wijmo.collections.CollectionViewGroup;
+        return item instanceof wjcCore.CollectionViewGroup;
     };
     DataCmp.prototype._addGroup = function (g) {
         this.groupedList.push(g);

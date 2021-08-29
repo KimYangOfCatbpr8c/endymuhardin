@@ -10,13 +10,13 @@
 <label><input type="checkbox" ng-model="ctx.showRaisers"> Event Raisers</label>
 </dd>
 </dl>
-<div class="comment"><p>Angular 2 component for the <a href="topic/wijmo-wijmo.angular2.grid.sheet.WjFlexSheet.Class.html"><span class="identifier">WjFlexSheet</span></a> <a href="topic/wijmo.grid.sheet.Sheet.Class.html"><span class="identifier">Sheet</span></a> object.</p>
-<p>The <b>wj-sheet</b> component must be contained in a 
-<a href="topic/wijmo-wijmo.angular2.grid.sheet.WjFlexSheet.Class.html"><span class="identifier">WjFlexSheet</span></a> component.</p>
-<p>Use the <b>wj-sheet</b> component to add <b>Sheet</b> objects to your 
+<div class="comment"><p>Angular 2 component for the <a href="topic/wijmo.grid.sheet.Sheet.Class.html"><span class="identifier">Sheet</span></a> control. </p>
+<p>The <b>wj-sheet</b> component must be 
+contained in a <a href="topic/wijmo-wijmo.angular2.grid.sheet.WjFlexSheet.Class.html"><span class="identifier">WjFlexSheet</span></a> component.</p>
+<p>Use the <b>wj-sheet</b> component to add <b>Sheet</b> controls to your
 Angular 2 applications. For details about Angular 2 markup syntax, see 
-<a href="static/angular2Markup.html">Angular 2 Markup</a>.</p>
-<p>The <b>WjSheet</b> component is derived from the <b>Sheet</b> class and
+<a href="static/angular2Markup.html">Angular 2 Markup</a>.  </p>
+<p>The <b>WjSheet</b> component is derived from the <b>Sheet</b> control and
 inherits all its properties, events and methods.</p></div>
 </div>
 <div class="member-panel class members" ng-class="{ 'show-inherited' : ctx.showInherited, 'show-raisers' : ctx.showRaisers }">
@@ -28,14 +28,19 @@ inherits all its properties, events and methods.</p></div>
 <ul>
 <li class="mproperty inherited"><a href="topic/wijmo-wijmo.angular2.grid.sheet.WjSheet.Class.html/#columnCount">columnCount</a></li>
 <li class="mproperty inherited"><a href="topic/wijmo-wijmo.angular2.grid.sheet.WjSheet.Class.html/#grid">grid</a></li>
+<li class="mproperty"><a href="topic/wijmo-wijmo.angular2.grid.sheet.WjSheet.Class.html/#initialized">initialized</a></li>
+<li class="mproperty"><a href="topic/wijmo-wijmo.angular2.grid.sheet.WjSheet.Class.html/#isInitialized">isInitialized</a></li>
 <li class="mproperty inherited"><a href="topic/wijmo-wijmo.angular2.grid.sheet.WjSheet.Class.html/#itemsSource">itemsSource</a></li>
 <li class="mproperty inherited"><a href="topic/wijmo-wijmo.angular2.grid.sheet.WjSheet.Class.html/#name">name</a></li>
+<li class="mproperty"><a href="topic/wijmo-wijmo.angular2.grid.sheet.WjSheet.Class.html/#nameChangedNg">nameChangedNg</a></li>
 <li class="mproperty inherited"><a href="topic/wijmo-wijmo.angular2.grid.sheet.WjSheet.Class.html/#rowCount">rowCount</a></li>
 <li class="mproperty inherited"><a href="topic/wijmo-wijmo.angular2.grid.sheet.WjSheet.Class.html/#selectionRanges">selectionRanges</a></li>
 <li class="mproperty inherited"><a href="topic/wijmo-wijmo.angular2.grid.sheet.WjSheet.Class.html/#visible">visible</a></li>
+<li class="mproperty"><a href="topic/wijmo-wijmo.angular2.grid.sheet.WjSheet.Class.html/#wjProperty">wjProperty</a></li>
 </ul>
 <h3 class="node">Methods</h3>
 <ul>
+<li class="mmethod"><a href="topic/wijmo-wijmo.angular2.grid.sheet.WjSheet.Class.html/#created">created</a></li>
 <li class="mmethod inherited"><a href="topic/wijmo-wijmo.angular2.grid.sheet.WjSheet.Class.html/#getCellStyle">getCellStyle</a></li>
 <li class="mmethod inherited raiser"><a href="topic/wijmo-wijmo.angular2.grid.sheet.WjSheet.Class.html/#onNameChanged">onNameChanged</a></li>
 <li class="mmethod inherited raiser"><a href="topic/wijmo-wijmo.angular2.grid.sheet.WjSheet.Class.html/#onVisibleChanged">onVisibleChanged</a></li>
@@ -80,6 +85,22 @@ new <b>FlexGrid</b> control will be created.</p></li><li><b>sheetName</b>: <a hr
   <dt>Type</dt><dd><a href="topic/wijmo.grid.FlexGrid.Class.html"><span class="identifier">FlexGrid</span></a></dd>
 </dl>
 </div>
+<div id="initialized" class="member-panel mproperty">
+<h3>initialized</h3>
+<div class="comment"><p>This event is triggered after the component has been initialized by Angular, that is
+all bound properties have been assigned and child components (if any) have been initialized.</p></div>
+<dl class="dl-horizontal">
+  <dt>Type</dt><dd><span class="identifier">EventEmitter</span></dd>
+</dl>
+</div>
+<div id="isInitialized" class="member-panel mproperty">
+<h3>isInitialized</h3>
+<div class="comment"><p>Indicates whether the component has been initialized by Angular.
+Changes its value from false to true right before triggering the <b>initialized</b> event.</p></div>
+<dl class="dl-horizontal">
+  <dt>Type</dt><dd><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a></dd>
+</dl>
+</div>
 <div id="itemsSource" class="member-panel mproperty inherited">
 <h3>itemsSource</h3>
 <div class="comment"><p>Gets or sets the array or <a href="topic/wijmo.collections.ICollectionView.Interface.html"><span class="identifier">ICollectionView</span></a> for the <a href="topic/wijmo.grid.FlexGrid.Class.html"><span class="identifier">FlexGrid</span></a> instance of the sheet.</p></div>
@@ -94,6 +115,15 @@ new <b>FlexGrid</b> control will be created.</p></li><li><b>sheetName</b>: <a hr
 <dl class="dl-horizontal">
   <dt>Inherited From</dt><dd><a href="topic/wijmo.grid.sheet.Sheet.Class.html"><span class="identifier">Sheet</span></a></dd>
   <dt>Type</dt><dd><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank"><span class="identifier">string</span></a></dd>
+</dl>
+</div>
+<div id="nameChangedNg" class="member-panel mproperty">
+<h3>nameChangedNg</h3>
+<div class="comment"><p>Angular (EventEmitter) version of the Wijmo <b>nameChanged</b> event for programmatic access.
+Use this event name if you want to subscribe to the Angular version of the event in code.
+In template bindings use the conventional <b>nameChanged</b> Wijmo event name.</p></div>
+<dl class="dl-horizontal">
+  <dt>Type</dt><dd><span class="identifier">EventEmitter</span></dd>
 </dl>
 </div>
 <div id="rowCount" class="member-panel mproperty inherited">
@@ -120,9 +150,29 @@ new <b>FlexGrid</b> control will be created.</p></li><li><b>sheetName</b>: <a hr
   <dt>Type</dt><dd><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a></dd>
 </dl>
 </div>
+<div id="wjProperty" class="member-panel mproperty">
+<h3>wjProperty</h3>
+<div class="comment"><p>Gets or sets a name of a property that this component is assigned to. 
+Default value is ''.</p></div>
+<dl class="dl-horizontal">
+  <dt>Type</dt><dd><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank"><span class="identifier">string</span></a></dd>
+</dl>
+</div>
 </div>
 <h3 class="node">Methods</h3>
 <div class="member-list" ng-class="{ 'show-inherited' : ctx.showInherited, 'show-raisers' : ctx.showRaisers }">
+<div id="created" class="member-panel mmethod">
+<h3>created</h3>
+<pre>created(): <span class="identifier">void</span></pre>
+<div class="comment"><p>If you create a custom component inherited from a Wijmo component, you can override this  
+method and perform necessary initializations that you usually do in a class constructor. 
+This method is called in the last line of a Wijmo component constructor and allows you
+to not declare your custom component's constructor at all, thus preventing you from a necessity 
+to maintain constructor parameters and keep them in synch with Wijmo component's constructor parameters.</p></div>
+<dl class="dl-horizontal">
+  <dt>Returns</dt><dd><span class="identifier">void</span></dd>
+</dl>
+</div>
 <div id="getCellStyle" class="member-panel mmethod inherited">
 <h3>getCellStyle</h3>
 <pre>getCellStyle(rowIndex: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Number" target="_blank"><span class="identifier">number</span></a>, columnIndex: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Number" target="_blank"><span class="identifier">number</span></a>): <a href="topic/wijmo.grid.pdf.ICellStyle.Interface.html"><span class="identifier">ICellStyle</span></a></pre>

@@ -1,18 +1,18 @@
 ﻿/*
     *
-    * Wijmo Library 5.20162.211
+    * Wijmo Library 5.20171.282
     * http://wijmo.com/
     *
     * Copyright(c) GrapeCity, Inc.  All rights reserved.
     *
     * Licensed under the Wijmo Commercial License.
     * sales@wijmo.com
-    * http://wijmo.com/products/wijmo-5/license/
+    * wijmo.com/products/wijmo-5/license/
     *
     */
 /*
-* Wijmo culture file: lv (Latvian)
-*/
+ * Wijmo culture file: lv (Latvian)
+ */
 var wijmo;
 (function (wijmo) {
     wijmo.culture = {
@@ -23,7 +23,7 @@ var wijmo;
                 '.': ',',
                 ',': ' ',
                 percent: { pattern: ['-n%', 'n%'] },
-                currency: { decimals: 2, symbol: '€', pattern: ['-$n', '$n'] }
+                currency: { decimals: 2, symbol: '€', pattern: ['-n $', 'n $'] }
             },
             calendar: {
                 '/': '.',
@@ -33,8 +33,8 @@ var wijmo;
                 daysAbbr: ['Sv', 'Pr', 'Ot', 'Tr', 'Ce', 'Pk', 'Se'],
                 months: ['Janvāris', 'Februāris', 'Marts', 'Aprīlis', 'Maijs', 'Jūnijs', 'Jūlijs', 'Augusts', 'Septembris', 'Oktobris', 'Novembris', 'Decembris'],
                 monthsAbbr: ['Janv.', 'Febr.', 'Marts', 'Apr.', 'Maijs', 'Jūn.', 'Jūl.', 'Aug.', 'Sept.', 'Okt.', 'Nov.', 'Dec.'],
-                am: ['priekšpusdienā', 'priekšpusdienā'],
-                pm: ['pēcpusdienā', 'pēcpusdienā'],
+                am: ['AM', 'A'],
+                pm: ['PM', 'P'],
                 eras: ['m.ē.'],
                 patterns: {
                     d: 'dd.MM.yyyy', D: 'dddd, yyyy. "gada" d. MMMM',
@@ -51,7 +51,7 @@ var wijmo;
             itemsSelected: '{count:n0} priekšmeti izvēlēts'
         },
         FlexGrid: {
-            groupHeaderFormat: '{name}: <b>{value} </b>({count:n0} vienumi)'
+            groupHeaderFormat: '{name}: <b>{value}</b> ({count:n0} vienumi)'
         },
         FlexGridFilter: {
             // filter
@@ -67,8 +67,8 @@ var wijmo;
             null: '(nekas)',
             // condition filter
             header: 'Rādīt vienumus, kur vērtība',
-            and: 'un',
-            or: 'vai',
+            and: 'Un',
+            or: 'Vai',
             stringOperators: [
                 { name: '(nav iestatīta)', op: null },
                 { name: 'ir vienāda ar', op: 0 },
@@ -101,104 +101,237 @@ var wijmo;
         },
         olap: {
             PivotFieldEditor: {
-                dialogHeader: 'Field settings:',
-                header: 'Header:',
-                summary: 'Summary:',
-                showAs: 'Show As:',
-                weighBy: 'Weigh by:',
-                sort: 'Sort:',
-                filter: 'Filter:',
-                format: 'Format:',
-                sample: 'Sample:',
-                edit: 'Edit...',
-                clear: 'Clear',
-                ok: 'OK',
-                cancel: 'Cancel',
-                none: '(none)',
+                dialogHeader: 'Lauka iestatījumi:',
+                header: 'Galvene:',
+                summary: 'Kopsavilkums:',
+                showAs: 'Rādīt kā:',
+                weighBy: 'Nosver ar:',
+                sort: 'Kārtot:',
+                filter: 'Filtrs:',
+                format: 'Formāts:',
+                sample: 'Paraugs:',
+                edit: 'Labot…',
+                clear: 'Notīrīt',
+                ok: 'Labi',
+                cancel: 'Atcelt',
+                none: '(neviens)',
                 sorts: {
-                    asc: 'Ascending',
-                    desc: 'Descending'
+                    asc: 'Augošā secībā',
+                    desc: 'Dilstošā secībā'
                 },
                 aggs: {
-                    sum: 'Sum',
-                    cnt: 'Count',
-                    avg: 'Average',
-                    max: 'Max',
+                    sum: 'Summa',
+                    cnt: 'Skaits',
+                    avg: 'Vidējais',
+                    max: 'Maks',
                     min: 'Min',
-                    rng: 'Range',
-                    std: 'StdDev',
+                    rng: 'Diapazons',
+                    std: 'Standartnovirze',
                     var: 'Var',
                     stdp: 'StdDevPop',
                     varp: 'VarPop'
                 },
                 calcs: {
-                    noCalc: 'No Calculation',
-                    dRow: 'Difference from previous row',
-                    dRowPct: '% Difference from previous row',
-                    dCol: 'Difference from previous column',
-                    dColPct: '% Difference from previous column'
+                    noCalc: 'Bez aprēķina',
+                    dRow: 'Atšķirība no iepriekšējā rindā',
+                    dRowPct: 'Atšķirība no iepriekšējās rindas %',
+                    dCol: 'Atšķirība no iepriekšējā kolonnā',
+                    dColPct: 'Atšķirība no iepriekšējā kolonnā %',
+                    dPctGrand: '% no kopsummas',
+                    dPctRow: '% no kopsummas rindu',
+                    dPctCol: 'kolonnas kopsumma %',
+                    dRunTot: 'Pašreizējās kopsummas',
+                    dRunTotPct: 'pašreizējās kopsummas %'
                 },
                 formats: {
-                    n0: 'Integer (n0)',
-                    n2: 'Float (n2)',
-                    c: 'Currency (c)',
-                    p0: 'Percentage (p0)',
-                    p2: 'Percentage (p2)',
-                    n2c: 'Thousands (n2,)',
-                    n2cc: 'Millions (n2,,)',
-                    n2ccc: 'Billions (n2,,,)',
-                    d: 'Date (d)',
-                    MMMMddyyyy: 'Month Day Year (MMMM dd, yyyy)',
-                    dMyy: 'Day Month Year (d/M/yy)',
-                    ddMyy: 'Day Month Year (dd/M/yy)',
-                    dMyyyy: 'Day Month Year (dd/M/yyyy)',
-                    MMMyyyy: 'Month Year (MMM yyyy)',
-                    MMMMyyyy: 'Month Year (MMMM yyyy)',
-                    yyyyQq: 'Year Quarter (yyyy "Q"q)',
-                    FYEEEEQU: 'Fiscal Year Quarter ("FY"EEEE "Q"U)'
+                    n0: 'Vesels skaitlis (n0)',
+                    n2: 'Numurs (n2)',
+                    c: 'Valūtas (c)',
+                    p0: 'Procents (p0)',
+                    p2: 'Procents (p2)',
+                    n2c: 'Tūkstoši (n2,)',
+                    n2cc: 'Miljoniem (n2,,)',
+                    n2ccc: 'Miljardiem (n2,,,)',
+                    d: 'Datums (d)',
+                    MMMMddyyyy: 'Mēneša dienu gadā (MMMM dd, yyyy)',
+                    dMyy: 'Diena mēnesis gads (d/M/yy)',
+                    ddMyy: 'Diena mēnesis gads (dd/M/yy)',
+                    dMyyyy: 'Diena mēnesis gads (dd/M/yyyy)',
+                    MMMyyyy: 'Mēnesis, gads (MMM yyyy)',
+                    MMMMyyyy: 'Mēnesis, gads (MMMM yyyy)',
+                    yyyyQq: 'Gada ceturksni (yyyy "Q"q)',
+                    FYEEEEQU: 'Finanšu gada ceturksni ("FY"EEEE "Q"U)'
                 }
             },
             PivotEngine: {
-                grandTotal: 'Grand Total',
-                subTotal: 'Subtotal'
+                grandTotal: 'Gala summa',
+                subTotal: 'Starpsumma'
             },
             PivotPanel: {
-                fields: 'Choose fields to add to report',
-                drag: 'Drag fields between areas below:',
-                filters: 'Filters',
-                cols: 'Columns',
-                rows: 'Rows',
-                vals: 'Values',
-                defer: 'Defer Updates',
-                update: 'Update'
+                fields: 'Izvēlieties laukus, lai pievienotu atskaitei:',
+                drag: 'Velciet laukus no viena tālāk norādītā apgabala uz citu:',
+                filters: 'Filtri',
+                cols: 'Kolonnas',
+                rows: 'Rindas',
+                vals: 'Vērtības',
+                defer: 'Atlikt atjauninājumus',
+                update: 'Atjaunināt'
             },
             _ListContextMenu: {
-                up: 'Move Up',
-                down: 'Move Down',
-                first: 'Move do Beginning',
-                last: 'Move to End',
-                filter: 'Move to Report Filter',
-                rows: 'Move to Row Labels',
-                cols: 'Move to Column Labels',
-                vals: 'Move to Values',
-                remove: 'Remove Field',
-                edit: 'Field Settings...',
-                detail: 'Show Detail...'
+                up: 'Pārvietot augšup',
+                down: 'Pārvietot lejup',
+                first: 'Pārvietot uz sākumu',
+                last: 'Pārvietot uz beigām',
+                filter: 'Pārvietot uz atskaišu filtru',
+                rows: 'Pārvietot uz rindu etiķetēm',
+                cols: 'Pārvietot uz kolonnu etiķetēm',
+                vals: 'Pārvietot uz vērtībām',
+                remove: 'Noņemt lauku',
+                edit: 'Lauka iestatījumi…',
+                detail: 'Parādīt detaļas…'
             },
             PivotChart: {
-                by: 'by',
-                and: 'and'
+                by: 'pēc',
+                and: '–'
             },
             DetailDialog: {
-                header: 'Detail View:',
-                ok: 'OK',
-                items: '{cnt:n0} items',
-                item: '{cnt} item',
-                row: 'Row',
-                col: 'Column'
+                header: 'Detalizētajā skatā:',
+                ok: 'Labi',
+                items: '{cnt:n0} vienumi',
+                item: 'vienuma {cnt}',
+                row: 'Rinda',
+                col: 'Kolonna'
             }
+        },
+        Viewer: {
+            cancel: 'Atcelt',
+            ok: 'Labi',
+            bottom: 'Apakšējā:',
+            top: 'Augšmala:',
+            right: 'Labā:',
+            left: 'No kreisās:',
+            margins: 'Piemales (collās)',
+            orientation: 'Orientācija:',
+            paperKind: 'Papīra veida:',
+            pageSetup: 'Lappuses iestatīšana',
+            landscape: 'Ainava',
+            portrait: 'Portrets',
+            pageNumber: 'Lappuses numurs',
+            zoomFactor: 'Palielinājums',
+            paginated: 'Drukas izkārtojums',
+            print: 'Drukāšana',
+            search: 'Meklēt',
+            matchCase: 'Sērkociņu kārbiņu',
+            wholeWord: 'Salīdzināt tikai pilnu vārdu',
+            searchResults: 'Meklēšanas rezultāti',
+            previousPage: 'Iepriekšējā lapa',
+            nextPage: 'Nākamā lapa',
+            firstPage: 'Pirmā lapa',
+            lastPage: 'Pēdējā lapa',
+            backwardHistory: 'Atmuguriski',
+            forwardHistory: 'Uz priekšu',
+            pageCount: 'Lapu skaits',
+            selectTool: 'Atlases rīks',
+            moveTool: 'Pārvietošanas rīks',
+            continuousMode: 'Nepārtrauktu lapu skats',
+            singleMode: 'Vienas lappuses skatu',
+            wholePage: 'Ietilpināt visu lappusi',
+            pageWidth: 'Atbilstoši lappuses platumam',
+            zoomOut: 'Tālināt',
+            zoomIn: 'Tuvināt',
+            exports: 'Eksportēt',
+            fullScreen: 'Pilnekrāna režīms',
+            exitFullScreen: 'Iziet no pilnekrāna režīma',
+            hamburgerMenu: 'Rīki',
+            showSearchBar: 'Rādīt meklēšanas joslu',
+            viewMenu: 'Izkārtojuma opcijas',
+            searchOptions: 'Meklēšanas opcijas',
+            matchCaseMenuItem: 'Saskaņot reģistru',
+            wholeWordMenuItem: 'Visu vārdu atbilstība',
+            thumbnails: 'Lappušu sīktēlus',
+            outlines: 'Dokumenta karte',
+            loading: 'Notiek ielāde…',
+            pdfExportName: 'Adobe PDF',
+            docxExportName: 'Open XML Word',
+            xlsxExportName: 'Open XML Excel',
+            docExportName: 'Microsoft Word',
+            xlsExportName: 'Microsoft Excel',
+            mhtmlExportName: 'Web arhīvs (MHTML)',
+            htmlExportName: 'HTML dokuments',
+            rtfExportName: 'RTF dokuments',
+            metafileExportName: 'Saspiestu metafaili',
+            csvExportName: 'CSV',
+            tiffExportName: 'TIFF attēliem',
+            bmpExportName: 'BMP attēlus',
+            emfExportName: 'Paplašināta metafaila',
+            gifExportName: 'GIF attēlus',
+            jpgExportName: 'JPEG FORMĀTA attēli',
+            jpegExportName: 'JPEG FORMĀTA attēli',
+            pngExportName: 'PNG attēlu',
+            abstractMethodException: 'Tas ir abstrakts metodi, lūdzu to īstenot.',
+            cannotRenderPageNoViewPage: 'Nevar atveidot bez dokumenta avots un skatīt lappusi.',
+            cannotRenderPageNoDoc: 'Nevar atveidot bez dokumenta avots un skatīt lappusi.',
+            exportFormat: 'Eksportēšanas formāts:',
+            exportOptionTitle: 'Eksportēšanas opcijas',
+            documentRestrictionsGroup: 'Dokumenta ierobežojumus',
+            passwordSecurityGroup: 'Paroles drošība',
+            outputRangeGroup: 'Izvades diapazons',
+            documentInfoGroup: 'Dokumenta informācijas',
+            generalGroup: 'Vispārīgi',
+            docInfoTitle: 'Virsraksts',
+            docInfoAuthor: 'Autors',
+            docInfoManager: 'Pārvaldnieks',
+            docInfoOperator: 'Operators',
+            docInfoCompany: 'Uzņēmums',
+            docInfoSubject: 'Objekts',
+            docInfoComment: 'Comment',
+            docInfoCreator: 'Izveidojis',
+            docInfoProducer: 'producents',
+            docInfoCreationTime: 'Izveides laiks',
+            docInfoRevisionTime: 'Pārskatīšanas laikā',
+            docInfoKeywords: 'Atslēgvārdi',
+            embedFonts: 'Iegult TrueType fontus',
+            pdfACompatible: 'PDF/A saderīgs (līmenis 2)',
+            useCompression: 'Lietot saspiešanu',
+            useOutlines: 'Ģenerēt kontūras',
+            allowCopyContent: 'Atļaut satura kopēšana vai izgūšana',
+            allowEditAnnotations: 'Atļaut rediģēšanu anotācija',
+            allowEditContent: 'Atļaut satura rediģēšanu',
+            allowPrint: 'Ļauj drukāt',
+            ownerPassword: '(Īpašnieka) atļauju paroli:',
+            userPassword: 'Dokumentu atvērtu (lietotājs) parole:',
+            encryptionType: 'Šifrēšanas līmenis:',
+            paged: 'Lapots',
+            showNavigator: 'Navigators',
+            singleFile: 'Vienā failā',
+            tolerance: 'Pielaide, kad atklāšanā teksta robežas (punkti):',
+            pictureLayer: 'Izmantot atsevišķu attēlu slāni',
+            metafileType: 'Metafile tips:',
+            monochrome: 'Vienkrāsains',
+            resolution: 'Izšķirtspēja:',
+            outputRange: 'Lappušu diapazons:',
+            outputRangeInverted: 'Invertētā',
+            showZoomBar: 'Tālummaiņas josla',
+            searchPrev: 'Meklēt iepriekšējo',
+            searchNext: 'Blakus meklēšanas',
+            checkMark: '\u2713',
+            exportOk: 'Eksportēt…',
+            parameters: 'Parametri',
+            requiringParameters: 'Lūdzu, vai ievades parametriem.',
+            nullParameterError: 'Vērtība nevar būt nulle.',
+            invalidParameterError: 'Nederīga ievade.',
+            parameterNoneItemsSelected: '(neviens)',
+            parameterAllItemsSelected: '(visi)',
+            parameterSelectAllItemText: '(Atlasīt visu)',
+            selectParameterValue: '(atlasiet vērtību)',
+            apply: 'Lietot',
+            errorOccured: 'Radās kļūda.'
         }
     };
+    var updc = window['wijmo']._updateCulture;
+    if (updc) {
+        updc();
+    }
 })(wijmo || (wijmo = {}));
 ;
-//# sourceMappingURL=wijmo.culture.lv.js.map
+

@@ -1,18 +1,18 @@
 ﻿/*
     *
-    * Wijmo Library 5.20162.211
+    * Wijmo Library 5.20171.282
     * http://wijmo.com/
     *
     * Copyright(c) GrapeCity, Inc.  All rights reserved.
     *
     * Licensed under the Wijmo Commercial License.
     * sales@wijmo.com
-    * http://wijmo.com/products/wijmo-5/license/
+    * wijmo.com/products/wijmo-5/license/
     *
     */
 /*
-* Wijmo culture file: he (Hebrew)
-*/
+ * Wijmo culture file: he (Hebrew)
+ */
 var wijmo;
 (function (wijmo) {
     wijmo.culture = {
@@ -51,12 +51,12 @@ var wijmo;
             itemsSelected: 'פריטים שנבחרו  {count:n0}'
         },
         FlexGrid: {
-            groupHeaderFormat: '(פריטים {count:n0})<b> {value}</b> :{name}'
+            groupHeaderFormat: '(פריטים {count:n0}) <b>{value}</b> :{name}'
         },
         FlexGridFilter: {
             // filter
-            ascending: '\u2191 סדר עולה',
-            descending: '\u2193 סדר יורד',
+            ascending: '\u2191 ‏‏סדר עולה',
+            descending: '\u2193 ‏‏סדר יורד',
             apply: 'החל',
             clear: 'נקה',
             conditions: 'סנן לפי תנאי',
@@ -101,104 +101,237 @@ var wijmo;
         },
         olap: {
             PivotFieldEditor: {
-                dialogHeader: 'Field settings:',
-                header: 'Header:',
-                summary: 'Summary:',
-                showAs: 'Show As:',
-                weighBy: 'Weigh by:',
-                sort: 'Sort:',
-                filter: 'Filter:',
-                format: 'Format:',
-                sample: 'Sample:',
-                edit: 'Edit...',
-                clear: 'Clear',
-                ok: 'OK',
-                cancel: 'Cancel',
-                none: '(none)',
+                dialogHeader: 'הגדרות שדה:',
+                header: 'כותרת:',
+                summary: 'תקציר:',
+                showAs: 'להראות כמו:',
+                weighBy: 'שוקל על-ידי:',
+                sort: 'מיון:',
+                filter: 'מסנן:',
+                format: 'תבנית:',
+                sample: 'לדוגמה:',
+                edit: 'עריכה…',
+                clear: 'נקה',
+                ok: 'אישור',
+                cancel: 'ביטול',
+                none: '(ללא)',
                 sorts: {
-                    asc: 'Ascending',
-                    desc: 'Descending'
+                    asc: '‏‏סדר עולה',
+                    desc: '‏‏סדר יורד'
                 },
                 aggs: {
-                    sum: 'Sum',
-                    cnt: 'Count',
-                    avg: 'Average',
-                    max: 'Max',
+                    sum: 'סכום',
+                    cnt: '‏‏ספירה',
+                    avg: 'ממוצע',
+                    max: 'מקסימום',
                     min: 'Min',
-                    rng: 'Range',
-                    std: 'StdDev',
+                    rng: 'טווח',
+                    std: 'סטיית_תקן_נאמדת',
                     var: 'Var',
                     stdp: 'StdDevPop',
                     varp: 'VarPop'
                 },
                 calcs: {
-                    noCalc: 'No Calculation',
-                    dRow: 'Difference from previous row',
-                    dRowPct: '% Difference from previous row',
-                    dCol: 'Difference from previous column',
-                    dColPct: '% Difference from previous column'
+                    noCalc: 'ללא חישוב',
+                    dRow: 'ההבדל בין השורה הקודמת',
+                    dRowPct: '% מן השורה הקודמת',
+                    dCol: 'ההבדל מעמודה הקודם',
+                    dColPct: '% הבדל בינו לבין דף קודמות עמודה',
+                    dPctGrand: '% מן הסכום הכולל',
+                    dPctRow: '% סה כ שורה',
+                    dPctCol: '% של עמודה מוחלטת',
+                    dRunTot: 'הסכום המצטבר',
+                    dRunTotPct: '% הסכום השוטף'
                 },
                 formats: {
-                    n0: 'Integer (n0)',
-                    n2: 'Float (n2)',
-                    c: 'Currency (c)',
-                    p0: 'Percentage (p0)',
-                    p2: 'Percentage (p2)',
-                    n2c: 'Thousands (n2,)',
-                    n2cc: 'Millions (n2,,)',
-                    n2ccc: 'Billions (n2,,,)',
-                    d: 'Date (d)',
-                    MMMMddyyyy: 'Month Day Year (MMMM dd, yyyy)',
-                    dMyy: 'Day Month Year (d/M/yy)',
-                    ddMyy: 'Day Month Year (dd/M/yy)',
-                    dMyyyy: 'Day Month Year (dd/M/yyyy)',
-                    MMMyyyy: 'Month Year (MMM yyyy)',
-                    MMMMyyyy: 'Month Year (MMMM yyyy)',
-                    yyyyQq: 'Year Quarter (yyyy "Q"q)',
-                    FYEEEEQU: 'Fiscal Year Quarter ("FY"EEEE "Q"U)'
+                    n0: 'מספר שלם (n0)',
+                    n2: 'לצוף (n2)',
+                    c: 'מטבע (c)',
+                    p0: 'אחוז (p0)',
+                    p2: 'אחוז (p2)',
+                    n2c: 'אלפים (,n2)',
+                    n2cc: 'מיליונים (,,n2)',
+                    n2ccc: 'מיליארדים (,,,n2)',
+                    d: 'תאריך (d)',
+                    MMMMddyyyy: 'חודש יום שנה (MMMM dd, yyyy)',
+                    dMyy: 'יום חודש שנה (d/M/yy)',
+                    ddMyy: 'יום חודש שנה (M/dd/yy)',
+                    dMyyyy: 'יום חודש שנה (M/dd/yyyy)',
+                    MMMyyyy: 'חודש שנה (MMM yyyy)',
+                    MMMMyyyy: 'חודש שנה (MMMM yyyy)',
+                    yyyyQq: 'רבעון שנת (q yyyy "Q")',
+                    FYEEEEQU: 'רבעון שנת הכספים ("FY"EEEE "Q"U)'
                 }
             },
             PivotEngine: {
-                grandTotal: 'Grand Total',
-                subTotal: 'Subtotal'
+                grandTotal: 'סכום כולל',
+                subTotal: 'סכום ביניים'
             },
             PivotPanel: {
-                fields: 'Choose fields to add to report',
-                drag: 'Drag fields between areas below:',
-                filters: 'Filters',
-                cols: 'Columns',
-                rows: 'Rows',
-                vals: 'Values',
-                defer: 'Defer Updates',
-                update: 'Update'
+                fields: 'בחר שדות כדי להוסיף לדוח:',
+                drag: 'גרור שדות בין האזורים שלהלן:',
+                filters: 'מסננים',
+                cols: 'טורים',
+                rows: 'שורות',
+                vals: 'ערכים',
+                defer: 'דחה את העדכונים',
+                update: 'עדכון'
             },
             _ListContextMenu: {
-                up: 'Move Up',
-                down: 'Move Down',
-                first: 'Move do Beginning',
-                last: 'Move to End',
-                filter: 'Move to Report Filter',
-                rows: 'Move to Row Labels',
-                cols: 'Move to Column Labels',
-                vals: 'Move to Values',
-                remove: 'Remove Field',
-                edit: 'Field Settings...',
-                detail: 'Show Detail...'
+                up: 'הזז למעלה',
+                down: 'הזז למטה',
+                first: 'העבר להתחלה',
+                last: 'העבר לסוף',
+                filter: 'העבר אל מסנן דוחות',
+                rows: 'העבר אל תוויות שורה',
+                cols: 'העבר אל תוויות עמודה',
+                vals: 'העבר אל ערכים',
+                remove: 'הסר שדה',
+                edit: 'הגדרות שדה…',
+                detail: 'הצג פירוט…'
             },
             PivotChart: {
-                by: 'by',
-                and: 'and'
+                by: 'לפי',
+                and: 'לבין'
             },
             DetailDialog: {
-                header: 'Detail View:',
-                ok: 'OK',
-                items: '{cnt:n0} items',
-                item: '{cnt} item',
+                header: 'תצוגת הפרטים:',
+                ok: 'אישור',
+                items: '{cnt:n0} פריטים',
+                item: 'הפריט {cnt}',
                 row: 'Row',
                 col: 'Column'
             }
+        },
+        Viewer: {
+            cancel: 'ביטול',
+            ok: 'אישור',
+            bottom: 'תחתונים:',
+            top: 'עליון:',
+            right: 'ימין:',
+            left: 'שמאל:',
+            margins: 'שוליים (אינצ\'ים)',
+            orientation: 'כיוון:',
+            paperKind: 'סוג נייר:',
+            pageSetup: 'הגדרת עמוד',
+            landscape: 'לרוחב',
+            portrait: 'לאורך',
+            pageNumber: 'מספר עמוד',
+            zoomFactor: 'זום פקטור',
+            paginated: 'פריסת הדפסה',
+            print: 'הדפסה',
+            search: 'חפש',
+            matchCase: 'התאם רישיות',
+            wholeWord: 'אתר מילים שלמות בלבד',
+            searchResults: 'תוצאות חיפוש',
+            previousPage: 'הדף הקודם',
+            nextPage: 'העמוד הבא',
+            firstPage: 'עמוד ראשון',
+            lastPage: 'דף אחרון',
+            backwardHistory: 'אחורה',
+            forwardHistory: 'קדימה',
+            pageCount: 'ספירת דפים',
+            selectTool: 'בחרו בכלי',
+            moveTool: 'הכלי הזזה',
+            continuousMode: 'תצוגת עמוד רציף',
+            singleMode: 'התצוגה \' עמוד בודד \'',
+            wholePage: 'התאם עמוד שלם',
+            pageWidth: 'התאם רוחב עמוד',
+            zoomOut: 'הקטן תצוגה',
+            zoomIn: 'הגדל תצוגה',
+            exports: 'ייצוא',
+            fullScreen: 'מסך מלא',
+            exitFullScreen: 'צא ממסך מלא',
+            hamburgerMenu: 'כלים',
+            showSearchBar: 'הצג את סרגל החיפוש',
+            viewMenu: 'אפשרויות פריסה',
+            searchOptions: 'אפשרויות חיפוש',
+            matchCaseMenuItem: 'התאם רישיות',
+            wholeWordMenuItem: 'משחק מילים שלמות',
+            thumbnails: 'תמונות עמוד ממוזערות',
+            outlines: 'מפת מסמך',
+            loading: 'טוען…',
+            pdfExportName: 'PDF של Adobe',
+            docxExportName: 'המילה open XML',
+            xlsxExportName: 'Excel open XML',
+            docExportName: 'Microsoft Word',
+            xlsExportName: 'Microsoft Excel',
+            mhtmlExportName: 'ארכיון אינטרנט (MHTML)',
+            htmlExportName: 'מסמך HTML',
+            rtfExportName: 'מסמך RTF',
+            metafileExportName: 'קבצי metafile דחוס',
+            csvExportName: 'CSV',
+            tiffExportName: 'תמונות tiff',
+            bmpExportName: 'תמונות BMP',
+            emfExportName: 'קבצי metafile משופרים',
+            gifExportName: 'תמונות GIF',
+            jpgExportName: 'תמונות JPEG',
+            jpegExportName: 'תמונות JPEG',
+            pngExportName: 'תמונות PNG',
+            abstractMethodException: 'זוהי שיטה אבסטרקטית, בבקשה ליישם את זה.',
+            cannotRenderPageNoViewPage: 'לא רינדור העמוד ללא מסמך מקור והעמוד תצוגה.',
+            cannotRenderPageNoDoc: 'לא רינדור העמוד ללא מסמך מקור והעמוד תצוגה.',
+            exportFormat: 'תבנית ייצוא:',
+            exportOptionTitle: 'אפשרויות ייצוא',
+            documentRestrictionsGroup: 'המסמך הגבלות',
+            passwordSecurityGroup: 'אבטחת סיסמה',
+            outputRangeGroup: 'טווח פלט',
+            documentInfoGroup: 'פרטי מסמך',
+            generalGroup: 'כללי',
+            docInfoTitle: 'תואר',
+            docInfoAuthor: 'מחבר',
+            docInfoManager: 'מנהל',
+            docInfoOperator: 'אופרטור',
+            docInfoCompany: 'חברה',
+            docInfoSubject: 'Subject',
+            docInfoComment: 'תגובה',
+            docInfoCreator: 'Creator',
+            docInfoProducer: 'מפיק',
+            docInfoCreationTime: 'זמן יצירה',
+            docInfoRevisionTime: 'זמן התיקון',
+            docInfoKeywords: 'Keywords',
+            embedFonts: 'הטבע גופני TrueType',
+            pdfACompatible: 'תואם PDF/A (רמת 2B)',
+            useCompression: 'השתמש בדחיסה',
+            useOutlines: 'יצירת קווי מתאר',
+            allowCopyContent: 'לאפשר העתקת תוכן או חילוץ',
+            allowEditAnnotations: 'אפשר עריכה ביאור',
+            allowEditContent: 'אפשר עריכת תוכן',
+            allowPrint: 'אפשר הדפסה',
+            ownerPassword: 'סיסמת ההרשאות (בעל):',
+            userPassword: 'המסמך הפתוח (המשתמש) סיסמה:',
+            encryptionType: 'רמת הצפנה:',
+            paged: 'בקובץ החלפה',
+            showNavigator: 'הצג נווט',
+            singleFile: 'קובץ יחיד',
+            tolerance: 'עמידות בעת זיהוי גבולות מלל (נקודות):',
+            pictureLayer: 'שכבת תמונה נפרדים שימוש',
+            metafileType: 'סוג קובץ Metafile:',
+            monochrome: 'חד-צבעי',
+            resolution: 'רזולוציה:',
+            outputRange: 'טווח עמודים:',
+            outputRangeInverted: 'הפוך',
+            showZoomBar: 'שארק',
+            searchPrev: 'חפש את הקודם',
+            searchNext: 'חפש את הבא',
+            checkMark: '\u2713',
+            exportOk: 'ייצוא…',
+            parameters: 'Parameters',
+            requiringParameters: 'בבקשה פרמטרים של קלט.',
+            nullParameterError: 'הערך אינו יכול להיות Null.',
+            invalidParameterError: 'לא חוקי קלט.',
+            parameterNoneItemsSelected: '(ללא)',
+            parameterAllItemsSelected: '(הכל)',
+            parameterSelectAllItemText: '(בחר הכל)',
+            selectParameterValue: '(בחר ערך)',
+            apply: 'החל',
+            errorOccured: 'אירעה שגיאה.'
         }
     };
+    var updc = window['wijmo']._updateCulture;
+    if (updc) {
+        updc();
+    }
 })(wijmo || (wijmo = {}));
 ;
-//# sourceMappingURL=wijmo.culture.he.js.map
+

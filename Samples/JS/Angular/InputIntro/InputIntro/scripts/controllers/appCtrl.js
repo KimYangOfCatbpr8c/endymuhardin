@@ -157,5 +157,7 @@
             $scope.musicians.push(item);
         }
 
+        // MultiAutoComplete
+        $scope.selectedCountries = ['Belgium', 'Vietnam'];
     });
 })();

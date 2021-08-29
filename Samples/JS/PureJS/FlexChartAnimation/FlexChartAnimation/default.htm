@@ -1,0 +1,206 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <title>FlexChart Animation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- styles -->
+    <link rel="stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="styles/vendor/wijmo.min.css" />
+    <link href="styles/app.css" rel="stylesheet" type="text/css" />
+
+    <!-- jQuery/Bootstrap -->
+    <script src="http://code.jquery.com/jquery-2.2.4.min.js" type="text/javascript"></script>
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js" type="text/javascript"></script>
+
+    <!-- Wijmo -->
+    <script src="scripts/vendor/wijmo.min.js" type="text/javascript"></script>
+    <script src="scripts/vendor/wijmo.input.min.js" type="text/javascript"></script>
+    <script src="scripts/vendor/wijmo.chart.min.js" type="text/javascript"></script>
+    <script src="scripts/vendor/wijmo.chart.animation.min.js" type="text/javascript"></script>
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <img src="resources/wijmo5.png" />
+            <h1>
+                Chart Animation
+            </h1>
+            <p>
+                This page shows how to play animation on FlexChart and FlexPie.
+            </p>
+        </div>
+    </div>
+    <div class="container">
+        <!-- flex chart -->
+        <div class="desc">
+            <h2>FlexChart</h2>
+            <p>
+                This view shows ChartAnimation for FlexChart.
+            </p>
+            <p>
+                You can use different animation modes for FlexChart by setting the <b>animationMode</b> property of the ChartAnimation.
+            </p>
+            <p>
+                The ChartAnimation class has a <b>duration</b> property that allows you to set
+                the length of animation in milliseconds.
+            </p>
+            <p>
+                In this sample, maximum number of series is set to 5.
+            </p>
+        </div>
+        <div class="container-fluid well">
+            <div class="row">
+                <div class="col-sm-12 col-xs-12">
+                    <select id="chartType">
+                        <option value="Bar">Bar</option>
+                        <option value="Column">Column</option>
+                        <option value="Area">Area</option>
+                        <option value="Line">Line</option>
+                        <option value="LineSymbols">LineSymbols</option>
+                        <option value="Spline">Spline</option>
+                        <option value="SplineSymbols">SplineSymbols</option>
+                        <option value="SplineArea">SplineArea</option>
+                        <option value="Scatter">Scatter</option>
+                    </select>
+                    <select id="chartAnimationMode">
+                        <option value="Point">Point</option>
+                        <option value="Series">Series</option>
+                        <option value="All">All</option>
+                    </select>
+                    <select id="chartEasing">
+                        <option value="Linear">Linear</option>
+                        <option value="Swing">Swing</option>
+                        <option value="EaseInQuad">EaseInQuad</option>
+                        <option value="EaseOutQuad">EaseOutQuad</option>
+                        <option value="EaseInOutQuad">EaseInOutQuad</option>
+                        <option value="EaseInCubic">EaseInCubic</option>
+                        <option value="EaseOutCubic">EaseOutCubic</option>
+                        <option value="EaseInOutCubic">EaseInOutCubic</option>
+                        <option value="EaseInQuart">EaseInQuart</option>
+                        <option value="EaseOutQuart">EaseOutQuart</option>
+                        <option value="EaseInOutQuart">EaseInOutQuart</option>
+                        <option value="EaseInQuint">EaseInQuint</option>
+                        <option value="EaseOutQuint">EaseOutQuint</option>
+                        <option value="EaseInOutQuint">EaseInOutQuint</option>
+                        <option value="EaseInSine">EaseInSine</option>
+                        <option value="EaseOutSine">EaseOutSine</option>
+                        <option value="EaseInOutSine">EaseInOutSine</option>
+                        <option value="EaseInExpo">EaseInExpo</option>
+                        <option value="EaseOutExpo">EaseOutExpo</option>
+                        <option value="EaseInOutExpo">EaseInOutExpo</option>
+                        <option value="EaseInCirc">EaseInCirc</option>
+                        <option value="EaseOutCirc">EaseOutCirc</option>
+                        <option value="EaseInOutCirc">EaseInOutCirc</option>
+                        <option value="EaseInBack">EaseInBack</option>
+                        <option value="EaseOutBack">EaseOutBack</option>
+                        <option value="EaseInOutBack">EaseInOutBack</option>
+                        <option value="EaseInBounce">EaseInBounce</option>
+                        <option value="EaseOutBounce">EaseOutBounce</option>
+                        <option value="EaseInOutBounce">EaseInOutBounce</option>
+                        <option value="EaseInElastic">EaseInElastic</option>
+                        <option value="EaseOutElastic">EaseOutElastic</option>
+                        <option value="EaseInOutElastic">EaseInOutElastic</option>
+                    </select>
+                    <label id="chartLabelDuration" for="chartDuration">Duration:</label>
+                    <input id="chartDuration" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-xs-12 flexchart">
+                    <button id="chartResetData" type="button" class="btn btn-default">reset data</button>
+                    <select id="chartAddMenu">
+                        <option value="addSeries">Add Series</option>
+                        <option value="addFirstPoint">Add First Point</option>
+                        <option value="addLastPoint">Add Last Point</option>
+                    </select>
+                    <select id="chartRemoveMenu">
+                        <option value="removeSeries">Remove Series</option>
+                        <option value="removeFirstPoint">Remove First Point</option>
+                        <option value="removeLastPoint">Remove Last Point</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div id="flexChart"></div>
+        <!-- flex pie -->
+        <div class="desc">
+            <h2>FlexPie</h2>
+            <p>
+                This view shows ChartAnimation for FlexPie.
+            </p>
+            <p>
+                You can use different animation modes for FlexPie by setting the <b>animationMode</b> property of ChartAnimation.
+            </p>
+            <p>
+                The ChartAnimation class has a <b>duration</b> property that allows you to set
+                the length of animation in milliseconds.
+            </p>
+        </div>
+        <div class="container-fluid well">
+            <div class="row">
+                <div class="col-sm-12 col-xs-12">
+                    <select id="pieAnimationMode">
+                        <option value="Point">Point</option>
+                        <option value="Series">Series</option>
+                        <option value="All">All</option>
+                    </select>
+                    <select id="pieEasing">
+                        <option value="Linear">Linear</option>
+                        <option value="Swing">Swing</option>
+                        <option value="EaseInQuad">EaseInQuad</option>
+                        <option value="EaseOutQuad">EaseOutQuad</option>
+                        <option value="EaseInOutQuad">EaseInOutQuad</option>
+                        <option value="EaseInCubic">EaseInCubic</option>
+                        <option value="EaseOutCubic">EaseOutCubic</option>
+                        <option value="EaseInOutCubic">EaseInOutCubic</option>
+                        <option value="EaseInQuart">EaseInQuart</option>
+                        <option value="EaseOutQuart">EaseOutQuart</option>
+                        <option value="EaseInOutQuart">EaseInOutQuart</option>
+                        <option value="EaseInQuint">EaseInQuint</option>
+                        <option value="EaseOutQuint">EaseOutQuint</option>
+                        <option value="EaseInOutQuint">EaseInOutQuint</option>
+                        <option value="EaseInSine">EaseInSine</option>
+                        <option value="EaseOutSine">EaseOutSine</option>
+                        <option value="EaseInOutSine">EaseInOutSine</option>
+                        <option value="EaseInExpo">EaseInExpo</option>
+                        <option value="EaseOutExpo">EaseOutExpo</option>
+                        <option value="EaseInOutExpo">EaseInOutExpo</option>
+                        <option value="EaseInCirc">EaseInCirc</option>
+                        <option value="EaseOutCirc">EaseOutCirc</option>
+                        <option value="EaseInOutCirc">EaseInOutCirc</option>
+                        <option value="EaseInBack">EaseInBack</option>
+                        <option value="EaseOutBack">EaseOutBack</option>
+                        <option value="EaseInOutBack">EaseInOutBack</option>
+                        <option value="EaseInBounce">EaseInBounce</option>
+                        <option value="EaseOutBounce">EaseOutBounce</option>
+                        <option value="EaseInOutBounce">EaseInOutBounce</option>
+                        <option value="EaseInElastic">EaseInElastic</option>
+                        <option value="EaseOutElastic">EaseOutElastic</option>
+                        <option value="EaseInOutElastic">EaseInOutElastic</option>
+                    </select>
+                    <label id="pieLabelDuration" for="pieDuration">Duration:</label>
+                    <input id="pieDuration" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-xs-12">
+                    <label id="labelInnerRadius" for="pieInnerRadius">innerRadius:</label>
+                    <input id="pieInnerRadius" />
+                    <button id="pieResetData" type="button" class="btn btn-default">reset data</button>
+                    <button id="pieAddSlice" type="button" class="btn btn-default">add slice</button>
+                    <button id="pieRemoveSlice" type="button" class="btn btn-default">remove slice</button>
+                </div>
+            </div>
+        </div>
+        <div id="flexPie"></div>
+    </div>
+
+    <script src="scripts/app.js" type="text/javascript"></script>
+    <!-- Google analytics -->
+    
+    <script src="http://cdn.wijmo.com/wijmo.sample.toolbar.js" type="text/javascript"></script>
+</body>
+</html>

@@ -1,7 +1,7 @@
 ﻿<!--
     Create Account form
 -->
-<form>
+<form name="create" ng-submit="submit($event)">
     <h4 class="modal-header">
         Create Account
         <button type="button" tabindex="-1" class="close wj-hide" >&times;</button>
@@ -38,14 +38,14 @@
                 class="form-control" 
                 ng-model="auth.form.pw2"
                 type="password" 
-                wj-validation-error="auth.form.pw != auth.form.pw ? 'Passwords don\'t match.' : ''" />
+                wj-validation-error="auth.form.pw != auth.form.pw2 ? 'Passwords don\'t match.' : ''" />
         </label>
         <label class="error">
-            {{auth.form.error}}
+            {{ auth.form.error }}
         </label>
     </div>
     <div class="modal-footer">
-        <button class="btn btn-primary wj-hide-ok">
+        <button class="btn btn-primary" type="submit">
             Create Account
         </button>
     </div>

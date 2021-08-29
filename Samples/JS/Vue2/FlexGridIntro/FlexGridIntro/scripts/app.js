@@ -107,14 +107,23 @@
                         }
                     }
                 }
-            }
+            },
         },
+
+        // watch filter and update CollectionView when it changes
         created: function () {
             this.cvFilter.filter = this.filter;
             this.$watch('filterText', function () {
                 this.filterRx = this.filterText ? new RegExp(this.filterText, 'i') : null;
                 this.cvFilter.refresh();
             });
+        },
+
+        // connect group panel and grid
+        mounted: function () {
+            var grid = wijmo.Control.getControl(document.getElementById('theGrid'));
+            var panel = wijmo.Control.getControl(document.getElementById('thePanel'));
+            panel.grid = grid;
         }
     });
 }

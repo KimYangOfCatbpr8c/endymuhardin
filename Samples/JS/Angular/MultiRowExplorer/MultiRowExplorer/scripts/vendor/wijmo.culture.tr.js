@@ -1,18 +1,18 @@
 ﻿/*
     *
-    * Wijmo Library 5.20162.211
+    * Wijmo Library 5.20171.282
     * http://wijmo.com/
     *
     * Copyright(c) GrapeCity, Inc.  All rights reserved.
     *
     * Licensed under the Wijmo Commercial License.
     * sales@wijmo.com
-    * http://wijmo.com/products/wijmo-5/license/
+    * wijmo.com/products/wijmo-5/license/
     *
     */
 /*
-* Wijmo culture file: tr (Turkish)
-*/
+ * Wijmo culture file: tr (Turkish)
+ */
 var wijmo;
 (function (wijmo) {
     wijmo.culture = {
@@ -33,8 +33,8 @@ var wijmo;
                 daysAbbr: ['Paz', 'Pzt', 'Sal', 'Çar', 'Per', 'Cum', 'Cmt'],
                 months: ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'],
                 monthsAbbr: ['Oca', 'Şub', 'Mar', 'Nis', 'May', 'Haz', 'Tem', 'Ağu', 'Eyl', 'Eki', 'Kas', 'Ara'],
-                am: ['ÖÖ', 'ÖÖ'],
-                pm: ['ÖS', 'ÖS'],
+                am: ['ÖÖ', 'Ö'],
+                pm: ['ÖS', 'Ö'],
                 eras: ['MS'],
                 patterns: {
                     d: 'd.MM.yyyy', D: 'd MMMM yyyy dddd',
@@ -51,7 +51,7 @@ var wijmo;
             itemsSelected: '{count:n0} ürün seçilen'
         },
         FlexGrid: {
-            groupHeaderFormat: '{name}: <b>{value} </b>({count:n0} öğe)'
+            groupHeaderFormat: '{name}: <b>{value}</b> ({count:n0} öğe)'
         },
         FlexGridFilter: {
             // filter
@@ -66,7 +66,7 @@ var wijmo;
             selectAll: 'Tümünü Seç',
             null: '(yok)',
             // condition filter
-            header: 'Şu değere sahip öğeleri göster:',
+            header: 'Şu değere sahip öğeleri göster',
             and: 'Ve',
             or: 'Veya',
             stringOperators: [
@@ -101,104 +101,237 @@ var wijmo;
         },
         olap: {
             PivotFieldEditor: {
-                dialogHeader: 'Field settings:',
-                header: 'Header:',
-                summary: 'Summary:',
-                showAs: 'Show As:',
-                weighBy: 'Weigh by:',
-                sort: 'Sort:',
-                filter: 'Filter:',
-                format: 'Format:',
-                sample: 'Sample:',
-                edit: 'Edit...',
-                clear: 'Clear',
-                ok: 'OK',
-                cancel: 'Cancel',
-                none: '(none)',
+                dialogHeader: 'Alan ayarları:',
+                header: 'Başlık:',
+                summary: 'Özeti:',
+                showAs: 'Gibi görüntüler:',
+                weighBy: 'Tarafından tartmak:',
+                sort: 'Sıralama:',
+                filter: 'Filtre:',
+                format: 'Biçim:',
+                sample: 'Örnek:',
+                edit: 'Düzenle…',
+                clear: 'Temizle',
+                ok: 'Tamam',
+                cancel: 'İptal',
+                none: '(yok)',
                 sorts: {
-                    asc: 'Ascending',
-                    desc: 'Descending'
+                    asc: 'Artan',
+                    desc: 'Azalan'
                 },
                 aggs: {
-                    sum: 'Sum',
-                    cnt: 'Count',
-                    avg: 'Average',
-                    max: 'Max',
-                    min: 'Min',
-                    rng: 'Range',
-                    std: 'StdDev',
-                    var: 'Var',
+                    sum: 'Toplam',
+                    cnt: 'Sayı',
+                    avg: 'Ortalama',
+                    max: 'En Büyük',
+                    min: 'dak',
+                    rng: 'Aralık',
+                    std: 'StdSapma',
+                    var: 'Varyans',
                     stdp: 'StdDevPop',
                     varp: 'VarPop'
                 },
                 calcs: {
-                    noCalc: 'No Calculation',
-                    dRow: 'Difference from previous row',
-                    dRowPct: '% Difference from previous row',
-                    dCol: 'Difference from previous column',
-                    dColPct: '% Difference from previous column'
+                    noCalc: 'Hesaplama Yok',
+                    dRow: 'Önceki satırdan fark',
+                    dRowPct: '% Fark önceki satırdan',
+                    dCol: 'Önceki sütun arasındaki fark',
+                    dColPct: '% Fark--dan önceki sütun',
+                    dPctGrand: 'Genel toplam %',
+                    dPctRow: 'satır toplam %',
+                    dPctCol: 'sütunu toplamı %',
+                    dRunTot: 'Toplam çalışan',
+                    dRunTotPct: 'çalışan toplam %'
                 },
                 formats: {
-                    n0: 'Integer (n0)',
-                    n2: 'Float (n2)',
-                    c: 'Currency (c)',
-                    p0: 'Percentage (p0)',
-                    p2: 'Percentage (p2)',
-                    n2c: 'Thousands (n2,)',
-                    n2cc: 'Millions (n2,,)',
-                    n2ccc: 'Billions (n2,,,)',
-                    d: 'Date (d)',
-                    MMMMddyyyy: 'Month Day Year (MMMM dd, yyyy)',
-                    dMyy: 'Day Month Year (d/M/yy)',
-                    ddMyy: 'Day Month Year (dd/M/yy)',
-                    dMyyyy: 'Day Month Year (dd/M/yyyy)',
-                    MMMyyyy: 'Month Year (MMM yyyy)',
-                    MMMMyyyy: 'Month Year (MMMM yyyy)',
-                    yyyyQq: 'Year Quarter (yyyy "Q"q)',
-                    FYEEEEQU: 'Fiscal Year Quarter ("FY"EEEE "Q"U)'
+                    n0: 'Tamsayı (n0)',
+                    n2: 'Ondalık (n2)',
+                    c: 'Para birimi (c)',
+                    p0: 'Yüzde (p0)',
+                    p2: 'Yüzde (p2)',
+                    n2c: 'Binlerce (n2,)',
+                    n2cc: 'Milyonlarca (n2,,)',
+                    n2ccc: 'Milyarlarca (n2,,,)',
+                    d: 'Tarih (d)',
+                    MMMMddyyyy: 'Ay gün yıl (AAAA gg, yyyy)',
+                    dMyy: 'Gün ay yıl (d/M/yıl)',
+                    ddMyy: 'Gün ay yıl (gg/M/yy)',
+                    dMyyyy: 'Gün ay yıl (gg/M/yyyy)',
+                    MMMyyyy: 'Ay yıl (MMM yyyy)',
+                    MMMMyyyy: 'Ay yıl (AAAA yyyy)',
+                    yyyyQq: 'Yıl Mahallesi (yyyy "Q" q)',
+                    FYEEEEQU: 'Mali yıl çeyrek ("My" EEEE "Q" U)'
                 }
             },
             PivotEngine: {
-                grandTotal: 'Grand Total',
-                subTotal: 'Subtotal'
+                grandTotal: 'Genel Toplam',
+                subTotal: 'Alt Toplam'
             },
             PivotPanel: {
-                fields: 'Choose fields to add to report',
-                drag: 'Drag fields between areas below:',
-                filters: 'Filters',
-                cols: 'Columns',
-                rows: 'Rows',
-                vals: 'Values',
-                defer: 'Defer Updates',
-                update: 'Update'
+                fields: 'Rapora eklenecek alanları seçin:',
+                drag: 'Alanları aşağıdaki bölgeler arasında sürükleyin:',
+                filters: 'Filtreler',
+                cols: 'Sütunlar',
+                rows: 'Satırlar',
+                vals: 'Değerler',
+                defer: 'Güncelleştirmeleri erteleme',
+                update: 'Güncelleştir'
             },
             _ListContextMenu: {
-                up: 'Move Up',
-                down: 'Move Down',
-                first: 'Move do Beginning',
-                last: 'Move to End',
-                filter: 'Move to Report Filter',
-                rows: 'Move to Row Labels',
-                cols: 'Move to Column Labels',
-                vals: 'Move to Values',
-                remove: 'Remove Field',
-                edit: 'Field Settings...',
-                detail: 'Show Detail...'
+                up: 'Yukarı Taşı',
+                down: 'Aşağı Taşı',
+                first: 'Başlangıca Taşı',
+                last: 'Sona taşı',
+                filter: 'Rapor Filtresine Taşı',
+                rows: 'Satır Etiketlerine Taşı',
+                cols: 'Sütun Etiketlerine Taşı',
+                vals: 'Değerlere Taşı',
+                remove: 'Alanı Kaldır',
+                edit: 'Alan Ayarları…',
+                detail: 'Ayrıntı göster…'
             },
             PivotChart: {
-                by: 'by',
-                and: 'and'
+                by: 'ölçüt',
+                and: 'ile'
             },
             DetailDialog: {
-                header: 'Detail View:',
-                ok: 'OK',
-                items: '{cnt:n0} items',
-                item: '{cnt} item',
-                row: 'Row',
-                col: 'Column'
+                header: 'Ayrıntı görünümü:',
+                ok: 'Tamam',
+                items: '{cnt:n0} bileşen',
+                item: '{cnt} öğesi',
+                row: 'Satır',
+                col: 'Sütun'
             }
+        },
+        Viewer: {
+            cancel: 'İptal',
+            ok: 'Tamam',
+            bottom: 'Alttan:',
+            top: 'Üstten:',
+            right: 'Sağ:',
+            left: 'Sol:',
+            margins: 'Kenar Boşlukları (inç)',
+            orientation: 'Oryantasyon:',
+            paperKind: 'Kağıt türü:',
+            pageSetup: 'Sayfa Düzeni',
+            landscape: 'Yatay',
+            portrait: 'Dikey',
+            pageNumber: 'Sayfa Numarası',
+            zoomFactor: 'Yakınlaştırma faktörü',
+            paginated: 'Yazdırma Düzeni',
+            print: 'Yazdır',
+            search: 'Ara',
+            matchCase: 'Büyük-küçük harf eşleştir',
+            wholeWord: 'Sadece tam sözcükleri eşleştir',
+            searchResults: 'Arama sonuçları',
+            previousPage: 'Önceki Sayfa',
+            nextPage: 'Sonraki Sayfa',
+            firstPage: 'İlk Sayfa',
+            lastPage: 'Son Sayfa',
+            backwardHistory: 'Geri',
+            forwardHistory: 'İleri',
+            pageCount: 'Sayfa Sayısı',
+            selectTool: 'Aracını seçin',
+            moveTool: 'Taşıma aracı',
+            continuousMode: 'Sürekli sayfa görünümü',
+            singleMode: 'Tek sayfa görünümü',
+            wholePage: 'Tüm Sayfaya Sığdır',
+            pageWidth: 'Sayfa genişliğine sığdırma',
+            zoomOut: 'Küçült',
+            zoomIn: 'Büyüt',
+            exports: 'Dışarı Aktar',
+            fullScreen: 'Tam Ekran',
+            exitFullScreen: 'Tam Ekrandan Çık',
+            hamburgerMenu: 'Araçlar',
+            showSearchBar: 'Arama Çubuğunu Göster',
+            viewMenu: 'Düzen seçenekleri',
+            searchOptions: 'Arama Seçenekleri',
+            matchCaseMenuItem: 'Büyük Küçük Harf Eşleştir',
+            wholeWordMenuItem: 'Tam sözcükleri eşleştir',
+            thumbnails: 'Sayfa minik resimleri',
+            outlines: 'Belge Bağlantıları',
+            loading: 'Yükleniyor…',
+            pdfExportName: 'Adobe PDF',
+            docxExportName: 'Açık XML Word',
+            xlsxExportName: 'Açık XML Excel',
+            docExportName: 'Microsoft Word',
+            xlsExportName: 'Microsoft Excel',
+            mhtmlExportName: 'Web arşivi (MHTML)',
+            htmlExportName: 'HTML belgesi',
+            rtfExportName: 'RTF belgesi',
+            metafileExportName: 'Sıkıştırılmış meta dosyaları',
+            csvExportName: 'CSV',
+            tiffExportName: 'TIFF görüntüleri',
+            bmpExportName: 'BMP resimleri',
+            emfExportName: 'Gelişmiş Meta dosyası',
+            gifExportName: 'GIF resimleri',
+            jpgExportName: 'JPEG görüntüleri',
+            jpegExportName: 'JPEG görüntüleri',
+            pngExportName: 'PNG resimleri',
+            abstractMethodException: 'Bu soyut bir yöntemdir, lütfen uygulamak.',
+            cannotRenderPageNoViewPage: 'Sayfa belge kaynak olmadan ve görünüm sayfası işleyemez.',
+            cannotRenderPageNoDoc: 'Sayfa belge kaynak olmadan ve görünüm sayfası işleyemez.',
+            exportFormat: 'Verme biçimi:',
+            exportOptionTitle: 'Dışarı aktarma seçenekleri',
+            documentRestrictionsGroup: 'Belge kısıtlamaları',
+            passwordSecurityGroup: 'Parola güvenliği',
+            outputRangeGroup: 'Çıkış aralığı',
+            documentInfoGroup: 'Belge Bilgisi',
+            generalGroup: 'Genel',
+            docInfoTitle: 'Başlık',
+            docInfoAuthor: 'Yazar',
+            docInfoManager: 'Yönetici',
+            docInfoOperator: 'İşleç',
+            docInfoCompany: 'Şirket',
+            docInfoSubject: 'Şahıs',
+            docInfoComment: 'Yorum',
+            docInfoCreator: 'Oluşturan',
+            docInfoProducer: 'Yapımcı',
+            docInfoCreationTime: 'Oluşturma zamanı',
+            docInfoRevisionTime: 'Revizyon zaman',
+            docInfoKeywords: 'Anahtar Sözcükler',
+            embedFonts: 'TrueType yazı tiplerini katıştır',
+            pdfACompatible: 'PDF/A uyumlu (seviye 2B)',
+            useCompression: 'Kullanım sıkıştırma',
+            useOutlines: 'Anahatlar Oluştur',
+            allowCopyContent: 'İçerik kopyalama veya ayıklama izin',
+            allowEditAnnotations: 'Ek açıklama düzenlemeye izin ver',
+            allowEditContent: 'İçerik düzenlemeye izin ver',
+            allowPrint: 'Baskı sağlar',
+            ownerPassword: 'İzin (sahibi) parolası:',
+            userPassword: 'Belge açık (kullanıcı) parola:',
+            encryptionType: 'Şifreleme düzeyi:',
+            paged: 'Disk Bellekli',
+            showNavigator: 'Navigator göster',
+            singleFile: 'Tek dosya',
+            tolerance: 'Metin sınırları (Puan) tespit zaman toleransı:',
+            pictureLayer: 'Kullanım ayrı resim katmanı',
+            metafileType: 'Meta dosyası türü:',
+            monochrome: 'Tek renkli',
+            resolution: 'Çözünürlük:',
+            outputRange: 'Sayfa aralığı:',
+            outputRangeInverted: 'Ters',
+            showZoomBar: 'Yakınlaştırma çubuğu',
+            searchPrev: 'Önceki arama',
+            searchNext: 'Sonraki arama',
+            checkMark: '\u2713',
+            exportOk: 'Ver…',
+            parameters: 'Parameters',
+            requiringParameters: 'Lütfen giriş parametreleri.',
+            nullParameterError: 'Değer null olamaz.',
+            invalidParameterError: 'Geçersiz giriş.',
+            parameterNoneItemsSelected: '(yok)',
+            parameterAllItemsSelected: '(tümü)',
+            parameterSelectAllItemText: '(Tümünü Seç)',
+            selectParameterValue: '(değer seçin)',
+            apply: 'Uygula',
+            errorOccured: 'Hata oluştu.'
         }
     };
+    var updc = window['wijmo']._updateCulture;
+    if (updc) {
+        updc();
+    }
 })(wijmo || (wijmo = {}));
 ;
-//# sourceMappingURL=wijmo.culture.tr.js.map
+

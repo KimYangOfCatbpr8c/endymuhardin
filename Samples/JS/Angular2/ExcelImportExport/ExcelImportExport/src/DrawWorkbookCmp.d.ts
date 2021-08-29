@@ -1,7 +1,8 @@
 /// <reference path="../typings/globals/core-js/index.d.ts" />
+import * as wjcXlsx from 'wijmo/wijmo.xlsx';
 import { AfterViewInit } from '@angular/core';
 export declare class DrawWorkBookCmp implements AfterViewInit {
-    workbook: wijmo.xlsx.Workbook;
+    workbook: wjcXlsx.Workbook;
     sheetIndex: number;
     ngAfterViewInit(): void;
     drawSheet(sheetIndex: any): void;

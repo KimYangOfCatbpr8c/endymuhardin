@@ -1,18 +1,19 @@
 ﻿<div class="header visible-xs visible-sm">
     <div class="container">
-        <h1>FlexGrid Import Export</h1>
+        <h1>FlexGrid Import Export (JSZip2)</h1>
     </div>
 </div>
 <div class="header hidden-xs hidden-sm">
     <div class="container">
         <img src="resources/wijmo5.png" />
-        <h1>FlexGrid Import Export</h1>
+        <h1>FlexGrid Import Export (JSZip2)</h1>
     </div>
 </div>
 <nav>
     <div class="container">
         <ul>
-            <li class="active"><a href="FlexGridImportExport.htm">FlexGrid Import Export</a></li>
+            <li class="active"><a href="FlexGridImportExport.htm">FlexGrid Import Export (JSZip 2)</a></li>
+            <li><a href="FlexGridImportExportAsync.htm">FlexGrid Import Export (JSZip 3)</a></li>
             <li><a href="ExpenseReportExport.htm">Expense Report</a></li>
             <li><a href="DrawWorkbook.htm">Workbook Viewer</a></li>
         </ul>
@@ -21,15 +22,19 @@
 <!-- commands -->
 <div class="container">
     <p>
-        The sample demonstrates how to export or import FlexGrid content to/from an Excel xlsx file.
+        The sample demonstrates how to export or import FlexGrid content to/from an Excel(.xlsx)
+        file with the save/load methods of the FlexGridXlsxConverter class.
+    </p>
+    <p>
+        <b>Note: </b>Sychronous methods work with JSZip 2.
     </p>
     <p>
         To export FlexGrid content, pass the FlexGrid instance to the <b>FlexGridXlsxConverter.save</b> method.
-        This generates xlsx file content, which can be saved to a local file or sent to a server.
+        This generates the Excel file content, which can be saved to a local file or sent to a server.
     </p>
     <p>
-        To populate FlexGrid with data from an xlsx file, pass the FlexGrid instance and the xlsx file content to the
-        <b>FlexGridXlsxConverter.load</b> method.
+        To populate FlexGrid with data from an Excel file, pass the FlexGrid instance and the Excel file content
+        to the <b>FlexGridXlsxConverter.load</b> method.
     </p>
     <div class="row">
         <div class="col-md-6 col-xs-12">
@@ -74,9 +79,9 @@
         <div class="col-md-6 col-xs-12">
             <h2>Load</h2>
             <p>
-                The <b>load</b> function, implemented in the <b>FlexGridXlsxConverter</b> class, takes an Excel file's content as input, parses it using the
-                <b>wijmo.xlsx.js</b> library, and populates the specified FlexGrid instance with the
-                parsed data.
+                The <b>load</b> function, implemented in the <b>FlexGridXlsxConverter</b> class,
+                takes the content of an Excel file as input, parses it using the <b>wijmo.xlsx.js</b>
+                library, and populates the specified FlexGrid instance with the parsed data.
             </p>
         </div>
         <div class="col-md-6 col-xs-12">
@@ -92,7 +97,7 @@
 &lt;/div&gt;
                     </div>
                 </app-tab-pane>
-                <app-tab-pane title="JS">
+                <app-tab-pane title="TS">
                     <div class="pane-content">
 importExcel() &#123;
     var fileInput = &lt;HTMLInputElement&gt;$('#importFile')[0];
@@ -113,9 +118,9 @@ importExcel() &#123;
                 takes a FlexGrid instance as input, converts its data and formatting
                 to Excel format using the <b>wijmo.xlsx.js</b> library.
                 <br />
-                If the the file name is specified, it will save it to a file on the local disk.
+                If the file name is specified, it will save it to a file on the local disk.
                 <br />
-                Otherwise it returns an <b>Workbook</b> instance containing content for the Excel file.
+                Otherwise, it returns a <b>Workbook</b> instance containing the content for Excel file.
             </p>
         </div>
         <div class="col-md-6 col-xs-12">
@@ -130,7 +135,7 @@ importExcel() &#123;
 &lt;/div&gt;
                     </div>
                 </app-tab-pane>
-                <app-tab-pane title="JS">
+                <app-tab-pane title="TS">
                     <div class="pane-content">
 exportExcel() &#123;
     wijmo.grid.xlsx.FlexGridXlsxConverter.save(this.flexGrid, &#123; includeColumnHeaders: this.includeColumnHeader, includeCellStyles: false }, 'FlexGrid.xlsx');
@@ -151,20 +156,20 @@ exportExcel() &#123;
             In the HTML page, add references to the following files.
             <ul>
                 <li>
-                    the <b>jszip.js</b> library that you can find in the following CDN:
+                    The <b>jszip.js</b> library that you can find in the following CDN:
                     <br />
-                    http://cdnjs.cloudflare.com/ajax/libs/jszip/2.2.1/jszip.min.js
+                    http://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js
                 </li>
                 <li><b>wijmo.xlsx.js</b> </li>
                 <li><b>wijmo.grid.xlsx.js</b></li>
             </ul>
         </li>
         <li>
-            Add the code from the <b>FlexGridImportExportCmp.exportExcel</b> function (on the JS tab in
+            Add code from the <b>FlexGridImportExportCmp.exportExcel</b> function (on the JS tab in
             the Export code), which saves the export results to a local file.
         </li>
         <li>
-            Add the code from the <b>FlexGridImportExportCmp.importExcel</b> function (on the JS tab in
+            Add code from the <b>FlexGridImportExportCmp.importExcel</b> function (on the JS tab in
             the Import code), which reads an Excel file from the disk.
         </li>
     </ol>

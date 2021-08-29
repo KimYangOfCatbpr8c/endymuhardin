@@ -1,5 +1,5 @@
 ﻿<!-- glyphs are defined in wijmo.css -->
-<link href="http://cdn.wijmo.com/5.20162.211/styles/wijmo.min.css" rel="stylesheet"/>
+<link href="http://cdn.wijmo.com/5.20171.282/styles/wijmo.min.css" rel="stylesheet"/>
 
 <h2>
     Wijmo Glyphs</h2>
@@ -16,6 +16,28 @@
     markup and set its class to the glyph name. For example:</p>
 
 <pre>&lt;span class="<b>wj-glyph-diamond</b>"&gt;&lt;/span&gt;</pre>
+
+<p>
+    You can use CSS to customize the appearance of the glyphs used in the
+    Wijmo controls. For example, you could use the CSS below to hide or 
+    modify the appearance of the pencil glyph used by the <b>FlexGrid</b>
+    to indicate rows in edit mode:</p>
+
+<pre>/* hide the pencil glyph in FlexGrid controls */
+.wj-flexgrid .wj-glyph-pencil {
+    display: none;
+}</pre>
+
+<pre>/* replace the pencil glyph in FlexGrid controls with a custom image */
+.wj-flexgrid .wj-glyph-pencil {
+    background-image:url('../images/my-pencil.png');
+    background-repeat: round;
+    border: 0;
+    opacity: 1;
+}
+    .wj-flexgrid .wj-glyph-pencil:after {
+        display: none;
+    }</pre>
 
 <p>
     The table below shows the glyphs defined in the <b>wijmo.css</b> file:</p>
@@ -35,6 +57,10 @@
             <td><code>&lt;span class="wj-glyph-{{g}}"&gt;&lt;/span&gt;</code></td>
         </tr>-->
         <tr>
+            <td>asterisk</td>
+            <td style="font-size:125%;"><span class="wj-glyph-asterisk"></span></td>
+            <td><code>&lt;span class="wj-glyph-asterisk"&gt;&lt;/span&gt;</code></td>
+        </tr><tr>
             <td>calendar</td>
             <td style="font-size:125%;"><span class="wj-glyph-calendar"></span></td>
             <td><code>&lt;span class="wj-glyph-calendar"&gt;&lt;/span&gt;</code></td>
@@ -82,6 +108,10 @@
             <td>minus</td>
             <td style="font-size:125%;"><span class="wj-glyph-minus"></span></td>
             <td><code>&lt;span class="wj-glyph-minus"&gt;&lt;/span&gt;</code></td>
+        </tr><tr>
+            <td>pencil</td>
+            <td style="font-size:125%;"><span class="wj-glyph-pencil"></span></td>
+            <td><code>&lt;span class="wj-glyph-pencil"&gt;&lt;/span&gt;</code></td>
         </tr><tr>
             <td>plus</td>
             <td style="font-size:125%;"><span class="wj-glyph-plus"></span></td>

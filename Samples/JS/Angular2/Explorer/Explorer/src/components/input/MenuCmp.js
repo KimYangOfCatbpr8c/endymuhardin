@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
@@ -13,6 +13,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
+var wjcCore = require('wijmo/wijmo');
+'use strict';
 var core_1 = require('@angular/core');
 var common_1 = require('@angular/common');
 var forms_1 = require('@angular/forms');
@@ -32,7 +34,7 @@ var MenuCmp = (function (_super) {
         this.thePalette = 'Standard';
         this.changeValueCommand = {
             executeCommand: function (parm) {
-                if (wijmo.isNumber(parm)) {
+                if (wjcCore.isNumber(parm)) {
                     _this.passengers += parm;
                 }
                 else {
@@ -40,7 +42,7 @@ var MenuCmp = (function (_super) {
                 }
             },
             canExecuteCommand: function (parm) {
-                if (wijmo.isNumber(parm)) {
+                if (wjcCore.isNumber(parm)) {
                     var val = _this.passengers + parm;
                     return val >= 0 && val <= 100;
                 }

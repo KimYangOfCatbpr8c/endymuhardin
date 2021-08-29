@@ -10,16 +10,15 @@
 <label><input type="checkbox" ng-model="ctx.showRaisers"> Event Raisers</label>
 </dd>
 </dl>
-<div class="comment"><p>Angular 2 component for the <a href="topic/wijmo.grid.FlexGrid.Class.html"><span class="identifier">FlexGrid</span></a> <a href="topic/wijmo.grid.Column.Class.html"><span class="identifier">Column</span></a> control.</p>
-<p>The <b>wj-flex-grid-column</b> component must be contained in a 
-<a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html"><span class="identifier">WjFlexGrid</span></a> component.</p>
-<p>Use the <b>wj-flex-grid-column</b> component to add <b>Column</b> objects to your 
+<div class="comment"><p>Angular 2 component for the <a href="topic/wijmo.grid.Column.Class.html"><span class="identifier">Column</span></a> control. </p>
+<p>The <b>wj-flex-grid-column</b> component must be 
+contained in a <a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html"><span class="identifier">WjFlexGrid</span></a> component.</p>
+<p>Use the <b>wj-flex-grid-column</b> component to add <b>Column</b> controls to your
 Angular 2 applications. For details about Angular 2 markup syntax, see 
-<a href="static/angular2Markup.html">Angular 2 Markup</a>.</p>
-<p>The <b>WjFlexGridColumn</b> component is derived from the <b>Column</b> class and
-inherits all its properties, events and methods.</p>
-<p>The <b>wj-flex-grid-column</b> component may contain 
-<a href="topic/wijmo-wijmo.angular2.grid.WjFlexGridCellTemplate.Class.html"><span class="identifier">WjFlexGridCellTemplate</span></a> child directives.</p></div>
+<a href="static/angular2Markup.html">Angular 2 Markup</a>.  </p>
+<p>The <b>WjFlexGridColumn</b> component is derived from the <b>Column</b> control and
+inherits all its properties, events and methods. </p>
+<p>The <b>wj-flex-grid-column</b> component may contain a <a href="topic/wijmo-wijmo.angular2.grid.WjFlexGridCellTemplate.Class.html"><span class="identifier">WjFlexGridCellTemplate</span></a> child directive.</p></div>
 </div>
 <div class="member-panel class members" ng-class="{ 'show-inherited' : ctx.showInherited, 'show-raisers' : ctx.showRaisers }">
 <h3 class="node">Constructor</h3>
@@ -45,8 +44,10 @@ inherits all its properties, events and methods.</p>
 <li class="mproperty inherited"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGridColumn.Class.html/#grid">grid</a></li>
 <li class="mproperty inherited"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGridColumn.Class.html/#header">header</a></li>
 <li class="mproperty inherited"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGridColumn.Class.html/#index">index</a></li>
+<li class="mproperty"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGridColumn.Class.html/#initialized">initialized</a></li>
 <li class="mproperty inherited"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGridColumn.Class.html/#inputType">inputType</a></li>
 <li class="mproperty inherited"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGridColumn.Class.html/#isContentHtml">isContentHtml</a></li>
+<li class="mproperty"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGridColumn.Class.html/#isInitialized">isInitialized</a></li>
 <li class="mproperty inherited"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGridColumn.Class.html/#isReadOnly">isReadOnly</a></li>
 <li class="mproperty inherited"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGridColumn.Class.html/#isRequired">isRequired</a></li>
 <li class="mproperty inherited"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGridColumn.Class.html/#isSelected">isSelected</a></li>
@@ -63,11 +64,14 @@ inherits all its properties, events and methods.</p>
 <li class="mproperty inherited"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGridColumn.Class.html/#sortMemberPath">sortMemberPath</a></li>
 <li class="mproperty inherited"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGridColumn.Class.html/#visible">visible</a></li>
 <li class="mproperty inherited"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGridColumn.Class.html/#width">width</a></li>
+<li class="mproperty"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGridColumn.Class.html/#wjProperty">wjProperty</a></li>
 <li class="mproperty inherited"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGridColumn.Class.html/#wordWrap">wordWrap</a></li>
 </ul>
 <h3 class="node">Methods</h3>
 <ul>
+<li class="mmethod"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGridColumn.Class.html/#created">created</a></li>
 <li class="mmethod inherited"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGridColumn.Class.html/#getAlignment">getAlignment</a></li>
+<li class="mmethod inherited"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGridColumn.Class.html/#getIsRequired">getIsRequired</a></li>
 <li class="mmethod inherited"><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGridColumn.Class.html/#onPropertyChanged">onPropertyChanged</a></li>
 </ul>
 </div>
@@ -244,6 +248,14 @@ values for the column (see <a href="topic/wijmo.Globalize.Class.html"><span clas
   <dt>Type</dt><dd><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Number" target="_blank"><span class="identifier">number</span></a></dd>
 </dl>
 </div>
+<div id="initialized" class="member-panel mproperty">
+<h3>initialized</h3>
+<div class="comment"><p>This event is triggered after the component has been initialized by Angular, that is
+all bound properties have been assigned and child components (if any) have been initialized.</p></div>
+<dl class="dl-horizontal">
+  <dt>Type</dt><dd><span class="identifier">EventEmitter</span></dd>
+</dl>
+</div>
 <div id="inputType" class="member-panel mproperty inherited">
 <h3>inputType</h3>
 <div class="comment"><p>Gets or sets the "type" attribute of the HTML input element used to edit values
@@ -268,6 +280,14 @@ contain HTML content rather than plain text.</p></div>
   <dt>Type</dt><dd><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a></dd>
 </dl>
 </div>
+<div id="isInitialized" class="member-panel mproperty">
+<h3>isInitialized</h3>
+<div class="comment"><p>Indicates whether the component has been initialized by Angular.
+Changes its value from false to true right before triggering the <b>initialized</b> event.</p></div>
+<dl class="dl-horizontal">
+  <dt>Type</dt><dd><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a></dd>
+</dl>
+</div>
 <div id="isReadOnly" class="member-panel mproperty inherited">
 <h3>isReadOnly</h3>
 <div class="comment"><p>Gets or sets a value that indicates whether cells in the row or column can be edited.</p></div>
@@ -281,7 +301,8 @@ contain HTML content rather than plain text.</p></div>
 <div class="comment"><p>Gets or sets a value that determines whether values in the column 
 are required.</p>
 <p>By default, this property is set to null, which means values 
-are required, but string columns may contain empty strings.</p>
+are required, but non-masked string columns may contain empty
+strings.</p>
 <p>When set to true, values are required and empty strings are 
 not allowed.</p>
 <p>When set to false, null values and empty strings are allowed.</p></div>
@@ -437,6 +458,14 @@ to prevent the column from getting too narrow.</p></div>
   <dt>Type</dt><dd><span class="identifier">any</span></dd>
 </dl>
 </div>
+<div id="wjProperty" class="member-panel mproperty">
+<h3>wjProperty</h3>
+<div class="comment"><p>Gets or sets a name of a property that this component is assigned to. 
+Default value is 'columns'.</p></div>
+<dl class="dl-horizontal">
+  <dt>Type</dt><dd><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank"><span class="identifier">string</span></a></dd>
+</dl>
+</div>
 <div id="wordWrap" class="member-panel mproperty inherited">
 <h3>wordWrap</h3>
 <div class="comment"><p>Gets or sets a value that indicates whether cells in the row or column wrap their content.</p></div>
@@ -448,15 +477,40 @@ to prevent the column from getting too narrow.</p></div>
 </div>
 <h3 class="node">Methods</h3>
 <div class="member-list" ng-class="{ 'show-inherited' : ctx.showInherited, 'show-raisers' : ctx.showRaisers }">
+<div id="created" class="member-panel mmethod">
+<h3>created</h3>
+<pre>created(): <span class="identifier">void</span></pre>
+<div class="comment"><p>If you create a custom component inherited from a Wijmo component, you can override this  
+method and perform necessary initializations that you usually do in a class constructor. 
+This method is called in the last line of a Wijmo component constructor and allows you
+to not declare your custom component's constructor at all, thus preventing you from a necessity 
+to maintain constructor parameters and keep them in synch with Wijmo component's constructor parameters.</p></div>
+<dl class="dl-horizontal">
+  <dt>Returns</dt><dd><span class="identifier">void</span></dd>
+</dl>
+</div>
 <div id="getAlignment" class="member-panel mmethod inherited">
 <h3>getAlignment</h3>
 <pre>getAlignment(): <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank"><span class="identifier">string</span></a></pre>
-<div class="comment"><p>Gets the actual column alignment. </p>
+<div class="comment"><p>Gets the actual column alignment.</p>
 <p>Returns the value of the <a href="topic/wijmo-wijmo.angular2.grid.WjFlexGridColumn.Class.html/#align"><span class="identifier">align</span></a> property if it is not null, or
 selects the alignment based on the column's <a href="topic/wijmo-wijmo.angular2.grid.WjFlexGridColumn.Class.html/#dataType"><span class="identifier">dataType</span></a>.</p></div>
 <dl class="dl-horizontal">
   <dt>Inherited From</dt><dd><a href="topic/wijmo.grid.Column.Class.html"><span class="identifier">Column</span></a></dd>
   <dt>Returns</dt><dd><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank"><span class="identifier">string</span></a></dd>
+</dl>
+</div>
+<div id="getIsRequired" class="member-panel mmethod inherited">
+<h3>getIsRequired</h3>
+<pre>getIsRequired(): <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a></pre>
+<div class="comment"><p>Gets a value that determines whether the column is required.</p>
+<p>Returns the value of the <a href="topic/wijmo-wijmo.angular2.grid.WjFlexGridColumn.Class.html/#isRequired"><span class="identifier">isRequired</span></a> property if it is not null, or
+determines the required status based on the column's <a href="topic/wijmo-wijmo.angular2.grid.WjFlexGridColumn.Class.html/#dataType"><span class="identifier">dataType</span></a>.</p>
+<p>By default, string columns are not required unless they have an associated
+<a href="topic/wijmo-wijmo.angular2.grid.WjFlexGridColumn.Class.html/#dataMap"><span class="identifier">dataMap</span></a> or <a href="topic/wijmo-wijmo.angular2.grid.WjFlexGridColumn.Class.html/#mask"><span class="identifier">mask</span></a>; all other data types are required.</p></div>
+<dl class="dl-horizontal">
+  <dt>Inherited From</dt><dd><a href="topic/wijmo.grid.Column.Class.html"><span class="identifier">Column</span></a></dd>
+  <dt>Returns</dt><dd><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a></dd>
 </dl>
 </div>
 <div id="onPropertyChanged" class="member-panel mmethod inherited">

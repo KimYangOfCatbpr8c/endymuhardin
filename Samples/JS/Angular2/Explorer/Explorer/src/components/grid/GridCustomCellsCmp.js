@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
@@ -13,6 +13,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
+var wjcCore = require('wijmo/wijmo');
+var wjcGrid = require('wijmo/wijmo.grid');
+'use strict';
 var core_1 = require('@angular/core');
 var common_1 = require('@angular/common');
 var GridBaseCmp_1 = require('./GridBaseCmp');
@@ -27,7 +30,7 @@ var GridCustomCellsCmp = (function (_super) {
         var _this = this;
         _super.call(this, dataSvc);
         this.itemFormatter = function (panel, r, c, cell) {
-            if (panel.cellType == wijmo.grid.CellType.Cell) {
+            if (panel.cellType == wjcGrid.CellType.Cell) {
                 // use chartInfo to draw a bar chart
                 var col = panel.columns[c];
                 if (col.chartInfo) {
@@ -46,9 +49,9 @@ var GridCustomCellsCmp = (function (_super) {
                         var sales = panel.rows[r].dataItem['sales'], first = sales[0], last = sales[sales.length - 1], delta = last / first - 1;
                         cell.innerHTML =
                             '<div style="color:' + (delta >= 0 ? 'green' : 'red') + '">' +
-                                '<span style="float:left;width:60px;font-size:larger;text-align:right">' + wijmo.Globalize.format(last, 'n2') + '</span>' +
+                                '<span style="float:left;width:60px;font-size:larger;text-align:right">' + wjcCore.Globalize.format(last, 'n2') + '</span>' +
                                 '<span style="float:left;width:30px">' + (delta > 0 ? '&#x25b2;' : '&#x25bc;') + '</span>' +
-                                '<span style="float:left;font-size:smaller;">(' + wijmo.Globalize.format(delta, 'p0') + ')</span>' +
+                                '<span style="float:left;font-size:smaller;">(' + wjcCore.Globalize.format(delta, 'p0') + ')</span>' +
                                 '<div>';
                         break;
                 }
@@ -75,8 +78,8 @@ var GridCustomCellsCmp = (function (_super) {
                 col.chartInfo = {
                     posColor: 'green',
                     negColor: 'red',
-                    min: wijmo.getAggregate(wijmo.Aggregate.Min, items, col.binding),
-                    max: wijmo.getAggregate(wijmo.Aggregate.Max, items, col.binding)
+                    min: wjcCore.getAggregate(wjcCore.Aggregate.Min, items, col.binding),
+                    max: wjcCore.getAggregate(wjcCore.Aggregate.Max, items, col.binding)
                 };
             }
         }

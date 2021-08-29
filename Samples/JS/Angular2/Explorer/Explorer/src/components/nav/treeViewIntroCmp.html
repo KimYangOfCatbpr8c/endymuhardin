@@ -1,0 +1,46 @@
+﻿<div>
+    <div class="copy">
+        <h3>
+            Introduction
+        </h3>
+        <p>
+            This view shows the <b>TreeView</b>'s basic features. 
+            For a complete demo including advanced features like drag/drop and node editing, 
+            check out the 
+            <a href="http://demos.wijmo.com/5/Angular2/TreeViewIntro/TreeViewIntro/" target="_blank">TreeView 101</a>
+            sample.</p>
+        <p>
+            The <b>TreeView</b> control displays a hierarchical list of <b>TreeNode</b> objects which 
+            may contain text, checkboxes, images, or arbitrary HTML content.</p>
+        <p>
+            A TreeView is typically used to display the headings in a document, the entries in an index,
+            the files and directories on a disk, or any other kind of information that might usefully be
+            displayed as a hierarchy.</p>
+    </div>
+    <div>
+    <wj-tree-view #tv
+                  [itemsSource]="items"
+                  [displayMemberPath]="'header'"
+                  [childItemsPath]="'items'"
+                  [isAnimated]="isAnimated"
+                  [autoCollapse]="autoCollapse"
+                  [expandOnClick]="expandOnClick">
+    </wj-tree-view>
+    <div>
+        <button id="btnCollapse" class="btn btn-default" (click)="tv.collapseToLevel(0);">Collapse All</button>
+        <button id="btnExpand" class="btn btn-default" (click)="tv.collapseToLevel(1000);">Expand All</button>
+    </div>
+    <br />
+    <label>
+        <input id="chkIsAnimated" type="checkbox" [(ngModel)]="isAnimated" /> isAnimated
+    </label>
+    <br />
+    <label>
+        <input id="chkAutoCollapse" type="checkbox" [(ngModel)]="autoCollapse" /> autoCollapse
+    </label>
+    <br />
+    <label>
+        <input id="chkExpandOnClick" type="checkbox" [(ngModel)]="expandOnClick" /> expandOnClick
+    </label>
+    </div>
+</div>

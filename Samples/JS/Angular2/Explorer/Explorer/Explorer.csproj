@@ -10,7 +10,7 @@
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <DebugType>full</DebugType>
     <DebugSymbols>true</DebugSymbols>
-    <TypeScriptToolsVersion>1.8</TypeScriptToolsVersion>
+    <TypeScriptToolsVersion>2.0</TypeScriptToolsVersion>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
@@ -59,6 +59,7 @@
     <None Include="resources\ringo.png" />
     <None Include="resources\wijmo.png" />
     <None Include="resources\wijmo5.png" />
+    <Content Include="resources\new.png" />
     <Content Include="src\app.html" />
     <Content Include="src\components\chart\chartSunburstCmp.html" />
     <Content Include="src\components\chart\chartWaterfallCmp.html" />
@@ -127,11 +128,17 @@
     <Content Include="src\components\input\comboBoxCmp.html" />
     <Content Include="src\components\input\dateTimeCmp.html" />
     <Content Include="src\components\input\maskedInputCmp.html" />
+    <Content Include="src\components\input\multiAutoCompleteCmp.html" />
     <Content Include="src\components\input\multiSelectCmp.html" />
     <Content Include="src\components\input\numbersCmp.html" />
     <Content Include="src\components\input\listBoxCmp.html" />
     <Content Include="src\components\input\menuCmp.html" />
     <Content Include="src\components\input\popupCmp.html" />
+    <Content Include="src\components\nav\lazyLoadingCmp.html" />
+    <Content Include="src\components\nav\customNodeCmp.html" />
+    <Content Include="src\components\nav\ckbTreeCmp.html" />
+    <Content Include="src\components\nav\navTreeCmp.html" />
+    <Content Include="src\components\nav\treeViewIntroCmp.html" />
     <Content Include="src\components\piechart\pieChartAnimationCmp.html" />
     <Content Include="src\components\piechart\pieChartIntroCmp.html" />
     <Content Include="src\components\piechart\pieChartItemFormatterCmp.html" />
@@ -241,11 +248,18 @@
     <Content Include="src\components\includes\FrmBaseCmp.js" />
     <Content Include="src\components\input\InputBaseCmp.js" />
     <Content Include="src\components\input\MaskedInputCmp.js" />
+    <Content Include="src\components\input\MultiAutoCompleteCmp.js" />
     <Content Include="src\components\input\MultiSelectCmp.js" />
     <Content Include="src\components\input\NumbersCmp.js" />
     <Content Include="src\components\input\ListBoxCmp.js" />
     <Content Include="src\components\input\MenuCmp.js" />
     <Content Include="src\components\input\PopupCmp.js" />
+    <Content Include="src\components\nav\LazyLoadingCmp.js" />
+    <Content Include="src\components\nav\CustomNodeCmp.js" />
+    <Content Include="src\components\nav\CkbTreeCmp.js" />
+    <Content Include="src\components\nav\TreeViewBaseCmp.js" />
+    <Content Include="src\components\nav\NavTreeCmp.js" />
+    <Content Include="src\components\nav\TreeViewIntroCmp.js" />
     <Content Include="src\components\piechart\PieChartAnimationCmp.js" />
     <Content Include="src\components\piechart\PieChartBaseCmp.js" />
     <Content Include="src\components\piechart\PieChartIntroCmp.js" />
@@ -304,7 +318,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>-->
-  <ItemGroup />
   <ItemGroup>
   </ItemGroup>
   <PropertyGroup>
@@ -348,7 +361,7 @@
     <TypeScriptMapRoot />
     <TypeScriptSourceRoot />
     <TypeScriptExperimentalDecorators>true</TypeScriptExperimentalDecorators>
-    <!--<TypeScriptModuleResolution>Node</TypeScriptModuleResolution>-->
+    <TypeScriptModuleResolution>Node</TypeScriptModuleResolution>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
     <TypeScriptOutFile />
@@ -378,24 +391,6 @@
     <Copy SourceFiles="@(WjNg2_Files)" DestinationFiles="@(WjNg2_Files->'$(ProjectDir)\node_modules\wijmo\%(RecursiveDir)%(Filename)%(Extension)')" />
   </Target>-->
   <ItemGroup>
-    <Content Include="scripts\vendor\wijmo.min.js" />
-    <Content Include="scripts\vendor\wijmo.input.min.js" />
-    <Content Include="scripts\vendor\wijmo.grid.min.js" />
-    <Content Include="scripts\vendor\wijmo.chart.min.js" />
-    <Content Include="scripts\vendor\wijmo.gauge.min.js" />
-    <Content Include="scripts\vendor\wijmo.grid.filter.min.js" />
-    <Content Include="scripts\vendor\wijmo.grid.grouppanel.min.js" />
-    <Content Include="scripts\vendor\wijmo.grid.detail.min.js" />
-    <Content Include="scripts\vendor\wijmo.grid.xlsx.min.js" />
-    <Content Include="scripts\vendor\wijmo.xlsx.min.js" />
-    <Content Include="scripts\vendor\wijmo.pdf.min.js" />
-    <Content Include="scripts\vendor\wijmo.grid.pdf.min.js" />
-    <Content Include="scripts\vendor\wijmo.chart.animation.min.js" />
-    <Content Include="scripts\vendor\wijmo.chart.annotation.min.js" />
-    <Content Include="scripts\vendor\wijmo.chart.interaction.min.js" />
-    <Content Include="scripts\vendor\wijmo.chart.analytics.min.js" />
-    <Content Include="scripts\vendor\wijmo.chart.hierarchical.min.js" />
-    <Content Include="scripts\vendor\wijmo.angular2.min.js" />
     <Content Include="scripts\vendor\wijmo.culture.ar-AE.js" />
     <Content Include="scripts\vendor\wijmo.culture.bg.js" />
     <Content Include="scripts\vendor\wijmo.culture.ca.js" />

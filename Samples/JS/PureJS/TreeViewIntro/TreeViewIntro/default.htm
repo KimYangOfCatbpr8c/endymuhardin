@@ -1,0 +1,1129 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TreeView介绍</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" />
+    <script src="http://code.jquery.com/jquery-2.2.4.min.js" type="text/javascript"></script>
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js" type="text/javascript"></script>
+
+    <!-- Wijmo -->
+    <link href="styles/vendor/wijmo.min.css" rel="stylesheet" />
+    <script src="scripts/vendor/wijmo.min.js" type="text/javascript"></script>
+    <script src="scripts/vendor/wijmo.nav.min.js" type="text/javascript"></script>
+    <script src="scripts/vendor/wijmo.input.min.js" type="text/javascript"></script>
+    <script src="scripts/vendor/wijmo.odata.min.js" type="text/javascript"></script>
+
+    <!-- add drag/drop support for mobile devices -->
+    <script src="scripts/DragDropTouch.js" ></script>
+
+    <!-- app -->
+    <link rel="stylesheet" href="styles/app.css" />
+    <script src="scripts/app.js" ></script>
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <img src="resources/wijmo5.png" alt="Wijmo 5" />
+            <h1>TreeView 101</h1>
+            <p>
+                此页面显示如何开始使用Wijmo的TreeView控件。
+            </p>
+        </div>
+    </div>
+    <div class="container">
+
+        <!-- Getting Started -->
+        <div>
+            <h2>入门</h2>
+            <p>
+                使用TreeView控件就像使用任何Wijmo控件：</p>
+            <ol>
+                <li>
+                    包括所需的脚本，可以从我们的CDN的本地副本引用。详情请参阅
+                    <a href="http://wijmo.gcpowertools.com.cn/5/docs/static/references.html">在您的应用程序中引用Wijmo 5。</a>.</li>
+                <li>
+                    在托管该控件的页面上创建元素。</li>
+                <li>
+                    初始化控件，即宿主元素的id作为参数的控件，然后由可选的初始化对象。 </li>
+            </ol>
+            <p>
+                下面的示例演示了这一切。</p>
+        </div>
+
+        <!-- Creating Trees -->
+        <div>
+            <h2>创建树</h2>
+            <p>
+                要创建树，通常必须设置三个属性：</p>
+            <ol>
+                <li>
+                    <b>itemsSource</b> 定义包含分层数据的数组。数组中的每个项包含有关节点和（可选）子节点数组的信息。</li>
+                <li>
+                    <b>displayMemberPath</b> 定义包含要在树节点中显示的文本的项目中的属性的名称。 默认情况下，此属性设置为字符串'header'。</li>
+                <li>
+                    <b>childItemsPath</b> 定义包含子节点数组的项目中属性的名称。 默认情况下，此属性设置为字符串'items'。</li>
+            </ol>
+            <p>
+                还有用于将节点图像，复选框和折叠状态绑定到<b>itemsSource</b>数组的属性。</p>
+            <p>
+                默认情况下，TreeView在加载树时会展开每个级别的第一个节点。 您可以使用<b>collapsedMemberPath</b>
+                属性自定义该行为，以控制每个节点的折叠状态，或在加载树后调用
+                <b>collapseToLevel</b>方法以折叠比所需级别更深的所有节点 以显示。
+            <p>
+                加载树后，您可以使用鼠标或键盘选择，折叠或展开节点。 您还可以使用键盘搜索节点。</p>
+            <p>
+                默认情况下，TreeView控件使用动画来展开和折叠节点。 您可以通过将<b>isAnimated</b>属性设置为false来关闭此功能。</p>
+            <p>
+                它还会在节点扩展时自动折叠同级节点。 您可以通过将<b>autoCollapse</b>属性设置为false来关闭此功能。</p>
+            <p>
+                默认情况下，当用户单击节点上的任意位置时，TreeView控件会展开折叠的节点。 您可以通过将
+                <b>expandOnClick</b>属性设置为false来更改此设置，在这种情况下，只有在折叠/展开的字形上的点击才会影响折叠状态。</p>
+            <div class="row">
+                <div class="col-md-6">
+                    <div>
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li class="active"><a href="#gsHtml" role="tab" data-toggle="tab">HTML</a></li>
+                            <li><a href="#gsJs" role="tab" data-toggle="tab">JS</a></li>
+                            <li><a href="#gsCss" role="tab" data-toggle="tab">CSS</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active pane-content" id="gsHtml">
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;link rel="stylesheet" type="text/css" href="css/bootstrap.css"/&gt;
+
+  &lt;link rel="stylesheet" type="text/css" href="css/wijmo.css" /&gt;
+  &lt;script src="scripts/wijmo.js" type="text/javascript"&gt;&lt;/script&gt;
+  &lt;script src="scripts/wijmo.input.js" type="text/javascript"&gt;&lt;/script&gt;
+
+  &lt;link href="css/app.css" rel="stylesheet" type="text/css" /&gt;
+  &lt;script src="scripts/app.js" type="text/javascript"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div id="tv"&gt;&lt;/div&gt;
+
+    &lt;button id="btnCollapse" class="btn btn-default"&gt;Collapse All&lt;/button&gt;
+    &lt;button id="btnExpand" class="btn btn-default"&gt;Expand All&lt;/button&gt;
+
+    &lt;br/&gt;
+    &lt;label&gt;
+        &lt;input id="chkIsAnimated" type="checkbox" checked="checked"&gt; isAnimated
+    &lt;/label&gt;
+
+    &lt;br/&gt;
+    &lt;label&gt;
+        &lt;input id="chkAutoCollapse" type="checkbox" checked="checked"&gt; autoCollapse
+    &lt;/label&gt;
+    &lt;br/&gt;
+    &lt;label&gt;
+        &lt;input id="chkexpandOnClick" type="checkbox" checked="checked"&gt; expandOnClick
+    &lt;/label&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+                            </div>
+                            <div class="tab-pane pane-content" id="gsJs">
+onload = function () {
+
+    // TreeView data
+    var items = [
+        { header: 'Electronics', img: 'resources/electronics.png', items: [
+            { header: 'Trimmers/Shavers' },
+            { header: 'Tablets' },
+            { header: 'Phones', img: 'resources/phones.png', items: [
+                { header: 'Apple' },
+                { header: 'Motorola' },
+                { header: 'Nokia' },
+                { header: 'Samsung' }
+            ]},
+            { header: 'Speakers' },
+            { header: 'Monitors' }
+        ]},
+        { header: 'Toys', img: 'resources/toys.png', items: [
+            { header: 'Shopkins' },
+            ...
+        ]},
+        { header: 'Home', img: 'resources/home.png', items: [
+            { header: 'Coffeee Maker' },
+            ...
+        ]}
+    ];
+
+    // create and bind the TreeView
+    var tv = new wijmo.nav.TreeView('#tv', {
+        displayMemberPath: 'header',
+        childItemsPath: 'items',
+        itemsSource: items
+    });
+
+    // handle collapse/expand buttons
+    document.getElementById('btnCollapse').addEventListener('click', function () {
+        tv.collapseToLevel(0);
+    });
+    document.getElementById('btnExpand').addEventListener('click', function () {
+        tv.collapseToLevel(1000);
+    });
+
+    // handle checkboxes
+    document.getElementById('chkAutoCollapse').addEventListener('change', function (e) {
+        tv.autoCollapse = e.target.checked;
+    });
+    document.getElementById('chkIsAnimated').addEventListener('change', function (e) {
+        tv.isAnimated = e.target.checked;
+    });
+    document.getElementById('chkExpandOnClick').addEventListener('change', function (e) {
+        tv.expandOnClick = e.target.checked;
+    });
+}
+                            </div>
+                            <div class="tab-pane pane-content" id="gsCss">
+/* default trees on this sample */
+.wj-treeview {
+    height: 350px;
+    font-size: 120%;
+    margin-bottom: 8px;
+    background: white;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <h4>Result (live):</h4>
+                    <div id="tv"></div>
+                    <div>
+                        <button id="btnCollapse" class="btn btn-default">Collapse All</button>
+                        <button id="btnExpand" class="btn btn-default">Expand All</button>
+                    </div>
+                    <br/>
+                    <label>
+                        <input id="chkIsAnimated" type="checkbox" checked="checked"> isAnimated
+                    </label>
+                    <br/>
+                    <label>
+                        <input id="chkAutoCollapse" type="checkbox" checked="checked"> autoCollapse
+                    </label>
+                    <br/>
+                    <label>
+                        <input id="chkExpandOnClick" type="checkbox" checked="checked"> expandOnClick
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Styling and CSS -->
+        <div>
+            <h2>样式和CSS</h2>
+            <p>
+                您可以使用CSS自定义TreeView的外观。</p>
+            <p>
+                此示例更改折叠/展开图标，根据节点级别使用不同的字体大小，并在一级节点的左侧添加垂直条。</p>
+            <p>
+                使用TreeView下面的复选框切换自定义样式并查看区别。</p>
+            <div class="row">
+                <div class="col-md-6">
+                    <div>
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li class="active"><a href="#stHtml" role="tab" data-toggle="tab">HTML</a></li>
+                            <li><a href="#stJs" role="tab" data-toggle="tab">JS</a></li>
+                            <li><a href="#stCss" role="tab" data-toggle="tab">CSS</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active pane-content" id="stHtml">
+&lt;div id="tvCss" class="custom-tree"&gt;&lt;/div&gt;
+&lt;label&gt;
+    Use custom CSS
+    &lt;input id="tvCssCheck" type="checkbox" checked="checked"/&gt;
+&lt;/label&gt;
+                            </div>
+                            <div class="tab-pane pane-content" id="stJs">
+// create and bind the 'CSS' TreeView
+var tvCss = new wijmo.nav.TreeView('#tvCss', {
+    displayMemberPath: 'header',
+    childItemsPath: 'items',
+    itemsSource: items
+});
+
+// toggle style when user checks the checkbox
+document.getElementById('tvCssCheck').addEventListener('change', function(e) {
+    wijmo.toggleClass(tvCss.hostElement, 'custom-tree', e.target.checked);
+});
+                            </div>
+                            <div class="tab-pane pane-content" id="stCss">
+/* custom tree styles */
+.custom-tree.wj-treeview {
+    color: #80044d;
+}
+
+/* level 0 and deeper nodes */
+.custom-tree.wj-treeview .wj-nodelist > .wj-node {
+    font-size: 120%;
+}
+
+/* level 1 and deeper nodes (larger font, vertical line along the left) */
+.custom-tree.wj-treeview .wj-nodelist > .wj-nodelist > .wj-node,
+.custom-tree.wj-treeview .wj-nodelist > .wj-nodelist > .wj-nodelist {
+    font-size: 110%;
+    border-left: 4px solid rgba(128, 4, 77, 0.3);
+}
+
+/* level 2 and deeper nodes (smaller font, thinner border) */
+.custom-tree.wj-treeview .wj-nodelist > .wj-nodelist  > .wj-nodelist > .wj-node,
+.custom-tree.wj-treeview .wj-nodelist > .wj-nodelist  > .wj-nodelist > .wj-nodelist {
+    font-size: 100%;
+    border-left: 2px solid rgba(128, 4, 77, 0.3);
+}
+
+/* expanded node glyph */
+.custom-tree.wj-treeview .wj-nodelist .wj-node:before { 
+    content: "\e114";
+    font-family: 'Glyphicons Halflings';
+    top: 4px;
+    border: none;
+    opacity: .3;
+    transition: all .3s cubic-bezier(.4,0,.2,1);
+}
+
+/* collapsed node glyph */
+.custom-tree.wj-treeview .wj-nodelist .wj-node.wj-state-collapsed:before,
+.custom-tree.wj-treeview .wj-nodelist .wj-node.wj-state-collapsing:before {
+    transform: rotate(-180deg);
+    transition: all .3s cubic-bezier(.4,0,.2,1);
+}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <h4>Result (live):</h4>
+                    <div id="tvCss" class="custom-tree"></div>
+                    <label>
+                        <input id="tvCssCheck" type="checkbox" checked="checked"/>
+                        Use custom CSS
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation Trees -->
+        <div>
+            <h2>导航树</h2>
+            <p>
+                TreeView控件最简单和最常见的用法是导航。TreeView的层次结构和自动搜索功能使用户可以轻松向下钻取并找到他们感兴趣的项目。</p>
+            <p>
+                您可以使用<b>selectedItemChanged</b>或<b>itemClicked</b>事件进行导航。区别在于，当用户使用键盘移动选择时，会发生<b>selectedItemChanged</b>当用户单击项目或按Enter键时，会发生<b>itemClicked</b>
+                </p>
+            <p>
+                这个演示使用<b>itemClicked</b>事件:</p>
+            <div class="row">
+                <div class="col-md-6">
+                    <div>
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li class="active"><a href="#ntHtml" role="tab" data-toggle="tab">HTML</a></li>
+                            <li><a href="#ntJs" role="tab" data-toggle="tab">JS</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active pane-content" id="ntHtml">
+&lt;div id="tvNav"&gt;&lt;/div&gt;
+&lt;div id="tvNavItem"&gt;&lt;/div&gt;
+                            </div>
+                            <div class="tab-pane pane-content" id="ntJs">
+// create and bind the 'Navigation' TreeView
+var tvNav = new wijmo.nav.TreeView('#tvNav', {
+    displayMemberPath: 'header',
+    childItemsPath: 'items',
+    itemsSource: items,
+    itemClicked: function (s, e) {
+        document.getElementById('tvNavItem').innerHTML = 
+            'Navigating to <b>*** ' + s.selectedItem.header + ' ***</b>';
+    }
+});
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <h4>Result (live):</h4>
+                    <div id="tvNav"></div>
+                    <div id="tvNavItem"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Accordion Trees -->
+        <div>
+            <h2>手风琴树</h2>
+            <p>
+                手风琴是多窗格面板，每次只保留一个面板。它们通常用于导航。</p>
+            <p>
+                您可以使用TreeView控件来实现手风琴折叠。</p>
+            <p>
+                使用CSS自定义标题显示并隐藏折叠/展开字形，并确保<b>autoCollapse</b>
+                属性设置为true（默认值），因此非活动面板会自动折叠。</p>
+            <p>
+                </p>
+            <div class="row">
+                <div class="col-md-6">
+                    <div>
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li class="active"><a href="#actHtml" role="tab" data-toggle="tab">HTML</a></li>
+                            <li><a href="#actJs" role="tab" data-toggle="tab">JS</a></li>
+                            <li><a href="#actCss" role="tab" data-toggle="tab">CSS</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active pane-content" id="actHtml">
+&lt;div id="tvAccordion" class="accordion-tree"&gt;&lt;/div&gt;
+&lt;div id="tvAccordionItem"&gt;&lt;/div&gt;
+                            </div>
+                            <div class="tab-pane pane-content" id="actJs">
+// create and bind the 'Accordion' TreeView
+var tvAccordion = new wijmo.nav.TreeView('#tvAccordion', {
+    isContentHtml: true,
+    autoCollapse: true,
+    itemsSource: [
+        { header: 'Angular', items: [
+            { header: '&lt;a href="ng/intro"&gt;Introduction&lt;/a&gt;' },
+            { header: '&lt;a href="ng/samples"&gt;Samples&lt;/a&gt;' },
+            { header: '&lt;a href="ng/perf"&gt;Performance&lt;/a&gt;' }
+        ]},
+        ...
+    ]
+});
+
+/* handle clicks on accordion items */
+tvAccordion.hostElement.addEventListener('click', function (e) {
+    if (e.target.tagName == 'A') {
+        document.getElementById('tvAccordionItem').innerHTML =
+            'Navigating to &lt;b&gt;*** ' + e.target.href + ' ***&lt;/b&gt;';
+        e.preventDefault();
+    }
+});
+                            </div>
+                            <div class="tab-pane pane-content" id="actCss">
+/* accordion tree styles */
+.accordion-tree.wj-treeview {
+    background: transparent;
+    box-shadow: none;
+    height: auto;
+}
+
+/* hide collapse/expand glyphs */
+.accordion-tree.wj-treeview .wj-nodelist .wj-node:before { 
+    display: none;
+}
+
+/* level 0 nodes (headers) */
+.accordion-tree.wj-treeview .wj-nodelist > .wj-node {
+    font-size: 120%;
+    font-weight: bold;
+    padding: 6px 10px;
+    color: white;
+    background: #106cc8;
+    margin-bottom: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+/* level 1 nodes (navigation items) */
+.accordion-tree.wj-treeview .wj-nodelist > .wj-nodelist > .wj-node {
+    font-size: inherit;
+    font-weight: normal;
+    padding: 4px 1em;
+    color: inherit;
+    background: inherit;
+    box-shadow: none;
+}
+    .accordion-tree.wj-treeview .wj-nodelist {
+        padding-bottom: 6px;
+    }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <h4>Result (live):</h4>
+                    <div id="tvAccordion" class="accordion-tree"></div>
+                    <div id="tvAccordionItem"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Checkboxes -->
+        <div>
+            <h2>复选框</h2>
+            <p>
+                将<b>showCheckboxes</b>属性设置为true，TreeView将向每个节点添加复选框。</p>
+            <p>
+                当显示复选框时，TreeView管理其层次结构，以便当复选框被选中或清除时，新值将自动应用于所有子节点，并反映在父节点的状态。
+            <p>
+                当选中或取消选中项目时，会引发<b>checkedItemsChanged</b>
+                事件，并且将使用当前选中的项目列表更新<b>checkedItems</b>属性。</p>
+            <div class="row">
+                <div class="col-md-6">
+                    <div>
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li class="active"><a href="#ncHtml" role="tab" data-toggle="tab">HTML</a></li>
+                            <li><a href="#ncJs" role="tab" data-toggle="tab">JS</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active pane-content" id="ncHtml">
+&lt;div id="tvChk"&gt;&lt;/div&gt;
+&lt;button id="btnCheckAll" class="btn btn-default" &gt;
+    Check All
+&lt;/button&gt;
+&lt;button id="btnUncheckAll" class="btn btn-default"&gt;
+    Uncheck All
+&lt;/button&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;
+&lt;button id="btnSaveState" class="btn btn-default" &gt;
+    Save State
+&lt;/button&gt;
+&lt;button id="btnRestoreState" class="btn btn-default"&gt;
+    Restore State
+&lt;/button&gt;
+&lt;br/&gt;
+&lt;div id="tvChkStatus"&gt;&lt;/div&gt;
+                            </div>
+                            <div class="tab-pane pane-content" id="ncJs">
+// create and bind the 'Checkboxes' TreeView
+var tvChk = new wijmo.nav.TreeView('#tvChk', {
+    displayMemberPath: 'header',
+    childItemsPath: 'items',
+    showCheckboxes: true,
+    itemsSource: items,
+    checkedItemsChanged: function (s, e) {
+        var items = s.checkedItems,
+            msg = '';
+        if (items.length) {
+            msg = '&lt;p&gt;&lt;b&gt;Checked Items:&lt;/b&gt;&lt;/p&gt;&lt;ol&gt;\r\n';
+            for (var i = 0; i &lt; items.length; i++) {
+                msg += '&lt;li&gt;' + items[i].header + '&lt;/li&gt;\r\n';
+            }
+            msg += '&lt;/ol&gt;';
+        }
+        document.getElementById('tvChkStatus').innerHTML = msg;
+    }
+});
+
+// check/uncheck all nodes
+document.getElementById('btnCheckAll').addEventListener('click', function () {
+    tvChk.checkAllItems(true);
+});
+document.getElementById('btnUncheckAll').addEventListener('click', function () {
+    tvChk.checkAllItems(false);
+});
+
+// save/restore checked state
+var saveCheckedItems = null;
+document.getElementById('btnSaveState').addEventListener('click', function () {
+    saveCheckedItems = tvChk.checkedItems;
+});
+document.getElementById('btnRestoreState').addEventListener('click', function () {
+    tvChk.checkedItems = saveCheckedItems || [];
+});
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <h4>Result (live):</h4>
+                    <div id="tvChk"></div>
+                    <button id="btnCheckAll" class="btn btn-default" >
+                        Check All
+                    </button>
+                    <button id="btnUncheckAll" class="btn btn-default">
+                        Uncheck All
+                    </button>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <button id="btnSaveState" class="btn btn-default" >
+                        Save State
+                    </button>
+                    <button id="btnRestoreState" class="btn btn-default">
+                        Restore State
+                    </button>
+                    <br/>
+                    <div id="tvChkStatus"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Images -->
+        <div>
+            <h2>图片</h2>
+            <p>
+                使用<b>imageMemberPath</b> 属性可通过在包含图像URL的数据项上指定属性的名称来将图像添加到节点。</p>
+            <p>
+                例如，我们的一些示例<b>items</b>数组有一个“img”属性设置为图片网址：
+            <div class="row">
+                <div class="col-md-6">
+                    <div>
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li class="active"><a href="#niHtml" role="tab" data-toggle="tab">HTML</a></li>
+                            <li><a href="#niJs" role="tab" data-toggle="tab">JS</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active pane-content" id="niHtml">
+&lt;div id="tvImg"&gt;&lt;/div&gt;
+                            </div>
+                            <div class="tab-pane pane-content" id="niJs">
+// create and bind the 'Images' TreeView
+var tvImg = new wijmo.nav.TreeView('#tvImg', {
+    displayMemberPath: 'header',
+    imageMemberPath: 'img',
+    childItemsPath: 'items',
+    itemsSource: items
+});
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <h4>Result (live):</h4>
+                    <div id="tvImg"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Disabled Nodes -->
+        <div>
+            <h2>禁用节点</h2>
+            <p>
+                您可以使用TreeNode的<b>isDisabled</b>属性禁用节点。 无法使用鼠标或键盘选择已禁用的节点。</p>
+            <div class="row">
+                <div class="col-md-6">
+                    <div>
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li class="active"><a href="#dnHtml" role="tab" data-toggle="tab">HTML</a></li>
+                            <li><a href="#dnJs" role="tab" data-toggle="tab">JS</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active pane-content" id="dnHtml">
+&lt;div id="tvDisable"&gt;&lt;/div&gt;
+&lt;button id="btnDisableNode" class="btn btn-default"&gt;Disable Selected Node&lt;/button&gt;
+&lt;button id="btnEnableAllNodes" class="btn btn-default"&gt;Enable All Nodes&lt;/button&gt;
+                            </div>
+                            <div class="tab-pane pane-content" id="dnJs">
+// create and bind the 'Disable Items' TreeView
+var tvDisable = new wijmo.nav.TreeView('#tvDisable', {
+    displayMemberPath: 'header',
+    childItemsPath: 'items',
+    itemsSource: items,
+});
+
+// disable selected node
+document.getElementById('btnDisableNode').addEventListener('click', function () {
+    var nd = tvDisable.selectedNode;
+    if (nd) {
+        nd.isDisabled = true;
+    }
+});
+
+// enable all nodes
+document.getElementById('btnEnableAllNodes').addEventListener('click', function () {
+    for (var nd = tvDisable.getFirstNode(); nd; nd = nd.next()) {
+        nd.isDisabled = false;
+    }
+});
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <h4>Result (live):</h4>
+                    <div id="tvDisable"></div>
+                    <button id="btnDisableNode" class="btn btn-default">Disable Selected Node</button>
+                    <button id="btnEnableAllNodes" class="btn btn-default">Enable All Nodes</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Custom Node Content -->
+        <div>
+            <h2>自定义节点内容</h2>
+            <p>
+                您可以使用<b>formatItem</b>事件自定义TreeView节点的内容。 事件处理程序参数包括表示节点和要呈现的数据项的元素。</p>
+            <p>
+                下面的示例使用<b>formatItem</b>事件在树上新项目的右侧添加“新”徽章。</p>
+            <div class="row">
+                <div class="col-md-6">
+                    <div>
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li class="active"><a href="#fiHtml" role="tab" data-toggle="tab">HTML</a></li>
+                            <li><a href="#fiJs" role="tab" data-toggle="tab">JS</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active pane-content" id="fiHtml">
+&lt;div id="tvFmtItem"&gt;&lt;/div&gt;
+                            </div>
+                            <div class="tab-pane pane-content" id="fiJs">
+// create and bind the 'Custom Content' TreeView
+var tvFmtItem = new wijmo.nav.TreeView('#tvFmtItem', {
+    displayMemberPath: 'header',
+    childItemsPath: 'items',
+    itemsSource: items,
+    formatItem: function (s, e) {
+        if (e.dataItem.newItem) {
+            e.element.innerHTML += 
+                '&lt;img style="margin-left:6px" src="resources/new.png"/&gt;';
+        }
+    }
+});
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <h4>Result (live):</h4>
+                    <div id="tvFmtItem"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Lazy Loading -->
+        <div>
+            <h2>延迟加载</h2>
+            <p>
+                延迟加载在处理大型分层数据源时很有用，并且希望避免在同时加载整个数据集时的延迟。</p>
+            <p>
+                TreeView控件使得延迟加载超级容易。只需要两个步骤：</p>
+            <ol>
+                <li>
+                    将父节点数据项中的<b>items</b>属性设置为空数组。</li>
+                <li>
+                    将TreeView的<b>lazyLoadFunction</b>属性设置为在用户展开节点时调用的函数。此函数有两个参数：父节点和回调函数在数据可用时调用。</li>
+            </ol>
+            <p>
+                下面的示例中的树以三个延迟加载节点开始。 展开它们时，将调用<b>lazyLoadFunction</b>。 该函数使用setTimeout来模拟http延迟并返回三个子节点的数据，其中一个子节点也是一个延迟加载节点。</p>
+            <p>
+                该示例还使用一些CSS在节点图标加载时为其添加动画。</p>
+            <div class="row">
+                <div class="col-md-6">
+                    <div>
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li class="active"><a href="#llHtml" role="tab" data-toggle="tab">HTML</a></li>
+                            <li><a href="#llJs" role="tab" data-toggle="tab">JS</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active pane-content" id="llHtml">
+&lt;div id="tvLazyLoad"&gt;&lt;/div&gt;
+                            </div>
+                            <div class="tab-pane pane-content" id="llJs">
+// create and bind the 'Lazy Load' TreeView
+var tvLazyLoad = new wijmo.nav.TreeView('#tvLazyLoad', {
+    displayMemberPath: 'header',
+    childItemsPath: 'items',
+    itemsSource: [ // start with three lazy-loaded nodes
+        { header: 'Lazy Node 1', items: []},
+        { header: 'Lazy Node 2', items: [] },
+        { header: 'Lazy Node 3', items: [] }
+    ],
+    lazyLoadFunction: function (node, callback) {
+        setTimeout(function () { // simulate http delay
+            var result = [ // simulate result
+                { header: 'Another lazy node...', items: [] },
+                { header: 'A non-lazy node without children' },
+                { header: 'A non-lazy node with child nodes', items: [
+                    { header: 'hello' },
+                    { header: 'world' }
+                ]}
+            ];
+            callback(result); // return result to control
+        }, 2500); // 2.5sec http delay
+    }
+});
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <h4>Result (live):</h4>
+                    <div id="tvLazyLoad"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Lazy Loading and OData -->
+        <div>
+            <h2>延迟加载和OData</h2>
+            <p>
+                此示例显示如何使用TreeView控件来显示来自OData源的分层数据。</p>
+            <p>
+                示例通过加载Northwind employees表开始。加载数据时，代码会为每个员工添加一个“Orders”空数组。<b>lazyLoadFunction</b>用于在展开员工节点时装入订单。</p>
+            <p>
+                订单表还为每个订单添加了一个“Order_Details”空数组。<b>lazyLoadFunction</b>用于在订单节点展开时加载订单详细信息。</p>
+            <div class="row">
+                <div class="col-md-6">
+                    <div>
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li class="active"><a href="#lloHtml" role="tab" data-toggle="tab">HTML</a></li>
+                            <li><a href="#lloJs" role="tab" data-toggle="tab">JS</a></li>
+                            <li><a href="#lloCss" role="tab" data-toggle="tab">CSS</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active pane-content" id="lloHtml">
+&lt;div id="tvLazyLoadOData"&gt;&lt;/div&gt;
+                            </div>
+                            <div class="tab-pane pane-content" id="lloJs">
+// demonstrate lazy-loading with OData
+var nwindService = 'http://services.odata.org/V4/Northwind/Northwind.svc';
+var tvLazyLoadOData = new wijmo.nav.TreeView('#tvLazyLoadOData', {
+    displayMemberPath: ['FullName', 'ShipName', 'Summary' ],
+    childItemsPath: ['Orders', 'Order_Details'],
+    lazyLoadFunction: function (node, callback) {
+
+        switch (node.level) {
+
+            // load orders for an employee
+            case 0:
+                var url = 'Employees(' + node.dataItem.EmployeeID + ')/Orders';
+                var orders = new wijmo.odata.ODataCollectionView(nwindService, url, {
+                    fields: 'OrderID,ShipName,ShipCountry'.split(','),
+                    loaded: function () {
+                        var items = orders.items.map(function (e) {
+                            e.Order_Details = []; // lazy-order details
+                            return e;
+                        });
+                        callback(items);
+                    }
+                });
+                break;
+
+            // load extended details for an order
+            case 1:
+                var url = "Order_Details_Extendeds/?$filter=OrderID eq " + node.dataItem.OrderID;
+                var details = new wijmo.odata.ODataCollectionView(nwindService, url, {
+                    fields: 'ProductName,ExtendedPrice'.split(','),
+                    loaded: function () {
+                        var items = details.items.map(function (e) {
+                            e.Summary = wijmo.format('{ProductName}: {ExtendedPrice:c}', e);
+                            return e;
+                        });
+                        callback(items);
+                    }
+                });
+                break;
+
+            // default
+            default:
+                callback(null);
+        }
+    }
+});
+
+// first level: employees
+var employees = new wijmo.odata.ODataCollectionView(nwindService, 'Employees', {
+    fields: 'EmployeeID,FirstName,LastName'.split(','),
+    loaded: function () {
+        var items = employees.items.map(function (e) {
+            e.FullName = e.FirstName + ' ' + e.LastName;
+            e.Orders = []; // lazy-load orders
+            return e;
+        });
+        tvLazyLoadOData.itemsSource = items;
+    }
+});
+                            </div>
+                            <div class="tab-pane pane-content" id="lloCss">
+/* level 0 nodes and deeper (employees...) */
+#tvLazyLoadOData.wj-treeview .wj-nodelist > .wj-node {
+    font-weight: bold;
+}
+
+/* level 1 nodes and deeper (orders...) */
+#tvLazyLoadOData.wj-treeview .wj-nodelist > .wj-nodelist > .wj-node {
+    font-weight: normal;
+    font-size: 95%;
+    color: darkblue;
+}
+
+/* level 2 nodes and deeper (order details...) */
+#tvLazyLoadOData.wj-treeview .wj-nodelist > .wj-nodelist > .wj-nodelist > .wj-node {
+    font-size: 90%;
+    color: darkslategrey;
+}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <h4>Result (live):</h4>
+                    <div id="tvLazyLoadOData"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Drag and Drop -->
+        <div>
+            <h2>拖放</h2>
+            <p>
+                将<b>allowDragging</b>属性设置为true，以允许用户将节点拖动到TreeView中的新位置。</p>
+            <p>
+                当允许拖动时，用户可以将任何节点拖动到树中的任何位置。 您可以通过处理TreeView拖放事件来自定义此行为：</p>
+            <ul>
+                <li>
+                    <b>dragStart:</b> 当拖放操作即将开始时发生。 您可以通过将事件的<b>cancel</b>参数设置为true来检查要拖动的节点并取消操作。</li>
+                <li>
+                    <b>dragOver:</b>用户在树上的其他节点上拖动节点时发生。 您可以检查当前目标节点并放置位置，并防止放置或修改其位置，设置事件的<b>cancel</b> 
+                    和<b>position</b>参数。</li>
+                <li>
+                    <b>drop:</b>当用户将节点放置到其新位置时发生。 您可以检查当前目标节点并放置位置，并防止放置或修改其位置，设置事件的<b>cancel</b> 
+                    和<b>position</b>参数。</li>
+                <li>
+                    <b>dragEnd:</b>在拖放操作完成后发生，即使它已取消，并且源节点未移动。</li>
+            </ul>
+            <p>
+                下面的示例显示如何在TreeView控件上提供标准和自定义的拖放操作：</p>
+            <div class="row">
+                <div class="col-md-6">
+                    <div>
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li class="active"><a href="#ddHtml" role="tab" data-toggle="tab">HTML</a></li>
+                            <li><a href="#ddJs" role="tab" data-toggle="tab">JS</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active pane-content" id="ddHtml">
+&lt;div id="tvDragDrop"&gt;&lt;/div&gt;
+&lt;label&gt;
+    &lt;input id="allowDragging" type="checkbox" checked="checked"&gt; allowDragging
+&lt;/label&gt;
+&lt;br/&gt;
+&lt;label&gt;
+    &lt;input id="allowDraggingParentNodes" type="checkbox" checked="checked"&gt; allow dragging parent nodes
+&lt;/label&gt;
+&lt;br/&gt;
+&lt;label&gt;
+    &lt;input id="allowDroppingIntoEmpty" type="checkbox" checked="checked"&gt; allow dropping into empty nodes
+&lt;/label&gt;
+                            </div>
+                            <div class="tab-pane pane-content" id="ddJs">
+// create and bind the drag/drop TreeView
+var allowDraggingParentNodes = true,
+    allowDroppingIntoEmpty = true;
+var tvDragDrop = new wijmo.nav.TreeView('#tvDragDrop', {
+    displayMemberPath: 'header',
+    childItemsPath: 'items',
+    imageMemberPath: 'img',
+    showCheckboxes: true,
+    allowDragging: true,
+    itemsSource: items,
+
+    // use dragStart event to honor the allowDraggingParentNodes setting
+    // by setting the 'cancel' event parameter to true
+    dragStart: function (s, e) {
+        if (e.node.hasChildren) {
+            if (!allowDraggingParentNodes) {
+                e.cancel = true; // prevent dragging parent nodes
+            } else {
+                e.node.isCollapsed = true; // collapse parent nodes when dragging
+            }
+        }
+    },
+
+    // use dragOver event to honor the allowDroppingIntoEmpty setting
+    // by changing the 'position' event parameter to 'Before'
+    dragOver: function (s, e) {
+        if (!allowDroppingIntoEmpty &&
+            !e.dropTarget.hasChildren &&
+                e.position == wijmo.input.DropPosition.Into) {
+            e.position = wijmo.input.DropPosition.Before;
+        }
+    },
+});
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <h4>Result (live):</h4>
+                    <div id="tvDragDrop"></div>
+                    <label>
+                        <input id="allowDragging" type="checkbox" checked="checked"> allowDragging
+                    </label>
+                    <br/>
+                    <label>
+                        <input id="allowDraggingParentNodes" type="checkbox" checked="checked"> allow dragging parent nodes
+                    </label>
+                    <br/>
+                    <label>
+                        <input id="allowDroppingIntoEmpty" type="checkbox" checked="checked"> allow dropping into empty nodes
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Drag and Drop Between Trees-->
+        <div>
+            <h2>在树之间的拖放</h2>
+            <p>
+                将<b>allowDragging</b>属性设置为true允许用户拖放节点在同一TreeView中。</p>
+            <p>
+                要允许在不同TreeView控件之间拖放节点，必须处理<b>dragOver</b>事件，如果移动有效，请将<b>cancel</b>参数设置为false。</p>
+            <p>
+                在下面的示例中，用户可以在两个树之间和之间拖动节点：</p>
+            <div class="row">
+                <div class="col-md-6">
+                    <div>
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li class="active"><a href="#ddbHtml" role="tab" data-toggle="tab">HTML</a></li>
+                            <li><a href="#ddbJs" role="tab" data-toggle="tab">JS</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active pane-content" id="ddbHtml">
+&lt;div class="short" id="tvDragDrop1"&gt;&lt;/div&gt;
+&lt;div class="short" id="tvDragDrop2"&gt;&lt;/div&gt;
+                            </div>
+                            <div class="tab-pane pane-content" id="ddbJs">
+// create trees to drag/drop between
+var tvDragDrop1 = new wijmo.nav.TreeView('#tvDragDrop1', {
+    displayMemberPath: 'header',
+    childItemsPath: 'items',
+    allowDragging: true,
+    dragOver: dragOverBetweenTrees,
+    itemsSource: [
+        { header: 'Item 1.1' },
+        { header: 'Item 1.2' },
+        { header: 'Item 1.3' },
+    ]
+});
+var tvDragDrop2 = new wijmo.nav.TreeView('#tvDragDrop2', {
+    displayMemberPath: 'header',
+    childItemsPath: 'items',
+    allowDragging: true,
+    dragOver: dragOverBetweenTrees,
+    itemsSource: [
+        { header: 'Item 2.1' },
+        { header: 'Item 2.2' },
+        { header: 'Item 2.3' },
+    ]
+});
+
+// allow drag/drop between tvDragDrop1 and tvDragDrop2
+function dragOverBetweenTrees(s, e) {
+    var t1 = e.dragSource.treeView,
+        t2 = e.dropTarget.treeView;
+    if (t1 == tvDragDrop1 || t1 == tvDragDrop2) {
+        if (t2 == tvDragDrop1 || t2 == tvDragDrop2) {
+            e.cancel = false;
+        }
+    }
+}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <h4>Result (live):</h4>
+                    <div class="short" id="tvDragDrop1"></div>
+                    <div class="short" id="tvDragDrop2"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Editing Nodes -->
+        <div>
+            <h2>编辑节点</h2>
+            <p>
+                TreeView控件提供编辑支持。将<b>isReadOnly</b>属性设置为false，用户将能够通过按F2键编辑节点的内容。</p>
+            <p>
+                使用<b>displayMemberPath</b>属性指定的属性，对节点内容所做的编辑会自动应用于<b>itemsSource</b> 数组中的项目。</p>
+            <p>
+                您可以使用以下事件自定义编辑行为：
+                <b>nodeEditStarting</b>,<b>nodeEditStarted</b>, 
+                <b>nodeEditEnding</b>,和<b>nodeEditEnded</b>。</p>
+            <p>
+                在下面的示例中，我们仅对不包含子节点的节点启用编辑。 要编辑，请选择一个节点，然后按F2：
+            <div class="row">
+                <div class="col-md-6">
+                    <div>
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li class="active"><a href="#edtHtml" role="tab" data-toggle="tab">HTML</a></li>
+                            <li><a href="#edtJs" role="tab" data-toggle="tab">JS</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active pane-content" id="edtHtml">
+&lt;div id="tvEdit"&gt;&lt;/div&gt;
+                            </div>
+                            <div class="tab-pane pane-content" id="edtJs">
+// create and bind the 'Editable Nodes' TreeView
+var tvEdit = new wijmo.nav.TreeView('#tvEdit', {
+    displayMemberPath: 'header',
+    childItemsPath: 'items',
+    imageMemberPath: 'img',
+    showCheckboxes: true,
+    itemsSource: items,
+    isReadOnly: false,
+    nodeEditStarting: function (s, e) {
+        if (e.node.hasChildren) {
+            e.cancel = true;
+        }
+    }
+});
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <h4>Result (live):</h4>
+                    <div>
+                        <div id="tvEdit"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- RTL -->
+        <div>
+            <h2>RTL支持</h2>
+            <p>
+                一些语言从页面的右侧向左侧呈现内容（阿拉伯语和希伯来语是典型的例子）。HTML使用'dir'属性。在任何元素上将'dir'设置为'rtl'会导致元素的内容从右到左流动。</p>
+            <p>
+                TreeView自动支持。 如果托管树的元素的“dir”属性设置为“rtl”，则树将呈现节点从右向左延伸。 您不必在控件上设置任何属性。</p>
+            <p>
+                请注意，'dir'属性值是继承的，因此如果您在body标签上设置它，整个页面将从右到左进行渲染，包括树。</p>
+            <p>
+                还要注意，CSS有一个'direction'属性，执行与'dir'元素属性相同的功能。 'dir'属性通常被认为更适合于几个原因，包括它可以在CSS规则中使用的事实。</p>
+            <div class="row">
+                <div class="col-md-6">
+                    <div>
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li class="active"><a href="#rtlHtml" role="tab" data-toggle="tab">HTML</a></li>
+                            <li><a href="#rtlJs" role="tab" data-toggle="tab">JS</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active pane-content" id="rtlHtml">
+&lt;div dir="rtl"&gt;
+    &lt;p&gt;My parent element has a &lt;b&gt;dir="rtl"&lt;/b&gt; attribute!&lt;/p&gt;
+    &lt;div id="tvRtl"&gt;&lt;/div&gt;
+&lt;/div&gt;
+                            </div>
+                            <div class="tab-pane pane-content" id="rtlJs">
+// demonstrate RTL support (no need to set any properties)
+var tvRtl = new wijmo.nav.TreeView('#tvRtl', {
+    displayMemberPath: 'header',
+    childItemsPath: 'items',
+    imageMemberPath: 'img',
+    showCheckboxes: true,
+    itemsSource: items
+});
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <h4>Result (live):</h4>
+                    <div dir="rtl">
+                        <p>My parent element has a <b>dir="rtl"</b> attribute!</p>
+                        <div id="tvRtl"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="scripts/wijmo.sample.toolbar.js" type="text/javascript"></script>
+</body>
+</html>

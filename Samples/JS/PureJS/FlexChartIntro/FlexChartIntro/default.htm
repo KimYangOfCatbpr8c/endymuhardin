@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-    <title>FlexChart Introduction</title>
+    <title>FlexChart简介</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- styles -->
@@ -15,43 +15,43 @@
     <script src="http://code.jquery.com/jquery-2.2.4.min.js" type="text/javascript"></script>
     <script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js" type="text/javascript"></script>
 
-	<!-- Wijmo -->
+    <!-- Wijmo -->
     <script src="scripts/vendor/wijmo.min.js" type="text/javascript"></script>
     <script src="scripts/vendor/wijmo.input.min.js" type="text/javascript"></script>
     <script src="scripts/vendor/wijmo.chart.min.js" type="text/javascript"></script>
 </head>
 <body>
-	<div class="header">
+    <div class="header">
         <div class="container">
             <img src="resources/wijmo5.png" />
             <h1>FlexChart 101</h1>
             <p>
-                This page shows how to get started with Wijmo's FlexChart control.
+                这个页面演示如何开始使用Wijmo的FlexChart控件。
             </p>
         </div>
     </div>
-	<div class="container">
+    <div class="container">
 
-		<!-- getting started -->
+        <!-- getting started -->
         <div>
             <h2>
-                Getting Started</h2>
+                入门</h2>
             <p>
-                Steps for getting started with the FlexChart in JavaScript applications:</p>
+                在JavaScript应用中开始使用FlexChart的步骤：</p>
             <ol>
-			    <li>Add references to Wijmo.</li>
-			    <li>Add markup to serve as the FlexChart's host.</li>
-			    <li>Initialize the FlexChart via JavaScript and its itemSource property.</li>
-			    <li>Create one or more data series, and add each to the FlexChart's series collection.</li>
-                <li>(Optional) Add some CSS to customize the chart's appearance.</li>
+                <li>添加对Wijmo的引用。</li>
+                <li>添加标记作为FlexChart的宿主。</li>
+                <li>通过JavaScript初始化FlexChart和它的itemSource属性。</li>
+                <li>创建一个或多个数据系列，并将它们添加到FlexChart的系列集合。</li>
+                <li>（可选）添加一些CSS来自定义图表的外观。</li>
             </ol>
-		    <div class="row">
+            <div class="row">
                 <div class="col-md-6">
                     <div>
                         <ul class="nav nav-tabs" role="tablist">
                             <li class="active"><a href="#gsHtml" role="tab" data-toggle="tab">HTML</a></li>
                             <li><a href="#gsJs" role="tab" data-toggle="tab">JS</a></li>
-						    <li><a href="#gsCss" role="tab" data-toggle="tab">CSS</a></li>
+                            <li><a href="#gsCss" role="tab" data-toggle="tab">CSS</a></li>
                         </ul>
                         <div class="tab-content">
                             <div class="tab-pane pane-content active" id="gsHtml">
@@ -73,7 +73,7 @@
 
 &lt;/body&gt;
 &lt;/html&gt;
-						    </div>
+                            </div>
                             <div class="tab-pane pane-content" id="gsJs">
 // create FlexChart
 var gettingStartedChart = new wijmo.chart.FlexChart('#gettingStartedChart');
@@ -89,7 +89,7 @@ gettingStartedChart.initialize({
   ]
 });
                             </div>
-						    <div class="tab-pane pane-content" id="gsCss">
+                            <div class="tab-pane pane-content" id="gsCss">
 .wj-flexchart {
   background-color: white;
   box-shadow: 4px 4px 10px 0px rgba(50, 50, 50, 0.75);
@@ -97,39 +97,37 @@ gettingStartedChart.initialize({
   margin-bottom: 12px;
   padding: 8px;
 }
-						    </div>
-					    </div>
-				    </div>
-			    </div>
-                <div class="col-md-6">
-                    <h4>Result (live):</h4>
-				    <div id="gettingStartedChart"></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-		    </div>
+                <div class="col-md-6">
+                    <h4>结果:</h4>
+                    <div id="gettingStartedChart"></div>
+                </div>
+            </div>
         </div>
 
-		<!-- chart types -->
+        <!-- chart types -->
         <div>
-            <h2>Chart Types</h2>
-            <p>The FlexChart control has three properties that allow you to customize the chart type:</p>
+            <h2>图表类型</h2>
+            <p> FlexChart控件有三个属性允许你来自定义图表的类型：</p>
             <ol>
                 <li>
-                    <b>chartType</b>: Selects the default chart type to be used for all series.
-                    Individual series may override this.
+                    <b>chartType</b>: 对于所有系列对象选择默认的图表类型。个别系列对象可以覆盖它。
                 </li>
                 <li>
-                    <b>stacking</b>: Determines whether series are plotted independently, 
-                    stacked, or stacked so their sum is 100%.
+                    <b>stacking</b>: 确定系列对象是否独立地绘制，堆积或百分比堆积。
                 </li>
                 <li>
-                    <b>rotated</b>: Flips the X and Y axes so X becomes vertical and Y horizontal.
+                    <b>rotated</b>: 翻转X轴和Y轴，导致X变为垂直，Y变为水平。
                 </li>
             </ol>
-            <p>The example below allows you to see what happens when you change these properties:</p>
-		    <div class="row">
+            <p>以下这个示例让你看见当你改变这些属性的时候发生了什么：</p>
+            <div class="row">
                 <div class="col-md-6">
                     <div>
-					    <ul class="nav nav-tabs" role="tablist">
+                        <ul class="nav nav-tabs" role="tablist">
                             <li class="active"><a href="#ctHtml" role="tab" data-toggle="tab">HTML</a></li>
                             <li><a href="#ctJs" role="tab" data-toggle="tab">JS</a></li>
                         </ul>
@@ -156,8 +154,8 @@ gettingStartedChart.initialize({
   &lt;option value="false" selected="selected"&gt;False&lt;/option&gt;
   &lt;option value="true"&gt;True&lt;/option&gt;
 &lt;/select&gt;
-						    </div>
-						    <div class="tab-pane pane-content" id="ctJs">
+                            </div>
+                            <div class="tab-pane pane-content" id="ctJs">
 // create FlexChart and Menus
 var chartTypes = new wijmo.chart.FlexChart('#chartTypes'),
     typeMenu = new wijmo.input.Menu('#typeMenu'),
@@ -214,15 +212,15 @@ rotatedMenu.selectedIndexChanged.addHandler(function () {
 function updateMenuHeader(menu, prefix) {
   menu.header = '&lt;b&gt;' + prefix + '&lt;/b&gt;: ' + menu.text;
 }
-						    </div>
-					    </div>
-				    </div>
-			    </div>
-			    <div class="col-md-6">
-				    <h4>Result (live):</h4>
-				    <div id="chartTypes"></div>
-				    <select id="typeMenu">
-					    <option value="0" selected="selected">Column</option>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <h4>结果:</h4>
+                    <div id="chartTypes"></div>
+                    <select id="typeMenu">
+                        <option value="0" selected="selected">Column</option>
                         <option value="1">Bar</option>
                         <option value="2">Scatter</option>
                         <option value="3">Line</option>
@@ -231,25 +229,25 @@ function updateMenuHeader(menu, prefix) {
                         <option value="9">Spline</option>
                         <option value="10">SplineSymbols</option>
                         <option value="11">SplineArea</option>
-				    </select>
-				    <select id="stackingMenu">
-					    <option value="0" selected="selected">None</option>
-                        <option value="1">Stacked</option>
-                        <option value="2">Stacked 100%</option>
-				    </select>
-				    <select id="rotatedMenu">
-					    <option value="false" selected="selected">False</option>
+                    </select>
+                    <select id="stackingMenu">
+                        <option value="0" selected="selected">无</option>
+                        <option value="1">堆积</option>
+                        <option value="2">百分比堆积</option>
+                    </select>
+                    <select id="rotatedMenu">
+                        <option value="false" selected="selected">False</option>
                         <option value="true">True</option>
-				    </select>
-			    </div>
-		    </div>
+                    </select>
+                </div>
+            </div>
         </div>
         
         <!-- funnel charts -->
         <div>
-            <h2>Funnel Charts</h2>
+            <h2>漏斗图</h2>
             <p>
-                The example below shows you how to create and customize Funnel Chart:
+                下面的示例演示如何创建和自定义漏斗图： 
             </p>
             <div class="row">
                 <div class="col-md-6">
@@ -352,7 +350,7 @@ function updateMenuHeader(menu, prefix) {
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <h4>Result (live):</h4>
+                    <h4>结果：</h4>
                     <div id="funnelChart"></div>
                     <dl class="dl-horizontal">
                         <dt>Neck Width</dt>
@@ -378,25 +376,25 @@ function updateMenuHeader(menu, prefix) {
                 </div>
             </div>
         </div>
-		<!-- mixed chart types -->
+        <!-- mixed chart types -->
         <div>
-            <h2>Mixed Chart Types</h2>
-            <p>You can use different chart types for each chart series by setting the <b>chartType</b>
-                property on the series itself. This overrides the chart's default chart type.</p>
-            <p>In the example below, the chart's <b>chartType</b> property is set to <b>Column</b>,
-                but the <b>Downloads</b> series overrides that to use the <b>LineAndSymbol</b>chart type:</p>
-		    <div class="row">
+            <h2>混合图表类型</h2>
+            <p>你可以对每个图表系列使用不同的图表类型，这是通过对它这个系列本身设置<b>chartType</b>属性。
+                这会覆盖图表的默认图表类型。</p>
+            <p>在以下的示例，这个图表的<b>chartType</b>属性被设为<b>Column</b>，
+                但是<b>Downloads</b>系列使用了<b>LineAndSymbol</b>类型覆盖它：</p>
+            <div class="row">
                 <div class="col-md-6">
                     <div>
-					    <ul class="nav nav-tabs" role="tablist">
+                        <ul class="nav nav-tabs" role="tablist">
                             <li class="active"><a href="#mctHtml" role="tab" data-toggle="tab">HTML</a></li>
                             <li><a href="#mctJs" role="tab" data-toggle="tab">JS</a></li>
                         </ul>
                         <div class="tab-content">
                             <div class="tab-pane pane-content active" id="mctHtml">
 &lt;div id="mixedTypesChart"&gt;&lt;/div&gt;
-						    </div>
-						    <div class="tab-pane pane-content" id="mctJs">
+                            </div>
+                            <div class="tab-pane pane-content" id="mctJs">
 // create FlexChart
 var mixedTypesChart = new wijmo.chart.FlexChart('#mixedTypesChart');
 
@@ -410,36 +408,34 @@ mixedTypesChart.initialize({
     { name: 'Downloads', binding: 'downloads', chartType: wijmo.chart.ChartType.LineSymbols }
   ]
 });
-						    </div>
-					    </div>
-				    </div>
-			    </div>
-			    <div class="col-md-6">
-				    <h4>Result (live):</h4>
-				    <div id="mixedTypesChart"></div>
-			    </div>
-		    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <h4>结果:</h4>
+                    <div id="mixedTypesChart"></div>
+                </div>
+            </div>
         </div>
 
-		<!-- legend and titles -->
+        <!-- legend and titles -->
         <div>
-            <h2>Legend and Titles</h2>
-            <p>Use the <b>legend</b> properties to customize the appearance of the chart legend, and
-                the <b>header</b>, <b>footer</b>, and axis <b>title</b> properties to add titles
-                to your charts.</p>
-            <p>You can style the legend and titles using CSS. The CSS tab below shows the rules
-                used to customize the appearance of the legend and titles. Notice that these are
-                SVG elements, so you have to use CSS attributes such as "fill" instead of "color."</p>
-		    <div class="row">
-			    <div class="col-md-6">
-				    <div>
-					    <ul class="nav nav-tabs" role="tablist">
+            <h2>图例和标题</h2>
+            <p>使用legend属性来自定义图表图例的外观， and
+                使用<b>header</b>，<b>footer</b>和坐标的<b>title</b>属性来向你的图表添加标题。</p>
+            <p>你可以使用CSS来确定图例和标题的样式。下面的CSS标签显示用于自定义图例和标题的外观的规则。
+                注意它们是SVG元素，所以你必须使用”fill”这样的CSS属性而不是”color”。</p>
+            <div class="row">
+                <div class="col-md-6">
+                    <div>
+                        <ul class="nav nav-tabs" role="tablist">
                             <li class="active"><a href="#ltHtml" role="tab" data-toggle="tab">HTML</a></li>
-						    <li><a href="#ltJs" role="tab" data-toggle="tab">JS</a></li>
-						    <li><a href="#ltCss" role="tab" data-toggle="tab">CSS</a></li>
-					    </ul>
-					    <div class="tab-content">
-						    <div class="tab-pane pane-content active" id="ltHtml">
+                            <li><a href="#ltJs" role="tab" data-toggle="tab">JS</a></li>
+                            <li><a href="#ltCss" role="tab" data-toggle="tab">CSS</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane pane-content active" id="ltHtml">
 &lt;div id="chartLegendTitles"&gt;&lt;/div&gt;
 &lt;dl class="dl-horizontal"&gt;
   &lt;dt&gt;Header&lt;/dt&gt;&lt;dd&gt;&lt;input id="headerInput" class="form-control"/&gt;&lt;/dd&gt;
@@ -457,8 +453,8 @@ mixedTypesChart.initialize({
     &lt;/select&gt;
   &lt;/dd&gt;
 &lt;/dl&gt;
-						    </div>
-						    <div class="tab-pane pane-content" id="ltJs">
+                            </div>
+                            <div class="tab-pane pane-content" id="ltJs">
 var chartLegendAndTitles = new wijmo.chart.FlexChart('#chartLegendAndTitles'),
     positionMenu = new wijmo.input.Menu('#positionMenu'),
     headerInput = document.getElementById('headerInput'),
@@ -528,8 +524,8 @@ positionMenu.selectedIndexChanged.addHandler(function () {
 function updatePositionMenuHeader() {
   positionMenu.header = '&lt;b&gt;Legend:&lt;/b&gt; ' + positionMenu.text;
 }
-						    </div>
-						    <div class="tab-pane pane-content" id="ltCss">
+                            </div>
+                            <div class="tab-pane pane-content" id="ltCss">
 .wj-flexchart .wj-title {
   font-weight: bold;
 }
@@ -544,65 +540,63 @@ function updatePositionMenuHeader() {
 .wj-flexchart .wj-axis-y .wj-title {
   font-style: italic;
 }
-						    </div>
-					    </div>
-				    </div>
-			    </div>
-			    <div class="col-md-6">
-				    <h4>Result (live):</h4>
-				    <div id="chartLegendAndTitles"></div>
-				    <dl class="dl-horizontal">
-					    <dt>Header</dt><dd><input id="headerInput" class="form-control"/></dd>
-					    <dt>Footer</dt><dd><input id="footerInput" class="form-control"/></dd>
-					    <dt>X-Axis Title</dt><dd><input id="xTitleInput" class="form-control"/></dd>
-					    <dt>Y-Axis Title</dt><dd><input id="yTitleInput" class="form-control"/></dd>
-					    <dt></dt>
-					    <dd>
-						    <select id="positionMenu">
-							    <option value="0">None</option>
-							    <option value="1">Left</option>
-							    <option value="2">Top</option>
-							    <option value="3" selected="selected">Right</option>
-							    <option value="4">Bottom</option>
-						    </select>
-					    </dd>
-				    </dl>
-			    </div>
-		    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <h4>结果:</h4>
+                    <div id="chartLegendAndTitles"></div>
+                    <dl class="dl-horizontal">
+                        <dt>页眉</dt><dd><input id="headerInput" class="form-control"/></dd>
+                        <dt>页尾</dt><dd><input id="footerInput" class="form-control"/></dd>
+                        <dt>X轴标题</dt><dd><input id="xTitleInput" class="form-control"/></dd>
+                        <dt>Y轴标题</dt><dd><input id="yTitleInput" class="form-control"/></dd>
+                        <dt></dt>
+                        <dd>
+                            <select id="positionMenu">
+                                <option value="0">无</option>
+                                <option value="1">左</option>
+                                <option value="2">上</option>
+                                <option value="3" selected="selected">右</option>
+                                <option value="4">下</option>
+                            </select>
+                        </dd>
+                    </dl>
+                </div>
+            </div>
         </div>
 
-		<!-- tooltips -->
+        <!-- tooltips -->
         <div>
-            <h2>Tooltips</h2>
-            <p>The FlexChart has built-in support for tooltips. By default, the control displays
-                tooltips when the user touches or hovers the mouse on a data point.</p>
-            <p>The tooltip content is generated using a template that may contain the following
-                parameters:</p>
+            <h2>工具提示</h2>
+            <p>FlexChart对工具提示有内置的支持。
+                默认情况下，当用户触摸或者悬停鼠标到一个数据点时，控件会显示工具提示。</p>
+            <p>工具提示的内容是使用一个可能包含下列参数的模板生成：</p>
             <ul>
-                <li><b>seriesName</b>: The name of the series that contains the chart element.</li>
-                <li><b>pointIndex</b>: The index of the chart element within the series.</li>
-                <li><b>x</b>: The <b>x</b> value of the chart element.</li>
-                <li><b>y</b>: The <b>y</b> value of the chart element.</li>
+                <li><b>seriesName</b>: 包含图表元素的系列名称</li>
+                <li><b>pointIndex</b>: 系列中图表元素的参数</li>
+                <li><b>x</b>: 图表元素的<b>x</b>值</li>
+                <li><b>y</b>: 图表元素的<b>y</b>值</li>
             </ul>
-            <p>By default, the tooltip template is set to
-                <code>&lt;b&gt;{seriesName}&lt;/b&gt;&lt;br/&gt;{x} {y}</code>,
-                and you can see how that works in the  charts above.
-                In this example, we set the tooltip template to 
-                <code>&lt;b&gt;{seriesName}&lt;/b&gt; &lt;img src='resources/{x}.png'/&gt;&lt;br/&gt;{y}</code>,
-                which replaces the country name with the country's flag.</p>
-            <p>You can disable the chart tooltips by setting the template to an empty string.</p>
-		    <div class="row">
-			    <div class="col-md-6">
-				    <div>
-					    <ul class="nav nav-tabs" role="tablist">
+            <p>
+                默认情况下，tooltip模板被设为<code>&lt;b&gt;{seriesName}&lt;/b&gt;&lt;br/&gt;{x} {y}</code>，你可以在上面的图表看到它是如何工作的。
+                在这个示例中，我们设tooltip模板为<code>&lt;b&gt;{seriesName}&lt;/b&gt; &lt;img src='resources/{x}.png'/&gt;&lt;br/&gt;{y}</code>,
+                它使用国家的国旗代替了国家的名字。
+            </p>
+            <p>你可以通过设置模板为空字符串来禁用图表tooltips。</p>
+            <div class="row">
+                <div class="col-md-6">
+                    <div>
+                        <ul class="nav nav-tabs" role="tablist">
                             <li class="active"><a href="#tooltipHtml" role="tab" data-toggle="tab">HTML</a></li>
-						    <li><a href="#tooltipJs" role="tab" data-toggle="tab">JS</a></li>
-					    </ul>
-					    <div class="tab-content">
-						    <div class="tab-pane pane-content active" id="tooltipHtml">
+                            <li><a href="#tooltipJs" role="tab" data-toggle="tab">JS</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane pane-content active" id="tooltipHtml">
 &lt;div id="chartTooltip"&gt;&lt;/div&gt;
-						    </div>
-						    <div class="tab-pane pane-content" id="tooltipJs">
+                            </div>
+                            <div class="tab-pane pane-content" id="tooltipJs">
 // create FlexChart
 var chartTooltip = new wijmo.chart.FlexChart('#chartTooltip');
 
@@ -617,47 +611,45 @@ chartTooltip.initialize({
     { name: 'Downloads', binding: 'downloads' }
   ]
 });
-						    </div>
-					    </div>
-				    </div>
-			    </div>
-			    <div class="col-md-6">
-				    <h4>Result (live):</h4>
-				    <div id="chartTooltip"></div>
-			    </div>
-		    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <h4>结果:</h4>
+                    <div id="chartTooltip"></div>
+                </div>
+            </div>
         </div>
 
-		<!-- styling series -->
+        <!-- styling series -->
         <div>
-            <h2>Styling Series</h2>
-            <p>The FlexChart automatically picks colors for each series based on a default
-                palette, which you can override by setting the <b>palette</b> property.
-                But you can also override the default settings by setting the <b>style</b> 
-                property of any series to an object that specifies SVG styling attributes, 
-                including <b>fill</b>, <b>stroke</b>, <b>strokeThickness</b>, and so on.
+            <h2>样式系列</h2>
+            <p>
+                FlexChart为每个基于默认调色板的系列自动选取颜色，你可以通过设置<b>palette</b>属性来重写它。
+                但你也可以重写默认的属性，通过设置任意一个系列的<b>style</b>属性为一个对象，
+                它制定了SVG样式属性，包括<b>fill</b>, <b>stroke</b>, <b>strokeThickness</b>等等。
             </p>
-            <p>The <b>Series.style</b> property is an exception to the general rule that
-                all styling in Wijmo is done through CSS. The exception reflects the fact
-                that many charts have dynamic series, which would be impossible to style
-                in advance. For example, a stock chart may show series selected by the 
-                user while running the application.
+            <p>
+                <b>Series.style</b>属性对在Wijmo中通过CSS设置样式的一般规则来说，是一个例外。
+                这个例外反映一个事实，许多图表有动态系列，这是不可能提前布置样式的。
+                比如，一个股票图表可能会展示用户在运行程序时才选中的系列。
             </p>
-            <p>The chart in this example uses the <b>style</b> and <b>symbolStyle</b> properties 
-                to select style attributes for each series:
+            <p>
+                这个示例中的图表使用了<b>style</b>和<b>symbolStyle</b>属性来为每个系列选择样式属性：
             </p>
-		    <div class="row">
-			    <div class="col-md-6">
-				    <div>
-					    <ul class="nav nav-tabs" role="tablist">
+            <div class="row">
+                <div class="col-md-6">
+                    <div>
+                        <ul class="nav nav-tabs" role="tablist">
                             <li class="active"><a href="#seriesStyleHtml" role="tab" data-toggle="tab">HTML</a></li>
-						    <li><a href="#seriesStyleJs" role="tab" data-toggle="tab">JS</a></li>
-					    </ul>
-					    <div class="tab-content">
-						    <div class="tab-pane pane-content active" id="seriesStyleHtml">
+                            <li><a href="#seriesStyleJs" role="tab" data-toggle="tab">JS</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane pane-content active" id="seriesStyleHtml">
 &lt;div id="chartSeriesStyle"&gt;&lt;/div&gt;
-						    </div>
-						    <div class="tab-pane pane-content" id="seriesStyleJs">
+                            </div>
+                            <div class="tab-pane pane-content" id="seriesStyleJs">
 // create FlexChart and variables for its series
 var chartSeriesStyle = new wijmo.chart.FlexChart('#chartSeriesStyle'),
     salesSeries, expensesSeries, downloadsSeries;
@@ -699,37 +691,38 @@ downloadsSeries.symbolStyle.stroke = 'gold';
 chartSeriesStyle.series.push(salesSeries);
 chartSeriesStyle.series.push(expensesSeries);
 chartSeriesStyle.series.push(downloadsSeries);
-						    </div>
-					    </div>
-				    </div>
-			    </div>
-			    <div class="col-md-6">
-				    <h4>Result (live):</h4>
-				    <div id="chartSeriesStyle"></div>
-			    </div>
-		    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <h4>结果:</h4>
+                    <div id="chartSeriesStyle"></div>
+                </div>
+            </div>
         </div>
 
-		<!-- customizing axes -->
+        <!-- customizing axes -->
         <div>
-            <h2>Customizing Axes</h2>
-            <p>Use axis properties to customize the chart's axes, including ranges (minimum and maximum), 
-			    label format, tickmark spacing, and gridlines.</p>
-            <p>The <b>Axis</b> class has boolean properties that allow you to turn features on
-                or off (<b>axisLine</b>, <b>labels</b>, <b>majorTickMarks</b>, and <b>majorGrid</b>.)
-                You can style the appearance of the features that are turned on using CSS.</p>
-		    <div class="row">
-			    <div class="col-md-6">
-				    <div>
-					    <ul class="nav nav-tabs" role="tablist">
+            <h2>自定义轴</h2>
+            <p>使用axis属性来自定义图表的坐标轴，包括范围（最小值和最大值），便签格式，刻度间隔和网格线。
+            </p>
+            <p>
+                <b>Axis</b>类有布尔属性，允许你打开或关闭功能（如<b>axisLine</b>, <b>labels</b>, <b>majorTickMarks</b>和<b>majorGrid</b>）。
+                你可以使用CSS来设置这些已经打开的功能的样式。
+            </p>
+            <div class="row">
+                <div class="col-md-6">
+                    <div>
+                        <ul class="nav nav-tabs" role="tablist">
                             <li class="active"><a href="#customizeAxesHtml" role="tab" data-toggle="tab">HTML</a></li>
-						    <li><a href="#customizeAxesJs" role="tab" data-toggle="tab">JS</a></li>
-					    </ul>
-					    <div class="tab-content">
-						    <div class="tab-pane pane-content active" id="customizeAxesHtml">
+                            <li><a href="#customizeAxesJs" role="tab" data-toggle="tab">JS</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane pane-content active" id="customizeAxesHtml">
 &lt;div id="chartCustomizeAxes"&gt;&lt;/div&gt;
-						    </div>
-						    <div class="tab-pane pane-content" id="customizeAxesJs">
+                            </div>
+                            <div class="tab-pane pane-content" id="customizeAxesJs">
 // create FlexChart
 var chartCustomizeAxes = new wijmo.chart.FlexChart('#chartCustomizeAxes');
 
@@ -744,49 +737,44 @@ chartCustomizeAxes.initialize({
     { name: 'Expenses', binding: 'expenses' }
   ]
 });
-						    </div>
-					    </div>
-				    </div>
-			    </div>
-			    <div class="col-md-6">
-				    <h4>Result (live):</h4>
-				    <div id="chartCustomizeAxes"></div>
-			    </div>
-		    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <h4>结果:</h4>
+                    <div id="chartCustomizeAxes"></div>
+                </div>
+            </div>
         </div>
 
-		<!-- theming -->
+        <!-- theming -->
         <div>
-            <h2>Theming</h2>
-            <p>The appearance of the FlexChart is defined in CSS. In addition to the default theme, we 
-                include about a dozen professionally designed themes that customize the appearance of
-                all Wijmo controls to achieve a consistent, attractive look.
+            <h2>主题</h2>
+            <p>FlexChart的外观是在CSS中定义的。除了默认的主题，我们有十几个专业设计的主题。
+                它们定制了所有Wijmo控件的外观来达到一致的，有吸引力的效果。
             </p>
-            <p>To customize the appearance of the chart, inspect the elements you want to style and 
-                create some CSS rules that apply to those elements.
+            <p> 为了自定义图表的外观，检查你想要提供样式的元素并创建一下CSS规则来应用到这些元素中。
             </p>
-            <p>For example, if you right-click one of the labels on the X axis in IE or Chrome, you 
-                will see that it is an element with the "wj-label" class, that it is contained in an 
-                element with the "wj-axis-x" class, which is contained in the the top-level control 
-                element, which has the "wj-flexchart" class. The first CSS rule in this example uses
-                this information to customize the X labels. The rule selector adds the additional 
-                requirement that the parent element must be have the "wj-flexchart" <b>and</b> the
-                "custom-flex-chart" classes. Without this, the rule would apply to all charts on the
-                page.
+            <p>
+                例如，如果你在IE或者谷歌浏览器上右击X轴上的一个标签，你会发现它是一个拥有”wj-label”类的元素，
+                它被包含在拥有”wj-flexchart”类的顶层控件元素中。这个示例中第一条CSS规则使用这条信息来自定义X标签。
+                规则选择器添加了额外的要求，父类元素必须拥有"wj-flexchart"类<b>和</b>"custom-flex-chart"类。
+                如果没有的话，这个规则会用于这个页面所有的图表。
             </p>
-		    <div class="row">
-			    <div class="col-md-6">
-				    <div>
-					    <ul class="nav nav-tabs" role="tablist">
+            <div class="row">
+                <div class="col-md-6">
+                    <div>
+                        <ul class="nav nav-tabs" role="tablist">
                             <li class="active"><a href="#themeHtml" role="tab" data-toggle="tab">HTML</a></li>
-						    <li><a href="#themeJs" role="tab" data-toggle="tab">JS</a></li>
-						    <li><a href="#themeCss" role="tab" data-toggle="tab">CSS</a></li>
-					    </ul>
-					    <div class="tab-content">
-						    <div class="tab-pane pane-content active" id="themeHtml">
+                            <li><a href="#themeJs" role="tab" data-toggle="tab">JS</a></li>
+                            <li><a href="#themeCss" role="tab" data-toggle="tab">CSS</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane pane-content active" id="themeHtml">
 &lt;div id="chartTheme" class="custom-flex-chart"&gt;&lt;/div&gt;
-						    </div>
-						    <div class="tab-pane pane-content" id="themeJs">
+                            </div>
+                            <div class="tab-pane pane-content" id="themeJs">
 // create FlexChart
 var chartTheme = new wijmo.chart.FlexChart('#chartTheme');
 
@@ -800,8 +788,8 @@ chartTheme.initialize({
     { name: 'Downloads', binding: 'downloads' }
   ]
 });
-						    </div>
-						    <div class="tab-pane pane-content" id="themeCss">
+                            </div>
+                            <div class="tab-pane pane-content" id="themeCss">
 /* custom chart theme */
 .custom-flex-chart.wj-flexchart .wj-axis-x .wj-label,
 .custom-flex-chart.wj-flexchart .wj-legend .wj-label {
@@ -814,39 +802,42 @@ chartTheme.initialize({
   fill: #f8f8f8;
   stroke: #c0c0c0;
 }
-						    </div>
-					    </div>
-				    </div>
-			    </div>
-			    <div class="col-md-6">
-				    <h4>Result (live):</h4>
-				    <div id="chartTheme" class="custom-flex-chart"></div>
-			    </div>
-		    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <h4>结果:</h4>
+                    <div id="chartTheme" class="custom-flex-chart"></div>
+                </div>
+            </div>
         </div>
 
-		<!-- selection modes -->
+        <!-- selection modes -->
         <div>
-            <h2>Selection Modes</h2>
-            <p>The FlexChart allows you to select series or data points by clicking or touching them.
-                Use the <b>selectionMode</b> property to specify whether you want to allow selection 
-                by series, by data point, or no selection at all (selection is off by default.)</p>
-            <p>Setting the <b>selectionMode</b> property to <b>Series</b> or <b>Point</b> causes
-                the FlexChart to update the <b>Selection</b> property when the user clicks the
-                mouse, and to apply the "wj-state-selected" class to selected chart elements.</p>
-            <p>The <b>Selection</b> property returns the currently selected series. To get the
-                currently selected data point, get the currently selected item within the 
-                selected series using the <b>Series.collectionView.currentItem</b> property
-                as shown in the example.</p>
-		    <div class="row">
-			    <div class="col-md-6">
-				    <div>
-					    <ul class="nav nav-tabs" role="tablist">
+            <h2>选择模式</h2>
+            <p> FlexChart允许你通过单击或者触摸选择系列或数据点。使用<b>selectionMode</b>属性来指定是否允许选择系列，
+                是否选择数据点或者无法选择（选择默认是关闭的）
+            </p>
+            <p>
+                设置<b>selectionMode</b>属性为<b>Series</b>或者<b>Point</b>会导致用户在单击鼠标的时候，
+                FlexChart自动更新<b>Selection</b>属性，
+                并且将"wj-state-selected"类应用到选中的图表元素中。
+            </p>
+            <p>
+                <b>Selection</b>属性返回当前选中的系列。要得到当前选中的数据点，
+                得到当前选定的项并在选中的系列中使用<b>Series.collectionView.currentItem</b>属性，正如示例所示。
+
+            </p>
+            <div class="row">
+                <div class="col-md-6">
+                    <div>
+                        <ul class="nav nav-tabs" role="tablist">
                             <li class ="active"><a href="#selectionModeHtml" role="tab" data-toggle="tab">HTML</a></li>
-						    <li><a href="#selectionModeJs" role="tab" data-toggle="tab">JS</a></li>
-					    </ul>
-					    <div class="tab-content">
-						    <div class="tab-pane pane-content active" id="selectionModeHtml">
+                            <li><a href="#selectionModeJs" role="tab" data-toggle="tab">JS</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane pane-content active" id="selectionModeHtml">
 &lt;div id="chartSelectionMode"&gt;&lt;/div&gt;
 &lt;select id="seletionModeMenu"&gt;
   &lt;option value="0"&gt;None&lt;/option&gt;
@@ -874,13 +865,13 @@ chartTheme.initialize({
     &lt;dt&gt;Downloads&lt;/dt&gt;&lt;dd id="seriesDownloads"&gt;&lt;/dd&gt;
   &lt;/dl&gt;
 &lt;/div&gt;
-						    </div>
-						    <div class="tab-pane pane-content" id="selectionModeJs">
+                            </div>
+                            <div class="tab-pane pane-content" id="selectionModeJs">
 var chartSelectionMode = new wijmo.chart.FlexChart('#chartSelectionMode'),
     typeMenu = new wijmo.input.Menu('#chartTypeMenu'),
     selectionModeMenu = new wijmo.input.Menu('#seletionModeMenu'),
     seriesContainer = document.getElementById('seriesContainer'),
-	detailContainer = document.getElementById('detailContainer');
+    detailContainer = document.getElementById('detailContainer');
 
 // initialize FlexChart's properties
 chartSelectionMode.initialize({
@@ -965,20 +956,20 @@ function setSeriesDetail(currentSelectItem) {
 function updateMenuHeader(menu, prefix) {
   menu.header = '&lt;b&gt;' + prefix  + '&lt;/b&gt;: ' + menu.text;
 }
-						    </div>
-					    </div>
-				    </div>
-			    </div>
-			    <div class="col-md-6">
-				    <h4>Result (live):</h4>
-				    <div id="chartSelectionMode"></div>
-				    <select id="seletionModeMenu">
-					    <option value="0">None</option>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <h4>结果:</h4>
+                    <div id="chartSelectionMode"></div>
+                    <select id="seletionModeMenu">
+                        <option value="0">None</option>
                         <option value="1" selected="selected">Series</option>
                         <option value="2">Point</option>
-				    </select>
-				    <select id="chartTypeMenu">
-					    <option value="0" selected="selected">Column</option>
+                    </select>
+                    <select id="chartTypeMenu">
+                        <option value="0" selected="selected">Column</option>
                         <option value="1">Bar</option>
                         <option value="2">Scatter</option>
                         <option value="3">Line</option>
@@ -987,9 +978,9 @@ function updateMenuHeader(menu, prefix) {
                         <option value="9">Spline</option>
                         <option value="10">SplineSymbols</option>
                         <option value="11">SplineArea</option>
-				    </select>
-				    <div id="seriesContainer" style="display:none">
-                        <h4>Current Selection</h4>
+                    </select>
+                    <div id="seriesContainer" style="display:none">
+                        <h4>当前选择</h4>
                         <p>Series: <b id="seriesName"></b></p>
                         <dl id="detailContainer" class="dl-horizontal" style="display:none">
                             <dt>Country</dt><dd id="seriesCountry"></dd>
@@ -998,46 +989,46 @@ function updateMenuHeader(menu, prefix) {
                             <dt>Downloads</dt><dd id="seriesDownloads"></dd>
                         </dl>
                     </div>
-			    </div>
-		    </div>
+                </div>
+            </div>
         </div>
 
-		<!-- toggle series visibility -->
+        <!-- toggle series visibility -->
         <div>
-            <h2>Toggle Series</h2>
-            <p>The <b>Series</b> class has a <b>visibility</b> property that allows you to
-                determine whether a series should be shown in the chart and in the legend,
-                only in the legend, or completely hidden.
+            <h2>切换系列</h2>
+            <p>
+                <b>Series</b>类有一个<b>visibility</b>属性，让你决定一个系列是否应该展现在图表和图例中，
+                或者只在图例中，或者完全隐藏。
             </p>
-            <p>This sample shows how you can use the <b>visibility</b> property to toggle 
-                the visibility of a series using two methods:
+            <p>
+                这个示例演示你应该如何使用<b>visibility</b>属性来通过两种方法切换系列的可见性：
             </p>
             <ol>
                 <li>
-                    Clicking on legend entries:<br />
-                    The chart sets the chart's <b>option.legendToggle</b> property to true, 
-                    which toggles the <b>visibility</b> property of a series when its legend entry is 
-                    clicked.
+                    单击图例入口：<br />
+                    图表会设置图表的<b>option.legendToggle</b>属性为true，
+                    当它的图例入口被单击的时候就会切换一个系列的<b>visibility</b>属性。
                 </li>
-                <li>Using checkboxes:<br/>
-				    When the <b>checked</b> state changed, it will set the <b>visibility</b> property of each series by the <b>checked</b> state.
+                <li>
+                    使用checkbox：<br />
+                    当<b>checked</b>状态改变后，它会通过<b>checked</b>状态设置每个系列的<b>checked</b>属性。
                 </li>
             </ol>
-		    <div class="row">
-			    <div class="col-md-6">
-				    <div>
-					    <ul class="nav nav-tabs" role="tablist">
+            <div class="row">
+                <div class="col-md-6">
+                    <div>
+                        <ul class="nav nav-tabs" role="tablist">
                             <li class="active"><a href="#legendToggleHtml" role="tab" data-toggle="tab">HTML</a></li>
-						    <li><a href="#legendToggleJs" role="tab" data-toggle="tab">JS</a></li>
-					    </ul>
-					    <div class="tab-content">
-						    <div class="tab-pane pane-content active" id="legendToggleHtml">
+                            <li><a href="#legendToggleJs" role="tab" data-toggle="tab">JS</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane pane-content active" id="legendToggleHtml">
 &lt;div id="chartLegendToggle"&gt;&lt;/div&gt;
 Sales &lt;input id="cbSales" type="checkbox"/&gt;&lt;br /&gt;
 Expenses &lt;input id="cbExpenses" type="checkbox"/&gt;&lt;br /&gt;
 Downloads &lt;input id="cbDownloads" type="checkbox"/&gt;
-						    </div>
-						    <div class="tab-pane pane-content" id="legendToggleJs">
+                            </div>
+                            <div class="tab-pane pane-content" id="legendToggleJs">
 // create FlexChart
 var chartLegendToggle = new wijmo.chart.FlexChart('#chartLegendToggle');
 
@@ -1078,28 +1069,386 @@ chartLegendToggle.seriesVisibilityChanged.addHandler(function () {
     }
   });
 });
-						    </div>
-					    </div>
-				    </div>
-			    </div>
-			    <div class="col-md-6">
-				    <h4>Result (live):</h4>
-				    <div id="chartLegendToggle"></div>
-				    Sales <input id="cbSales" type="checkbox"/><br />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <h4>结果:</h4>
+                    <div id="chartLegendToggle"></div>
+                    Sales <input id="cbSales" type="checkbox"/><br />
                     Expenses <input id="cbExpenses" type="checkbox"/><br />
                     Downloads <input id="cbDownloads" type="checkbox"/>
-			    </div>
-		    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- gradient colors -->
+        <div>
+            <h2 id="GradientColors">
+                渐变色
+            </h2>
+            <p>
+                FlexChart支持渐变色。
+            </p>
+            <p>
+                渐变描述符是如下格式的表达式: <code>&lt;type&gt;(&lt;coords&gt;)&lt;colors&gt;[:&lt;offset&gt;[:&lt;opacity&gt;]][-&lt;colors&gt;[:&lt;offset&gt;[:&lt;opacity&gt;]]]-&lt;colors&gt;[:&lt;offset&gt;[:&lt;opacity&gt;]]</code>.
+                <code>&lt;type&gt;</code>可以是线性的，也可以是径向的。 
+                大写<code>L</code>或者<code>R</code>字母表示从SVG表明偏移的绝对坐标。
+                小写<code>l</code>或者<code>r</code>字母表示相对于应用渐变的元素计算的坐标。
+                坐标指定一个线性渐变向量<code>x1</code>, <code>y1</code>, <code>x2</code>, <code>y2</code>,
+                或者径向渐变向量 <code>cx</code>, <code>cy</code>, <code>r</code>和可选<code>fx</code>, <code>fy</code>, <code>fr</code>
+                指定远离圆心的焦点。
+                将<code>&lt;colors&gt;</code>指定为以虚线分隔的CSS颜色值的列表。 每种颜色可以后跟一个自定义偏移和不透明度值，用冒号字符分隔。
+            </p>
+            <p>线性渐变格式示例：</p>
+            <p><code>'l(0,0,1,0)#ff0000-#00ff00-#0000ff'</code>, <code>'L(0,0,300,300)#ff0000:0.2:0.2-00ff00:0.8'</code></p>
+            <p>径向渐变格式示例：</p>
+            <p><code>'r(0.5,0.5,1)#ff0000-#0000ff'</code>, <code>'R(100,100,100,200,200,200)#ff0000-#0000ff'</code></p>
+            <h3>基本</h3>
+            <p>从预定义的渐变颜色中选择以查看不同的外观。</p>
+            <div class="row">
+                <div class="col-md-6">
+                    <div>
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li class="active"><a href="#gradientBasicColorsHtml" role="tab" data-toggle="tab">HTML</a></li>
+                            <li><a href="#gradientBasicColorsJs" role="tab" data-toggle="tab">JS</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane pane-content active" id="gradientBasicColorsHtml">
+&lt;div id="predefinedChart"&gt;&lt;/div&gt;
+&lt;div&gt;
+    &lt;select id="predefinedColorMenu"&gt;
+        &lt;option value="l(0,0,1,0)#89f7fe-#66a6ff" selected="selected"&gt;Light Blue - l(0, 0, 1, 0)#89f7fe-#66a6ff&lt;/option&gt;
+        &lt;option value="l(0,0,0,1)#13547a-#80d0c7"&gt;Aqua - l(0, 0, 0, 1)#13547a-#80d0c7&lt;/option&gt;
+        &lt;option value="l(0,0,1,1)#ff0844-#ffb199"&gt;Red - l(0, 0, 1, 1)#ff0844-#ffb199&lt;/option&gt;
+        &lt;option value="l(0,0,1,0)#b224ef-#7579ff-#b224ef"&gt;Purple - l(0, 0, 1, 0)#b224ef-#7579ff-#b224ef&lt;/option&gt;
+        &lt;option value="r(0.5,0.5,0.7)#cc208e-#6713d2"&gt;Plum - r(0.5,0.5,0.7)#cc208e-#6713d2&lt;/option&gt;
+        &lt;option value="l(0,0,1,0)#30cfd0-#330867"&gt;Deep Blue - l(0, 0, 1, 0)#30cfd0-#330867&lt;/option&gt;
+        &lt;option value="l(0,0,0,1)#e27f00-#ae1a73"&gt;Orange - l(0, 0, 0, 1)#e27f00-#ae1a73&lt;/option&gt;
+        &lt;option value="l(0,0,1,1)#abd800-#5c7e00"&gt;Green - l(0, 0, 1, 1)#abd800-#5c7e00&lt;/option&gt;
+    &lt;/select&gt;
+&lt;/div&gt;
+                            </div>
+                            <div class="tab-pane pane-content" id="gradientBasicColorsJs">
+var predefinedChart = new wijmo.chart.FlexChart('#predefinedChart'),
+    predefinedColorMenu = new wijmo.input.Menu('#predefinedColorMenu');
+// initialize FlexChart's properties
+predefinedChart.initialize({
+    itemsSource: appData,
+    bindingX: 'country',
+    series: [
+        { binding: 'sales' }
+    ]
+});
+updateMenuHeader(predefinedColorMenu, 'Color');
+predefinedColorMenu.selectedIndexChanged.addHandler(function () {
+    if (predefinedColorMenu.selectedValue) {
+        applyBasicGradientColor();
+        updateMenuHeader(predefinedColorMenu, 'Color');
+    }
+});
+applyBasicGradientColor();
+    
+function applyBasicGradientColor() {
+    predefinedChart.series[0].style = {
+        fill: predefinedColorMenu.selectedValue
+    };
+    predefinedChart.refresh(true);
+}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <h4>结果：</h4>
+                    <div id="predefinedChart"></div>
+                    <div>
+                        <select id="predefinedColorMenu">
+                            <option value="l(0,0,1,0)#89f7fe-#66a6ff" selected="selected">Light Blue - l(0, 0, 1, 0)#89f7fe-#66a6ff</option>
+                            <option value="l(0,0,0,1)#13547a-#80d0c7">Aqua - l(0, 0, 0, 1)#13547a-#80d0c7</option>
+                            <option value="l(0,0,1,1)#ff0844-#ffb199">Red - l(0, 0, 1, 1)#ff0844-#ffb199</option>
+                            <option value="l(0,0,1,0)#b224ef-#7579ff-#b224ef">Purple - l(0, 0, 1, 0)#b224ef-#7579ff-#b224ef</option>
+                            <option value="r(0.5,0.5,0.7)#cc208e-#6713d2">Plum - r(0.5,0.5,0.7)#cc208e-#6713d2</option>
+                            <option value="l(0,0,1,0)#30cfd0-#330867">Deep Blue - l(0, 0, 1, 0)#30cfd0-#330867</option>
+                            <option value="l(0,0,0,1)#e27f00-#ae1a73">Orange - l(0, 0, 0, 1)#e27f00-#ae1a73</option>
+                            <option value="l(0,0,1,1)#abd800-#5c7e00">Green - l(0, 0, 1, 1)#abd800-#5c7e00</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <h3>高级</h3>
+            <p>设置多个选项来自定义渐变色。</p>
+            <div class="row">
+                <div class="col-md-6">
+                    <div>
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li class="active"><a href="#gradientColorsHtml" role="tab" data-toggle="tab">HTML</a></li>
+                            <li><a href="#gradientColorsJs" role="tab" data-toggle="tab">JS</a></li>
+                        </ul>
+                        <div class="tab-content">
+        <div class="tab-pane pane-content active" id="gradientColorsHtml">
+&lt;div id="chartGradientColors"&gt;&lt;/div&gt;
+&lt;dl class="dl-horizontal"&gt;
+    &lt;dt&gt;Generated fill string:&lt;/dt&gt;
+    &lt;dd&gt;
+        &lt;label id="gradientColorsLabel"&gt;&lt;/label&gt;
+    &lt;/dd&gt;
+    &lt;dt&gt;&lt;/dt&gt;
+    &lt;dd&gt;
+        &lt;select id="gradientChartType"&gt;
+            &lt;option value="0" selected="selected"&gt;Column&lt;/option&gt;
+            &lt;option value="1"&gt;Bar&lt;/option&gt;
+            &lt;option value="5"&gt;Area&lt;/option&gt;
+            &lt;option value="11"&gt;SplineArea&lt;/option&gt;
+        &lt;/select&gt;
+    &lt;/dd&gt;
+    &lt;dt&gt;&lt;/dt&gt;
+    &lt;dd&gt;
+        &lt;select id="gradientTypeMenu"&gt;
+            &lt;option value="l" selected="selected"&gt;Linear&lt;/option&gt;
+            &lt;option value="r"&gt;Radial&lt;/option&gt;
+        &lt;/select&gt;
+    &lt;/dd&gt;
+    &lt;dt id="dtGradientDirection"&gt;&lt;/dt&gt;
+    &lt;dd id="ddGradientDirection"&gt;
+        &lt;select id="gradientDirectionMenu"&gt;
+            &lt;option value="horizontal" selected="selected"&gt;Horizontal&lt;/option&gt;
+            &lt;option value="vertical"&gt;Vertical&lt;/option&gt;
+        &lt;/select&gt;
+    &lt;/dd&gt;
+    &lt;dt&gt;Start Color:&lt;/dt&gt;
+    &lt;dd&gt;&lt;input id="gradientStartColor"/&gt;&lt;/dd&gt;
+    &lt;dt&gt;Start Offset:&lt;/dt&gt;
+    &lt;dd&gt;&lt;input id="gradientStartOffset"/&gt;&lt;/dd&gt;
+    &lt;dt&gt;Start Opacity:&lt;/dt&gt;
+    &lt;dd&gt;&lt;input id="gradientStartOpacity"/&gt;&lt;/dd&gt;
+    &lt;dt&gt;End Color:&lt;/dt&gt;
+    &lt;dd&gt;&lt;input id="gradientEndColor"/&gt;&lt;/dd&gt;
+    &lt;dt&gt;End Offset:&lt;/dt&gt;
+    &lt;dd&gt;&lt;input id="gradientEndOffset"/&gt;&lt;/dd&gt;
+    &lt;dt&gt;End Opacity:&lt;/dt&gt;
+    &lt;dd&gt;&lt;input id="gradientEndOpacity"/&gt;&lt;/dd&gt;
+&lt;/dl&gt;
+                            </div>
+                        <div class="tab-pane pane-content" id="gradientColorsJs">
+// create FlexChart and Menus
+var chart = new wijmo.chart.FlexChart('#chartGradientColors'),
+    gredientLabel = document.getElementById('gradientColorsLabel'),
+    gradientChartType = new wijmo.input.Menu('#gradientChartType'),
+    type = new wijmo.input.Menu('#gradientTypeMenu'),
+    dtDirection = document.getElementById('dtGradientDirection'),
+    ddDirection = document.getElementById('ddGradientDirection'),
+    direction = new wijmo.input.Menu('#gradientDirectionMenu'),
+    startColor = new wijmo.input.InputColor('#gradientStartColor'),
+    startOffset = new wijmo.input.InputNumber('#gradientStartOffset'),
+    startOpacity = new wijmo.input.InputNumber('#gradientStartOpacity'),
+    endColor = new wijmo.input.InputColor('#gradientEndColor'),
+    endOffset = new wijmo.input.InputNumber('#gradientEndOffset'),
+    endOpacity = new wijmo.input.InputNumber('#gradientEndOpacity');
+
+// initialize FlexChart's properties
+chart.initialize({
+    itemsSource: appData,
+    bindingX: 'country',
+    series: [
+        { binding: 'sales' }
+    ]
+});
+applyGradientColor();
+
+//chart type - initialize Menu's properties
+updateMenuHeader(gradientChartType, 'Chart Type');
+gradientChartType.selectedIndexChanged.addHandler(function () {
+    if (gradientChartType.selectedValue) {
+        chart.chartType = +gradientChartType.selectedValue;
+        updateMenuHeader(gradientChartType, 'Chart Type');
+    }
+});
+
+//startColor - initialize InputColor's properties
+startColor.valueChanged.addHandler(function (sender) {
+    applyGradientColor();
+});
+startColor.value = '#ff0000';
+
+// startOffset - initialize InputNumber's properties
+startOffset.min = 0;
+startOffset.max = 1;
+startOffset.step = 0.1;
+startOffset.valueChanged.addHandler(function (sender) {
+    if (sender.value < sender.min || sender.value > sender.max) {
+        return;
+    }
+    applyGradientColor();
+});
+startOffset.value = 0;
+
+// startOpacity - initialize InputNumber's properties
+startOpacity.min = 0;
+startOpacity.max = 1;
+startOpacity.step = 0.1;
+startOpacity.valueChanged.addHandler(function (sender) {
+    if (sender.value < sender.min || sender.value > sender.max) {
+        return;
+    }
+    applyGradientColor();
+});
+startOpacity.value = 1;
+
+//endColor - initialize InputColor's properties
+endColor.valueChanged.addHandler(function (sender) {
+    applyGradientColor();
+});
+endColor.value = '#0000ff';
+
+// endOffset - initialize InputNumber's properties
+endOffset.min = 0;
+endOffset.max = 1;
+endOffset.step = 0.1;
+endOffset.valueChanged.addHandler(function (sender) {
+    if (sender.value < sender.min || sender.value > sender.max) {
+        return;
+    }
+    applyGradientColor();
+});
+endOffset.value = 1;
+
+// endOpacity - initialize InputNumber's properties
+endOpacity.min = 0;
+endOpacity.max = 1;
+endOpacity.step = 0.1;
+endOpacity.valueChanged.addHandler(function (sender) {
+    if (sender.value < sender.min || sender.value > sender.max) {
+        return;
+    }
+    applyGradientColor();
+});
+endOpacity.value = 1;
+
+updateMenuHeader(type, 'Type');
+type.selectedIndexChanged.addHandler(function () {
+    if (type.selectedValue) {
+        updateMenuHeader(type, 'Type');
+        applyGradientColor();
+    }
+});
+
+updateMenuHeader(direction, 'Direction');
+direction.selectedIndexChanged.addHandler(function () {
+    if (direction.selectedValue) {
+        updateMenuHeader(direction, 'Direction');
+        applyGradientColor();
+    }
+});
+
+// helper function for Menu headers
+function updateMenuHeader(menu, prefix) {
+    menu.header = '<b>' + prefix + '</b>: ' + menu.text;
+}
+
+function applyGradientColor() {
+        
+    var color = '',
+        t = type.selectedValue,
+        d = direction.selectedValue;
+
+    color = t;
+    if (t === 'l') {
+        dtDirection.style.display = 'block';
+        ddDirection.style.display = 'block';
+        if (d === 'horizontal') {
+            color += '(0, 0, 1, 0)';
+        } else {
+            color += '(0, 0, 0, 1)';
+        }
+    } else {
+        dtDirection.style.display = 'none';
+        ddDirection.style.display = 'none';
+        color += '(0.5, 0.5, 0.5)'
+    }
+    color += startColor.value;
+    if (startOffset.value !== 0 || startOpacity.value !== 1) {
+        color += ':' + startOffset.value;
+    }
+    if (startOpacity.value !== 1) {
+        color += ':' + startOpacity.value;
+    }
+    color += '-' + endColor.value;
+    if (endOffset.value !== 1 || endOpacity.value !== 1) {
+        color += ':' + endOffset.value;
+    }
+    if (endOpacity.value !== 1) {
+        color += ':' + endOpacity.value;
+    }
+
+    gradientColorsLabel.innerHTML = color;
+    chart.series[0].style = {
+        fill: color
+    };
+    chart.refresh(true);
+}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <h4>结果：</h4>
+                    <div id="chartGradientColors"></div>
+                    <dl class="dl-horizontal">
+                        <dt>生成填充字符串：</dt>
+                        <dd>
+                            <label id="gradientColorsLabel"></label>
+                        </dd>
+                        <dt></dt>
+                        <dd>
+                            <select id="gradientChartType">
+                                <option value="0" selected="selected">Column</option>
+                                <option value="1">Bar</option>
+                                <option value="5">Area</option>
+                                <option value="11">SplineArea</option>
+                            </select>
+                        </dd>
+                        <dt></dt>
+                        <dd>
+                            <select id="gradientTypeMenu">
+                                <option value="l" selected="selected">Linear</option>
+                                <option value="r">Radial</option>
+                            </select>
+                        </dd>
+                        <dt id="dtGradientDirection"></dt>
+                        <dd id="ddGradientDirection">
+                            <select id="gradientDirectionMenu">
+                                <option value="horizontal" selected="selected">Horizontal</option>
+                                <option value="vertical">Vertical</option>
+                            </select>
+                        </dd>
+                        <dt>Start Color:</dt>
+                        <dd><input id="gradientStartColor"/></dd>
+                        <dt>Start Offset:</dt>
+                        <dd><input id="gradientStartOffset"/></dd>
+                        <dt>Start Opacity:</dt>
+                        <dd><input id="gradientStartOpacity"/></dd>
+                        <dt>End Color:</dt>
+                        <dd><input id="gradientEndColor"/></dd>
+                        <dt>End Offset:</dt>
+                        <dd><input id="gradientEndOffset"/></dd>
+                        <dt>End Opacity:</dt>
+                        <dd><input id="gradientEndOpacity"/></dd>
+                    </dl>
+                </div>
+            </div>
         </div>
 
         <!-- dynamic charts -->
         <div>
-            <h2>Dynamic Charts</h2>
+            <h2>动态图表</h2>
             <p>
-                The FlexChart uses an <b>ICollectionView</b> internally, so any changes you make to the data source are automatically reflected in the chart.
+                FlexChart内部使用了<b>ICollectionView</b>，因此你对数据源做的任何更改都会自动反映在图表中。
             </p>
             <p>
-                In this sample, we use a timer to add items to the data source, discarding old items to keep the total count at 200. The result is a dynamic chart that scrolls as new data arrives.
+                在这个示例中，我们使用一个计时器来向数据源中增加项目，丢弃旧项目以保持总数为200。
+                结果就是一个动态的图表，当新数据到来时图表向右滚动。
             </p>
             <div class="row">
                 <div class="col-md-6">
@@ -1205,19 +1554,19 @@ function addTrafficItem(trafficData, interval) {
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <h4>Result (live):</h4>
+                    <h4>结果:</h4>
                     <div id="dynamicChart"></div>
-					<dl class="dl-horizontal">
-						<dt>Update Speed</dt>
-						<dd>
-							<div class="btn-group">
-							  <button id="btnSlow" type="button" class="btn btn-default">Slow</button>
-							  <button id="btnMedium" type="button" class="btn btn-default">Medium</button>
-							  <button id="btnFast" type="button" class="btn btn-default">Fast</button>
-							  <button id="btnStop" type="button" class="btn btn-default">Stop</button>
-							</div>
-						</dd>
-					</dl>
+                    <dl class="dl-horizontal">
+                        <dt>更新速度</dt>
+                        <dd>
+                            <div class="btn-group">
+                              <button id="btnSlow" type="button" class="btn btn-default">Slow</button>
+                              <button id="btnMedium" type="button" class="btn btn-default">Medium</button>
+                              <button id="btnFast" type="button" class="btn btn-default">Fast</button>
+                              <button id="btnStop" type="button" class="btn btn-default">Stop</button>
+                            </div>
+                        </dd>
+                    </dl>
                 </div>
             </div>
         </div>
@@ -1237,18 +1586,10 @@ function addTrafficItem(trafficData, interval) {
     <script src="scripts/chartLegendToggle.js" type="text/javascript"></script>
     <script src="scripts/dynamicChart.js" type="text/javascript"></script>
     <script src="scripts/funnelChart.js" type="text/javascript"></script>
+    <script src="scripts/gradientColors.js" type="text/javascript"></script>
 
     <!-- Google analytics -->
-    <script>
-        (function (i, s, o, g, r, a, m) {
-            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-                (i[r].q = i[r].q || []).push(arguments)
-            }, i[r].l = 1 * new Date(); a = s.createElement(o),
-            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
-        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-
-        ga('create', 'UA-208280-14', 'auto');
-        ga('send', 'pageview');
-    </script>
+    
+    <script src="scripts/wijmo.sample.toolbar.js" type="text/javascript"></script>
 </body>
 </html>

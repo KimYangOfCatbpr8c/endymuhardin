@@ -1,18 +1,18 @@
 ﻿/*
     *
-    * Wijmo Library 5.20162.211
+    * Wijmo Library 5.20171.282
     * http://wijmo.com/
     *
     * Copyright(c) GrapeCity, Inc.  All rights reserved.
     *
     * Licensed under the Wijmo Commercial License.
     * sales@wijmo.com
-    * http://wijmo.com/products/wijmo-5/license/
+    * wijmo.com/products/wijmo-5/license/
     *
     */
 /*
-* Wijmo culture file: ja (Japanese)
-*/
+ * Wijmo culture file: ja (Japanese)
+ */
 var wijmo;
 (function (wijmo) {
     wijmo.culture = {
@@ -45,19 +45,19 @@ var wijmo;
                     d: 'yyyy/MM/dd', D: 'yyyy"年"M"月"d"日"',
                     f: 'yyyy"年"M"月"d"日" H:mm', F: 'yyyy"年"M"月"d"日" H:mm:ss',
                     t: 'H:mm', T: 'H:mm:ss',
-                    m: 'M月d日', M: 'M月d日',
+                    m: 'M"月"d"日"', M: 'M"月"d"日"',
                     y: 'yyyy"年"M"月"', Y: 'yyyy"年"M"月"',
                     g: 'yyyy/MM/dd H:mm', G: 'yyyy/MM/dd H:mm:ss',
                     s: 'yyyy"-"MM"-"dd"T"HH":"mm":"ss'
                 },
-                fiscalYearOffsets: [3, 0],
+                fiscalYearOffsets: [3, 0]
             }
         },
         MultiSelect: {
             itemsSelected: '{count:n0} 個の項目を選択中'
         },
         FlexGrid: {
-            groupHeaderFormat: '{name}: <b>{value} </b>({count:n0} 項目)'
+            groupHeaderFormat: '{name}: <b>{value}</b> ({count:n0} 項目)'
         },
         FlexGridFilter: {
             // filter
@@ -116,7 +116,7 @@ var wijmo;
                 filter: 'フィルター:',
                 format: '表示形式:',
                 sample: 'サンプル:',
-                edit: '編集...',
+                edit: '編集…',
                 clear: 'クリア',
                 ok: 'OK',
                 cancel: 'キャンセル',
@@ -142,7 +142,12 @@ var wijmo;
                     dRow: '前の行との差分',
                     dRowPct: '前の行との差分の比率',
                     dCol: '前の列との差分',
-                    dColPct: '前の列との差分の比率'
+                    dColPct: '前の列との差分の比率',
+                    dPctGrand: '総合計の %',
+                    dPctRow: '行の合計の %',
+                    dPctCol: '列の合計の %',
+                    dRunTot: '実行中の合計',
+                    dRunTotPct: '積算合計の %'
                 },
                 formats: {
                     n0: '整数 (n0)',
@@ -169,7 +174,7 @@ var wijmo;
                 subTotal: '集計'
             },
             PivotPanel: {
-                fields: 'レポートに追加するフィールドを選択',
+                fields: 'レポートに追加するフィールドを選択:',
                 drag: '次のボックス間でフィールドをドラッグ:',
                 filters: 'フィルター',
                 cols: '列',
@@ -188,8 +193,8 @@ var wijmo;
                 cols: '列ラベルに移動',
                 vals: '値に移動',
                 remove: 'フィールドの削除',
-                edit: 'フィールドの設定...',
-                detail: '詳細の表示...'
+                edit: 'フィールドの設定…',
+                detail: '詳細の表示…'
             },
             PivotChart: {
                 by: ':',
@@ -203,8 +208,136 @@ var wijmo;
                 row: '行',
                 col: '列'
             }
+        },
+        Viewer: {
+            cancel: 'キャンセル',
+            ok: 'OK',
+            bottom: '下:',
+            top: '上:',
+            right: '右:',
+            left: '左:',
+            margins: '余白 (インチ)',
+            orientation: '向き:',
+            paperKind: '用紙の種類:',
+            pageSetup: 'ページ設定',
+            landscape: '横',
+            portrait: '縦',
+            pageNumber: 'ページ番号',
+            zoomFactor: 'ズーム要素',
+            paginated: '印刷レイアウト',
+            print: '印刷',
+            search: '検索',
+            matchCase: '大文字と小文字を区別する',
+            wholeWord: '単語単位で探す',
+            searchResults: '検索結果',
+            previousPage: '前のページ',
+            nextPage: '次のページ',
+            firstPage: '最初のページ',
+            lastPage: '最後のページ',
+            backwardHistory: '前へ',
+            forwardHistory: '進む',
+            pageCount: 'ページ数',
+            selectTool: 'ツールを選択します。',
+            moveTool: '移動ツール',
+            continuousMode: '連続ページ表示',
+            singleMode: '1 つのページ ビュー',
+            wholePage: 'ページ全体',
+            pageWidth: 'ページ幅に合わせる',
+            zoomOut: '縮小',
+            zoomIn: '拡大',
+            exports: 'エクスポート',
+            fullScreen: '全画面表示',
+            exitFullScreen: '全画面表示の終了',
+            hamburgerMenu: 'ツール',
+            showSearchBar: '検索バーを表示する',
+            viewMenu: 'レイアウト オプション',
+            searchOptions: '検索オプション',
+            matchCaseMenuItem: '大文字と小文字を区別する',
+            wholeWordMenuItem: '一致する単語',
+            thumbnails: 'ページのサムネイル',
+            outlines: '見出しマップ',
+            loading: '読み込んでいます…',
+            pdfExportName: 'Adobe PDF',
+            docxExportName: 'Open XML ワード',
+            xlsxExportName: 'オープン XML Excel',
+            docExportName: 'Microsoft Word',
+            xlsExportName: 'Microsoft Excel',
+            mhtmlExportName: 'Web アーカイブ (MHTML)',
+            htmlExportName: 'HTML ドキュメント',
+            rtfExportName: 'Rtf 形式のドキュメント',
+            metafileExportName: '圧縮されたメタファイル',
+            csvExportName: 'CSV',
+            tiffExportName: 'Tiff イメージ',
+            bmpExportName: 'BMP 画像',
+            emfExportName: '拡張メタファイル',
+            gifExportName: 'GIF 画像',
+            jpgExportName: 'JPEG 画像',
+            jpegExportName: 'JPEG 画像',
+            pngExportName: 'Png 形式の画像',
+            abstractMethodException: 'これは、抽象メソッドは、それを実装してください。',
+            cannotRenderPageNoViewPage: 'ドキュメント ソースなしページ、ビュー ページをレンダリングできません。',
+            cannotRenderPageNoDoc: 'ドキュメント ソースなしページ、ビュー ページをレンダリングできません。',
+            exportFormat: 'エクスポート形式:',
+            exportOptionTitle: 'エクスポート オプション',
+            documentRestrictionsGroup: 'ドキュメントの制限',
+            passwordSecurityGroup: 'パスワードのセキュリティ',
+            outputRangeGroup: '出力範囲',
+            documentInfoGroup: 'ドキュメント情報',
+            generalGroup: '概要',
+            docInfoTitle: '表題',
+            docInfoAuthor: '作成者',
+            docInfoManager: '管理者',
+            docInfoOperator: '演算子',
+            docInfoCompany: '会社',
+            docInfoSubject: '件名',
+            docInfoComment: '備考',
+            docInfoCreator: '作成者',
+            docInfoProducer: 'プロデューサー',
+            docInfoCreationTime: '作成時刻',
+            docInfoRevisionTime: 'リビジョンの時間',
+            docInfoKeywords: 'keywords',
+            embedFonts: 'TrueType フォントを埋め込む',
+            pdfACompatible: 'PDF/A 互換性のある (レベル 2 b)',
+            useCompression: '圧縮を使用します。',
+            useOutlines: 'アウトラインを生成します。',
+            allowCopyContent: 'コンテンツのコピーまたは抽出を許可します。',
+            allowEditAnnotations: 'アノテーションの編集を許可します。',
+            allowEditContent: 'コンテンツの編集を許可します。',
+            allowPrint: '印刷を許可します。',
+            ownerPassword: '権限 (所有者) のパスワード:',
+            userPassword: 'ドキュメントを開く (ユーザー) パスワード:',
+            encryptionType: '暗号化のレベル:',
+            paged: 'ページ',
+            showNavigator: 'ナビゲータの表示',
+            singleFile: '1 つのファイル',
+            tolerance: '許容範囲 (ポイント) のテキストの境界を検出するとき:',
+            pictureLayer: '別々 の画像を使用して層',
+            metafileType: 'メタファイルの種類:',
+            monochrome: 'モノクロ',
+            resolution: '解像度:',
+            outputRange: 'ページ範囲:',
+            outputRangeInverted: '反転',
+            showZoomBar: 'ズームバー',
+            searchPrev: '前を検索',
+            searchNext: '次を検索',
+            checkMark: '\u2713',
+            exportOk: 'エクスポート.',
+            parameters: 'パラメーター',
+            requiringParameters: 'パラメーターを入力してください。',
+            nullParameterError: '値を null にすることはできません。',
+            invalidParameterError: '入力が無効です。',
+            parameterNoneItemsSelected: '(下線なし)',
+            parameterAllItemsSelected: '(すべて)',
+            parameterSelectAllItemText: '(すべての選択)',
+            selectParameterValue: '(値を選択)',
+            apply: '適用',
+            errorOccured: 'エラーが発生しました。'
         }
     };
+    var updc = window['wijmo']._updateCulture;
+    if (updc) {
+        updc();
+    }
 })(wijmo || (wijmo = {}));
 ;
-//# sourceMappingURL=wijmo.culture.ja.js.map
+

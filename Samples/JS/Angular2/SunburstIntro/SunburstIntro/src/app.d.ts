@@ -1,9 +1,13 @@
 /// <reference path="../typings/globals/core-js/index.d.ts" />
+import * as wjcChart from 'wijmo/wijmo.chart';
+import * as wjcInput from 'wijmo/wijmo.input';
 import { DataSvc } from './services/DataSvc';
+import * as wijmo from 'wijmo/wijmo';
 export declare class AppCmp {
     protected dataSvc: DataSvc;
     data: any[];
     hierarchicalData: any[];
+    groupCVData: wijmo.CollectionView;
     themingData: any[];
     header: string;
     footer: string;
@@ -19,13 +23,13 @@ export declare class AppCmp {
     selectedPosition: string;
     selectedOffset: number;
     isAnimated: boolean;
-    chartPalette: wijmo.chart.Palettes;
+    chartPalette: wjcChart.Palettes;
     constructor(dataSvc: DataSvc);
-    paletteChanged: (sender: wijmo.input.Menu) => void;
-    innerRadiusChanged: (sender: wijmo.input.InputNumber) => void;
-    offsetChanged: (sender: wijmo.input.InputNumber) => void;
-    startAngleChanged: (sender: wijmo.input.InputNumber) => void;
-    selectedOffsetChanged: (sender: wijmo.input.InputNumber) => void;
+    paletteChanged: (sender: wjcInput.Menu) => void;
+    innerRadiusChanged: (sender: wjcInput.InputNumber) => void;
+    offsetChanged: (sender: wjcInput.InputNumber) => void;
+    startAngleChanged: (sender: wjcInput.InputNumber) => void;
+    selectedOffsetChanged: (sender: wjcInput.InputNumber) => void;
 }
 export declare class AppModule {
 }

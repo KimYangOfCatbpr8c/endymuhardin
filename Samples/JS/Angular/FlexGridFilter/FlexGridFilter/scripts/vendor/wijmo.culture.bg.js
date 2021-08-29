@@ -1,18 +1,18 @@
 ﻿/*
     *
-    * Wijmo Library 5.20162.211
+    * Wijmo Library 5.20171.282
     * http://wijmo.com/
     *
     * Copyright(c) GrapeCity, Inc.  All rights reserved.
     *
     * Licensed under the Wijmo Commercial License.
     * sales@wijmo.com
-    * http://wijmo.com/products/wijmo-5/license/
+    * wijmo.com/products/wijmo-5/license/
     *
     */
 /*
-* Wijmo culture file: bg (Bulgarian)
-*/
+ * Wijmo culture file: bg (Bulgarian)
+ */
 var wijmo;
 (function (wijmo) {
     wijmo.culture = {
@@ -22,7 +22,7 @@ var wijmo;
             numberFormat: {
                 '.': ',',
                 ',': ' ',
-                percent: { pattern: ['-n %', 'n %'] },
+                percent: { pattern: ['-n%', 'n%'] },
                 currency: { decimals: 2, symbol: 'лв.', pattern: ['-n $', 'n $'] }
             },
             calendar: {
@@ -51,7 +51,7 @@ var wijmo;
             itemsSelected: '{count:n0} позиции избрани'
         },
         FlexGrid: {
-            groupHeaderFormat: '{name}: <b>{value} </b>({count:n0} елементи)'
+            groupHeaderFormat: '{name}: <b>{value}</b> ({count:n0} елементи)'
         },
         FlexGridFilter: {
             // filter
@@ -67,7 +67,7 @@ var wijmo;
             null: '(нищо)',
             // condition filter
             header: 'Показване на елементи със стойност',
-            and: 'И',
+            and: 'и',
             or: 'Или',
             stringOperators: [
                 { name: '(не е зададено)', op: null },
@@ -90,8 +90,8 @@ var wijmo;
             dateOperators: [
                 { name: '(не е зададено)', op: null },
                 { name: 'Е равно на', op: 0 },
-                { name: 'Е преди', op: 4 },
-                { name: 'Е след', op: 3 }
+                { name: 'е преди', op: 4 },
+                { name: 'е след', op: 3 }
             ],
             booleanOperators: [
                 { name: '(не е зададено)', op: null },
@@ -101,104 +101,237 @@ var wijmo;
         },
         olap: {
             PivotFieldEditor: {
-                dialogHeader: 'Field settings:',
-                header: 'Header:',
-                summary: 'Summary:',
-                showAs: 'Show As:',
-                weighBy: 'Weigh by:',
-                sort: 'Sort:',
-                filter: 'Filter:',
-                format: 'Format:',
-                sample: 'Sample:',
-                edit: 'Edit...',
-                clear: 'Clear',
+                dialogHeader: 'Настройки на поле:',
+                header: 'Горен титул:',
+                summary: 'Резюме:',
+                showAs: 'Покажи като:',
+                weighBy: 'Претегля се от:',
+                sort: 'Сортиране:',
+                filter: 'Филтър:',
+                format: 'Формат:',
+                sample: 'Проба:',
+                edit: 'Редактиране…',
+                clear: 'Изчисти',
                 ok: 'OK',
-                cancel: 'Cancel',
-                none: '(none)',
+                cancel: 'Отказ',
+                none: '(няма)',
                 sorts: {
-                    asc: 'Ascending',
-                    desc: 'Descending'
+                    asc: 'Възходящо',
+                    desc: 'Низходящо'
                 },
                 aggs: {
-                    sum: 'Sum',
-                    cnt: 'Count',
-                    avg: 'Average',
-                    max: 'Max',
-                    min: 'Min',
-                    rng: 'Range',
-                    std: 'StdDev',
+                    sum: 'Сума',
+                    cnt: 'Брой',
+                    avg: 'Средно',
+                    max: 'Макс.',
+                    min: 'Мин.',
+                    rng: 'Диапазон',
+                    std: 'Отклонение',
                     var: 'Var',
                     stdp: 'StdDevPop',
                     varp: 'VarPop'
                 },
                 calcs: {
-                    noCalc: 'No Calculation',
-                    dRow: 'Difference from previous row',
-                    dRowPct: '% Difference from previous row',
-                    dCol: 'Difference from previous column',
-                    dColPct: '% Difference from previous column'
+                    noCalc: 'Без пресмятане',
+                    dRow: 'Разликата от предишния ред',
+                    dRowPct: '% Разлика от предишния ред',
+                    dCol: 'Разлика от предишната колона',
+                    dColPct: '% Разлика от предишната колона',
+                    dPctGrand: '% от общата сума',
+                    dPctRow: '% от общия ред',
+                    dPctCol: '% от колона общо',
+                    dRunTot: 'Текущи общо',
+                    dRunTotPct: '% тичане общо'
                 },
                 formats: {
-                    n0: 'Integer (n0)',
-                    n2: 'Float (n2)',
-                    c: 'Currency (c)',
-                    p0: 'Percentage (p0)',
-                    p2: 'Percentage (p2)',
-                    n2c: 'Thousands (n2,)',
-                    n2cc: 'Millions (n2,,)',
-                    n2ccc: 'Billions (n2,,,)',
-                    d: 'Date (d)',
-                    MMMMddyyyy: 'Month Day Year (MMMM dd, yyyy)',
-                    dMyy: 'Day Month Year (d/M/yy)',
-                    ddMyy: 'Day Month Year (dd/M/yy)',
-                    dMyyyy: 'Day Month Year (dd/M/yyyy)',
-                    MMMyyyy: 'Month Year (MMM yyyy)',
-                    MMMMyyyy: 'Month Year (MMMM yyyy)',
-                    yyyyQq: 'Year Quarter (yyyy "Q"q)',
-                    FYEEEEQU: 'Fiscal Year Quarter ("FY"EEEE "Q"U)'
+                    n0: 'Цяло число (n0)',
+                    n2: 'Поплавък (n2)',
+                    c: 'Валута (c)',
+                    p0: 'Процент (Р0)',
+                    p2: 'Процент (Р2)',
+                    n2c: 'Хиляди (n2,)',
+                    n2cc: 'Милиони (n2,,)',
+                    n2ccc: 'Милиарди (n2,,,)',
+                    d: 'Дата (d)',
+                    MMMMddyyyy: 'Месец година дни (ММММ dd, yyyy)',
+                    dMyy: 'Ден месец година (d/M/yy)',
+                    ddMyy: 'Ден месец година (dd/М/yy)',
+                    dMyyyy: 'Ден месец година (dd/М/yyyy)',
+                    MMMyyyy: 'Месец година (МММ yyy)',
+                    MMMMyyyy: 'Месец година (ММММ yyyy)',
+                    yyyyQq: 'Тримесечие на година (yyyy "Q"q)',
+                    FYEEEEQU: 'Тримесечие на финансова година ("FY"EEEE "Q"U)'
                 }
             },
             PivotEngine: {
-                grandTotal: 'Grand Total',
-                subTotal: 'Subtotal'
+                grandTotal: 'Обща сума',
+                subTotal: 'Междинна сума'
             },
             PivotPanel: {
-                fields: 'Choose fields to add to report',
-                drag: 'Drag fields between areas below:',
-                filters: 'Filters',
-                cols: 'Columns',
-                rows: 'Rows',
-                vals: 'Values',
-                defer: 'Defer Updates',
-                update: 'Update'
+                fields: 'Изберете полета за добавяне към отчета:',
+                drag: 'Плъзнете полетата между площите по-долу:',
+                filters: 'Филтри',
+                cols: 'Колони',
+                rows: 'Редове',
+                vals: 'Стойности',
+                defer: 'Отложи актуализации',
+                update: 'Актуализация'
             },
             _ListContextMenu: {
-                up: 'Move Up',
-                down: 'Move Down',
-                first: 'Move do Beginning',
-                last: 'Move to End',
-                filter: 'Move to Report Filter',
-                rows: 'Move to Row Labels',
-                cols: 'Move to Column Labels',
-                vals: 'Move to Values',
-                remove: 'Remove Field',
-                edit: 'Field Settings...',
-                detail: 'Show Detail...'
+                up: 'Премести нагоре',
+                down: 'Премести надолу',
+                first: 'Премести в началото',
+                last: 'Преминаване в края',
+                filter: 'Премести в съобщението за филтър',
+                rows: 'Премести в етикетите на редовете',
+                cols: 'Премести в етикетите на колоните',
+                vals: 'Премести в стойностите',
+                remove: 'Премахни полето',
+                edit: 'Настройки за поле…',
+                detail: 'Покажи подробности…'
             },
             PivotChart: {
-                by: 'by',
+                by: 'от',
                 and: 'and'
             },
             DetailDialog: {
-                header: 'Detail View:',
+                header: 'Изглед на детайл:',
                 ok: 'OK',
-                items: '{cnt:n0} items',
-                item: '{cnt} item',
-                row: 'Row',
-                col: 'Column'
+                items: '{cnt:n0} елементи',
+                item: '{cnt} елемент',
+                row: 'Ред',
+                col: 'Колона'
             }
+        },
+        Viewer: {
+            cancel: 'Отказ',
+            ok: 'OK',
+            bottom: 'Отдолу:',
+            top: 'Връх:',
+            right: 'Дясно:',
+            left: 'Ляво:',
+            margins: 'Полета (инчове)',
+            orientation: 'Посока:',
+            paperKind: 'Вид хартия:',
+            pageSetup: 'Настройка на страница',
+            landscape: 'Пейзажно',
+            portrait: 'Портретно',
+            pageNumber: 'Номер на страница',
+            zoomFactor: 'Коефициент на мащабиране',
+            paginated: 'Оформление за печат',
+            print: 'Печат',
+            search: 'Търсене',
+            matchCase: 'Със същия регистър',
+            wholeWord: 'Съвпадение цяла дума',
+            searchResults: 'Резултати от търсенето',
+            previousPage: 'Предишна страница',
+            nextPage: 'Следваща страница',
+            firstPage: 'Първа страница',
+            lastPage: 'Последна страница',
+            backwardHistory: 'обратно',
+            forwardHistory: 'Напред',
+            pageCount: 'Брой страници',
+            selectTool: 'Изберете инструмент',
+            moveTool: 'Move Tool',
+            continuousMode: 'Непрекъснат изглед на страница',
+            singleMode: 'Единствен изглед на страница',
+            wholePage: 'Годни цялата страница',
+            pageWidth: 'Ширината на страницата',
+            zoomOut: 'Намали',
+            zoomIn: 'Увеличи',
+            exports: 'Експортиране',
+            fullScreen: 'Цял екран',
+            exitFullScreen: 'Изход от цял екран',
+            hamburgerMenu: 'Инструменти',
+            showSearchBar: 'Покажи лентата за търсене',
+            viewMenu: 'Опции за оформление',
+            searchOptions: 'Опции при търсене',
+            matchCaseMenuItem: 'С малки и главни букви',
+            wholeWordMenuItem: 'Съвпадение цяла дума',
+            thumbnails: 'Страница миниатюри',
+            outlines: 'Карта на документа',
+            loading: 'Зареждане…',
+            pdfExportName: 'Adobe PDF',
+            docxExportName: 'Отваряне на XML дума',
+            xlsxExportName: 'Отваряне на XML Excel',
+            docExportName: 'Microsoft Word',
+            xlsExportName: 'Microsoft Excel',
+            mhtmlExportName: 'Уеб Архив (MHTML)',
+            htmlExportName: 'HTML документ',
+            rtfExportName: 'RTF документ',
+            metafileExportName: 'Компресиран метафайлове',
+            csvExportName: 'CSV',
+            tiffExportName: 'TIFF изображения',
+            bmpExportName: 'BMP изображения',
+            emfExportName: 'Разширен метафайл',
+            gifExportName: 'GIF изображения',
+            jpgExportName: 'JPEG изображения',
+            jpegExportName: 'JPEG изображения',
+            pngExportName: 'PNG изображения',
+            abstractMethodException: 'Това е един абстрактен метод, моля да я прилагат.',
+            cannotRenderPageNoViewPage: 'Не може да направи, без документ източник и изглед на страница.',
+            cannotRenderPageNoDoc: 'Не може да направи, без документ източник и изглед на страница.',
+            exportFormat: 'Формат за експортиране:',
+            exportOptionTitle: 'Опции за експортиране',
+            documentRestrictionsGroup: 'Документ ограничения',
+            passwordSecurityGroup: 'Защита на паролите',
+            outputRangeGroup: 'Изходният диапазон',
+            documentInfoGroup: 'Информация за документа',
+            generalGroup: 'Общи',
+            docInfoTitle: 'Обръщение',
+            docInfoAuthor: 'Автор',
+            docInfoManager: 'Диспечер',
+            docInfoOperator: 'Оператор',
+            docInfoCompany: 'Фирма',
+            docInfoSubject: 'Тема',
+            docInfoComment: 'Коментиране',
+            docInfoCreator: 'създател',
+            docInfoProducer: 'Продуцент',
+            docInfoCreationTime: 'Час на създаване',
+            docInfoRevisionTime: 'Време за преразглеждане',
+            docInfoKeywords: 'Ключови думи',
+            embedFonts: 'Включвай TrueType шрифтове',
+            pdfACompatible: 'PDF/A съвместими (ниво 2б)',
+            useCompression: 'Използва компресия',
+            useOutlines: 'Генериране на контурите',
+            allowCopyContent: 'Позволи съдържание копиране или извличане',
+            allowEditAnnotations: 'Позволи редактиране на анотация',
+            allowEditContent: 'Позволи редактиране на съдържание',
+            allowPrint: 'Позволи печат',
+            ownerPassword: 'Парола за достъп (собственик):',
+            userPassword: 'Парола документ отворен (потребител):',
+            encryptionType: 'Ниво на шифроване:',
+            paged: 'Във виртуалната',
+            showNavigator: 'Покажи навигатор',
+            singleFile: 'Един файл',
+            tolerance: 'Толеранс при откриване на текст границите (точки):',
+            pictureLayer: 'Използвайте отделна снимка слой',
+            metafileType: 'Метафайл тип:',
+            monochrome: 'Монохромно',
+            resolution: 'Разделителна способност:',
+            outputRange: 'Обхват на страници:',
+            outputRangeInverted: 'Обърнати',
+            showZoomBar: 'Zoom пръчка',
+            searchPrev: 'Търси предишен',
+            searchNext: 'Търси следващ',
+            checkMark: '\u2713',
+            exportOk: 'Експортиране…',
+            parameters: 'Параметри',
+            requiringParameters: 'Моля, въведете параметри.',
+            nullParameterError: 'Стойността не може да бъде нула.',
+            invalidParameterError: 'Невалиден вход.',
+            parameterNoneItemsSelected: '(няма)',
+            parameterAllItemsSelected: '(всички)',
+            parameterSelectAllItemText: '(Избери всички)',
+            selectParameterValue: '(изберете стойност)',
+            apply: 'Приложи',
+            errorOccured: 'Възникна грешка.'
         }
     };
+    var updc = window['wijmo']._updateCulture;
+    if (updc) {
+        updc();
+    }
 })(wijmo || (wijmo = {}));
 ;
-//# sourceMappingURL=wijmo.culture.bg.js.map
+

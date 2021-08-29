@@ -47,11 +47,26 @@ would typically implement a "valueChanged" event handler as follows:</p>
 <a href="https://facebook.github.io/react/docs/component-api.html">setState</a>
 method to update the component state, automatically triggering a UI update.
 Notice that the method does not write directly into the "state" object, which
-should be treated as immutable in React applications.</p></div>
+should be treated as immutable in React applications.</p>
+<p>All Wijmo React components include an "initialized" event that is
+raised after the control has been added to the page and initialized.
+You can use this event to perform additional initialization in addition
+to setting properties in markup. For example:</p>
+
+
+<pre>&lt;Wj.FlexGrid
+  initialized={ function(s,e) {
+
+    // assign a custom MergeManager to the grid
+    s.mergeManager = new CustomMergeManager(s);
+
+  }}
+/&gt;</pre></div>
 </div>
 <div class="member-panel module members">
 <h3 class="node">Properties</h3>
 <ul>
+<li class="mproperty"><a href="topic/wijmo.react.Module.html/#AutoComplete">AutoComplete</a></li>
 <li class="mproperty"><a href="topic/wijmo.react.Module.html/#AutoComplete">AutoComplete</a></li>
 <li class="mproperty"><a href="topic/wijmo.react.Module.html/#BulletGraph">BulletGraph</a></li>
 <li class="mproperty"><a href="topic/wijmo.react.Module.html/#Calendar">Calendar</a></li>
@@ -59,6 +74,7 @@ should be treated as immutable in React applications.</p></div>
 <li class="mproperty"><a href="topic/wijmo.react.Module.html/#ComboBox">ComboBox</a></li>
 <li class="mproperty"><a href="topic/wijmo.react.Module.html/#FlexChart">FlexChart</a></li>
 <li class="mproperty"><a href="topic/wijmo.react.Module.html/#FlexGrid">FlexGrid</a></li>
+<li class="mproperty"><a href="topic/wijmo.react.Module.html/#GroupPanel">GroupPanel</a></li>
 <li class="mproperty"><a href="topic/wijmo.react.Module.html/#InputColor">InputColor</a></li>
 <li class="mproperty"><a href="topic/wijmo.react.Module.html/#InputDate">InputDate</a></li>
 <li class="mproperty"><a href="topic/wijmo.react.Module.html/#InputDateTime">InputDateTime</a></li>
@@ -68,6 +84,7 @@ should be treated as immutable in React applications.</p></div>
 <li class="mproperty"><a href="topic/wijmo.react.Module.html/#LinearGauge">LinearGauge</a></li>
 <li class="mproperty"><a href="topic/wijmo.react.Module.html/#ListBox">ListBox</a></li>
 <li class="mproperty"><a href="topic/wijmo.react.Module.html/#Menu">Menu</a></li>
+<li class="mproperty"><a href="topic/wijmo.react.Module.html/#MultiAutoComplete">MultiAutoComplete</a></li>
 <li class="mproperty"><a href="topic/wijmo.react.Module.html/#MultiSelect">MultiSelect</a></li>
 <li class="mproperty"><a href="topic/wijmo.react.Module.html/#PivotChart">PivotChart</a></li>
 <li class="mproperty"><a href="topic/wijmo.react.Module.html/#PivotGrid">PivotGrid</a></li>
@@ -78,6 +95,13 @@ should be treated as immutable in React applications.</p></div>
 </div>
 <h3 class="node">Properties</h3>
 <div class="member-list" ng-class="{ 'show-inherited' : ctx.showInherited, 'show-raisers' : ctx.showRaisers }">
+<div id="AutoComplete" class="member-panel mproperty">
+<h3>AutoComplete</h3>
+<div class="comment"><p>React component that encapsulates the <a href="topic/wijmo.nav.TreeView.Class.html"><span class="identifier">TreeView</span></a> control.</p></div>
+<dl class="dl-horizontal">
+  <dt>Type</dt><dd></dd>
+</dl>
+</div>
 <div id="AutoComplete" class="member-panel mproperty">
 <h3>AutoComplete</h3>
 <div class="comment"><p>React component that encapsulates the <a href="topic/wijmo.input.AutoComplete.Class.html"><span class="identifier">AutoComplete</span></a> control.</p></div>
@@ -169,6 +193,14 @@ generating the columns.</p></div>
   <dt>Type</dt><dd></dd>
 </dl>
 </div>
+<div id="GroupPanel" class="member-panel mproperty">
+<h3>GroupPanel</h3>
+<div class="comment"><p>React component that encapsulates the <a href="topic/wijmo.grid.grouppanel.GroupPanel.Class.html"><span class="identifier">GroupPanel</span></a>
+control.</p></div>
+<dl class="dl-horizontal">
+  <dt>Type</dt><dd></dd>
+</dl>
+</div>
 <div id="InputColor" class="member-panel mproperty">
 <h3>InputColor</h3>
 <div class="comment"><p>React component that encapsulates the <a href="topic/wijmo.input.InputColor.Class.html"><span class="identifier">InputColor</span></a> control.</p></div>
@@ -253,6 +285,13 @@ current value.</p></div>
 <div id="Menu" class="member-panel mproperty">
 <h3>Menu</h3>
 <div class="comment"><p>React component that encapsulates the <a href="topic/wijmo.input.Menu.Class.html"><span class="identifier">Menu</span></a> control.</p></div>
+<dl class="dl-horizontal">
+  <dt>Type</dt><dd></dd>
+</dl>
+</div>
+<div id="MultiAutoComplete" class="member-panel mproperty">
+<h3>MultiAutoComplete</h3>
+<div class="comment"><p>React component that encapsulates the <a href="topic/wijmo.input.MultiAutoComplete.Class.html"><span class="identifier">MultiAutoComplete</span></a> control.</p></div>
 <dl class="dl-horizontal">
   <dt>Type</dt><dd></dd>
 </dl>

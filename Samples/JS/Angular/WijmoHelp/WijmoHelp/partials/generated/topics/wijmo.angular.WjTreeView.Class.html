@@ -1,0 +1,81 @@
+<div class="header-panel member">
+<h2><span class="identifier">WjTreeView</span> Class</h2>
+<dl class="dl-horizontal">
+<dt>File</dt><dd class="filename">wijmo.angular.js</dd>
+<dt>Module</dt><dd><a href="topic/wijmo.angular.Module.html"><span class="identifier">wijmo.angular</span></a></dd>
+<dt>Show</dt>
+<dd>
+<label><input type="checkbox" ng-model="ctx.showInherited"> Inherited Members</label>&nbsp;&nbsp;&nbsp;
+<label><input type="checkbox" ng-model="ctx.showRaisers"> Event Raisers</label>
+</dd>
+</dl>
+<div class="comment"><p>AngularJS directive for the <a href="topic/wijmo.nav.TreeView.Class.html"><span class="identifier">TreeView</span></a> control.</p>
+<p>Use the <b>wj-tree-view</b> directive to add TreeView to your AngularJS applications.
+Note that directive and parameter names must be formatted as lower-case with dashes 
+instead of camel-case. For example:</p>
+
+
+<pre>&lt;wj-tree-view  items-source="items"
+  display-member-path="ctx.displayMemberPath"
+  child-items-path="ctx.childItemsPath"
+  is-animated="ctx.isAnimated"&gt;
+&lt;wj-tree-view;</pre>
+<p>The <b>wj-tree-view</b> directive supports the following attributes:</p>
+<p><dl class="dl-horizontal">
+  <dt>items-source</dt>          <dd><code>=</code>An array that contains the <a href="topic/wijmo.nav.TreeView.Class.html"><span class="identifier">TreeView</span></a> items. </dd>
+  <dt>child-items-path</dt>      <dd><code>@</code> A value indicating the name of the property (or properties) 
+                                 that contains the child items for each node.</dd>
+  <dt>control</dt>               <dd><code>=</code> A reference to the <a href="topic/wijmo.nav.TreeView.Class.html"><span class="identifier">TreeView</span></a>
+                                 control created by this directive. </dd>
+  <dt>display-member-path</dt>   <dd><code>@</code> A value indicating the name of the property (or properties) 
+                                 to use as the visual representation of the nodes. </dd>
+  <dt>image-member-path</dt>     <dd><code>@</code> A value indicating the name of the property (or properties) to
+                                 use as a source of images for the nodes. </dd>
+  <dt>is-content-html</dt>       <dd><code>@</code> A value indicating whether whether items 
+                                 are bound to plain text or HTML. </dd>
+  <dt>initialized</dt>           <dd><code>&</code> This event occurs after the binding has finished
+                                 initializing the control with attribute values.</dd>
+  <dt>is-initialized</dt>        <dd><code>=</code> A value indicating whether the binding has finished
+                                 initializing the control with attribute values. </dd>
+  <dt>show-checkboxes</dt>       <dd><code>@</code> A value determines whether the <a href="topic/wijmo.nav.TreeView.Class.html"><span class="identifier">TreeView</span></a> should
+                                 add checkboxes to nodes and manage their state.</dd>
+  <dt>auto-collapse</dt>         <dd><code>@</code> A value determines if sibling nodes should be collapsed
+                                 when a node is expanded.</dd>
+  <dt>is-animated</dt>           <dd><code>@</code> A value indicating whether to use animations when expanding
+                                 or collapsing nodes.</dd>
+  <dt>is-readOnly</dt>           <dd><code>@</code> A value determines whether users can edit the text in the
+                                 nodes.</dd>
+  <dt>allow-dragging</dt>        <dd><code>@</code> A value determines whether users can drag and drop nodes
+                                 within the <a href="topic/wijmo.nav.TreeView.Class.html"><span class="identifier">TreeView</span></a>.</dd>
+  <dt>expand-on-click</dt>       <dd><code>@</code> A value determines whether to expand collapsed nodes when
+                                 the user clicks the node header.</dd>
+  <dt>selected-item</dt>         <dd><code>@</code> A value indicating the data item that is currently 
+                                 selected.</dd>
+  <dt>selected-node</dt>         <dd><code>@</code> A value indicating <a href="topic/wijmo.nav.TreeNode.Class.html"><span class="identifier">TreeNode</span></a> that is currently 
+                                 selected.</dd>
+  <dt>checked-items</dt>         <dd><code>@</code> An array containing the items that are currently 
+                                 checked.</dd>
+  <dt>lazy-load-function</dt>   <dd><code>=</code> A function that loads child nodes on demand.</dd>
+  <dt>items-source-changed</dt>  <dd><code>&</code> The <a href="topic/wijmo.nav.TreeView.Class.html/#itemsSourceChanged"><span class="identifier">itemsSourceChanged</span></a> event handler.</dd>
+  <dt>loading-items</dt>         <dd><code>&</code> The <a href="topic/wijmo.nav.TreeView.Class.html/#loadingItems"><span class="identifier">loadingItems</span></a> event handler.</dd>
+  <dt>loaded-items</dt>          <dd><code>&</code> The <a href="topic/wijmo.nav.TreeView.Class.html/#loadedItems"><span class="identifier">loadedItems</span></a> event handler.</dd>
+  <dt>item-clicked</dt>          <dd><code>&</code> The <a href="topic/wijmo.nav.TreeView.Class.html/#itemClicked"><span class="identifier">itemClicked</span></a> event handler.</dd>
+  <dt>selected-item-changed</dt> <dd><code>&</code> The <a href="topic/wijmo.nav.TreeView.Class.html/#selectedItemChanged"><span class="identifier">selectedItemChanged</span></a> event handler.</dd>
+  <dt>checked-items-Changed</dt> <dd><code>&</code> The <a href="topic/wijmo.nav.TreeView.Class.html/#checkedItemsChanged"><span class="identifier">checkedItemsChanged</span></a> event handler.</dd>
+  <dt>is-collapsed-changing</dt> <dd><code>&</code> The <a href="topic/wijmo.nav.TreeView.Class.html/#isCollapsedChanging"><span class="identifier">isCollapsedChanging</span></a> event handler.</dd>
+  <dt>is-collapsed-changed</dt>  <dd><code>&</code> The <a href="topic/wijmo.nav.TreeView.Class.html/#isCollapsedChanged"><span class="identifier">isCollapsedChanged</span></a> event handler.</dd>
+  <dt>is-checked-changing</dt>   <dd><code>&</code> The <a href="topic/wijmo.nav.TreeView.Class.html/#isCheckedChanging"><span class="identifier">isCheckedChanging</span></a> event handler.</dd>
+  <dt>is-checked-changed</dt>    <dd><code>&</code> The <a href="topic/wijmo.nav.TreeView.Class.html/#isCheckedChanged"><span class="identifier">isCheckedChanged</span></a> event handler.</dd>
+  <dt>format-item</dt>           <dd><code>&</code> The <a href="topic/wijmo.nav.TreeView.Class.html/#formatItem"><span class="identifier">formatItem</span></a> event handler.</dd>
+  <dt>drag-start</dt>            <dd><code>&</code> The <a href="topic/wijmo.nav.TreeView.Class.html/#dragStart"><span class="identifier">dragStart</span></a> event handler.</dd>
+  <dt>drag-over</dt>             <dd><code>&</code> The <a href="topic/wijmo.nav.TreeView.Class.html/#dragOver"><span class="identifier">dragOver</span></a> event handler.</dd>
+  <dt>drop</dt>                  <dd><code>&</code> The <a href="topic/wijmo.nav.TreeView.Class.html/#drop"><span class="identifier">drop</span></a> event handler.</dd>
+  <dt>drag-end</dt>              <dd><code>&</code> The <a href="topic/wijmo.nav.TreeView.Class.html/#dragEnd"><span class="identifier">dragEnd</span></a> event handler.</dd>
+  <dt>node-edit-starting</dt>    <dd><code>&</code> The <a href="topic/wijmo.nav.TreeView.Class.html/#nodeEditStarting"><span class="identifier">nodeEditStarting</span></a> event handler.</dd>
+  <dt>node-edit-started</dt>     <dd><code>&</code> The <a href="topic/wijmo.nav.TreeView.Class.html/#nodeEditStarted"><span class="identifier">nodeEditStarted</span></a> event handler.</dd>
+  <dt>node-edit-ending</dt>      <dd><code>&</code> The <a href="topic/wijmo.nav.TreeView.Class.html/#nodeEditEnding"><span class="identifier">nodeEditEnding</span></a> event handler.</dd>
+  <dt>node-edit-ended</dt>       <dd><code>&</code> The <a href="topic/wijmo.nav.TreeView.Class.html/#nodeEditEnded"><span class="identifier">nodeEditEnded</span></a> event handler.</dd>
+</dl></p></div>
+</div>
+<div class="member-panel class members" ng-class="{ 'show-inherited' : ctx.showInherited, 'show-raisers' : ctx.showRaisers }">
+</div>

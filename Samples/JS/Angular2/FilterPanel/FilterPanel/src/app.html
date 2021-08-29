@@ -1,0 +1,30 @@
+﻿<div>
+    <div class="header">
+        <div class="container">
+            <img src="resources/wijmo5.png" alt="Wijmo 5" />
+            <h1>
+                FilterPanel
+            </h1>
+            <p>
+                This sample defines a <b>FilterPanel</b> class that shows currently
+                active filters and allows users to remove filters by clicking.
+            </p>
+        </div>
+    </div>
+
+    <div class="container">
+        <p>
+            Add or change filters to see how they are added to the
+            <b>FilterPanel</b> above the grid.
+        </p>
+        <p>
+            Click the 'x' icons in the filter markers to remove one
+            or all filters.
+        </p>
+        <wj-filter-panel [filter]="filter" [placeholder]="'Active Filters'"></wj-filter-panel>
+        <wj-flex-grid style="height:300px"
+                      [itemsSource]="data">
+            <wj-flex-grid-filter #filter></wj-flex-grid-filter>
+        </wj-flex-grid>
+</div>
+</div>

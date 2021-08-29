@@ -49,10 +49,12 @@ on HTML <b>&lt;select;&gt</b> and <b>&lt;option;&gt</b> elements.</p>
 <li class="mproperty inherited"><a href="topic/wijmo.input.Menu.Class.html/#displayMemberPath">displayMemberPath</a></li>
 <li class="mproperty inherited"><a href="topic/wijmo.input.Menu.Class.html/#dropDown">dropDown</a></li>
 <li class="mproperty inherited"><a href="topic/wijmo.input.Menu.Class.html/#dropDownCssClass">dropDownCssClass</a></li>
+<li class="mproperty inherited"><a href="topic/wijmo.input.Menu.Class.html/#formatItem">formatItem</a></li>
 <li class="mproperty"><a href="topic/wijmo.input.Menu.Class.html/#header">header</a></li>
 <li class="mproperty inherited"><a href="topic/wijmo.input.Menu.Class.html/#headerPath">headerPath</a></li>
 <li class="mproperty inherited"><a href="topic/wijmo.input.Menu.Class.html/#hostElement">hostElement</a></li>
 <li class="mproperty inherited"><a href="topic/wijmo.input.Menu.Class.html/#inputElement">inputElement</a></li>
+<li class="mproperty inherited"><a href="topic/wijmo.input.Menu.Class.html/#isAnimated">isAnimated</a></li>
 <li class="mproperty"><a href="topic/wijmo.input.Menu.Class.html/#isButton">isButton</a></li>
 <li class="mproperty inherited"><a href="topic/wijmo.input.Menu.Class.html/#isContentHtml">isContentHtml</a></li>
 <li class="mproperty inherited"><a href="topic/wijmo.input.Menu.Class.html/#isDisabled">isDisabled</a></li>
@@ -69,6 +71,7 @@ on HTML <b>&lt;select;&gt</b> and <b>&lt;option;&gt</b> elements.</p>
 <li class="mproperty inherited"><a href="topic/wijmo.input.Menu.Class.html/#maxDropDownWidth">maxDropDownWidth</a></li>
 <li class="mproperty"><a href="topic/wijmo.input.Menu.Class.html/#owner">owner</a></li>
 <li class="mproperty inherited"><a href="topic/wijmo.input.Menu.Class.html/#placeholder">placeholder</a></li>
+<li class="mproperty inherited"><a href="topic/wijmo.input.Menu.Class.html/#rightToLeft">rightToLeft</a></li>
 <li class="mproperty inherited"><a href="topic/wijmo.input.Menu.Class.html/#selectedIndex">selectedIndex</a></li>
 <li class="mproperty inherited"><a href="topic/wijmo.input.Menu.Class.html/#selectedItem">selectedItem</a></li>
 <li class="mproperty inherited"><a href="topic/wijmo.input.Menu.Class.html/#selectedValue">selectedValue</a></li>
@@ -90,6 +93,7 @@ on HTML <b>&lt;select;&gt</b> and <b>&lt;option;&gt</b> elements.</p>
 <li class="mmethod inherited"><a href="topic/wijmo.input.Menu.Class.html/#getControl">getControl</a></li>
 <li class="mmethod inherited"><a href="topic/wijmo.input.Menu.Class.html/#getDisplayText">getDisplayText</a></li>
 <li class="mmethod inherited"><a href="topic/wijmo.input.Menu.Class.html/#getTemplate">getTemplate</a></li>
+<li class="mmethod"><a href="topic/wijmo.input.Menu.Class.html/#hide">hide</a></li>
 <li class="mmethod inherited"><a href="topic/wijmo.input.Menu.Class.html/#indexOf">indexOf</a></li>
 <li class="mmethod inherited"><a href="topic/wijmo.input.Menu.Class.html/#initialize">initialize</a></li>
 <li class="mmethod inherited"><a href="topic/wijmo.input.Menu.Class.html/#invalidate">invalidate</a></li>
@@ -105,6 +109,7 @@ on HTML <b>&lt;select;&gt</b> and <b>&lt;option;&gt</b> elements.</p>
 <li class="mmethod inherited"><a href="topic/wijmo.input.Menu.Class.html/#refreshAll">refreshAll</a></li>
 <li class="mmethod inherited"><a href="topic/wijmo.input.Menu.Class.html/#removeEventListener">removeEventListener</a></li>
 <li class="mmethod inherited"><a href="topic/wijmo.input.Menu.Class.html/#selectAll">selectAll</a></li>
+<li class="mmethod"><a href="topic/wijmo.input.Menu.Class.html/#show">show</a></li>
 </ul>
 <h3 class="node">Events</h3>
 <ul>
@@ -225,6 +230,16 @@ itself, which prevents using CSS selectors based on the parent control.</p></div
   <dt>Type</dt><dd><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank"><span class="identifier">string</span></a></dd>
 </dl>
 </div>
+<div id="formatItem" class="member-panel mproperty inherited">
+<h3>formatItem</h3>
+<div class="comment"><p>Event that fires when items in the drop-down list are created.</p>
+<p>You can use this event to modify the HTML in the list items.
+For details, see the <a href="topic/wijmo.input.ListBox.Class.html/#formatItem"><span class="identifier">formatItem</span></a> event.</p></div>
+<dl class="dl-horizontal">
+  <dt>Inherited From</dt><dd><a href="topic/wijmo.input.ComboBox.Class.html"><span class="identifier">ComboBox</span></a></dd>
+  <dt>Type</dt><dd><a href="topic/wijmo.Event.Class.html"><span class="identifier">Event</span></a></dd>
+</dl>
+</div>
 <div id="header" class="member-panel mproperty">
 <h3>header</h3>
 <div class="comment"><p>Gets or sets the HTML text shown in the <a href="topic/wijmo.input.Menu.Class.html"><span class="identifier">Menu</span></a> element.</p></div>
@@ -264,6 +279,15 @@ attributes of the input element.</p></div>
   <dt>Type</dt><dd><a href="https://developer.mozilla.org/en/docs/Web/API/HTMLInputElement" target="_blank"><span class="identifier">HTMLInputElement</span></a></dd>
 </dl>
 </div>
+<div id="isAnimated" class="member-panel mproperty inherited">
+<h3>isAnimated</h3>
+<div class="comment"><p>Gets or sets a value that indicates whether the control should use a fade-in animation
+when displaying the drop-down.</p></div>
+<dl class="dl-horizontal">
+  <dt>Inherited From</dt><dd><a href="topic/wijmo.input.DropDown.Class.html"><span class="identifier">DropDown</span></a></dd>
+  <dt>Type</dt><dd><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a></dd>
+</dl>
+</div>
 <div id="isButton" class="member-panel mproperty">
 <h3>isButton</h3>
 <div class="comment"><p>Gets or sets a value that determines whether this <a href="topic/wijmo.input.Menu.Class.html"><span class="identifier">Menu</span></a> should act
@@ -288,7 +312,7 @@ the button is clicked:</p>
   item-clicked="itemClicked(s, e)"&gt;
   &lt;wj-menu-item value="'Internet Explorer'"&gt;Internet Explorer&lt;/wj-menu-item&gt;
   &lt;wj-menu-item value="'Chrome'"&gt;Chrome&lt;/wj-menu-item&gt;
-  &lt;wj-menu-item value="'FireFox'"&gt;FireFox&lt;/wj-menu-item&gt;
+  &lt;wj-menu-item value="'Firefox'"&gt;Firefox&lt;/wj-menu-item&gt;
   &lt;wj-menu-item value="'Safari'"&gt;Safari&lt;/wj-menu-item&gt;
   &lt;wj-menu-item value="'Opera'"&gt;Opera&lt;/wj-menu-item&gt;
 &lt;/wj-menu&gt;
@@ -448,6 +472,15 @@ menu is used as a context menu for several different elements.</p></div>
 <dl class="dl-horizontal">
   <dt>Inherited From</dt><dd><a href="topic/wijmo.input.DropDown.Class.html"><span class="identifier">DropDown</span></a></dd>
   <dt>Type</dt><dd><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank"><span class="identifier">string</span></a></dd>
+</dl>
+</div>
+<div id="rightToLeft" class="member-panel mproperty inherited">
+<h3>rightToLeft</h3>
+<div class="comment"><p>Gets a value indicating whether the control is hosted in an element
+with right-to-left layout.</p></div>
+<dl class="dl-horizontal">
+  <dt>Inherited From</dt><dd><a href="topic/wijmo.Control.Class.html"><span class="identifier">Control</span></a></dd>
+  <dt>Type</dt><dd><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a></dd>
 </dl>
 </div>
 <div id="selectedIndex" class="member-panel mproperty inherited">
@@ -673,6 +706,16 @@ base class.</p></div>
   <dt>Returns</dt><dd><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank"><span class="identifier">string</span></a></dd>
 </dl>
 </div>
+<div id="hide" class="member-panel mmethod">
+<h3>hide</h3>
+<pre>hide(): <span class="identifier">void</span></pre>
+<div class="comment"><p>Hides the menu.</p>
+<p>This method is useful if you want to hide a context menu displayed
+with the <a href="topic/wijmo.input.Menu.Class.html/#show"><span class="identifier">show</span></a> method.</p></div>
+<dl class="dl-horizontal">
+  <dt>Returns</dt><dd><span class="identifier">void</span></dd>
+</dl>
+</div>
 <div id="indexOf" class="member-panel mmethod inherited">
 <h3>indexOf</h3>
 <pre>indexOf(text: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank"><span class="identifier">string</span></a>, fullMatch: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a>): <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Number" target="_blank"><span class="identifier">number</span></a></pre>
@@ -890,13 +933,13 @@ on the page will be invalidated.</p></li></ul>
 </div>
 <div id="removeEventListener" class="member-panel mmethod inherited">
 <h3>removeEventListener</h3>
-<pre>removeEventListener(target?: <a href="https://developer.mozilla.org/en/docs/Web/API/EventTarget" target="_blank"><span class="identifier">EventTarget</span></a>, type?: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank"><span class="identifier">string</span></a>, capture?: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a>): <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Number" target="_blank"><span class="identifier">number</span></a></pre>
+<pre>removeEventListener(target?: <a href="https://developer.mozilla.org/en/docs/Web/API/EventTarget" target="_blank"><span class="identifier">EventTarget</span></a>, type?: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank"><span class="identifier">string</span></a>, fn?: <span class="identifier">any</span>, capture?: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a>): <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Number" target="_blank"><span class="identifier">number</span></a></pre>
 <div class="comment"><p>Removes one or more event listeners attached to elements owned by this <a href="topic/wijmo.Control.Class.html"><span class="identifier">Control</span></a>.</p></div>
 <dl class="dl-horizontal">
   <dt>Parameters</dt><dd></dd>
 </dl>
 <ul>
-<li><b>target</b>: <a href="https://developer.mozilla.org/en/docs/Web/API/EventTarget" target="_blank"><span class="identifier">EventTarget</span></a> <span class="badge">Optional</span><br/><p>Target element for the event. If null, removes listeners attached to all targets.</p></li><li><b>type</b>: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank"><span class="identifier">string</span></a> <span class="badge">Optional</span><br/><p>String that specifies the event. If null, removes listeners attached to all events.</p></li><li><b>capture</b>: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a> <span class="badge">Optional</span><br/><p>Whether the listener is capturing. If null, removes capturing and non-capturing listeners.</p></li></ul>
+<li><b>target</b>: <a href="https://developer.mozilla.org/en/docs/Web/API/EventTarget" target="_blank"><span class="identifier">EventTarget</span></a> <span class="badge">Optional</span><br/><p>Target element for the event. If null, removes listeners attached to all targets.</p></li><li><b>type</b>: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank"><span class="identifier">string</span></a> <span class="badge">Optional</span><br/><p>String that specifies the event. If null, removes listeners attached to all events.</p></li><li><b>fn</b>: <span class="identifier">any</span> <span class="badge">Optional</span><br/><p>Handler to remove. If null, removes all handlers.</p></li><li><b>capture</b>: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a> <span class="badge">Optional</span><br/><p>Whether the listener is capturing. If null, removes capturing and non-capturing listeners.</p></li></ul>
 <dl class="dl-horizontal">
   <dt>Inherited From</dt><dd><a href="topic/wijmo.Control.Class.html"><span class="identifier">Control</span></a></dd>
   <dt>Returns</dt><dd><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Number" target="_blank"><span class="identifier">number</span></a></dd>
@@ -908,6 +951,40 @@ on the page will be invalidated.</p></li></ul>
 <div class="comment"><p>Sets the focus to the control and selects all its content.</p></div>
 <dl class="dl-horizontal">
   <dt>Inherited From</dt><dd><a href="topic/wijmo.input.DropDown.Class.html"><span class="identifier">DropDown</span></a></dd>
+  <dt>Returns</dt><dd><span class="identifier">void</span></dd>
+</dl>
+</div>
+<div id="show" class="member-panel mmethod">
+<h3>show</h3>
+<pre>show(position?: <span class="identifier">any</span>): <span class="identifier">void</span></pre>
+<div class="comment"><p>Shows the menu at a given location.</p>
+<p>This method is useful if you want to use the menu as a context
+menu, attached to one or more elements on the page. For example:</p>
+
+
+<pre>// create menu
+var div = document.createElement('div');
+var menu = new wijmo.input.Menu(div, {
+    itemsSource: 'New,Open,Save,Exit'.split(','),
+    itemClicked: function (s, e) {
+        alert('thanks for picking ' + menu.selectedIndex);
+    }
+});
+
+// use it as a context menu for one or more elements
+var element = document.getElementById('btn');
+element.addEventListener('contextmenu', function (e) {
+    e.preventDefault();
+    menu.show(e);
+});</pre></div>
+<dl class="dl-horizontal">
+  <dt>Parameters</dt><dd></dd>
+</dl>
+<ul>
+<li><b>position</b>: <span class="identifier">any</span> <span class="badge">Optional</span><br/><p>An optional <b>MouseEvent</b> or reference element
+that determines the position where the menu should be displayed.
+If not provided, the menu is displayed at the center of the screen.</p></li></ul>
+<dl class="dl-horizontal">
   <dt>Returns</dt><dd><span class="identifier">void</span></dd>
 </dl>
 </div>

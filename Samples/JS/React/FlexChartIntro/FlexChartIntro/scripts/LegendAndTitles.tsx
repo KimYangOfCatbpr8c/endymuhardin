@@ -39,7 +39,7 @@ var LegendAndTitles = React.createClass({
                 to your charts.</p>
             <p>
                 You can style the legend and titles using CSS. The CSS tab below shows the rules
-                used to customize the appearance of the legend and titles. Notice that these are
+                used to customize the appearance of the legend and titles. Note that these are
                 SVG elements, so you have to use CSS attributes such as "fill" instead of "color."</p>
 
             <div className="row">

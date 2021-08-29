@@ -11,6 +11,8 @@ exports.routeTree = [
             { path: 'yFunctionSeries', data: { caption: 'YFunctionSeries' }, loadChildren: 'src/components/YFunctionSeriesCmp#YFunctionSeriesModule' },
             { path: 'parametricFunctionSeries', data: { caption: 'Parametric FunctionSeries' }, loadChildren: 'src/components/ParametricFunctionSeriesCmp#ParametricFunctionSeriesModule' },
             { path: 'waterfall', data: { caption: 'Waterfall' }, loadChildren: 'src/components/WaterfallCmp#WaterfallModule' },
+            { path: 'boxWhisker', data: { caption: 'Box&Whisker' }, loadChildren: 'src/components/BoxWhiskerCmp#BoxWhiskerModule' },
+            { path: 'errorbar', data: { caption: 'ErrorBar' }, loadChildren: 'src/components/ErrorBarCmp#ErrorBarModule' }
         ]
     },
 ];

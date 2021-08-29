@@ -32,11 +32,15 @@ the detail row's parent <a href="topic/wijmo.grid.Row.Class.html"><span class="i
 <li class="mproperty inherited"><a href="topic/wijmo-wijmo.angular2.grid.detail.WjFlexGridDetail.Class.html/#detailVisibilityMode">detailVisibilityMode</a></li>
 <li class="mproperty inherited"><a href="topic/wijmo-wijmo.angular2.grid.detail.WjFlexGridDetail.Class.html/#disposeDetailCell">disposeDetailCell</a></li>
 <li class="mproperty inherited"><a href="topic/wijmo-wijmo.angular2.grid.detail.WjFlexGridDetail.Class.html/#grid">grid</a></li>
+<li class="mproperty"><a href="topic/wijmo-wijmo.angular2.grid.detail.WjFlexGridDetail.Class.html/#initialized">initialized</a></li>
+<li class="mproperty inherited"><a href="topic/wijmo-wijmo.angular2.grid.detail.WjFlexGridDetail.Class.html/#isAnimated">isAnimated</a></li>
+<li class="mproperty"><a href="topic/wijmo-wijmo.angular2.grid.detail.WjFlexGridDetail.Class.html/#isInitialized">isInitialized</a></li>
 <li class="mproperty inherited"><a href="topic/wijmo-wijmo.angular2.grid.detail.WjFlexGridDetail.Class.html/#maxHeight">maxHeight</a></li>
 <li class="mproperty inherited"><a href="topic/wijmo-wijmo.angular2.grid.detail.WjFlexGridDetail.Class.html/#rowHasDetail">rowHasDetail</a></li>
 </ul>
 <h3 class="node">Methods</h3>
 <ul>
+<li class="mmethod"><a href="topic/wijmo-wijmo.angular2.grid.detail.WjFlexGridDetail.Class.html/#created">created</a></li>
 <li class="mmethod inherited"><a href="topic/wijmo-wijmo.angular2.grid.detail.WjFlexGridDetail.Class.html/#hideDetail">hideDetail</a></li>
 <li class="mmethod inherited"><a href="topic/wijmo-wijmo.angular2.grid.detail.WjFlexGridDetail.Class.html/#isDetailAvailable">isDetailAvailable</a></li>
 <li class="mmethod inherited"><a href="topic/wijmo-wijmo.angular2.grid.detail.WjFlexGridDetail.Class.html/#isDetailVisible">isDetailVisible</a></li>
@@ -46,13 +50,13 @@ the detail row's parent <a href="topic/wijmo.grid.Row.Class.html"><span class="i
 <h3>Constructor</h3>
 <div id="constructor" class="member-panel mmethod inherited">
 <h3>constructor</h3>
-<pre>constructor(grid: <a href="topic/wijmo.grid.FlexGrid.Class.html"><span class="identifier">FlexGrid</span></a>): <a href="topic/wijmo.grid.detail.FlexGridDetailProvider.Class.html"><span class="identifier">FlexGridDetailProvider</span></a></pre>
+<pre>constructor(grid: <a href="topic/wijmo.grid.FlexGrid.Class.html"><span class="identifier">FlexGrid</span></a>, options?: <span class="identifier">any</span>): <a href="topic/wijmo.grid.detail.FlexGridDetailProvider.Class.html"><span class="identifier">FlexGridDetailProvider</span></a></pre>
 <div class="comment"><p>Initializes a new instance of the <a href="topic/wijmo.grid.detail.FlexGridDetailProvider.Class.html"><span class="identifier">FlexGridDetailProvider</span></a> class.</p></div>
 <dl class="dl-horizontal">
   <dt>Parameters</dt><dd></dd>
 </dl>
 <ul>
-<li><b>grid</b>: <a href="topic/wijmo.grid.FlexGrid.Class.html"><span class="identifier">FlexGrid</span></a><br/><p><a href="topic/wijmo.grid.FlexGrid.Class.html"><span class="identifier">FlexGrid</span></a> that will receive detail rows.</p></li></ul>
+<li><b>grid</b>: <a href="topic/wijmo.grid.FlexGrid.Class.html"><span class="identifier">FlexGrid</span></a><br/><p><a href="topic/wijmo.grid.FlexGrid.Class.html"><span class="identifier">FlexGrid</span></a> that will receive detail rows.</p></li><li><b>options</b>: <span class="identifier">any</span> <span class="badge">Optional</span><br/><p>Initialization options for the new <a href="topic/wijmo.grid.detail.FlexGridDetailProvider.Class.html"><span class="identifier">FlexGridDetailProvider</span></a>.</p></li></ul>
 <dl class="dl-horizontal">
   <dt>Inherited From</dt><dd><a href="topic/wijmo.grid.detail.FlexGridDetailProvider.Class.html"><span class="identifier">FlexGridDetailProvider</span></a></dd>
   <dt>Returns</dt><dd><a href="topic/wijmo.grid.detail.FlexGridDetailProvider.Class.html"><span class="identifier">FlexGridDetailProvider</span></a></dd>
@@ -111,6 +115,31 @@ automatically garbage-collected.</p></div>
   <dt>Type</dt><dd><a href="topic/wijmo.grid.FlexGrid.Class.html"><span class="identifier">FlexGrid</span></a></dd>
 </dl>
 </div>
+<div id="initialized" class="member-panel mproperty">
+<h3>initialized</h3>
+<div class="comment"><p>This event is triggered after the component has been initialized by Angular, that is
+all bound properties have been assigned and child components (if any) have been initialized.</p></div>
+<dl class="dl-horizontal">
+  <dt>Type</dt><dd><span class="identifier">EventEmitter</span></dd>
+</dl>
+</div>
+<div id="isAnimated" class="member-panel mproperty inherited">
+<h3>isAnimated</h3>
+<div class="comment"><p>Gets or sets a value that indicates whether to use animation when
+showing row details.</p></div>
+<dl class="dl-horizontal">
+  <dt>Inherited From</dt><dd><a href="topic/wijmo.grid.detail.FlexGridDetailProvider.Class.html"><span class="identifier">FlexGridDetailProvider</span></a></dd>
+  <dt>Type</dt><dd><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a></dd>
+</dl>
+</div>
+<div id="isInitialized" class="member-panel mproperty">
+<h3>isInitialized</h3>
+<div class="comment"><p>Indicates whether the component has been initialized by Angular.
+Changes its value from false to true right before triggering the <b>initialized</b> event.</p></div>
+<dl class="dl-horizontal">
+  <dt>Type</dt><dd><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a></dd>
+</dl>
+</div>
 <div id="maxHeight" class="member-panel mproperty inherited">
 <h3>maxHeight</h3>
 <div class="comment"><p>Gets or sets the maximum height of the detail rows, in pixels.</p></div>
@@ -141,6 +170,18 @@ dp.rowHasDetail = function (row) {
 </div>
 <h3 class="node">Methods</h3>
 <div class="member-list" ng-class="{ 'show-inherited' : ctx.showInherited, 'show-raisers' : ctx.showRaisers }">
+<div id="created" class="member-panel mmethod">
+<h3>created</h3>
+<pre>created(): <span class="identifier">void</span></pre>
+<div class="comment"><p>If you create a custom component inherited from a Wijmo component, you can override this  
+method and perform necessary initializations that you usually do in a class constructor. 
+This method is called in the last line of a Wijmo component constructor and allows you
+to not declare your custom component's constructor at all, thus preventing you from a necessity 
+to maintain constructor parameters and keep them in synch with Wijmo component's constructor parameters.</p></div>
+<dl class="dl-horizontal">
+  <dt>Returns</dt><dd><span class="identifier">void</span></dd>
+</dl>
+</div>
 <div id="hideDetail" class="member-panel mmethod inherited">
 <h3>hideDetail</h3>
 <pre>hideDetail(row?: <span class="identifier">any</span>): <span class="identifier">void</span></pre>

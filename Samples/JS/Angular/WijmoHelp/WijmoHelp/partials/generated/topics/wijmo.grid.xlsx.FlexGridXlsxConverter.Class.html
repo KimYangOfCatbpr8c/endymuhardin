@@ -4,14 +4,16 @@
 <dt>File</dt><dd class="filename">wijmo.grid.xlsx.js</dd>
 <dt>Module</dt><dd><a href="topic/wijmo.grid.xlsx.Module.html"><span class="identifier">wijmo.grid.xlsx</span></a></dd>
 </dl>
-<div class="comment"><p>This class provides static <b>load</b> and <b>save</b> methods for loading and saving of the <a href="topic/wijmo.grid.FlexGrid.Class.html"><span class="identifier">FlexGrid</span></a> control 
-from/to Excel xlsx files.</p></div>
+<div class="comment"><p>This class provides static <b>load</b> and <b>save</b> methods for loading
+and saving <a href="topic/wijmo.grid.FlexGrid.Class.html"><span class="identifier">FlexGrid</span></a> controls from and to Excel xlsx files.</p></div>
 </div>
 <div class="member-panel class members" ng-class="{ 'show-inherited' : ctx.showInherited, 'show-raisers' : ctx.showRaisers }">
 <h3 class="node">Methods</h3>
 <ul>
 <li class="mmethod"><a href="topic/wijmo.grid.xlsx.FlexGridXlsxConverter.Class.html/#load">load</a></li>
+<li class="mmethod"><a href="topic/wijmo.grid.xlsx.FlexGridXlsxConverter.Class.html/#loadAsync">loadAsync</a></li>
 <li class="mmethod"><a href="topic/wijmo.grid.xlsx.FlexGridXlsxConverter.Class.html/#save">save</a></li>
+<li class="mmethod"><a href="topic/wijmo.grid.xlsx.FlexGridXlsxConverter.Class.html/#saveAsync">saveAsync</a></li>
 </ul>
 </div>
 <h3 class="node">Methods</h3>
@@ -19,11 +21,13 @@ from/to Excel xlsx files.</p></div>
 <div id="load" class="member-panel mmethod">
 <h3><span class="badge">Static</span> load</h3>
 <pre>load(grid: <a href="topic/wijmo.grid.FlexGrid.Class.html"><span class="identifier">FlexGrid</span></a>, workbook: <span class="identifier">any</span>, options?: <a href="topic/wijmo.grid.xlsx.IFlexGridXlsxOptions.Interface.html"><span class="identifier">IFlexGridXlsxOptions</span></a>): <span class="identifier">void</span></pre>
-<div class="comment"><p>Loads an <a href="topic/wijmo.xlsx.Workbook.Class.html"><span class="identifier">Workbook</span></a> instance or a Blob object containing xlsx file content to <a href="topic/wijmo.grid.FlexGrid.Class.html"><span class="identifier">FlexGrid</span></a> instance.</p>
+<div class="comment"><p>Loads a <a href="topic/wijmo.xlsx.Workbook.Class.html"><span class="identifier">Workbook</span></a> instance or a Blob object containing xlsx 
+file content to the <a href="topic/wijmo.grid.FlexGrid.Class.html"><span class="identifier">FlexGrid</span></a> instance.
+This method works with JSZip 2.5.</p>
 <p>For example:
 </p>
 
-<pre>// This sample opens an xlsx file chosen via Open File
+<pre>// This sample opens an xlsx file chosen through Open File
 // dialog and fills FlexGrid with the content of the first
 
 // sheet.
@@ -61,19 +65,53 @@ function loadWorkbook() {
   <dt>Parameters</dt><dd></dd>
 </dl>
 <ul>
-<li><b>grid</b>: <a href="topic/wijmo.grid.FlexGrid.Class.html"><span class="identifier">FlexGrid</span></a><br/><p>FlexGrid that will load the workBook object.</p></li><li><b>workbook</b>: <span class="identifier">any</span><br/><p>An Workbook instance or a Blob instance or a base 64 stirng or an ArrayBuffer containing xlsx file content.</p></li><li><b>options</b>: <a href="topic/wijmo.grid.xlsx.IFlexGridXlsxOptions.Interface.html"><span class="identifier">IFlexGridXlsxOptions</span></a> <span class="badge">Optional</span><br/><p>Options to use when load the workBook object to <a href="topic/wijmo.grid.FlexGrid.Class.html"><span class="identifier">FlexGrid</span></a> instance (including whether to save row and column headers, sheet name, etc)</p></li></ul>
+<li><b>grid</b>: <a href="topic/wijmo.grid.FlexGrid.Class.html"><span class="identifier">FlexGrid</span></a><br/><p><a href="topic/wijmo.grid.FlexGrid.Class.html"><span class="identifier">FlexGrid</span></a> that loads the <span class="identifier">workBook</span> object.</p></li><li><b>workbook</b>: <span class="identifier">any</span><br/><p>A <a href="topic/wijmo.xlsx.Workbook.Class.html"><span class="identifier">Workbook</span></a>, Blob, base-64 string, or ArrayBuffer
+containing the xlsx file content.</p></li><li><b>options</b>: <a href="topic/wijmo.grid.xlsx.IFlexGridXlsxOptions.Interface.html"><span class="identifier">IFlexGridXlsxOptions</span></a> <span class="badge">Optional</span><br/><p><a href="topic/wijmo.grid.xlsx.IFlexGridXlsxOptions.Interface.html"><span class="identifier">IFlexGridXlsxOptions</span></a> object specifying the load options.</p></li></ul>
+<dl class="dl-horizontal">
+  <dt>Returns</dt><dd><span class="identifier">void</span></dd>
+</dl>
+</div>
+<div id="loadAsync" class="member-panel mmethod">
+<h3><span class="badge">Static</span> loadAsync</h3>
+<pre>loadAsync(grid: <a href="topic/wijmo.grid.FlexGrid.Class.html"><span class="identifier">FlexGrid</span></a>, workbook: <span class="identifier">any</span>, options?: <a href="topic/wijmo.grid.xlsx.IFlexGridXlsxOptions.Interface.html"><span class="identifier">IFlexGridXlsxOptions</span></a>, onLoaded?: <span class="identifier">Workbook)</span>, onError?: <span class="identifier">(reason?: any)</span>): <span class="identifier">void</span></pre>
+<div class="comment"><p>Asynchronously loads a <a href="topic/wijmo.xlsx.Workbook.Class.html"><span class="identifier">Workbook</span></a> or a Blob representing an xlsx file
+into a <a href="topic/wijmo.grid.FlexGrid.Class.html"><span class="identifier">FlexGrid</span></a>.</p>
+<p>This method requires JSZip 3.0.</p></div>
+<dl class="dl-horizontal">
+  <dt>Parameters</dt><dd></dd>
+</dl>
+<ul>
+<li><b>grid</b>: <a href="topic/wijmo.grid.FlexGrid.Class.html"><span class="identifier">FlexGrid</span></a><br/><p><a href="topic/wijmo.grid.FlexGrid.Class.html"><span class="identifier">FlexGrid</span></a> that loads the <span class="identifier">workBook</span> object.</p></li><li><b>workbook</b>: <span class="identifier">any</span><br/><p><a href="topic/wijmo.xlsx.Workbook.Class.html"><span class="identifier">Workbook</span></a>, Blob, base-64 string, or ArrayBuffer
+representing the xlsx file content.</p></li><li><b>options</b>: <a href="topic/wijmo.grid.xlsx.IFlexGridXlsxOptions.Interface.html"><span class="identifier">IFlexGridXlsxOptions</span></a> <span class="badge">Optional</span><br/><p><a href="topic/wijmo.grid.xlsx.IFlexGridXlsxOptions.Interface.html"><span class="identifier">IFlexGridXlsxOptions</span></a> object specifying the load options.</p></li><li><b>onLoaded</b>: <span class="identifier">(workbook: wijmo.xlsx.Workbook)</span> <span class="badge">Optional</span><br/><p>Callback invoked when the method finishes executing.
+The callback provides access to the workbook that was loaded
+(passed as a parameter to the callback).</p></li><li><b>onError</b>: <span class="identifier">(reason?: any)</span> <span class="badge">Optional</span><br/><p>Callback invoked when there are errors saving the file.
+The error is passed as a parameter to the callback.</p>
+<p>For example:
+</p>
+
+<pre>wijmo.grid.xlsx.FlexGridXlsxConverter.loadAsync(grid, blob, null, function (workbook) {
+
+     // user can access the loaded workbook instance in this callback.
+     var app = worksheet.application ;
+     ...
+}, function (reason) {
+
+     // User can catch the failure reason in this callback.
+     console.log('The reason of save failure is ' + reason);
+});</pre></li></ul>
 <dl class="dl-horizontal">
   <dt>Returns</dt><dd><span class="identifier">void</span></dd>
 </dl>
 </div>
 <div id="save" class="member-panel mmethod">
 <h3><span class="badge">Static</span> save</h3>
-<pre>save(grid: <a href="topic/wijmo.grid.FlexGrid.Class.html"><span class="identifier">FlexGrid</span></a>, options?: <a href="topic/wijmo.grid.xlsx.IFlexGridXlsxOptions.Interface.html"><span class="identifier">IFlexGridXlsxOptions</span></a>, fileName?): <a href="topic/wijmo.xlsx.Workbook.Class.html"><span class="identifier">Workbook</span></a></pre>
-<div class="comment"><p>Save the <a href="topic/wijmo.grid.FlexGrid.Class.html"><span class="identifier">FlexGrid</span></a> instance to <a href="topic/wijmo.xlsx.Workbook.Class.html"><span class="identifier">Workbook</span></a> instance.</p>
+<pre>save(grid: <a href="topic/wijmo.grid.FlexGrid.Class.html"><span class="identifier">FlexGrid</span></a>, options?: <a href="topic/wijmo.grid.xlsx.IFlexGridXlsxOptions.Interface.html"><span class="identifier">IFlexGridXlsxOptions</span></a>, fileName?: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank"><span class="identifier">string</span></a>): <a href="topic/wijmo.xlsx.Workbook.Class.html"><span class="identifier">Workbook</span></a></pre>
+<div class="comment"><p>Save the <a href="topic/wijmo.grid.FlexGrid.Class.html"><span class="identifier">FlexGrid</span></a> instance to the <a href="topic/wijmo.xlsx.Workbook.Class.html"><span class="identifier">Workbook</span></a> instance.
+This method works with JSZip 2.5.</p>
 <p>For example:
 </p>
 
-<pre>// This sample exports FlexGrid content to an xlsx 
+<pre>// This sample exports FlexGrid content to an xlsx file.
 // click.
 &nbsp;
 
@@ -95,7 +133,39 @@ function saveXlsx(fileName) {
   <dt>Parameters</dt><dd></dd>
 </dl>
 <ul>
-<li><b>grid</b>: <a href="topic/wijmo.grid.FlexGrid.Class.html"><span class="identifier">FlexGrid</span></a><br/><p>FlexGrid that will be saved.</p></li><li><b>options</b>: <a href="topic/wijmo.grid.xlsx.IFlexGridXlsxOptions.Interface.html"><span class="identifier">IFlexGridXlsxOptions</span></a> <span class="badge">Optional</span><br/><p>Options to use when saving the grid (including whether to save row and column headers, sheet name, etc)</p></li><li><b>fileName</b>:  <span class="badge">Optional</span><br/><p>Name of the file that will be generated.</p></li></ul>
+<li><b>grid</b>: <a href="topic/wijmo.grid.FlexGrid.Class.html"><span class="identifier">FlexGrid</span></a><br/><p>FlexGrid that will be saved.</p></li><li><b>options</b>: <a href="topic/wijmo.grid.xlsx.IFlexGridXlsxOptions.Interface.html"><span class="identifier">IFlexGridXlsxOptions</span></a> <span class="badge">Optional</span><br/><p><a href="topic/wijmo.grid.xlsx.IFlexGridXlsxOptions.Interface.html"><span class="identifier">IFlexGridXlsxOptions</span></a> object specifying the save options.</p></li><li><b>fileName</b>: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank"><span class="identifier">string</span></a> <span class="badge">Optional</span><br/><p>Name of the file that will be generated.</p></li></ul>
+<dl class="dl-horizontal">
+  <dt>Returns</dt><dd><a href="topic/wijmo.xlsx.Workbook.Class.html"><span class="identifier">Workbook</span></a></dd>
+</dl>
+</div>
+<div id="saveAsync" class="member-panel mmethod">
+<h3><span class="badge">Static</span> saveAsync</h3>
+<pre>saveAsync(grid: <a href="topic/wijmo.grid.FlexGrid.Class.html"><span class="identifier">FlexGrid</span></a>, options?: <a href="topic/wijmo.grid.xlsx.IFlexGridXlsxOptions.Interface.html"><span class="identifier">IFlexGridXlsxOptions</span></a>, fileName?: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank"><span class="identifier">string</span></a>, onSaved?: <span class="identifier">(base64: string)</span>, onError?: <span class="identifier">(reason?: any)</span>): <a href="topic/wijmo.xlsx.Workbook.Class.html"><span class="identifier">Workbook</span></a></pre>
+<div class="comment"><p>Asynchronously saves the content of a <a href="topic/wijmo.grid.FlexGrid.Class.html"><span class="identifier">FlexGrid</span></a> to a file.</p>
+<p>This method requires JSZip 3.0.</p></div>
+<dl class="dl-horizontal">
+  <dt>Parameters</dt><dd></dd>
+</dl>
+<ul>
+<li><b>grid</b>: <a href="topic/wijmo.grid.FlexGrid.Class.html"><span class="identifier">FlexGrid</span></a><br/><p>FlexGrid that will be saved.</p></li><li><b>options</b>: <a href="topic/wijmo.grid.xlsx.IFlexGridXlsxOptions.Interface.html"><span class="identifier">IFlexGridXlsxOptions</span></a> <span class="badge">Optional</span><br/><p><a href="topic/wijmo.grid.xlsx.IFlexGridXlsxOptions.Interface.html"><span class="identifier">IFlexGridXlsxOptions</span></a> object specifying the save options.</p></li><li><b>fileName</b>: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank"><span class="identifier">string</span></a> <span class="badge">Optional</span><br/><p>Name of the file that will be generated.</p></li><li><b>onSaved</b>: <span class="identifier">(base64: string)</span> <span class="badge">Optional</span><br/><p>Callback invoked when the method finishes executing.
+The callback provides access to the content of the saved workbook
+(encoded as a base-64 string and passed as a parameter to the callback).</p></li><li><b>onError</b>: <span class="identifier">(reason?: any)</span> <span class="badge">Optional</span><br/><p>Callback invoked when there are errors saving the file.
+The error is passed as a parameter to the callback.</p>
+<p>For example:
+</p>
+
+<pre>wijmo.grid.xlsx.FlexGridXlsxConverter.save(flexGrid,
+    { includeColumnHeaders: true }, // options
+    'FlexGrid.xlsx', // filename
+    function (base64) { // onSaved
+        // User can access the base64 string in this callback.
+        document.getElementByID('export').href = 'data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;' + 'base64,' + base64;
+    },
+    function (reason) { // onError
+        // User can catch the failure reason in this callback.
+        console.log('The reason of save failure is ' + reason);
+    }
+);</pre></li></ul>
 <dl class="dl-horizontal">
   <dt>Returns</dt><dd><a href="topic/wijmo.xlsx.Workbook.Class.html"><span class="identifier">Workbook</span></a></dd>
 </dl>

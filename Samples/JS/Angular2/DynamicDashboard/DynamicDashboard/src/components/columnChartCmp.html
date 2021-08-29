@@ -1,0 +1,39 @@
+﻿<div class="tile" draggable="true">
+
+    <!-- caption -->
+    <div style="border-bottom:1px solid #e0e0e0; padding:4px; display:flex; cursor: move">
+        <div style="flex-grow:1; color:#005c9c; font-weight:bold">
+            Column Chart
+        </div>
+        <div class="buttons">
+            <span class="glyphicon glyphicon-pencil" title="Edit Tile"></span>
+            <span class="glyphicon glyphicon-remove" title="Close Tile"></span>
+        </div>
+    </div>
+
+    <!-- content -->
+    <div style="display:flex; align-items:center; justify-content:center; padding:4px">
+        <div>
+            <wj-flex-chart chart-type="Column"
+                           [itemsSource]="data"
+                           [bindingX]="'date'">
+                [itemsSource]="data"
+                [bindingX]="'date'">
+                <wj-flex-chart-axis [wjProperty]="'axisX'"
+                                    [format]="'MMM yy'">
+                </wj-flex-chart-axis>
+                <wj-flex-chart-series [name]="'Sales'"
+                                      [binding]="'sales'">
+                </wj-flex-chart-series>
+                <wj-flex-chart-series [name]="'Expenses'"
+                                      [binding]="'expenses'">
+                </wj-flex-chart-series>
+                <wj-flex-chart-series [name]="'Profit'"
+                                      [binding]="'profit'"
+                                      [chartType]="'LineSymbols'">
+                </wj-flex-chart-series>
+            </wj-flex-chart>
+
+        </div>
+    </div>
+</div>

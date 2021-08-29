@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,6 +8,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
+var wjcGrid = require('wijmo/wijmo.grid');
+'use strict';
 var core_1 = require('@angular/core');
 var core_2 = require('@angular/core');
 var WjFlexGrid = require('wijmo/wijmo.angular2.grid');
@@ -32,9 +34,9 @@ var GroupFooters = (function () {
         flex.beginUpdate();
         for (var r = 0; r < flex.rows.length; r++) {
             var row = flex.rows[r];
-            if (row instanceof wijmo.grid.GroupRow && row.cssClass != GroupFooters.ROW_FOOTER_CLASS) {
+            if (row instanceof wjcGrid.GroupRow && row.cssClass != GroupFooters.ROW_FOOTER_CLASS) {
                 // create footer row to match this group row
-                var newRow = new wijmo.grid.GroupRow();
+                var newRow = new wjcGrid.GroupRow();
                 newRow.level = row.level;
                 newRow.cssClass = GroupFooters.ROW_FOOTER_CLASS;
                 // add footer row to the grid
@@ -53,7 +55,7 @@ var GroupFooters = (function () {
         var level = flex.rows[r].level;
         for (var i = r + 1; i < flex.rows.length; i++) {
             var row = flex.rows[i];
-            if (row instanceof wijmo.grid.GroupRow) {
+            if (row instanceof wjcGrid.GroupRow) {
                 // if this is *not* a footer and the level is <=, insert here
                 if (row.cssClass != GroupFooters.ROW_FOOTER_CLASS && row.level <= level) {
                     return i;

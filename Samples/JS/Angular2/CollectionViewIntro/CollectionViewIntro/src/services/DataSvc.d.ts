@@ -1,4 +1,7 @@
 export declare class DataSvc {
-    getData(): any[];
-    getCv(data: any[]): wijmo.collections.CollectionView;
+    static countries: string[];
+    static products: string[];
+    static colors: string[];
+    getData(count: number): any[];
+    getNames(): string[];
 }

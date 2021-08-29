@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,6 +8,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
+'use strict';
 var core_1 = require('@angular/core');
 var common_1 = require('@angular/common');
 var forms_1 = require('@angular/forms');
@@ -15,7 +16,7 @@ var router_1 = require('@angular/router');
 var wijmo_angular2_chart_1 = require('wijmo/wijmo.angular2.chart');
 var wijmo_angular2_chart_analytics_1 = require('wijmo/wijmo.angular2.chart.analytics');
 var DataSvc_1 = require('./../services/DataSvc');
-//TrendLine sample component
+//Waterfall sample component
 var WaterfallCmp = (function () {
     function WaterfallCmp(dataSvc) {
         this.itemsSource = dataSvc.getWaterfallData();

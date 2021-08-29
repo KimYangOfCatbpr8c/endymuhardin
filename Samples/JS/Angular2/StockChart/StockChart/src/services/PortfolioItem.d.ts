@@ -13,14 +13,14 @@ export declare class PortfolioItem {
     _analysisData: any[];
     _maData: any[];
     constructor(portfolio: Portfolio, symbol: string, chart: boolean, withEvent?: boolean);
-    symbol: string;
-    name: string;
-    color: string;
+    readonly symbol: string;
+    readonly name: string;
+    readonly color: string;
     chart: boolean;
-    events: any;
-    chartData: any[];
-    fullChartData: any[];
-    analysisData: any[];
+    readonly events: any;
+    readonly chartData: any[];
+    readonly fullChartData: any[];
+    readonly analysisData: any[];
     getMAData(period: any): any[];
     updateChartData(): void;
 }

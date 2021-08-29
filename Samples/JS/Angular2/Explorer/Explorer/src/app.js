@@ -17,55 +17,52 @@ var wijmo_angular2_input_1 = require('wijmo/wijmo.angular2.input');
 var MenuSvc_1 = require('./services/MenuSvc');
 var DataSvc_1 = require('./services/DataSvc');
 var SparkSvc_1 = require('./services/SparkSvc');
-var explorer;
-(function (explorer) {
-    'use strict';
-    // The Explorer application root component.
-    var AppCmp = (function () {
-        function AppCmp() {
-            this._activeTheme = '';
-            this.navCollapsed = true;
-            // Used to show navigation links and section headers in markup.
-            this.routTree = app_routing_1.routeTree;
-        }
-        Object.defineProperty(AppCmp.prototype, "activeTheme", {
-            get: function () {
-                return this._activeTheme;
-            },
-            set: function (value) {
-                if (this._activeTheme != value) {
-                    this._activeTheme = value;
-                    var themeLink = document.getElementById('activeThemeLink');
-                    if (themeLink) {
-                        themeLink.href = value;
-                    }
+'use strict';
+// The Explorer application root component.
+var AppCmp = (function () {
+    function AppCmp() {
+        this._activeTheme = '';
+        this.navCollapsed = true;
+        // Used to show navigation links and section headers in markup.
+        this.routTree = app_routing_1.routeTree;
+    }
+    Object.defineProperty(AppCmp.prototype, "activeTheme", {
+        get: function () {
+            return this._activeTheme;
+        },
+        set: function (value) {
+            if (this._activeTheme != value) {
+                this._activeTheme = value;
+                var themeLink = document.getElementById('activeThemeLink');
+                if (themeLink) {
+                    themeLink.href = value;
                 }
-            },
-            enumerable: true,
-            configurable: true
-        });
-        __decorate([
-            core_1.Input()
-        ], AppCmp.prototype, "navCollapsed", void 0);
-        AppCmp = __decorate([
-            core_1.Component({
-                selector: 'app-cmp',
-                templateUrl: 'src/app.html'
-            })
-        ], AppCmp);
-        return AppCmp;
-    }());
-    explorer.AppCmp = AppCmp;
-})(explorer = exports.explorer || (exports.explorer = {}));
+            }
+        },
+        enumerable: true,
+        configurable: true
+    });
+    __decorate([
+        core_1.Input()
+    ], AppCmp.prototype, "navCollapsed", void 0);
+    AppCmp = __decorate([
+        core_1.Component({
+            selector: 'app-cmp',
+            templateUrl: 'src/app.html'
+        })
+    ], AppCmp);
+    return AppCmp;
+}());
+exports.AppCmp = AppCmp;
 var AppModule = (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         core_1.NgModule({
             imports: [platform_browser_1.BrowserModule, app_routing_1.routing, http_1.HttpModule, wijmo_angular2_input_1.WjInputModule],
-            declarations: [explorer.AppCmp],
+            declarations: [AppCmp],
             providers: [DataSvc_1.DataSvc, MenuSvc_1.MenuSvc, SparkSvc_1.SparkSvc],
-            bootstrap: [explorer.AppCmp]
+            bootstrap: [AppCmp]
         })
     ], AppModule);
     return AppModule;

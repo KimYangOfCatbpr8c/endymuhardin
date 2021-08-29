@@ -28,7 +28,7 @@ var SelectionModes = React.createClass({
             <p>
                 The FlexChart allows you to select series or data points by clicking or touching them.
                 Use the <b>selectionMode</b> property to specify whether you want to allow selection 
-                by series, by data point, or no selection at all (selection is off by default.)</p>
+                by series, by data point, or no selection at all (selection is turned off by default.)</p>
             <p>
                 Setting the <b>selectionMode</b> property to <b>Series</b> or <b>Point</b> causes
                 the FlexChart to update the <b>Selection</b> property when the user clicks the
@@ -36,7 +36,7 @@ var SelectionModes = React.createClass({
             <p>
                 The <b>Selection</b> property returns the currently selected series. To get the
                 currently selected data point, get the currently selected item within the 
-                selected series using the <b>Series.collectionView.currentItem</b> property
+                selected series using the <b>Series.collectionView.currentItem</b> property,
                 as shown in the example.</p>
 
             <div className="row">

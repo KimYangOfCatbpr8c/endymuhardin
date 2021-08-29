@@ -1,4 +1,3 @@
-///<reference path="../typings/globals/core-js/index.d.ts"/>
 "use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -9,6 +8,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
+///<reference path="../typings/globals/core-js/index.d.ts"/>
+var wjcCore = require('wijmo/wijmo');
 // Angular
 var core_1 = require('@angular/core');
 var forms_1 = require('@angular/forms');
@@ -22,15 +23,15 @@ var DataSvc_1 = require('./services/DataSvc');
 var AppCmp = (function () {
     function AppCmp(dataSvc) {
         var data = dataSvc.getData(10000);
-        this.data = new wijmo.collections.CollectionView(data);
+        this.data = new wjcCore.CollectionView(data);
         // build list of columns available
         var item = data[0];
-        var fields = new wijmo.collections.ObservableArray();
+        var fields = new wjcCore.ObservableArray();
         for (var key in item) {
             fields.push(key);
         }
-        this.columnsAvailable = new wijmo.collections.CollectionView(fields);
-        this.columns = new wijmo.collections.CollectionView();
+        this.columnsAvailable = new wjcCore.CollectionView(fields);
+        this.columns = new wjcCore.CollectionView();
         for (var i = 0; i < 3; i++) {
             this.columnsAvailable.moveCurrentToFirst();
             this.addColumn();
@@ -69,7 +70,7 @@ var AppCmp = (function () {
     // update columns array if the user moves a column
     // (the ng-repeat directive cannot do this)
     AppCmp.prototype.draggedColumn = function (s) {
-        var columns = new wijmo.collections.ObservableArray();
+        var columns = new wjcCore.ObservableArray();
         for (var i = 0; i < s.columns.length; i++) {
             columns.push(s.columns[i].binding);
         }

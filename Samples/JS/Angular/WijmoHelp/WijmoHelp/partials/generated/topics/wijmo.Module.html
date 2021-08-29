@@ -72,6 +72,7 @@
 <li class="mmethod"><a href="topic/wijmo.Module.html/#getElement">getElement</a></li>
 <li class="mmethod"><a href="topic/wijmo.Module.html/#getElementRect">getElementRect</a></li>
 <li class="mmethod"><a href="topic/wijmo.Module.html/#getType">getType</a></li>
+<li class="mmethod"><a href="topic/wijmo.Module.html/#getUniqueId">getUniqueId</a></li>
 <li class="mmethod"><a href="topic/wijmo.Module.html/#getVersion">getVersion</a></li>
 <li class="mmethod"><a href="topic/wijmo.Module.html/#hasClass">hasClass</a></li>
 <li class="mmethod"><a href="topic/wijmo.Module.html/#hasItems">hasItems</a></li>
@@ -91,6 +92,7 @@
 <li class="mmethod"><a href="topic/wijmo.Module.html/#mouseToPage">mouseToPage</a></li>
 <li class="mmethod"><a href="topic/wijmo.Module.html/#moveFocus">moveFocus</a></li>
 <li class="mmethod"><a href="topic/wijmo.Module.html/#removeClass">removeClass</a></li>
+<li class="mmethod"><a href="topic/wijmo.Module.html/#setAttribute">setAttribute</a></li>
 <li class="mmethod"><a href="topic/wijmo.Module.html/#setCss">setCss</a></li>
 <li class="mmethod"><a href="topic/wijmo.Module.html/#setSelectionRange">setSelectionRange</a></li>
 <li class="mmethod"><a href="topic/wijmo.Module.html/#setText">setText</a></li>
@@ -437,20 +439,42 @@ object's value.</p>
 
 <pre>var data = { name: 'Joe', amount: 123456 };
 var msg = wijmo.format('Hello {name}, you won {amount:n2}!', data);</pre>
-<p>The optional <b>formatFunction</b> allows you to customize the content by providing
-context-sensitive formatting. If provided, the format function gets called for each
-format element and gets passed the data object, the parameter name, the format,
-and the value; it should return an output string. For example:</p>
+<p>The <a href="topic/wijmo.Module.html/#format"><span class="identifier">format</span></a> function supports pluralization. If the format string is a
+JSON-encoded object with 'count' and 'when' properties, the method uses
+the 'count' parameter of the data object to select the appropriate format
+from the 'when' property. For example:</p>
+
+
+<pre>var fmt = {
+    count: 'count',
+    when: {
+        0: 'No items selected.',
+        1: 'One item is selected.',
+        2: 'A pair is selected.',
+        'other': '{count:n0} items are selected.'
+    }
+}
+fmt = JSON.stringify(fmt);
+console.log(wijmo.format(fmt, { count: 0 })); // No items selected.
+console.log(wijmo.format(fmt, { count: 1 })); // One item is selected.
+console.log(wijmo.format(fmt, { count: 2 })); // A pair is selected.
+console.log(wijmo.format(fmt, { count: 12 })); 12 items are selected.</pre>
+<p>The optional <b>formatFunction</b> allows you to customize the content by
+providing context-sensitive formatting. If provided, the format function
+gets called for each format element and gets passed the data object, the
+parameter name, the format, and the value; it should return an output string.
+For example:</p>
 
 
 <pre>var data = { name: 'Joe', amount: 123456 };
 var msg = wijmo.format('Hello {name}, you won {amount:n2}!', data,
-            function (data, name, fmt, val) {
-              if (wijmo.isString(data[name])) {
-                  val = wijmo.escapeHtml(data[name]);
-              }
-              return val;
-            });</pre></div>
+    function (data, name, fmt, val) {
+        if (wijmo.isString(data[name])) {
+            val = wijmo.escapeHtml(data[name]);
+        }
+        return val;
+    }
+);</pre></div>
 <dl class="dl-horizontal">
   <dt>Parameters</dt><dd></dd>
 </dl>
@@ -522,6 +546,20 @@ document scrolls.</p></div>
 <li><b>value</b>: <span class="identifier">any</span><br/><p>Value to test.</p></li></ul>
 <dl class="dl-horizontal">
   <dt>Returns</dt><dd><a href="topic/wijmo.DataType.Enum.html"><span class="identifier">DataType</span></a></dd>
+</dl>
+</div>
+<div id="getUniqueId" class="member-panel mmethod">
+<h3>getUniqueId</h3>
+<pre>getUniqueId(baseId: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank"><span class="identifier">string</span></a>): <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank"><span class="identifier">string</span></a></pre>
+<div class="comment"><p>Creates a new unique id for an element by adding sequential
+numbers to a given base id.</p></div>
+<dl class="dl-horizontal">
+  <dt>Parameters</dt><dd></dd>
+</dl>
+<ul>
+<li><b>baseId</b>: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank"><span class="identifier">string</span></a><br/><p>String to use as a basis for generating the unique id.</p></li></ul>
+<dl class="dl-horizontal">
+  <dt>Returns</dt><dd><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank"><span class="identifier">string</span></a></dd>
 </dl>
 </div>
 <div id="getVersion" class="member-panel mmethod">
@@ -813,7 +851,8 @@ the <a href="topic/wijmo.Module.html/#httpRequest"><span class="identifier">http
 <div id="moveFocus" class="member-panel mmethod">
 <h3>moveFocus</h3>
 <pre>moveFocus(parent: <a href="https://developer.mozilla.org/en/docs/Web/API/HTMLElement" target="_blank"><span class="identifier">HTMLElement</span></a>, offset: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Number" target="_blank"><span class="identifier">number</span></a>): <span class="identifier">void</span></pre>
-<div class="comment"><p>Moves the focus to the next/previous/first focusable child element.</p></div>
+<div class="comment"><p>Moves the focus to the next/previous/first focusable child within
+a given parent element.</p></div>
 <dl class="dl-horizontal">
   <dt>Parameters</dt><dd></dd>
 </dl>
@@ -832,6 +871,20 @@ the <a href="topic/wijmo.Module.html/#httpRequest"><span class="identifier">http
 </dl>
 <ul>
 <li><b>e</b>: <a href="https://developer.mozilla.org/en/docs/Web/API/HTMLElement" target="_blank"><span class="identifier">HTMLElement</span></a><br/><p>Element that will have the class removed.</p></li><li><b>className</b>: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank"><span class="identifier">string</span></a><br/><p>Class to remove form the element.</p></li></ul>
+<dl class="dl-horizontal">
+  <dt>Returns</dt><dd><span class="identifier">void</span></dd>
+</dl>
+</div>
+<div id="setAttribute" class="member-panel mmethod">
+<h3>setAttribute</h3>
+<pre>setAttribute(e: <a href="https://developer.mozilla.org/en/docs/Web/API/Element" target="_blank"><span class="identifier">Element</span></a>, name: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank"><span class="identifier">string</span></a>, value?: <span class="identifier">any</span>): <span class="identifier">void</span></pre>
+<div class="comment"><p>Sets or clears an attribute on an element.</p></div>
+<dl class="dl-horizontal">
+  <dt>Parameters</dt><dd></dd>
+</dl>
+<ul>
+<li><b>e</b>: <a href="https://developer.mozilla.org/en/docs/Web/API/Element" target="_blank"><span class="identifier">Element</span></a><br/><p>Element that will be updated.</p></li><li><b>name</b>: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank"><span class="identifier">string</span></a><br/><p>Name of the attribute to add or remove.</p></li><li><b>value</b>: <span class="identifier">any</span> <span class="badge">Optional</span><br/><p>Value of the attribute, or null to remove the attribute
+from the element.</p></li></ul>
 <dl class="dl-horizontal">
   <dt>Returns</dt><dd><span class="identifier">void</span></dd>
 </dl>
@@ -921,13 +974,13 @@ depending on how much room is available.</p>
 </div>
 <div id="toggleClass" class="member-panel mmethod">
 <h3>toggleClass</h3>
-<pre>toggleClass(e: <a href="https://developer.mozilla.org/en/docs/Web/API/HTMLElement" target="_blank"><span class="identifier">HTMLElement</span></a>, className: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank"><span class="identifier">string</span></a>, addOrRemove: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a>): <span class="identifier">void</span></pre>
+<pre>toggleClass(e: <a href="https://developer.mozilla.org/en/docs/Web/API/HTMLElement" target="_blank"><span class="identifier">HTMLElement</span></a>, className: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank"><span class="identifier">string</span></a>, addOrRemove?: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a>): <span class="identifier">void</span></pre>
 <div class="comment"><p>Adds or removes a class to or from an element.</p></div>
 <dl class="dl-horizontal">
   <dt>Parameters</dt><dd></dd>
 </dl>
 <ul>
-<li><b>e</b>: <a href="https://developer.mozilla.org/en/docs/Web/API/HTMLElement" target="_blank"><span class="identifier">HTMLElement</span></a><br/><p>Element that will have the class added.</p></li><li><b>className</b>: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank"><span class="identifier">string</span></a><br/><p>Class to add or remove.</p></li><li><b>addOrRemove</b>: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a><br/><p>Whether to add or remove the class.
+<li><b>e</b>: <a href="https://developer.mozilla.org/en/docs/Web/API/HTMLElement" target="_blank"><span class="identifier">HTMLElement</span></a><br/><p>Element that will have the class added.</p></li><li><b>className</b>: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank"><span class="identifier">string</span></a><br/><p>Class to add or remove.</p></li><li><b>addOrRemove</b>: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a> <span class="badge">Optional</span><br/><p>Whether to add or remove the class. If not provided, the class is toggled.
 Use true to add class to element and false to remove class from element.</p></li></ul>
 <dl class="dl-horizontal">
   <dt>Returns</dt><dd><span class="identifier">void</span></dd>

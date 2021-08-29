@@ -10,13 +10,13 @@
 <label><input type="checkbox" ng-model="ctx.showRaisers"> Event Raisers</label>
 </dd>
 </dl>
-<div class="comment"><p>Angular 2 component for the <a href="topic/wijmo-wijmo.angular2.chart.WjFlexChart.Class.html"><span class="identifier">WjFlexChart</span></a> <a href="topic/wijmo.chart.DataLabel.Class.html"><span class="identifier">DataLabel</span></a> control.</p>
-<p>The <b>wj-flex-chart-data-label</b> component must be contained in a 
-<a href="topic/wijmo-wijmo.angular2.chart.WjFlexChart.Class.html"><span class="identifier">WjFlexChart</span></a> component.</p>
-<p>Use the <b>wj-flex-chart-data-label</b> component to add <b>DataLabel</b> objects to your 
+<div class="comment"><p>Angular 2 component for the <a href="topic/wijmo.chart.DataLabel.Class.html"><span class="identifier">DataLabel</span></a> control. </p>
+<p>The <b>wj-flex-chart-data-label</b> component must be 
+contained in a <a href="topic/wijmo-wijmo.angular2.chart.WjFlexChart.Class.html"><span class="identifier">WjFlexChart</span></a> component.</p>
+<p>Use the <b>wj-flex-chart-data-label</b> component to add <b>DataLabel</b> controls to your
 Angular 2 applications. For details about Angular 2 markup syntax, see 
-<a href="static/angular2Markup.html">Angular 2 Markup</a>.</p>
-<p>The <b>WjFlexChartDataLabel</b> component is derived from the <b>DataLabel</b> class and
+<a href="static/angular2Markup.html">Angular 2 Markup</a>.  </p>
+<p>The <b>WjFlexChartDataLabel</b> component is derived from the <b>DataLabel</b> control and
 inherits all its properties, events and methods.</p></div>
 </div>
 <div class="member-panel class members" ng-class="{ 'show-inherited' : ctx.showInherited, 'show-raisers' : ctx.showRaisers }">
@@ -25,11 +25,15 @@ inherits all its properties, events and methods.</p></div>
 <li class="mproperty inherited"><a href="topic/wijmo-wijmo.angular2.chart.WjFlexChartDataLabel.Class.html/#border">border</a></li>
 <li class="mproperty inherited"><a href="topic/wijmo-wijmo.angular2.chart.WjFlexChartDataLabel.Class.html/#connectingLine">connectingLine</a></li>
 <li class="mproperty inherited"><a href="topic/wijmo-wijmo.angular2.chart.WjFlexChartDataLabel.Class.html/#content">content</a></li>
+<li class="mproperty"><a href="topic/wijmo-wijmo.angular2.chart.WjFlexChartDataLabel.Class.html/#initialized">initialized</a></li>
+<li class="mproperty"><a href="topic/wijmo-wijmo.angular2.chart.WjFlexChartDataLabel.Class.html/#isInitialized">isInitialized</a></li>
 <li class="mproperty inherited"><a href="topic/wijmo-wijmo.angular2.chart.WjFlexChartDataLabel.Class.html/#offset">offset</a></li>
 <li class="mproperty inherited"><a href="topic/wijmo-wijmo.angular2.chart.WjFlexChartDataLabel.Class.html/#position">position</a></li>
+<li class="mproperty"><a href="topic/wijmo-wijmo.angular2.chart.WjFlexChartDataLabel.Class.html/#wjProperty">wjProperty</a></li>
 </ul>
 <h3 class="node">Methods</h3>
 <ul>
+<li class="mmethod"><a href="topic/wijmo-wijmo.angular2.chart.WjFlexChartDataLabel.Class.html/#created">created</a></li>
 <li class="mmethod inherited raiser"><a href="topic/wijmo-wijmo.angular2.chart.WjFlexChartDataLabel.Class.html/#onRendering">onRendering</a></li>
 </ul>
 <h3 class="node">Events</h3>
@@ -60,7 +64,7 @@ labels to the data points.</p></div>
 <h3>content</h3>
 <div class="comment"><p>Gets or sets the content of data labels.</p>
 <p>The content can be specified as a string or as a function that
-takes <a href="topic/wijmo.grid.HitTestInfo.Class.html"><span class="identifier">HitTestInfo</span></a> object as a parameter. </p>
+takes <a href="topic/wijmo.chart.HitTestInfo.Class.html"><span class="identifier">HitTestInfo</span></a> object as a parameter.</p>
 <p>When the label content is a string, it can contain any of the following
 parameters:</p>
 <p><ul>
@@ -77,14 +81,14 @@ parameters:</p>
 
 
 <pre>// Create a chart and show y data in labels positioned above the data point.
- var chart = new wijmo.chart.FlexChart('#theChart');          
+ var chart = new wijmo.chart.FlexChart('#theChart');
  chart.initialize({
      itemsSource: data,
      bindingX: 'country',
      series: [
          { name: 'Sales', binding: 'sales' },
          { name: 'Expenses', binding: 'expenses' },
-         { name: 'Downloads', binding: 'downloads' }],                            
+         { name: 'Downloads', binding: 'downloads' }],
  });
  chart.dataLabel.position = "Top";
  chart.dataLabel.content = "{country} {seriesName}:{y}";</pre>
@@ -98,6 +102,22 @@ parameters:</p>
 <dl class="dl-horizontal">
   <dt>Inherited From</dt><dd><a href="topic/wijmo.chart.DataLabelBase.Class.html"><span class="identifier">DataLabelBase</span></a></dd>
   <dt>Type</dt><dd><span class="identifier">any</span></dd>
+</dl>
+</div>
+<div id="initialized" class="member-panel mproperty">
+<h3>initialized</h3>
+<div class="comment"><p>This event is triggered after the component has been initialized by Angular, that is
+all bound properties have been assigned and child components (if any) have been initialized.</p></div>
+<dl class="dl-horizontal">
+  <dt>Type</dt><dd><span class="identifier">EventEmitter</span></dd>
+</dl>
+</div>
+<div id="isInitialized" class="member-panel mproperty">
+<h3>isInitialized</h3>
+<div class="comment"><p>Indicates whether the component has been initialized by Angular.
+Changes its value from false to true right before triggering the <b>initialized</b> event.</p></div>
+<dl class="dl-horizontal">
+  <dt>Type</dt><dd><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a></dd>
 </dl>
 </div>
 <div id="offset" class="member-panel mproperty inherited">
@@ -116,9 +136,29 @@ parameters:</p>
   <dt>Type</dt><dd><a href="topic/wijmo.chart.LabelPosition.Enum.html"><span class="identifier">LabelPosition</span></a></dd>
 </dl>
 </div>
+<div id="wjProperty" class="member-panel mproperty">
+<h3>wjProperty</h3>
+<div class="comment"><p>Gets or sets a name of a property that this component is assigned to. 
+Default value is 'dataLabel'.</p></div>
+<dl class="dl-horizontal">
+  <dt>Type</dt><dd><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank"><span class="identifier">string</span></a></dd>
+</dl>
+</div>
 </div>
 <h3 class="node">Methods</h3>
 <div class="member-list" ng-class="{ 'show-inherited' : ctx.showInherited, 'show-raisers' : ctx.showRaisers }">
+<div id="created" class="member-panel mmethod">
+<h3>created</h3>
+<pre>created(): <span class="identifier">void</span></pre>
+<div class="comment"><p>If you create a custom component inherited from a Wijmo component, you can override this  
+method and perform necessary initializations that you usually do in a class constructor. 
+This method is called in the last line of a Wijmo component constructor and allows you
+to not declare your custom component's constructor at all, thus preventing you from a necessity 
+to maintain constructor parameters and keep them in synch with Wijmo component's constructor parameters.</p></div>
+<dl class="dl-horizontal">
+  <dt>Returns</dt><dd><span class="identifier">void</span></dd>
+</dl>
+</div>
 <div id="onRendering" class="member-panel mmethod inherited raiser">
 <h3>onRendering</h3>
 <pre>onRendering(e: <a href="topic/wijmo.chart.DataLabelRenderEventArgs.Class.html"><span class="identifier">DataLabelRenderEventArgs</span></a>): <span class="identifier">void</span></pre>

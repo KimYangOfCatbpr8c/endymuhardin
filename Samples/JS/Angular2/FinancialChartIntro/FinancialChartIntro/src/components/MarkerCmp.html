@@ -1,0 +1,195 @@
+﻿<div>
+    <h2 id="marker">
+        Marker
+    </h2>
+    <p>
+        The marker on FinancialChart consists of a text area with content reflecting data point values, and an optional vertical or horizontal line (or both for a cross-hair effect) positioned over the plot area.
+    </p>
+    <p>
+        In the example below, the vertical and horizontal lines, both get displayed when mouse is hovered over the plot area. The data values corresponding to the marker position are displayed next to x and y axes.
+    </p>
+    <div class="row">
+        <div class="col-md-6">
+            <app-tab>
+                <app-tab-pane title="HTML">
+                    <div ng-non-bindable class="pane-content">
+&lt;wj-financial-chart #chart
+                    [itemsSource]="data"
+                    [header]="header"
+                    chartType="Candlestick"
+                    [symbolSize]="4"
+                    (rendered)="chartRendered()"
+                    bindingX="date"&gt;
+    &lt;wj-financial-chart-series binding="high,low,open,close"&gt;&lt;/wj-financial-chart-series&gt;
+    &lt;wj-flex-line-marker lines="Both"
+                         interaction="Move"
+                         [alignment]="7"
+                         [content]="changeContent"
+                         (positionChanged)="midPosChanged($event)"&gt;
+    &lt;/wj-flex-line-marker&gt;
+    &lt;wj-flex-line-marker lines="None"
+                         interaction="Move"
+                         [horizontalPosition]="1"
+                         [content]="changeYContent"&gt;
+    &lt;/wj-flex-line-marker&gt;
+    &lt;wj-flex-line-marker lines="None"
+                         interaction="Move"
+                         [verticalPosition]="1"
+                         [content]="changeXContent"&gt;
+    &lt;/wj-flex-line-marker&gt;
+&lt;/wj-financial-chart&gt;
+                    </div>
+                </app-tab-pane>
+                <app-tab-pane title="TS">
+                    <div class="pane-content">
+import * as wjcCore from 'wijmo/wijmo';
+import * as wjcChartFinance from 'wijmo/wijmo.chart.finance';
+
+import &#123; Component, ViewChild, Inject} from '@angular/core';
+
+import &#123; DataSvc } from './../services/DataSvc';
+
+//Marker sample component
+@Component(&#123;
+    selector: 'marker-cmp',
+    templateUrl: 'src/components/MarkerCmp.html'
+})
+
+export class MarkerCmp &#123;
+    dataSvc: DataSvc;
+    data: any[];
+    header: string;
+    changeContent: Function;
+    changeYContent: Function;
+    changeXContent: Function;
+    pt: wjcCore.Point;
+    markcontents;
+    pOffset: wjcCore.Rect;
+    @ViewChild('chart') chart: wjcChartFinance.FinancialChart;
+
+    constructor( @Inject(DataSvc) dataSvc: DataSvc) &#123;
+        this.data = [];
+        this.pt = new wjcCore.Point();
+        this.dataSvc = dataSvc;
+        this.setDataSource();
+        this.header = 'Facebook, Inc. (FB)';
+        this.changeContent = () => &#123;
+            this.markcontents = this._getMarkerContents(new wjcCore.Point(this.pt.x, this.pt.y));
+            return this.markcontents ? this.markcontents.content : '';
+        };
+        this.changeXContent = () => &#123;
+            return this.markcontents && this.markcontents.x ? this.markcontents.x.toString() : '';
+        };
+        this.changeYContent = () => &#123;
+            return this.markcontents && this.markcontents.y ? this.markcontents.y.toString() : '';
+        };
+    }
+
+    midPosChanged(event) &#123;
+        this.pt = event;
+    }
+
+    chartRendered() &#123;
+        var chart = this.chart;
+        if (!chart) &#123;
+            return;
+        }
+        chart.tooltip.content = '';
+        chart.axisY.position = 3;
+        chart.rendered.addHandler(() => &#123;
+            var chartHostEle = chart.hostElement,
+                pa = chartHostEle.querySelector('.wj-plot-area');
+            this.pOffset = wjcCore.getElementRect(pa);
+        });
+
+        var lineMarkers = chart.hostElement.querySelectorAll('.wj-chart-linemarker-container');
+        console.log(lineMarkers.length);
+        console.log(chart.hostElement);
+        this._markershowing(lineMarkers, 'hidden');
+        chart.hostElement.onmouseenter = e => &#123;
+            this._markershowing(lineMarkers, 'visible');
+        }
+        if ('ontouchstart' in window) &#123;
+            chart.hostElement.ontouchstart = e => &#123;
+                this._markershowing(lineMarkers, 'visible');
+            }
+        }
+        chart.hostElement.onmouseleave = e => &#123;
+            this._markershowing(lineMarkers, 'hidden');
+        }
+    }
+
+    private _markershowing(lineMarkers, visible) &#123;
+        for (var i = 0; i < lineMarkers.length; i++) &#123;
+            lineMarkers[i].style.visibility = visible;
+        }
+    }
+
+    //get line marker content
+    private _getMarkerContents(pt) &#123;
+        var chart = this.chart,
+            newHitPoint = new wjcCore.Point(pt.x, NaN),
+            ht, xContent, yContent, axisYMax, axisYMin,
+            content = '';
+
+        if (!chart || chart.series.length < 1) &#123;
+            return;
+        }
+        axisYMax = chart.axisY.actualMax;
+        axisYMin = chart.axisY.actualMin;
+        //calculate the y value
+        if (this.pOffset == null) &#123;
+            yContent = 0;
+        } else &#123;
+            yContent = axisYMax - ((pt.y - this.pOffset.top) / this.pOffset.height) * (axisYMax - axisYMin);
+            yContent = yContent.toFixed(2);
+        }
+        ht = chart.series[0].hitTest(newHitPoint);
+
+        if (ht.x && ht.y !== null) &#123;
+            xContent = ht.x;
+        }
+        return &#123; content: '', x: xContent, y: yContent };
+    }
+
+    private setDataSource() &#123;
+        this.dataSvc.getData().subscribe(data => &#123;
+            this.data = data;
+        });
+    }
+}
+                    </div>
+                </app-tab-pane>
+            </app-tab>
+        </div>
+        <div class="col-md-6">
+            <h4>Result (live):</h4>
+            <wj-financial-chart #chart
+                                [itemsSource]="data"
+                                [header]="header"
+                                chartType="Candlestick"
+                                [symbolSize]="4"
+                                (rendered)="chartRendered()"
+                                bindingX="date">
+                <wj-financial-chart-series binding="high,low,open,close"></wj-financial-chart-series>
+                <wj-flex-line-marker lines="Both"
+                                           interaction="Move"
+                                           [alignment]="7"
+                                           [content]="changeContent"
+                                           (positionChanged)="midPosChanged($event)">
+                </wj-flex-line-marker>
+                <wj-flex-line-marker lines="None"
+                                           interaction="Move"
+                                           [horizontalPosition]="1"
+                                           [content]="changeYContent">
+                </wj-flex-line-marker>
+                <wj-flex-line-marker lines="None"
+                                           interaction="Move"
+                                           [verticalPosition]="1"
+                                           [content]="changeXContent">
+                </wj-flex-line-marker>
+            </wj-financial-chart>
+        </div>
+    </div>
+
+</div>

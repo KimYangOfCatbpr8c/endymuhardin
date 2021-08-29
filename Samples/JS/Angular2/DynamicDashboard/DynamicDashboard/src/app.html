@@ -1,0 +1,40 @@
+﻿<div>
+    <div class="header">
+        <div class="container">
+            <img src="resources/wijmo5.png" alt="Wijmo 5" />
+            <h1>
+                Dynamic Dashboard
+            </h1>
+            <p>
+                Create and customize dashboards with Wijmo controls.
+            </p>
+        </div>
+    </div>
+    <div class="container">
+
+        <p>
+            Start by selecting a tile type, then click the button to add the new tile
+            to the dashboard.
+        </p>
+        <p>
+            Use the mouse to drag tiles to new positions, or click the close button
+            at the top-right corner of each tile to remove the tile from the dashboard.
+        </p>
+
+        <div class="container row">
+            <label>
+                Select a tile type:
+                <wj-combo-box #tileCmb [itemsSource]="tileTypes"></wj-combo-box>
+            </label>
+            <button class="btn btn-primary" (click)="addTile(tileCmb.selectedItem)">Add Tile to Dashboard</button>
+        </div>
+
+        <hr />
+
+        <div class="dashboard" draggable="true"  (click)="handleTile($event) " (dragstart)="dragstart($event)" (dragover)="dragover($event)" (drop)="drop($event)" (dragend)="dragend($event)">
+            <div #dynCompContainer></div>
+        </div>
+        
+       
+    </div>
+</div>

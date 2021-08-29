@@ -1,5 +1,10 @@
 ﻿/* wj-labeled-input: adapted from MDL styles */
 
+/* underline access keys */
+.wj-labeled-input .accesskey {
+    text-decoration: underline;
+}
+
 /* label input container */
 .wj-labeled-input {
     position: relative;

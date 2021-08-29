@@ -16,12 +16,7 @@
     its parent. To manage this challenge we added the AggregatedGridColumn component intended to play
     a role of a column descriptor for the AggregatedGrid component. The AggregatedGridColumn doesn't
     include any implementation code, the only it does is defines a component 'selector' and
-    enumerates all the properties defined in the WjFlexGridColumn component decorator in its
-    decorator's 'input' property. For this, it reads ComponentMetadata of the WjFlexGridColumn
-    component using the Ng2Utils.getTypeAnnotation function, and assigns ComponentMetadata.inputs
-    array concatenated with the AggregatedGridColumn specific properties like 'cellTemplate', to
-    the AggregatedGridColumn decorator's 'input' property. This way, AggregatedGridColumn exposes
-    all the properties of WjFlexGridColumn as available for binding, in a single line of code.
+    declares all the properties that should be available for binding. 
 </p>
 <p>
     The AggregatedGrid component defines the 'columns' property that collects all child AggregatedGridColumn 

@@ -1,0 +1,6 @@
+E:\Wijmo Package\2017V1\Wijmo-Enterprise-Eval.20171.282\C1Wijmo-Enterprise-Eval_5.20171.282\Samples\JS\PureJS\Financial\Financial\bin\Financial.dll.config
+E:\Wijmo Package\2017V1\Wijmo-Enterprise-Eval.20171.282\C1Wijmo-Enterprise-Eval_5.20171.282\Samples\JS\PureJS\Financial\Financial\bin\Financial.dll
+E:\Wijmo Package\2017V1\Wijmo-Enterprise-Eval.20171.282\C1Wijmo-Enterprise-Eval_5.20171.282\Samples\JS\PureJS\Financial\Financial\bin\Financial.pdb
+E:\Wijmo Package\2017V1\Wijmo-Enterprise-Eval.20171.282\C1Wijmo-Enterprise-Eval_5.20171.282\Samples\JS\PureJS\Financial\Financial\obj\Debug\Financial.csprojResolveAssemblyReference.cache
+E:\Wijmo Package\2017V1\Wijmo-Enterprise-Eval.20171.282\C1Wijmo-Enterprise-Eval_5.20171.282\Samples\JS\PureJS\Financial\Financial\obj\Debug\Financial.dll
+E:\Wijmo Package\2017V1\Wijmo-Enterprise-Eval.20171.282\C1Wijmo-Enterprise-Eval_5.20171.282\Samples\JS\PureJS\Financial\Financial\obj\Debug\Financial.pdb

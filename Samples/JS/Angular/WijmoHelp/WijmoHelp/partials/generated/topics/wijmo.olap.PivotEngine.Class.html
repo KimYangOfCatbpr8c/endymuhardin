@@ -46,7 +46,10 @@ by rows and columns on a grid, and the data is stored in the grid cells.</p></di
 <li class="mmethod"><a href="topic/wijmo.olap.PivotEngine.Class.html/#editField">editField</a></li>
 <li class="mmethod"><a href="topic/wijmo.olap.PivotEngine.Class.html/#endUpdate">endUpdate</a></li>
 <li class="mmethod"><a href="topic/wijmo.olap.PivotEngine.Class.html/#getDetail">getDetail</a></li>
+<li class="mmethod"><a href="topic/wijmo.olap.PivotEngine.Class.html/#getDetailView">getDetailView</a></li>
+<li class="mmethod"><a href="topic/wijmo.olap.PivotEngine.Class.html/#getKeys">getKeys</a></li>
 <li class="mmethod"><a href="topic/wijmo.olap.PivotEngine.Class.html/#invalidate">invalidate</a></li>
+<li class="mmethod raiser"><a href="topic/wijmo.olap.PivotEngine.Class.html/#onError">onError</a></li>
 <li class="mmethod raiser"><a href="topic/wijmo.olap.PivotEngine.Class.html/#onItemsSourceChanged">onItemsSourceChanged</a></li>
 <li class="mmethod raiser"><a href="topic/wijmo.olap.PivotEngine.Class.html/#onUpdatedView">onUpdatedView</a></li>
 <li class="mmethod raiser"><a href="topic/wijmo.olap.PivotEngine.Class.html/#onUpdatingView">onUpdatingView</a></li>
@@ -56,6 +59,7 @@ by rows and columns on a grid, and the data is stored in the grid cells.</p></di
 </ul>
 <h3 class="node">Events</h3>
 <ul>
+<li class="mevent"><a href="topic/wijmo.olap.PivotEngine.Class.html/#error">error</a></li>
 <li class="mevent"><a href="topic/wijmo.olap.PivotEngine.Class.html/#itemsSourceChanged">itemsSourceChanged</a></li>
 <li class="mevent"><a href="topic/wijmo.olap.PivotEngine.Class.html/#updatedView">updatedView</a></li>
 <li class="mevent"><a href="topic/wijmo.olap.PivotEngine.Class.html/#updatingView">updatingView</a></li>
@@ -186,7 +190,19 @@ either the <a href="topic/wijmo.olap.PivotEngine.Class.html/#rowFields"><span cl
 </div>
 <div id="itemsSource" class="member-panel mproperty">
 <h3>itemsSource</h3>
-<div class="comment"><p>Gets or sets the array or <a href="topic/wijmo.collections.ICollectionView.Interface.html"><span class="identifier">ICollectionView</span></a> that contains the raw data.</p></div>
+<div class="comment"><p>Gets or sets the array or <a href="topic/wijmo.collections.ICollectionView.Interface.html"><span class="identifier">ICollectionView</span></a> that contains the
+data to be analyzed, or a string containing the URL for a
+ComponentOne DataEngine service.</p>
+<p>ComponentOne DataEngine services allow you to analyze large
+datasets on a server without downloading the raw data to the
+client. You can use our high-performance FlexPivot services
+or interface with Microsoft's SQL Server Analysis Services
+OLAP Cubes.</p>
+<p>The <a href="topic/wijmo.olap.PivotEngine.Class.html"><span class="identifier">PivotEngine</span></a> sends view definitions to the server,
+where summaries are calculated and returned to the client.</p>
+<p>For more information about the ComponentOne DataEngine
+services please refer to the
+<a href="http://helpcentral.componentone.com/nethelp/C1WebAPI/APIDataEngine.html">online documentation</a>.</p></div>
 <dl class="dl-horizontal">
   <dt>Type</dt><dd><span class="identifier">any</span></dd>
 </dl>
@@ -324,15 +340,66 @@ an exception.</p></div>
 </div>
 <div id="getDetail" class="member-panel mmethod">
 <h3>getDetail</h3>
-<pre>getDetail(item: <span class="identifier">any</span>, binding: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank"><span class="identifier">string</span></a>): <span class="identifier">void</span></pre>
-<div class="comment"><p>Gets an array containing the records summarized by a property in the <a href="topic/wijmo.olap.PivotEngine.Class.html/#pivotView"><span class="identifier">pivotView</span></a> list.</p></div>
+<pre>getDetail(item: <span class="identifier">any</span>, binding: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank"><span class="identifier">string</span></a>): <span class="identifier">any</span>[]</pre>
+<div class="comment"><p>Gets an array containing the records summarized by a property in the
+<a href="topic/wijmo.olap.PivotEngine.Class.html/#pivotView"><span class="identifier">pivotView</span></a> list.</p>
+<p>If the engine is connected to a PivotEngine server, the value returned
+is an <a href="topic/wijmo.collections.ObservableArray.Class.html"><span class="identifier">ObservableArray</span></a> that is populated asynchronously.</p></div>
 <dl class="dl-horizontal">
   <dt>Parameters</dt><dd></dd>
 </dl>
 <ul>
 <li><b>item</b>: <span class="identifier">any</span><br/><p>Data item in the <a href="topic/wijmo.olap.PivotEngine.Class.html/#pivotView"><span class="identifier">pivotView</span></a> list.</p></li><li><b>binding</b>: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank"><span class="identifier">string</span></a><br/><p>Name of the property being summarized.</p></li></ul>
 <dl class="dl-horizontal">
-  <dt>Returns</dt><dd><span class="identifier">void</span></dd>
+  <dt>Returns</dt><dd><span class="identifier">any</span>[]</dd>
+</dl>
+</div>
+<div id="getDetailView" class="member-panel mmethod">
+<h3>getDetailView</h3>
+<pre>getDetailView(item: <span class="identifier">any</span>, binding: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank"><span class="identifier">string</span></a>): <a href="topic/wijmo.collections.ICollectionView.Interface.html"><span class="identifier">ICollectionView</span></a></pre>
+<div class="comment"><p>Gets an <a href="topic/wijmo.collections.ICollectionView.Interface.html"><span class="identifier">ICollectionView</span></a> containing the records summarized
+by a property in the <a href="topic/wijmo.olap.PivotEngine.Class.html/#pivotView"><span class="identifier">pivotView</span></a> list.</p></div>
+<dl class="dl-horizontal">
+  <dt>Parameters</dt><dd></dd>
+</dl>
+<ul>
+<li><b>item</b>: <span class="identifier">any</span><br/><p>Data item in the <a href="topic/wijmo.olap.PivotEngine.Class.html/#pivotView"><span class="identifier">pivotView</span></a> list.</p></li><li><b>binding</b>: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank"><span class="identifier">string</span></a><br/><p>Name of the property being summarized.</p></li></ul>
+<dl class="dl-horizontal">
+  <dt>Returns</dt><dd><a href="topic/wijmo.collections.ICollectionView.Interface.html"><span class="identifier">ICollectionView</span></a></dd>
+</dl>
+</div>
+<div id="getKeys" class="member-panel mmethod">
+<h3>getKeys</h3>
+<pre>getKeys(item: <span class="identifier">any</span>, binding: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank"><span class="identifier">string</span></a>): <span class="identifier">any</span></pre>
+<div class="comment"><p>Gets an object with information about a property in the <a href="topic/wijmo.olap.PivotEngine.Class.html/#pivotView"><span class="identifier">pivotView</span></a> list.</p>
+<p>The object returned has two properties, 'rowKey' and 'colKey'. Each of
+these contains two arrays, 'fields' and 'values'. Together, this information
+uniquely identifies a value summarized by the <a href="topic/wijmo.olap.PivotEngine.Class.html"><span class="identifier">PivotEngine</span></a>.</p>
+<p>For example, calling <a href="topic/wijmo.olap.PivotEngine.Class.html/#getKeys"><span class="identifier">getKeys</span></a> against a pivot view with two row fields
+'Product' and 'Country', and a single column field 'Active' would return an
+object such as this one:</p>
+
+
+<pre>{
+    rowKey: {
+        fields: [ 'Product', 'Country'],
+        values: [ 'Aoba', 'Japan' ]
+    },
+    colKey: {
+        fields: [ 'Active' ],
+        values: [ true ]
+    }
+}</pre>
+<p>The object identifies the subset of data used to obtain one summary value.
+In this case, this value represents all data items for product 'Aoba' sold
+in Japan with active state set to true.</p></div>
+<dl class="dl-horizontal">
+  <dt>Parameters</dt><dd></dd>
+</dl>
+<ul>
+<li><b>item</b>: <span class="identifier">any</span><br/><p>Data item in the <a href="topic/wijmo.olap.PivotEngine.Class.html/#pivotView"><span class="identifier">pivotView</span></a> list.</p></li><li><b>binding</b>: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank"><span class="identifier">string</span></a><br/><p>Name of the property being summarized.</p></li></ul>
+<dl class="dl-horizontal">
+  <dt>Returns</dt><dd><span class="identifier">any</span></dd>
 </dl>
 </div>
 <div id="invalidate" class="member-panel mmethod">
@@ -341,6 +408,19 @@ an exception.</p></div>
 <div class="comment"><p>Invalidates the view causing an asynchronous refresh.</p></div>
 <dl class="dl-horizontal">
   <dt>Returns</dt><dd><span class="identifier">void</span></dd>
+</dl>
+</div>
+<div id="onError" class="member-panel mmethod raiser">
+<h3>onError</h3>
+<pre>onError(e: <a href="topic/wijmo.RequestErrorEventArgs.Class.html"><span class="identifier">RequestErrorEventArgs</span></a>): <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a></pre>
+<div class="comment"><p>Raises the <a href="topic/wijmo.olap.PivotEngine.Class.html/#error"><span class="identifier">error</span></a> event.</p></div>
+<dl class="dl-horizontal">
+  <dt>Parameters</dt><dd></dd>
+</dl>
+<ul>
+<li><b>e</b>: <a href="topic/wijmo.RequestErrorEventArgs.Class.html"><span class="identifier">RequestErrorEventArgs</span></a><br/><p><a href="topic/wijmo.RequestErrorEventArgs.Class.html"><span class="identifier">RequestErrorEventArgs</span></a> that contains information about the error.</p></li></ul>
+<dl class="dl-horizontal">
+  <dt>Returns</dt><dd><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a></dd>
 </dl>
 </div>
 <div id="onItemsSourceChanged" class="member-panel mmethod raiser">
@@ -424,6 +504,13 @@ an exception.</p></div>
 </div>
 <h3 class="node">Events</h3>
 <div class="member-list" ng-class="{ 'show-inherited' : ctx.showInherited, 'show-raisers' : ctx.showRaisers }">
+<div id="error" class="member-panel mevent">
+<h3>error</h3>
+<div class="comment"><p>Occurs when there is an error getting data from the server.</p></div>
+<dl class="dl-horizontal">
+  <dt>Arguments</dt><dd><a href="topic/wijmo.RequestErrorEventArgs.Class.html"><span class="identifier">RequestErrorEventArgs</span></a></dd>
+</dl>
+</div>
 <div id="itemsSourceChanged" class="member-panel mevent">
 <h3>itemsSourceChanged</h3>
 <div class="comment"><p>Occurs after the value of the <a href="topic/wijmo.olap.PivotEngine.Class.html/#itemsSource"><span class="identifier">itemsSource</span></a> property changes.</p></div>

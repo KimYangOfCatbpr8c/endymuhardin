@@ -26,7 +26,7 @@ var ChartTypes = React.createClass({
                 Chart Types
             </h2>
             <p>
-                The FlexChart control has three properties that allow you to customize the chart
+                The FlexChart control has the following three properties that allow you to customize the chart
                 type: </p>
             <ol>
                 <li>
@@ -34,9 +34,9 @@ var ChartTypes = React.createClass({
                     Individual series objects can override this.</li>
                 <li>
                     <b>stacking</b>: Determines whether series objects are plotted independently,
-                    stacked, or stacked so their sum is 100%.</li>
+                    stacked, or stacked such that their sum is 100%.</li>
                 <li>
-                    <b>rotated</b>: Flips the X and Y axes so X becomes vertical and Y horizontal.</li>
+                    <b>rotated</b>: Flips the X and Y axes, so that X becomes vertical and Y becomes horizontal.</li>
             </ol>
             <p>
                 The example below allows you to see what happens when you change these properties: </p>

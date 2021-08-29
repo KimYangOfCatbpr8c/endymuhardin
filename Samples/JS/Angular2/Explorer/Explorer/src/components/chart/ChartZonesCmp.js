@@ -1,10 +1,13 @@
-'use strict';
+"use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var wjcChart = require('wijmo/wijmo.chart');
+var wjcCore = require('wijmo/wijmo');
+'use strict';
 var core_1 = require('@angular/core');
 var common_1 = require('@angular/common');
 var router_1 = require('@angular/router');
@@ -38,11 +41,11 @@ var ChartZonesCmp = (function () {
         for (var i = -2; i <= 2; i++) {
             var y = mean + i * stdDev;
             var sdata = [{ x: 0, y: y }, { x: this._nStudents - 1, y: y }];
-            var series = new wijmo.chart.Series();
+            var series = new wjcChart.Series();
             series.itemsSource = sdata;
             series.bindingX = 'x';
             series.binding = 'y';
-            series.chartType = wijmo.chart.ChartType.Line;
+            series.chartType = wjcChart.ChartType.Line;
             series.style = { stroke: '#202020', strokeWidth: 2 };
             if (Math.abs(i) == 1) {
                 series.style.strokeDasharray = '5,1';
@@ -81,8 +84,8 @@ var ChartZonesCmp = (function () {
         ];
         // add zones to legend
         for (var i = 0; i < 5; i++) {
-            var series = new wijmo.chart.Series();
-            series.chartType = wijmo.chart.ChartType.Area;
+            var series = new wjcChart.Series();
+            series.chartType = wjcChart.ChartType.Area;
             series.style = { fill: colors[4 - i], stroke: 'transparent' };
             series.name = String.fromCharCode('A'.charCodeAt(0) + i);
             chart.series.push(series);
@@ -120,8 +123,8 @@ var ChartZonesCmp = (function () {
         return i;
     };
     ChartZonesCmp.prototype._drawAlarmZone = function (chart, engine, xmin, ymin, xmax, ymax, fill) {
-        var pt1 = chart.dataToPoint(new wijmo.Point(xmin, ymin));
-        var pt2 = chart.dataToPoint(new wijmo.Point(xmax, ymax));
+        var pt1 = chart.dataToPoint(new wjcCore.Point(xmin, ymin));
+        var pt2 = chart.dataToPoint(new wjcCore.Point(xmax, ymax));
         engine.fill = fill;
         engine.drawRect(Math.min(pt1.x, pt2.x), Math.min(pt1.y, pt2.y), Math.abs(pt2.x - pt1.x), Math.abs(pt2.y - pt1.y));
     };

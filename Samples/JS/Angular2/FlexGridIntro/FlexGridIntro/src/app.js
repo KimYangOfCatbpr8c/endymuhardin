@@ -1,4 +1,3 @@
-///<reference path="../typings/globals/core-js/index.d.ts"/>
 "use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -9,6 +8,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
+///<reference path="../typings/globals/core-js/index.d.ts"/>
+var wjcCore = require('wijmo/wijmo');
 // Angular
 var core_1 = require('@angular/core');
 var forms_1 = require('@angular/forms');
@@ -27,12 +28,12 @@ var AppCmp = (function () {
         this._groupBy = '';
         this._filter = '';
         this.dataSvc = dataSvc;
-        this.data = new wijmo.collections.CollectionView(this.dataSvc.getData(100));
-        this.cvGroup = new wijmo.collections.CollectionView(this.dataSvc.getData(100));
-        this.cvFilter = new wijmo.collections.CollectionView(this.dataSvc.getData(100));
+        this.data = new wjcCore.CollectionView(this.dataSvc.getData(100));
+        this.cvGroup = new wjcCore.CollectionView(this.dataSvc.getData(100));
+        this.cvFilter = new wjcCore.CollectionView(this.dataSvc.getData(100));
         this.cvFilter.filter = this._filterFunction.bind(this);
-        this.cvMaster = new wijmo.collections.CollectionView(this.dataSvc.getData(100));
-        this.cvPaging = new wijmo.collections.CollectionView(this.dataSvc.getData(100));
+        this.cvMaster = new wjcCore.CollectionView(this.dataSvc.getData(100));
+        this.cvPaging = new wjcCore.CollectionView(this.dataSvc.getData(100));
         this.cvPaging.pageSize = 10;
         this.treeData = this.dataSvc.getTreeData();
     }
@@ -103,19 +104,19 @@ var AppCmp = (function () {
             for (var i = 0; i < groupNames.length; i++) {
                 var groupName = groupNames[i];
                 if (groupName == 'date') {
-                    var groupDesc = new wijmo.collections.PropertyGroupDescription(groupName, function (item, prop) {
+                    var groupDesc = new wjcCore.PropertyGroupDescription(groupName, function (item, prop) {
                         return item.date.getFullYear();
                     });
                     cv.groupDescriptions.push(groupDesc);
                 }
                 else if (groupName == 'amount') {
-                    var groupDesc = new wijmo.collections.PropertyGroupDescription(groupName, function (item, prop) {
+                    var groupDesc = new wjcCore.PropertyGroupDescription(groupName, function (item, prop) {
                         return item.amount >= 5000 ? '> 5,000' : item.amount >= 500 ? '500 to 5,000' : '< 500';
                     });
                     cv.groupDescriptions.push(groupDesc);
                 }
                 else {
-                    var groupDesc = new wijmo.collections.PropertyGroupDescription(groupName);
+                    var groupDesc = new wjcCore.PropertyGroupDescription(groupName);
                     cv.groupDescriptions.push(groupDesc);
                 }
             }
@@ -131,7 +132,7 @@ var AppCmp = (function () {
     };
     AppCmp.prototype._sortItem = function (item, view, childItemsPath) {
         var children = item[childItemsPath];
-        if (children && wijmo.isArray(children)) {
+        if (children && wjcCore.isArray(children)) {
             children.sort(view._compareItems());
             for (var i = 0; i < children.length; i++) {
                 this._sortItem(children[i], view, childItemsPath);

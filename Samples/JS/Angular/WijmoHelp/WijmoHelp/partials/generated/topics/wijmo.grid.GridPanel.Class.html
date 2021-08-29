@@ -28,6 +28,7 @@ and scrollable data part.</p></div>
 <ul>
 <li class="mmethod"><a href="topic/wijmo.grid.GridPanel.Class.html/#getCellBoundingRect">getCellBoundingRect</a></li>
 <li class="mmethod"><a href="topic/wijmo.grid.GridPanel.Class.html/#getCellData">getCellData</a></li>
+<li class="mmethod"><a href="topic/wijmo.grid.GridPanel.Class.html/#getCellElement">getCellElement</a></li>
 <li class="mmethod"><a href="topic/wijmo.grid.GridPanel.Class.html/#getSelectedState">getSelectedState</a></li>
 <li class="mmethod"><a href="topic/wijmo.grid.GridPanel.Class.html/#setCellData">setCellData</a></li>
 </ul>
@@ -136,6 +137,20 @@ target="_blank">getBoundingClientRect</a> method.</p></div>
 <li><b>r</b>: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Number" target="_blank"><span class="identifier">number</span></a><br/><p>The row index of the cell.</p></li><li><b>c</b>: <span class="identifier">any</span><br/><p>The index, name, or binding of the column that contains the cell.</p></li><li><b>formatted</b>: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a><br/><p>Whether to format the value for display.</p></li></ul>
 <dl class="dl-horizontal">
   <dt>Returns</dt><dd><span class="identifier">any</span></dd>
+</dl>
+</div>
+<div id="getCellElement" class="member-panel mmethod">
+<h3>getCellElement</h3>
+<pre>getCellElement(r: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Number" target="_blank"><span class="identifier">number</span></a>, c: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Number" target="_blank"><span class="identifier">number</span></a>): <a href="https://developer.mozilla.org/en/docs/Web/API/HTMLElement" target="_blank"><span class="identifier">HTMLElement</span></a></pre>
+<div class="comment"><p>Gets the element that represents a cell within this <a href="topic/wijmo.grid.GridPanel.Class.html"><span class="identifier">GridPanel</span></a>.</p>
+<p>If the cell is not currently in view, this method returns null.</p></div>
+<dl class="dl-horizontal">
+  <dt>Parameters</dt><dd></dd>
+</dl>
+<ul>
+<li><b>r</b>: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Number" target="_blank"><span class="identifier">number</span></a><br/><p>The index of the row that contains the cell.</p></li><li><b>c</b>: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Number" target="_blank"><span class="identifier">number</span></a><br/><p>The index of the column that contains the cell.</p></li></ul>
+<dl class="dl-horizontal">
+  <dt>Returns</dt><dd><a href="https://developer.mozilla.org/en/docs/Web/API/HTMLElement" target="_blank"><span class="identifier">HTMLElement</span></a></dd>
 </dl>
 </div>
 <div id="getSelectedState" class="member-panel mmethod">

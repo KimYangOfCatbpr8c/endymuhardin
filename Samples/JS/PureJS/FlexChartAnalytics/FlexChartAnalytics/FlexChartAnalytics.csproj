@@ -68,6 +68,8 @@
     <Content Include="readme.txt" />
     <Content Include="resources\wijmo5.png" />
     <Content Include="scripts\app.js" />
+    <Content Include="scripts\boxwhisker.js" />
+    <Content Include="scripts\errorbar.js" />
     <Content Include="scripts\functionseries.js" />
     <Content Include="scripts\gettingstart.js" />
     <Content Include="scripts\movingaverage.js" />

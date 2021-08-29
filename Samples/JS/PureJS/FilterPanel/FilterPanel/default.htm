@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>FilterPanel</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- styles -->
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="styles/app.css" />
+
+    <!-- Wijmo -->
+    <link href="styles/vendor/wijmo.min.css" rel="stylesheet" />
+    <script src="scripts/vendor/wijmo.min.js"></script>
+    <script src="scripts/vendor/wijmo.input.min.js"></script>
+    <script src="scripts/vendor/wijmo.grid.min.js"></script>
+    <script src="scripts/vendor/wijmo.grid.filter.min.js"></script>
+    <script src="scripts/vendor/wijmo.grid.grouppanel.min.js"></script>
+
+    <!-- app scripts -->
+    <script src="scripts/FilterPanel.js" ></script>
+    <script src="scripts/app.js" ></script>
+
+</head>
+<body>
+
+    <div class="header">
+        <div class="container">
+            <img src="resources/wijmo5.png" alt="Wijmo 5" />
+            <h1>
+                FilterPanel
+            </h1>
+            <p>
+                此示例定义了一个<b>FilterPanel</b>类，显示当前活动的过滤器，并允许用户通过点击删除过滤器。
+            </p>
+        </div>
+    </div>
+
+    <div class="container">
+        <p>
+            添加或更改过滤器，以查看它们如何添加到表格上方的
+            <b>FilterPanel</b>中。</p>
+        <p>
+            点击过滤器标记中的“x”图标可删除一个或所有过滤器。</p>
+        <div id="filterPanel"></div>
+        <div id="grid"></div>
+    </div>
+
+    <script src="scripts/wijmo.sample.toolbar.js" type="text/javascript"></script>
+</body>
+</html>

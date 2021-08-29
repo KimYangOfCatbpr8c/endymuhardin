@@ -1,857 +1,1594 @@
 ﻿
-<div class="header visible-xs visible-sm">
-    <div class="container">
-        <h1>
-            CellTemplate 101
-        </h1>
-    </div>
-</div>
-<div class="header hidden-xs hidden-sm">
+<div class="header">
     <div class="container">
         <img src="resources/wijmo5.png" />
         <h1>
-            CellTemplate 101
+            CollectionView 101
         </h1>
         <p>
-            This page shows how to work with Wijmo's FlexGrid cell templates for Angular.
+            This page shows how to get started with Wijmo's CollectionView class.
         </p>
     </div>
 </div>
 
 <div class="container">
+    <!-- Introduction -->
+    <p>
+        Wijmo 5 has a solid infrastructure based on a powerful data layer that is familiar to
+        .NET developers. The main data binding interface is the <a target="_blank"
+                                                                   href="http://wijmo.com/5/docs/topic/wijmo.collections.ICollectionView.Interface.html">
+            ICollectionView
+        </a>. Wijmo includes several classes that implement
+        ICollectionView. The most basic is the <a target="_blank"
+                                                  href="http://wijmo.com/5/docs/topic/wijmo.collections.CollectionView.Class.html">
+            CollectionView
+        </a> class, which uses regular JavaScript arrays as data sources.
+    </p>
+    <p>
+        The CollectionView class implements the following interfaces:
+    </p>
+    <ul>
+        <li>
+            <b>ICollectionView</b>: Provides current record management, custom sorting,
+            filtering, and grouping.
+        </li>
+        <li>
+            <b>IEditableCollectionView</b>: Provides methods for editing, adding, and
+            removing items.
+        </li>
+        <li>
+            <b>IPagedCollectionView</b>: Provides paging for navigating through large
+            numbers of items.
+        </li>
+    </ul>
+    <p>
+        The CollectionView class can keep track of changes made to the data. This
+        feature is useful for submitting changes to the server.
+    </p>
 
     <!-- getting started -->
-    <h2 id="Start">
-        Getting Started
-    </h2>
+    <h2>Getting Started</h2>
     <p>
-        Wijmo provides a WjFlexGridCellTemplate directive for Angular 2 that allows you to define a template
-        for any type of FlexGrid cell.
+        To use the CollectionView class, start by declaring it and passing in a
+        regular array as the data source. Then access the view using the <b>items</b> property.
     </p>
     <p>
-        This example shows a FlexGrid that includes all of the cell types available, and allows you to
-        selectively apply specific cell templates to the control. Each template applies to every cell of
-        its specified type within the control. Clear a checkbox to see the template removed from all
-        instances of that cell type.
+        In this example, we show the CollectionView instance in an HTML table.
     </p>
     <p>
-        Note that in order to see the change for the CellEdit cell type, you must first double-click inside
-        a cell to put it in edit mode. To see the change for the RowHeaderEdit cell type, put any cell
-        into edit mode, and look at the RowHeader cell for that row.
+        Steps for getting started with the CollectionView class in AngularJS applications:
+    </p>
+    <ol>
+        <li>Add references to AngularJS, Wijmo, and the Wijmo AngularJS directives.</li>
+        <li>Optionally add a reference to FlexGrid.</li>
+        <li>Add references to your app, services, filters, and  directives modules.</li>
+        <li>Add a table (or FlexGrid) to the page and bind it to the CollectionView data.</li>
+        <li>Add a controller to provide data and logic.</li>
+        <li>Optionally add some CSS to customize the table's appearance.</li>
+    </ol>
+    <p>
+        <b>Notes:</b> In the Tracking Changes sample below, we use FlexGrid instead of a table,
+        so you can see the difference in the markup.
     </p>
 
-    <div class="row">
+    <div class="row" >
         <div class="col-md-6">
             <app-tab>
                 <app-tab-pane title="HTML">
                     <div class="pane-content">
-&lt;wj-flex-grid [itemsSource]="data1"
-    [allowSorting]="false"
-    [deferResizing]="true"&gt;
-    &lt;template wjFlexGridCellTemplate [cellType]="'TopLeft'" *ngIf="customTopLeft"&gt;
-            №
-    &lt;/template&gt;
-    &lt;template wjFlexGridCellTemplate [cellType]="'BottomLeft'" *ngIf="customBottomLeft"&gt;
-        &amp;#931;
-    &lt;/template&gt;
-    &lt;template wjFlexGridCellTemplate [cellType]="'RowHeader'" *ngIf="customRowHeader" let-cell="cell"&gt;
-            &#123;&#8203;&#123;cell.row.index}&#8203;}
-    &lt;/template&gt;
-    &lt;template wjFlexGridCellTemplate [cellType]="'RowHeaderEdit'" *ngIf="customRowHeaderEdit"&gt;
-            ...
-    &lt;/template&gt;
-    &lt;wj-flex-grid-column header="Country"
-        binding="country"
-        width="*"&gt;
-        &lt;template wjFlexGridCellTemplate [cellType]="'Cell'" *ngIf="customCell" let-item="item"&gt;
-                &lt;img src="resources/&#123;&#8203;&#123;item.country}&#8203;}.png" /&gt;
-                &#123;&#8203;&#123;item.country}&#8203;}
-        &lt;/template&gt;
-        &lt;template wjFlexGridCellTemplate [cellType]="'CellEdit'" *ngIf="customCellEdit" let-cell="cell"&gt;
-                &lt;wj-combo-box [itemsSource]="countries"
-                [(selectedValue)]="cell.value"
-                [isEditable]="false"&gt;&lt;/wj-combo-box&gt;
-        &lt;/template&gt;
-        &lt;template wjFlexGridCellTemplate [cellType]="'GroupHeader'" *ngIf="customGroupHeader" let-item="item" let-cell="cell"&gt;
-                &lt;input type="checkbox" [(ngModel)]="cell.row.isCollapsed" /&gt;
-                &#123;&#8203;&#123;item.name}&#8203;} (&#123;&#8203;&#123;item.items.length}&#8203;} items)
-        &lt;/template&gt;
-    &lt;/wj-flex-grid-column&gt;
-    &lt;wj-flex-grid-column header="Downloads"
-        binding="downloads"
-        [width]="170"
-        [aggregate]="'Sum'"&gt;
-        &lt;template wjFlexGridCellTemplate [cellType]="'ColumnHeader'" *ngIf="customColumnHeader"&gt;
-                &lt;input type="checkbox" [(ngModel)]="uiCtx.highlightDownloads" /&gt;
-            Downloads
-        &lt;/template&gt;
-        &lt;template wjFlexGridCellTemplate [cellType]="'Cell'" *ngIf="customCell" let-item="item"&gt;
-                &lt;span [ngStyle]="&#123;color: uiCtx.highlightDownloads? (item.downloads&gt;10000 ?'green':'red'):''}"
-                style="font-weight:700"&gt;
-                    &#123;&#8203;&#123;item.downloads}&#8203;}
-                &lt;/span&gt;
-        &lt;/template&gt;
-        &lt;template wjFlexGridCellTemplate [cellType]="'CellEdit'" *ngIf="customCell" let-cell="cell"&gt;
-                &lt;wj-input-number [(value)]="cell.value"
-                [step]="1"&gt;&lt;/wj-input-number&gt;
-        &lt;/template&gt;
-        &lt;template wjFlexGridCellTemplate [cellType]="'Group'" *ngIf="customGroup" let-cell="cell"&gt;
-            Sum = &#123;&#8203;&#123;cell.value | number:'1.0-0'}&#8203;}
-        &lt;/template&gt;
-        &lt;template wjFlexGridCellTemplate [cellType]="'ColumnFooter'" *ngIf="customColumnFooter" let-cell="cell"&gt;
-            Sum:  &#123;&#8203;&#123;cell.value | number:'1.0-0'}&#8203;}
-        &lt;/template&gt;
-    &lt;/wj-flex-grid-column&gt;
-&lt;/wj-flex-grid&gt;
-
-    &lt;div class="checkbox-list"&gt;
-        &lt;label class="checkbox"&gt;
-            &lt;input type="checkbox" [(ngModel)]="customTopLeft" /&gt; TopLeft
-        &lt;/label&gt;
-        &lt;label class="checkbox"&gt;
-            &lt;input type="checkbox" [(ngModel)]="customRowHeader" /&gt; RowHeader
-        &lt;/label&gt;
-        &lt;label class="checkbox"&gt;
-            &lt;input type="checkbox" [(ngModel)]="customRowHeaderEdit" /&gt; RowHeaderEdit
-        &lt;/label&gt;
-        &lt;label class="checkbox"&gt;
-            &lt;input type="checkbox" [(ngModel)]="customCell" /&gt; Cell
-        &lt;/label&gt;
-        &lt;label class="checkbox"&gt;
-            &lt;input type="checkbox" [(ngModel)]="customCellEdit" /&gt; CellEdit
-        &lt;/label&gt;
-        &lt;label class="checkbox"&gt;
-         &lt;input type="checkbox" [(ngModel)]="customColumnHeader" /&gt; ColumnHeader
-        &lt;/label&gt;
-        &lt;label class="checkbox"&gt;
-         &lt;input type="checkbox" [(ngModel)]="customGroupHeader" /&gt; GroupHeader
-        &lt;/label&gt;
-        &lt;label class="checkbox"&gt;
-         &lt;input type="checkbox" [(ngModel)]="customGroup" /&gt; Group
-        &lt;/label&gt;
-        &lt;label class="checkbox"&gt;
-         &lt;input type="checkbox" [(ngModel)]="customColumnFooter" /&gt; ColumnFooter
-        &lt;/label&gt;
-        &lt;label class="checkbox"&gt;
-         &lt;input type="checkbox" [(ngModel)]="customBottomLeft" /&gt; BottomLeft
-        &lt;/label&gt;
-    &lt;/div&gt;
+&lt;div class="sGrid"&gt;
+    &lt;table class="table table-condensed table-bordered"&gt;
+        &lt;thead&gt;
+            &lt;tr class="active"&gt;
+                &lt;th class="text-center" *ngFor="let fieldName of fieldNames"&gt;&#123;&#8203;&#123;fieldName}&#8203;}&lt;/th&gt;
+            &lt;/tr&gt;
+        &lt;/thead&gt;
+        &lt;tbody&gt;
+            &lt;tr *ngFor="let item of cvGettingStarted.items"&gt;
+                &lt;td class="text-center" *ngFor="let name of fieldNames"&gt;&#123;&#8203;&#123;item[name] | globalize}&#8203;}&lt;/td&gt;
+            &lt;/tr&gt;
+        &lt;/tbody&gt;
+    &lt;/table&gt;
+&lt;/div&gt;
                     </div>
                 </app-tab-pane>
                 <app-tab-pane title="TS">
                     <div class="pane-content">
- 'use strict';
 
- import &#123; Injectable } from '@angular/core';
+// Angular
+import * as wjcCore from 'wijmo/wijmo';
 
- // Common data service
- @Injectable()
- export class DataSvc &#123;
-     // data used to generate random items
-     getData(): any[] &#123;
-         var countries = 'US,Germany,UK,Japan,Italy,Greece'.split(','),
-         data = [];
-         for (var i = 0; i < 30; i++) &#123;
-             data.push(&#123;
-             id: i,
-             date: new Date(2015, Math.floor(i / countries.length) % 12, (Math.floor(i / countries.length) + 1) % 28),
-             country: countries[i % countries.length],
-             countryMapped: i % countries.length,
-             downloads: Math.round(Math.random() * 20000),
-             sales: Math.random() * 10000,
-             expenses: Math.random() * 5000,
-             checked: i % 9 == 0
-             });
-         }
-        return data;
+import &#123; Component, EventEmitter, Input, Inject, enableProdMode, NgModule } from '@angular/core';
+import &#123; FormsModule } from '@angular/forms';
+import &#123; CommonModule } from '@angular/common';
+import &#123; platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import &#123; BrowserModule } from '@angular/platform-browser';
+import &#123; TabsModule } from './components/AppTab';
+import &#123; GlobalizePipe } from './pipes/appPipes';
+import &#123; DataSvc } from './services/DataSvc';
+
+'use strict';
+
+// The application root component.
+@Component(&#123;
+    selector: 'app-cmp',
+    templateUrl: 'src/app.html'
+})
+
+export class AppCmp &#123;
+
+    cvGettingStarted: wjcCore.CollectionView;
+    fieldNames: string[];
+
+    constructor( @Inject(DataSvc) dataSvc: DataSvc) &#123;
+        // initialize the collectionview
+        this.cvGettingStarted = new wjcCore.CollectionView(dataSvc.getData(10));
+        this.fieldNames = dataSvc.getNames();
     }
-
-     getCv(data: any[]): wijmo.collections.CollectionView &#123;
-         var dataCv = new wijmo.collections.CollectionView(data);
-         dataCv.sortDescriptions.push(new wijmo.collections.SortDescription('date', true));
-         dataCv.groupDescriptions.push(new wijmo.collections.PropertyGroupDescription('country'));
-         return dataCv;
-     }
 }
 
- // Angular
-import &#123; Component, EventEmitter, Input, Inject, enableProdMode, AfterViewInit, NgModule, ViewChild } from '@angular/core';
+@NgModule(&#123;
+    imports: [BrowserModule, FormsModule, TabsModule],
+    declarations: [GlobalizePipe, AppCmp],
+    providers: [DataSvc], 
+    bootstrap: [AppCmp]
+})
+export class AppModule &#123;
+}
+
+
+enableProdMode();
+// Bootstrap application with hash style navigation and global services.
+platformBrowserDynamic().bootstrapModule(AppModule);;
+                    </div>
+                </app-tab-pane>
+                <app-tab-pane title="CSS">
+                    <div class="pane-content">
+/* set default grid height and some shadow */
+.sGrid &#123;
+    background-color: #fff;
+    box-shadow: 4px 4px 10px 0 rgba(50, 50, 50, 0.75);
+    height: 300px;
+    margin-bottom: 12px;
+    overflow: auto;
+}
+                    </div>
+                </app-tab-pane>
+            </app-tab>
+        </div>
+        <div class="col-md-6">
+            <h4>Result (live):</h4>
+            <div class="sGrid">
+                <table class="table table-condensed table-bordered">
+                    <thead>
+                        <tr class="active">
+                            <th class="text-center" *ngFor="let fieldName of fieldNames">{{fieldName}}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of cvGettingStarted.items">
+                            <td class="text-center" *ngFor="let name of fieldNames">{{item[name] | globalize}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- current record management -->
+    <h2>Current Record Management</h2>
+    <p>
+        Since it implements the ICollectionView interface, you can use the CollectionView
+        class to manage the current record.
+    </p>
+    <p>
+        This example shows how you can use the API provided in the CollectionView class to
+        change the current record by clicking a row in the grid or by clicking buttons.
+    </p>
+    <p>
+        We use the <b>currentPosition</b> property to get the position of the current record
+        in the collection, and use the following methods to change the current position:
+    </p>
+    <ul>
+        <li>moveCurrentTo(item)</li>
+        <li>moveCurrentToFirst()</li>
+        <li>moveCurrentToLast()</li>
+        <li>moveCurrentToNext()</li>
+        <li>moveCurrentToPosition(index)</li>
+        <li>moveCurrentToPrevious()</li>
+    </ul>
+    <p>
+        When the position changes, we use the <b>currentChanging</b> and <b>currentChanged</b>
+        events to track it. We can cancel the change of position in the <b>currentChanging</b>
+        event.
+    </p>
+    <p>
+        Click the <b>Next</b> button to set the next record as the current one. Click the
+        <b>Previous</b> button to set the previous record as the current one. Click the
+        <b>Stop at 4th Row</b> button to prevent the current record from being changed once
+        it reaches the 4th row. Click the <b>Clear</b> button to remove the stop and allow
+        the current records to be changed freely.
+    </p>
+    <div class="row" ng-controller="appCRMCtrl">
+        <div class="col-md-6">
+            <app-tab>
+                <app-tab-pane title="HTML">
+                    <div class="pane-content">
+&lt;div class="row-fluid well btn-group"&gt;
+    &lt;button class="btn btn-default" (click)="cvCRM.moveCurrentToNext()"&gt;Next&lt;/button&gt;
+    &lt;button class="btn btn-default" (click)="cvCRM.moveCurrentToPrevious()"&gt;Previous&lt;/button&gt;
+    &lt;button class="btn btn-default" (click)="stopCurrent()"&gt;Stop at 4th Row&lt;/button&gt;
+    &lt;button class="btn btn-default" (click)="reset()"&gt;Clear&lt;/button&gt;
+&lt;/div&gt;
+&lt;div class="sGrid"&gt;
+    &lt;table class="table table-condensed table-bordered"&gt;
+        &lt;thead&gt;
+            &lt;tr class="active"&gt;
+                &lt;th class="text-center" *ngFor="let fieldName of fieldNames"&gt;&#123;&#8203;&#123;fieldName}&#8203;}&lt;/th&gt;
+            &lt;/tr&gt;
+        &lt;/thead&gt;
+        &lt;tbody&gt;
+            &lt;tr *ngFor="let item of cvCRM.items"
+                [ngClass]="&#123;success: item == cvCRM.currentItem}"
+               (click)="cvCRM.moveCurrentTo(item)"&gt;
+                &lt;td class="text-center" *ngFor="let name of fieldNames"&gt;&#123;&#8203;&#123;item[name] | globalize}&#8203;}&lt;/td&gt;
+            &lt;/tr&gt;
+        &lt;/tbody&gt;
+    &lt;/table&gt;
+&lt;/div&gt;
+                    </div>
+                </app-tab-pane>
+                <app-tab-pane title="TS">
+                    <div class="pane-content">
+// The application root component.
+@Component(&#123;
+    selector: 'app-cmp',
+    templateUrl: 'src/app.html'
+})
+
+export class AppCmp &#123;
+
+    cvCRM: wjcCore.CollectionView;
+    fieldNames: string[];
+
+    constructor( @Inject(DataSvc) dataSvc: DataSvc) &#123;
+        // initialize the collectionview
+        this.cvCRM = new wjcCore.CollectionView(dataSvc.getData(10));
+        this.fieldNames = dataSvc.getNames();
+    }
+
+   // current record management
+    stopCurrent() &#123;
+        this.cvCRM.currentChanging.addHandler(this._stopCurrentIn4th);
+    };
+
+    // restore to be able to change current.
+    reset() &#123;
+        this.cvCRM.currentChanging.removeHandler(this._stopCurrentIn4th);
+    };
+
+    // forbid changing current when the current item is the 4th one.
+    private _stopCurrentIn4th(sender, e) &#123;
+        // when the current is the 4rd item, stop moving.
+        if (sender.currentPosition === 3) &#123;
+            e.cancel = true;
+        }
+    }
+}
+
+                    </div>
+                </app-tab-pane>
+            </app-tab>
+        </div>
+        <div class="col-md-6">
+            <h4>Result (live):</h4>
+            <div class="row-fluid well btn-group">
+                <button class="btn btn-default" (click)="cvCRM.moveCurrentToNext()">Next</button>
+                <button class="btn btn-default" (click)="cvCRM.moveCurrentToPrevious()">Previous</button>
+                <button class="btn btn-default" (click)="stopCurrent()">Stop at 4th Row</button>
+                <button class="btn btn-default" (click)="reset()">Clear</button>
+            </div>
+            <div class="sGrid">
+                <table class="table table-condensed table-bordered">
+                    <thead>
+                        <tr class="active">
+                            <th class="text-center" *ngFor="let fieldName of fieldNames">{{fieldName}}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of cvCRM.items"
+                            [ngClass]="{success: item == cvCRM.currentItem}"
+                           (click)="cvCRM.moveCurrentTo(item)">
+                            <td class="text-center" *ngFor="let name of fieldNames">{{item[name] | globalize}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- sorting -->
+    <h2>Sorting</h2>
+    <p>
+        The CollectionView class, like the one in .NET, implements the
+        ICollectionView interface to support sorting. To enable sorting,
+        add one or more <a target="_blank"
+                           href="http://wijmo.com/5/docs/topic/wijmo.collections.SortDescription.Class.html">
+            SortDescription
+        </a> objects to an array and pass it to the
+        CollectionView.sortDescriptions property. Now you can get the sorted
+        results from the <b>CollectionView.items</b> property.
+    </p>
+    <p>
+        SortDescription objects are flexible, allowing you to sort data based
+        on a value in ascending or descending order. In the sample below, click a
+        property in the grid header to sort by that property in ascending order.
+        Click it again to sort by that property in descending order.
+    </p>
+    <div class="row" ng-controller="appSortingCtrl">
+        <div class="col-md-6">
+            <app-tab>
+                <app-tab-pane title="HTML">
+                    <div class="pane-content">
+ &lt;div class="sGrid"&gt;
+     &lt;table class="table table-condensed table-bordered"&gt;
+         &lt;thead&gt;
+             &lt;tr class="active"&gt;
+                 &lt;th class="text-center" *ngFor="let fieldName of fieldNames"
+                     (click)="toggleSort(fieldName)" style="cursor:pointer"&gt;
+                     &#123;&#8203;&#123;fieldName}&#8203;}&lt;span style="color: red"&gt;&#123;&#8203;&#123;getSort(fieldName)}&#8203;}&lt;/span&gt;
+                 &lt;/th&gt;
+             &lt;/tr&gt;
+         &lt;/thead&gt;
+         &lt;tbody&gt;
+             &lt;tr *ngFor="let item of cvSorting.items"&gt;
+                 &lt;td class="text-center" *ngFor="let name of fieldNames"&gt;&#123;&#8203;&#123;item[name] | globalize}&#8203;}&lt;/td&gt;
+             &lt;/tr&gt;
+         &lt;/tbody&gt;
+     &lt;/table&gt;
+ &lt;/div&gt;
+                    </div>
+                </app-tab-pane>
+                <app-tab-pane title="TS">
+                    <div class="pane-content">
+// Angular
+import &#123; Component, EventEmitter, Input, Inject, enableProdMode, NgModule } from '@angular/core';
+import &#123; FormsModule } from '@angular/forms';
+import &#123; CommonModule } from '@angular/common';
+import &#123; platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import &#123; BrowserModule } from '@angular/platform-browser';
+import &#123; TabsModule } from './components/AppTab';
+import &#123; GlobalizePipe } from './pipes/appPipes';
+import &#123; DataSvc } from './services/DataSvc';
+
+'use strict';
+
+// The application root component.
+@Component(&#123;
+    selector: 'app-cmp',
+    templateUrl: 'src/app.html'
+})
+
+export class AppCmp &#123;
+
+    cvSorting: wjcCore.CollectionView;
+    fieldNames: string[];
+
+    constructor( @Inject(DataSvc) dataSvc: DataSvc) &#123;
+        // initialize the collectionview
+        this.cvSorting = new wjcCore.CollectionView(dataSvc.getData(10));
+        this.fieldNames = dataSvc.getNames();
+    }
+
+    // sorting
+    toggleSort(fieldName:string) &#123;
+        // get all the sort descriptions.
+        var sd = this.cvSorting.sortDescriptions;
+        var ascending = true;
+
+        // try to find whether the field has been sorted.
+        if (sd.length > 0 && sd[0].property === fieldName) &#123;
+            // if finded, toggle the sort order.
+            ascending = !sd[0].ascending;
+        }
+
+        // create a new SortDescription object.
+        var sdNew = new wjcCore.SortDescription(fieldName, ascending);
+
+        // remove any old sort descriptors and add the created one.
+        sd.splice(0, sd.length, sdNew);
+    };
+
+    // get the sort label
+    getSort(propName:string) &#123;
+        var sd = this.cvSorting.sortDescriptions;
+        if (sd.length > 0 && sd[0].property === propName) &#123;
+            return sd[0].ascending ? '▲' : '▼';
+        }
+        return '';
+    };
+}
+
+@NgModule(&#123;
+    imports: [BrowserModule, FormsModule, TabsModule],
+    declarations: [GlobalizePipe, AppCmp],
+    providers: [DataSvc], 
+    bootstrap: [AppCmp]
+})
+export class AppModule &#123;
+}
+
+
+enableProdMode();
+// Bootstrap application with hash style navigation and global services.
+platformBrowserDynamic().bootstrapModule(AppModule);
+                    </div>
+                </app-tab-pane>
+            </app-tab>
+        </div>
+        <div class="col-md-6">
+            <h4>Result (live):</h4>
+            <div class="sGrid">
+                <table class="table table-condensed table-bordered">
+                    <thead>
+                        <tr class="active">
+                            <th class="text-center" *ngFor="let fieldName of fieldNames"
+                                (click)="toggleSort(fieldName)" style="cursor:pointer">
+                                {{fieldName}}<span style="color: red">{{getSort(fieldName)}}</span>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of cvSorting.items">
+                            <td class="text-center" *ngFor="let name of fieldNames">{{item[name] | globalize}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!-- filtering -->
+    <h2>Filtering</h2>
+    <p>
+        The CollectionView class, like the one in .NET, implements the ICollectionView
+        interface to support filtering. To enable filtering, set the <b>CollectionView.filter</b>
+        property to a function that determines which objects to include
+        in the view.
+    </p>
+    <p>
+        In this example, we create a filter for the country, and get the filter
+        value from the input control. When you enter a value by which to filter, the grid
+        refreshes and shows only the filtered data.
+    </p>
+    <div class="row" ng-controller="appFilteringCtrl">
+        <div class="col-md-6">
+            <app-tab>
+                <app-tab-pane title="HTML">
+                    <div class="pane-content">
+ &lt;div class="row-fluid well"&gt;
+     &lt;input type="text" class="form-control app-pad" placeholder="Please enter characters for the country by which to filter (case-insensitive)" [(ngModel)]="filter" /&gt;
+ &lt;/div&gt;
+ &lt;div class="sGrid"&gt;
+     &lt;table class="table table-condensed table-bordered"&gt;
+         &lt;thead&gt;
+             &lt;tr class="active"&gt;
+                 &lt;th class="text-center" *ngFor="let fieldName of fieldNames"&gt;&#123;&#8203;&#123;fieldName}&#8203;}&lt;/th&gt;
+             &lt;/tr&gt;
+         &lt;/thead&gt;
+         &lt;tbody&gt;
+             &lt;tr *ngFor="let item of cvFiltering.items"&gt;
+                 &lt;td class="text-center" *ngFor="let name of fieldNames"&gt;&#123;&#8203;&#123;item[name] | globalize}&#8203;}&lt;/td&gt;
+             &lt;/tr&gt;
+         &lt;/tbody&gt;
+     &lt;/table&gt;
+ &lt;/div&gt;
+                    </div>
+                </app-tab-pane>
+                <app-tab-pane title="TS">
+                    <div class="pane-content">
+// The application root component.
+@Component(&#123;
+    selector: 'app-cmp',
+    templateUrl: 'src/app.html'
+})
+
+export class AppCmp &#123;
+
+    cvFiltering: wjcCore.CollectionView;
+    fieldNames: string[];
+    private _toFilter: any;
+    private _thisFilterFunction: wjcCore.IPredicate;
+    private _filter: string;
+
+    constructor( @Inject(DataSvc) dataSvc: DataSvc) &#123;
+        // initialize the collectionview
+        this.cvFiltering = new wjcCore.CollectionView(dataSvc.getData(10));
+	this.fieldNames = dataSvc.getNames();
+        this._thisFilterFunction = this._filterFunction.bind(this);
+    }
+
+    // filtering
+    get filter(): string &#123;
+        return this._filter;
+    }
+    set filter(value: string) &#123;
+        if (this._filter != value) &#123;
+            this._filter = value;
+            this._applyFilter();
+        }
+    }
+
+    
+    // apply filter (applied on a 500 ms timeOut)
+    private _applyFilter() &#123;
+        if (this._toFilter) &#123;
+            clearTimeout(this._toFilter);
+        }
+        //var self = this;
+        this._toFilter = setTimeout(() => &#123;
+            this._toFilter = null;
+            if (this.cvFiltering) &#123;
+                var cv = this.cvFiltering;
+                if (cv) &#123;
+                    if (cv.filter != this._thisFilterFunction) &#123;
+                        cv.filter = this._thisFilterFunction;
+                    } else &#123;
+                        cv.refresh();
+                    }
+                }
+            }
+        }, 500);
+    }
+
+    // ICollectionView filter function
+    private _filterFunction(item: any): boolean &#123;
+        var filter = this.filter.toLowerCase();
+        if (!filter) &#123;
+            return true;
+        }
+        return item['country'].toLowerCase().indexOf(filter) > -1;
+    }
+}
+
+                    </div>
+                </app-tab-pane>
+            </app-tab>
+        </div>
+        <div class="col-md-6">
+            <h4>Result (live):</h4>
+            <div class="row-fluid well">
+                <input type="text" class="form-control app-pad" placeholder="Please enter characters for the country by which to filter (case-insensitive)" [(ngModel)]="filter" />
+            </div>
+            <div class="sGrid">
+                <table class="table table-condensed table-bordered">
+                    <thead>
+                        <tr class="active">
+                            <th class="text-center" *ngFor="let fieldName of fieldNames">{{fieldName}}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of cvFiltering.items">
+                            <td class="text-center" *ngFor="let name of fieldNames">{{item[name] | globalize}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- grouping -->
+    <h2>Grouping</h2>
+    <p>
+        The CollectionView class, like the one in .NET, implements the ICollectionView
+        interface to support grouping. To enable grouping, add one or more <a target="_blank"
+                                                                              href="http://wijmo.com/5/docs/topic/wijmo.collections.GroupDescription.Class.html">
+            GroupDescription
+        </a> objects to an array and pass it to the <b>CollectionView.groupDescriptions</b>
+        property. You must also set the grid's <b>showGroups</b> property to true when creating
+        the grid instance, as the default value is false.
+    </p>
+    <p>
+        <b>GroupDescription</b> objects are flexible, allowing you to group data
+        based on value or on grouping functions.
+    </p>
+    <p>
+        The example below groups the collection by whichever field you select from the
+        list. The grid shows not only the item's content but also group information:
+        the group name and the average value of the amount for the group appear in the
+        group header row.
+    </p>
+    <p>
+        <b>Notes</b>: Selecting one item in the list adds a new instance of the
+        GroupDescription. Subsequent selections nest groups. If you select an item from
+        the list for which a GroupDescription object already exists, nothing happens.
+        In order to clear the group settings, select the first item in the list.
+    </p>
+    <div class="row" ng-controller="appGroupingCtrl">
+        <div class="col-md-6">
+            <app-tab>
+                <app-tab-pane title="HTML">
+                    <div class="pane-content">
+     &lt;select class="form-control" [(ngModel)]="selectedGroupOpt"&gt;
+         &lt;option [ngValue]="''" &gt;Please choose the field by which to group.&lt;/option&gt;
+         &lt;option *ngFor="let name of fieldNames" [ngValue]="name"&gt;&#123;&#8203;&#123;name}&#8203;}&lt;/option&gt;
+     &lt;/select&gt;
+ &lt;/div&gt;
+ &lt;div class="sGrid"&gt;
+     &lt;table class="table table-condensed table-bordered"&gt;
+         &lt;thead&gt;
+             &lt;tr class="active"&gt;
+                 &lt;th class="text-center" *ngFor="let fieldName of fieldNames"&gt;&#123;&#8203;&#123;fieldName}&#8203;}&lt;/th&gt;
+             &lt;/tr&gt;
+         &lt;/thead&gt;
+         &lt;tbody&gt;
+             &lt;tr *ngFor="let item of groupItems"&gt;
+                 &lt;td class="active"  [ngStyle]="&#123;display:isGroupItem(item)? '':'none'}"   colspan="6"&gt;
+                     &lt;span [ngStyle]="&#123;display:'inline-block', width: (item.level*25) + 'px'}"&gt;&lt;/span&gt;
+                     &lt;b&gt;&#123;&#8203;&#123;item.name | globalize}&#8203;}&lt;/b&gt; (&#123;&#8203;&#123;item.items?.length}&#8203;} items)
+                 &lt;/td&gt;
+                 &lt;td class="text-center" colspan="2"  [ngStyle]="&#123;display:isGroupItem(item)? '':'none'}" &gt;
+                     &#123;&#8203;&#123;avgAmount(item)}&#8203;}
+                 &lt;/td&gt;
+                 &lt;td class="text-center" *ngFor="let name of fieldNames"  [ngStyle]="&#123;display:isGroupItem(item)? 'none':''}"&gt;
+                     &#123;&#8203;&#123;item[name] | globalize}&#8203;}
+                 &lt;/td&gt;
+             &lt;/tr&gt;
+         &lt;/tbody&gt;
+     &lt;/table&gt;
+ &lt;/div&gt;
+                    </div>
+                </app-tab-pane>
+                <app-tab-pane title="TS">
+                    <div class="pane-content">
+
+// The application root component.
+@Component(&#123;
+    selector: 'app-cmp',
+    templateUrl: 'src/app.html'
+})
+
+export class AppCmp &#123;
+
+    cvGrouping: wjcCore.CollectionView;
+    fieldNames: string[];
+    groupItems: any;
+
+    private _selectedGroupOpt = '';
+
+    constructor( @Inject(DataSvc) dataSvc: DataSvc) &#123;
+        // initialize the collectionview
+        this.cvGrouping = new wjcCore.CollectionView(dataSvc.getData(20));
+	this.fieldNames = dataSvc.getNames();
+        this.groupItems = this.cvGrouping.items;
+
+	// update the group list
+        this.cvGrouping.collectionChanged.addHandler(() => &#123;
+            this.groupItems = this.cvGrouping.items;
+            if (this.cvGrouping.groups && this.cvGrouping.groups.length > 0) &#123;
+                this.groupItems = [];
+                for (var i = 0; i < this.cvGrouping.groups.length; i++) &#123;
+                    this._addGroup(this.cvGrouping.groups[i]);
+                }
+            }
+        });
+    }
+
+    // grouping
+    get selectedGroupOpt(): string &#123;
+        return this._selectedGroupOpt;
+    }
+    set selectedGroupOpt(value: string) &#123;
+        if (this._selectedGroupOpt != value) &#123;
+            this._selectedGroupOpt = value;
+            this._applyGrouping();
+        }
+    }
+    
+    private _applyGrouping() &#123;
+        var gd,
+            fieldName = this.selectedGroupOpt;
+
+        gd = this.cvGrouping.groupDescriptions;
+
+        if (!fieldName) &#123;
+            // clear all the group settings.
+            gd.splice(0, gd.length);
+            return;
+        }
+
+        if (this._findGroup(fieldName) >= 0) &#123;
+            return;
+        }
+
+        if (fieldName == 'amount') &#123;
+            // when grouping by amount, use ranges instead of specific values
+            gd.push(new wjcCore.PropertyGroupDescription(fieldName, function (item, propName) &#123;
+                var value = item[propName]; // amount
+                if (value > 1000) return 'Large Amounts';
+                if (value > 100) return 'Medium Amounts';
+                if (value > 0) return 'Small Amounts';
+                return 'Negative Amounts';
+            }));
+        }
+        else &#123;
+            // group by specific property values
+            gd.push(new wjcCore.PropertyGroupDescription(fieldName));
+        }
+    }
+
+
+    // check whether the group with the specified property name already exists.
+    private _findGroup(propName: string) &#123;
+        var gd = this.cvGrouping.groupDescriptions;
+        for (var i = 0; i < gd.length; i++) &#123;
+            if (gd[i].propertyName === propName) &#123;
+                return i;
+            }
+        }
+        return -1;
+    }
+}
+
+                    </div>
+                </app-tab-pane>
+            </app-tab>
+        </div>
+        <div class="col-md-6">
+            <h4>Result (live):</h4>
+            <div class="row-fluid well">
+                <select class="form-control" [(ngModel)]="selectedGroupOpt">
+                    <option [ngValue]="''" >Please choose the field by which to group.</option>
+                    <option *ngFor="let name of fieldNames" [ngValue]="name">{{name}}</option>
+                </select>
+            </div>
+            <div class="sGrid">
+                <table class="table table-condensed table-bordered">
+                    <thead>
+                        <tr class="active">
+                            <th class="text-center" *ngFor="let fieldName of fieldNames">{{fieldName}}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of groupItems">
+                            <td class="active"  [ngStyle]="{display:isGroupItem(item)? '':'none'}"   colspan="6">
+                                <span [ngStyle]="{display:'inline-block', width: (item.level*25) + 'px'}"></span>
+                                <b>{{item.name | globalize}}</b> ({{item.items?.length}} items)
+                            </td>
+                            <td class="text-center" colspan="2"  [ngStyle]="{display:isGroupItem(item)? '':'none'}" >
+                                {{avgAmount(item)}}
+                            </td>
+                            <td class="text-center" *ngFor="let name of fieldNames"  [ngStyle]="{display:isGroupItem(item)? 'none':''}">
+                                {{item[name] | globalize}}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- editing -->
+    <h2>Editing</h2>
+    <p>
+        The CollectionView class, like the one in .NET, implements the IEditableCollectionView
+        interface to support editing.
+    </p>
+    <p>
+        This sample shows how you can update, add, and remove items in a collection.
+    </p>
+    <p>
+        In the grid, select a row and press the <b>Edit Detail</b> button below to start
+        editing. When you finish editing in the popup dialog, press the <b>OK</b> button to
+        commit your updates. If you want to add a new record to the  collection, press the
+        <b>Add</b> button and enter content for the item in the popup dialog. Press OK to
+        commit the new record. Select a row and press the <b>Delete</b> button to remove a
+        record from the collection.
+    </p>
+    <div class="row" ng-controller="appEditingCtrl">
+        <div class="col-md-6">
+            <app-tab>
+                <app-tab-pane title="HTML">
+                    <div class="pane-content">
+&lt;div class="sGrid"&gt;
+    &lt;table class="table table-condensed table-bordered"&gt;
+        &lt;thead&gt;
+            &lt;tr class="active"&gt;
+                &lt;th class="text-center" *ngFor="let fieldName of fieldNames"&gt;&#123;&#8203;&#123;fieldName}&#8203;}&lt;/th&gt;
+            &lt;/tr&gt;
+        &lt;/thead&gt;
+        &lt;tbody&gt;
+            &lt;tr *ngFor="let item of cvEditing.items"
+                (click)="cvEditing.moveCurrentTo(item)"
+                [ngClass]="&#123;success: item == cvEditing.currentItem}"&gt;
+                &lt;td class="text-center" *ngFor="let name of fieldNames"&gt;&#123;&#8203;&#123;item[name] | globalize}&#8203;}&lt;/td&gt;
+            &lt;/tr&gt;
+        &lt;/tbody&gt;
+    &lt;/table&gt;
+&lt;/div&gt;
+
+&lt;!-- commands --&gt;
+&lt;div class="row-fluid well"&gt;
+    &lt;!-- edit details in a popup --&gt;
+    &lt;button class="btn btn-default" data-toggle="modal" data-target="#dlgDetail"
+            (click)="cvEditing.editItem(currentItem)"
+            [disabled]="!currentItem"&gt;
+        Edit Detail...
+    &lt;/button&gt;
+    &lt;button class="btn btn-default" data-toggle="modal" data-target="#dlgDetail" (click)="cvEditing.addNew()"&gt;
+        Add...
+    &lt;/button&gt;
+    &lt;button class="btn btn-default"
+    (click)="cvEditing.remove(currentItem)"
+    [disabled]="!currentItem"&gt;
+        Delete
+    &lt;/button&gt;
+&lt;/div&gt;
+
+&lt;!-- a dialog for editing item details --&gt;
+&lt;div class="modal fade" id="dlgDetail"&gt;
+    &lt;div class="modal-dialog"&gt;
+        &lt;div class="modal-content"&gt;
+            &lt;div class="modal-header"&gt;
+                &lt;button type="button" class="close" data-dismiss="modal" aria-hidden="true"&gt;
+                    &times;
+                &lt;/button&gt;
+                &lt;h4 class="modal-title"&gt;Edit Item&lt;/h4&gt;
+            &lt;/div&gt;
+            &lt;div class="modal-body"&gt;
+                &lt;dl class="dl-horizontal"&gt;
+                    &lt;dt&gt;ID&lt;/dt&gt;
+                    &lt;dd&gt;
+                        &lt;input class="form-control" type="text"  [(ngModel)]="currentItem.id" /&gt;
+                    &lt;/dd&gt;
+                    &lt;dt&gt;Start Date&lt;/dt&gt;
+                    &lt;dd&gt;
+                        &lt;input formatted-model class="form-control" type="text"   [(ngModel)]="currentItem.start" /&gt;
+                    &lt;/dd&gt;
+                    &lt;dt&gt;End Start&lt;/dt&gt;
+                    &lt;dd&gt;
+                        &lt;input formatted-model class="form-control" type="text" [(ngModel)]="currentItem.end" /&gt;
+                    &lt;/dd&gt;
+                    &lt;dt&gt;Country&lt;/dt&gt;
+                    &lt;dd&gt;
+                        &lt;input class="form-control" type="text" [(ngModel)]="currentItem.country" /&gt;
+                    &lt;/dd&gt;
+                    &lt;dt&gt;Product&lt;/dt&gt;
+                    &lt;dd&gt;
+                        &lt;input class="form-control" type="text"[(ngModel)]="currentItem.product" /&gt;
+                    &lt;/dd&gt;
+                    &lt;dt&gt;Color&lt;/dt&gt;
+                    &lt;dd&gt;
+                        &lt;input class="form-control" type="text" [(ngModel)]="currentItem.color" /&gt;
+                    &lt;/dd&gt;
+                    &lt;dt&gt;Amount&lt;/dt&gt;
+                    &lt;dd&gt;
+                        &lt;input class="form-control" type="text" [(ngModel)]="currentItem.amount" /&gt;
+                    &lt;/dd&gt;
+                    &lt;dt&gt;Active&lt;/dt&gt;
+                    &lt;dd&gt;
+                        &lt;input class="form-control" type="checkbox" [(ngModel)]="currentItem.active" /&gt;
+                    &lt;/dd&gt;
+                &lt;/dl&gt;
+            &lt;/div&gt;
+            &lt;div class="modal-footer"&gt;
+                &lt;button type="button" class="btn btn-primary" data-dismiss="modal" (click)="confirmUpdate()"&gt;
+                    OK
+                &lt;/button&gt;
+                &lt;button type="button" class="btn btn-warning" data-dismiss="modal" (click)="cancelUpdate()"&gt;
+                    Cancel
+                &lt;/button&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+                    </div>
+                </app-tab-pane>
+                <app-tab-pane title="TS">
+                    <div class="pane-content">
+// The application root component.
+@Component(&#123;
+    selector: 'app-cmp',
+    templateUrl: 'src/app.html'
+})
+
+export class AppCmp &#123;
+
+    cvEditing: wjcCore.CollectionView;
+    fieldNames: string[];
+    currentItem: any;
+
+    constructor( @Inject(DataSvc) dataSvc: DataSvc) &#123;
+        // initialize the collectionview
+        this.cvEditing = new wjcCore.CollectionView(dataSvc.getData(20));
+	this.fieldNames = dataSvc.getNames();
+	this.currentItem = this.cvEditing.currentItem;
+
+        // define the new item value.
+        this.cvEditing.newItemCreator = () => &#123;
+            var item = dataSvc.getData(1)[0];
+
+            // aggregate the max value of id in the collection.
+            item.id = wijmo.getAggregate(wijmo.Aggregate.Max, this.cvEditing.sourceCollection, 'id') + 1;
+            return item;
+        }
+	// syn the scope currentItem with the collectionview.
+        this.cvEditing.currentChanged.addHandler(() => &#123;
+            this.currentItem = this.cvEditing.currentItem;
+        });
+    }
+    // editing
+    confirmUpdate() &#123;
+        // commit editing/adding
+        this.cvEditing.commitEdit();
+        this.cvEditing.commitNew();
+    };
+    cancelUpdate() &#123;
+        // cancel editing or adding
+        this.cvEditing.cancelEdit();
+        this.cvEditing.cancelNew();
+    };
+}
+
+                    </div>
+                </app-tab-pane>
+            </app-tab>
+        </div>
+        <div class="col-md-6">
+            <h4>Result (live):</h4>
+            <div class="sGrid">
+                <table class="table table-condensed table-bordered">
+                    <thead>
+                        <tr class="active">
+                            <th class="text-center" *ngFor="let fieldName of fieldNames">{{fieldName}}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of cvEditing.items"
+                            (click)="cvEditing.moveCurrentTo(item)"
+                            [ngClass]="{success: item == cvEditing.currentItem}">
+                            <td class="text-center" *ngFor="let name of fieldNames">{{item[name] | globalize}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- commands -->
+            <div class="row-fluid well">
+                <!-- edit details in a popup -->
+                <button class="btn btn-default" data-toggle="modal" data-target="#dlgDetail"
+                        (click)="cvEditing.editItem(currentItem)"
+                        [disabled]="!currentItem">
+                    Edit Detail...
+                </button>
+                <button class="btn btn-default" data-toggle="modal" data-target="#dlgDetail" (click)="cvEditing.addNew()">
+                    Add...
+                </button>
+                <button class="btn btn-default"
+                (click)="cvEditing.remove(currentItem)"
+                [disabled]="!currentItem">
+                    Delete
+                </button>
+            </div>
+            
+            <!-- a dialog for editing item details -->
+            <div class="modal fade" id="dlgDetail" *ngIf="currentItem">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                &times;
+                            </button>
+                            <h4 class="modal-title">Edit Item</h4>
+                        </div>
+                        <div class="modal-body">
+                            <dl class="dl-horizontal">
+                                <dt>ID</dt>
+                                <dd>
+                                    <input class="form-control" type="text"  [(ngModel)]="currentItem.id" />
+                                </dd>
+                                <dt>Start Date</dt>
+                                <dd>
+                                    <input formatted-model class="form-control" type="text"   [(ngModel)]="currentItem.start" />
+                                </dd>
+                                <dt>End Start</dt>
+                                <dd>
+                                    <input formatted-model class="form-control" type="text" [(ngModel)]="currentItem.end" />
+                                </dd>
+                                <dt>Country</dt>
+                                <dd>
+                                    <input class="form-control" type="text" [(ngModel)]="currentItem.country" />
+                                </dd>
+                                <dt>Product</dt>
+                                <dd>
+                                    <input class="form-control" type="text"[(ngModel)]="currentItem.product" />
+                                </dd>
+                                <dt>Color</dt>
+                                <dd>
+                                    <input class="form-control" type="text" [(ngModel)]="currentItem.color" />
+                                </dd>
+                                <dt>Amount</dt>
+                                <dd>
+                                    <input class="form-control" type="text" [(ngModel)]="currentItem.amount" />
+                                </dd>
+                                <dt>Active</dt>
+                                <dd>
+                                    <input class="form-control" type="checkbox" [(ngModel)]="currentItem.active" />
+                                </dd>
+                            </dl>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="confirmUpdate()">
+                                OK
+                            </button>
+                            <button type="button" class="btn btn-warning" data-dismiss="modal" (click)="cancelUpdate()">
+                                Cancel
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- paging -->
+    <h2>Paging</h2>
+    <p>
+        The CollectionView class, like the one in .NET, implements the
+        <b>IPagedCollectionView</b> interface to support paging.
+        To enable paging, set the <b>IPagedCollectionView.pageSize</b>
+        property to the number of items you want on each page, and provide a UI
+        for navigating the pages.
+    </p>
+    <p>
+        In this example, the CollectionView object is initialized to show 10 items
+        per page. You can customize it in the text box. We add navigation buttons, and
+        call IPagedCollectionView methods in the button click event. Note that we use the
+        <strong>pageIndex</strong> and <strong>pageCount</strong> properties to show
+        the current page and total number of pages. You can customize the page size in
+        the first text box. Leave it empty or set it to 0 to disable paging and hide
+        the navigation buttons.
+    </p>
+    <div class="row" ng-controller="appPagingCtrl">
+        <div class="col-md-6">
+            <app-tab>
+                <app-tab-pane title="HTML">
+                    <div class="pane-content">
+&lt;div class="row-fluid well row"&gt;
+    &lt;div class="col-md-5"&gt;
+        &lt;input number-input type="text" class="form-control" placeholder="0 or empty is for no paging." [(ngModel)]="cvPaging.pageSize" /&gt;
+    &lt;/div&gt;
+    &lt;div class="btn-group col-md-7"  &gt;
+        &lt;button type="button" class="btn btn-default"
+                [disabled]="cvPaging.pageIndex &lt;= 0"
+                (click)="cvPaging.moveToFirstPage()"&gt;
+            &lt;span class="glyphicon glyphicon-fast-backward"&gt;&lt;/span&gt;
+        &lt;/button&gt;
+        &lt;button type="button" class="btn btn-default"
+        [disabled]="cvPaging.pageIndex &lt;= 0"
+        (click)="cvPaging.moveToPreviousPage()"&gt;
+            &lt;span class="glyphicon glyphicon-step-backward"&gt;&lt;/span&gt;
+        &lt;/button&gt;
+        &lt;button type="button" class="btn btn-default" disabled style="width:100px"&gt;
+            &#123;&#8203;&#123;cvPaging.pageIndex + 1 | number}&#8203;}
+            / &#123;&#8203;&#123;cvPaging.pageCount | number}&#8203;}
+        &lt;/button&gt;
+        &lt;button type="button" class="btn btn-default"
+        [disabled]="cvPaging.pageIndex &gt;= cvPaging.pageCount - 1"
+        (click)="cvPaging.moveToNextPage()"&gt;
+            &lt;span class="glyphicon glyphicon-step-forward"&gt;&lt;/span&gt;
+        &lt;/button&gt;
+        &lt;button type="button" class="btn btn-default"
+        [disabled]="cvPaging.pageIndex &gt;= cvPaging.pageCount - 1"
+        (click)="cvPaging.moveToLastPage()"&gt;
+            &lt;span class="glyphicon glyphicon-fast-forward"&gt;&lt;/span&gt;
+        &lt;/button&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sGrid"&gt;
+    &lt;table class="table table-condensed table-bordered"&gt;
+        &lt;thead&gt;
+            &lt;tr class="active"&gt;
+                &lt;th class="text-center" *ngFor="let fieldName of fieldNames"&gt;&#123;&#8203;&#123;fieldName}&#8203;}&lt;/th&gt;
+            &lt;/tr&gt;
+        &lt;/thead&gt;
+        &lt;tbody&gt;
+            &lt;tr *ngFor="let item of cvPaging.items"&gt;
+                &lt;td class="text-center" *ngFor="let name of fieldNames"&gt;&#123;&#8203;&#123;item[name] | globalize}&#8203;}&lt;/td&gt;
+            &lt;/tr&gt;
+        &lt;/tbody&gt;
+    &lt;/table&gt;
+&lt;/div&gt;
+                    </div>
+                </app-tab-pane>
+                <app-tab-pane title="TS">
+                    <div class="pane-content">
+// The application root component.
+@Component(&#123;
+    selector: 'app-cmp',
+    templateUrl: 'src/app.html'
+})
+
+export class AppCmp &#123;
+
+    cvPaging: wjcCore.CollectionView;
+    fieldNames: string[];
+    currentItem: any;
+
+    constructor( @Inject(DataSvc) dataSvc: DataSvc) &#123;
+        // initialize the collectionview
+        this.cvPaging = new wjcCore.CollectionView(dataSvc.getData(20));
+	    this.fieldNames = dataSvc.getNames();
+        this.cvPaging.pageSize = 10;
+    } 
+
+}
+
+                    </div>
+                </app-tab-pane>
+            </app-tab>
+        </div>
+        <div class="col-md-6">
+            <h4>Result (live):</h4>
+            <div class="row-fluid well row">
+                <div class="col-md-5">
+                    <input number-input type="text" class="form-control" placeholder="0 or empty is for no paging." [(ngModel)]="cvPaging.pageSize" />
+                </div>
+                <div class="btn-group col-md-7"  >
+                    <button type="button" class="btn btn-default"
+                            [disabled]="cvPaging.pageIndex <= 0"
+                            (click)="cvPaging.moveToFirstPage()">
+                        <span class="glyphicon glyphicon-fast-backward"></span>
+                    </button>
+                    <button type="button" class="btn btn-default"
+                    [disabled]="cvPaging.pageIndex <= 0"
+                    (click)="cvPaging.moveToPreviousPage()">
+                        <span class="glyphicon glyphicon-step-backward"></span>
+                    </button>
+                    <button type="button" class="btn btn-default" disabled style="width:100px">
+                        {{cvPaging.pageIndex + 1 | number}}
+                        / {{cvPaging.pageCount | number}}
+                    </button>
+                    <button type="button" class="btn btn-default"
+                    [disabled]="cvPaging.pageIndex >= cvPaging.pageCount - 1"
+                    (click)="cvPaging.moveToNextPage()">
+                        <span class="glyphicon glyphicon-step-forward"></span>
+                    </button>
+                    <button type="button" class="btn btn-default"
+                    [disabled]="cvPaging.pageIndex >= cvPaging.pageCount - 1"
+                    (click)="cvPaging.moveToLastPage()">
+                        <span class="glyphicon glyphicon-fast-forward"></span>
+                    </button>
+                </div>
+            </div>
+            <div class="sGrid">
+                <table class="table table-condensed table-bordered">
+                    <thead>
+                        <tr class="active">
+                            <th class="text-center" *ngFor="let fieldName of fieldNames">{{fieldName}}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of cvPaging.items">
+                            <td class="text-center" *ngFor="let name of fieldNames">{{item[name] | globalize}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- tracking changes -->
+    <h2>Tracking changes</h2>
+    <p>
+        The <b>CollectionView</b> class can keep track of changes made to the
+        data. This is useful in situations where you must submit changes
+        to the server. To turn on change tracking, set the <b>trackChanges</b>
+        property to true. Once you do that, the <b>CollectionView</b> keeps
+        track of any changes made to the data and exposes them in three
+        arrays:
+    </p>
+    <ul>
+        <li>
+            <b>itemsEdited</b>: This list contains items that are edited using
+            the <b>beginEdit</b> and <b>commitEdit</b> methods.
+        </li>
+        <li>
+            <b>itemsAdded</b>: This list contains items that are added using the
+            <b>addNew</b> and <b>commitNew</b> methods.
+        </li>
+        <li>
+            <b>itemsRemoved</b>: This list contains items that are removed using
+            the <b>remove</b> method.
+        </li>
+    </ul>
+    <p>
+        This feature is demonstrated below using a <b>FlexGrid</b>. The grid is bound
+        to a <b>CollectionView</b> with <b>trackChanges</b> set to true.
+    </p>
+    <div class="row" ng-controller="appTCCtrl">
+        <div class="col-md-6">
+            <app-tab>
+                <app-tab-pane title="HTML">
+                    <div class="pane-content">
+&lt;h5&gt;Change the data here&lt;/h5&gt;
+&lt;wj-flex-grid class="sGrid"
+[itemsSource]="cvTrackingChanges"
+              [allowAddNew]="true"
+              [allowDelete]="true"&gt;
+&lt;/wj-flex-grid&gt;
+&lt;h5&gt;See the changes here&lt;/h5&gt;
+&lt;h6&gt;Items edited:&lt;/h6&gt;
+&lt;wj-flex-grid class="tcGrid"
+              style="background:#eeeeff"
+              [itemsSource]="cvTrackingChanges.itemsEdited"
+              [isReadOnly]="true"&gt;
+    &lt;wj-flex-grid-column binding="id" header="id" [dataType]="'Number'"&gt;&lt;/wj-flex-grid-column&gt;
+    &lt;wj-flex-grid-column binding="start" header="start"&gt;&lt;/wj-flex-grid-column&gt;
+    &lt;wj-flex-grid-column binding="end" header="end"&gt;&lt;/wj-flex-grid-column&gt;
+    &lt;wj-flex-grid-column binding="country" header="country"&gt;&lt;/wj-flex-grid-column&gt;
+    &lt;wj-flex-grid-column binding="product" header="product"&gt;&lt;/wj-flex-grid-column&gt;
+    &lt;wj-flex-grid-column binding="color" header="color"&gt;&lt;/wj-flex-grid-column&gt;
+    &lt;wj-flex-grid-column binding="amount" header="amount" [dataType]="'Number'"&gt;&lt;/wj-flex-grid-column&gt;
+    &lt;wj-flex-grid-column binding="active" header="active"[dataType]="'Boolean'"&gt;&lt;/wj-flex-grid-column&gt;
+&lt;/wj-flex-grid&gt;
+&lt;h6&gt;Items added:&lt;/h6&gt;
+&lt;wj-flex-grid class="tcGrid"
+              style="background:#eeeeff"
+                [itemsSource]="cvTrackingChanges.itemsAdded"
+             [isReadOnly]="true"&gt;
+    &lt;wj-flex-grid-column binding="id" header="id" [dataType]="'Number'"&gt;&lt;/wj-flex-grid-column&gt;
+    &lt;wj-flex-grid-column binding="start" header="start"&gt;&lt;/wj-flex-grid-column&gt;
+    &lt;wj-flex-grid-column binding="end" header="end"&gt;&lt;/wj-flex-grid-column&gt;
+    &lt;wj-flex-grid-column binding="country" header="country"&gt;&lt;/wj-flex-grid-column&gt;
+    &lt;wj-flex-grid-column binding="product" header="product"&gt;&lt;/wj-flex-grid-column&gt;
+    &lt;wj-flex-grid-column binding="color" header="color"&gt;&lt;/wj-flex-grid-column&gt;
+    &lt;wj-flex-grid-column binding="amount" header="amount" [dataType]="'Number'"&gt;&lt;/wj-flex-grid-column&gt;
+    &lt;wj-flex-grid-column binding="active" header="active" [dataType]="'Boolean'"&gt;&lt;/wj-flex-grid-column&gt;
+&lt;/wj-flex-grid&gt;
+&lt;h6&gt;Items removed:&lt;/h6&gt;
+&lt;wj-flex-grid class="tcGrid"
+              style="background:#eeeeff"
+[itemsSource]="cvTrackingChanges.itemsRemoved"
+[isReadOnly]="true"&gt;
+    &lt;wj-flex-grid-column binding="id" header="id" [dataType]="'Number'"&gt;&lt;/wj-flex-grid-column&gt;
+    &lt;wj-flex-grid-column binding="start" header="start"&gt;&lt;/wj-flex-grid-column&gt;
+    &lt;wj-flex-grid-column binding="end" header="end"&gt;&lt;/wj-flex-grid-column&gt;
+    &lt;wj-flex-grid-column binding="country" header="country"&gt;&lt;/wj-flex-grid-column&gt;
+    &lt;wj-flex-grid-column binding="product" header="product"&gt;&lt;/wj-flex-grid-column&gt;
+    &lt;wj-flex-grid-column binding="color" header="color"&gt;&lt;/wj-flex-grid-column&gt;
+    &lt;wj-flex-grid-column binding="amount" header="amount" [dataType]="'Number'"&gt;&lt;/wj-flex-grid-column&gt;
+    &lt;wj-flex-grid-column binding="active" header="active" [dataType]="'Boolean'"&gt;&lt;/wj-flex-grid-column&gt;
+&lt;/wj-flex-grid&gt;
+
+                    </div>
+                </app-tab-pane>
+                <app-tab-pane title="TS">
+                    <div class="pane-content">
+import &#123; Component, EventEmitter, Input, Inject, enableProdMode, NgModule } from '@angular/core';
 import &#123; FormsModule } from '@angular/forms';
 import &#123; CommonModule } from '@angular/common';
 import &#123; platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import &#123; BrowserModule } from '@angular/platform-browser';
 import &#123; WjCoreModule } from 'wijmo/wijmo.angular2.core';
 import &#123; WjGridModule } from 'wijmo/wijmo.angular2.grid';
-import &#123; WjChartModule } from 'wijmo/wijmo.angular2.chart';
 import &#123; WjInputModule } from 'wijmo/wijmo.angular2.input';
 import &#123; TabsModule } from './components/AppTab';
+import &#123; GlobalizePipe } from './pipes/appPipes';
 import &#123; DataSvc } from './services/DataSvc';
-import &#123; CountryGroupHeaderTemplate } from './CellTemplates/CountryGroupHeaderTemplate';
-import &#123; StatGroupTemplate } from './CellTemplates/StatGroupTemplate';
-import &#123; StatHeaderTemplate } from './CellTemplates/StatHeaderTemplate';
+// The application root component.
+@Component(&#123;
+    selector: 'app-cmp',
+    templateUrl: 'src/app.html',
+})
 
- 'use strict';
+export class AppCmp &#123;
 
- // The application root component.
- @Component(&#123;
-     selector: 'app-cmp',
-     templateUrl: 'src/app.html',
-     directives: [CORE_DIRECTIVES, FORM_DIRECTIVES, AppTab, AppTabPane,
-     wjNg2Grid.WjFlexGrid, wjNg2Grid.WjFlexGridColumn, wjNg2Grid.WjFlexGridCellTemplate, wjNg2Grid.WjTemplateCmp,
-     wjNg2Core.WjComponentLoader, wjNg2Core.WjHtmlLoader,
-     wjNg2Chart.WjFlexChart, wjNg2Chart.WjFlexChartLegend, wjNg2Chart.WjFlexChartSeries, wjNg2Chart.WjFlexChartAxis,
-     wjNg2Chart.WjFlexPie, wjNg2Chart.WjFlexPieDataLabel,
-     wjNg2Input.WjComboBox, wjNg2Input.WjInputNumber, wjNg2Input.WjMenu, wjNg2Input.WjMenuItem, wjNg2Input.WjListBox]
- })
+    cvTrackingChanges: wjcCore.CollectionView;
+    fieldNames: string[];
 
- export class AppCmp &#123;
-     countries = 'US,Germany,UK,Japan,Italy,Greece'.split(',');
-     data1: wijmo.collections.CollectionView;
+    constructor( @Inject(DataSvc) dataSvc: DataSvc) &#123;
+        // initialize the collectionview
+        this.cvTrackingChanges = new wjcCore.CollectionView(dataSvc.getData(6));
+	this.fieldNames = dataSvc.getNames();
+        this.cvTrackingChanges.trackChanges = true;
+    } 
 
-     customTopLeft = true;
-     customRowHeader = true;
-     customRowHeaderEdit = true;
-     customCell = true;
-     customCellEdit = true;
-     customColumnHeader = true;
-     customGroupHeader = true;
-     customGroup = true;
-     customColumnFooter = true;
-     customBottomLeft = true;
-
-     uiCtx = &#123;
-         highlightDownloads: true
-     };
-
-     @ViewChild('flex1') flex1: wijmo.grid.FlexGrid;
-
-     protected dataSvc: DataSvc;
-
-     constructor( @Inject(DataSvc) dataSvc: DataSvc) &#123;
-         this.dataSvc = dataSvc;
-         var data = dataSvc.getData();
-         this.data1 = dataSvc.getCv(data);
-     }
-
-     ngAfterViewInit() &#123;
-        if (this.flex1) &#123;
-            this.flex1.columnFooters.rows.push(new wijmo.grid.GroupRow());
-        }
-    }
 }
+
 @NgModule(&#123;
-    imports: [WjCoreModule, WjInputModule, WjGridModule, WjChartModule, BrowserModule, FormsModule, TabsModule],
-    declarations: [CountryGroupHeaderTemplate, StatGroupTemplate, StatHeaderTemplate, AppCmp],
-    entryComponents: [CountryGroupHeaderTemplate, StatGroupTemplate, StatHeaderTemplate],
-    providers: [DataSvc],
+    imports: [WjCoreModule, WjInputModule, WjGridModule, BrowserModule, FormsModule, TabsModule],
+    declarations: [GlobalizePipe, AppCmp],
+    providers: [DataSvc], 
     bootstrap: [AppCmp]
 })
 export class AppModule &#123;
 }
                     </div>
                 </app-tab-pane>
+                <app-tab-pane title="CSS">
+                    <div class="pane-content">
+ /* set default grid height and some shadow */
+ .sGrid &#123;
+     background-color: #fff;
+     box-shadow: 4px 4px 10px 0 rgba(50, 50, 50, 0.75);
+     height: 300px;
+     margin-bottom: 12px;
+     overflow: auto;
+ }
+
+ /* set the record grids height and some shadow */
+ .tcGrid &#123;
+     background-color: #fff;
+     box-shadow: 4px 4px 10px 0 rgba(50, 50, 50, 0.75);
+     height: 100px;
+     margin-bottom: 12px;
+     overflow: auto;
+ }
+                    </div>
+                </app-tab-pane>
             </app-tab>
         </div>
         <div class="col-md-6">
             <h4>Result (live):</h4>
-            <wj-flex-grid #flex1
-                          [itemsSource]="data1"
-                          [allowSorting]="false"
-                          [deferResizing]="true">
-
-                <template wjFlexGridCellTemplate [cellType]="'TopLeft'" *ngIf="customTopLeft">
-                        №
-                </template>
-                <template wjFlexGridCellTemplate [cellType]="'BottomLeft'" *ngIf="customBottomLeft">
-                    &#931;
-                </template>
-                <template wjFlexGridCellTemplate [cellType]="'RowHeader'" *ngIf="customRowHeader" let-cell="cell">
-                        {{cell.row.index}}
-                </template>
-                <template wjFlexGridCellTemplate [cellType]="'RowHeaderEdit'" *ngIf="customRowHeaderEdit">
-                        ...
-                </template>
-
-                <wj-flex-grid-column header="Country"
-                                     binding="country"
-                                     width="*">
-                    <template wjFlexGridCellTemplate [cellType]="'Cell'" *ngIf="customCell" let-item="item">   
-                            <img src="resources/{{item.country}}.png" />                        
-                            {{item.country}}
-                    </template>
-                    <template wjFlexGridCellTemplate [cellType]="'CellEdit'" *ngIf="customCellEdit" let-cell="cell">
-                            <wj-combo-box [itemsSource]="countries"
-                                          [(selectedValue)]="cell.value"
-                                          [isEditable]="false"></wj-combo-box>
-                    </template>
-                    <template wjFlexGridCellTemplate [cellType]="'GroupHeader'" *ngIf="customGroupHeader" let-cell="cell">
-                            <input type="checkbox" [(ngModel)]="cell.row.isCollapsed" />
-                            {{cell.item.name}} ({{cell.item.items.length}} items)
-                    </template>
-                </wj-flex-grid-column>
-
-                <wj-flex-grid-column header="Downloads"
-                                     binding="downloads"
-                                     [width]="170"
-                                     [aggregate]="'Sum'">
-                    <template wjFlexGridCellTemplate [cellType]="'ColumnHeader'" *ngIf="customColumnHeader">
-                            <input type="checkbox" [(ngModel)]="uiCtx.highlightDownloads" />
-                            Downloads
-                    </template>
-                    <template wjFlexGridCellTemplate [cellType]="'Cell'" *ngIf="customCell" let-item="item">
-                            <span [ngStyle]="{color: uiCtx.highlightDownloads? (item.downloads>10000 ?'green':'red'):''}"
-                                  style="font-weight:700">
-                                {{item.downloads}}
-                            </span>
-                    </template>
-                    <template wjFlexGridCellTemplate [cellType]="'CellEdit'" *ngIf="customCellEdit" let-cell="cell">
-                            <wj-input-number [(value)]="cell.value"
-                                             [step]="1"></wj-input-number>
-                    </template>
-                    <template wjFlexGridCellTemplate [cellType]="'Group'" *ngIf="customGroup" let-cell="cell">
-                             Sum = {{cell.value | number:'1.0-0'}}
-                    </template>
-                    <template wjFlexGridCellTemplate [cellType]="'ColumnFooter'" *ngIf="customColumnFooter" let-cell="cell">
-                        Sum:  {{cell.value | number:'1.0-0'}}
-                    </template>
-                </wj-flex-grid-column>
-
+            <h5>Change the data here</h5>
+            <wj-flex-grid class="sGrid"
+            [itemsSource]="cvTrackingChanges"
+                          [allowAddNew]="true"
+                          [allowDelete]="true">
             </wj-flex-grid>
-
-            <div class="checkbox-list">
-                <label class="checkbox">
-                    <input type="checkbox" [(ngModel)]="customTopLeft" /> TopLeft
-                </label>
-                <label class="checkbox">
-                    <input type="checkbox" [(ngModel)]="customRowHeader" /> RowHeader
-                </label>
-                <label class="checkbox">
-                    <input type="checkbox" [(ngModel)]="customRowHeaderEdit" /> RowHeaderEdit
-                </label>
-                <label class="checkbox">
-                    <input type="checkbox" [(ngModel)]="customCell" /> Cell
-                </label>
-                <label class="checkbox">
-                    <input type="checkbox" [(ngModel)]="customCellEdit" /> CellEdit
-                </label>
-                <label class="checkbox">
-                    <input type="checkbox" [(ngModel)]="customColumnHeader" /> ColumnHeader
-                </label>
-                <label class="checkbox">
-                    <input type="checkbox" [(ngModel)]="customGroupHeader" /> GroupHeader
-                </label>
-                <label class="checkbox">
-                    <input type="checkbox" [(ngModel)]="customGroup" /> Group
-                </label>
-                <label class="checkbox">
-                    <input type="checkbox" [(ngModel)]="customColumnFooter" /> ColumnFooter
-                </label>
-                <label class="checkbox">
-                    <input type="checkbox" [(ngModel)]="customBottomLeft" /> BottomLeft
-                </label>
-            </div>
+            <h5>See the changes here</h5>
+            <h6>Items edited:</h6>
+            <wj-flex-grid class="tcGrid"
+                          style="background:#eeeeff"
+                          [itemsSource]="cvTrackingChanges.itemsEdited"
+                          [isReadOnly]="true">
+                <wj-flex-grid-column binding="id" header="id" [dataType]="'Number'"></wj-flex-grid-column>
+                <wj-flex-grid-column binding="start" header="start"></wj-flex-grid-column>
+                <wj-flex-grid-column binding="end" header="end"></wj-flex-grid-column>
+                <wj-flex-grid-column binding="country" header="country"></wj-flex-grid-column>
+                <wj-flex-grid-column binding="product" header="product"></wj-flex-grid-column>
+                <wj-flex-grid-column binding="color" header="color"></wj-flex-grid-column>
+                <wj-flex-grid-column binding="amount" header="amount" [dataType]="'Number'"></wj-flex-grid-column>
+                <wj-flex-grid-column binding="active" header="active"[dataType]="'Boolean'"></wj-flex-grid-column>
+            </wj-flex-grid>
+            <h6>Items added:</h6>
+            <wj-flex-grid class="tcGrid"
+                          style="background:#eeeeff"
+                            [itemsSource]="cvTrackingChanges.itemsAdded"
+                         [isReadOnly]="true">
+                <wj-flex-grid-column binding="id" header="id" [dataType]="'Number'"></wj-flex-grid-column>
+                <wj-flex-grid-column binding="start" header="start"></wj-flex-grid-column>
+                <wj-flex-grid-column binding="end" header="end"></wj-flex-grid-column>
+                <wj-flex-grid-column binding="country" header="country"></wj-flex-grid-column>
+                <wj-flex-grid-column binding="product" header="product"></wj-flex-grid-column>
+                <wj-flex-grid-column binding="color" header="color"></wj-flex-grid-column>
+                <wj-flex-grid-column binding="amount" header="amount" [dataType]="'Number'"></wj-flex-grid-column>
+                <wj-flex-grid-column binding="active" header="active" [dataType]="'Boolean'"></wj-flex-grid-column>
+            </wj-flex-grid>
+            <h6>Items removed:</h6>
+            <wj-flex-grid class="tcGrid"
+                          style="background:#eeeeff"
+            [itemsSource]="cvTrackingChanges.itemsRemoved"
+            [isReadOnly]="true">
+                <wj-flex-grid-column binding="id" header="id" [dataType]="'Number'"></wj-flex-grid-column>
+                <wj-flex-grid-column binding="start" header="start"></wj-flex-grid-column>
+                <wj-flex-grid-column binding="end" header="end"></wj-flex-grid-column>
+                <wj-flex-grid-column binding="country" header="country"></wj-flex-grid-column>
+                <wj-flex-grid-column binding="product" header="product"></wj-flex-grid-column>
+                <wj-flex-grid-column binding="color" header="color"></wj-flex-grid-column>
+                <wj-flex-grid-column binding="amount" header="amount" [dataType]="'Number'"></wj-flex-grid-column>
+                <wj-flex-grid-column binding="active" header="active" [dataType]="'Boolean'"></wj-flex-grid-column>
+            </wj-flex-grid>
         </div>
     </div>
-</div>
-
-
-<div class="container">
-
-    <!-- Conditional templates -->
-    <h2 id="H1">
-        Conditional templates
-    </h2>
+    <!-- tracking changes extra -->
+    <h2>Tracking changes with Customization</h2>
     <p>
-        This sample demonstrates cell templates with conditional content controlled by the Angular 2 <b>ngIf</b>
-        directive. It is based on the same CollectionView data source as the previous example, grouped on the
-        Country column, but this one appears like a summary report. It shows only group rows with a white background.
-        (The background color is set in the CSS tab.) There are no visible detail rows in this grid.
+        When you edit an item on a <b>CollectionView</b> with change tracking on, the
+        item is added to the <b>itemdEdited</b> collection. However, the
+        <b>CollectionView</b> doesn't keep track of the item's original values, so
+        if you later edit it again and restore the original values, the item will
+        remain in the <b>itemdEdited</b> collection.
     </p>
     <p>
-        The first Country column shows GroupHeader cells that are customized to show country flags. The Downloads
-        column shows Group cells with a nested WjFlexGrid or WjFlexChart components bound to the group’s child
-        items (<code>[itemsSource]="item.items"</code>). This allows us to show statistical data for the group,
-        either as a chart or as a table. The customized Downloads column’s template adds a ComboBox that allows the user
-        to choose how to represent the data.
+        But you can change that behavior if you want. This example uses the events
+        exposed by the <b>CollectionView</b> and <b>itemsChanged</b> classes to keep
+        track if the original values for each item, and to remove items from the
+        <b>itemsEdited</b> collection if the user restores the original values.
     </p>
-    <p>
-        The <b>ngIf</b> attribute on the WjFlexGrid and WjFlexChart components is bound to the value selected in the
-        ComboBox, and controls which one appears in the group cell.
-    </p>
-
-    <div class="row">
+    <div class="row" ng-controller="appTCCtrlX">
         <div class="col-md-6">
             <app-tab>
                 <app-tab-pane title="HTML">
                     <div class="pane-content">
-
-&lt;wj-flex-grid #flex2
-    [itemsSource]="data2"
-    [allowSorting]="false"
-    (initialized)="flex2.collapseGroupsToLevel(0)"
-    style="height:300px"
-    [selectionMode]="'None'"
-    [allowDragging]="'None'"
-    [deferResizing]="true"&gt;
-    &lt;wj-flex-grid-column header="Country"
-     binding="country"&gt;
-        &lt;template wjFlexGridCellTemplate [cellType]="'GroupHeader'" let-item="item" &gt;
-                &lt;img src="resources/&#123;&#8203;&#123;item.name}&#8203;}.png" /&gt;
-                &#123;&#8203;&#123;item.name}&#8203;}
-        &lt;/template&gt;
-    &lt;/wj-flex-grid-column&gt;
-
-    &lt;wj-flex-grid-column header="Downloads"
-        binding="downloads"
-        width="*"
-        [aggregate]="'Sum'"
-        [align]="'center'"&gt;
-        &lt;template wjFlexGridCellTemplate [cellType]="'ColumnHeader'" let-item="item" let-cell="cell"&gt;
-                &#123;&#8203;&#123;cell.col.header}&#8203;}:
-                    &lt;wj-combo-box [itemsSource]="['Chart', 'Table']"
-                    [(text)]="uiCtx.reportType"
-                    style="width:100px;font-weight:400"
-                    [isEditable]="false"&gt;
-                &lt;/wj-combo-box&gt;
-        &lt;/template&gt;
-    &lt;template wjFlexGridCellTemplate [cellType]="'Group'" let-item="item" let-cell="cell"&gt;
-            &lt;div style="font-size:small;text-align:center"&gt;
-            &#123;&#8203;&#123;uiCtx.reportType}&#8203;}
-                &lt;wj-flex-grid  *ngIf="uiCtx.reportType == 'Table'"
-                    [itemsSource]="item.items"
-                    [isReadOnly]="false"
-                    [headersVisibility]="'None'"
-                    [selectionMode]="'Cell'"
-                    style="height:140px;width:200px"&gt;
-                    &lt;wj-flex-grid-column binding="date"
-                        width="*"&gt;
-                    &lt;/wj-flex-grid-column&gt;
-                    &lt;wj-flex-grid-column [binding]="cell.col.binding"
-                        width="*"&gt;
-                    &lt;/wj-flex-grid-column&gt;
-                &lt;/wj-flex-grid&gt;
-                &lt;wj-flex-chart *ngIf="uiCtx.reportType == 'Chart'"
-                    style="height:140px;width:200px;display:inline-block"
-                        [itemsSource]="item.items"
-                        binding="date"
-                        [chartType]="'Column'"
-                        [plotMargin]="5"&gt;
-                        &lt;wj-flex-chart-legend [position]="'None'"&gt;&lt;/wj-flex-chart-legend&gt;
-                        &lt;wj-flex-chart-axis [wjProperty]="'axisX'"
-                            [axisLine]="false"
-                            [labels]="false"&gt;
-                        &lt;/wj-flex-chart-axis&gt;
-                        &lt;wj-flex-chart-axis [wjProperty]="'axisY'"
-                            [axisLine]="false"
-                            [labels]="false"&gt;
-                        &lt;/wj-flex-chart-axis&gt;
-                        &lt;wj-flex-chart-series binding="&#123;&#8203;&#123;cell.col.binding}&#8203;}"&gt;&lt;/wj-flex-chart-series&gt;
-                &lt;/wj-flex-chart&gt;
-        &lt;/div&gt;
-    &lt;/template&gt;
-&lt;/wj-flex-grid-column&gt;
+&lt;h4&gt;Result (live):&lt;/h4&gt;
+&lt;h5&gt;Change the data here&lt;/h5&gt;
+&lt;wj-flex-grid class="sGrid"
+[itemsSource]="cvTrackingChangesExtra"
+              [allowAddNew]="true"
+              [allowDelete]="true"&gt;
+&lt;/wj-flex-grid&gt;
+&lt;h5&gt;See the changes here&lt;/h5&gt;
+&lt;h6&gt;Items edited:&lt;/h6&gt;
+&lt;wj-flex-grid class="tcGrid"
+              style="background:#eeeeff"
+              [itemsSource]="cvTrackingChangesExtra.itemsEdited"
+              [isReadOnly]="true"&gt;
+    &lt;wj-flex-grid-column binding="id" header="id" [dataType]="'Number'"&gt;&lt;/wj-flex-grid-column&gt;
+    &lt;wj-flex-grid-column binding="start" header="start"&gt;&lt;/wj-flex-grid-column&gt;
+    &lt;wj-flex-grid-column binding="end" header="end"&gt;&lt;/wj-flex-grid-column&gt;
+    &lt;wj-flex-grid-column binding="country" header="country"&gt;&lt;/wj-flex-grid-column&gt;
+    &lt;wj-flex-grid-column binding="product" header="product"&gt;&lt;/wj-flex-grid-column&gt;
+    &lt;wj-flex-grid-column binding="color" header="color"&gt;&lt;/wj-flex-grid-column&gt;
+    &lt;wj-flex-grid-column binding="amount" header="amount" [dataType]="'Number'"&gt;&lt;/wj-flex-grid-column&gt;
+    &lt;wj-flex-grid-column binding="active" header="active"[dataType]="'Boolean'"&gt;&lt;/wj-flex-grid-column&gt;
+&lt;/wj-flex-grid&gt;
+&lt;h6&gt;Items added:&lt;/h6&gt;
+&lt;wj-flex-grid class="tcGrid"
+              style="background:#eeeeff"
+                [itemsSource]="cvTrackingChangesExtra.itemsAdded"
+             [isReadOnly]="true"&gt;
+    &lt;wj-flex-grid-column binding="id" header="id" [dataType]="'Number'"&gt;&lt;/wj-flex-grid-column&gt;
+    &lt;wj-flex-grid-column binding="start" header="start"&gt;&lt;/wj-flex-grid-column&gt;
+    &lt;wj-flex-grid-column binding="end" header="end"&gt;&lt;/wj-flex-grid-column&gt;
+    &lt;wj-flex-grid-column binding="country" header="country"&gt;&lt;/wj-flex-grid-column&gt;
+    &lt;wj-flex-grid-column binding="product" header="product"&gt;&lt;/wj-flex-grid-column&gt;
+    &lt;wj-flex-grid-column binding="color" header="color"&gt;&lt;/wj-flex-grid-column&gt;
+    &lt;wj-flex-grid-column binding="amount" header="amount" [dataType]="'Number'"&gt;&lt;/wj-flex-grid-column&gt;
+    &lt;wj-flex-grid-column binding="active" header="active" [dataType]="'Boolean'"&gt;&lt;/wj-flex-grid-column&gt;
+&lt;/wj-flex-grid&gt;
+&lt;h6&gt;Items removed:&lt;/h6&gt;
+&lt;wj-flex-grid class="tcGrid"
+              style="background:#eeeeff"
+[itemsSource]="cvTrackingChangesExtra.itemsRemoved"
+[isReadOnly]="true"&gt;
+    &lt;wj-flex-grid-column binding="id" header="id" [dataType]="'Number'"&gt;&lt;/wj-flex-grid-column&gt;
+    &lt;wj-flex-grid-column binding="start" header="start"&gt;&lt;/wj-flex-grid-column&gt;
+    &lt;wj-flex-grid-column binding="end" header="end"&gt;&lt;/wj-flex-grid-column&gt;
+    &lt;wj-flex-grid-column binding="country" header="country"&gt;&lt;/wj-flex-grid-column&gt;
+    &lt;wj-flex-grid-column binding="product" header="product"&gt;&lt;/wj-flex-grid-column&gt;
+    &lt;wj-flex-grid-column binding="color" header="color"&gt;&lt;/wj-flex-grid-column&gt;
+    &lt;wj-flex-grid-column binding="amount" header="amount" [dataType]="'Number'"&gt;&lt;/wj-flex-grid-column&gt;
+    &lt;wj-flex-grid-column binding="active" header="active" [dataType]="'Boolean'"&gt;&lt;/wj-flex-grid-column&gt;
 &lt;/wj-flex-grid&gt;
                     </div>
                 </app-tab-pane>
                 <app-tab-pane title="TS">
                     <div class="pane-content">
- export class AppCmp implements AfterViewInit &#123;
-     countries = 'US,Germany,UK,Japan,Italy,Greece'.split(',');
-     data2: wijmo.collections.CollectionView;
+// The application root component.
+@Component(&#123;
+    selector: 'app-cmp',
+    templateUrl: 'src/app.html'
+})
 
-     uiCtx = &#123;
-        reportType: 'Chart'
-     };
+export class AppCmp &#123;
 
-     protected dataSvc: DataSvc;
-
-     @ViewChild('flex2') flex2: wijmo.grid.FlexGrid;
-     constructor( @Inject(DataSvc) dataSvc: DataSvc) &#123;
-         this.dataSvc = dataSvc;
-         var data = dataSvc.getData();
-         this.data2 = dataSvc.getCv(data);
-     }
-
-     ngAfterViewInit() &#123;
-         if (this.flex2) &#123;
-            this.flex2.collapseGroupsToLevel(0);
-         }
-    }
-
- }
-                    </div>
-                </app-tab-pane>
-                <app-tab-pane title="CSS">
-                    <div class="pane-content">
- /* Provide group rows with a white background  */
- .conditional .wj-flexgrid .wj-group &#123;
- background: #fff;
- }
-                    </div>
-                </app-tab-pane>
-            </app-tab>
-        </div>
-        <div class="col-md-6 conditional">
-            <h4>Result (live):</h4>
-            <wj-flex-grid #flex2
-                          [itemsSource]="data2"
-                          [allowSorting]="false"
-                          style="height:300px"
-                          [selectionMode]="'None'"
-                          [allowDragging]="'None'"
-                          [deferResizing]="true">
-                <wj-flex-grid-column header="Country" binding="country">                                     
-                    <template wjFlexGridCellTemplate [cellType]="'GroupHeader'" let-item="item" >
-                        <img src="resources/{{item.name}}.png" />
-                        {{item.name}}
-                    </template>
-                </wj-flex-grid-column>
-
-                <wj-flex-grid-column header="Downloads"
-                                     binding="downloads"
-                                     width="*"
-                                     [aggregate]="'Sum'"
-                                     [align]="'center'">
-                    <template wjFlexGridCellTemplate [cellType]="'ColumnHeader'" let-item="item" let-cell="cell">
-                            {{cell.col.header}}:
-                            <wj-combo-box [itemsSource]="['Chart', 'Table']"
-                                          [(text)]="uiCtx.reportType"
-                                          style="width:100px;font-weight:400"
-                                          [isEditable]="false">
-                            </wj-combo-box>
-                    </template>
-                    <template wjFlexGridCellTemplate [cellType]="'Group'" let-item="item" let-cell="cell">
-                            <div style="font-size:small;text-align:center">
-                                 <wj-flex-grid  *ngIf="uiCtx.reportType == 'Table'"
-                                              [itemsSource]="item.items"
-                                              [isReadOnly]="false"
-                                              [headersVisibility]="'None'"
-                                              [selectionMode]="'Cell'"
-                                              style="height:142px;width:200px">
-                                    <wj-flex-grid-column binding="date"
-                                                         width="*">
-                                    </wj-flex-grid-column>
-                                    <wj-flex-grid-column [binding]="cell.col.binding"
-                                                         width="*">
-                                    </wj-flex-grid-column>
-                                </wj-flex-grid>
-                                <wj-flex-chart *ngIf="uiCtx.reportType == 'Chart'"
-                                               style="height:140px;width:200px;display:inline-block"
-                                               [itemsSource]="item.items"
-                                               bindingX="date"
-                                               [chartType]="'Column'"
-                                               [plotMargin]="5">
-                                    <wj-flex-chart-legend [position]="'None'"></wj-flex-chart-legend>
-                                    <wj-flex-chart-axis [wjProperty]="'axisX'"
-                                                        [axisLine]="false"
-                                                        [labels]="false">
-                                    </wj-flex-chart-axis>
-                                    <wj-flex-chart-axis [wjProperty]="'axisY'"
-                                                        [axisLine]="false"
-                                                        [labels]="false">
-                                    </wj-flex-chart-axis>
-                                    <wj-flex-chart-series binding="{{cell.col.binding}}"></wj-flex-chart-series>
-                                </wj-flex-chart>
-                        </div>
-                    </template>
-                </wj-flex-grid-column>
-            </wj-flex-grid>
-        </div>
-    </div>
-</div>
-
-<div class="container">
-
-    <!-- Dynamic columns with templates -->
-    <h2 id="H2">
-        Dynamic columns with templates
-    </h2>
-    <p>
-        This example is a variation of the previous example, but the inclusion and settings of statistical data
-        columns in this grid is defined as an array in the component. The wj-flex-grid-column component is bound
-        to this array via the Angular 2 ngFor directive. Each column settings object includes <b>columnHeaderTemplate</b>
-        and <b>groupTemplate</b> properties containing template component for the cells.
-    </p>
-    <p>
-        This content is included in the wjFlexGridCellTemplate directives using
-        the <b>wj-component-loader</b> component.
-    </p>
-    <p>
-        Each column settings object also has an <b>isAvailable</b> property indicating whether the column is included
-        in the FlexGrid. The inclusion is controlled by the <b>ngIf</b> directive on the wj-flex-grid-column component.
-        You can change this value for each column settings object using the Wijmo ListBox control with checkboxes,
-        which is bound to the column settings array.
-    </p>
-    <p>
-        The Country column is defined statically in the markup, and uses the CountryGroupHeaderTemplate
-        component as its GroupHeader cell template.
-    </p>
-
-    <div class="row">
-        <div class="col-md-6">
-            <app-tab>
-                <app-tab-pane title="HTML">
-                    <div class="pane-content">
- &lt;wj-flex-grid #flex3
-     [itemsSource]="data3"
-     [allowSorting]="false"
-     style="height:300px"
-     [selectionMode]="'None'"
-     [allowDragging]="'None'"
-     [deferResizing]="true"&gt;
-     &lt;wj-flex-grid-column header="Country"
-         binding="country"&gt;
-         &lt;template wjFlexGridCellTemplate cellType="GroupHeader" let-item="item"&gt;
-            &lt;wj-component-loader [component]="countryGroupHeaderTemplate" [properties]="&#123;item:item}"&gt;&lt;/wj-component-loader&gt;
-         &lt;/template&gt;
-     &lt;/wj-flex-grid-column&gt;
-
-     &lt;template ngFor let-colDef [ngForOf]="statisticsColumns"&gt;
-         &lt;wj-flex-grid-column *ngIf="colDef.isAvailable"
-             [header]="colDef.header"
-             [binding]="colDef.binding"
-             [width]="colDef.width"
-             [format]="colDef.format"
-         [aggregate]="'Sum'"
-             [align]="colDef.align"&gt;
-     &lt;template wjFlexGridCellTemplate cellType="ColumnHeader" *ngIf="colDef.columnHeaderTemplate" let-cell="cell"&gt;
-         &lt;wj-component-loader [component]="colDef.columnHeaderTemplate" [properties]="&#123;cell:cell, colDef: colDef}"&gt;&lt;/wj-component-loader&gt;
-         &lt;/template&gt;
-
-      &lt;template wjFlexGridCellTemplate cellType="Group" *ngIf="colDef.groupTemplate" let-cell="cell"&gt;
-              &lt;wj-component-loader [component]="colDef.groupTemplate" [properties]="&#123;cell:cell, colDef:colDef}"&gt;&lt;/wj-component-loader&gt;
-         &lt;/template&gt;
-     &lt;/wj-flex-grid-column&gt;
-        &lt;/template&gt;
-
- &lt;/wj-flex-grid&gt;
-
- &lt;div style="margin:5px 0 5px"&gt;&lt;b&gt;Show statistics for:&lt;/b&gt;&lt;/div&gt;
-     &lt;wj-list-box class="checkable-listbox"
-     style="min-width:150px"
-     [itemsSource]="statisticsColumns"
-     displayMemberPath="header"
-     checkedMemberPath="isAvailable"&gt;
- &lt;/wj-list-box&gt;
-
-                    </div>
-                </app-tab-pane>
-                <app-tab-pane title="TS">
-                    <div class="pane-content">
-export class AppCmp implements AfterViewInit &#123;
-    countries = 'US,Germany,UK,Japan,Italy,Greece'.split(',');
-    data3: wijmo.collections.CollectionView;
-    statisticsColumns = [
-    &#123;
-        binding: 'downloads',
-        header: 'Downloads',
-        width: 230,
-        align: 'center',
-        format: 'N0',
-        columnHeaderTemplateUrl: StatHeaderTemplate,
-        groupTemplateUrl: StatGroupTemplate,
-        reportType: 'Chart',
-        isAvailable: true
-    },
-    &#123;
-        binding: 'sales',
-        header: 'Sales',
-        width: 230,
-        align: 'center',
-        format: 'N2',
-        columnHeaderTemplateUrl: StatHeaderTemplate,
-        groupTemplateUrl: StatGroupTemplate,
-        reportType: 'Chart',
-        isAvailable: false
-    },
-    &#123;
-        binding: 'expenses',
-        header: 'Expenses',
-        width: 230,
-        align: 'center',
-        format: 'N2',
-        columnHeaderTemplateUrl: StatHeaderTemplate,
-        groupTemplateUrl: StatGroupTemplate,
-        reportType: 'Table',
-        isAvailable: true
-    }];
-
-    uiCtx = &#123;
-        reportType: 'Chart'
-    };
-   countryGroupHeaderTemplate = CountryGroupHeaderTemplate;
-
-    protected dataSvc: DataSvc;
-
-    @ViewChild('flex3') flex3: wijmo.grid.FlexGrid;
+    cvTrackingChangesExtra: wjcCore.CollectionView;
+    fieldNames: string[];
+    current: any;
     constructor( @Inject(DataSvc) dataSvc: DataSvc) &#123;
-        this.dataSvc = dataSvc;
-        var data = dataSvc.getData();
-        this.data3 = dataSvc.getCv(data);
-    }
+        // initialize the collectionview
+        this.cvTrackingChangesExtra = new wjcCore.CollectionView(dataSvc.getData(6));
+	this.fieldNames = dataSvc.getNames();
+        this.cvTrackingChangesExtra.trackChanges = true;
 
-    ngAfterViewInit() &#123;
-        if (this.flex3) &#123;
-            this._dynaColumnsFlexInit(this.flex3);
-        }
-    }
+	        // keep the original state of the current item in tracking Changes
+        this.current = this.cvTrackingChangesExtra.currentItem ? JSON.stringify(this.cvTrackingChangesExtra.currentItem) : null;
+        this.cvTrackingChangesExtra.currentChanged.addHandler((s, e) => &#123;
+            this.current = s.currentItem ? JSON.stringify(s.currentItem) : null;
+        });
 
-    private _dynaColumnsFlexInit(flex: wijmo.grid.FlexGrid) &#123;
-        flex.collapseGroupsToLevel(0);
-        flex.columnHeaders.rows.defaultSize = 36;
-        flex.cells.rows.defaultSize = 156;
-    }
+        // keep track of the original state of edited items
+        var original = [];
+        this.cvTrackingChangesExtra.itemsEdited.collectionChanged.addHandler((s, e: any) => &#123;
+            if (e.action == wjcCore.NotifyCollectionChangedAction.Add ||
+                e.action == wjcCore.NotifyCollectionChangedAction.Change) &#123;
+
+                // check if we have this item's original data
+                var index = this.cvTrackingChangesExtra.sourceCollection.indexOf(e.item);
+                var found = -1;
+                for (var i = 0; i < original.length && found < 0; i++) &#123;
+                    if (original[i].index == index) &#123;
+                        found = i;
+                    }
+                }
+
+                // if we have the item, check original value
+                if (found > -1) &#123;
+
+                    // if the current value is the same as the original, remove
+                    var valueNow = JSON.stringify(e.item);
+                    if (valueNow == original[found].value) &#123;
+                        original.splice(found, 1);
+                        index = this.cvTrackingChangesExtra.itemsEdited.indexOf(e.item);
+                        this.cvTrackingChangesExtra.itemsEdited.splice(index, 1);
+                    }
+                } else &#123; // if we don't, store it now
+                    found = original.length;
+                    original.push(&#123; index: index, value: this.current });
+                }
+            }
+        });
+    } 
+
 }
- @Component(&#123;
-     selector: 'country-group-header-template',
-     templateUrl: 'src/CellTemplates/countryGroupHeaderTemplate.html'
- })
 
- export class CountryGroupHeaderTemplate &#123;
-    item: any;
-     constructor() &#123;
-     }
- }
-
- @Component(&#123;
-     selector: 'column-header-template',
-     templateUrl: 'src/CellTemplates/statHeaderTemplate.html'
- })
-
- export class StatHeaderTemplate &#123;
-     cell: any;
-     colDef: any;
-
-     constructor() &#123;
-     }
- }
-
- @Component(&#123;
-     selector: 'expence-cell-edit-cmp',
-     templateUrl: 'src/CellTemplates/statGroupTemplate.html'
- })
- export class StatGroupTemplate &#123;
-     cell: any;
-     colDef: any;
-
-     constructor() &#123;
-     }
- }
-                    </div>
-                </app-tab-pane>
-                <app-tab-pane title="statHeaderTemplate.html">
-                    <div class="pane-content">
-&#123;&#8203;&#123;cell.col.header}&#8203;}:
-    &lt;wj-combo-box
-    [itemsSource]="['Chart', 'Table']"
-    [(selectedValue)]="colDef.reportType"
-    style="width:100px;font-weight:400"
-    [isEditable]="false"&gt;
-&lt;/wj-combo-box&gt;
-                    </div>
-                </app-tab-pane>
-                <app-tab-pane title="statGroupTemplate.html">
-                    <div class="pane-content">
-&lt;div style="font-size:small;text-align:center"&gt;
-    &lt;wj-flex-grid *ngIf="colDef.reportType == 'Table'"
-        [itemsSource]="cell.item.items"
-        [isReadOnly]="false"
-        [headersVisibility]="'None'"
-        [selectionMode]="'Cell'"
-        style="height:140px;width:200px"&gt;
-        &lt;wj-flex-grid-column
-            binding="date"
-            [width]="'*'"&gt;
-        &lt;/wj-flex-grid-column&gt;
-        &lt;wj-flex-grid-column
-            [binding]="cell.col.binding"
-            [width]="'*'"&gt;
-        &lt;/wj-flex-grid-column&gt;
-    &lt;/wj-flex-grid&gt;
-    &lt;wj-flex-pie
-        *ngIf="colDef.reportType == 'Chart'"
-        [itemsSource]="cell.iitem.items"
-        [binding]="cell.col.binding"
-        tooltipContent="&lt;b&gt;&#123;value:&#123;&#8203;&#123;cell.col.format}&#8203;}}&lt;/b&gt;&lt;br/&gt;&#123;date:MMM yyyy}"
-        style="height:140px;width:140px;display:inline-block;font-size:9px"&gt;
-        &lt;wj-flex-chart-legend [position]="'None'"&gt;&lt;/wj-flex-chart-legend&gt;
-        &lt;wj-flex-pie-data-label
-            [content]="'&#123;date:MMM}'"
-            [position]="'Inside'"&gt;
-        &lt;/wj-flex-pie-data-label&gt;
-    &lt;/wj-flex-pie&gt;
-&lt;/div&gt;
-                    </div>
-                </app-tab-pane>
-                <app-tab-pane title="countryGroupHeaderTemplate.html">
-                    <div class="pane-content">
-  &lt;img src="resources/&#123;&#8203;&#123;item.name}&#8203;}.png" /&gt;
-  &#123;&#8203;&#123;item.name}&#8203;}
                     </div>
                 </app-tab-pane>
                 <app-tab-pane title="CSS">
                     <div class="pane-content">
-/* Provide group rows with a white background  */
-.conditional .wj-flexgrid .wj-group &#123;
-    background: #fff;
-}
+ /* set default grid height and some shadow */
+ .sGrid &#123;
+     background-color: #fff;
+     box-shadow: 4px 4px 10px 0 rgba(50, 50, 50, 0.75);
+     height: 300px;
+     margin-bottom: 12px;
+     overflow: auto;
+ }
 
-/* Remove highlighting of a selected item in ListBox */
-.checkable-listbox .wj-state-selected &#123;
-    background-color: white;
-    color: black;
-}
+ /* set the record grids height and some shadow */
+ .tcGrid &#123;
+     background-color: #fff;
+     box-shadow: 4px 4px 10px 0 rgba(50, 50, 50, 0.75);
+     height: 100px;
+     margin-bottom: 12px;
+     overflow: auto;
+ }
                     </div>
                 </app-tab-pane>
             </app-tab>
         </div>
-        <div class="col-md-6 conditional">
-             <h4>Result (live):</h4>
-            <wj-flex-grid #flex3
-                          [itemsSource]="data3"
-                          [allowSorting]="false"
-                          style="height:300px"
-                          [selectionMode]="'None'"
-                          [allowDragging]="'None'"
-                          [deferResizing]="true">
-                <wj-flex-grid-column header="Country"
-                                     binding="country">
-                    <template wjFlexGridCellTemplate cellType="GroupHeader" let-item="item">
-                        <wj-component-loader [component]="countryGroupHeaderTemplate" [properties]="{item:item}"></wj-component-loader>   
-                    </template>                 
-                </wj-flex-grid-column>
-
-                <!-- ng-init here creates the colCtx property with subproperties that are isolated at the column
-                    level. It is not visible to other columns, but shares data with all of the cell templates
-                    defined for the column. -->
-                <template ngFor let-colDef [ngForOf]="statisticsColumns">
-                    <wj-flex-grid-column *ngIf="colDef.isAvailable"
-                                         [header]="colDef.header"
-                                         [binding]="colDef.binding"
-                                         [width]="colDef.width"
-                                         [format]="colDef.format"
-                                         [aggregate]="'Sum'"
-                                         [align]="colDef.align">
-                        <template wjFlexGridCellTemplate cellType="ColumnHeader" *ngIf="colDef.columnHeaderTemplate" let-cell="cell">
-                            <wj-component-loader [component]="colDef.columnHeaderTemplate" [properties]="{cell: cell, colDef:colDef}"></wj-component-loader>
-                        </template>
-
-                        <template wjFlexGridCellTemplate cellType="Group" *ngIf="colDef.groupTemplate" let-cell="cell">
-                            <wj-component-loader [component]="colDef.groupTemplate" [properties]="{cell: cell,colDef:colDef}"></wj-component-loader>
-                        </template>
-                    </wj-flex-grid-column>
-                </template>
-
+        <div class="col-md-6">
+            <h4>Result (live):</h4>
+            <h5>Change the data here</h5>
+            <wj-flex-grid class="sGrid"
+            [itemsSource]="cvTrackingChangesExtra"
+                          [allowAddNew]="true"
+                          [allowDelete]="true">
             </wj-flex-grid>
-
-            <div style="margin:5px 0 5px"><b>Show statistics for:</b></div>
-            <wj-list-box class="checkable-listbox"
-                         style="min-width:150px"
-                         [itemsSource]="statisticsColumns"
-                         displayMemberPath="header"
-                         checkedMemberPath="isAvailable">
-            </wj-list-box>
-
+            <h5>See the changes here</h5>
+            <h6>Items edited:</h6>
+            <wj-flex-grid class="tcGrid"
+                          style="background:#eeeeff"
+                          [itemsSource]="cvTrackingChangesExtra.itemsEdited"
+                          [isReadOnly]="true">
+                <wj-flex-grid-column binding="id" header="id" [dataType]="'Number'"></wj-flex-grid-column>
+                <wj-flex-grid-column binding="start" header="start"></wj-flex-grid-column>
+                <wj-flex-grid-column binding="end" header="end"></wj-flex-grid-column>
+                <wj-flex-grid-column binding="country" header="country"></wj-flex-grid-column>
+                <wj-flex-grid-column binding="product" header="product"></wj-flex-grid-column>
+                <wj-flex-grid-column binding="color" header="color"></wj-flex-grid-column>
+                <wj-flex-grid-column binding="amount" header="amount" [dataType]="'Number'"></wj-flex-grid-column>
+                <wj-flex-grid-column binding="active" header="active"[dataType]="'Boolean'"></wj-flex-grid-column>
+            </wj-flex-grid>
+            <h6>Items added:</h6>
+            <wj-flex-grid class="tcGrid"
+                          style="background:#eeeeff"
+                            [itemsSource]="cvTrackingChangesExtra.itemsAdded"
+                         [isReadOnly]="true">
+                <wj-flex-grid-column binding="id" header="id" [dataType]="'Number'"></wj-flex-grid-column>
+                <wj-flex-grid-column binding="start" header="start"></wj-flex-grid-column>
+                <wj-flex-grid-column binding="end" header="end"></wj-flex-grid-column>
+                <wj-flex-grid-column binding="country" header="country"></wj-flex-grid-column>
+                <wj-flex-grid-column binding="product" header="product"></wj-flex-grid-column>
+                <wj-flex-grid-column binding="color" header="color"></wj-flex-grid-column>
+                <wj-flex-grid-column binding="amount" header="amount" [dataType]="'Number'"></wj-flex-grid-column>
+                <wj-flex-grid-column binding="active" header="active" [dataType]="'Boolean'"></wj-flex-grid-column>
+            </wj-flex-grid>
+            <h6>Items removed:</h6>
+            <wj-flex-grid class="tcGrid"
+                          style="background:#eeeeff"
+            [itemsSource]="cvTrackingChangesExtra.itemsRemoved"
+            [isReadOnly]="true">
+                <wj-flex-grid-column binding="id" header="id" [dataType]="'Number'"></wj-flex-grid-column>
+                <wj-flex-grid-column binding="start" header="start"></wj-flex-grid-column>
+                <wj-flex-grid-column binding="end" header="end"></wj-flex-grid-column>
+                <wj-flex-grid-column binding="country" header="country"></wj-flex-grid-column>
+                <wj-flex-grid-column binding="product" header="product"></wj-flex-grid-column>
+                <wj-flex-grid-column binding="color" header="color"></wj-flex-grid-column>
+                <wj-flex-grid-column binding="amount" header="amount" [dataType]="'Number'"></wj-flex-grid-column>
+                <wj-flex-grid-column binding="active" header="active" [dataType]="'Boolean'"></wj-flex-grid-column>
+            </wj-flex-grid>
         </div>
     </div>
 </div>

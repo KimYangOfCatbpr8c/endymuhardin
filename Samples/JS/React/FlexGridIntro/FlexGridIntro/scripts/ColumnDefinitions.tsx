@@ -11,7 +11,7 @@ var ColumnDefinitions = React.createClass({
                 automatically.
             </p>
             <p>
-                This example shows how you can define the columns using the FlexGrid's <b>columns</b> property.
+                This example shows how you can define columns using the FlexGrid's <b>columns</b> property.
                 The markup sets the <b>autoGenerateColumns</b> property to false and assigns an array of columns
                 to the <b>columns</b> property.
             </p>
@@ -22,7 +22,7 @@ var ColumnDefinitions = React.createClass({
             </p>
             <p>
                 In this case, we use star sizing to set the width of the "Country" column. This tells the 
-                column to stretch to fill the available width of the grid so there is no empty space.  On 
+                column to stretch to fill the available width of the grid, so that there is no empty space. On 
                 the "Revenue" column, we set the format property to "n0", which results in numbers with 
                 thousand separators and no decimal digits.
             </p>

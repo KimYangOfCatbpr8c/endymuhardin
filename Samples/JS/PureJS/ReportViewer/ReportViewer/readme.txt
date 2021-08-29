@@ -1,8 +1,3 @@
 ﻿ReportViewer Sample
 ---------------------------------------------
-ReportViewer sample shows how to use the C1 Report Service and show the content.
-
-ReportViewer, which includes a client-side ReportViewer control that uses FlexReport 
-on the server to render reports. ReportViewer is currently a sample that includes a 
-beta version of our potential ReportViewer control. Please try it out and send 
-feedback before it becomes an official control in the future.
+ReportViewer sample shows how to use the ReportViewer control to display the content of FlexReport and SSRS report from C1 Report Services.

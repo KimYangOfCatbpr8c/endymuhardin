@@ -7,7 +7,7 @@ angular.module('app').controller('FlexGridImportExportCtrl', ['$scope', 'dataSer
         includeColumnHeader: true
     }
 
-    // export 
+    // export
     $scope.exportExcel = function () {
         wijmo.grid.xlsx.FlexGridXlsxConverter.save($scope.ctx.flexGrid, { includeColumnHeaders: $scope.ctx.includeColumnHeader, includeCellStyles: false }, 'FlexGrid.xlsx');
     };
@@ -19,20 +19,63 @@ angular.module('app').controller('FlexGridImportExportCtrl', ['$scope', 'dataSer
         }
     }
 
-    // update group setting
+    // export
+    $scope.exportExcelAsync = function () {
+        wijmo.grid.xlsx.FlexGridXlsxConverter.saveAsync($scope.ctx.flexGrid, { includeColumnHeaders: $scope.ctx.includeColumnHeader, includeCellStyles: false }, 'FlexGrid.xlsx');
+    };
+
+    // import
+    $scope.importExcelAsync = function () {
+        if ($('#importFile')[0].files[0]) {
+            wijmo.grid.xlsx.FlexGridXlsxConverter.loadAsync($scope.ctx.flexGrid, $('#importFile')[0].files[0], { includeColumnHeaders: $scope.ctx.includeColumnHeader });
+        }
+    }
+
+    // initialize the grid
     $scope.$watch('ctx.flexGrid', function () {
         updateGroup();
     });
 
+    // enable dropping XLSX files into the grid
+    // code based on:
+    // https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API/File_drag_and_drop
+    $scope.enableFileDrop = function (s, e) {
+        var host = s.hostElement;
+        host.addEventListener('dragover', function (e) {
+            e.preventDefault();
+        });
+        host.addEventListener('drop', function (e) {
+            e.preventDefault();
+            var files = e.dataTransfer.files;
+            for (var i = 0; i < files.length; i++) {
+                importFile(files[i]);
+                break;
+            }
+        });
+        host.addEventListener('dragend', function (e) {
+            e.dataTransfer.clearData();
+        });
+    }
+
+    // import a file that was dropped onto the grid
+    function importFile(f) {
+        wijmo.grid.xlsx.FlexGridXlsxConverter.load($scope.ctx.flexGrid, f, {
+            includeColumnHeaders: $scope.ctx.includeColumnHeader
+        });
+    }
+
+
+
     // update group setting for the flex grid
     function updateGroup() {
         var flex = $scope.ctx.flexGrid,
-			groupNames = ['Product', 'Country', 'Amount'],
-			cv,
-			propName,
-			groupDesc;
+            groupNames = ['Product', 'Country', 'Amount'],
+            cv,
+            propName,
+            groupDesc;
 
         if (flex) {
+
             // get the collection view, start update
             cv = flex.collectionView;
             cv.beginUpdate();

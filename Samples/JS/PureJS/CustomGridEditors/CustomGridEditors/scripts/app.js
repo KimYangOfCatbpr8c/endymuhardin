@@ -2,7 +2,11 @@
 
     // some random data
     var countries = 'US,Germany,UK,Japan,Italy,Greece'.split(',');
-    var products = 'Widget,Gadget,Doohickey'.split(',');
+    var products = [
+        { id: 0, name: 'Widget', unitPrice: 23.43 },
+        { id: 1, name: 'Gadget', unitPrice: 12.33 },
+        { id: 2, name: 'Doohickey', unitPrice: 53.07 },
+    ];
     function getData(count) {
         var data = [],
             dt = new Date();
@@ -12,7 +16,7 @@
                 date: new Date(dt.getFullYear(), i % 12, 25, i % 24, i % 60, i % 60),
                 time: new Date(dt.getFullYear(), i % 12, 25, i % 24, i % 60, i % 60),
                 country: countries[Math.floor(Math.random() * countries.length)],
-                product: products[Math.floor(Math.random() * products.length)],
+                product: products[Math.floor(Math.random() * products.length)].name,
                 amount: Math.random() * 10000 - 5000,
                 discount: Math.random() / 4
             });
@@ -47,12 +51,28 @@
     new CustomGridEditor(flex, 'country', wijmo.input.ComboBox, {
         itemsSource: countries
     });
-    new CustomGridEditor(flex, 'product', wijmo.input.ComboBox, {
-        itemsSource: products
-    });
     new CustomGridEditor(flex, 'amount', wijmo.input.InputNumber, {
         format: 'n2',
         step: 10
+    });
+
+    // create an editor based on a ComboBox
+    var multiColumnEditor = new CustomGridEditor(flex, 'product', wijmo.input.ComboBox, {
+        headerPath: 'name',
+        displayMemberPath: 'name',
+        itemsSource: products
+    });
+
+    // customize the ComboBox to show multiple columns
+    var combo = multiColumnEditor.control;
+    combo.listBox.formatItem.addHandler(function (s, e) {
+        e.item.innerHTML = '<table><tr>' +
+            '<td style="width:30px;text-align:right;padding-right:6px">' + e.data.id + '</td>' +
+            '<td style="width:100px;padding-right:6px"><b>' + e.data.name + '</b></td>' +
+            '<td style="width:80px;text-align:right;padding-right:6px">' +
+                wijmo.Globalize.format(e.data.unitPrice, 'c') +
+            '</td>' +
+        '</tr></table>';
     });
 
     // create a context menu

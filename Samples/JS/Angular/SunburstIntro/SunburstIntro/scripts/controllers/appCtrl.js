@@ -18,6 +18,19 @@
         });
     });
 
+    // Group CV
+    app.controller('groupCVCtrl', function ($scope, dataSvc) {
+        $scope.chart = null;
+        $scope.itemsSource = dataSvc.getGroupCVData();
+
+        $scope.$watch('chart', function () {
+            if ($scope.chart) {
+                $scope.chart.dataLabel.position = wijmo.chart.PieLabelPosition.Center;
+                $scope.chart.dataLabel.content = '{name}';
+            }
+        });
+    });
+
     // Legends & Titles
     app.controller('legendTitlesCtrl', function ($scope, dataSvc) {
         $scope.itemsSource = dataSvc.getData();

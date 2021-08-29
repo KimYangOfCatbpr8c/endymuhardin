@@ -101,10 +101,6 @@
     </VisualStudio>
   </ProjectExtensions>
   <ItemGroup>
-    <Content Include="scripts\vendor\wijmo.min.js" />
-    <Content Include="scripts\vendor\wijmo.chart.min.js" />
-    <Content Include="scripts\vendor\wijmo.chart.interaction.min.js" />
-    <Content Include="scripts\vendor\wijmo.angular2.min.js" />
     <Content Include="styles\vendor\wijmo.min.css" />
   </ItemGroup>
 </Project>

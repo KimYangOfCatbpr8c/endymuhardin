@@ -5,7 +5,7 @@
 <dt>Module</dt><dd><a href="topic/wijmo.xlsx.Module.html"><span class="identifier">wijmo.xlsx</span></a></dd>
 <dt>Implements</dt><dd><a href="topic/wijmo.xlsx.IWorkbook.Interface.html"><span class="identifier">IWorkbook</span></a></dd>
 </dl>
-<div class="comment"><p>Represents an Excel Workbook.</p></div>
+<div class="comment"><p>Represents an Excel workbook.</p></div>
 </div>
 <div class="member-panel class members" ng-class="{ 'show-inherited' : ctx.showInherited, 'show-raisers' : ctx.showRaisers }">
 <h3 class="node">Constructor</h3>
@@ -29,7 +29,9 @@
 <ul>
 <li class="mmethod"><a href="topic/wijmo.xlsx.Workbook.Class.html/#fromXlsxFormat">fromXlsxFormat</a></li>
 <li class="mmethod"><a href="topic/wijmo.xlsx.Workbook.Class.html/#load">load</a></li>
+<li class="mmethod"><a href="topic/wijmo.xlsx.Workbook.Class.html/#loadAsync">loadAsync</a></li>
 <li class="mmethod"><a href="topic/wijmo.xlsx.Workbook.Class.html/#save">save</a></li>
+<li class="mmethod"><a href="topic/wijmo.xlsx.Workbook.Class.html/#saveAsync">saveAsync</a></li>
 <li class="mmethod"><a href="topic/wijmo.xlsx.Workbook.Class.html/#tableAddress">tableAddress</a></li>
 <li class="mmethod"><a href="topic/wijmo.xlsx.Workbook.Class.html/#toXlsxDateFormat">toXlsxDateFormat</a></li>
 <li class="mmethod"><a href="topic/wijmo.xlsx.Workbook.Class.html/#toXlsxNumberFormat">toXlsxNumberFormat</a></li>
@@ -105,7 +107,7 @@
 </div>
 <div id="sheets" class="member-panel mproperty">
 <h3>sheets</h3>
-<div class="comment"><p>Gets the WorkSheet array of the Workbook.</p></div>
+<div class="comment"><p>Gets the WorkSheet array of the workbook.</p></div>
 <dl class="dl-horizontal">
   <dt>Type</dt><dd><a href="topic/wijmo.xlsx.WorkSheet.Class.html"><span class="identifier">WorkSheet</span></a>[]</dd>
 </dl>
@@ -128,7 +130,8 @@
   <dt>Parameters</dt><dd></dd>
 </dl>
 <ul>
-<li><b>xlsxFormat</b>: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank"><span class="identifier">string</span></a><br/><p>The Excel format string, that may contain multiple format sections separated by semicolon.</p></li></ul>
+<li><b>xlsxFormat</b>: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank"><span class="identifier">string</span></a><br/><p>The Excel format string, that may contain multiple format sections
+separated by a semicolon.</p></li></ul>
 <dl class="dl-horizontal">
   <dt>Returns</dt><dd><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank"><span class="identifier">string</span></a>[]</dd>
 </dl>
@@ -136,7 +139,8 @@
 <div id="load" class="member-panel mmethod">
 <h3>load</h3>
 <pre>load(base64: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank"><span class="identifier">string</span></a>): <span class="identifier">void</span></pre>
-<div class="comment"><p>Loads from base 64 string or data url.</p>
+<div class="comment"><p>Loads from base-64 string or data url.
+This method works with JSZip 2.5.</p>
 <p>For example:
 </p>
 
@@ -176,7 +180,39 @@ function loadWorkbook() {
   <dt>Parameters</dt><dd></dd>
 </dl>
 <ul>
-<li><b>base64</b>: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank"><span class="identifier">string</span></a><br/><p>the base 64 string that contains the xlsx file content.</p></li></ul>
+<li><b>base64</b>: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank"><span class="identifier">string</span></a><br/><p>The base-64 string that contains the xlsx file content.</p></li></ul>
+<dl class="dl-horizontal">
+  <dt>Returns</dt><dd><span class="identifier">void</span></dd>
+</dl>
+</div>
+<div id="loadAsync" class="member-panel mmethod">
+<h3>loadAsync</h3>
+<pre>loadAsync(base64: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank"><span class="identifier">string</span></a>, onLoaded?: <span class="identifier">(workbook: Workbook)</span>, onError?: <span class="identifier">(reason?: any)</span>): <span class="identifier">void</span></pre>
+<div class="comment"><p>Loads from base-64 string or data url asynchronously.
+This method works with JSZip 3.0.</p></div>
+<dl class="dl-horizontal">
+  <dt>Parameters</dt><dd></dd>
+</dl>
+<ul>
+<li><b>base64</b>: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank"><span class="identifier">string</span></a><br/><p>base64 string that contains the xlsx file content.</p></li><li><b>onLoaded</b>: <span class="identifier">(workbook: Workbook)</span> <span class="badge">Optional</span><br/><p>This callback provides an approach to get an instance of the loaded workbook.
+Since this method is an asynchronous method, user is not able to get instance of
+the loaded workbook immediately. User has to get the instance through this callback.
+This has a single parameter, instance of the loaded workbook. It will be passed to user.</p></li><li><b>onError</b>: <span class="identifier">(reason?: any)</span> <span class="badge">Optional</span><br/><p>This callback catches error information when loading.
+This has a single parameter, the failure reason. Return value is
+be passed to user, if he wants to catch the load failure reason.</p>
+<p>For example:
+</p>
+
+<pre>workbook.loadAsync(base64, function (workbook) {
+
+     // User can access the loaded workbook instance in this callback.
+     var app = worksheet.application ;
+     ...
+}, function (reason) {
+
+     // User can catch the failure reason in this callback.
+     console.log('The reason of load failure is ' + reason);
+});</pre></li></ul>
 <dl class="dl-horizontal">
   <dt>Returns</dt><dd><span class="identifier">void</span></dd>
 </dl>
@@ -185,7 +221,8 @@ function loadWorkbook() {
 <h3>save</h3>
 <pre>save(fileName?: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank"><span class="identifier">string</span></a>): <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank"><span class="identifier">string</span></a></pre>
 <div class="comment"><p>Saves the book to a file and returns a base-64 string representation of
-the book.</p>
+the book.
+This method works with JSZip 2.5.</p>
 <p>For example, this sample creates an xlsx file with a single cell:</p>
 
 
@@ -212,17 +249,51 @@ further processing on the client or on the server.</p></div>
   <dt>Returns</dt><dd><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank"><span class="identifier">string</span></a></dd>
 </dl>
 </div>
-<div id="tableAddress" class="member-panel mmethod">
-<h3><span class="badge">Static</span> tableAddress</h3>
-<pre>tableAddress(xlsxIndex: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank"><span class="identifier">string</span></a>): <a href="topic/wijmo.xlsx.ITableAddress.Interface.html"><span class="identifier">ITableAddress</span></a></pre>
-<div class="comment"><p>Convert Excel's alphanumeric cell, row or column index to the zero-based row/column indexes pair.</p></div>
+<div id="saveAsync" class="member-panel mmethod">
+<h3>saveAsync</h3>
+<pre>saveAsync(fileName?: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank"><span class="identifier">string</span></a>, onSaved?: <span class="identifier">(base64?: string)</span>, onError?: <span class="identifier">(reason?: any)</span>): <span class="identifier">void</span></pre>
+<div class="comment"><p>Saves the book to a file asynchronously.
+This method works with JSZip 3.0.</p></div>
 <dl class="dl-horizontal">
   <dt>Parameters</dt><dd></dd>
 </dl>
 <ul>
-<li><b>xlsxIndex</b>: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank"><span class="identifier">string</span></a><br/><p>The alphanumeric Excel index that may include alphabetic A-based on column index
-and/or numeric 1-based on row index, like "D15", "D" or "15". The alphabetic column index can be
-in lower or upper case.</p></li></ul>
+<li><b>fileName</b>: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank"><span class="identifier">string</span></a> <span class="badge">Optional</span><br/><p>Name of the xlsx file to save.</p></li><li><b>onSaved</b>: <span class="identifier">(base64?: string)</span> <span class="badge">Optional</span><br/><p>This callback provides an approach to get the base-64 string
+that represents the content of the saved workbook. Since this method is an
+asynchronous method, user does not get the base-64 string immediately.
+User has to get the base-64 string via this callback.
+This has a single parameter, the base-64 string of the saved workbook.
+It will be passed to user.</p></li><li><b>onError</b>: <span class="identifier">(reason?: any)</span> <span class="badge">Optional</span><br/><p>This callback catches error information when saving.
+This has a single parameter, the failure reason.
+Return value will be passed to user, if he wants to catch the save failure reason.</p>
+<p>For example:
+</p>
+
+<pre>workbook.saveAsync('', function (base64){
+
+     // User can access the base64 string in this callback.
+     document.getElementByID('export').href = 'data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;' + 'base64,' + base64;
+}, function (reason){
+
+     // User can catch the failure reason in this callback.
+     console.log('The reason of save failure is ' + reason);
+});</pre></li></ul>
+<dl class="dl-horizontal">
+  <dt>Returns</dt><dd><span class="identifier">void</span></dd>
+</dl>
+</div>
+<div id="tableAddress" class="member-panel mmethod">
+<h3><span class="badge">Static</span> tableAddress</h3>
+<pre>tableAddress(xlsxIndex: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank"><span class="identifier">string</span></a>): <a href="topic/wijmo.xlsx.ITableAddress.Interface.html"><span class="identifier">ITableAddress</span></a></pre>
+<div class="comment"><p>Convert Excel's alphanumeric cell, row or column index to the zero-based
+row/column indices pair.</p></div>
+<dl class="dl-horizontal">
+  <dt>Parameters</dt><dd></dd>
+</dl>
+<ul>
+<li><b>xlsxIndex</b>: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank"><span class="identifier">string</span></a><br/><p>The alphanumeric Excel index that may include alphabetic A-based
+column index and/or numeric 1-based row index, like "D15", "D" or "15". The
+alphabetic column index can be in lower or upper case.</p></li></ul>
 <dl class="dl-horizontal">
   <dt>Returns</dt><dd><a href="topic/wijmo.xlsx.ITableAddress.Interface.html"><span class="identifier">ITableAddress</span></a></dd>
 </dl>
@@ -261,8 +332,11 @@ in lower or upper case.</p></li></ul>
   <dt>Parameters</dt><dd></dd>
 </dl>
 <ul>
-<li><b>row</b>: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Number" target="_blank"><span class="identifier">number</span></a><br/><p>The zero-based row index or a null value if only column index should be converted.</p></li><li><b>col</b>: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Number" target="_blank"><span class="identifier">number</span></a><br/><p>The zero-based column index or a null value if only row index should be converted.</p></li><li><b>absolute</b>: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a> <span class="badge">Optional</span><br/><p>True value indicates that absolute indexes should be returned for both row and
-       column indexes (like $D$7). The <b>absoluteCol</b> parameter allows to redefine this value for the column index.</p></li><li><b>absoluteCol</b>: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a> <span class="badge">Optional</span><br/><p>True value indicates that column index is absolute.</p></li></ul>
+<li><b>row</b>: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Number" target="_blank"><span class="identifier">number</span></a><br/><p>The zero-based row index or a null value if only column index
+is to be converted.</p></li><li><b>col</b>: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Number" target="_blank"><span class="identifier">number</span></a><br/><p>The zero-based column index or a null value if only row index
+is to be converted.</p></li><li><b>absolute</b>: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a> <span class="badge">Optional</span><br/><p>True value indicates that absolute indices is to be returned
+for both, row and column (like $D$7). The <b>absoluteCol</b> parameter allows
+to redefine this value for the column index.</p></li><li><b>absoluteCol</b>: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a> <span class="badge">Optional</span><br/><p>True value indicates that column index is absolute.</p></li></ul>
 <dl class="dl-horizontal">
   <dt>Returns</dt><dd><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank"><span class="identifier">string</span></a></dd>
 </dl>

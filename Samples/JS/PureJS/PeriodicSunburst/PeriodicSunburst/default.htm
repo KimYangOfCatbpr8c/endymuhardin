@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <!-- Note the modified initial-scale. This makes things work smoothly on mobile by forcing the initial render to be 'zoomed out' -->
+    <meta name="viewport" content="width=device-width, initial-scale=0.5">
+    <title>Wijmo 5 Periodic Sunburst with CollectionView</title>
+
+    <!-- Core Wijmo references (required) -->
+    <script src="scripts/vendor/wijmo.min.js"></script>
+    <link href="styles/vendor/wijmo.min.css" rel="stylesheet" />
+
+    <!-- Wijmo core chart control and hierarchical chart controls -->
+    <script src="scripts/vendor/wijmo.chart.min.js"></script>
+    <script src="scripts/vendor/wijmo.chart.hierarchical.min.js"></script>
+
+    <!-- Primary bootstrap import -->
+    <link rel="stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+    <!-- Load our own custom CSS last -->
+    <link href="styles/app.css" rel="stylesheet">
+
+    <!-- Load the app logic. Scripts are referenced in the order of their functions in the app logic flow. -->
+    <script src="scripts/ElementDataLoader.js"></script>
+    <script src="scripts/PropertiesTile.js"></script>
+    <script src="scripts/app.js"></script>
+</head>
+
+<body>
+    <div class="header visible-xs visible-sm">
+        <div class="container">
+            <h1>
+                使用CollectionView以及旭日图实现交互式的元素周期表
+            </h1>
+        </div>
+    </div>
+    <div class="header hidden-xs hidden-sm">
+        <div class="container">
+            <img src="resources/wijmo5.png" />
+            <h1>
+                使用CollectionView以及旭日图实现交互式的元素周期表
+            </h1>
+            <p>
+                利用Wijmo的旭日图控件和CollectionView组件的功能来创建结构更清晰的元素周期表。
+            </p>
+        </div>
+    </div>
+    <!-- The main container where the Sunburst control is rendered -->
+    <div id="periodic-sunburst" class="periodic-sunburst">
+
+        <!-- The main properties container - has individual info panes for each type of info view -->
+        <div id="properties-tile" class="properties-tile">
+            <div id="group-info">
+                <span id="group-name" class="group-name"></span>
+                <span class="subgroups-title">Subgroups</span>
+                <span id="subGroup-listing"></span>
+            </div>
+            <div id="subGroup-info">
+                <span id="subGroup-name" class="subGroup-name"></span>
+                <span class="element-number-overview">No. of elements: <span id="num-elements" class="num-elements"></span></span>
+                <span class="characteristics-title">Characteristics</span>
+                <span id="characteristic-listing"></span>
+            </div>
+            <div id="element-info">
+                <span id="element-symbol" class="element-symbol"></span>
+                <span id="element-name" class="element-name"></span>
+                <span>Atomic number: <span id="atomic-number"></span></span>
+                <span>Atomic weight: <span id="atomic-weight"></span></span>
+            </div>
+        </div>
+    </div>
+    <script src="scripts/wijmo.sample.toolbar.js" type="text/javascript"></script>
+</body>
+
+</html>

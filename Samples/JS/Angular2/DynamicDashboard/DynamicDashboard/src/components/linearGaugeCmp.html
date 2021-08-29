@@ -1,0 +1,38 @@
+﻿<div class="tile" draggable="true" #tileLinearGauge>
+
+    <!-- caption -->
+    <div style="border-bottom:1px solid #e0e0e0; padding:4px; display:flex; cursor: move">
+        <div style="flex-grow:1; color:#005c9c; font-weight:bold">
+            Linear Gauge
+        </div>
+        <div class="buttons">
+            <span class="glyphicon glyphicon-pencil" title="Edit Tile" ></span>
+            <span class="glyphicon glyphicon-remove" title="Close Tile"></span>
+        </div>
+    </div>
+
+    <!-- content -->
+    <div style="display:flex; align-items:center; justify-content:center; padding:4px">
+        <div>
+            <h3>KPIs for {{ data.items[data.items.length - 1].date | date:'MMMM yyyy' }}</h3>
+            <h4>Sales: {{ data.items[data.items.length - 1].sales | currency }}</h4>
+            <wj-linear-gauge [value]="data.items[data.items.length-1].sales" [min]="0" [max]="1500" [thumbSize]="30">
+                <wj-range [wjProperty]="'pointer'"
+                          [color]="'Green'">
+                </wj-range>
+            </wj-linear-gauge>
+            <h4>Expenses: {{ data.items[data.items.length - 1].expenses | currency }}</h4>
+            <wj-linear-gauge [value]="data.items[data.items.length-1].expenses" [min]="0" [max]="1500" [thumbSize]="30">
+                <wj-range [wjProperty]="'pointer'"
+                          [color]="'Red'">
+                </wj-range>
+            </wj-linear-gauge>
+            <h4>Profit: {{ data.items[data.items.length - 1].profit | currency }}</h4>
+            <wj-linear-gauge [value]="data.items[data.items.length-1].expenses" [min]="0" [max]="1500" [thumbSize]="30">
+                <wj-range [wjProperty]="'pointer'"
+                          [color]="'Gold'">
+                </wj-range>
+            </wj-linear-gauge>
+        </div>
+    </div>
+</div>

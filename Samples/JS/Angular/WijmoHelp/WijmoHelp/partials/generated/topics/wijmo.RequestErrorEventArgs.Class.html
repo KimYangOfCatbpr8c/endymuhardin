@@ -21,13 +21,14 @@
 <ul>
 <li class="mproperty inherited"><a href="topic/wijmo.RequestErrorEventArgs.Class.html/#cancel">cancel</a></li>
 <li class="mproperty inherited"><a href="topic/wijmo.RequestErrorEventArgs.Class.html/#empty">empty</a></li>
+<li class="mproperty"><a href="topic/wijmo.RequestErrorEventArgs.Class.html/#message">message</a></li>
 <li class="mproperty"><a href="topic/wijmo.RequestErrorEventArgs.Class.html/#request">request</a></li>
 </ul>
 </div>
 <h3>Constructor</h3>
 <div id="constructor" class="member-panel mmethod">
 <h3>constructor</h3>
-<pre>constructor(xhr: <a href="https://developer.mozilla.org/en/docs/Web/API/XMLHttpRequest" target="_blank"><span class="identifier">XMLHttpRequest</span></a>): <a href="topic/wijmo.RequestErrorEventArgs.Class.html"><span class="identifier">RequestErrorEventArgs</span></a></pre>
+<pre>constructor(xhr: <a href="https://developer.mozilla.org/en/docs/Web/API/XMLHttpRequest" target="_blank"><span class="identifier">XMLHttpRequest</span></a>, msg?: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank"><span class="identifier">string</span></a>): <a href="topic/wijmo.RequestErrorEventArgs.Class.html"><span class="identifier">RequestErrorEventArgs</span></a></pre>
 <div class="comment"><p>Initializes a new instance of the <a href="topic/wijmo.RequestErrorEventArgs.Class.html"><span class="identifier">RequestErrorEventArgs</span></a> class.</p></div>
 <dl class="dl-horizontal">
   <dt>Parameters</dt><dd></dd>
@@ -35,7 +36,7 @@
 <ul>
 <li><b>xhr</b>: <a href="https://developer.mozilla.org/en/docs/Web/API/XMLHttpRequest" target="_blank"><span class="identifier">XMLHttpRequest</span></a><br/><p>The <a href="https://developer.mozilla.org/en/docs/Web/API/XMLHttpRequest" target="_blank"><span class="identifier">XMLHttpRequest</span></a> that detected the error.
 The status and statusText properties of the request object 
-contain details about the error.</p></li></ul>
+contain details about the error.</p></li><li><b>msg</b>: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank"><span class="identifier">string</span></a> <span class="badge">Optional</span><br/><p>Optional error message.</p></li></ul>
 <dl class="dl-horizontal">
   <dt>Returns</dt><dd><a href="topic/wijmo.RequestErrorEventArgs.Class.html"><span class="identifier">RequestErrorEventArgs</span></a></dd>
 </dl>
@@ -56,6 +57,13 @@ contain details about the error.</p></li></ul>
 <dl class="dl-horizontal">
   <dt>Inherited From</dt><dd><a href="topic/wijmo.EventArgs.Class.html"><span class="identifier">EventArgs</span></a></dd>
   <dt>Type</dt><dd><a href="topic/wijmo.EventArgs.Class.html"><span class="identifier">EventArgs</span></a></dd>
+</dl>
+</div>
+<div id="message" class="member-panel mproperty">
+<h3>message</h3>
+<div class="comment"><p>Gets or sets an error message to display to the user.</p></div>
+<dl class="dl-horizontal">
+  <dt>Type</dt><dd><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank"><span class="identifier">string</span></a></dd>
 </dl>
 </div>
 <div id="request" class="member-panel mproperty">

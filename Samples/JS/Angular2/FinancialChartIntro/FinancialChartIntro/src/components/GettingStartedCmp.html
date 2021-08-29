@@ -1,0 +1,171 @@
+﻿
+<div>
+    <h2 id="Start">
+        Getting Started
+    </h2>
+    <p>
+        Steps for getting started with the FinancialChart in AngularJS applications:
+    </p>
+    <ol>
+        <li>Add references to AngularJS, Wijmo, and Wijmo's AngularJS directives.</li>
+        <li>
+            Include the Wijmo 5 directives in the app module: <br />
+            <code>var app = angular.module('app', ['wj']);</code>
+        </li>
+        <li>Add a controller to provide data and logic.</li>
+        <li>Add a FinancialChart to the page and bind it to the data.</li>
+        <li>Add some CSS to customize the chart's appearance.</li>
+    </ol>
+    <div class="row">
+        <div class="col-md-6">
+            <app-tab>
+                <app-tab-pane title="HTML">
+                    <div class="pane-content">
+&lt;!DOCTYPE html>
+&lt;html>
+    &lt;head>
+        &lt;script src="node_modules/es6-shim/es6-shim.min.js"&gt;&lt;/script&gt;
+
+        &lt;script src="node_modules/zone.js/dist/zone.js"&gt;&lt;/script&gt;
+        &lt;script src="node_modules/reflect-metadata/Reflect.js"&gt;&lt;/script&gt;
+        &lt;script src="node_modules/systemjs/dist/system.src.js"&gt;&lt;/script&gt;
+
+
+        &lt;!-- Configure SystemJS --&gt;
+        &lt;script src="systemjs.config.js"&gt;&lt;/script&gt;
+        &lt;link rel="stylesheet" type="text/css" href="bin/Devel/external/bootstrap/css/bootstrap.css" />
+        &lt;script wj-src="wijmo" src="bin/Devel/loaders/wijmo.load.module.js" type="text/javascript">&lt;/script>
+        &lt;script wj-src="wijmo.input" src="bin/Devel/loaders/wijmo.load.module.js" type="text/javascript">&lt;/script>
+        &lt;script wj-src="wijmo.chart" src="bin/Devel/loaders/wijmo.load.module.js" type="text/javascript">&lt;/script>
+        &lt;script wj-src="wijmo.chart.analytics" src="bin/Devel/loaders/wijmo.load.module.js" type="text/javascript">&lt;/script>
+        &lt;script wj-src="wijmo.chart.animation" src="bin/Devel/loaders/wijmo.load.module.js" type="text/javascript">&lt;/script>
+        &lt;script wj-src="wijmo.chart.annotation" src="bin/Devel/loaders/wijmo.load.module.js" type="text/javascript">&lt;/script>
+        &lt;script wj-src="wijmo.chart.finance" src="bin/Devel/loaders/wijmo.load.module.js" type="text/javascript">&lt;/script>
+        &lt;script wj-src="wijmo.chart.finance.analytics" src="bin/Devel/loaders/wijmo.load.module.js" type="text/javascript">&lt;/script>
+        &lt;script wj-src="wijmo.chart.interaction" src="bin/Devel/loaders/wijmo.load.module.js" type="text/javascript">&lt;/script>
+        &lt;link href="bin/Devel/sources/styles/wijmo.css" rel="stylesheet" />
+        &lt;script wj-src="wijmo.angular2" src="bin/Devel/loaders/wijmo.load.module.js" type="text/javascript">&lt;/script>
+        &lt;link href="src/styles/app.css" rel="stylesheet" />
+        &lt;script>
+            System.import('./src/app');
+        &lt;/script>
+    &lt;/head>
+    &lt;body>
+        &lt;app-cmp>
+            &lt;wj-financial-chart [itemsSource]="data" [header]="header"
+                                bindingX="date">
+                &lt;wj-financial-chart-series name="Open" binding="open">&lt;/wj-financial-chart-series>
+                &lt;wj-financial-chart-series name="Close" binding="close">&lt;/wj-financial-chart-series>
+            &lt;/wj-financial-chart>
+        &lt;/app-cmp>
+    &lt;/body>
+&lt;/html>
+                    </div>
+                </app-tab-pane>
+                <app-tab-pane title="TS">
+                    <div class="pane-content">
+// Angular
+import &#123; Component, EventEmitter, Input, Inject, enableProdMode, NgModule } from '@angular/core';
+import &#123; HttpModule } from '@angular/http';
+import &#123; FormsModule } from '@angular/forms';
+import &#123; CommonModule } from '@angular/common';
+import &#123; platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import &#123; BrowserModule } from '@angular/platform-browser';
+import &#123; WjInputModule } from 'wijmo/wijmo.angular2.input';
+import &#123; WjChartModule } from 'wijmo/wijmo.angular2.chart';
+import &#123; WjChartAnimationModule } from 'wijmo/wijmo.angular2.chart.animation';
+import &#123; WjChartFinanceModule } from 'wijmo/wijmo.angular2.chart.finance';
+import &#123; WjChartAnnotationModule } from 'wijmo/wijmo.angular2.chart.annotation';
+import &#123; WjChartInteractionModule } from 'wijmo/wijmo.angular2.chart.interaction';
+import &#123; WjChartAnalyticsModule } from 'wijmo/wijmo.angular2.chart.analytics';
+import &#123; TabsModule } from './components/AppTab';
+import &#123; DataSvc } from './services/DataSvc';
+
+// Sample components
+import &#123; GettingStartedCmp } from './components/GettingStartedCmp';
+
+export module FinancialChartIntro &#123;
+    'use strict';
+
+    // The FinancialChartIntro application root component.
+    @Component(&#123;
+        selector: 'app-cmp',
+        templateUrl: 'src/app.html'
+    })
+    export class AppCmp &#123;
+        constructor() &#123;
+        }
+
+    }
+}
+
+@NgModule(&#123;
+    imports: [WjInputModule, WjChartModule, WjChartAnimationModule, WjChartFinanceModule,
+        WjChartAnnotationModule, WjChartInteractionModule, WjChartAnalyticsModule,        
+        HttpModule,BrowserModule, FormsModule, TabsModule],
+    declarations: [GettingStartedCmp,FinancialChartIntro.AppCmp],
+    providers: [DataSvc],
+    bootstrap: [FinancialChartIntro.AppCmp]
+})
+export class AppModule &#123;
+}
+
+
+enableProdMode();
+// Bootstrap application with hash style navigation and global services.
+platformBrowserDynamic().bootstrapModule(AppModule);
+
+import &#123; Component, ViewChild, Inject} from '@angular/core';
+
+import &#123; DataSvc } from './../services/DataSvc';
+
+//GettingStarted sample component
+@Component(&#123;
+    selector: 'getting-started-cmp',
+    templateUrl: 'src/components/GettingStartedCmp.html'
+})
+
+export class GettingStartedCmp &#123;
+    dataSvc: DataSvc;
+    data: any[];
+    header: string;
+
+    constructor( @Inject(DataSvc) dataSvc: DataSvc) &#123;
+        this.data = [];
+        this.dataSvc = dataSvc;
+        this.setDataSource();
+        this.header = 'Facebook, Inc. (FB)';
+    }
+
+    private setDataSource() &#123;
+        this.dataSvc.getData().subscribe(data => &#123;
+            this.data = data;
+        });
+    }
+}
+                    </div>
+                </app-tab-pane>
+                <app-tab-pane title="CSS">
+                    <div class="pane-content">
+/* set default chart style */
+.wj-flexchart &#123;
+    height: 400px;
+    background-color: white;
+    box-shadow: 4px 4px 10px 0px rgba(50, 50, 50, 0.75);
+    padding: 8px;
+    margin-bottom: 12px;
+}
+                    </div>
+                </app-tab-pane>
+            </app-tab>
+        </div>
+        <div class="col-md-6">
+            <h4>Result (live):</h4>
+            <wj-financial-chart [itemsSource]="data" [header]="header"
+                                bindingX="date">
+                <wj-financial-chart-series name="Open" binding="open"></wj-financial-chart-series>
+                <wj-financial-chart-series name="Close" binding="close"></wj-financial-chart-series>
+            </wj-financial-chart>
+        </div>
+    </div>
+</div>

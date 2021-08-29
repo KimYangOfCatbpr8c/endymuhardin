@@ -1,18 +1,18 @@
 ﻿/*
     *
-    * Wijmo Library 5.20162.211
+    * Wijmo Library 5.20171.282
     * http://wijmo.com/
     *
     * Copyright(c) GrapeCity, Inc.  All rights reserved.
     *
     * Licensed under the Wijmo Commercial License.
     * sales@wijmo.com
-    * http://wijmo.com/products/wijmo-5/license/
+    * wijmo.com/products/wijmo-5/license/
     *
     */
 /*
-* Wijmo culture file: nl (Dutch)
-*/
+ * Wijmo culture file: nl (Dutch)
+ */
 var wijmo;
 (function (wijmo) {
     wijmo.culture = {
@@ -51,7 +51,7 @@ var wijmo;
             itemsSelected: '{count:n0} geselecteerde artikelen'
         },
         FlexGrid: {
-            groupHeaderFormat: '{name}: <b>{value} </b>({count:n0} items)'
+            groupHeaderFormat: '{name}: <b>{value}</b> ({count:n0} items)'
         },
         FlexGridFilter: {
             // filter
@@ -66,7 +66,7 @@ var wijmo;
             selectAll: 'Alles selecteren',
             null: '(niets)',
             // condition filter
-            header: 'Geef items weer waar de waarde',
+            header: 'Toon objecten waar de waarde',
             and: 'En',
             or: 'Of',
             stringOperators: [
@@ -90,8 +90,8 @@ var wijmo;
             dateOperators: [
                 { name: '(niet ingesteld)', op: null },
                 { name: 'Gelijk aan', op: 0 },
-                { name: 'Is voor', op: 4 },
-                { name: 'Is na', op: 3 }
+                { name: 'is voor', op: 4 },
+                { name: 'is na', op: 3 }
             ],
             booleanOperators: [
                 { name: '(niet ingesteld)', op: null },
@@ -101,104 +101,237 @@ var wijmo;
         },
         olap: {
             PivotFieldEditor: {
-                dialogHeader: 'Field settings:',
-                header: 'Header:',
-                summary: 'Summary:',
-                showAs: 'Show As:',
-                weighBy: 'Weigh by:',
-                sort: 'Sort:',
+                dialogHeader: 'Veldinstellingen:',
+                header: 'Veldnamenbestand:',
+                summary: 'Samenvatting:',
+                showAs: 'Toon als:',
+                weighBy: 'Wegen door:',
+                sort: 'Sorteervolgorde:',
                 filter: 'Filter:',
-                format: 'Format:',
-                sample: 'Sample:',
-                edit: 'Edit...',
-                clear: 'Clear',
+                format: 'Opmaak:',
+                sample: 'Voorbeeld:',
+                edit: 'Bewerken…',
+                clear: 'Wissen',
                 ok: 'OK',
-                cancel: 'Cancel',
-                none: '(none)',
+                cancel: 'Annuleren',
+                none: '(geen)',
                 sorts: {
-                    asc: 'Ascending',
-                    desc: 'Descending'
+                    asc: 'Oplopend',
+                    desc: 'Aflopend'
                 },
                 aggs: {
-                    sum: 'Sum',
-                    cnt: 'Count',
-                    avg: 'Average',
+                    sum: 'Som',
+                    cnt: 'Aantal',
+                    avg: 'Gemiddelde',
                     max: 'Max',
                     min: 'Min',
-                    rng: 'Range',
-                    std: 'StdDev',
+                    rng: 'Bereik',
+                    std: 'Stdev',
                     var: 'Var',
                     stdp: 'StdDevPop',
                     varp: 'VarPop'
                 },
                 calcs: {
-                    noCalc: 'No Calculation',
-                    dRow: 'Difference from previous row',
-                    dRowPct: '% Difference from previous row',
-                    dCol: 'Difference from previous column',
-                    dColPct: '% Difference from previous column'
+                    noCalc: 'Geen berekening',
+                    dRow: 'Verschil met vorige rij',
+                    dRowPct: '% Verschil met de vorige rij',
+                    dCol: 'Verschil met vorige kolom',
+                    dColPct: '% Verschil met de vorige kolom',
+                    dPctGrand: '% van totaal',
+                    dPctRow: '% van totale rij',
+                    dPctCol: '% van kolom totale',
+                    dRunTot: 'Lopend totaal',
+                    dRunTotPct: '% lopend totaal'
                 },
                 formats: {
-                    n0: 'Integer (n0)',
+                    n0: 'Geheel getal (n0)',
                     n2: 'Float (n2)',
-                    c: 'Currency (c)',
+                    c: 'Munt (c)',
                     p0: 'Percentage (p0)',
                     p2: 'Percentage (p2)',
-                    n2c: 'Thousands (n2,)',
-                    n2cc: 'Millions (n2,,)',
-                    n2ccc: 'Billions (n2,,,)',
-                    d: 'Date (d)',
-                    MMMMddyyyy: 'Month Day Year (MMMM dd, yyyy)',
-                    dMyy: 'Day Month Year (d/M/yy)',
-                    ddMyy: 'Day Month Year (dd/M/yy)',
-                    dMyyyy: 'Day Month Year (dd/M/yyyy)',
-                    MMMyyyy: 'Month Year (MMM yyyy)',
-                    MMMMyyyy: 'Month Year (MMMM yyyy)',
-                    yyyyQq: 'Year Quarter (yyyy "Q"q)',
-                    FYEEEEQU: 'Fiscal Year Quarter ("FY"EEEE "Q"U)'
+                    n2c: 'Duizenden (n2)',
+                    n2cc: 'Miljoenen (n2,,)',
+                    n2ccc: 'Miljarden (n2,,,)',
+                    d: 'Datum (d)',
+                    MMMMddyyyy: 'Jaar van de dagen van de maand (dd MMMM, jjjj)',
+                    dMyy: 'Dag maand jaar (d/M/JJ)',
+                    ddMyy: 'Dag maand jaar (dd/M/JJ)',
+                    dMyyyy: 'Dag maand jaar (dd/M/jjjj)',
+                    MMMyyyy: 'Maand jaar (MMM jjjj)',
+                    MMMMyyyy: 'Maand jaar (MMMM jjjj)',
+                    yyyyQq: 'Kwartaal van het jaar (yyyy "Q"q)',
+                    FYEEEEQU: 'Kwartaal van het fiscale jaar (EEEE "Q" U "FY")'
                 }
             },
             PivotEngine: {
-                grandTotal: 'Grand Total',
-                subTotal: 'Subtotal'
+                grandTotal: 'Eindtotaal',
+                subTotal: 'Subtotaal'
             },
             PivotPanel: {
-                fields: 'Choose fields to add to report',
-                drag: 'Drag fields between areas below:',
+                fields: 'Kies de velden toe te voegen aan verslag:',
+                drag: 'Velden slepen tussen onderstaande gebieden:',
                 filters: 'Filters',
-                cols: 'Columns',
-                rows: 'Rows',
-                vals: 'Values',
-                defer: 'Defer Updates',
-                update: 'Update'
+                cols: 'Kolommen',
+                rows: 'Rijen',
+                vals: 'Waarden',
+                defer: 'Uitstellen van Updates',
+                update: 'Bijwerken'
             },
             _ListContextMenu: {
-                up: 'Move Up',
-                down: 'Move Down',
-                first: 'Move do Beginning',
-                last: 'Move to End',
-                filter: 'Move to Report Filter',
-                rows: 'Move to Row Labels',
-                cols: 'Move to Column Labels',
-                vals: 'Move to Values',
-                remove: 'Remove Field',
-                edit: 'Field Settings...',
-                detail: 'Show Detail...'
+                up: 'Omhoog',
+                down: 'Omlaag',
+                first: 'Naar begin verplaatsen',
+                last: 'Naar einde verplaatsen',
+                filter: 'Naar rapportfilter verplaatsen',
+                rows: 'Naar rijlabels verplaatsen',
+                cols: 'Naar kolomlabels verplaatsen',
+                vals: 'Naar waarden verplaatsen',
+                remove: 'Veld verwijderen',
+                edit: 'Veldinstellingen…',
+                detail: 'Details weergeven…'
             },
             PivotChart: {
-                by: 'by',
-                and: 'and'
+                by: 'op',
+                and: 'en'
             },
             DetailDialog: {
-                header: 'Detail View:',
+                header: 'Detail bekijken:',
                 ok: 'OK',
                 items: '{cnt:n0} items',
-                item: '{cnt} item',
-                row: 'Row',
-                col: 'Column'
+                item: '{cnt} object',
+                row: 'Rij',
+                col: 'Kolom'
             }
+        },
+        Viewer: {
+            cancel: 'Annuleren',
+            ok: 'OK',
+            bottom: 'Bodem:',
+            top: 'Vanaf bovenkant:',
+            right: 'Rechts:',
+            left: 'Links:',
+            margins: 'Marges (inches)',
+            orientation: 'Schermstand:',
+            paperKind: 'Papier soort:',
+            pageSetup: 'Pagina-instelling',
+            landscape: 'Liggend',
+            portrait: 'Staand',
+            pageNumber: 'Paginanummer',
+            zoomFactor: 'Zoomfactor',
+            paginated: 'Afdrukweergave',
+            print: 'Afdrukken',
+            search: 'Zoeken',
+            matchCase: 'Identieke hoofdletters/kleine letters',
+            wholeWord: 'Alleen zoeken naar heel woord',
+            searchResults: 'Zoekresultaten',
+            previousPage: 'Vorige pagina',
+            nextPage: 'Volgende pagina',
+            firstPage: 'Eerste pagina',
+            lastPage: 'Laatste pagina',
+            backwardHistory: 'Terug',
+            forwardHistory: 'Vooruit',
+            pageCount: 'Aantal pagina\'s',
+            selectTool: 'Selecteer gereedschap',
+            moveTool: 'Verplaatsgereedschap',
+            continuousMode: 'Continu weergave van de pagina',
+            singleMode: 'Eén pagina weergeven',
+            wholePage: 'Fit hele pagina',
+            pageWidth: 'Binnen paginabreedte past',
+            zoomOut: 'Uitzoomen',
+            zoomIn: 'Inzoomen',
+            exports: 'Exporteren',
+            fullScreen: 'Volledig scherm',
+            exitFullScreen: 'Volledig scherm afsluiten',
+            hamburgerMenu: 'Extra',
+            showSearchBar: 'Zoekbalk weergeven',
+            viewMenu: 'Indelingsopties',
+            searchOptions: 'Zoekopties',
+            matchCaseMenuItem: 'Identieke hoofdletters/kleine letters',
+            wholeWordMenuItem: 'Heel woord',
+            thumbnails: 'Paginaminiaturen',
+            outlines: 'Documentstructuur',
+            loading: 'Bezig met laden…',
+            pdfExportName: 'Adobe PDF',
+            docxExportName: 'Open XML-Word',
+            xlsxExportName: 'Open XML-Excel',
+            docExportName: 'Microsoft Word',
+            xlsExportName: 'Microsoft Excel',
+            mhtmlExportName: 'Webarchiefbestand (MHTML)',
+            htmlExportName: 'HTML-document',
+            rtfExportName: 'RTF-document',
+            metafileExportName: 'Gecomprimeerde metabestanden',
+            csvExportName: 'CSV',
+            tiffExportName: 'TIFF-afbeeldingen',
+            bmpExportName: 'BMP-afbeeldingen',
+            emfExportName: 'Enhanced metabestand',
+            gifExportName: 'GIF-afbeeldingen',
+            jpgExportName: 'JPEG-afbeeldingen',
+            jpegExportName: 'JPEG-afbeeldingen',
+            pngExportName: 'PNG-afbeeldingen',
+            abstractMethodException: 'Dit is een abstracte methode, gelieve uit te voeren.',
+            cannotRenderPageNoViewPage: 'Niet worden weergegeven zonder brondocument en weergavepagina.',
+            cannotRenderPageNoDoc: 'Niet worden weergegeven zonder brondocument en weergavepagina.',
+            exportFormat: 'Exportindeling:',
+            exportOptionTitle: 'Exportopties',
+            documentRestrictionsGroup: 'Document beperkingen',
+            passwordSecurityGroup: 'Wachtwoordbeveiliging',
+            outputRangeGroup: 'Uitvoerbereik',
+            documentInfoGroup: 'Info over document',
+            generalGroup: 'Algemeen',
+            docInfoTitle: 'Titel',
+            docInfoAuthor: 'Auteur',
+            docInfoManager: 'Manager',
+            docInfoOperator: 'Operator',
+            docInfoCompany: 'Bedrijf',
+            docInfoSubject: 'Houder',
+            docInfoComment: 'Opmerking',
+            docInfoCreator: 'Auteur',
+            docInfoProducer: 'Producer',
+            docInfoCreationTime: 'Aanmaaktijd',
+            docInfoRevisionTime: 'Tijd voor herziening',
+            docInfoKeywords: 'Trefwoorden',
+            embedFonts: 'TrueType-lettertypen insluiten',
+            pdfACompatible: 'PDF/A-compatibel (niveau 2B)',
+            useCompression: 'Compressie gebruiken',
+            useOutlines: 'Overzichten genereren',
+            allowCopyContent: 'Inhoud kopiëren of extractie toestaan',
+            allowEditAnnotations: 'Aantekening bewerken toestaan',
+            allowEditContent: 'Inhoud bewerken toestaan',
+            allowPrint: 'Afdrukken toestaan',
+            ownerPassword: 'Wachtwoord voor machtigingen (eigenaar):',
+            userPassword: 'Wachtwoord voor document openen (gebruiker):',
+            encryptionType: 'Coderingsniveau instellen:',
+            paged: 'In wisselbestand',
+            showNavigator: 'Navigator weergeven',
+            singleFile: 'Single bestand',
+            tolerance: 'Tolerantie bij het opsporen van tekst grenzen (punten):',
+            pictureLayer: 'Gebruik aparte foto laag',
+            metafileType: 'Metafile Type:',
+            monochrome: 'Monochroom',
+            resolution: 'Resolutie:',
+            outputRange: 'Paginabereik:',
+            outputRangeInverted: 'Omgekeerd',
+            showZoomBar: 'Zoombalk',
+            searchPrev: 'Zoek in afgelopen',
+            searchNext: 'Zoekt de processor vervolgens',
+            checkMark: '\u2713',
+            exportOk: 'Exporteren…',
+            parameters: 'Parameters',
+            requiringParameters: 'Voer parameters.',
+            nullParameterError: 'Waarde kan niet null zijn.',
+            invalidParameterError: 'Ongeldige invoer.',
+            parameterNoneItemsSelected: '(geen)',
+            parameterAllItemsSelected: '(alle)',
+            parameterSelectAllItemText: '(Selecteer alles)',
+            selectParameterValue: '(waarde selecteren)',
+            apply: 'Toepassen',
+            errorOccured: 'Er is een fout opgetreden.'
         }
     };
+    var updc = window['wijmo']._updateCulture;
+    if (updc) {
+        updc();
+    }
 })(wijmo || (wijmo = {}));
 ;
-//# sourceMappingURL=wijmo.culture.nl.js.map
+

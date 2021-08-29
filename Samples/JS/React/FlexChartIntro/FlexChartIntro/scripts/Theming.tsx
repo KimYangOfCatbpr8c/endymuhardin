@@ -15,12 +15,12 @@ var Theming = React.createClass({
                 create some CSS rules that apply to those elements.</p>
             <p>
                 For example, if you right-click one of the labels on the X axis in IE or Chrome, you 
-                will see that it is an element with the "wj-label" class, that it is contained in an 
-                element with the "wj-axis-x" class, which is contained in the the top-level control 
-                element, which has the "wj-flexchart" class. The first CSS rule in this example uses
+                will see that it is an element with the <b>"wj-label"</b> class that is contained in an 
+                element with the <b>"wj-axis-x"</b> class, which is contained in the the top-level control 
+                element that has the <b>"wj-flexchart"</b> class. The first CSS rule in this example uses
                 this information to customize the X labels. The rule selector adds the additional 
-                requirement that the parent element must be have the "wj-flexchart" <b>and</b> the
-                "custom-flex-chart" classes. Without this, the rule would apply to all charts on the
+                requirement, that the parent element must have the <b>"wj-flexchart"</b> and the
+                <b>"custom-flex-chart"</b> classes. Without this, the rule would apply to the all charts on the
                 page.</p>
 
             <div className="row">

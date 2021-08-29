@@ -7,20 +7,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- styles -->
-    <link rel="stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" />
-    <link href="styles/vendor/wijmo.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="styles/vendor/wijmo.min.css" type="text/css" />
     <link rel="stylesheet" href="styles/app.css" type="text/css" />
-    <link href="styles/wjreportviewer.css" rel="stylesheet" type="text/css"/>
 
-    <!-- jQuery and Bootstrap scripts -->
+    <!-- jQuery scripts -->
     <script src="http://code.jquery.com/jquery-2.2.4.min.js" type="text/javascript"></script>
-    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js" type="text/javascript"></script>
 
     <!-- Wijmo -->
     <script src="scripts/vendor/wijmo.min.js" type="text/javascript"></script>
     <script src="scripts/vendor/wijmo.input.min.js" type="text/javascript"></script>
     <script src="scripts/vendor/wijmo.grid.min.js" type="text/javascript"></script>
+    <script src="scripts/vendor/wijmo.viewer.min.js" type="text/javascript"></script>
 </head>
 <body>
     <div class="header">
@@ -28,33 +26,54 @@
             <img src="resources/wijmo5.png" alt="Wijmo 5" />
             <h1>ReportViewer</h1>
             <p>
-                This page shows how to use the C1 Report Service to display the content.
+                This page shows how to use the ReportViewer control to display the content of FlexReport and SSRS report from C1 Report Services.
             </p>
         </div>
     </div>
-    <div class="report-names">
-        <span>Selected Report:</span>
-        <select id="reports" class="combobox">
-        </select>
-    </div>
-    <br />
-    <div id="reportViewer">
+    <div class="container">
+        <div class="descriptions">
+            <p>
+                The <a target="_blank" href="http://helpcentral.componentone.com/nethelp/C1WebAPI/ReportServices.html">C1 Web API Report Services</a> is an API which can render and export <a target="_blank" href="http://www.componentone.com/Studio/FlexReport?platform=WinForms">FlexReport</a> and <a target="_blank" href="https://msdn.microsoft.com/en-us/library/ms159106.aspx">SSRS</a> report.
+                It uses <a target="_blank" href="http://helpcentral.componentone.com/nethelp/FlexReport/C1.Win.FlexReport.4~C1.Win.FlexReport.C1FlexReport.html">C1FlexReport</a> to render the <a target="_blank" href="http://www.componentone.com/Studio/FlexReport?platform=WinForms">FlexReport</a>, and uses <a target="_blank" href="http://helpcentral.componentone.com/nethelp/FlexReport/C1.Win.C1Document.4~C1.Win.C1Document.C1SSRSDocumentSource.html">C1SSRSDocumentSource</a> to connect with SSRS server and render the SSRS report.
+                Please see <a target="_blank" href="https://grapecity.sharepoint.com/teams/C1/C1Studio/Rhino/_layouts/15/WopiFrame.aspx?sourcedoc=%7BC7E2A01F-5D83-49BD-99AF-A3B60CE43215%7D&file=How%20to%20Set%20Up%20C1%20Web%20API%20Report%20Services.docx&action=default&IsList=1&ListId=%7BDFFA5B8D-3C57-433C-B25F-A31FAB3602EF%7D&ListItemId=646">How to Set Up C1 Web API Report Services</a> for details.
+            </p>
+            <p>
+                To show the report content in Wijmo ReportViewer control from the C1 Report Services, set the following basic properties:
+            </p>
+            <ol>
+                <li>
+                    <b>serviceUrl:</b> The url of C1 Web API Report Services.
+                    For example, '<span class="service-url"></span>'.
+                </li>
+                <li>
+                    <b>filePath:</b> The full path to the FlexReport definition file or SSRS report on the server.
+                    For example, 'ReportsRoot/Formatting/AlternateBackground.flxr' for FlexReport, and 'c1ssrs/AdventureWorks/Company Sales' for SSRS report.
+                    <p>
+                        The 'ReportsRoot' and 'c1ssrs' are the keys of the report providers which are registered at server for locating specified report.
+                    </p>
+                </li>
+                <li>
+                    <b>reportName:</b> (only for FlexReport) The report name defined in the FlexReport definition file.
+                    For example, 'AlternateBackground' for the report named 'AlternateBackground' in the AlternateBackground.flxr file.
+                </li>
+            </ol>
+        </div>
+        <br />
+        <div class="report-names">
+            <span>Selected FlexReport:</span>
+            <select id="flexReports" class="combobox"></select>
+            <span>Selected SSRS Report:</span>
+            <select id="ssrsReports" class="combobox"></select>
+        </div>
+        <br />
+        <div id="reportViewer">
+        </div>
     </div>
     <!-- ReportViewer -->
-    <script src="scripts/wijmo.viewer.js" type="text/javascript"></script>
     <script src="scripts/app.js" type="text/javascript"></script>
 
     <!-- Google analytics -->
-    <script>
-        (function (i, s, o, g, r, a, m) {
-            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-                (i[r].q = i[r].q || []).push(arguments)
-            }, i[r].l = 1 * new Date(); a = s.createElement(o),
-            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
-        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-
-        ga('create', 'UA-208280-14', 'auto');
-        ga('send', 'pageview');
-    </script>
+    
+    <script src="http://cdn.wijmo.com/wijmo.sample.toolbar.js" type="text/javascript"></script>
 </body>
 </html>

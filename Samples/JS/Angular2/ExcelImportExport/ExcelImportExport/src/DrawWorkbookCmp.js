@@ -1,4 +1,3 @@
-///<reference path="../typings/globals/core-js/index.d.ts"/>
 "use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -6,6 +5,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+///<reference path="../typings/globals/core-js/index.d.ts"/>
+var wjcXlsx = require('wijmo/wijmo.xlsx');
+var drawWorkbook_1 = require('./xlsxImport/drawWorkbook');
 // Angular
 var core_1 = require('@angular/core');
 var platform_browser_dynamic_1 = require('@angular/platform-browser-dynamic');
@@ -25,13 +27,13 @@ var DrawWorkBookCmp = (function () {
         var drawRoot = document.getElementById('tableHost');
         drawRoot.textContent = '';
         this.sheetIndex = sheetIndex;
-        xlsxImport.drawWorksheet(this.workbook, sheetIndex, drawRoot, 200, 100);
+        drawWorkbook_1.drawWorksheet(this.workbook, sheetIndex, drawRoot, 200, 100);
     };
     DrawWorkBookCmp.prototype._loadWorkbook = function () {
         var _this = this;
         var reader = new FileReader(), fileData;
         reader.onload = function (e) {
-            var workbook = new wijmo.xlsx.Workbook();
+            var workbook = new wjcXlsx.Workbook();
             workbook.load(reader.result);
             _this.workbook = workbook;
             _this.drawSheet(_this.workbook.activeWorksheet || 0);

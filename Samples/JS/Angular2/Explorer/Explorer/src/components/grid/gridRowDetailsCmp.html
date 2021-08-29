@@ -5,21 +5,21 @@
         </h3>
         <div class="alert alert-info" role="alert"><b>Important!</b> This feature requires the <a href="http://wijmo.com/5/docs/topic/wijmo.grid.detail.Module.html">wijmo.grid.detail</a> extension module.</div>
         <p>
-            Each row on the grids below represents a product category.
+            Each row in the following grids represents a product category.
             To see the products in each category, expand the rows by clicking the plus sign.
-            Expanded rows show a "detail" row below containing arbitrary content
-            (in this case a nested grid with product information).
+            Expanded row shows another row containing arbitrary content (in this case,
+            a nested grid with product information) and is called as a "detail" row.
         </p>
         <p>
             The detail rows are implemented using the <b>FlexGridDetailProvider</b> class.
             The <b>FlexGridDetailProvider</b> class has a <b>createDetailCell</b> function
-            that creates HTML elements to show the details for any row. The content of the
-            detail cells is completely customizable.
+            that creates HTML elements to show the details for any row. Content of the
+            detail cells can be customized completely.
         </p>
         <p>
             In addition to the <b>createDetailCell</b> function, the <b>FlexGridDetailProvider</b>
             class has other properties that allow you to customize when the detail rows
-            are displayed, their dimensions, etc.
+            are displayed. For example: dimensions of detail row etc.
         </p>
         <h3>
             Using the <b>FlexGridDetailProvider</b> class
@@ -67,7 +67,7 @@
 
     <!-- select detailVisibilityMode -->
     <p>
-        Select the value for the <b>detailVisibilityMode</b> property to
+        Select a value for the <b>detailVisibilityMode</b> property to
         determine when the row details are visible.
     </p>
     <wj-menu [(value)]="detailMode" [header]="'detailVisibilityMode'">
@@ -81,7 +81,7 @@
         Using the <b>wjFlexGridDetail</b> directive with another template
     </h3>
     <p>
-        The grid below uses the <b>wjFlexGridDetail</b> directive and specifies
+        This grid uses the <b>wjFlexGridDetail</b> directive and specifies
         a template defined as HTML content, including a list created with an
         <b>ngFor</b> directive.
     </p>

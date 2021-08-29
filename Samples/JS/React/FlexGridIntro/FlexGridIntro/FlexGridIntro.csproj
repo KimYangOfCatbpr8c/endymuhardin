@@ -20,7 +20,7 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
-    <TypeScriptToolsVersion>1.8</TypeScriptToolsVersion>
+    <TypeScriptToolsVersion>2.0</TypeScriptToolsVersion>
     <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -117,6 +117,7 @@
     <TypeScriptCompile Include="scripts\Editing.tsx" />
     <TypeScriptCompile Include="scripts\Filtering.tsx" />
     <TypeScriptCompile Include="scripts\GettingStarted.tsx" />
+    <TypeScriptCompile Include="scripts\GroupPanel.tsx" />
     <TypeScriptCompile Include="scripts\Grouping.tsx" />
     <TypeScriptCompile Include="scripts\MasterDetail.tsx" />
     <TypeScriptCompile Include="scripts\NullValues.tsx" />
@@ -135,9 +136,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="scripts\vendor\wijmo.min.js" />
+    <Content Include="scripts\vendor\wijmo.input.min.js" />
     <Content Include="scripts\vendor\wijmo.grid.min.js" />
     <Content Include="scripts\vendor\wijmo.grid.filter.min.js" />
-    <Content Include="scripts\vendor\wijmo.input.min.js" />
+    <Content Include="scripts\vendor\wijmo.grid.grouppanel.min.js" />
     <Content Include="scripts\vendor\wijmo.react.min.js" />
     <Content Include="styles\vendor\wijmo.min.css" />
   </ItemGroup>

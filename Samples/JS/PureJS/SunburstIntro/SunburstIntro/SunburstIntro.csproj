@@ -68,6 +68,7 @@
     <Content Include="scripts\app.js" />
     <Content Include="scripts\basic.js" />
     <Content Include="scripts\gettingStarted.js" />
+    <Content Include="scripts\groupCV.js" />
     <Content Include="scripts\legendTitles.js" />
     <Content Include="scripts\selection.js" />
     <Content Include="scripts\theming.js" />

@@ -133,6 +133,17 @@ form input:invalid {
 	margin-bottom: 5px;
 }
 
+/* default trees on this sample */
+.wj-treeview {
+    display:block;
+    height: 350px;
+    width:40%;
+    font-size: 120%;
+    margin-bottom: 8px;
+    background: white;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
 /* Bootstrap */
 .header {
     background-color: #6f5499;

@@ -1,10 +1,12 @@
-'use strict';
+"use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var wjcCore = require('wijmo/wijmo');
+'use strict';
 var core_1 = require('@angular/core');
 var common_1 = require('@angular/common');
 var router_1 = require('@angular/router');
@@ -37,7 +39,7 @@ var ChartZoomCmp = (function () {
                 _this._mouseDown(e);
             };
             this._hostEl.onmousemove = function (e) {
-                _this._mouseMove(e, new wijmo.Point(e.pageX, e.pageY));
+                _this._mouseMove(e, new wjcCore.Point(e.pageX, e.pageY));
             };
             this._hostEl.onmouseup = function (e) {
                 _this._mouseUp(e);
@@ -49,7 +51,7 @@ var ChartZoomCmp = (function () {
                     e.preventDefault();
                 };
                 this._hostEl.ontouchmove = function (e) {
-                    _this._mouseMove(e, new wijmo.Point(e.changedTouches[0].pageX, e.changedTouches[0].pageY));
+                    _this._mouseMove(e, new wjcCore.Point(e.changedTouches[0].pageX, e.changedTouches[0].pageY));
                     e.preventDefault();
                 };
                 this._hostEl.ontouchend = function (e) {
@@ -60,13 +62,13 @@ var ChartZoomCmp = (function () {
             // handle pointer (if supported by the browser)
             if ('onpointerdown' in window) {
                 this._hostEl.addEventListener('pointerdown', function (e) {
-                    this._mouseDown(e);
+                    _this._mouseDown(e);
                 }, true);
                 this._hostEl.addEventListener('pointermove', function (e) {
-                    this._mouseMove(e, new wijmo.Point(e.pageX, e.pageY));
+                    _this._mouseMove(e, new wjcCore.Point(e.pageX, e.pageY));
                 }, true);
                 this._hostEl.addEventListener('pointerup', function (e) {
-                    this._mouseUp(e);
+                    _this._mouseUp(e);
                 }, true);
                 // prevent touch scrolling on the chart
                 this._hostEl.style['touchAction'] = 'none';
@@ -135,8 +137,8 @@ var ChartZoomCmp = (function () {
             this._offset.left = this._offset.left + parseInt(host.css('padding-left'));
             this._offset.top = this._offset.top + parseInt(host.css('padding-top'));
             // convert screen to data coordinates
-            var min = new wijmo.Point(this._start.x - this._offset.left, this._start.y - this._offset.top);
-            var max = new wijmo.Point(this._end.x - this._offset.left, this._end.y - this._offset.top);
+            var min = new wjcCore.Point(this._start.x - this._offset.left, this._start.y - this._offset.top);
+            var max = new wjcCore.Point(this._end.x - this._offset.left, this._end.y - this._offset.top);
             var p1 = chart.pointToData(min);
             var p2 = chart.pointToData(max);
             // update axes

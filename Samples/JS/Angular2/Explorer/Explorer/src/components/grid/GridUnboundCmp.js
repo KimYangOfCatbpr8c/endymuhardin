@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
@@ -13,6 +13,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
+var wjcGrid = require('wijmo/wijmo.grid');
+'use strict';
 var core_1 = require('@angular/core');
 var common_1 = require('@angular/common');
 var router_1 = require('@angular/router');
@@ -31,14 +33,14 @@ var GridUnboundCmp = (function (_super) {
     GridUnboundCmp.prototype.update = function () {
         if (this.flex) {
             var flex = this.flex;
-            flex.allowResizing = wijmo.grid.AllowResizing.Both;
-            flex.allowDragging = wijmo.grid.AllowDragging.Both;
+            flex.allowResizing = wjcGrid.AllowResizing.Both;
+            flex.allowDragging = wjcGrid.AllowDragging.Both;
             // add 50 rows, 10 columns
             for (var r = 0; r < 50; r++) {
-                flex.rows.push(new wijmo.grid.Row());
+                flex.rows.push(new wjcGrid.Row());
             }
             for (var c = 0; c < 10; c++) {
-                flex.columns.push(new wijmo.grid.Column());
+                flex.columns.push(new wjcGrid.Column());
             }
             // populate the scrollable area
             for (var r = 0; r < flex.rows.length; r++) {
@@ -48,8 +50,8 @@ var GridUnboundCmp = (function (_super) {
             }
             // add 3 rows to the column header and 3 columns to the row header panels
             for (var i = 0; i < 3; i++) {
-                flex.columnHeaders.rows.insert(0, new wijmo.grid.Row());
-                flex.rowHeaders.columns.insert(0, new wijmo.grid.Column());
+                flex.columnHeaders.rows.insert(0, new wjcGrid.Row());
+                flex.rowHeaders.columns.insert(0, new wjcGrid.Column());
             }
             // populate the fixed area
             var p = flex.columnHeaders;

@@ -128,6 +128,9 @@ export class DataSvc &#123;
 
 ----------------Component---------
 // Angular
+import * as wjcChart from 'wijmo/wijmo.chart';
+import * as wjcInput from 'wijmo/wijmo.input';
+
 import &#123; Component, View, EventEmitter, provide, Input, Inject, enableProdMode, NgModule } from '@angular/core';
 import &#123; CommonModule } from '@angular/common';
 import &#123; FormsModule } from '@angular/forms';
@@ -183,7 +186,50 @@ platformBrowserDynamic().bootstrapModule(AppModule);
             </div>
         </div>
     </div>
+    
+    <!-- Group Collection Features -->
+    <div>
+        <h2 id="Features">Group Collection</h2>
+        <p>
+            The sample shows how to use the Sunburst chart with Grouped CollectionView.
+        </p>
+        <div class="row">
+            <div class="col-md-6">
+                <app-tab>
+                    <app-tab-pane title="HTML">
+                        <div class="pane-content">
+&lt;wj-sunburst
+    [itemsSource]="groupCVData"
+    binding="value"
+    &lt;wj-flex-pie-data-label position="Center" content="&#123;name}"&gt;&lt;/wj-flex-pie-data-label&gt;
+&lt;/wj-sunburst&gt;
+                        </div>
+                    </app-tab-pane>
+                    <app-tab-pane title="TS">
+                        <div class="pane-content">
+export class AppCmp &#123;
+    protected dataSvc: DataSvc;
+    groupCVData: any[];
 
+    constructor( @Inject(DataSvc) dataSvc: DataSvc) &#123;
+        this.dataSvc = dataSvc;
+        this.groupCVData = this.dataSvc.getGroupCVData();
+    }
+
+}
+                        </div>
+                    </app-tab-pane>
+                </app-tab>
+            </div>
+            <div class="col-md-6">
+                <h4>Result (live):</h4>
+                <wj-sunburst [itemsSource]="groupCVData"
+                             binding="value">
+                    <wj-flex-pie-data-label position="Center" content="{name}"></wj-flex-pie-data-label>
+                </wj-sunburst>
+            </div>
+        </div>
+    </div>
     <!-- Basic Features -->
     <div>
         <h2 id="Features">Basic Features</h2>
@@ -294,34 +340,34 @@ export class AppCmp &#123;
     reversed = false;
     palette = 'standard';
     palettes = ['standard', 'cocoa', 'coral', 'dark', 'highcontrast', 'light', 'midnight', 'minimal', 'modern', 'organic', 'slate'];
-    chartPalette: wijmo.chart.Palettes;
+    chartPalette: wjcChart.Palettes;
 
     constructor( @Inject(DataSvc) dataSvc: DataSvc) &#123;
         this.dataSvc = dataSvc;
         this.hierarchicalData = this.dataSvc.getHierarchicalData();
     }
 
-    paletteChanged = (sender: wijmo.input.Menu) => &#123;
+    paletteChanged = (sender: wjcInput.Menu) => &#123;
         var p = this.palettes[sender.selectedIndex];
         this.palette = p;
-        this.chartPalette = wijmo.chart.Palettes[p];
+        this.chartPalette = wjcChart.Palettes[p];
     };
 
-    innerRadiusChanged = (sender: wijmo.input.InputNumber) => &#123;
+    innerRadiusChanged = (sender: wjcInput.InputNumber) => &#123;
         if (sender.value < sender.min || sender.value > sender.max) &#123;
             return;
         }
         this.innerRadius = sender.value;
     };
 
-    offsetChanged = (sender: wijmo.input.InputNumber) => &#123;
+    offsetChanged = (sender: wjcInput.InputNumber) => &#123;
         if (sender.value < sender.min || sender.value > sender.max) &#123;
             return;
         }
         this.offset = sender.value;
     };
 
-    startAngleChanged = (sender: wijmo.input.InputNumber) => &#123;
+    startAngleChanged = (sender: wjcInput.InputNumber) => &#123;
         if (sender.value < sender.min || sender.value > sender.max) &#123;
             return;
         }
@@ -598,7 +644,7 @@ export class AppCmp &#123;
         this.data = this.dataSvc.getData();
     }
 
-    selectedOffsetChanged = (sender: wijmo.input.InputNumber) => &#123;
+    selectedOffsetChanged = (sender: wjcInput.InputNumber) => &#123;
         if (sender.value < sender.min || sender.value > sender.max) &#123;
             return;
         }

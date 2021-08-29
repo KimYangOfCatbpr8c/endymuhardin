@@ -22,7 +22,8 @@ var App = React.createClass({
                 <SelectionModes/>
                 <CellFreezing/>
                 <Editing/>
-                <Grouping/>
+                <Grouping />
+                <GroupPanel />
                 <Filtering/>
                 <Paging/>
                 <MasterDetail/>

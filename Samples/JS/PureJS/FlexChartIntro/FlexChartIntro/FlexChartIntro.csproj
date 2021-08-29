@@ -79,6 +79,7 @@
     <Content Include="scripts\chartTooltip.js" />
     <Content Include="scripts\chartTypes.js" />
     <Content Include="scripts\dynamicChart.js" />
+    <Content Include="scripts\gradientColors.js" />
     <Content Include="scripts\mixedTypesChart.js" />
     <Content Include="styles\app.css" />
     <Content Include="Web.config" />

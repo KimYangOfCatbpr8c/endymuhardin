@@ -10,13 +10,15 @@
 <label><input type="checkbox" ng-model="ctx.showRaisers"> Event Raisers</label>
 </dd>
 </dl>
-<div class="comment"><p>Angular 2 component for the <a href="topic/wijmo.angular.WjFlexChart.Class.html"><span class="identifier">WjFlexChart</span></a> <a href="topic/wijmo.chart.interaction.RangeSelector.Class.html"><span class="identifier">RangeSelector</span></a> object.</p>
-<p>The <b>wj-flex-chart-range-selector</b> component must be contained in a 
-<a href="topic/wijmo-wijmo.angular2.chart.WjFlexChart.Class.html"><span class="identifier">WjFlexChart</span></a> component.</p>
-<p>Use the <b>wj-flex-chart-range-selector</b> component to add <b>RangeSelector</b> objects to your 
+<div class="comment"><p>Angular 2 component for the <a href="topic/wijmo.chart.interaction.RangeSelector.Class.html"><span class="identifier">RangeSelector</span></a> control. </p>
+<p>The <b>wj-flex-chart-range-selector</b> component must be 
+contained in one of the following components:
+<a href="topic/wijmo-wijmo.angular2.chart.WjFlexChart.Class.html"><span class="identifier">WjFlexChart</span></a>
+ or <a href="topic/wijmo-wijmo.angular2.chart.finance.WjFinancialChart.Class.html"><span class="identifier">WjFinancialChart</span></a>.</p>
+<p>Use the <b>wj-flex-chart-range-selector</b> component to add <b>RangeSelector</b> controls to your
 Angular 2 applications. For details about Angular 2 markup syntax, see 
-<a href="static/angular2Markup.html">Angular 2 Markup</a>.</p>
-<p>The <b>WjFlexChartRangeSelector</b> component is derived from the <b>RangeSelector</b> class and
+<a href="static/angular2Markup.html">Angular 2 Markup</a>.  </p>
+<p>The <b>WjFlexChartRangeSelector</b> component is derived from the <b>RangeSelector</b> control and
 inherits all its properties, events and methods.</p></div>
 </div>
 <div class="member-panel class members" ng-class="{ 'show-inherited' : ctx.showInherited, 'show-raisers' : ctx.showRaisers }">
@@ -26,16 +28,21 @@ inherits all its properties, events and methods.</p></div>
 </ul>
 <h3 class="node">Properties</h3>
 <ul>
+<li class="mproperty"><a href="topic/wijmo-wijmo.angular2.chart.interaction.WjFlexChartRangeSelector.Class.html/#initialized">initialized</a></li>
+<li class="mproperty"><a href="topic/wijmo-wijmo.angular2.chart.interaction.WjFlexChartRangeSelector.Class.html/#isInitialized">isInitialized</a></li>
 <li class="mproperty inherited"><a href="topic/wijmo-wijmo.angular2.chart.interaction.WjFlexChartRangeSelector.Class.html/#isVisible">isVisible</a></li>
 <li class="mproperty inherited"><a href="topic/wijmo-wijmo.angular2.chart.interaction.WjFlexChartRangeSelector.Class.html/#max">max</a></li>
 <li class="mproperty inherited"><a href="topic/wijmo-wijmo.angular2.chart.interaction.WjFlexChartRangeSelector.Class.html/#maxScale">maxScale</a></li>
 <li class="mproperty inherited"><a href="topic/wijmo-wijmo.angular2.chart.interaction.WjFlexChartRangeSelector.Class.html/#min">min</a></li>
 <li class="mproperty inherited"><a href="topic/wijmo-wijmo.angular2.chart.interaction.WjFlexChartRangeSelector.Class.html/#minScale">minScale</a></li>
 <li class="mproperty inherited"><a href="topic/wijmo-wijmo.angular2.chart.interaction.WjFlexChartRangeSelector.Class.html/#orientation">orientation</a></li>
+<li class="mproperty"><a href="topic/wijmo-wijmo.angular2.chart.interaction.WjFlexChartRangeSelector.Class.html/#rangeChangedNg">rangeChangedNg</a></li>
 <li class="mproperty inherited"><a href="topic/wijmo-wijmo.angular2.chart.interaction.WjFlexChartRangeSelector.Class.html/#seamless">seamless</a></li>
+<li class="mproperty"><a href="topic/wijmo-wijmo.angular2.chart.interaction.WjFlexChartRangeSelector.Class.html/#wjProperty">wjProperty</a></li>
 </ul>
 <h3 class="node">Methods</h3>
 <ul>
+<li class="mmethod"><a href="topic/wijmo-wijmo.angular2.chart.interaction.WjFlexChartRangeSelector.Class.html/#created">created</a></li>
 <li class="mmethod inherited raiser"><a href="topic/wijmo-wijmo.angular2.chart.interaction.WjFlexChartRangeSelector.Class.html/#onRangeChanged">onRangeChanged</a></li>
 <li class="mmethod inherited"><a href="topic/wijmo-wijmo.angular2.chart.interaction.WjFlexChartRangeSelector.Class.html/#remove">remove</a></li>
 </ul>
@@ -61,6 +68,22 @@ inherits all its properties, events and methods.</p></div>
 </div>
 <h3 class="node">Properties</h3>
 <div class="member-list" ng-class="{ 'show-inherited' : ctx.showInherited, 'show-raisers' : ctx.showRaisers }">
+<div id="initialized" class="member-panel mproperty">
+<h3>initialized</h3>
+<div class="comment"><p>This event is triggered after the component has been initialized by Angular, that is
+all bound properties have been assigned and child components (if any) have been initialized.</p></div>
+<dl class="dl-horizontal">
+  <dt>Type</dt><dd><span class="identifier">EventEmitter</span></dd>
+</dl>
+</div>
+<div id="isInitialized" class="member-panel mproperty">
+<h3>isInitialized</h3>
+<div class="comment"><p>Indicates whether the component has been initialized by Angular.
+Changes its value from false to true right before triggering the <b>initialized</b> event.</p></div>
+<dl class="dl-horizontal">
+  <dt>Type</dt><dd><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a></dd>
+</dl>
+</div>
 <div id="isVisible" class="member-panel mproperty inherited">
 <h3>isVisible</h3>
 <div class="comment"><p>Gets or sets the visibility of the range selector.</p></div>
@@ -113,6 +136,15 @@ The minimum scale is between 0 and 1.</p></div>
   <dt>Type</dt><dd><a href="topic/wijmo.chart.interaction.Orientation.Enum.html"><span class="identifier">Orientation</span></a></dd>
 </dl>
 </div>
+<div id="rangeChangedNg" class="member-panel mproperty">
+<h3>rangeChangedNg</h3>
+<div class="comment"><p>Angular (EventEmitter) version of the Wijmo <b>rangeChanged</b> event for programmatic access.
+Use this event name if you want to subscribe to the Angular version of the event in code.
+In template bindings use the conventional <b>rangeChanged</b> Wijmo event name.</p></div>
+<dl class="dl-horizontal">
+  <dt>Type</dt><dd><span class="identifier">EventEmitter</span></dd>
+</dl>
+</div>
 <div id="seamless" class="member-panel mproperty inherited">
 <h3>seamless</h3>
 <div class="comment"><p>Gets or sets a value that determines whether the minimal and maximal 
@@ -122,9 +154,29 @@ handler will move seamlessly.</p></div>
   <dt>Type</dt><dd><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a></dd>
 </dl>
 </div>
+<div id="wjProperty" class="member-panel mproperty">
+<h3>wjProperty</h3>
+<div class="comment"><p>Gets or sets a name of a property that this component is assigned to. 
+Default value is ''.</p></div>
+<dl class="dl-horizontal">
+  <dt>Type</dt><dd><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank"><span class="identifier">string</span></a></dd>
+</dl>
+</div>
 </div>
 <h3 class="node">Methods</h3>
 <div class="member-list" ng-class="{ 'show-inherited' : ctx.showInherited, 'show-raisers' : ctx.showRaisers }">
+<div id="created" class="member-panel mmethod">
+<h3>created</h3>
+<pre>created(): <span class="identifier">void</span></pre>
+<div class="comment"><p>If you create a custom component inherited from a Wijmo component, you can override this  
+method and perform necessary initializations that you usually do in a class constructor. 
+This method is called in the last line of a Wijmo component constructor and allows you
+to not declare your custom component's constructor at all, thus preventing you from a necessity 
+to maintain constructor parameters and keep them in synch with Wijmo component's constructor parameters.</p></div>
+<dl class="dl-horizontal">
+  <dt>Returns</dt><dd><span class="identifier">void</span></dd>
+</dl>
+</div>
 <div id="onRangeChanged" class="member-panel mmethod inherited raiser">
 <h3>onRangeChanged</h3>
 <pre>onRangeChanged(e?: <a href="topic/wijmo.EventArgs.Class.html"><span class="identifier">EventArgs</span></a>): <span class="identifier">void</span></pre>

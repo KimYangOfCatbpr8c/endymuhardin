@@ -11,7 +11,7 @@ var DynamicCharts = React.createClass({
                 the data source are automatically reflected in the chart.</p>
             <p>
                 In this sample, we use a timer to add items to the data source, discarding old items 
-                to keep the total count at 200. The result is a dynamic chart that scrolls as new 
+                to keep the total count at 200. The result is a dynamic chart that scrolls as the new 
                 data arrives.</p>
 
             <div className="row">

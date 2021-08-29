@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"/>
     <script src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
     <script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.0-rc.6/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.0-rc.8/vue.min.js"></script>
 
     <!-- Wijmo -->
     <link rel="stylesheet" href="styles/vendor/wijmo.min.css" />
@@ -134,7 +134,7 @@ function getData() {
         <h2>
             Chart Types</h2>
         <p>
-            The FlexChart control has three properties that allow you to customize the chart 
+            The FlexChart control has the following three properties that allow you to customize the chart 
             type:</p>
         <ol>
             <li>
@@ -144,7 +144,7 @@ function getData() {
                 <b>stacking</b>: Determines whether series objects are plotted independently, 
                 stacked, or stacked so their sum is 100%.</li>
             <li>
-                <b>rotated</b>: Flips the X and Y axes so X becomes vertical and Y horizontal.</li> 
+                <b>rotated</b>: Flips the X and Y axes, so that X becomes vertical and Y becomes horizontal.</li> 
         </ol>
         <p>
             The example below allows you to see what happens when you change these properties:</p>
@@ -317,8 +317,8 @@ var app = new Vue({
             to your charts.</p>
         <p>
             You can style the legend and titles using CSS. The CSS tab below shows the rules
-            used to customize the appearance of the legend and titles. Notice that these are
-            SVG elements, so you have to use CSS attributes such as "fill" instead of "color."</p>
+            used to customize the appearance of the legend and titles. Note that these are
+            SVG elements, so you have to use CSS attributes such as "fill" instead of "color".</p>
         <div class="row">
             <div class="col-md-6">
                 <ul class="nav nav-tabs" role="tablist">
@@ -435,7 +435,7 @@ var app = new Vue({
         <p>
             By default, the tooltip template is set to
             <code>&lt;b&gt;{seriesName}&lt;/b&gt;&lt;br/&gt;{x} {y}</code>,
-            and you can see how that works in the  charts above.
+            and you can see how that works in the charts above.
             In this example, we set the tooltip template to 
             <code>&lt;b&gt;{seriesName}&lt;/b&gt; &lt;img src='resources/{x}.png'/&gt;&lt;br/&gt;{y}</code>,
             which replaces the country name with the country's flag.</p>
@@ -498,7 +498,7 @@ var app = new Vue({
             in advance. For example, a stock chart may show series selected by the 
             user while running the application.</p>
         <p>
-            The chart in this example uses the <b>style</b> and <b>symbolStyle</b> properties 
+            The chart in this example uses the <b>style</b> and the <b>symbolStyle</b> properties 
             to select style attributes for each series:</p>
         <div class="row">
             <div class="col-md-6">
@@ -564,7 +564,7 @@ var app = new Vue({
             gridlines.</p>
         <p>
             The <b>Axis</b> class has boolean properties that allow you to turn features on
-            or off (<b>axisLine</b>, <b>labels</b>, <b>majorTickMarks</b>, and <b>majorGrid</b>.)
+            or off (<b>axisLine</b>, <b>labels</b>, <b>majorTickMarks</b>, and <b>majorGrid</b>).
             You can style the appearance of the features that are turned on using CSS.</p>
         <div class="row">
             <div class="col-md-6">
@@ -639,12 +639,12 @@ var app = new Vue({
             create some CSS rules that apply to those elements.</p>
         <p>
             For example, if you right-click one of the labels on the X axis in IE or Chrome, you 
-            will see that it is an element with the "wj-label" class, that it is contained in an 
-            element with the "wj-axis-x" class, which is contained in the the top-level control 
-            element, which has the "wj-flexchart" class. The first CSS rule in this example uses
+            will see that it is an element with the <b>"wj-label"</b> class that is contained in an 
+            element with the <b>"wj-axis-x"</b> class, which is contained in the the top-level control 
+            element that has the <b>"wj-flexchart"</b> class. The first CSS rule in this example uses
             this information to customize the X labels. The rule selector adds the additional 
-            requirement that the parent element must be have the "wj-flexchart" <b>and</b> the
-            "custom-flex-chart" classes. Without this, the rule would apply to all charts on the
+            requirement, that the parent element must have the <b>"wj-flexchart"</b>and the
+            <b>"custom-flex-chart"</b> classes. Without this, the rule would apply to all charts on the
             page.</p>
         <div class="row">
             <div class="col-md-6">
@@ -709,11 +709,11 @@ var app = new Vue({
         <p>
             The FlexChart allows you to select series or data points by clicking or touching them.
             Use the <b>selectionMode</b> property to specify whether you want to allow selection 
-            by series, by data point, or no selection at all (selection is off by default.)</p>
+            by series, by data point, or no selection at all (selection is turned off by default).</p>
         <p>
             Setting the <b>selectionMode</b> property to <b>Series</b> or <b>Point</b> causes
             the FlexChart to update the <b>Selection</b> property when the user clicks the
-            mouse, and to apply the "wj-state-selected" class to selected chart elements.</p>
+            mouse, and to apply the "wj-state-selected" class to the selected chart elements.</p>
         <p>
             The <b>Selection</b> property returns the currently selected series. To get the
             currently selected data point, get the currently selected item within the 
@@ -865,10 +865,10 @@ var app = new Vue({
             only in the legend, or completely hidden.</p>
         <p>
             This sample shows how you can use the <b>visibility</b> property to toggle 
-            the visibility of a series using two methods:</p>
+            the visibility of a series in the following two ways:</p>
         <ol>
             <li>
-                Clicking on legend entries:<br />
+                Clicking the legend entries:<br />
                 The chart directive sets the chart's <b>legendToggle</b> property to true, 
                 which toggles the <b>visibility</b> property of a series when its legend entry is 
                 clicked.
@@ -979,7 +979,7 @@ var app = new Vue({
             the data source are automatically reflected in the chart.</p>
         <p>
             In this sample, we use a timer to add items to the data source, discarding old items 
-            to keep the total count at 200. The result is a dynamic chart that scrolls as new 
+            to keep the total count at 200. The result is a dynamic chart that scrolls as the new 
             data arrives.</p>
         <div class="row">
             <div class="col-md-6">
@@ -1073,5 +1073,6 @@ function addTrafficItem() {
             </div>
         </div>
     </div>
+    <script src="http://cdn.wijmo.com/wijmo.sample.toolbar.js" type="text/javascript"></script>
 </body>
 </html>

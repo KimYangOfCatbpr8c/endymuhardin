@@ -7,7 +7,7 @@ var NullValues = React.createClass({
                 Handling Null Values
             </h2>
             <p>
-                By default, FlexGrid allows you to enter empty values in columns of type string,
+                By default, FlexGrid allows you to enter empty values in columns of the type string,
                 and will not allow empty/null values in columns of any other type.
             </p>
             <p>
@@ -17,12 +17,12 @@ var NullValues = React.createClass({
                 the <b>isRequired</b> property to true, the grid will not allow empty values 
                 even in string columns.</p>
             <p>
-                Setting <b>isRequired</b> to null reverts to the default behavior (nulls are
+                Setting <b>isRequired</b> to null reverts to the default behavior in FlexGrid (nulls are
                 allowed only in string columns).</p>
             <p>
                 The grid below reverts the default behavior. It sets <b>isRequired</b> to true
-                for the first column and to false for the others. You can delete content that
-                is not required by entering an empty string or simply by pressing the delete
+                for the first column and to false for the others. You can delete the content that
+                is not required by entering an empty string, or simply by pressing the delete
                 key.</p>
 
             <div className="row">

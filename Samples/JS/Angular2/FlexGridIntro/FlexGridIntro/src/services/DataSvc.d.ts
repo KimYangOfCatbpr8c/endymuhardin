@@ -1,4 +1,5 @@
+import * as wjcCore from 'wijmo/wijmo';
 export declare class DataSvc {
-    getData(count: number): wijmo.collections.ObservableArray;
+    getData(count: number): wjcCore.ObservableArray;
     getTreeData(): [{}];
 }

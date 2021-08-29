@@ -1,4 +1,3 @@
-///<reference path="../typings/globals/core-js/index.d.ts"/>
 "use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -9,6 +8,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
+var wjcGrid = require('wijmo/wijmo.grid');
 // Angular
 var core_1 = require('@angular/core');
 var forms_1 = require('@angular/forms');
@@ -96,7 +96,7 @@ var StandaloneCmp = (function () {
         for (var i = 0; i < items.length; i++) {
             map.push({ key: i, value: items[i] });
         }
-        return new wijmo.grid.DataMap(map, 'key', 'value');
+        return new wjcGrid.DataMap(map, 'key', 'value');
     };
     __decorate([
         core_1.ViewChild('flexSheet')

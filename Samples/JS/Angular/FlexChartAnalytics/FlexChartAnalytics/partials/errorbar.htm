@@ -1,0 +1,66 @@
+﻿<div>
+    <div class="copy">
+        <h3>
+            FlexChart ErrorBar
+        </h3>
+        <p>
+            This view shows ErrorBar Series in FlexChart.
+        </p>
+        <p>
+            The ErrorBar helps you see margins of error and standard deviations at a glance.
+        </p>
+    </div>
+    <div class="container-fluid well">
+        <div class="row">
+            <div class="col-sm-4 col-xs-12">
+                <wj-menu id="menuChartType" value="ctx.chartType" header="ChartType" text="ctx.chartType">
+                    <wj-menu-item value="'Column'">Column</wj-menu-item>
+                    <wj-menu-item value="'Bar'">Bar</wj-menu-item>
+                    <wj-menu-item value="'Scatter'">Scatter</wj-menu-item>
+                    <wj-menu-item value="'Line'">Line</wj-menu-item>
+                    <wj-menu-item value="'LineSymbols'">LineSymbols</wj-menu-item>
+                    <wj-menu-item value="'Area'">Area</wj-menu-item>
+                    <wj-menu-item value="'Spline'">Spline</wj-menu-item>
+                    <wj-menu-item value="'SplineSymbols'">SplineSymbols</wj-menu-item>
+                    <wj-menu-item value="'SplineArea'">SplineArea</wj-menu-item>
+                </wj-menu>
+            </div>
+            <div class="col-sm-4 col-xs-12">
+                <wj-menu id="menuDirection" value="ctx.direction" header="Direction" text="ctx.direction">
+                    <wj-menu-item value="'Both'">Both</wj-menu-item>
+                    <wj-menu-item value="'Minus'">Minus</wj-menu-item>
+                    <wj-menu-item value="'Plus'">Plus</wj-menu-item>
+                </wj-menu>
+            </div>
+            <div class="col-sm-4 col-xs-12">
+                <wj-menu id="menuEndStyle" value="ctx.endStyle" header="EndStyle" text="ctx.endStyle">
+                    <wj-menu-item value="'Cap'">Cap</wj-menu-item>
+                    <wj-menu-item value="'NoCap'">NoCap</wj-menu-item>
+                </wj-menu>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-8 col-xs-12">
+                <wj-menu id="menuErrorAmount" value="ctx.errorAmount" header="ErrorAmount" text="ctx.errorAmount">
+                    <wj-menu-item value="'FixedValue'">FixedValue</wj-menu-item>
+                    <wj-menu-item value="'Percentage'">Percentage</wj-menu-item>
+                    <wj-menu-item value="'StandardDeviation'">StandardDeviation</wj-menu-item>
+                    <wj-menu-item value="'StandardError'">StandardError</wj-menu-item>
+                    <wj-menu-item value="'Custom'">Custom</wj-menu-item>
+                </wj-menu>
+            </div>
+            <div class="col-sm-4 col-xs-12">
+                <label id="labelRotated" for="checkboxRotated">Rotated:</label>
+                <input type="checkbox" id="checkboxRotated" ng-model="ctx.rotated" />
+            </div>
+        </div>
+    </div>
+    <div>
+        <wj-flex-chart class="chart"
+                       control="ctx.chart"
+                       items-source="ctx.itemsSource"
+                       binding-x="country">
+            <wj-flex-chart-error-bar name="downloads" control="ctx.errorbar" binding="downloads" value="ctx.value"></wj-flex-chart-error-bar>
+        </wj-flex-chart>
+    </div>
+</div>

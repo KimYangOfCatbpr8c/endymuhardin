@@ -7,7 +7,7 @@ var Editing = React.createClass({
                 Editing
             </h2>
             <p>
-                FlexGrid has built-in support for fast, in-cell editing like you find in Excel. There is no
+                FlexGrid has built-in support for fast, in-cell editing like you find in Microsoft Excel. There is no
                 need to add extra columns with Edit buttons that switch between display and edit modes.
             </p>
             <p>
@@ -17,7 +17,7 @@ var Editing = React.createClass({
             <p>
                 Another way to start editing is by pressing F2 or by clicking a cell twice. This puts the cell in
                 full-edit mode. In this mode, pressing a cursor key moves the caret within the cell text.
-                To finish editing and move to another cell, the user must press the Enter, Tab, or Escape key.
+                To finish editing and move to another cell, user must press the Enter, Tab, or Escape key.
             </p>
             <p>
                 Data is automatically coerced to the proper type when editing finishes. If the user enters invalid
@@ -28,7 +28,7 @@ var Editing = React.createClass({
                 grid, column, or row objects. In this example, we make the ID column read-only.
             </p>
             <p>
-                You can add rop-down lists to cells using the <b>dataMap</b> property of the column objects. In this
+                You can add drop-down lists to cells using the <b>dataMap</b> property of the column objects. In this
                 example, we provide a list of valid countries that the user must choose from.
             </p>
 

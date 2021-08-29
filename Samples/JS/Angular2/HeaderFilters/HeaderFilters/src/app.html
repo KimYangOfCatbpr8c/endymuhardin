@@ -1,0 +1,29 @@
+﻿<div>
+    <div class="header">
+        <div class="container">
+            <h1>
+                <span class="glyphicon glyphicon-book"></span>
+                Header Filters
+            </h1>
+            <p>
+                This page shows how to create custom filter cells in a FlexGrid.
+            </p>
+        </div>
+    </div>
+    <div class="container">
+        <wj-flex-grid #flex
+                      [headersVisibility]="'Column'"
+                      [selectionMode]="'Row'"
+                      [itemsSource]="books"
+                      [allowDragging]="'None'">
+            <wj-flex-grid-column [binding]="'sales'" [format]="'n0'" [width]="80"></wj-flex-grid-column>
+            <wj-flex-grid-column [binding]="'title'" [width]="200"></wj-flex-grid-column>
+            <wj-flex-grid-column [binding]="'author'" [width]="200"></wj-flex-grid-column>
+            <wj-flex-grid-column [binding]="'price'" [format]="'c'" [width]="120"></wj-flex-grid-column>
+            <wj-flex-grid-column [binding]="'instore'"></wj-flex-grid-column>
+            <wj-flex-grid-column [binding]="'shipping'"></wj-flex-grid-column>
+            <wj-flex-grid-column [binding]="'bestseller'"></wj-flex-grid-column>
+            <wj-flex-grid-column [binding]="'pub'" [width]="200" [align]="'center'"></wj-flex-grid-column>
+        </wj-flex-grid>
+    </div>
+</div>

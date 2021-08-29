@@ -23,7 +23,7 @@ var CustomCells = React.createClass({
                 needs from the grid, and then modify the cell element accordingly.</p>
             <p>
                 The example below uses the <b>formatItem</b> event to add a flag to the 
-                content of the 'Country' column:</p>
+                contents of the 'Country' column:</p>
 
             <div className="row">
                 <div className="col-md-6">
@@ -34,6 +34,13 @@ var CustomCells = React.createClass({
                     <div className="tab-content">
                         <div className="tab-pane active pane-content" id="ccJsx">
                             {'<Wj.FlexGrid\n'}
+                            {'    autoGenerateColumns={false}\n'}
+                            {'    columns={[\n'}
+                            {'      { header: \'Country\', binding: \'country\', width: \'*\', isContentHtml: true, isReadOnly: true },\n'}
+                            {'      { header: \'Date\', binding: \'date\' },\n'}
+                            {'      { header: \'Revenue\', binding: \'amount\', format: \'n0\' },\n'}
+                            {'      { header: \'Active\', binding: \'active\' }\n'}
+                            {'    ]}\n'}
                             {'    itemsSource={ Util.getData() }\n'}
                             {'    formatItem={ this.formatItem } />'}
                         </div>
@@ -52,6 +59,13 @@ var CustomCells = React.createClass({
                 <div className="col-md-6">
                     <h4>Result (live):</h4>
                     <Wj.FlexGrid 
+                        autoGenerateColumns={ false }
+                        columns={[
+                            { header: 'Country', binding: 'country', width: '*', isContentHtml: true, isReadOnly: true },
+                            { header: 'Date', binding: 'date' },
+                            { header: 'Revenue', binding: 'amount', format: 'n0' },
+                            { header: 'Active', binding: 'active' }
+                        ]}
                         itemsSource={ Util.getData() }
                         formatItem={ this.formatItem } />
                 </div>

@@ -1,24 +1,24 @@
 ﻿/*
     *
-    * Wijmo Library 5.20162.211
+    * Wijmo Library 5.20171.282
     * http://wijmo.com/
     *
     * Copyright(c) GrapeCity, Inc.  All rights reserved.
     *
     * Licensed under the Wijmo Commercial License.
     * sales@wijmo.com
-    * http://wijmo.com/products/wijmo-5/license/
+    * wijmo.com/products/wijmo-5/license/
     *
     */
 /*
-* Wijmo culture file: no (Norwegian)
-*/
+ * Wijmo culture file: nb (Norwegian (Bokmål))
+ */
 var wijmo;
 (function (wijmo) {
     wijmo.culture = {
         Globalize: {
-            name: 'no',
-            displayName: 'Norwegian',
+            name: 'nb',
+            displayName: 'Norwegian (Bokmål)',
             numberFormat: {
                 '.': ',',
                 ',': ' ',
@@ -27,7 +27,7 @@ var wijmo;
             },
             calendar: {
                 '/': '.',
-                ':': '.',
+                ':': ':',
                 firstDay: 1,
                 days: ['søndag', 'mandag', 'tirsdag', 'onsdag', 'torsdag', 'fredag', 'lørdag'],
                 daysAbbr: ['søn.', 'man.', 'tir.', 'ons.', 'tor.', 'fre.', 'lør.'],
@@ -37,12 +37,12 @@ var wijmo;
                 pm: ['p.m.', 'p'],
                 eras: ['e.Kr.'],
                 patterns: {
-                    d: 'dd.MM.yyyy', D: 'dddd d. MMMM yyyy',
-                    f: 'dddd d. MMMM yyyy HH.mm', F: 'dddd d. MMMM yyyy HH.mm.ss',
-                    t: 'HH.mm', T: 'HH.mm.ss',
-                    m: 'd.MMMM.', M: 'd.MMMM.',
+                    d: 'dd.MM.yyyy', D: 'd. MMMM yyyy',
+                    f: 'd. MMMM yyyy HH:mm', F: 'd. MMMM yyyy HH:mm:ss',
+                    t: 'HH:mm', T: 'HH:mm:ss',
+                    m: 'd. MMMM', M: 'd. MMMM',
                     y: 'MMMM yyyy', Y: 'MMMM yyyy',
-                    g: 'dd.MM.yyyy HH.mm', G: 'dd.MM.yyyy HH.mm.ss',
+                    g: 'dd.MM.yyyy HH:mm', G: 'dd.MM.yyyy HH:mm:ss',
                     s: 'yyyy"-"MM"-"dd"T"HH":"mm":"ss'
                 },
             }
@@ -51,7 +51,7 @@ var wijmo;
             itemsSelected: '{count:n0} elementer valgt'
         },
         FlexGrid: {
-            groupHeaderFormat: '{name}: <b>{value} </b>({count:n0} artikler)'
+            groupHeaderFormat: '{name}: <b>{value}</b> ({count:n0} artikler)'
         },
         FlexGridFilter: {
             // filter
@@ -67,8 +67,8 @@ var wijmo;
             null: '(ingenting)',
             // condition filter
             header: 'Vis elementer der verdien',
-            and: 'og',
-            or: 'eller',
+            and: 'Og',
+            or: 'Eller',
             stringOperators: [
                 { name: '(ikke angitt)', op: null },
                 { name: 'Tilsvarer', op: 0 },
@@ -101,104 +101,237 @@ var wijmo;
         },
         olap: {
             PivotFieldEditor: {
-                dialogHeader: 'Field settings:',
-                header: 'Header:',
-                summary: 'Summary:',
-                showAs: 'Show As:',
-                weighBy: 'Weigh by:',
-                sort: 'Sort:',
+                dialogHeader: 'Innstillinger:',
+                header: 'Hovedpost:',
+                summary: 'Sammendrag:',
+                showAs: 'Vis som:',
+                weighBy: 'Veie av:',
+                sort: 'Sorter:',
                 filter: 'Filter:',
                 format: 'Format:',
-                sample: 'Sample:',
-                edit: 'Edit...',
-                clear: 'Clear',
+                sample: 'Eksempel:',
+                edit: 'Rediger…',
+                clear: 'Fjern',
                 ok: 'OK',
-                cancel: 'Cancel',
-                none: '(none)',
+                cancel: 'Avbryt',
+                none: '(ingen)',
                 sorts: {
-                    asc: 'Ascending',
-                    desc: 'Descending'
+                    asc: 'Stigende',
+                    desc: 'Synkende'
                 },
                 aggs: {
                     sum: 'Sum',
-                    cnt: 'Count',
-                    avg: 'Average',
-                    max: 'Max',
+                    cnt: 'Antall',
+                    avg: 'Gjennomsnitt',
+                    max: 'Maks',
                     min: 'Min',
-                    rng: 'Range',
-                    std: 'StdDev',
+                    rng: 'Område',
+                    std: 'StdAvvik',
                     var: 'Var',
                     stdp: 'StdDevPop',
                     varp: 'VarPop'
                 },
                 calcs: {
-                    noCalc: 'No Calculation',
-                    dRow: 'Difference from previous row',
-                    dRowPct: '% Difference from previous row',
-                    dCol: 'Difference from previous column',
-                    dColPct: '% Difference from previous column'
+                    noCalc: 'Ingen beregning',
+                    dRow: 'Forskjellen fra forrige rad',
+                    dRowPct: '% Forskjell fra forrige rad',
+                    dCol: 'Forskjellen fra forrige kolonne',
+                    dColPct: '% Forskjell fra forrige kolonne',
+                    dPctGrand: '% av totalsum',
+                    dPctRow: '% av rad totalt',
+                    dPctCol: '% av kolonnen total',
+                    dRunTot: 'Løpende sum',
+                    dRunTotPct: '% løpende totale'
                 },
                 formats: {
-                    n0: 'Integer (n0)',
-                    n2: 'Float (n2)',
-                    c: 'Currency (c)',
-                    p0: 'Percentage (p0)',
-                    p2: 'Percentage (p2)',
-                    n2c: 'Thousands (n2,)',
-                    n2cc: 'Millions (n2,,)',
-                    n2ccc: 'Billions (n2,,,)',
-                    d: 'Date (d)',
-                    MMMMddyyyy: 'Month Day Year (MMMM dd, yyyy)',
-                    dMyy: 'Day Month Year (d/M/yy)',
-                    ddMyy: 'Day Month Year (dd/M/yy)',
-                    dMyyyy: 'Day Month Year (dd/M/yyyy)',
-                    MMMyyyy: 'Month Year (MMM yyyy)',
-                    MMMMyyyy: 'Month Year (MMMM yyyy)',
-                    yyyyQq: 'Year Quarter (yyyy "Q"q)',
-                    FYEEEEQU: 'Fiscal Year Quarter ("FY"EEEE "Q"U)'
+                    n0: 'Heltall (n0)',
+                    n2: 'Desimal (n2)',
+                    c: 'Valuta (c)',
+                    p0: 'Prosent (p0)',
+                    p2: 'Prosent (p2)',
+                    n2c: 'Tusenvis (n2,)',
+                    n2cc: 'Millioner (n2),,',
+                    n2ccc: 'Milliarder (n2,,,)',
+                    d: 'Dato (d)',
+                    MMMMddyyyy: 'Måned dag år (dd MMMM, yyyy)',
+                    dMyy: 'Dag måned år (d/M/yy)',
+                    ddMyy: 'Dag måned år (dd/M/yy)',
+                    dMyyyy: 'Dag måned år (dd/M/yyyy)',
+                    MMMyyyy: 'Måned år (MMM-yyyy)',
+                    MMMMyyyy: 'Måned år (MMMM yyyy)',
+                    yyyyQq: 'År kvartal (yyyy "Q" q)',
+                    FYEEEEQU: 'Kvartal i regnskapsår ("FY" EEEE "Q" U)'
                 }
             },
             PivotEngine: {
-                grandTotal: 'Grand Total',
-                subTotal: 'Subtotal'
+                grandTotal: 'Totalsum',
+                subTotal: 'Delsum'
             },
             PivotPanel: {
-                fields: 'Choose fields to add to report',
-                drag: 'Drag fields between areas below:',
-                filters: 'Filters',
-                cols: 'Columns',
-                rows: 'Rows',
-                vals: 'Values',
-                defer: 'Defer Updates',
-                update: 'Update'
+                fields: 'Velg feltene du vil legge til rapporten:',
+                drag: 'Dra felt mellom områdene nedenfor:',
+                filters: 'Filtre',
+                cols: 'Kolonner',
+                rows: 'Rader',
+                vals: 'verdiene',
+                defer: 'Utsette oppdateringer',
+                update: 'Oppdater'
             },
             _ListContextMenu: {
-                up: 'Move Up',
-                down: 'Move Down',
-                first: 'Move do Beginning',
-                last: 'Move to End',
-                filter: 'Move to Report Filter',
-                rows: 'Move to Row Labels',
-                cols: 'Move to Column Labels',
-                vals: 'Move to Values',
-                remove: 'Remove Field',
-                edit: 'Field Settings...',
-                detail: 'Show Detail...'
+                up: 'Flytt opp',
+                down: 'Flytt ned',
+                first: 'Flytt til begynnelsen',
+                last: 'Flytt til slutten',
+                filter: 'Flytt til rapportfilter',
+                rows: 'Flytt til radetiketter',
+                cols: 'Flytt til kolonneetiketter',
+                vals: 'Flytt til verdier',
+                remove: 'Fjern felt',
+                edit: 'Feltinnstillinger…',
+                detail: 'Vise detaljer…'
             },
             PivotChart: {
-                by: 'by',
-                and: 'and'
+                by: 'Av',
+                and: 'og'
             },
             DetailDialog: {
-                header: 'Detail View:',
+                header: 'Detaljvisning:',
                 ok: 'OK',
-                items: '{cnt:n0} items',
-                item: '{cnt} item',
-                row: 'Row',
-                col: 'Column'
+                items: '{cnt:n0} elementer',
+                item: '{cnt} element',
+                row: 'Rad',
+                col: 'Kolonne'
             }
+        },
+        Viewer: {
+            cancel: 'Avbryt',
+            ok: 'OK',
+            bottom: 'Bunn:',
+            top: 'Topp:',
+            right: 'Høyre:',
+            left: 'Venstre:',
+            margins: 'Marger (tommer)',
+            orientation: 'Sideretning:',
+            paperKind: 'Papir type:',
+            pageSetup: 'Utskriftsformat',
+            landscape: 'Liggende',
+            portrait: 'Stående',
+            pageNumber: 'Sidetall',
+            zoomFactor: 'Zoomfaktor',
+            paginated: 'Utskriftsoppsett',
+            print: 'Skrive ut',
+            search: 'Søk',
+            matchCase: 'Skill mellom store og små bokstaver',
+            wholeWord: 'Bare hele ord',
+            searchResults: 'Søkeresultater',
+            previousPage: 'Forrige side',
+            nextPage: 'Neste side',
+            firstPage: 'Første side',
+            lastPage: 'Siste side',
+            backwardHistory: 'Bakover',
+            forwardHistory: 'Videresend',
+            pageCount: 'Sideantall',
+            selectTool: 'Velg verktøyet',
+            moveTool: 'Flytteverktøyet',
+            continuousMode: 'Kontinuerlig sidevisning',
+            singleMode: 'Enkeltside Vis',
+            wholePage: 'Passe hele siden',
+            pageWidth: 'Passe sidebredde',
+            zoomOut: 'Zoome ut',
+            zoomIn: 'Zoome inn',
+            exports: 'Eksporter',
+            fullScreen: 'Full skjerm',
+            exitFullScreen: 'Avslutt full skjerm',
+            hamburgerMenu: 'Verktøy',
+            showSearchBar: 'Vis søkelinje',
+            viewMenu: 'Oppsettalternativer',
+            searchOptions: 'Søkealternativer',
+            matchCaseMenuItem: 'Skill mellom store og små bokstaver',
+            wholeWordMenuItem: 'Hele ord',
+            thumbnails: 'Sideminiatyrer',
+            outlines: 'Dokumentkart',
+            loading: 'Laster inn…',
+            pdfExportName: 'Adobe PDF',
+            docxExportName: 'Åpne XML-ordet',
+            xlsxExportName: 'Åpne XML-Formatet Excel',
+            docExportName: 'Microsoft Word',
+            xlsExportName: 'Microsoft Excel',
+            mhtmlExportName: 'Webarkiv (MHTML)',
+            htmlExportName: 'HTML-dokument',
+            rtfExportName: 'RTF-dokument',
+            metafileExportName: 'Komprimert metafiler',
+            csvExportName: 'CSV',
+            tiffExportName: 'TIFF-bilder',
+            bmpExportName: 'BMP-bilder',
+            emfExportName: 'Utvidet metafil',
+            gifExportName: 'GIF-bilder',
+            jpgExportName: 'JPEG-bilder',
+            jpegExportName: 'JPEG-bilder',
+            pngExportName: 'PNG-bilder',
+            abstractMethodException: 'Dette er en abstract-metode, implementeres kan.',
+            cannotRenderPageNoViewPage: 'Kan ikke gjengis uten dokumentet kilde og visningsside.',
+            cannotRenderPageNoDoc: 'Kan ikke gjengis uten dokumentet kilde og visningsside.',
+            exportFormat: 'Eksportformat:',
+            exportOptionTitle: 'Eksportalternativer',
+            documentRestrictionsGroup: 'Dokumentet restriksjoner',
+            passwordSecurityGroup: 'Passordsikkerhet',
+            outputRangeGroup: 'Utdataområdet',
+            documentInfoGroup: 'Dokumentinformasjon',
+            generalGroup: 'Generelt',
+            docInfoTitle: 'Tittel',
+            docInfoAuthor: 'Forfatter',
+            docInfoManager: 'overordnet',
+            docInfoOperator: 'Operatør',
+            docInfoCompany: 'Firma',
+            docInfoSubject: 'Subject',
+            docInfoComment: 'Kommentar',
+            docInfoCreator: 'Oppretter',
+            docInfoProducer: 'Produsent',
+            docInfoCreationTime: 'Opprettelsestidspunkt',
+            docInfoRevisionTime: 'Revisjon tid',
+            docInfoKeywords: 'Søkeord',
+            embedFonts: 'Bygg inn TrueType-skrifter',
+            pdfACompatible: 'PDF/A-kompatible (nivå 2B)',
+            useCompression: 'Bruk komprimering',
+            useOutlines: 'Generere disposisjoner',
+            allowCopyContent: 'Tillate innhold kopiering eller utvinning',
+            allowEditAnnotations: 'Tillat merknad redigering',
+            allowEditContent: 'Tillate innhold redigering',
+            allowPrint: 'Tillate utskrift',
+            ownerPassword: 'Tillatelser (eier) passord:',
+            userPassword: 'Dokumentet åpent (bruker) passord:',
+            encryptionType: 'Krypteringsnivå:',
+            paged: 'Sidevekslet',
+            showNavigator: 'Vis Navigator',
+            singleFile: 'Enkelt fil',
+            tolerance: 'Toleranse å oppdage tekst grensene (poeng):',
+            pictureLayer: 'Bruk separate bilde laget',
+            metafileType: 'Metafil Type:',
+            monochrome: 'Monokrom',
+            resolution: 'Oppløsning:',
+            outputRange: 'Sideområde:',
+            outputRangeInverted: 'Invertert',
+            showZoomBar: 'Zoomlinjen',
+            searchPrev: 'Søk etter forrige',
+            searchNext: 'Søke etter neste',
+            checkMark: '\u2713',
+            exportOk: 'Eksport…',
+            parameters: 'Parametre',
+            requiringParameters: 'Skriv inn parametrene.',
+            nullParameterError: 'Verdien kan ikke være null.',
+            invalidParameterError: 'Ugyldige inndata.',
+            parameterNoneItemsSelected: '(ingen)',
+            parameterAllItemsSelected: '(alle)',
+            parameterSelectAllItemText: '(Velg alle)',
+            selectParameterValue: '(Velg verdi)',
+            apply: 'Bruk',
+            errorOccured: 'Det har oppstått en feil.'
         }
     };
+    var updc = window['wijmo']._updateCulture;
+    if (updc) {
+        updc();
+    }
 })(wijmo || (wijmo = {}));
 ;
-//# sourceMappingURL=wijmo.culture.no.js.map
+

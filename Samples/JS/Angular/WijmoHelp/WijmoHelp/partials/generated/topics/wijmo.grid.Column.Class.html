@@ -60,6 +60,7 @@
 <h3 class="node">Methods</h3>
 <ul>
 <li class="mmethod"><a href="topic/wijmo.grid.Column.Class.html/#getAlignment">getAlignment</a></li>
+<li class="mmethod"><a href="topic/wijmo.grid.Column.Class.html/#getIsRequired">getIsRequired</a></li>
 <li class="mmethod inherited"><a href="topic/wijmo.grid.Column.Class.html/#onPropertyChanged">onPropertyChanged</a></li>
 </ul>
 </div>
@@ -261,7 +262,8 @@ contain HTML content rather than plain text.</p></div>
 <div class="comment"><p>Gets or sets a value that determines whether values in the column 
 are required.</p>
 <p>By default, this property is set to null, which means values 
-are required, but string columns may contain empty strings.</p>
+are required, but non-masked string columns may contain empty
+strings.</p>
 <p>When set to true, values are required and empty strings are 
 not allowed.</p>
 <p>When set to false, null values and empty strings are allowed.</p></div>
@@ -422,11 +424,23 @@ to prevent the column from getting too narrow.</p></div>
 <div id="getAlignment" class="member-panel mmethod">
 <h3>getAlignment</h3>
 <pre>getAlignment(): <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank"><span class="identifier">string</span></a></pre>
-<div class="comment"><p>Gets the actual column alignment. </p>
+<div class="comment"><p>Gets the actual column alignment.</p>
 <p>Returns the value of the <a href="topic/wijmo.grid.Column.Class.html/#align"><span class="identifier">align</span></a> property if it is not null, or
 selects the alignment based on the column's <a href="topic/wijmo.grid.Column.Class.html/#dataType"><span class="identifier">dataType</span></a>.</p></div>
 <dl class="dl-horizontal">
   <dt>Returns</dt><dd><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank"><span class="identifier">string</span></a></dd>
+</dl>
+</div>
+<div id="getIsRequired" class="member-panel mmethod">
+<h3>getIsRequired</h3>
+<pre>getIsRequired(): <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a></pre>
+<div class="comment"><p>Gets a value that determines whether the column is required.</p>
+<p>Returns the value of the <a href="topic/wijmo.grid.Column.Class.html/#isRequired"><span class="identifier">isRequired</span></a> property if it is not null, or
+determines the required status based on the column's <a href="topic/wijmo.grid.Column.Class.html/#dataType"><span class="identifier">dataType</span></a>.</p>
+<p>By default, string columns are not required unless they have an associated
+<a href="topic/wijmo.grid.Column.Class.html/#dataMap"><span class="identifier">dataMap</span></a> or <a href="topic/wijmo.grid.Column.Class.html/#mask"><span class="identifier">mask</span></a>; all other data types are required.</p></div>
+<dl class="dl-horizontal">
+  <dt>Returns</dt><dd><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a></dd>
 </dl>
 </div>
 <div id="onPropertyChanged" class="member-panel mmethod inherited">

@@ -1,0 +1,23 @@
+﻿<div class="header">
+    <div class="container">
+        <h1>
+            FlexGrid Column Picker
+        </h1>
+        <p>
+            Click the icon on the top-right corner of the grid to select
+            which columns you want to display.
+        </p>
+        <p>
+            The column picker is implemented as an AngularJS directive so
+            it can be re-used easily in all of your grids.
+        </p>
+    </div>
+</div>
+
+<!-- content -->
+<div class="container">
+    <wj-flex-grid style="max-height:350px"                  
+                  [columnPicker]="'images/colpicker.png'"
+                  [itemsSource]="data">
+    </wj-flex-grid>
+</div>

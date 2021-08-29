@@ -1,4 +1,3 @@
-///<reference path="../typings/globals/core-js/index.d.ts"/>
 "use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -9,104 +8,279 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
+///<reference path="../typings/globals/core-js/index.d.ts"/>
+var wjcCore = require('wijmo/wijmo');
+// Angular
 var core_1 = require('@angular/core');
 var forms_1 = require('@angular/forms');
 var platform_browser_dynamic_1 = require('@angular/platform-browser-dynamic');
 var platform_browser_1 = require('@angular/platform-browser');
 var wijmo_angular2_core_1 = require('wijmo/wijmo.angular2.core');
 var wijmo_angular2_grid_1 = require('wijmo/wijmo.angular2.grid');
-var wijmo_angular2_chart_1 = require('wijmo/wijmo.angular2.chart');
-var wijmo_angular2_input_1 = require('wijmo/wijmo.angular2.input');
 var AppTab_1 = require('./components/AppTab');
+var FormattedModelAccessor_1 = require('./directives/FormattedModelAccessor');
+var NumberInputAccessor_1 = require('./directives/NumberInputAccessor');
+var appPipes_1 = require('./pipes/appPipes');
 var DataSvc_1 = require('./services/DataSvc');
-var CountryGroupHeaderTemplate_1 = require('./CellTemplates/CountryGroupHeaderTemplate');
-var StatGroupTemplate_1 = require('./CellTemplates/StatGroupTemplate');
-var StatHeaderTemplate_1 = require('./CellTemplates/StatHeaderTemplate');
 'use strict';
 // The application root component.
 var AppCmp = (function () {
     function AppCmp(dataSvc) {
-        this.countries = 'US,Germany,UK,Japan,Italy,Greece'.split(',');
-        this.customTopLeft = true;
-        this.customRowHeader = true;
-        this.customRowHeaderEdit = true;
-        this.customCell = true;
-        this.customCellEdit = true;
-        this.customColumnHeader = true;
-        this.customGroupHeader = true;
-        this.customGroup = true;
-        this.customColumnFooter = true;
-        this.customBottomLeft = true;
-        this.statisticsColumns = [
-            {
-                binding: 'downloads',
-                header: 'Downloads',
-                width: 230,
-                align: 'center',
-                format: 'N0',
-                columnHeaderTemplate: StatHeaderTemplate_1.StatHeaderTemplate,
-                groupTemplate: StatGroupTemplate_1.StatGroupTemplate,
-                reportType: 'Chart',
-                isAvailable: true
-            },
-            {
-                binding: 'sales',
-                header: 'Sales',
-                width: 230,
-                align: 'center',
-                format: 'N2',
-                columnHeaderTemplate: StatHeaderTemplate_1.StatHeaderTemplate,
-                groupTemplate: StatGroupTemplate_1.StatGroupTemplate,
-                reportType: 'Chart',
-                isAvailable: false
-            },
-            {
-                binding: 'expenses',
-                header: 'Expenses',
-                width: 230,
-                align: 'center',
-                format: 'N2',
-                columnHeaderTemplate: StatHeaderTemplate_1.StatHeaderTemplate,
-                groupTemplate: StatGroupTemplate_1.StatGroupTemplate,
-                reportType: 'Table',
-                isAvailable: true
-            }];
-        this.uiCtx = {
-            highlightDownloads: true,
-            reportType: 'Chart'
+        var _this = this;
+        this._selectedGroupOpt = '';
+        // initialize the collectionview
+        this.cvGettingStarted = new wjcCore.CollectionView(dataSvc.getData(10));
+        this.cvCRM = new wjcCore.CollectionView(dataSvc.getData(10));
+        this.cvSorting = new wjcCore.CollectionView(dataSvc.getData(10));
+        this.cvFiltering = new wjcCore.CollectionView(dataSvc.getData(10));
+        this.cvGrouping = new wjcCore.CollectionView(dataSvc.getData(20));
+        this.cvEditing = new wjcCore.CollectionView(dataSvc.getData(10));
+        this.cvPaging = new wjcCore.CollectionView(dataSvc.getData(55));
+        this.cvTrackingChanges = new wjcCore.CollectionView(dataSvc.getData(6));
+        this.cvTrackingChangesExtra = new wjcCore.CollectionView(dataSvc.getData(6));
+        this.fieldNames = dataSvc.getNames();
+        this._thisFilterFunction = this._filterFunction.bind(this);
+        this.groupItems = this.cvGrouping.items;
+        this.currentItem = this.cvEditing.currentItem;
+        // update the group list
+        this.cvGrouping.collectionChanged.addHandler(function () {
+            _this.groupItems = _this.cvGrouping.items;
+            if (_this.cvGrouping.groups && _this.cvGrouping.groups.length > 0) {
+                _this.groupItems = [];
+                for (var i = 0; i < _this.cvGrouping.groups.length; i++) {
+                    _this._addGroup(_this.cvGrouping.groups[i]);
+                }
+            }
+        });
+        // define the new item value.
+        this.cvEditing.newItemCreator = function () {
+            var item = dataSvc.getData(1)[0];
+            // aggregate the max value of id in the collection.
+            item.id = wjcCore.getAggregate(wjcCore.Aggregate.Max, _this.cvEditing.sourceCollection, 'id') + 1;
+            return item;
         };
-        this.countryGroupHeaderTemplate = CountryGroupHeaderTemplate_1.CountryGroupHeaderTemplate;
-        this.dataSvc = dataSvc;
-        var data = dataSvc.getData();
-        this.data1 = dataSvc.getCv(data);
-        this.data2 = dataSvc.getCv(data);
-        this.data3 = dataSvc.getCv(data);
+        // syn the scope currentItem with the collectionview.
+        this.cvEditing.currentChanged.addHandler(function () {
+            _this.currentItem = _this.cvEditing.currentItem;
+        });
+        // page settings
+        this.cvPaging.pageSize = 10;
+        this.cvTrackingChanges.trackChanges = true;
+        this.cvTrackingChangesExtra.trackChanges = true;
+        // keep the original state of the current item in tracking Changes
+        this.current = this.cvTrackingChangesExtra.currentItem ? JSON.stringify(this.cvTrackingChangesExtra.currentItem) : null;
+        this.cvTrackingChangesExtra.currentChanged.addHandler(function (s, e) {
+            _this.current = s.currentItem ? JSON.stringify(s.currentItem) : null;
+        });
+        // keep track of the original state of edited items
+        var original = [];
+        this.cvTrackingChangesExtra.itemsEdited.collectionChanged.addHandler(function (s, e) {
+            if (e.action == wjcCore.NotifyCollectionChangedAction.Add ||
+                e.action == wjcCore.NotifyCollectionChangedAction.Change) {
+                // check if we have this item's original data
+                var index = _this.cvTrackingChangesExtra.sourceCollection.indexOf(e.item);
+                var found = -1;
+                for (var i = 0; i < original.length && found < 0; i++) {
+                    if (original[i].index == index) {
+                        found = i;
+                    }
+                }
+                // if we have the item, check original value
+                if (found > -1) {
+                    // if the current value is the same as the original, remove
+                    var valueNow = JSON.stringify(e.item);
+                    if (valueNow == original[found].value) {
+                        original.splice(found, 1);
+                        index = _this.cvTrackingChangesExtra.itemsEdited.indexOf(e.item);
+                        _this.cvTrackingChangesExtra.itemsEdited.splice(index, 1);
+                    }
+                }
+                else {
+                    found = original.length;
+                    original.push({ index: index, value: _this.current });
+                }
+            }
+        });
     }
-    AppCmp.prototype.ngAfterViewInit = function () {
-        if (this.flex1) {
-            this.flex1.columnFooters.rows.push(new wijmo.grid.GroupRow());
+    Object.defineProperty(AppCmp.prototype, "filter", {
+        // filtering
+        get: function () {
+            return this._filter;
+        },
+        set: function (value) {
+            if (this._filter != value) {
+                this._filter = value;
+                this._applyFilter();
+            }
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(AppCmp.prototype, "selectedGroupOpt", {
+        // grouping
+        get: function () {
+            return this._selectedGroupOpt;
+        },
+        set: function (value) {
+            if (this._selectedGroupOpt != value) {
+                this._selectedGroupOpt = value;
+                this._applyGrouping();
+            }
+        },
+        enumerable: true,
+        configurable: true
+    });
+    AppCmp.prototype.isGroupItem = function (item) {
+        return item instanceof wjcCore.CollectionViewGroup;
+    };
+    ;
+    AppCmp.prototype.avgAmount = function (item) {
+        // it only works when the item is a group item.
+        if (!this.isGroupItem(item)) {
+            return;
         }
-        if (this.flex2) {
-            this.flex2.collapseGroupsToLevel(0);
+        // get the average value of group amount values.
+        var avg = item.getAggregate(wjcCore.Aggregate.Avg, 'amount');
+        return wjcCore.Globalize.format(avg, '');
+    };
+    ;
+    AppCmp.prototype._addGroup = function (g) {
+        this.groupItems.push(g);
+        if (g.isBottomLevel) {
+            for (var i = 0; i < g.items.length; i++) {
+                this.groupItems.push(g.items[i]);
+            }
         }
-        if (this.flex3) {
-            this._dynaColumnsFlexInit(this.flex3);
+        else {
+            for (var i = 0; i < g.groups.length; i++) {
+                this._addGroup(g.groups[i]);
+            }
         }
     };
-    AppCmp.prototype._dynaColumnsFlexInit = function (flex) {
-        flex.columnHeaders.rows.defaultSize = 36;
-        flex.cells.rows.defaultSize = 156;
-        flex.collapseGroupsToLevel(0);
+    // current record management
+    AppCmp.prototype.stopCurrent = function () {
+        this.cvCRM.currentChanging.addHandler(this._stopCurrentIn4th);
     };
-    __decorate([
-        core_1.ViewChild('flex1')
-    ], AppCmp.prototype, "flex1", void 0);
-    __decorate([
-        core_1.ViewChild('flex2')
-    ], AppCmp.prototype, "flex2", void 0);
-    __decorate([
-        core_1.ViewChild('flex3')
-    ], AppCmp.prototype, "flex3", void 0);
+    ;
+    // restore to be able to change current.
+    AppCmp.prototype.reset = function () {
+        this.cvCRM.currentChanging.removeHandler(this._stopCurrentIn4th);
+    };
+    ;
+    // sorting
+    AppCmp.prototype.toggleSort = function (fieldName) {
+        // get all the sort descriptions.
+        var sd = this.cvSorting.sortDescriptions;
+        var ascending = true;
+        // try to find whether the field has been sorted.
+        if (sd.length > 0 && sd[0].property === fieldName) {
+            // if finded, toggle the sort order.
+            ascending = !sd[0].ascending;
+        }
+        // create a new SortDescription object.
+        var sdNew = new wjcCore.SortDescription(fieldName, ascending);
+        // remove any old sort descriptors and add the created one.
+        sd.splice(0, sd.length, sdNew);
+    };
+    ;
+    // get the sort label
+    AppCmp.prototype.getSort = function (propName) {
+        var sd = this.cvSorting.sortDescriptions;
+        if (sd.length > 0 && sd[0].property === propName) {
+            return sd[0].ascending ? '▲' : '▼';
+        }
+        return '';
+    };
+    ;
+    // editing
+    AppCmp.prototype.confirmUpdate = function () {
+        // commit editing/adding
+        this.cvEditing.commitEdit();
+        this.cvEditing.commitNew();
+    };
+    ;
+    AppCmp.prototype.cancelUpdate = function () {
+        // cancel editing or adding
+        this.cvEditing.cancelEdit();
+        this.cvEditing.cancelNew();
+    };
+    ;
+    // apply filter (applied on a 500 ms timeOut)
+    AppCmp.prototype._applyFilter = function () {
+        var _this = this;
+        if (this._toFilter) {
+            clearTimeout(this._toFilter);
+        }
+        //var self = this;
+        this._toFilter = setTimeout(function () {
+            _this._toFilter = null;
+            if (_this.cvFiltering) {
+                var cv = _this.cvFiltering;
+                if (cv) {
+                    if (cv.filter != _this._thisFilterFunction) {
+                        cv.filter = _this._thisFilterFunction;
+                    }
+                    else {
+                        cv.refresh();
+                    }
+                }
+            }
+        }, 500);
+    };
+    // ICollectionView filter function
+    AppCmp.prototype._filterFunction = function (item) {
+        var filter = this.filter.toLowerCase();
+        if (!filter) {
+            return true;
+        }
+        return item['country'].toLowerCase().indexOf(filter) > -1;
+    };
+    // forbid changing current when the current item is the 4th one.
+    AppCmp.prototype._stopCurrentIn4th = function (sender, e) {
+        // when the current is the 4rd item, stop moving.
+        if (sender.currentPosition === 3) {
+            e.cancel = true;
+        }
+    };
+    AppCmp.prototype._applyGrouping = function () {
+        var gd, fieldName = this.selectedGroupOpt;
+        gd = this.cvGrouping.groupDescriptions;
+        if (!fieldName) {
+            // clear all the group settings.
+            gd.splice(0, gd.length);
+            return;
+        }
+        if (this._findGroup(fieldName) >= 0) {
+            return;
+        }
+        if (fieldName == 'amount') {
+            // when grouping by amount, use ranges instead of specific values
+            gd.push(new wjcCore.PropertyGroupDescription(fieldName, function (item, propName) {
+                var value = item[propName]; // amount
+                if (value > 1000)
+                    return 'Large Amounts';
+                if (value > 100)
+                    return 'Medium Amounts';
+                if (value > 0)
+                    return 'Small Amounts';
+                return 'Negative Amounts';
+            }));
+        }
+        else {
+            // group by specific property values
+            gd.push(new wjcCore.PropertyGroupDescription(fieldName));
+        }
+    };
+    // check whether the group with the specified property name already exists.
+    AppCmp.prototype._findGroup = function (propName) {
+        var gd = this.cvGrouping.groupDescriptions;
+        for (var i = 0; i < gd.length; i++) {
+            if (gd[i].propertyName === propName) {
+                return i;
+            }
+        }
+        return -1;
+    };
     AppCmp = __decorate([
         core_1.Component({
             selector: 'app-cmp',
@@ -122,9 +296,8 @@ var AppModule = (function () {
     }
     AppModule = __decorate([
         core_1.NgModule({
-            imports: [wijmo_angular2_core_1.WjCoreModule, wijmo_angular2_input_1.WjInputModule, wijmo_angular2_grid_1.WjGridModule, wijmo_angular2_chart_1.WjChartModule, platform_browser_1.BrowserModule, forms_1.FormsModule, AppTab_1.TabsModule],
-            declarations: [CountryGroupHeaderTemplate_1.CountryGroupHeaderTemplate, StatGroupTemplate_1.StatGroupTemplate, StatHeaderTemplate_1.StatHeaderTemplate, AppCmp],
-            entryComponents: [CountryGroupHeaderTemplate_1.CountryGroupHeaderTemplate, StatGroupTemplate_1.StatGroupTemplate, StatHeaderTemplate_1.StatHeaderTemplate],
+            imports: [wijmo_angular2_core_1.WjCoreModule, wijmo_angular2_grid_1.WjGridModule, platform_browser_1.BrowserModule, forms_1.FormsModule, AppTab_1.TabsModule],
+            declarations: [appPipes_1.GlobalizePipe, FormattedModelAccessor_1.FormattedModelAccessor, NumberInputAccessor_1.NumberInputAccessor, AppCmp],
             providers: [DataSvc_1.DataSvc],
             bootstrap: [AppCmp]
         })

@@ -38,7 +38,7 @@ var Filtering = React.createClass({
                 determines which objects to include in the view.
             </p>
             <p>
-                In this example, we create a filter for the country, and get the filter value from the input control.
+                In this example, we create a filter for country, and get the filter value from the input control.
             </p>
 
             <div className="row">

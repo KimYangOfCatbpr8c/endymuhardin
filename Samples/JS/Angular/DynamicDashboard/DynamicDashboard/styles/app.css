@@ -31,9 +31,9 @@ body {
     margin: 6px;
     border: 2px solid transparent;
     background: white;
-    transition: all 250ms;
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-    page-break-inside:avoid; /* important when printing the dashboard */
+    page-break-inside: avoid; /* important when printing the dashboard */
+    transition: all 250ms;
 }
     .tile:hover {
         box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
@@ -57,11 +57,14 @@ body {
 .tile.drag-over {
     border: 2px dashed #000;
     background-color: rgba(0,0,0,0.10);
+    transition: all 250ms;
 }
 .tile.drag-source {
     opacity: 0.4;
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    background-color: rgba(145, 200, 248, 0.75);
     transform: scale(0.9);
+    transition: all 250ms;
 }
 
 /* tile content */

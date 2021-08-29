@@ -1,8 +1,8 @@
-﻿CellTemplateIntro (Angular 2)
+﻿CollectionViewIntro (Angular 2)
 ------------------------------------------------------------------------------
-Shows how to apply templates to different types of cells declaratively in markup.
+Shows how to get started with CollectionView, our .NET-like class that uses regular JavaScript arrays as data sources.
 
-Shows how to apply templates to different types of cells declaratively in markup.
+The sample shows one page with how-to's for the most important functionality of the CollectionView class.
 
 System requirements
 ====================

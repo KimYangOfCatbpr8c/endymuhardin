@@ -1,0 +1,81 @@
+﻿<div>
+    <div class="copy">
+        <h3>
+            MultiAutoComplete
+        </h3>
+        <p>
+            The <a href="http://wijmo.com/5/docs/topic/wijmo.input.MultiAutoComplete.Class.html"
+                   target="_blank">MultiAutoComplete</a> control derives from the <a href="http://wijmo.com/5/docs/topic/wijmo.input.AutoComplete.Class.html" target="_blank">
+                AutoComplete
+            </a>.
+
+            <br />
+        <p>
+            These samples use the <a href="http://wijmo.com/5/docs/topic/wijmo.angular.WjMultiAutoComplete.Class.html"
+                                     target="_blank">WjMultiAutoComplete</a> directive and AngularJS.
+        </p>
+    </div>
+    <h4>
+        MultiAutoComplete with string arrays
+    </h4>
+    <p>
+        The MultiAutoComplete control below uses a string array as its <b>itemsSource</b>.<br />
+        The maximum number of selected items is set to 4.
+    </p>
+
+    <wj-multi-auto-complete #tg1
+                            [itemsSource]="countries"
+                            [maxSelectedItems]="4"
+                            [selectedItems]="selectedCountries"
+                            [placeholder]="'country'">
+    </wj-multi-auto-complete>
+    <ol>
+        <li *ngFor="let item of selectedCountries">
+            {{item}}
+        </li>
+    </ol>
+
+    <br />
+    <h4>
+        MultiAutoComplete with CollectionViews
+    </h4>
+    <p>
+        The MultiAutoComplete control below uses a
+        <a href="http://wijmo.com/5/docs/topic/wijmo.collections.CollectionView.Class.html" target="_blank">CollectionView</a>
+        as its <b>itemsSource</b>, and 'country' as its <b>displayMemberPath</b>.
+    </p>
+
+    <wj-multi-auto-complete #tg2
+                           [itemsSource]="items"
+                           [displayMemberPath]="'country'"
+                           [selectedMemberPath]="'selected'"
+                           [placeholder]="'country'">
+    </wj-multi-auto-complete>
+    <ol>
+        <li *ngFor="let item of tg2.selectedItems">
+            {{item | json}}
+        </li>
+    </ol>
+
+    <br />
+    <h4>
+        MultiAutoComplete with custom data sources
+    </h4>
+    <p>
+        This MultiAutoComplete does not have a static list of items. Instead, it uses the
+        <b>itemsSourceFunction</b> property to specify a function that makes an Ajax call
+        and returns items asynchronously.
+    </p>
+
+    <wj-multi-auto-complete #tg3
+                      [itemsSourceFunction]="getCompanies"
+                      [displayMemberPath]="'SymbolName'"
+                      [selectedValuePath]="'Symbol'"
+                      [placeholder]="'company name'">
+    </wj-multi-auto-complete>
+    <ol>
+        <li *ngFor="let item of tg3.selectedItems">
+            {{item | json}}
+        </li>
+    </ol>
+</div>

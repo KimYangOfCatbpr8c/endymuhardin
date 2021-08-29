@@ -1,6 +1,6 @@
 /**
-* Extension that creates column groups for @see:FlexGrid controls.
-*/
+ * Extension that creates column groups for @see:FlexGrid controls.
+ */
 var wijmo;
 (function (wijmo) {
     var grid;

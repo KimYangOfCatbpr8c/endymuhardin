@@ -1,0 +1,100 @@
+﻿<div>
+    <div class="copy">
+        <h3>
+            FlexChart Box & Whisker
+        </h3>
+        <p>
+            This view shows Box & Whisker Series in FlexChart.
+        </p>
+        <p>
+            The Box & Whisker series is normally used to compare distributions between different sets of numerical data.
+        </p>
+    </div>
+    <div class="container-fluid well">
+        <div class="row">
+            <div class="col-sm-3 col-xs-12">
+                <label id="labelRotated" for="checkboxRotated">Rotated:</label>
+                <input type="checkbox" id="checkboxRotated" ng-model="ctx.rotated" />
+            </div>
+            <div class="col-sm-3 col-xs-12">
+                <label id="labelShowLabel" for="checkboxShowLabel">Show Label:</label>
+                <input type="checkbox" id="checkboxShowLabel" ng-model="ctx.showLabel" />
+            </div>
+            <div class="col-sm-6 col-xs-12">
+                <wj-menu id="menuQuartileCalculation" value="ctx.quartileCalculation" header="QuartileCalculation" text="ctx.quartileCalculation">
+                    <wj-menu-item value="'InclusiveMedian'">InclusiveMedian</wj-menu-item>
+                    <wj-menu-item value="'ExclusiveMedian'">ExclusiveMedian</wj-menu-item>
+                </wj-menu>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3 col-xs-12">
+                <label id="labelShowMeanLine" for="checkboxShowMeanLine">Show Mean Line:</label>
+                <input type="checkbox" id="checkboxShowMeanLine" ng-model="ctx.showMeanLine" />
+            </div>
+            <div class="col-sm-3 col-xs-12">
+                <label id="labelShowMeanMarker" for="checkboxShowMeanMarker">Show Mean Marker:</label>
+                <input type="checkbox" id="checkboxShowMeanMarker" ng-model="ctx.showMeanMarker" />
+            </div>
+            <div class="col-sm-6 col-xs-12">
+                <label id="labelGroupWidth" for="inputGroupWidth">Group Width:</label>
+                <wj-input-number style="width:120px;" value="ctx.groupWidth" control="inputGroupWidth"
+                                 min="0"
+                                 max="1"
+                                 step="0.1">
+                </wj-input-number>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3 col-xs-12">
+                <label id="labelShowInnerPoints" for="checkboxShowInnerPoints">Show Inner Points:</label>
+                <input type="checkbox" id="checkboxShowInnerPoints" ng-model="ctx.showInnerPoints" />
+            </div>
+            <div class="col-sm-3 col-xs-12">
+                <label id="labelShowOutliers" for="checkboxShowOutliers">Show Outliers:</label>
+                <input type="checkbox" id="checkboxShowOutliers" ng-model="ctx.showOutliers" />
+            </div>
+            <div class="col-sm-6 col-xs-12">
+                <label id="labelGapWidth" for="inputGapWidth">Gap Width:</label>
+                <wj-input-number style="width:120px;" value="ctx.gapWidth" control="inputGapWidth"
+                                 min="0"
+                                 max="1"
+                                 step="0.1">
+                </wj-input-number>
+            </div>
+        </div>
+        <div class="row">
+        </div>
+    </div>
+    <div>
+        <wj-flex-chart class="chart"
+                       control="ctx.chart"
+                       items-source="ctx.itemsSource"
+                       binding-x="country">
+            <wj-flex-chart-box-whisker name="downloads" control="ctx.boxwhisker" binding="downloads" 
+                                       group-width="ctx.groupWidth" 
+                                       gap-width="ctx.gapWidth" 
+                                       quartile-calculation="ctx.quartileCalculation"
+                                       show-mean-line="ctx.showMeanLine"
+                                       show-mean-marker="ctx.showMeanMarker"
+                                       show-inner-points="ctx.showInnerPoints"
+                                       show-outliers="ctx.showOutliers"></wj-flex-chart-box-whisker>
+            <wj-flex-chart-box-whisker name="sales" control="ctx.boxwhisker2" binding="sales"
+                                       group-width="ctx.groupWidth"
+                                       gap-width="ctx.gapWidth"
+                                       quartile-calculation="ctx.quartileCalculation"
+                                       show-mean-line="ctx.showMeanLine"
+                                       show-mean-marker="ctx.showMeanMarker"
+                                       show-inner-points="ctx.showInnerPoints"
+                                       show-outliers="ctx.showOutliers"></wj-flex-chart-box-whisker>
+            <wj-flex-chart-box-whisker name="expenses" control="ctx.boxwhisker3" binding="expenses"
+                                       group-width="ctx.groupWidth"
+                                       gap-width="ctx.gapWidth"
+                                       quartile-calculation="ctx.quartileCalculation"
+                                       show-mean-line="ctx.showMeanLine"
+                                       show-mean-marker="ctx.showMeanMarker"
+                                       show-inner-points="ctx.showInnerPoints"
+                                       show-outliers="ctx.showOutliers"></wj-flex-chart-box-whisker>
+        </wj-flex-chart>
+    </div>
+</div>

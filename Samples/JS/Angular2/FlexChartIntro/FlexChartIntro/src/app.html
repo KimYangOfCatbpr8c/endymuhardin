@@ -98,6 +98,11 @@ export class DataSvc &#123;
 }
 --------------------Component-----------------------
 // Angular
+
+import * as wjcCore from 'wijmo/wijmo';
+import * as wjcChart from 'wijmo/wijmo.chart';
+import * as wjcInput from 'wijmo/wijmo.input';
+
 import &#123; Component, EventEmitter, Input, Inject, enableProdMode, ViewChild, NgModule } from '@angular/core';
 import &#123; FormsModule } from '@angular/forms';
 import &#123; CommonModule } from '@angular/common';
@@ -342,7 +347,7 @@ export class AppCmp &#123;
                     <div class="pane-content">
 export class AppCmp &#123;
     funnelData;
-    @ViewChild('funnelChart') funnelChart: wijmo.chart.FlexChart;
+    @ViewChild('funnelChart') funnelChart: wjcChart.FlexChart;
     
     protected dataSvc: DataSvc;
 
@@ -361,7 +366,7 @@ export class AppCmp &#123;
         };
     }
      
-    neckWidthChanged = (sender: wijmo.input.InputNumber) => &#123;
+    neckWidthChanged = (sender: wjcInput.InputNumber) => &#123;
         if (sender.value < sender.min || sender.value > sender.max) &#123;
             return;
         }
@@ -372,7 +377,7 @@ export class AppCmp &#123;
         this.funnelChart.refresh(true);
     };
 
-    neckHeightChanged = (sender: wijmo.input.InputNumber) => &#123;
+    neckHeightChanged = (sender: wjcInput.InputNumber) => &#123;
         if (sender.value < sender.min || sender.value > sender.max) &#123;
             return;
         }
@@ -383,7 +388,7 @@ export class AppCmp &#123;
         this.funnelChart.refresh(true);
     };
 
-    funnelTypeChanged = (sender: wijmo.input.Menu) => &#123;
+    funnelTypeChanged = (sender: wjcInput.Menu) => &#123;
         if (!this.funnelChart.options) &#123;
             return;
         }
@@ -1019,27 +1024,28 @@ export class AppCmp &#123;
                 <wj-menu-item [value]="'SplineArea'">SplineArea</wj-menu-item>
             </wj-menu>
     
-    <div [ngStyle]="{display: (selectionMode == 'None' || selectionChart.selection == null) ? 'none' : ''}">
-        <h4>
-            Current Selection
-        </h4>
-        <p>
-            Series: <b>{{selectionChart.selection? selectionChart.selection.name : ''}}</b>
-        </p>
-        <dl class="dl-horizontal"  *ngIf="selectionChart.selection && selectionChart.selection.collectionView && selectionChart.selection.collectionView.currentItem"
-            [ngStyle]="{display: (selectionMode != 'Point' || selectionChart.selection.collectionView.currentItem == null) ? 'none' : ''}">
-            <dt>Country</dt>
-            <dd>{{selectionChart.selection.collectionView.currentItem.country}}</dd>
-            <dt>Sales</dt>
-            <dd>{{selectionChart.selection.collectionView.currentItem.sales | number:'3.1-2'}}</dd>
-            <dt>Expenses</dt>
-            <dd>{{selectionChart.selection.collectionView.currentItem.expenses | number:'3.1-2'}}</dd>
-            <dt>Downloads</dt>
-            <dd>{{selectionChart.selection.collectionView.currentItem.downloads | number:'3.1-2'}}</dd>
-        </dl>
+        <div [ngStyle]="{display: (selectionMode == 'None' || selectionChart.selection == null) ? 'none' : ''}">
+            <h4>
+                Current Selection
+            </h4>
+            <p>
+                Series: <b>{{selectionChart.selection? selectionChart.selection.name : ''}}</b>
+            </p>
+            <dl class="dl-horizontal"  *ngIf="selectionChart.selection && selectionChart.selection.collectionView && selectionChart.selection.collectionView.currentItem"
+                [ngStyle]="{display: (selectionMode != 'Point' || selectionChart.selection.collectionView.currentItem == null) ? 'none' : ''}">
+                <dt>Country</dt>
+                <dd>{{selectionChart.selection.collectionView.currentItem.country}}</dd>
+                <dt>Sales</dt>
+                <dd>{{selectionChart.selection.collectionView.currentItem.sales | number:'3.1-2'}}</dd>
+                <dt>Expenses</dt>
+                <dd>{{selectionChart.selection.collectionView.currentItem.expenses | number:'3.1-2'}}</dd>
+                <dt>Downloads</dt>
+                <dd>{{selectionChart.selection.collectionView.currentItem.downloads | number:'3.1-2'}}</dd>
+            </dl>
+        </div>
     </div>
-</div>
-
+    </div>
+       
     <h2 id="Toggle">
         Toggle Series
     </h2>
@@ -1096,9 +1102,9 @@ export class AppCmp &#123;
 
      // chart properties
      selectionMode = 'Series';
-     series1Visible = wijmo.chart.SeriesVisibility.Visible;
-     series2Visible = wijmo.chart.SeriesVisibility.Visible;
-     series3Visible = wijmo.chart.SeriesVisibility.Visible;
+     series1Visible = wjcChart.SeriesVisibility.Visible;
+     series2Visible = wjcChart.SeriesVisibility.Visible;
+     series3Visible = wjcChart.SeriesVisibility.Visible;
 
      protected dataSvc: DataSvc;
 
@@ -1111,13 +1117,13 @@ export class AppCmp &#123;
      seriesVisible = (idx, checked) => &#123;
          if (idx === 0) &#123;
              this.series1Visible = checked ?
-             wijmo.chart.SeriesVisibility.Visible : wijmo.chart.SeriesVisibility.Hidden;
+             wjcChart.SeriesVisibility.Visible : wjcChart.SeriesVisibility.Hidden;
          } else if (idx === 1) &#123;
              this.series2Visible = checked ?
-             wijmo.chart.SeriesVisibility.Visible : wijmo.chart.SeriesVisibility.Hidden;
+             wjcChart.SeriesVisibility.Visible : wjcChart.SeriesVisibility.Hidden;
          } else if (idx === 2) &#123;
              this.series3Visible = checked ?
-             wijmo.chart.SeriesVisibility.Visible : wijmo.chart.SeriesVisibility.Hidden;
+             wjcChart.SeriesVisibility.Visible : wjcChart.SeriesVisibility.Hidden;
          }
      }
 }
@@ -1147,7 +1153,429 @@ export class AppCmp &#123;
                            [checked]="toggleChart.series[2].visibility===0"/>                             
         </div>
     </div>
+    
+    <!-- Gradient Colors -->
+    <h2 id="GradientColors">
+            Gradient Colors
+    </h2>
+    <p>
+        The FlexChart supports gradient colors.
+    </p>
+    <p>
+        The gradient descriptor is an expression formatted as
+        follows: <code>&lt;type&gt;(&lt;coords&gt;)&lt;colors&gt;[:&lt;offset&gt;[:&lt;opacity&gt;]][-&lt;colors&gt;[:&lt;offset&gt;[:&lt;opacity&gt;]]]-&lt;colors&gt;[:&lt;offset&gt;[:&lt;opacity&gt;]]</code>.
+        The <code>&lt;type&gt;</code> can be either linear or radial.
+        The uppercase <code>L</code> or <code>R</code> letters indicate absolute coordinates offset from the SVG surface.
+        Lowercase <code>l</code> or <code>r</code> letters indicate coordinates calculated relative to the element to which the gradient is applied.
+        Coordinates specify a linear gradient vector as <code>x1</code>, <code>y1</code>, <code>x2</code>, <code>y2</code>,
+        or a radial gradient as <code>cx</code>, <code>cy</code>, <code>r</code> and optional <code>fx</code>, <code>fy</code>, <code>fr</code>
+        specifying a focal point away from the center of the circle.
+        Specify <code>&lt;colors&gt;</code> as a list of dash-separated CSS color values.
+        Each color may be followed by a custom offset and opacity value, separated with a colon character.
+    </p>
+    <p>Linear gradient format example:</p>
+    <p><code>'l(0,0,1,0)#ff0000-#00ff00-#0000ff'</code>, <code>'L(0,0,300,300)#ff0000:0.2:0.2-00ff00:0.8'</code></p>
+    <p>Radial gradient format example:</p>
+    <p><code>'r(0.5,0.5,1)#ff0000-#0000ff'</code>, <code>'R(100,100,100,200,200,200)#ff0000-#0000ff'</code></p>
+    <h3>Basic</h3>
+    <p>Select from the predefined gradient colors to see the different appearances.</p>
+    <div class="row">
+        <div class="col-md-6">
+            <app-tab>
+                <app-tab-pane title="HTML">
+                    <div class="pane-content">
+&lt;wj-flex-chart [itemsSource]="data"
+                bindingX="country"&gt;
+    &lt;wj-flex-chart-series binding="sales" [style]="predefinedColor"&gt;&lt;/wj-flex-chart-series&gt;
+&lt;/wj-flex-chart&gt;
+&lt;div class="dl-horizontal"&gt;
+    &lt;wj-menu #predefinedColorMenu [(value)]="predefinedColor" header="Color"&gt;
+        &lt;wj-menu-item [value]="&#123;fill:'l(0,0,1,0)#89f7fe-#66a6ff'}"&gt;Light Blue - &#123;fill:'l(0, 0, 1, 0)#89f7fe-#66a6ff'}&lt;/wj-menu-item&gt;
+        &lt;wj-menu-item [value]="&#123;fill:'l(0,0,0,1)#13547a-#80d0c7'}"&gt;Aqua - &#123;fill:'l(0, 0, 0, 1)#13547a-#80d0c7'}&lt;/wj-menu-item&gt;
+        &lt;wj-menu-item [value]="&#123;fill:'l(0,0,1,1)#ff0844-#ffb199'}"&gt;Red - &#123;fill:'l(0, 0, 1, 1)#ff0844-#ffb199'}&lt;/wj-menu-item&gt;
+        &lt;wj-menu-item [value]="&#123;fill:'l(0,0,1,0)#b224ef-#7579ff-#b224ef'}"&gt;Purple - &#123;fill:'l(0, 0, 1, 0)#b224ef-#7579ff-#b224ef'}&lt;/wj-menu-item&gt;
+        &lt;wj-menu-item [value]="&#123;fill:'r(0.5,0.5,0.7)#cc208e-#6713d2'}"&gt;Plum - &#123;fill:'r(0.5,0.5,0.7)#cc208e-#6713d2'}&lt;/wj-menu-item&gt;
+        &lt;wj-menu-item [value]="&#123;fill:'l(0,0,1,0)#30cfd0-#330867'}"&gt;Deep Blue - &#123;fill:'l(0, 0, 1, 0)#30cfd0-#330867'}&lt;/wj-menu-item&gt;
+        &lt;wj-menu-item [value]="&#123;fill:'l(0,0,0,1)#e27f00-#ae1a73'}"&gt;Orange - &#123;fill:'l(0, 0, 0, 1)#e27f00-#ae1a73'}&lt;/wj-menu-item&gt;
+        &lt;wj-menu-item [value]="&#123;fill:'l(0,0,1,1)#abd800-#5c7e00'}"&gt;Green - &#123;fill:'l(0, 0, 1, 1)#abd800-#5c7e00'}&lt;/wj-menu-item&gt;
+    &lt;/wj-menu&gt;
+&lt;/div&gt;
+                    </div>
+                </app-tab-pane>
+                <app-tab-pane title="TS">
+                    <div class="pane-content">
+export class AppCmp &#123;
+    predefinedColor = &#123; fill: 'l(0,0,1,0)#89f7fe-#66a6ff' };
+    @ViewChild('predefinedColorMenu') predefinedColorMenu: wjcInput.Menu;
+                        
+    ngAfterViewInit() &#123;
+        this.predefinedColorMenu.selectedIndex = 0;
+    }
+}
+                    </div>
+                </app-tab-pane>
+            </app-tab>
+        </div>
+        <div class="col-md-6">
+            <h4>Result (live):</h4>
+            <wj-flex-chart [itemsSource]="data"
+                           bindingX="country">
+                <wj-flex-chart-series binding="sales" [style]="predefinedColor"></wj-flex-chart-series>
+            </wj-flex-chart>
+            <div class="dl-horizontal">
+                <wj-menu #predefinedColorMenu [(value)]="predefinedColor" header="Color">
+                    <wj-menu-item [value]="{fill:'l(0,0,1,0)#89f7fe-#66a6ff'}">Light Blue - l(0, 0, 1, 0)#89f7fe-#66a6ff</wj-menu-item>
+                    <wj-menu-item [value]="{fill:'l(0,0,0,1)#13547a-#80d0c7'}">Aqua - l(0, 0, 0, 1)#13547a-#80d0c7</wj-menu-item>
+                    <wj-menu-item [value]="{fill:'l(0,0,1,1)#ff0844-#ffb199'}">Red - l(0, 0, 1, 1)#ff0844-#ffb199</wj-menu-item>
+                    <wj-menu-item [value]="{fill:'l(0,0,1,0)#b224ef-#7579ff-#b224ef'}">Purple - l(0, 0, 1, 0)#b224ef-#7579ff-#b224ef</wj-menu-item>
+                    <wj-menu-item [value]="{fill:'r(0.5,0.5,0.7)#cc208e-#6713d2'}">Plum - r(0.5,0.5,0.7)#cc208e-#6713d2</wj-menu-item>
+                    <wj-menu-item [value]="{fill:'l(0,0,1,0)#30cfd0-#330867'}">Deep Blue - l(0, 0, 1, 0)#30cfd0-#330867</wj-menu-item>
+                    <wj-menu-item [value]="{fill:'l(0,0,0,1)#e27f00-#ae1a73'}">Orange - l(0, 0, 0, 1)#e27f00-#ae1a73</wj-menu-item>
+                    <wj-menu-item [value]="{fill:'l(0,0,1,1)#abd800-#5c7e00'}">Green - l(0, 0, 1, 1)#abd800-#5c7e00</wj-menu-item>
+                </wj-menu>
+            </div>
+        </div>
+    </div>
+    <h3>Advanced</h3>
+    <p>Set multiple options to customize gradient color.</p>
+    <div class="row">
+        <div class="col-md-6">
+            <app-tab>
+                <app-tab-pane title="HTML">
+        <div class="pane-content">
+&lt;wj-flex-chart [itemsSource]="data"
+                #gradientColorChart&gt;
+    &lt;wj-flex-chart-series [binding]="'sales'"&gt;&lt;/wj-flex-chart-series&gt;
+&lt;/wj-flex-chart&gt;
+&lt;dl class="dl-horizontal"&gt;
+    &lt;dt&gt;Generated fill string:&lt;/dt&gt;
+    &lt;dd&gt;
+        &lt;label&gt;{{ gradientFill }}&lt;/label&gt;
+    &lt;/dd&gt;
+&lt;/dl&gt;
+&lt;dl class="dl-horizontal"&gt;
+    &lt;dt&gt;&lt;/dt&gt;
+    &lt;dd&gt;
+        &lt;wj-menu #gradientChartTypeMenu value="gradientChartType" header="Chart Type"
+                    (itemClicked)="gradientChartTypeChanged(gradientChartTypeMenu)"&gt;
+            &lt;wj-menu-item value="0"&gt;Column&lt;/wj-menu-item&gt;
+            &lt;wj-menu-item value="1"&gt;Bar&lt;/wj-menu-item&gt;
+            &lt;wj-menu-item value="5"&gt;Area&lt;/wj-menu-item&gt;
+            &lt;wj-menu-item value="11"&gt;SplineArea&lt;/wj-menu-item&gt;
+        &lt;/wj-menu&gt;
+    &lt;/dd&gt;
+&lt;/dl&gt;
+&lt;dl class="dl-horizontal"&gt;
+    &lt;dt&gt;&lt;/dt&gt;
+    &lt;dd&gt;
+        &lt;wj-menu #gradientTypeMenu value="l" header="Type"
+                    (itemClicked)="gradientTypeChanged(gradientTypeMenu)"&gt;
+            &lt;wj-menu-item value="l"&gt;Linear&lt;/wj-menu-item&gt;
+            &lt;wj-menu-item value="r"&gt;Radial&lt;/wj-menu-item&gt;
+        &lt;/wj-menu&gt;
+    &lt;/dd&gt;
+&lt;/dl&gt;
+&lt;dl class="dl-horizontal" [hidden]="gradientTypeMenu.selectedValue === 'r'"&gt;
+    &lt;dt&gt;&lt;/dt&gt;
+    &lt;dd&gt;
+        &lt;wj-menu #gradientDirectionMenu value="horizontal" header="Direction"
+                    (itemClicked)="gradientDirectionChanged(gradientDirectionMenu)"&gt;
+            &lt;wj-menu-item value="horizontal"&gt;Horizontal&lt;/wj-menu-item&gt;
+            &lt;wj-menu-item value="vertical"&gt;Vertical&lt;/wj-menu-item&gt;
+        &lt;/wj-menu&gt;
+    &lt;/dd&gt;
+&lt;/dl&gt;
+&lt;dl class="dl-horizontal"&gt;
+    &lt;dt&gt;Start Color:&lt;/dt&gt;
+    &lt;dd&gt;
+        &lt;wj-input-color #inputStartColor (valueChanged)="startColorChanged(inputStartColor)" value="#ff0000"&gt;
+        &lt;/wj-input-color&gt;
+    &lt;/dd&gt;
+&lt;/dl&gt;
+&lt;dl class="dl-horizontal"&gt;
+    &lt;dt&gt;Start Offset:&lt;/dt&gt;
+    &lt;dd&gt;
+        &lt;wj-input-number #inputStartOffset (valueChanged)="startOffsetChanged(inputStartOffset)"
+                            [min]="0"
+                            [value]="0"
+                            [max]="1"
+                            [step]=".1"&gt;
+        &lt;/wj-input-number&gt;
+    &lt;/dd&gt;
+&lt;/dl&gt;
+&lt;dl class="dl-horizontal"&gt;
+    &lt;dt&gt;Start Opacity:&lt;/dt&gt;
+    &lt;dd&gt;
+        &lt;wj-input-number #inputStartOpacity (valueChanged)="startOpacityChanged(inputStartOpacity)"
+                            [min]="0"
+                            [value]="1"
+                            [max]="1"
+                            [step]=".1"&gt;
+        &lt;/wj-input-number&gt;
+    &lt;/dd&gt;
+&lt;/dl&gt;
+&lt;dl class="dl-horizontal"&gt;
+    &lt;dt&gt;End Color:&lt;/dt&gt;
+    &lt;dd&gt;
+        &lt;wj-input-color #inputEndColor (valueChanged)="endColorChanged(inputEndColor)" value="#0000ff"&gt;
+        &lt;/wj-input-color&gt;
+    &lt;/dd&gt;
+&lt;/dl&gt;
+&lt;dl class="dl-horizontal"&gt;
+    &lt;dt&gt;End Offset:&lt;/dt&gt;
+    &lt;dd&gt;
+        &lt;wj-input-number #inputEndOffset (valueChanged)="endOffsetChanged(inputEndOffset)"
+                            [min]="0"
+                            [value]="1"
+                            [max]="1"
+                            [step]=".1"&gt;
+        &lt;/wj-input-number&gt;
+    &lt;/dd&gt;
+&lt;/dl&gt;
+&lt;dl class="dl-horizontal"&gt;
+    &lt;dt&gt;End Opacity:&lt;/dt&gt;
+    &lt;dd&gt;
+        &lt;wj-input-number #inputEndOpacity (valueChanged)="endOpacityChanged(inputEndOpacity)"
+                            [min]="0"
+                            [value]="1"
+                            [max]="1"
+                            [step]=".1"&gt;
+        &lt;/wj-input-number&gt;
+    &lt;/dd&gt;
+&lt;/dl&gt;
+                    </div>
+                </app-tab-pane>
+                <app-tab-pane title="TS">
+                    <div class="pane-content">
+export class AppCmp &#123;
+    // generate some random data
+    countries = 'US,Germany,UK,Japan,Italy,Greece'.split(',');
+    gradientChartType = wjcChart.ChartType.Column;
+    data: &#123; country: string, downloads: number, sales: number, expenses: number }[];
 
+    //chart properties
+    gradientFill: string;
+    @ViewChild('gradientColorChart') gradientColorChart: wjcChart.FlexChart;
+    @ViewChild('gradientTypeMenu') gradientTypeMenu: wjcInput.Menu;
+    @ViewChild('gradientDirectionMenu') gradientDirectionMenu: wjcInput.Menu;
+    @ViewChild('inputStartColor') startColor: wjcInput.InputColor;
+    @ViewChild('inputStartOffset') startOffset: wjcInput.InputNumber;
+    @ViewChild('inputStartOpacity') startOpacity: wjcInput.InputNumber;
+    @ViewChild('inputEndColor') endColor: wjcInput.InputColor;
+    @ViewChild('inputEndOffset') endOffset: wjcInput.InputNumber;
+    @ViewChild('inputEndOpacity') endOpacity: wjcInput.InputNumber;
+
+    //help
+    _toAddData = null;
+    _interval = null;
+
+    protected dataSvc: DataSvc;
+
+    constructor( @Inject(DataSvc) dataSvc: DataSvc) &#123;
+        this.dataSvc = dataSvc;
+        this.data = this.dataSvc.getData(this.countries);
+    }
+
+    ngAfterViewInit() &#123;
+        this._applyGradientColor();
+    }
+
+    gradientChartTypeChanged = (sender: wjcInput.Menu) => &#123;
+        if (this.gradientColorChart == null) &#123;
+            return;
+        }
+        this.gradientColorChart.chartType = +sender.selectedValue;
+    };
+
+    gradientDirectionChanged = (sender: wjcInput.Menu) => &#123;
+        this._applyGradientColor();
+    };
+
+    startColorChanged = (sender: wjcInput.InputColor) => &#123;
+        this._applyGradientColor();
+    };
+
+    startOffsetChanged = (sender: wjcInput.InputNumber) => &#123;
+        if (sender.value < sender.min || sender.value > sender.max) &#123;
+            return;
+        }
+        this._applyGradientColor();
+    };
+
+    startOpacityChanged = (sender: wjcInput.InputNumber) => &#123;
+        if (sender.value < sender.min || sender.value > sender.max) &#123;
+            return;
+        }
+        this._applyGradientColor();
+    };
+
+    endColorChanged = (sender: wjcInput.InputColor) => &#123;
+        this._applyGradientColor();
+    };
+
+    endOffsetChanged = (sender: wjcInput.InputNumber) => &#123;
+        if (sender.value < sender.min || sender.value > sender.max) &#123;
+            return;
+        }
+        this._applyGradientColor();
+    };
+
+    endOpacityChanged = (sender: wjcInput.InputNumber) => &#123;
+        if (sender.value < sender.min || sender.value > sender.max) &#123;
+            return;
+        }
+        this._applyGradientColor();
+    };
+
+    private _applyGradientColor = () => &#123;
+        if (this.gradientColorChart == null) &#123;
+            return;
+        }
+
+        var chart = this.gradientColorChart,
+            color = '',
+            type = this.gradientTypeMenu.selectedValue,
+            direction = this.gradientDirectionMenu.selectedValue;
+
+        color = type;
+        if (type === 'l') &#123;
+            if (direction === 'horizontal') &#123;
+                color += '(0, 0, 1, 0)';
+            } else &#123;
+                color += '(0, 0, 0, 1)';
+            }
+        } else &#123;
+            color += '(0.5, 0.5, 0.5)'
+        }
+        color += this.startColor.value;
+        if (this.startOffset.value !== 0 || this.startOpacity.value !== 1) &#123;
+            color += ':' + this.startOffset.value;
+        }
+        if (this.startOpacity.value !== 1) &#123;
+            color += ':' + this.startOpacity.value;
+        }
+        color += '-' + this.endColor.value;
+        if (this.endOffset.value !== 1 || this.endOpacity.value !== 1) &#123;
+            color += ':' + this.endOffset.value;
+        }
+        if (this.endOpacity.value !== 1) &#123;
+            color += ':' + this.endOpacity.value;
+        }
+
+        this.gradientFill = color;
+        chart.series[0].style = &#123;
+            fill: color
+        };
+    }
+}
+                    </div>
+                </app-tab-pane>
+            </app-tab>
+        </div>
+        <div class="col-md-6">
+            <h4>Result (live):</h4>
+            <wj-flex-chart [itemsSource]="data"
+                           #gradientColorChart>
+                <wj-flex-chart-series [binding]="'sales'"></wj-flex-chart-series>
+            </wj-flex-chart>
+            <dl class="dl-horizontal">
+                <dt>Generated fill string:</dt>
+                <dd>
+                    <label>{{ gradientFill }}</label>
+                </dd>
+            </dl>
+            <dl class="dl-horizontal">
+                <dt></dt>
+                <dd>
+                    <wj-menu #gradientChartTypeMenu [(value)]="gradientChartType" header="Chart Type"
+                             (itemClicked)="gradientChartTypeChanged(gradientChartTypeMenu)">
+                        <wj-menu-item value="0">Column</wj-menu-item>
+                        <wj-menu-item value="1">Bar</wj-menu-item>
+                        <wj-menu-item value="5">Area</wj-menu-item>
+                        <wj-menu-item value="11">SplineArea</wj-menu-item>
+                    </wj-menu>
+                </dd>
+            </dl>
+            <dl class="dl-horizontal">
+                <dt></dt>
+                <dd>
+                    <wj-menu #gradientTypeMenu value="l" header="Type"
+                             (itemClicked)="gradientTypeChanged(gradientTypeMenu)">
+                        <wj-menu-item value="l">Linear</wj-menu-item>
+                        <wj-menu-item value="r">Radial</wj-menu-item>
+                    </wj-menu>
+                </dd>
+            </dl>
+            <dl class="dl-horizontal" [hidden]="gradientTypeMenu.selectedValue === 'r'">
+                <dt></dt>
+                <dd>
+                    <wj-menu #gradientDirectionMenu value="horizontal" header="Direction"
+                             (itemClicked)="gradientDirectionChanged(gradientDirectionMenu)">
+                        <wj-menu-item value="horizontal">Horizontal</wj-menu-item>
+                        <wj-menu-item value="vertical">Vertical</wj-menu-item>
+                    </wj-menu>
+                </dd>
+            </dl>
+            <dl class="dl-horizontal">
+                <dt>Start Color:</dt>
+                <dd>
+                    <wj-input-color #inputStartColor (valueChanged)="startColorChanged(inputStartColor)" value="#ff0000">
+                    </wj-input-color>
+                </dd>
+            </dl>
+            <dl class="dl-horizontal">
+                <dt>Start Offset:</dt>
+                <dd>
+                    <wj-input-number #inputStartOffset (valueChanged)="startOffsetChanged(inputStartOffset)"
+                                     [min]="0"
+                                     [value]="0"
+                                     [max]="1"
+                                     [step]=".1">
+                    </wj-input-number>
+                </dd>
+            </dl>
+            <dl class="dl-horizontal">
+                <dt>Start Opacity:</dt>
+                <dd>
+                    <wj-input-number #inputStartOpacity (valueChanged)="startOpacityChanged(inputStartOpacity)"
+                                     [min]="0"
+                                     [value]="1"
+                                     [max]="1"
+                                     [step]=".1">
+                    </wj-input-number>
+                </dd>
+            </dl>
+            <dl class="dl-horizontal">
+                <dt>End Color:</dt>
+                <dd>
+                    <wj-input-color #inputEndColor (valueChanged)="endColorChanged(inputEndColor)" value="#0000ff">
+                    </wj-input-color>
+                </dd>
+            </dl>
+            <dl class="dl-horizontal">
+                <dt>End Offset:</dt>
+                <dd>
+                    <wj-input-number #inputEndOffset (valueChanged)="endOffsetChanged(inputEndOffset)"
+                                     [min]="0"
+                                     [value]="1"
+                                     [max]="1"
+                                     [step]=".1">
+                    </wj-input-number>
+                </dd>
+            </dl>
+            <dl class="dl-horizontal">
+                <dt>End Opacity:</dt>
+                <dd>
+                    <wj-input-number #inputEndOpacity (valueChanged)="endOpacityChanged(inputEndOpacity)"
+                                     [min]="0"
+                                     [value]="1"
+                                     [max]="1"
+                                     [step]=".1">
+                    </wj-input-number>
+                </dd>
+            </dl>
+        </div>
+    </div>
     <!-- dynamic charts -->
     <h2 id="Dynamic">
         Dynamic Charts
@@ -1190,7 +1618,7 @@ export class AppCmp &#123;
                 <app-tab-pane title="TS">
                     <div class="pane-content">
  export class AppCmp &#123;
-     trafficData: wijmo.collections.ObservableArray;
+     trafficData: wjcCore.ObservableArray;
 
      // help
      _toAddData = null;
@@ -1198,7 +1626,7 @@ export class AppCmp &#123;
 
      constructor() &#123;
          // data for FlexChart
-         this.trafficData = new wijmo.collections.ObservableArray();
+         this.trafficData = new wjcCore.ObservableArray();
          this.setInterval(500);
      }
 

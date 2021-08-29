@@ -1,4 +1,3 @@
-///<reference path="../typings/globals/core-js/index.d.ts"/>
 "use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -9,6 +8,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
+///<reference path="../typings/globals/core-js/index.d.ts"/>
+var wjcCore = require('wijmo/wijmo');
 // Angular
 var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
@@ -28,7 +29,7 @@ var AppCmp = (function () {
         dataSvc.initData();
         dataSvc.viewsLoadedFun = this._viewsLoadedChanged.bind(this);
         // report list
-        this.reports = new wijmo.collections.CollectionView([
+        this.reports = new wjcCore.CollectionView([
             { header: 'Alphabetical List of Products', name: 'alphabeticalListOfProducts' },
             { header: 'Customer Labels', name: 'customerLabels' },
             { header: 'Employees', name: 'employees' },
@@ -43,7 +44,7 @@ var AppCmp = (function () {
             }
         });
         // zoom levels
-        this.zoomLevels = new wijmo.collections.CollectionView([
+        this.zoomLevels = new wjcCore.CollectionView([
             { header: '25%', value: 0.25 },
             { header: '50%', value: 0.5 },
             { header: '75%', value: 0.75 },
@@ -65,7 +66,7 @@ var AppCmp = (function () {
     // commands
     AppCmp.prototype.print = function () {
         // create document
-        var doc = new wijmo.PrintDocument({
+        var doc = new wjcCore.PrintDocument({
             title: this.reports.currentItem.header
         });
         // add content to it

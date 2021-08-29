@@ -1,0 +1,477 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>ReportViewer简介</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Styles -->
+    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="styles/vendor/wijmo.min.css" rel="stylesheet" />
+    <link href="styles/app.css" rel="stylesheet" />
+
+    <!-- jQuery/Angular/Bootstrap -->
+    <script src="http://code.jquery.com/jquery-2.2.4.min.js" type="text/javascript"></script>
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js" type="text/javascript"></script>
+
+    <!-- Wijmo -->
+    <script src="scripts/vendor/wijmo.min.js" type="text/javascript"></script>
+    <script src="scripts/vendor/wijmo.input.min.js" type="text/javascript"></script>
+    <script src="scripts/vendor/wijmo.grid.min.js" type="text/javascript"></script>
+    <script src="scripts/vendor/wijmo.viewer.min.js" type="text/javascript"></script>
+</head>
+<body>
+
+    <div class="header">
+        <div class="container">
+            <img src="resources/wijmo5.png" alt="Wijmo 5" />
+            <h1>
+                ReportViewer 101
+            </h1>
+            <p>
+                此页面显示如何开始使用Wijmo的ReportViewer控件。
+            </p>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <!-- Getting Started -->
+        <div>
+            <h2>入门</h2>
+            <p>
+                在JavaScript应用程序中开始使用ReportViewer控件的步骤：
+            </p>
+            <ol>
+                <li>设置<a target="_blank" href="http://helpcentral.componentone.com/nethelp/C1WebAPI/ReportServices.html">C1 Web API Report Services</a>。请参考<a target="_blank" href="http://helpcentral.componentone.com/nethelp/c1webapi/Working%20with%20Reports.html">How to Set Up C1 Web API Report Services</a>.</li>
+                <li>添加对Wijmo的引用。</li>
+                <li>添加标记作为Wijmo控件的容器。</li>
+                <li>通过JavaScript初始化Wijmo控件。</li>
+                <li>（可选）添加一些CSS以自定义报表查看器控件的外观。</li>
+            </ol>
+            <p>
+                <a target="_blank" href="http://helpcentral.componentone.com/nethelp/C1WebAPI/ReportServices.html">C1 Web API Report Services</a>使用<a target="_blank" href="http://www.componentone.com/Studio/FlexReport?platform=WinForms">C1FlexReport</a>呈现和导出报表</a>.
+                请参考<a target="_blank" href="http://helpcentral.componentone.com/nethelp/c1webapi/Working%20with%20Reports.html">How to Set Up C1 Web API Report Services</a>获取更多信息。
+            </p>
+            <p>
+                要从C1 Web API Report Services显示FlexReport的内容，请设置以下基本属性：
+            </p>
+            <ol>
+                <li>
+                    <b>serviceUrl:</b> C1 Web API 报表服务的URL。 比如 '<span class="service-url"></span>'.
+                </li>
+                <li>
+                    <b>filePath:</b>服务器上FlexReport定义的报表文件的全路径。 比如：'ReportsRoot/Formatting/AlternateBackground.flxr'.
+                    <p>
+                        “ReportsRoot”是在服务器上注册以查找指定报表的报表提供程序的键。
+                        <br />
+                        “Formatting/AlternateBackground.flxr”是FlexReport定义文件的相对路径，它可以被报表提供者定位。
+                    </p>
+                </li>
+                <li>
+                    <b>reportName:</b> 在FlexReport定义文件中定义的报告名称。
+                   比如'AlternateBackground',在AlternateBackground.flxr文件中将报表命名为'AlternateBackground'.
+                </li>
+            </ol>
+            <div class="row">
+                <div class="col-md-12">
+                    <h4>结果：</h4>
+                    <div id="introReportViewer"></div>
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-12">
+                    <div>
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li class="active"><a href="#sHtml" role="tab" data-toggle="tab">HTML</a></li>
+                            <li><a href="#sJs" role="tab" data-toggle="tab">JS</a></li>
+                            <li><a href="#sCss" role="tab" data-toggle="tab">CSS</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active pane-content" id="sHtml">
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;link rel="stylesheet" type="text/css" href="css/bootstrap.css"/&gt;
+&lt;link rel="stylesheet" type="text/css" href="css/wijmo.css" /&gt;
+&lt;link href="css/app.css" rel="stylesheet" type="text/css" /&gt;
+&lt;script src="scripts/wijmo.js" type="text/javascript"&gt;&lt;/script&gt;
+&lt;script src="scripts/wijmo.input.js" type="text/javascript"&gt;&lt;/script&gt;
+&lt;script src="scripts/wijmo.grid.js" type="text/javascript"&gt;&lt;/script&gt;
+&lt;script src="scripts/wijmo.viewer.js" type="text/javascript"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;!-- ReportViewer --&gt;
+&lt;div id="introReportViewer"&gt;&lt;/div&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+                            </div>
+                            <div class="tab-pane pane-content" id="sJs">
+// create controls
+var viewer = new wijmo.viewer.ReportViewer('#introReportViewer');
+
+// initialize ReportViewer's properties
+viewer.serviceUrl = '<span class="service-url"></span>';
+viewer.filePath = 'ReportsRoot/Formatting/AlternateBackground.flxr';
+viewer.reportName = 'AlternateBackground';
+                            </div>
+                            <div class="tab-pane pane-content" id="sCss">
+.wj-viewer{
+    width: 100%;
+    height: 600px;
+}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SSRS Reports -->
+        <div>
+            <h2>SSRS报表</h2>
+            <p>
+                ReportViewer控件也可以显示<a target="_blank" href="https://msdn.microsoft.com/en-us/library/ms159106.aspx">SSRS</a>报表。
+            </p>
+            <p>
+                <a target="_blank" href="http://helpcentral.componentone.com/nethelp/C1WebAPI/ReportServices.html">C1 Web API Report Services</a>使用<a target="_blank" href="http://helpcentral.componentone.com/nethelp/FlexReport/C1.Win.C1Document.4~C1.Win.C1Document.C1SSRSDocumentSource.html">C1SSRSDocumentSource</a>以连接SSRS服务器并呈现SSRS报表。
+                它首先从SSRS服务器获取数据，然后转换为预期的格式（通常为HTML5 SVG）。
+                请看<a target="_blank" href="http://helpcentral.componentone.com/nethelp/c1webapi/Working%20with%20Reports.html">How to Set Up C1 Web API Report Services</a>获取更多的细节。
+            </p>
+            <p>
+                要从C1 Web API Report Services显示SSRS报表的内容，请设置以下基本属性：
+            </p>
+            <ol>
+                <li>
+                    <b>serviceUrl:</b> C1 Web API 报表服务的URL，
+                   比如 '<span class="service-url"></span>'.
+                </li>
+                <li>
+                    <b>filePath:</b> 服务器上SSRS报表的完整路径。
+                    比如, 'c1ssrs/AdventureWorks/Company Sales'.
+                    <p>
+                        “c1ssrs”是在服务器上注册以查找指定报表的报表提供程序的键。
+                        (对于 '<span class="service-url"></span>', 'c1ssrs'是链接到SSRS服务器的报表提供程序的键 'http://ssrs.componentone.com:8000/ReportServer'.)
+                        <br />
+                        'AdventureWorks/Company Sales'是可以位SSRS服务器中的报表的完整路径。
+                    </p>
+                </li>
+            </ol>
+            <div class="row">
+                <div class="col-md-12">
+                    <h4>结果：</h4>
+                    <div id="ssrsReportViewer"></div>
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-12">
+                    <div>
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li class="active"><a href="#ssrsHtml" role="tab" data-toggle="tab">HTML</a></li>
+                            <li><a href="#ssrsJs" role="tab" data-toggle="tab">JS</a></li>
+                            <li><a href="#ssrsCss" role="tab" data-toggle="tab">CSS</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active pane-content" id="ssrsHtml">
+&lt;div id="ssrsReportViewer"&gt;&lt;/div&gt;
+                            </div>
+                            <div class="tab-pane pane-content" id="ssrsJs">
+// create controls
+var viewer = new wijmo.viewer.ReportViewer('#ssrsReportViewer');
+
+// initialize ReportViewer's properties
+viewer.serviceUrl = '<span class="service-url"></span>';
+viewer.filePath = 'c1ssrs/AdventureWorks/Company Sales';
+                            </div>
+                            <div class="tab-pane pane-content" id="ssrsCss">
+.wj-viewer{
+    width: 100%;
+    height: 600px;
+}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Basic Features -->
+        <div>
+            <h2>基本功能</h2>
+            <p>
+                ReportViewer控件具有以下四个基本属性，允许您自定义其外观和行为：
+            </p>
+            <ul>
+                <li>
+                    <b>fullScreen</b>:  指示查看器是否处于全屏模式。
+                </li>
+                <li>
+                    <b>selectMouseMode</b>:  指示在视图面板中使用鼠标单击和拖动是否选择文本。
+                </li>
+                <li>
+                    <b>viewMode</b>:  指示如何显示文档页面。
+                </li>
+                <li>
+                    <b>zoomFactor</b>:  指示当前显示文档页面的缩放系数。
+                </li>
+            </ul>
+            <p>
+                下面的示例允许您查看更改这些属性时会发生什么。
+            </p>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row">
+                        <h4>结果：</h4>
+                        <div id="basicReportViewer"></div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="form-horizontal">
+                            <div class="form-group">
+                                <div class="col-md-3">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input id="basicContinuousViewMode" type="checkbox" /> Continuous View Mode?
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input id="basicSelectMouseMode" type="checkbox" /> Select Mouse Mode?
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input id="basicFullScreen" type="checkbox" /> Full Screen?
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-mod-4">
+                                    <label class="col-md-2 control-label">Zoom Factor</label>
+                                    <div class="col-md-2">
+                                        <input id="basicZoomFactor" type="text" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-12">
+                    <div>
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li class="active"><a href="#bfHtml" role="tab" data-toggle="tab">HTML</a></li>
+                            <li><a href="#bfJs" role="tab" data-toggle="tab">JS</a></li>
+                            <li><a href="#bfCss" role="tab" data-toggle="tab">CSS</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active pane-content" id="bfHtml">
+&lt;div class="row"&gt;
+    &lt;h4&gt;Result (live):&lt;/h4&gt;
+    &lt;div id="basicReportViewer"&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;br /&gt;
+&lt;div class="row"&gt;
+    &lt;div class="form-horizontal"&gt;
+        &lt;div class="form-group"&gt;
+            &lt;div class="col-md-3"&gt;
+                &lt;div class="checkbox"&gt;
+                    &lt;label&gt;
+                        &lt;input id="basicContinuousViewMode" type="checkbox" /&gt; Continuous View Mode?
+                    &lt;/label&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="col-md-3"&gt;
+                &lt;div class="checkbox"&gt;
+                    &lt;label&gt;
+                        &lt;input id="basicSelectMouseMode" type="checkbox" /&gt; Select Mouse Mode?
+                    &lt;/label&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="col-md-2"&gt;
+                &lt;div class="checkbox"&gt;
+                    &lt;label&gt;
+                        &lt;input id="basicFullScreen" type="checkbox" /&gt; Full Screen?
+                    &lt;/label&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="col-mod-4"&gt;
+                &lt;label class="col-md-2 control-label"&gt;Zoom Factor&lt;/label&gt;
+                &lt;div class="col-md-2"&gt;
+                    &lt;input id="basicZoomFactor" type="text" /&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+                            </div>
+                            <div class="tab-pane pane-content" id="bfJs">
+// create controls
+var viewer = new wijmo.viewer.ReportViewer('#basicReportViewer'),
+    fullScreen = document.getElementById('basicFullScreen'),
+    selectMouseMode = document.getElementById('basicSelectMouseMode'),
+    zoomFactor = new wijmo.input.InputNumber('#basicZoomFactor'),
+    continuousViewMode = document.getElementById('basicContinuousViewMode');
+
+// initialize ReportViewer's properties
+viewer.serviceUrl = '<span class="service-url"></span>';
+viewer.filePath = 'ReportsRoot/Formatting/AlternateBackground.flxr';
+viewer.reportName = 'AlternateBackground';
+
+// fullScreen
+fullScreen.checked = viewer.fullScreen;
+fullScreen.addEventListener('change', function () {
+    viewer.fullScreen = this.checked;
+});
+
+// selectMouseMode
+selectMouseMode.checked = viewer.selectMouseMode;
+selectMouseMode.addEventListener('change', function () {
+    viewer.selectMouseMode = this.checked;
+});
+
+// continousViewMode
+continuousViewMode.checked = viewer.viewMode == wijmo.viewer.ViewMode.Continuous;
+continuousViewMode.addEventListener('change', function () {
+    viewer.viewMode = this.checked ? wijmo.viewer.ViewMode.Continuous : wijmo.viewer.ViewMode.Single;
+});
+
+// zoomFactor - initialize InputNumber's properties
+zoomFactor.min = 0.05;
+zoomFactor.max = 10;
+zoomFactor.step = 0.1;
+zoomFactor.format = 'n2';
+zoomFactor.value = viewer.zoomFactor;
+zoomFactor.valueChanged.addHandler(function (sender) {
+    if (sender.value < sender.min || sender.value > sender.max) {
+        return;
+    }
+    viewer.zoomFactor = sender.value;
+});
+                            </div>
+                            <div class="tab-pane pane-content" id="bfCss">
+.wj-viewer{
+    width: 100%;
+    height: 600px;
+}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Report Names -->
+        <div>
+            <h2>报表名称</h2>
+            <p>
+                如果<b>filePath</b>和<b>reportName</b>属性被修改，ReportViewer将再次呈现报表。
+            </p>
+            <div class="row">
+                <div class="col-md-12">
+                    <h4>结果：</h4>
+                    <div id="namesReportViewer"></div>
+                    <br />
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Report Path</label>
+                            <div class="col-md-9">
+                                <select id="namesReportPath">
+                                    <option value="ReportsRoot/Formatting/AlternateBackground.flxr/AlternateBackground">Alternating Background</option>
+                                    <option value="ReportsRoot/Controls/AllCharts.flxr/AllCharts">All Charts</option>
+                                    <option value="ReportsRoot/Controls/CheckBox.flxr/CheckBox">Check Box</option>
+                                    <option value="ReportsRoot/Controls/Shapes.flxr/Shapes">Shapes</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-12">
+                    <div>
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li class="active"><a href="#namesHtml" role="tab" data-toggle="tab">HTML</a></li>
+                            <li><a href="#namesJs" role="tab" data-toggle="tab">JS</a></li>
+                            <li><a href="#namesCss" role="tab" data-toggle="tab">CSS</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active pane-content" id="namesHtml">
+&lt;div id="namesReportViewer"&gt;&lt;/div&gt;
+&lt;br /&gt;
+&lt;div class="form-horizontal"&gt;
+    &lt;div class="form-group"&gt;
+        &lt;label class="col-md-3 control-label"&gt;Report Path&lt;/label&gt;
+        &lt;div class="col-md-9"&gt;
+            &lt;select id="namesReportPath"&gt;
+                &lt;option value="ReportsRoot/Formatting/AlternateBackground.flxr/AlternateBackground"&gt;Alternating Background&lt;/option&gt;
+                &lt;option value="ReportsRoot/Controls/AllCharts.flxr/AllCharts"&gt;All Charts&lt;/option&gt;
+                &lt;option value="ReportsRoot/Controls/CheckBox.flxr/CheckBox"&gt;Check Box&lt;/option&gt;
+                &lt;option value="ReportsRoot/Controls/Shapes.flxr/Shapes"&gt;Shapes&lt;/option&gt;
+            &lt;/select&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+                            </div>
+                            <div class="tab-pane pane-content" id="namesJs">
+// create controls
+var viewer = new wijmo.viewer.ReportViewer('#namesReportViewer'),
+    namesReportPath = new wijmo.input.ComboBox('#namesReportPath');
+
+// initialize ReportViewer's properties
+viewer.serviceUrl = '<span class="service-url"></span>';
+viewer.filePath = 'ReportsRoot/Formatting/AlternateBackground.flxr';
+viewer.reportName = 'AlternateBackground';
+
+// names report path
+namesReportPath.selectedIndex = 0;
+namesReportPath.selectedIndexChanged.addHandler(function (sender, args) {
+    if (!sender.selectedValue) return;
+
+    var reportPath = sender.selectedValue;
+    var index = reportPath.lastIndexOf('/');
+    var filePath = reportPath.substr(0, index);
+    var reportName = reportPath.substr(index + 1);
+
+    viewer.filePath = filePath;
+    viewer.reportName = reportName;
+});
+                            </div>
+                            <div class="tab-pane pane-content" id="namesCss">
+.wj-viewer{
+    width: 100%;
+    height: 600px;
+}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- sample scripts -->
+    <script src="scripts/gettingStarted.js"></script>
+    <script src="scripts/ssrs.js"></script>
+    <script src="scripts/basic.js"></script>
+    <script src="scripts/names.js"></script>
+
+    <!-- Google analytics -->
+    
+    <script src="scripts/wijmo.sample.toolbar.js" type="text/javascript"></script>
+</body>
+</html>

@@ -50,10 +50,12 @@
 <li class="mmethod inherited"><a href="topic/wijmo.chart.analytics.FunctionSeries.Class.html/#hitTest">hitTest</a></li>
 <li class="mmethod inherited"><a href="topic/wijmo.chart.analytics.FunctionSeries.Class.html/#legendItemLength">legendItemLength</a></li>
 <li class="mmethod inherited"><a href="topic/wijmo.chart.analytics.FunctionSeries.Class.html/#measureLegendItem">measureLegendItem</a></li>
+<li class="mmethod inherited"><a href="topic/wijmo.chart.analytics.FunctionSeries.Class.html/#onRendered">onRendered</a></li>
 <li class="mmethod inherited"><a href="topic/wijmo.chart.analytics.FunctionSeries.Class.html/#onRendering">onRendering</a></li>
 </ul>
 <h3 class="node">Events</h3>
 <ul>
+<li class="mevent inherited"><a href="topic/wijmo.chart.analytics.FunctionSeries.Class.html/#rendered">rendered</a></li>
 <li class="mevent inherited"><a href="topic/wijmo.chart.analytics.FunctionSeries.Class.html/#rendering">rendering</a></li>
 </ul>
 </div>
@@ -275,9 +277,14 @@ Applies to Scatter, LineSymbols, and SplineSymbols chart types.</p></div>
 </div>
 <div id="getDataRect" class="member-panel mmethod inherited">
 <h3>getDataRect</h3>
-<pre>getDataRect(): <a href="topic/wijmo.Rect.Class.html"><span class="identifier">Rect</span></a></pre>
+<pre>getDataRect(currentRect?: <a href="topic/wijmo.Rect.Class.html"><span class="identifier">Rect</span></a>, calculatedRect?: <a href="topic/wijmo.Rect.Class.html"><span class="identifier">Rect</span></a>): <a href="topic/wijmo.Rect.Class.html"><span class="identifier">Rect</span></a></pre>
 <div class="comment"><p>Returns series bounding rectangle in data coordinates.</p>
 <p>If getDataRect() returns null, the limits are calculated automatically based on the data values.</p></div>
+<dl class="dl-horizontal">
+  <dt>Parameters</dt><dd></dd>
+</dl>
+<ul>
+<li><b>currentRect</b>: <a href="topic/wijmo.Rect.Class.html"><span class="identifier">Rect</span></a> <span class="badge">Optional</span><br/><p>The current rectangle of chart. This parameter is optional.</p></li><li><b>calculatedRect</b>: <a href="topic/wijmo.Rect.Class.html"><span class="identifier">Rect</span></a> <span class="badge">Optional</span><br/><p>The calculated rectangle of chart. This parameter is optional.</p></li></ul>
 <dl class="dl-horizontal">
   <dt>Inherited From</dt><dd><a href="topic/wijmo.chart.SeriesBase.Class.html"><span class="identifier">SeriesBase</span></a></dd>
   <dt>Returns</dt><dd><a href="topic/wijmo.Rect.Class.html"><span class="identifier">Rect</span></a></dd>
@@ -299,8 +306,8 @@ Applies to Scatter, LineSymbols, and SplineSymbols chart types.</p></div>
 </div>
 <div id="hitTest" class="member-panel mmethod inherited">
 <h3>hitTest</h3>
-<pre>hitTest(pt: <span class="identifier">any</span>, y?: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Number" target="_blank"><span class="identifier">number</span></a>): <a href="topic/wijmo.grid.HitTestInfo.Class.html"><span class="identifier">HitTestInfo</span></a></pre>
-<div class="comment"><p>Gets a <a href="topic/wijmo.grid.HitTestInfo.Class.html"><span class="identifier">HitTestInfo</span></a> object with information about the specified point.</p></div>
+<pre>hitTest(pt: <span class="identifier">any</span>, y?: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Number" target="_blank"><span class="identifier">number</span></a>): <a href="topic/wijmo.chart.HitTestInfo.Class.html"><span class="identifier">HitTestInfo</span></a></pre>
+<div class="comment"><p>Gets a <a href="topic/wijmo.chart.HitTestInfo.Class.html"><span class="identifier">HitTestInfo</span></a> object with information about the specified point.</p></div>
 <dl class="dl-horizontal">
   <dt>Parameters</dt><dd></dd>
 </dl>
@@ -308,7 +315,7 @@ Applies to Scatter, LineSymbols, and SplineSymbols chart types.</p></div>
 <li><b>pt</b>: <span class="identifier">any</span><br/><p>The point to investigate, in window coordinates.</p></li><li><b>y</b>: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Number" target="_blank"><span class="identifier">number</span></a> <span class="badge">Optional</span><br/><p>The Y coordinate of the point (if the first parameter is a number).</p></li></ul>
 <dl class="dl-horizontal">
   <dt>Inherited From</dt><dd><a href="topic/wijmo.chart.SeriesBase.Class.html"><span class="identifier">SeriesBase</span></a></dd>
-  <dt>Returns</dt><dd><a href="topic/wijmo.grid.HitTestInfo.Class.html"><span class="identifier">HitTestInfo</span></a></dd>
+  <dt>Returns</dt><dd><a href="topic/wijmo.chart.HitTestInfo.Class.html"><span class="identifier">HitTestInfo</span></a></dd>
 </dl>
 </div>
 <div id="legendItemLength" class="member-panel mmethod inherited">
@@ -334,10 +341,10 @@ Applies to Scatter, LineSymbols, and SplineSymbols chart types.</p></div>
   <dt>Returns</dt><dd><a href="topic/wijmo.Size.Class.html"><span class="identifier">Size</span></a></dd>
 </dl>
 </div>
-<div id="onRendering" class="member-panel mmethod inherited">
-<h3>onRendering</h3>
-<pre>onRendering(engine: <a href="topic/wijmo.chart.IRenderEngine.Interface.html"><span class="identifier">IRenderEngine</span></a>): <span class="identifier">void</span></pre>
-<div class="comment"><p>Raises the <a href="topic/wijmo.chart.analytics.FunctionSeries.Class.html/#rendering"><span class="identifier">rendering</span></a> event.</p></div>
+<div id="onRendered" class="member-panel mmethod inherited">
+<h3>onRendered</h3>
+<pre>onRendered(engine: <a href="topic/wijmo.chart.IRenderEngine.Interface.html"><span class="identifier">IRenderEngine</span></a>): <span class="identifier">void</span></pre>
+<div class="comment"><p>Raises the <a href="topic/wijmo.chart.analytics.FunctionSeries.Class.html/#rendered"><span class="identifier">rendered</span></a> event.</p></div>
 <dl class="dl-horizontal">
   <dt>Parameters</dt><dd></dd>
 </dl>
@@ -348,15 +355,37 @@ Applies to Scatter, LineSymbols, and SplineSymbols chart types.</p></div>
   <dt>Returns</dt><dd><span class="identifier">void</span></dd>
 </dl>
 </div>
+<div id="onRendering" class="member-panel mmethod inherited">
+<h3>onRendering</h3>
+<pre>onRendering(engine: <a href="topic/wijmo.chart.IRenderEngine.Interface.html"><span class="identifier">IRenderEngine</span></a>, index: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Number" target="_blank"><span class="identifier">number</span></a>, count: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Number" target="_blank"><span class="identifier">number</span></a>): <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a></pre>
+<div class="comment"><p>Raises the <a href="topic/wijmo.chart.analytics.FunctionSeries.Class.html/#rendering"><span class="identifier">rendering</span></a> event.</p></div>
+<dl class="dl-horizontal">
+  <dt>Parameters</dt><dd></dd>
+</dl>
+<ul>
+<li><b>engine</b>: <a href="topic/wijmo.chart.IRenderEngine.Interface.html"><span class="identifier">IRenderEngine</span></a><br/><p>The <a href="topic/wijmo.chart.IRenderEngine.Interface.html"><span class="identifier">IRenderEngine</span></a> object used to render the series.</p></li><li><b>index</b>: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Number" target="_blank"><span class="identifier">number</span></a><br/><p>The index of the series to render.</p></li><li><b>count</b>: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Number" target="_blank"><span class="identifier">number</span></a><br/><p>Total number of the series to render.</p></li></ul>
+<dl class="dl-horizontal">
+  <dt>Inherited From</dt><dd><a href="topic/wijmo.chart.SeriesBase.Class.html"><span class="identifier">SeriesBase</span></a></dd>
+  <dt>Returns</dt><dd><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a></dd>
+</dl>
+</div>
 </div>
 <h3 class="node">Events</h3>
 <div class="member-list" ng-class="{ 'show-inherited' : ctx.showInherited, 'show-raisers' : ctx.showRaisers }">
+<div id="rendered" class="member-panel mevent inherited">
+<h3>rendered</h3>
+<div class="comment"><p>Occurs when series is rendered.</p></div>
+<dl class="dl-horizontal">
+  <dt>Inherited From</dt><dd><a href="topic/wijmo.chart.SeriesBase.Class.html"><span class="identifier">SeriesBase</span></a></dd>
+  <dt>Arguments</dt><dd><a href="topic/wijmo.chart.IRenderEngine.Interface.html"><span class="identifier">IRenderEngine</span></a></dd>
+</dl>
+</div>
 <div id="rendering" class="member-panel mevent inherited">
 <h3>rendering</h3>
 <div class="comment"><p>Occurs when series is rendering.</p></div>
 <dl class="dl-horizontal">
   <dt>Inherited From</dt><dd><a href="topic/wijmo.chart.SeriesBase.Class.html"><span class="identifier">SeriesBase</span></a></dd>
-  <dt>Arguments</dt><dd><a href="topic/wijmo.chart.IRenderEngine.Interface.html"><span class="identifier">IRenderEngine</span></a></dd>
+  <dt>Arguments</dt><dd><a href="topic/wijmo.EventArgs.Class.html"><span class="identifier">EventArgs</span></a></dd>
 </dl>
 </div>
 </div>

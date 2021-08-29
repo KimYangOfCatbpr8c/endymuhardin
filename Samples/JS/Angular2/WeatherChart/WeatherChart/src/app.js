@@ -1,4 +1,3 @@
-///<reference path="../typings/globals/core-js/index.d.ts"/>
 "use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -9,6 +8,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
+///<reference path="../typings/globals/core-js/index.d.ts"/>
+var wjcCore = require('wijmo/wijmo');
 // Angular
 var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
@@ -26,13 +27,13 @@ var AppCmp = (function () {
         var _this = this;
         this.isViewInitialized = false;
         this.props = ['MeanPressure', 'Precipitation'];
-        this.pt = new wijmo.Point();
+        this.pt = new wjcCore.Point();
         dataSvc.getData().subscribe(function (data) {
             _this.data = data;
         });
         this.palette = ['#88bde6', 'blue', 'red'];
         this.markerContent = function () {
-            return _this.getMarkercontent(new wijmo.Point(_this.pt.x, NaN));
+            return _this.getMarkercontent(new wjcCore.Point(_this.pt.x, NaN));
         };
     }
     AppCmp.prototype.ngAfterViewInit = function () {
@@ -85,6 +86,9 @@ var AppCmp = (function () {
             return;
         }
         var chart = this.chart1, ht = chart.series[0].hitTest(pt), item = chart.itemsSource[ht.pointIndex], content = '', len = this.props.length;
+        if (!item) {
+            return;
+        }
         for (var i = 0; i < chart.series.length; i++) {
             var series = chart.series[i];
             // find series lines to get its color
@@ -92,7 +96,7 @@ var AppCmp = (function () {
             // add series info to the marker content
             if (ht.x && ht.y !== null) {
                 if (i == 0) {
-                    content += wijmo.Globalize.formatDate(ht.x, 'dd-MMM');
+                    content += wjcCore.Globalize.formatDate(ht.x, 'dd-MMM');
                 }
                 content += '<div style="color:' + polyline.getAttribute('stroke') + '">' + series.name + ' = ' + item[series.name].toFixed() + '</div>';
             }

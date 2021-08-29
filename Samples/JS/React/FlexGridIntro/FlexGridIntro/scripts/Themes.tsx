@@ -17,7 +17,7 @@ var Themes = React.createClass({
             </p>
             <p>
                 In this example, we add a "custom-flex-grid" class to the grid element and define some
-                CSS rules to create a simple "black and white, no borders" theme for any grids that
+                CSS rules to create a simple "black and white, "no borders" theme for any grids that
                 have the "custom-flex-grid" class.
             </p>
 

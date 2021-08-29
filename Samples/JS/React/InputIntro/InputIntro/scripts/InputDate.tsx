@@ -28,7 +28,7 @@ var InputDate = React.createClass({
                 InputDate and Calendar
             </h2>
             <p>
-                The InputDate control allows you to edit and select dates via a drop-down calendar,
+                The InputDate control allows you to edit and select dates through a drop-down calendar,
                 preventing you from entering an incorrect value. The InputDate's drop-down calendar
                 was developed as a separate control and can be used be used independently
                 from the InputDate control.

@@ -18,9 +18,9 @@ var CellFreezing = React.createClass({
                 Cell Freezing
             </h2>
             <p>
-                The FlexGrid allows you to freeze rows and columns so they remain in view as the 
+                The FlexGrid allows you to freeze rows and columns so that they remain in view as the 
                 user scrolls the grid. Frozen cells can be edited and selected as regular cells, 
-                exactly as in Excel.</p>
+                exactly as in Microsoft Excel.</p>
             <p>
                 This example allows you to toggle whether the first two rows and columns should
                 be frozen.</p>

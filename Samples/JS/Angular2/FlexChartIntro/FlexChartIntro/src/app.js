@@ -1,4 +1,3 @@
-///<reference path="../typings/globals/core-js/index.d.ts"/>
 "use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -9,6 +8,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
+///<reference path="../typings/globals/core-js/index.d.ts"/>
+var wjcCore = require('wijmo/wijmo');
+var wjcChart = require('wijmo/wijmo.chart');
 // Angular
 var core_1 = require('@angular/core');
 var forms_1 = require('@angular/forms');
@@ -27,6 +29,7 @@ var AppCmp = (function () {
         this.countries = 'US,Germany,UK,Japan,Italy,Greece'.split(',');
         //chart properties
         this.chartType = 'Column';
+        this.gradientChartType = wjcChart.ChartType.Column;
         this.stacking = 'None';
         this.legendPosition = 'Right';
         this.rotated = false;
@@ -36,9 +39,10 @@ var AppCmp = (function () {
         this.titleY = 'amount';
         this.tooltipContent = '<img src="resources/{x}.png" /> <b>{seriesName} </b><br/ > {y}';
         this.selectionMode = 'Series';
-        this.series1Visible = wijmo.chart.SeriesVisibility.Visible;
-        this.series2Visible = wijmo.chart.SeriesVisibility.Visible;
-        this.series3Visible = wijmo.chart.SeriesVisibility.Visible;
+        this.series1Visible = wjcChart.SeriesVisibility.Visible;
+        this.series2Visible = wjcChart.SeriesVisibility.Visible;
+        this.series3Visible = wjcChart.SeriesVisibility.Visible;
+        this.predefinedColor = { fill: 'l(0,0,1,0)#89f7fe-#66a6ff' };
         //help
         this._toAddData = null;
         this._interval = null;
@@ -55,15 +59,15 @@ var AppCmp = (function () {
         this.seriesVisible = function (idx, checked) {
             if (idx === 0) {
                 _this.series1Visible = checked ?
-                    wijmo.chart.SeriesVisibility.Visible : wijmo.chart.SeriesVisibility.Hidden;
+                    wjcChart.SeriesVisibility.Visible : wjcChart.SeriesVisibility.Hidden;
             }
             else if (idx === 1) {
                 _this.series2Visible = checked ?
-                    wijmo.chart.SeriesVisibility.Visible : wijmo.chart.SeriesVisibility.Hidden;
+                    wjcChart.SeriesVisibility.Visible : wjcChart.SeriesVisibility.Hidden;
             }
             else if (idx === 2) {
                 _this.series3Visible = checked ?
-                    wijmo.chart.SeriesVisibility.Visible : wijmo.chart.SeriesVisibility.Hidden;
+                    wjcChart.SeriesVisibility.Visible : wjcChart.SeriesVisibility.Hidden;
             }
         };
         this._addTrafficItem = function () {
@@ -108,10 +112,88 @@ var AppCmp = (function () {
             _this.funnelChart.options.funnel.type = sender.selectedValue;
             _this.funnelChart.refresh(true);
         };
+        this.gradientChartTypeChanged = function (sender) {
+            if (_this.gradientColorChart == null) {
+                return;
+            }
+            _this.gradientColorChart.chartType = +sender.selectedValue;
+        };
+        this.gradientTypeChanged = function (sender) {
+            _this._applyGradientColor();
+        };
+        this.gradientDirectionChanged = function (sender) {
+            _this._applyGradientColor();
+        };
+        this.startColorChanged = function (sender) {
+            _this._applyGradientColor();
+        };
+        this.startOffsetChanged = function (sender) {
+            if (sender.value < sender.min || sender.value > sender.max) {
+                return;
+            }
+            _this._applyGradientColor();
+        };
+        this.startOpacityChanged = function (sender) {
+            if (sender.value < sender.min || sender.value > sender.max) {
+                return;
+            }
+            _this._applyGradientColor();
+        };
+        this.endColorChanged = function (sender) {
+            _this._applyGradientColor();
+        };
+        this.endOffsetChanged = function (sender) {
+            if (sender.value < sender.min || sender.value > sender.max) {
+                return;
+            }
+            _this._applyGradientColor();
+        };
+        this.endOpacityChanged = function (sender) {
+            if (sender.value < sender.min || sender.value > sender.max) {
+                return;
+            }
+            _this._applyGradientColor();
+        };
+        this._applyGradientColor = function () {
+            if (_this.gradientColorChart == null) {
+                return;
+            }
+            var chart = _this.gradientColorChart, color = '', type = _this.gradientTypeMenu.selectedValue, direction = _this.gradientDirectionMenu.selectedValue;
+            color = type;
+            if (type === 'l') {
+                if (direction === 'horizontal') {
+                    color += '(0, 0, 1, 0)';
+                }
+                else {
+                    color += '(0, 0, 0, 1)';
+                }
+            }
+            else {
+                color += '(0.5, 0.5, 0.5)';
+            }
+            color += _this.startColor.value;
+            if (_this.startOffset.value !== 0 || _this.startOpacity.value !== 1) {
+                color += ':' + _this.startOffset.value;
+            }
+            if (_this.startOpacity.value !== 1) {
+                color += ':' + _this.startOpacity.value;
+            }
+            color += '-' + _this.endColor.value;
+            if (_this.endOffset.value !== 1 || _this.endOpacity.value !== 1) {
+                color += ':' + _this.endOffset.value;
+            }
+            if (_this.endOpacity.value !== 1) {
+                color += ':' + _this.endOpacity.value;
+            }
+            _this.gradientFill = color;
+            chart.series[0].style = {
+                fill: color
+            };
+        };
         this.dataSvc = dataSvc;
         this.data = this.dataSvc.getData(this.countries);
         this.funnelData = this.dataSvc.getFunnelData(this.countries);
-        this.trafficData = new wijmo.collections.ObservableArray();
+        this.trafficData = new wjcCore.ObservableArray();
         this.setInterval(500);
     }
     AppCmp.prototype.ngAfterViewInit = function () {
@@ -122,10 +204,45 @@ var AppCmp = (function () {
                 type: 'default'
             }
         };
+        this._applyGradientColor();
+        this.predefinedColorMenu.selectedIndex = 0;
     };
     __decorate([
         core_1.ViewChild('funnelChart')
     ], AppCmp.prototype, "funnelChart", void 0);
+    __decorate([
+        core_1.ViewChild('boxChart')
+    ], AppCmp.prototype, "boxChart", void 0);
+    __decorate([
+        core_1.ViewChild('gradientColorChart')
+    ], AppCmp.prototype, "gradientColorChart", void 0);
+    __decorate([
+        core_1.ViewChild('gradientDirectionMenu')
+    ], AppCmp.prototype, "gradientDirectionMenu", void 0);
+    __decorate([
+        core_1.ViewChild('gradientTypeMenu')
+    ], AppCmp.prototype, "gradientTypeMenu", void 0);
+    __decorate([
+        core_1.ViewChild('predefinedColorMenu')
+    ], AppCmp.prototype, "predefinedColorMenu", void 0);
+    __decorate([
+        core_1.ViewChild('inputStartColor')
+    ], AppCmp.prototype, "startColor", void 0);
+    __decorate([
+        core_1.ViewChild('inputStartOffset')
+    ], AppCmp.prototype, "startOffset", void 0);
+    __decorate([
+        core_1.ViewChild('inputStartOpacity')
+    ], AppCmp.prototype, "startOpacity", void 0);
+    __decorate([
+        core_1.ViewChild('inputEndColor')
+    ], AppCmp.prototype, "endColor", void 0);
+    __decorate([
+        core_1.ViewChild('inputEndOffset')
+    ], AppCmp.prototype, "endOffset", void 0);
+    __decorate([
+        core_1.ViewChild('inputEndOpacity')
+    ], AppCmp.prototype, "endOpacity", void 0);
     AppCmp = __decorate([
         core_1.Component({
             selector: 'app-cmp',

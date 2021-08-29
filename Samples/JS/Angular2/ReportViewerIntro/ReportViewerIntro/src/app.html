@@ -1,0 +1,457 @@
+﻿<div class="header">
+    <div class="container">
+        <img src="resources/wijmo5.png" alt="Wijmo 5" />
+        <h1>
+            ReportViewer 101
+        </h1>
+        <p>
+            This page shows how to get started with Wijmo's ReportViewer control for Angular.
+        </p>
+    </div>
+</div>
+<div class="container">
+
+    <!-- Getting Started -->
+    <div>
+        <h2>Getting Started</h2>
+        <p>
+            Steps for getting started with the ReportViewer control in AngularJS applications:
+        </p>
+        <ol>
+             <li>Set up the <a target="_blank" href="http://helpcentral.componentone.com/nethelp/C1WebAPI/ReportServices.html">C1 Web API Report Services</a>. Please refer to <a target="_blank" href="https://grapecity.sharepoint.com/teams/C1/C1Studio/Rhino/_layouts/15/WopiFrame.aspx?sourcedoc=%7BC7E2A01F-5D83-49BD-99AF-A3B60CE43215%7D&file=How%20to%20Set%20Up%20C1%20Report%20Services.docx&action=default">How to Set Up C1 Web API Report Services</a>.</li>
+            <li>Add references to AngularJS, Wijmo, and Wijmo's AngularJS directives.</li>
+            <li>
+                Add a component to provide data and logic.<br />
+            </li>
+            <li>Add a ReportViewer to the page and set its <b>serviceUrl</b>, <b>filePath</b>, and <b>reportName</b> properties.</li>
+        </ol>
+            <p>
+                The <a target="_blank" href="http://helpcentral.componentone.com/nethelp/C1WebAPI/ReportServices.html">C1 Web API Report Services</a> uses <a target="_blank" href="http://www.componentone.com/Studio/FlexReport?platform=WinForms">C1FlexReport</a> to render and export report.
+                Please refer to <a target="_blank" href="https://grapecity.sharepoint.com/teams/C1/C1Studio/Rhino/_layouts/15/WopiFrame.aspx?sourcedoc=%7BC7E2A01F-5D83-49BD-99AF-A3B60CE43215%7D&file=How%20to%20Set%20Up%20C1%20Report%20Services.docx&action=default">How to Set Up C1 Web API Report Services</a> for details.
+            </p>
+            <p>
+                To show the content of FlexReport from C1 Web API Report Services, set the following basic properties:
+            </p>
+            <ol>
+                <li>
+                    <b>serviceUrl:</b> The url of C1 Web API Report Services.
+                For example, 'http://demos.componentone.com/ASPNET/c1webapi/4.0.20171.91/api/report'.
+            </li>
+            <li>
+                <b>filePath:</b> The full path to the FlexReport definition file.
+                For example, 'ReportsRoot/Formatting/AlternateBackground.flxr'.
+                <p>
+                    The 'ReportsRoot' is the key of the report provider which is registered at server for locating specified report.
+                    <br />
+                    The 'Formatting/AlternateBackground.flxr' is the relative path of the FlexReport definition file which can be located by the report provider.
+                </p>
+            </li>
+            <li>
+                <b>reportName:</b> The report name defined in the FlexReport definition file.
+                For example, 'AlternateBackground', for the report named 'AlternateBackground' in the AlternateBackground.flxr file.
+            </li>
+        </ol>
+        <div class="row">
+            <div class="col-md-12">
+                <h4>Result (live):</h4>
+                <wj-report-viewer [serviceUrl]="serviceUrl" [filePath]="filePath" [reportName]="reportName"></wj-report-viewer>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+
+            <div class="col-md-12">
+                <app-tab>
+                    <app-tab-pane title="HTML">
+                        <div class="pane-content">
+ &lt;!DOCTYPE html&gt;
+ &lt;html&gt;
+ &lt;head&gt;
+    &lt;!-- Polyfill(s) for older browsers --&gt;
+    &lt;script src="node_modules/core-js/client/shim.min.js"&gt;&lt;/script&gt;
+
+    &lt;script src="node_modules/zone.js/dist/zone.js"&gt;&lt;/script&gt;
+    &lt;script src="node_modules/reflect-metadata/Reflect.js"&gt;&lt;/script&gt;
+    &lt;script src="node_modules/systemjs/dist/system.src.js"&gt;&lt;/script&gt;
+
+
+    &lt;!-- Configure SystemJS --&gt;
+    &lt;script src="systemjs.config.js"&gt;&lt;/script&gt;
+ &lt;!-- Load the root application module --&gt;
+ &lt;script&gt;
+ System.import('./src/app');
+ &lt;/script&gt;
+ &lt;/head&gt;
+ &lt;body&gt;
+ &lt;!-- Add root application component --&gt;
+ &lt;app-cmp&gt;
+ &lt;wj-report-viewer [serviceUrl]="serviceUrl" [filePath]="filePath" [reportName]="reportName"&gt; &lt;/wj-report-viewer&gt;
+ &lt;/app-cmp&gt;
+ &lt;/body&gt;
+ &lt;/html&gt;
+                        </div>
+                    </app-tab-pane>
+                    <app-tab-pane title="TS">
+                        <div class="pane-content">
+import * as wjcViewer from 'wijmo/wijmo.viewer';
+
+// Angular
+import &#123; Component, EventEmitter, Input, Inject, enableProdMode} from '@angular/core';
+import &#123; FormsModule } from '@angular/forms';
+import &#123; CommonModule } from '@angular/common';
+import &#123; platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import &#123; BrowserModule } from '@angular/platform-browser';
+import &#123; WjGridModule } from 'wijmo/wijmo.angular2.grid';
+import &#123; WjInputModule } from 'wijmo/wijmo.angular2.input';
+import &#123; WjViewerModule } from 'wijmo/wijmo.angular2.viewer';
+
+'use strict';
+
+// The Explorer application root component.
+@Component(&#123;
+    selector: 'app-cmp',
+    templateUrl: 'src/app.html'
+})
+
+export class AppCmp &#123;
+
+    serviceUrl = 'http://demos.componentone.com/ASPNET/c1webapi/4.0.20171.91/api/report';
+    filePath = 'ReportsRoot/Formatting/AlternateBackground.flxr';
+    reportName = 'AlternateBackground';
+
+    constructor() &#123;
+    }
+}
+
+@NgModule(&#123;
+    imports: [WjInputModule, WjGridModule, WjViewerModule, BrowserModule],
+    declarations: [AppCmp],
+    bootstrap: [AppCmp]
+})
+export class AppModule &#123;
+}
+
+
+enableProdMode();
+// Bootstrap application with hash style navigation and global services.
+platformBrowserDynamic().bootstrapModule(AppModule);
+                        </div>
+                    </app-tab-pane>
+                </app-tab>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- SSRS Reports -->
+    <div>
+        <h2 id="Features">SSRS Reports</h2>
+            <p>
+                The ReportViewer control can also show <a target="_blank" href="https://msdn.microsoft.com/en-us/library/ms159106.aspx">SSRS</a> report.
+            </p>
+            <p>
+                The <a target="_blank" href="http://helpcentral.componentone.com/nethelp/C1WebAPI/ReportServices.html">C1 Web API Report Services</a> uses <a target="_blank" href="http://helpcentral.componentone.com/nethelp/FlexReport/C1.Win.C1Document.4~C1.Win.C1Document.C1SSRSDocumentSource.html">C1SSRSDocumentSource</a> to connect with SSRS server and render the SSRS report.
+                It first fetches data from SSRS server, and then converts to the expected formats (normally HTML5 SVG).
+                Please see <a target="_blank" href="https://grapecity.sharepoint.com/teams/C1/C1Studio/Rhino/_layouts/15/WopiFrame.aspx?sourcedoc=%7BC7E2A01F-5D83-49BD-99AF-A3B60CE43215%7D&file=How%20to%20Set%20Up%20C1%20Report%20Services.docx&action=default">How to Set Up C1 Web API Report Services</a> for details.
+            </p>
+            <p>
+                To show the content of SSRS report from C1 Web API Report Services, set the following basic properties:
+            </p>
+            <ol>
+                <li>
+                    <b>serviceUrl:</b> The url of C1 Web API Report Services.
+                For example, 'http://demos.componentone.com/ASPNET/c1webapi/4.0.20171.91/api/report'.
+            </li>
+            <li>
+                <b>filePath:</b> The full path to the SSRS report on the server.
+                For example, 'c1ssrs/AdventureWorks/Company Sales'.
+                <p>
+                    The 'c1ssrs' is the key of the report provider which is registered at server for specified report.
+                    (For 'http://demos.componentone.com/ASPNET/c1webapi/4.0.20171.91/api/report', the 'c1ssrs' is the key of the report provider which links to the SSRS server 'http://ssrs.componentone.com:8000/ReportServer'.)
+                    <br />
+                    The 'AdventureWorks/Company Sales' is the full path to the report which can be located in the SSRS server.
+                </p>
+            </li>
+        </ol>
+        <div class="row">
+            <div class="col-md-12">
+                <h4>Result (live):</h4>
+                <wj-report-viewer #ssrsReportViewer [serviceUrl]="serviceUrl" [filePath]="ssrsFilePath"></wj-report-viewer>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-12">
+                <app-tab>
+                    <app-tab-pane title="HTML">
+                        <div class="pane-content">
+ &lt;wj-report-viewer #ssrsReportViewer [serviceUrl]="serviceUrl" [filePath]="ssrsFilePath"&gt;&lt;/wj-report-viewer&gt;
+                        </div>
+                    </app-tab-pane>
+                    <app-tab-pane title="TS">
+                        <div class="pane-content">
+export class AppCmp &#123;
+
+    serviceUrl = 'http://demos.componentone.com/ASPNET/c1webapi/4.0.20171.91/api/report';
+    ssrsFilePath = 'c1ssrs/AdventureWorks/Company Sales';
+
+    constructor() &#123;
+    }
+}
+                        </div>
+                    </app-tab-pane>
+                </app-tab>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Basic Features -->
+    <div>
+        <h2 id="Legend">Basic Features</h2>
+        <p>
+            The ReportViewer control has the following four basic properties, which allow you to customize its appearance and behavior:
+        </p>
+        <ul>
+            <li>
+                <b>fullScreen</b>:  Indicates whether viewer is under full screen mode.
+            </li>
+            <li>
+                <b>selectMouseMode</b>:  Indicates whether clicking and dragging with the mouse in the view panel selects text.
+            </li>
+            <li>
+                <b>viewMode</b>:  Indicates how to show the document pages.
+            </li>
+            <li>
+                <b>zoomFactor</b>:  Indicates the current zoom factor to show the document pages.
+            </li>
+        </ul>
+        <p>
+            The example below allows you to see what happens when you change these properties.
+        </p>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                    <h4>Result (live):</h4>
+                    <wj-report-viewer #reportViewer [serviceUrl]="serviceUrl" [filePath]="filePath" [reportName]="reportName"
+                                      [fullScreen]="fullScreen" [selectMouseMode]="selectMouseMode" [zoomFactor]="zoomFactor">
+                    </wj-report-viewer>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <div class="col-md-3">
+                                <div class="checkbox">
+                                    <label>
+                                        <input id="basicContinuousViewMode" type="checkbox" [(ngModel)]="continuousViewMode" /> Continuous View Mode?
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="checkbox">
+                                    <label>
+                                        <input id="basicSelectMouseMode" type="checkbox" [(ngModel)]="selectMouseMode" /> Select Mouse Mode?
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="checkbox">
+                                    <label>
+                                        <input id="basicFullScreen" type="checkbox" [(ngModel)]="fullScreen" /> Full Screen?
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-mod-4">
+                                <label class="col-md-2 control-label">Zoom Factor</label>
+                                <div class="col-md-2">
+                                    <wj-input-number [(value)]="zoomFactor"
+                                                     [min]="0.05"
+                                                     [max]="10"
+                                                     [step]=".1"
+                                                     [format]="'n2'">
+                                    </wj-input-number>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <app-tab>
+                    <app-tab-pane title="HTML">
+                        <div class="pane-content">
+
+ &lt;wj-report-viewer #reportViewer [serviceUrl]="serviceUrl" [filePath]="filePath" [reportName]="reportName"
+                   [fullScreen]="fullScreen" [selectMouseMode]="selectMouseMode" [zoomFactor]="zoomFactor"&gt;
+ &lt;/wj-report-viewer&gt;
+
+  &lt;br /&gt;
+  &lt;div class="row"&gt;
+      &lt;div class="form-horizontal"&gt;
+          &lt;div class="form-group"&gt;
+              &lt;div class="col-md-3"&gt;
+                  &lt;div class="checkbox"&gt;
+                      &lt;label&gt;
+                          &lt;input id="basicContinuousViewMode" type="checkbox" [(ngModel)]="continuousViewMode" /&gt; Continuous View Mode?
+                      &lt;/label&gt;
+                  &lt;/div&gt;
+              &lt;/div&gt;
+              &lt;div class="col-md-3"&gt;
+                  &lt;div class="checkbox"&gt;
+                      &lt;label&gt;
+                          &lt;input id="basicSelectMouseMode" type="checkbox" [(ngModel)]="selectMouseMode" /&gt; Select Mouse Mode?
+                      &lt;/label&gt;
+                  &lt;/div&gt;
+              &lt;/div&gt;
+              &lt;div class="col-md-2"&gt;
+                  &lt;div class="checkbox"&gt;
+                      &lt;label&gt;
+                          &lt;input id="basicFullScreen" type="checkbox" [(ngModel)]="fullScreen" /&gt; Full Screen?
+                      &lt;/label&gt;
+                  &lt;/div&gt;
+              &lt;/div&gt;
+              &lt;div class="col-mod-4"&gt;
+                  &lt;label class="col-md-2 control-label"&gt;Zoom Factor&lt;/label&gt;
+                  &lt;div class="col-md-2"&gt;
+                      &lt;wj-input-number [(value)]="zoomFactor"
+                                       [min]="0.05"
+                                       [max]="10"
+                                       [step]=".1"
+                                       [format]="'n2'"&gt;
+                      &lt;/wj-input-number&gt;
+                  &lt;/div&gt;
+              &lt;/div&gt;
+          &lt;/div&gt;
+      &lt;/div&gt;
+  &lt;/div&gt;
+                        </div>
+                    </app-tab-pane>
+                    <app-tab-pane title="TS">
+                        <div class="pane-content">
+export class AppCmp &#123;
+
+    serviceUrl = 'http://demos.componentone.com/ASPNET/c1webapi/4.0.20171.91/api/report';
+    filePath = 'ReportsRoot/Formatting/AlternateBackground.flxr';
+    reportName = 'AlternateBackground';
+    fullScreen = false;
+    selectMouseMode = true;
+    zoomFactor = 1;
+
+    @ViewChild('reportViewer') reportViewer: wjcViewer.ReportViewer;
+
+    private _continuousViewMode = false;
+
+    constructor() &#123;
+    }
+
+    get continuousViewMode(): boolean &#123;
+        return this._continuousViewMode;
+    }
+    set continuousViewMode(value: boolean) &#123;
+        if (this._continuousViewMode != value) &#123;
+            this._continuousViewMode = value;
+            this.reportViewer.viewMode = value ? wjcViewer.ViewMode.Continuous : wjcViewer.ViewMode.Single;
+        }
+    }
+}
+                        </div>
+                    </app-tab-pane>
+                </app-tab>
+            </div>
+
+        </div>
+
+        <!-- Report Names -->
+        <div>
+            <h2 id="Selection">Report Names</h2>
+            ReportViewer rerenders the report if <b>filePath</b> and <b>reportName</b> properties are changed.
+            <div class="row">
+                <div class="col-md-12">
+                    <h4>Result (live):</h4>
+                    <wj-report-viewer #nameReportViewer [serviceUrl]="serviceUrl" [filePath]="chgFilePath" [reportName]="chgReportName">
+                    </wj-report-viewer>
+                    <br />
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Report Path</label>
+                            <div class="col-md-9">
+                                <wj-combo-box #reportCmb
+                                              [itemsSource]="reports"
+                                              [isEditable]="false"
+                                              [displayMemberPath]="'name'"
+                                              [selectedValuePath]="'path'"
+                                              (selectedIndexChanged)="changeReportPath(reportCmb.selectedValue)">
+                                </wj-combo-box>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-12">
+                    <app-tab>
+                        <app-tab-pane title="HTML">
+                            <div class="pane-content">
+    &lt;wj-report-viewer [serviceUrl]="serviceUrl" [serviceUrl]="serviceUrl" [filePath]="chgFilePath" [reportName]="chgReportName"&gt;
+    &lt;/wj-report-viewer&gt;
+    &lt;br /&gt;
+    &lt;div class="form-horizontal"&gt;
+        &lt;div class="form-group"&gt;
+            &lt;label class="col-md-3 control-label"&gt;Report Path&lt;/label&gt;
+            &lt;div class="col-md-9"&gt;
+                &lt;wj-combo-box #reportCmb
+                              [itemsSource]="reports"
+                              [isEditable]="false"
+                              [displayMemberPath]="'name'"
+                              [selectedValuePath]="'path'"
+                              (selectedIndexChanged)="changeReportPath(reportCmb.selectedValue)"&gt;
+                &lt;/wj-combo-box&gt;
+
+
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+                            </div>
+                        </app-tab-pane>
+                        <app-tab-pane title="TS">
+                            <div class="pane-content">
+export class AppCmp &#123;
+
+    serviceUrl = 'http://demos.componentone.com/ASPNET/c1webapi/4.0.20171.91/api/report';
+    chgReportName = '';
+    chgFilePath = '';
+    reports = [
+        &#123; name: 'Alternating Background', path: 'ReportsRoot/Formatting/AlternateBackground.flxr/AlternateBackground' },
+        &#123; name: 'All Charts', path: 'ReportsRoot/Controls/AllCharts.flxr/AllCharts' },
+        &#123; name: 'Check Box', path: 'ReportsRoot/Controls/CheckBox.flxr/CheckBox' },
+        &#123; name: 'Shapes', path: 'ReportsRoot/Controls/Shapes.flxr/Shapes' }
+    ];
+
+    constructor()&#123;
+    }
+
+    changeReportPath(path: string)&#123;
+        var index = path.lastIndexOf('/');
+        var filePath = path.substr(0, index);
+        var reportName = path.substr(index + 1);
+
+        this.chgFilePath = filePath;
+        this.chgReportName = reportName;
+    }
+}
+                            </div>
+                        </app-tab-pane>
+                    </app-tab>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>

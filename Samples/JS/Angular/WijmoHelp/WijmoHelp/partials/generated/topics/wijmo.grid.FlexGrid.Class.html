@@ -64,6 +64,7 @@ XAML-style star-sizing columns, row and column virtualization, etc.</p></div>
 <li class="mproperty"><a href="topic/wijmo.grid.FlexGrid.Class.html/#newRowAtTop">newRowAtTop</a></li>
 <li class="mproperty"><a href="topic/wijmo.grid.FlexGrid.Class.html/#preserveOutlineState">preserveOutlineState</a></li>
 <li class="mproperty"><a href="topic/wijmo.grid.FlexGrid.Class.html/#preserveSelectedState">preserveSelectedState</a></li>
+<li class="mproperty inherited"><a href="topic/wijmo.grid.FlexGrid.Class.html/#rightToLeft">rightToLeft</a></li>
 <li class="mproperty"><a href="topic/wijmo.grid.FlexGrid.Class.html/#rowHeaders">rowHeaders</a></li>
 <li class="mproperty"><a href="topic/wijmo.grid.FlexGrid.Class.html/#rows">rows</a></li>
 <li class="mproperty"><a href="topic/wijmo.grid.FlexGrid.Class.html/#scrollPosition">scrollPosition</a></li>
@@ -73,6 +74,7 @@ XAML-style star-sizing columns, row and column virtualization, etc.</p></div>
 <li class="mproperty"><a href="topic/wijmo.grid.FlexGrid.Class.html/#selection">selection</a></li>
 <li class="mproperty"><a href="topic/wijmo.grid.FlexGrid.Class.html/#selectionMode">selectionMode</a></li>
 <li class="mproperty"><a href="topic/wijmo.grid.FlexGrid.Class.html/#showAlternatingRows">showAlternatingRows</a></li>
+<li class="mproperty"><a href="topic/wijmo.grid.FlexGrid.Class.html/#showErrors">showErrors</a></li>
 <li class="mproperty"><a href="topic/wijmo.grid.FlexGrid.Class.html/#showGroups">showGroups</a></li>
 <li class="mproperty"><a href="topic/wijmo.grid.FlexGrid.Class.html/#showMarquee">showMarquee</a></li>
 <li class="mproperty"><a href="topic/wijmo.grid.FlexGrid.Class.html/#showSelectedHeaders">showSelectedHeaders</a></li>
@@ -81,6 +83,7 @@ XAML-style star-sizing columns, row and column virtualization, etc.</p></div>
 <li class="mproperty"><a href="topic/wijmo.grid.FlexGrid.Class.html/#stickyHeaders">stickyHeaders</a></li>
 <li class="mproperty"><a href="topic/wijmo.grid.FlexGrid.Class.html/#topLeftCells">topLeftCells</a></li>
 <li class="mproperty"><a href="topic/wijmo.grid.FlexGrid.Class.html/#treeIndent">treeIndent</a></li>
+<li class="mproperty"><a href="topic/wijmo.grid.FlexGrid.Class.html/#validateEdits">validateEdits</a></li>
 <li class="mproperty"><a href="topic/wijmo.grid.FlexGrid.Class.html/#viewRange">viewRange</a></li>
 </ul>
 <h3 class="node">Methods</h3>
@@ -92,6 +95,7 @@ XAML-style star-sizing columns, row and column virtualization, etc.</p></div>
 <li class="mmethod"><a href="topic/wijmo.grid.FlexGrid.Class.html/#autoSizeRow">autoSizeRow</a></li>
 <li class="mmethod"><a href="topic/wijmo.grid.FlexGrid.Class.html/#autoSizeRows">autoSizeRows</a></li>
 <li class="mmethod inherited"><a href="topic/wijmo.grid.FlexGrid.Class.html/#beginUpdate">beginUpdate</a></li>
+<li class="mmethod"><a href="topic/wijmo.grid.FlexGrid.Class.html/#canEditCell">canEditCell</a></li>
 <li class="mmethod"><a href="topic/wijmo.grid.FlexGrid.Class.html/#collapseGroupsToLevel">collapseGroupsToLevel</a></li>
 <li class="mmethod"><a href="topic/wijmo.grid.FlexGrid.Class.html/#containsFocus">containsFocus</a></li>
 <li class="mmethod inherited"><a href="topic/wijmo.grid.FlexGrid.Class.html/#deferUpdate">deferUpdate</a></li>
@@ -127,7 +131,9 @@ XAML-style star-sizing columns, row and column virtualization, etc.</p></div>
 <li class="mmethod raiser"><a href="topic/wijmo.grid.FlexGrid.Class.html/#onDraggedColumn">onDraggedColumn</a></li>
 <li class="mmethod raiser"><a href="topic/wijmo.grid.FlexGrid.Class.html/#onDraggedRow">onDraggedRow</a></li>
 <li class="mmethod raiser"><a href="topic/wijmo.grid.FlexGrid.Class.html/#onDraggingColumn">onDraggingColumn</a></li>
+<li class="mmethod raiser"><a href="topic/wijmo.grid.FlexGrid.Class.html/#onDraggingColumnOver">onDraggingColumnOver</a></li>
 <li class="mmethod raiser"><a href="topic/wijmo.grid.FlexGrid.Class.html/#onDraggingRow">onDraggingRow</a></li>
+<li class="mmethod raiser"><a href="topic/wijmo.grid.FlexGrid.Class.html/#onDraggingRowOver">onDraggingRowOver</a></li>
 <li class="mmethod raiser"><a href="topic/wijmo.grid.FlexGrid.Class.html/#onFormatItem">onFormatItem</a></li>
 <li class="mmethod inherited raiser"><a href="topic/wijmo.grid.FlexGrid.Class.html/#onGotFocus">onGotFocus</a></li>
 <li class="mmethod raiser"><a href="topic/wijmo.grid.FlexGrid.Class.html/#onGroupCollapsedChanged">onGroupCollapsedChanged</a></li>
@@ -148,6 +154,8 @@ XAML-style star-sizing columns, row and column virtualization, etc.</p></div>
 <li class="mmethod raiser"><a href="topic/wijmo.grid.FlexGrid.Class.html/#onRowAdded">onRowAdded</a></li>
 <li class="mmethod raiser"><a href="topic/wijmo.grid.FlexGrid.Class.html/#onRowEditEnded">onRowEditEnded</a></li>
 <li class="mmethod raiser"><a href="topic/wijmo.grid.FlexGrid.Class.html/#onRowEditEnding">onRowEditEnding</a></li>
+<li class="mmethod raiser"><a href="topic/wijmo.grid.FlexGrid.Class.html/#onRowEditStarted">onRowEditStarted</a></li>
+<li class="mmethod raiser"><a href="topic/wijmo.grid.FlexGrid.Class.html/#onRowEditStarting">onRowEditStarting</a></li>
 <li class="mmethod raiser"><a href="topic/wijmo.grid.FlexGrid.Class.html/#onScrollPositionChanged">onScrollPositionChanged</a></li>
 <li class="mmethod raiser"><a href="topic/wijmo.grid.FlexGrid.Class.html/#onSelectionChanged">onSelectionChanged</a></li>
 <li class="mmethod raiser"><a href="topic/wijmo.grid.FlexGrid.Class.html/#onSelectionChanging">onSelectionChanging</a></li>
@@ -183,7 +191,9 @@ XAML-style star-sizing columns, row and column virtualization, etc.</p></div>
 <li class="mevent"><a href="topic/wijmo.grid.FlexGrid.Class.html/#draggedColumn">draggedColumn</a></li>
 <li class="mevent"><a href="topic/wijmo.grid.FlexGrid.Class.html/#draggedRow">draggedRow</a></li>
 <li class="mevent"><a href="topic/wijmo.grid.FlexGrid.Class.html/#draggingColumn">draggingColumn</a></li>
+<li class="mevent"><a href="topic/wijmo.grid.FlexGrid.Class.html/#draggingColumnOver">draggingColumnOver</a></li>
 <li class="mevent"><a href="topic/wijmo.grid.FlexGrid.Class.html/#draggingRow">draggingRow</a></li>
+<li class="mevent"><a href="topic/wijmo.grid.FlexGrid.Class.html/#draggingRowOver">draggingRowOver</a></li>
 <li class="mevent"><a href="topic/wijmo.grid.FlexGrid.Class.html/#formatItem">formatItem</a></li>
 <li class="mevent inherited"><a href="topic/wijmo.grid.FlexGrid.Class.html/#gotFocus">gotFocus</a></li>
 <li class="mevent"><a href="topic/wijmo.grid.FlexGrid.Class.html/#groupCollapsedChanged">groupCollapsedChanged</a></li>
@@ -204,6 +214,8 @@ XAML-style star-sizing columns, row and column virtualization, etc.</p></div>
 <li class="mevent"><a href="topic/wijmo.grid.FlexGrid.Class.html/#rowAdded">rowAdded</a></li>
 <li class="mevent"><a href="topic/wijmo.grid.FlexGrid.Class.html/#rowEditEnded">rowEditEnded</a></li>
 <li class="mevent"><a href="topic/wijmo.grid.FlexGrid.Class.html/#rowEditEnding">rowEditEnding</a></li>
+<li class="mevent"><a href="topic/wijmo.grid.FlexGrid.Class.html/#rowEditStarted">rowEditStarted</a></li>
+<li class="mevent"><a href="topic/wijmo.grid.FlexGrid.Class.html/#rowEditStarting">rowEditStarting</a></li>
 <li class="mevent"><a href="topic/wijmo.grid.FlexGrid.Class.html/#scrollPositionChanged">scrollPositionChanged</a></li>
 <li class="mevent"><a href="topic/wijmo.grid.FlexGrid.Class.html/#selectionChanged">selectionChanged</a></li>
 <li class="mevent"><a href="topic/wijmo.grid.FlexGrid.Class.html/#selectionChanging">selectionChanging</a></li>
@@ -486,7 +498,7 @@ only when the user releases the mouse button.</p></div>
 <div id="frozenColumns" class="member-panel mproperty">
 <h3>frozenColumns</h3>
 <div class="comment"><p>Gets or sets the number of frozen columns.</p>
-<p>Frozen columns do not scroll, but the cells they contain 
+<p>Frozen columns do not scroll horizontally, but the cells they contain 
 may be selected and edited.</p></div>
 <dl class="dl-horizontal">
   <dt>Type</dt><dd><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Number" target="_blank"><span class="identifier">number</span></a></dd>
@@ -495,7 +507,7 @@ may be selected and edited.</p></div>
 <div id="frozenRows" class="member-panel mproperty">
 <h3>frozenRows</h3>
 <div class="comment"><p>Gets or sets the number of frozen rows.</p>
-<p>Frozen rows do not scroll, but the cells they contain 
+<p>Frozen rows do not scroll vertically, but the cells they contain 
 may be selected and edited.</p></div>
 <dl class="dl-horizontal">
   <dt>Type</dt><dd><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Number" target="_blank"><span class="identifier">number</span></a></dd>
@@ -647,10 +659,14 @@ should be merged.</p></div>
 </div>
 <div id="newRowAtTop" class="member-panel mproperty">
 <h3>newRowAtTop</h3>
-<div class="comment"><p>Gets or sets a value that indicates whether the new row template should be located
-at the top of the grid or at the bottom.</p>
-<p>The new row template will be displayed only if the <a href="topic/wijmo.grid.FlexGrid.Class.html/#allowAddNew"><span class="identifier">allowAddNew</span></a> property is set
-to true and if the <a href="topic/wijmo.grid.FlexGrid.Class.html/#itemsSource"><span class="identifier">itemsSource</span></a> object supports adding new items.</p></div>
+<div class="comment"><p>Gets or sets a value that indicates whether the new row template should be
+located at the top of the grid or at the bottom.</p>
+<p>If you set the <a href="topic/wijmo.grid.FlexGrid.Class.html/#newRowAtTop"><span class="identifier">newRowAtTop</span></a> property to true, and you want the new
+row template to remain visible at all times, set the <a href="topic/wijmo.grid.FlexGrid.Class.html/#frozenRows"><span class="identifier">frozenRows</span></a>
+property to one. This will freeze the new row template at the top so
+it won't scroll off the view.</p>
+<p>The new row template will be displayed only if the <a href="topic/wijmo.grid.FlexGrid.Class.html/#allowAddNew"><span class="identifier">allowAddNew</span></a> property
+is set to true and if the <a href="topic/wijmo.grid.FlexGrid.Class.html/#itemsSource"><span class="identifier">itemsSource</span></a> object supports adding new items.</p></div>
 <dl class="dl-horizontal">
   <dt>Type</dt><dd><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a></dd>
 </dl>
@@ -670,6 +686,15 @@ JavaScript's <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Refer
 <div class="comment"><p>Gets or sets a value that determines whether the grid should preserve
 the selected state of rows when the data is refreshed.</p></div>
 <dl class="dl-horizontal">
+  <dt>Type</dt><dd><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a></dd>
+</dl>
+</div>
+<div id="rightToLeft" class="member-panel mproperty inherited">
+<h3>rightToLeft</h3>
+<div class="comment"><p>Gets a value indicating whether the control is hosted in an element
+with right-to-left layout.</p></div>
+<dl class="dl-horizontal">
+  <dt>Inherited From</dt><dd><a href="topic/wijmo.Control.Class.html"><span class="identifier">Control</span></a></dd>
   <dt>Type</dt><dd><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a></dd>
 </dl>
 </div>
@@ -743,6 +768,16 @@ changes to the CSS.</p></div>
   <dt>Type</dt><dd><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a></dd>
 </dl>
 </div>
+<div id="showErrors" class="member-panel mproperty">
+<h3>showErrors</h3>
+<div class="comment"><p>Gets or sets a value that determines whether the grid should add the 'wj-state-invalid'
+class to cells that contain validation errors, and tooltips with error descriptions.</p>
+<p>The grid detects validation errors using the <a href="topic/wijmo.collections.CollectionView.Class.html/#getError"><span class="identifier">getError</span></a> property
+on the grid's <a href="topic/wijmo.grid.FlexGrid.Class.html/#itemsSource"><span class="identifier">itemsSource</span></a>.</p></div>
+<dl class="dl-horizontal">
+  <dt>Type</dt><dd><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a></dd>
+</dl>
+</div>
 <div id="showGroups" class="member-panel mproperty">
 <h3>showGroups</h3>
 <div class="comment"><p>Gets or sets a value that determines whether the grid should insert group 
@@ -811,6 +846,16 @@ visible when the user scrolls the document.</p></div>
 <div class="comment"><p>Gets or sets the indent used to offset row groups of different levels.</p></div>
 <dl class="dl-horizontal">
   <dt>Type</dt><dd><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Number" target="_blank"><span class="identifier">number</span></a></dd>
+</dl>
+</div>
+<div id="validateEdits" class="member-panel mproperty">
+<h3>validateEdits</h3>
+<div class="comment"><p>Gets or sets a value that determines whether the grid should remain
+in edit mode when the user tries to commit edits that fail validation.</p>
+<p>The grid detects validation errors by calling the <a href="topic/wijmo.collections.CollectionView.Class.html/#getError"><span class="identifier">getError</span></a>
+method on the grid's <a href="topic/wijmo.grid.FlexGrid.Class.html/#itemsSource"><span class="identifier">itemsSource</span></a>.</p></div>
+<dl class="dl-horizontal">
+  <dt>Type</dt><dd><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a></dd>
 </dl>
 </div>
 <div id="viewRange" class="member-panel mproperty">
@@ -935,6 +980,19 @@ then not all rows will be measured since that could potentially take a long time
   <dt>Returns</dt><dd><span class="identifier">void</span></dd>
 </dl>
 </div>
+<div id="canEditCell" class="member-panel mmethod">
+<h3>canEditCell</h3>
+<pre>canEditCell(r: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Number" target="_blank"><span class="identifier">number</span></a>, c: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Number" target="_blank"><span class="identifier">number</span></a>): <span class="identifier">void</span></pre>
+<div class="comment"><p>Gets a value that indicates whether a given cell can be edited.</p></div>
+<dl class="dl-horizontal">
+  <dt>Parameters</dt><dd></dd>
+</dl>
+<ul>
+<li><b>r</b>: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Number" target="_blank"><span class="identifier">number</span></a><br/><p>Index of the row that contains the cell.</p></li><li><b>c</b>: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Number" target="_blank"><span class="identifier">number</span></a><br/><p>Index of the column that contains the cell.</p></li></ul>
+<dl class="dl-horizontal">
+  <dt>Returns</dt><dd><span class="identifier">void</span></dd>
+</dl>
+</div>
 <div id="collapseGroupsToLevel" class="member-panel mmethod">
 <h3>collapseGroupsToLevel</h3>
 <pre>collapseGroupsToLevel(level: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Number" target="_blank"><span class="identifier">number</span></a>): <span class="identifier">void</span></pre>
@@ -1020,7 +1078,8 @@ an exception.</p></div>
 <div id="focus" class="member-panel mmethod">
 <h3>focus</h3>
 <pre>focus(): <span class="identifier">void</span></pre>
-<div class="comment"><p>Overridden to set the focus to the grid without scrolling the whole grid into view.</p></div>
+<div class="comment"><p>Overridden to set the focus to the grid without scrolling the
+whole grid into view.</p></div>
 <dl class="dl-horizontal">
   <dt>Returns</dt><dd><span class="identifier">void</span></dd>
 </dl>
@@ -1332,29 +1391,13 @@ on the page will be invalidated.</p></li></ul>
 </div>
 <div id="onCellEditEnding" class="member-panel mmethod raiser">
 <h3>onCellEditEnding</h3>
-<pre>onCellEditEnding(e: <a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><span class="identifier">CellRangeEventArgs</span></a>): <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a></pre>
-<div class="comment"><p>Raises the <a href="topic/wijmo.grid.FlexGrid.Class.html/#cellEditEnding"><span class="identifier">cellEditEnding</span></a> event.</p>
-<p>You can use this event to perform validation and prevent invalid edits.
-For example, the code below prevents users from entering values that
-do not contain the letter 'a'. The code demonstrates how you can obtain
-the old and new values before the edits are applied.</p>
-
-
-<pre>function cellEditEnding (sender, e) {
-
-  // get old and new values
-  var flex = sender,
-      oldVal = flex.getCellData(e.row, e.col),
-      newVal = flex.activeEditor.value;
-
-  // cancel edits if newVal doesn't contain 'a'
-  e.cancel = newVal.indexOf('a') &lt; 0;
-}</pre></div>
+<pre>onCellEditEnding(e: <a href="topic/wijmo.grid.CellEditEndingEventArgs.Class.html"><span class="identifier">CellEditEndingEventArgs</span></a>): <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a></pre>
+<div class="comment"><p>Raises the <a href="topic/wijmo.grid.FlexGrid.Class.html/#cellEditEnding"><span class="identifier">cellEditEnding</span></a> event.</p></div>
 <dl class="dl-horizontal">
   <dt>Parameters</dt><dd></dd>
 </dl>
 <ul>
-<li><b>e</b>: <a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><span class="identifier">CellRangeEventArgs</span></a><br/><p><a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><span class="identifier">CellRangeEventArgs</span></a> that contains the event data.</p></li></ul>
+<li><b>e</b>: <a href="topic/wijmo.grid.CellEditEndingEventArgs.Class.html"><span class="identifier">CellEditEndingEventArgs</span></a><br/><p><a href="topic/wijmo.grid.CellEditEndingEventArgs.Class.html"><span class="identifier">CellEditEndingEventArgs</span></a> that contains the event data.</p></li></ul>
 <dl class="dl-horizontal">
   <dt>Returns</dt><dd><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a></dd>
 </dl>
@@ -1450,10 +1493,36 @@ the old and new values before the edits are applied.</p>
   <dt>Returns</dt><dd><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a></dd>
 </dl>
 </div>
+<div id="onDraggingColumnOver" class="member-panel mmethod raiser">
+<h3>onDraggingColumnOver</h3>
+<pre>onDraggingColumnOver(e: <a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><span class="identifier">CellRangeEventArgs</span></a>): <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a></pre>
+<div class="comment"><p>Raises the <a href="topic/wijmo.grid.FlexGrid.Class.html/#draggingColumnOver"><span class="identifier">draggingColumnOver</span></a> event.</p></div>
+<dl class="dl-horizontal">
+  <dt>Parameters</dt><dd></dd>
+</dl>
+<ul>
+<li><b>e</b>: <a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><span class="identifier">CellRangeEventArgs</span></a><br/><p><a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><span class="identifier">CellRangeEventArgs</span></a> that contains the event data.</p></li></ul>
+<dl class="dl-horizontal">
+  <dt>Returns</dt><dd><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a></dd>
+</dl>
+</div>
 <div id="onDraggingRow" class="member-panel mmethod raiser">
 <h3>onDraggingRow</h3>
 <pre>onDraggingRow(e: <a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><span class="identifier">CellRangeEventArgs</span></a>): <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a></pre>
 <div class="comment"><p>Raises the <a href="topic/wijmo.grid.FlexGrid.Class.html/#draggingRow"><span class="identifier">draggingRow</span></a> event.</p></div>
+<dl class="dl-horizontal">
+  <dt>Parameters</dt><dd></dd>
+</dl>
+<ul>
+<li><b>e</b>: <a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><span class="identifier">CellRangeEventArgs</span></a><br/><p><a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><span class="identifier">CellRangeEventArgs</span></a> that contains the event data.</p></li></ul>
+<dl class="dl-horizontal">
+  <dt>Returns</dt><dd><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a></dd>
+</dl>
+</div>
+<div id="onDraggingRowOver" class="member-panel mmethod raiser">
+<h3>onDraggingRowOver</h3>
+<pre>onDraggingRowOver(e: <a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><span class="identifier">CellRangeEventArgs</span></a>): <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a></pre>
+<div class="comment"><p>Raises the <a href="topic/wijmo.grid.FlexGrid.Class.html/#draggingRowOver"><span class="identifier">draggingRowOver</span></a> event.</p></div>
 <dl class="dl-horizontal">
   <dt>Parameters</dt><dd></dd>
 </dl>
@@ -1725,6 +1794,32 @@ the old and new values before the edits are applied.</p>
   <dt>Returns</dt><dd><span class="identifier">void</span></dd>
 </dl>
 </div>
+<div id="onRowEditStarted" class="member-panel mmethod raiser">
+<h3>onRowEditStarted</h3>
+<pre>onRowEditStarted(e: <a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><span class="identifier">CellRangeEventArgs</span></a>): <span class="identifier">void</span></pre>
+<div class="comment"><p>Raises the <a href="topic/wijmo.grid.FlexGrid.Class.html/#rowEditStarted"><span class="identifier">rowEditStarted</span></a> event.</p></div>
+<dl class="dl-horizontal">
+  <dt>Parameters</dt><dd></dd>
+</dl>
+<ul>
+<li><b>e</b>: <a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><span class="identifier">CellRangeEventArgs</span></a><br/><p><a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><span class="identifier">CellRangeEventArgs</span></a> that contains the event data.</p></li></ul>
+<dl class="dl-horizontal">
+  <dt>Returns</dt><dd><span class="identifier">void</span></dd>
+</dl>
+</div>
+<div id="onRowEditStarting" class="member-panel mmethod raiser">
+<h3>onRowEditStarting</h3>
+<pre>onRowEditStarting(e: <a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><span class="identifier">CellRangeEventArgs</span></a>): <span class="identifier">void</span></pre>
+<div class="comment"><p>Raises the <a href="topic/wijmo.grid.FlexGrid.Class.html/#rowEditStarting"><span class="identifier">rowEditStarting</span></a> event.</p></div>
+<dl class="dl-horizontal">
+  <dt>Parameters</dt><dd></dd>
+</dl>
+<ul>
+<li><b>e</b>: <a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><span class="identifier">CellRangeEventArgs</span></a><br/><p><a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><span class="identifier">CellRangeEventArgs</span></a> that contains the event data.</p></li></ul>
+<dl class="dl-horizontal">
+  <dt>Returns</dt><dd><span class="identifier">void</span></dd>
+</dl>
+</div>
 <div id="onScrollPositionChanged" class="member-panel mmethod raiser">
 <h3>onScrollPositionChanged</h3>
 <pre>onScrollPositionChanged(e?: <a href="topic/wijmo.EventArgs.Class.html"><span class="identifier">EventArgs</span></a>): <span class="identifier">void</span></pre>
@@ -1887,13 +1982,13 @@ on the page will be invalidated.</p></li></ul>
 </div>
 <div id="removeEventListener" class="member-panel mmethod inherited">
 <h3>removeEventListener</h3>
-<pre>removeEventListener(target?: <a href="https://developer.mozilla.org/en/docs/Web/API/EventTarget" target="_blank"><span class="identifier">EventTarget</span></a>, type?: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank"><span class="identifier">string</span></a>, capture?: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a>): <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Number" target="_blank"><span class="identifier">number</span></a></pre>
+<pre>removeEventListener(target?: <a href="https://developer.mozilla.org/en/docs/Web/API/EventTarget" target="_blank"><span class="identifier">EventTarget</span></a>, type?: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank"><span class="identifier">string</span></a>, fn?: <span class="identifier">any</span>, capture?: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a>): <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Number" target="_blank"><span class="identifier">number</span></a></pre>
 <div class="comment"><p>Removes one or more event listeners attached to elements owned by this <a href="topic/wijmo.Control.Class.html"><span class="identifier">Control</span></a>.</p></div>
 <dl class="dl-horizontal">
   <dt>Parameters</dt><dd></dd>
 </dl>
 <ul>
-<li><b>target</b>: <a href="https://developer.mozilla.org/en/docs/Web/API/EventTarget" target="_blank"><span class="identifier">EventTarget</span></a> <span class="badge">Optional</span><br/><p>Target element for the event. If null, removes listeners attached to all targets.</p></li><li><b>type</b>: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank"><span class="identifier">string</span></a> <span class="badge">Optional</span><br/><p>String that specifies the event. If null, removes listeners attached to all events.</p></li><li><b>capture</b>: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a> <span class="badge">Optional</span><br/><p>Whether the listener is capturing. If null, removes capturing and non-capturing listeners.</p></li></ul>
+<li><b>target</b>: <a href="https://developer.mozilla.org/en/docs/Web/API/EventTarget" target="_blank"><span class="identifier">EventTarget</span></a> <span class="badge">Optional</span><br/><p>Target element for the event. If null, removes listeners attached to all targets.</p></li><li><b>type</b>: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank"><span class="identifier">string</span></a> <span class="badge">Optional</span><br/><p>String that specifies the event. If null, removes listeners attached to all events.</p></li><li><b>fn</b>: <span class="identifier">any</span> <span class="badge">Optional</span><br/><p>Handler to remove. If null, removes all handlers.</p></li><li><b>capture</b>: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a> <span class="badge">Optional</span><br/><p>Whether the listener is capturing. If null, removes capturing and non-capturing listeners.</p></li></ul>
 <dl class="dl-horizontal">
   <dt>Inherited From</dt><dd><a href="topic/wijmo.Control.Class.html"><span class="identifier">Control</span></a></dd>
   <dt>Returns</dt><dd><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Number" target="_blank"><span class="identifier">number</span></a></dd>
@@ -2028,9 +2123,31 @@ bottom edge of a row header cell.</p></div>
 </div>
 <div id="cellEditEnding" class="member-panel mevent">
 <h3>cellEditEnding</h3>
-<div class="comment"><p>Occurs when a cell edit is ending.</p></div>
+<div class="comment"><p>Occurs when a cell edit is ending.</p>
+<p>You can use this event to perform validation and prevent invalid edits.
+For example, the code below prevents users from entering values that
+do not contain the letter 'a'. The code demonstrates how you can obtain
+the old and new values before the edits are applied.</p>
+
+
+<pre>function cellEditEnding (sender, e) {
+
+  // get old and new values
+  var flex = sender,
+      oldVal = flex.getCellData(e.row, e.col),
+      newVal = flex.activeEditor.value;
+
+  // cancel edits if newVal doesn't contain 'a'
+  e.cancel = newVal.indexOf('a') &lt; 0;
+}</pre>
+<p>Setting the <a href="topic/wijmo.grid.CellEditEndingEventArgs.Class.html/#cancel"><span class="identifier">cancel</span></a> parameter to
+true causes the grid to discard the edited value and keep the
+cell's original value.</p>
+<p>If you also set the <a href="topic/wijmo.grid.CellEditEndingEventArgs.Class.html/#stayInEditMode"><span class="identifier">stayInEditMode</span></a>
+parameter to true, the grid will remain in edit mode so the user
+can correct invalid entries before committing the edits.</p></div>
 <dl class="dl-horizontal">
-  <dt>Arguments</dt><dd><a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><span class="identifier">CellRangeEventArgs</span></a></dd>
+  <dt>Arguments</dt><dd><a href="topic/wijmo.grid.CellEditEndingEventArgs.Class.html"><span class="identifier">CellEditEndingEventArgs</span></a></dd>
 </dl>
 </div>
 <div id="copied" class="member-panel mevent">
@@ -2090,9 +2207,38 @@ key (see the <a href="topic/wijmo.grid.FlexGrid.Class.html/#allowDelete"><span c
   <dt>Arguments</dt><dd><a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><span class="identifier">CellRangeEventArgs</span></a></dd>
 </dl>
 </div>
+<div id="draggingColumnOver" class="member-panel mevent">
+<h3>draggingColumnOver</h3>
+<div class="comment"><p>Occurs as the user drags a column to a new position.</p>
+<p>The handler may cancel the event to prevent users from
+dropping columns at certain positions. For example:</p>
+
+
+<pre>// remember column being dragged
+flex.draggingColumn.addHandler(function (s, e) {
+    theColumn = s.columns[e.col].binding;
+});
+
+// prevent 'sales' column from being dragged to index 0
+s.draggingColumnOver.addHandler(function (s, e) {
+    if (theColumn == 'sales' && e.col == 0) {
+        e.cancel = true;
+    }
+});</pre></div>
+<dl class="dl-horizontal">
+  <dt>Arguments</dt><dd><a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><span class="identifier">CellRangeEventArgs</span></a></dd>
+</dl>
+</div>
 <div id="draggingRow" class="member-panel mevent">
 <h3>draggingRow</h3>
 <div class="comment"><p>Occurs when the user starts dragging a row.</p></div>
+<dl class="dl-horizontal">
+  <dt>Arguments</dt><dd><a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><span class="identifier">CellRangeEventArgs</span></a></dd>
+</dl>
+</div>
+<div id="draggingRowOver" class="member-panel mevent">
+<h3>draggingRowOver</h3>
+<div class="comment"><p>Occurs as the user drags a row to a new position.</p></div>
 <dl class="dl-horizontal">
   <dt>Arguments</dt><dd><a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><span class="identifier">CellRangeEventArgs</span></a></dd>
 </dl>
@@ -2257,7 +2403,49 @@ the new item creation.</p></div>
 </div>
 <div id="rowEditEnding" class="member-panel mevent">
 <h3>rowEditEnding</h3>
-<div class="comment"><p>Occurs when a row edit is ending, before the changes are committed or canceled.</p></div>
+<div class="comment"><p>Occurs when a row edit is ending, before the changes are committed or canceled.</p>
+<p>This event can be used in conjunction with the <a href="topic/wijmo.grid.FlexGrid.Class.html/#rowEditStarted"><span class="identifier">rowEditStarted</span></a> event to
+implement deep-binding edit undos. For example:</p>
+
+
+<pre>// save deep bound values when editing starts
+var itemData = {};
+s.rowEditStarted.addHandler(function (s, e) {
+  var item = s.collectionView.currentEditItem;
+  itemData = {};
+  s.columns.forEach(function (col) {
+    if (col.binding.indexOf('.') &gt; -1) { // deep binding
+      var binding = new wijmo.Binding(col.binding);
+      itemData[col.binding] = binding.getValue(item);
+    }
+  })
+});
+
+// restore deep bound values when edits are canceled
+s.rowEditEnded.addHandler(function (s, e) {
+  if (e.cancel) { // edits were canceled by the user
+    var item = s.collectionView.currentEditItem;
+    for (var k in itemData) {
+      var binding = new wijmo.Binding(k);
+      binding.setValue(item, itemData[k]);
+    }
+  }
+  itemData = {};
+});</pre></div>
+<dl class="dl-horizontal">
+  <dt>Arguments</dt><dd><a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><span class="identifier">CellRangeEventArgs</span></a></dd>
+</dl>
+</div>
+<div id="rowEditStarted" class="member-panel mevent">
+<h3>rowEditStarted</h3>
+<div class="comment"><p>Occurs after a row enters edit mode.</p></div>
+<dl class="dl-horizontal">
+  <dt>Arguments</dt><dd><a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><span class="identifier">CellRangeEventArgs</span></a></dd>
+</dl>
+</div>
+<div id="rowEditStarting" class="member-panel mevent">
+<h3>rowEditStarting</h3>
+<div class="comment"><p>Occurs before a row enters edit mode.</p></div>
 <dl class="dl-horizontal">
   <dt>Arguments</dt><dd><a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><span class="identifier">CellRangeEventArgs</span></a></dd>
 </dl>

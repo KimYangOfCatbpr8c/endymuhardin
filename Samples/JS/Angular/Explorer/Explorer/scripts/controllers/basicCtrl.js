@@ -411,6 +411,7 @@ app.controller('basicCtrl', function appCtrl($scope, $compile, dataSvc) {
         $scope.ctx.flexInline.invalidate();
     }
     $scope.deleteRow = function (row) {
+        $scope.ctx.editIndex = -1;
         var ecv = $scope.ctx.flexInline.collectionView;
         ecv.removeAt(row);
     }
@@ -425,7 +426,7 @@ app.controller('basicCtrl', function appCtrl($scope, $compile, dataSvc) {
         $scope.cancelRow(row);
     }
     $scope.cancelRow = function (row) {
-        $scope.ctx.editIndex = -1;
+        $scope.ctx.editIndex = -1; // TFS 214562
         $scope.ctx.flexInline.invalidate();
     }
 

@@ -1,11 +1,11 @@
-import { Injector, ElementRef } from '@angular/core';
-import * as wjGrid from 'wijmo/wijmo.angular2.grid';
+import * as wjcGrid from 'wijmo/wijmo.grid';
+import { WjFlexGrid } from 'wijmo/wijmo.angular2.grid';
 import { SelectionType } from '../cellTemplates/EditableSelectionRenderer';
-export declare class InheritedGrid extends wjGrid.WjFlexGrid {
+export declare class InheritedGrid extends WjFlexGrid {
     private _showSelectColumn;
     private _isEditable;
     selectionType: SelectionType;
-    constructor(elRef: ElementRef, injector: Injector);
+    created(): void;
     isEditable: boolean;
-    onFormatItem(e: wijmo.grid.FormatItemEventArgs): void;
+    onFormatItem(e: wjcGrid.FormatItemEventArgs): void;
 }

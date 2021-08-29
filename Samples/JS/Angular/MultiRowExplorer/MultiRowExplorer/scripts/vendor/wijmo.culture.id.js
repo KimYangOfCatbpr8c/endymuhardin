@@ -1,18 +1,18 @@
 ﻿/*
     *
-    * Wijmo Library 5.20162.211
+    * Wijmo Library 5.20171.282
     * http://wijmo.com/
     *
     * Copyright(c) GrapeCity, Inc.  All rights reserved.
     *
     * Licensed under the Wijmo Commercial License.
     * sales@wijmo.com
-    * http://wijmo.com/products/wijmo-5/license/
+    * wijmo.com/products/wijmo-5/license/
     *
     */
 /*
-* Wijmo culture file: id (Indonesian)
-*/
+ * Wijmo culture file: id (Indonesian)
+ */
 var wijmo;
 (function (wijmo) {
     wijmo.culture = {
@@ -51,7 +51,7 @@ var wijmo;
             itemsSelected: '{count:n0} item yang dipilih'
         },
         FlexGrid: {
-            groupHeaderFormat: '{name}: <b>{value} </b>({count:n0} item)'
+            groupHeaderFormat: '{name}:  <b> {value} </b>  ({count:n0} item)'
         },
         FlexGridFilter: {
             // filter
@@ -90,7 +90,7 @@ var wijmo;
             dateOperators: [
                 { name: '(tidak ditetapkan)', op: null },
                 { name: 'Sama dengan', op: 0 },
-                { name: 'Sebelum', op: 4 },
+                { name: 'sebelum', op: 4 },
                 { name: 'Setelah', op: 3 }
             ],
             booleanOperators: [
@@ -101,104 +101,237 @@ var wijmo;
         },
         olap: {
             PivotFieldEditor: {
-                dialogHeader: 'Field settings:',
+                dialogHeader: 'Pengaturan bidang:',
                 header: 'Header:',
-                summary: 'Summary:',
-                showAs: 'Show As:',
-                weighBy: 'Weigh by:',
-                sort: 'Sort:',
+                summary: 'Ringkasan:',
+                showAs: 'Tampilkan sebagai:',
+                weighBy: 'Menimbang oleh:',
+                sort: 'Urutkan:',
                 filter: 'Filter:',
                 format: 'Format:',
-                sample: 'Sample:',
-                edit: 'Edit...',
-                clear: 'Clear',
+                sample: 'Contoh:',
+                edit: 'Mengedit…',
+                clear: 'Bersihkan',
                 ok: 'OK',
-                cancel: 'Cancel',
-                none: '(none)',
+                cancel: 'Batal',
+                none: '(tidak ada)',
                 sorts: {
-                    asc: 'Ascending',
-                    desc: 'Descending'
+                    asc: 'Naik',
+                    desc: 'Turun'
                 },
                 aggs: {
-                    sum: 'Sum',
-                    cnt: 'Count',
-                    avg: 'Average',
-                    max: 'Max',
+                    sum: 'Jumlah',
+                    cnt: 'Hitung',
+                    avg: 'Rata-Rata',
+                    max: 'Maks',
                     min: 'Min',
-                    rng: 'Range',
+                    rng: 'Rentang',
                     std: 'StdDev',
                     var: 'Var',
                     stdp: 'StdDevPop',
                     varp: 'VarPop'
                 },
                 calcs: {
-                    noCalc: 'No Calculation',
-                    dRow: 'Difference from previous row',
-                    dRowPct: '% Difference from previous row',
-                    dCol: 'Difference from previous column',
-                    dColPct: '% Difference from previous column'
+                    noCalc: 'Tidak ada Perhitungan',
+                    dRow: 'Perbedaan dari baris sebelumnya',
+                    dRowPct: '% Perbedaan dari baris sebelumnya',
+                    dCol: 'Perbedaan dari kolom sebelumnya',
+                    dColPct: '% Perbedaan dari kolom sebelumnya',
+                    dPctGrand: '% dari grand total',
+                    dPctRow: '% dari total baris',
+                    dPctCol: '% dari total kolom',
+                    dRunTot: 'Menjalankan total',
+                    dRunTotPct: 'menjalankan total %'
                 },
                 formats: {
-                    n0: 'Integer (n0)',
-                    n2: 'Float (n2)',
-                    c: 'Currency (c)',
-                    p0: 'Percentage (p0)',
-                    p2: 'Percentage (p2)',
-                    n2c: 'Thousands (n2,)',
-                    n2cc: 'Millions (n2,,)',
-                    n2ccc: 'Billions (n2,,,)',
-                    d: 'Date (d)',
-                    MMMMddyyyy: 'Month Day Year (MMMM dd, yyyy)',
-                    dMyy: 'Day Month Year (d/M/yy)',
-                    ddMyy: 'Day Month Year (dd/M/yy)',
-                    dMyyyy: 'Day Month Year (dd/M/yyyy)',
-                    MMMyyyy: 'Month Year (MMM yyyy)',
-                    MMMMyyyy: 'Month Year (MMMM yyyy)',
-                    yyyyQq: 'Year Quarter (yyyy "Q"q)',
-                    FYEEEEQU: 'Fiscal Year Quarter ("FY"EEEE "Q"U)'
+                    n0: 'Bulat (n0)',
+                    n2: 'Desimal (n2)',
+                    c: 'Mata uang (c)',
+                    p0: 'Persentase (p0)',
+                    p2: 'Persentase (p2)',
+                    n2c: 'Ribuan (n2,)',
+                    n2cc: 'Jutaan (n2,,)',
+                    n2ccc: 'Miliaran (n2,,,)',
+                    d: 'Tanggal (d)',
+                    MMMMddyyyy: 'Bulan hari tahun (MMMM dd, yyyy)',
+                    dMyy: 'Hari bulan tahun (d/M/yy)',
+                    ddMyy: 'Hari bulan tahun (dd/M/yy)',
+                    dMyyyy: 'Hari bulan tahun (dd/M/yyyy)',
+                    MMMyyyy: 'Bulan tahun (MMM yyyy)',
+                    MMMMyyyy: 'Bulan tahun (MMMM yyyy)',
+                    yyyyQq: 'Kuartal tahun (yyyy "Q"q)',
+                    FYEEEEQU: 'Kuartal fiskal tahun ("FY"EEEE "Q"U)'
                 }
             },
             PivotEngine: {
-                grandTotal: 'Grand Total',
+                grandTotal: 'Total Keseluruhan',
                 subTotal: 'Subtotal'
             },
             PivotPanel: {
-                fields: 'Choose fields to add to report',
-                drag: 'Drag fields between areas below:',
-                filters: 'Filters',
-                cols: 'Columns',
-                rows: 'Rows',
-                vals: 'Values',
-                defer: 'Defer Updates',
-                update: 'Update'
+                fields: 'Memilih bidang untuk menambahkan ke laporan:',
+                drag: 'Seret bidang antara area di bawah:',
+                filters: 'Filter',
+                cols: 'Kolom',
+                rows: 'Baris',
+                vals: 'Nilai',
+                defer: 'Menunda update',
+                update: 'Perbarui'
             },
             _ListContextMenu: {
-                up: 'Move Up',
-                down: 'Move Down',
-                first: 'Move do Beginning',
-                last: 'Move to End',
-                filter: 'Move to Report Filter',
-                rows: 'Move to Row Labels',
-                cols: 'Move to Column Labels',
-                vals: 'Move to Values',
-                remove: 'Remove Field',
-                edit: 'Field Settings...',
-                detail: 'Show Detail...'
+                up: 'Pindah ke Atas',
+                down: 'Pindah ke Bawah',
+                first: 'Pindahkan ke Awal',
+                last: 'Pindah ke Akhir',
+                filter: 'Pindahkan ke Filter Laporan',
+                rows: 'Pindahkan ke Label Baris',
+                cols: 'Pindahkan ke Label Kolom',
+                vals: 'Pindahkan ke Nilai',
+                remove: 'Hapus Bidang',
+                edit: 'Setelan Bidang…',
+                detail: 'Tampilkan Detail…'
             },
             PivotChart: {
-                by: 'by',
-                and: 'and'
+                by: 'oleh',
+                and: 'dan'
             },
             DetailDialog: {
-                header: 'Detail View:',
+                header: 'Tampilan detail:',
                 ok: 'OK',
-                items: '{cnt:n0} items',
+                items: '{cnt:n0} item',
                 item: '{cnt} item',
-                row: 'Row',
-                col: 'Column'
+                row: 'Baris',
+                col: 'Kolom'
             }
+        },
+        Viewer: {
+            cancel: 'Batal',
+            ok: 'OK',
+            bottom: 'Bawah:',
+            top: 'Paling atas:',
+            right: 'Kanan:',
+            left: 'Kiri:',
+            margins: 'Margin (inci)',
+            orientation: 'Orientasi:',
+            paperKind: 'Jenis kertas:',
+            pageSetup: 'Penyetelan Halaman',
+            landscape: 'Lanskap',
+            portrait: 'Potret',
+            pageNumber: 'Nomor Halaman',
+            zoomFactor: 'Faktor zoom',
+            paginated: 'Tata letak cetak',
+            print: 'Cetak',
+            search: 'Cari',
+            matchCase: 'Cocokkan huruf besar/kecil',
+            wholeWord: 'Cocok keseluruhan kata',
+            searchResults: 'Hasil Pencarian',
+            previousPage: 'Halaman Sebelumnya',
+            nextPage: 'Halaman Berikutnya',
+            firstPage: 'Halaman Pertama',
+            lastPage: 'Halaman Terakhir',
+            backwardHistory: 'Mundur',
+            forwardHistory: 'Teruskan',
+            pageCount: 'Hitung Halaman',
+            selectTool: 'Pilih Alat',
+            moveTool: 'Memindahkan alat',
+            continuousMode: 'Terus-menerus tampilan halaman',
+            singleMode: 'Tampilan Halaman tunggal',
+            wholePage: 'Cocok seluruh halaman',
+            pageWidth: 'Sesuai lebar halaman',
+            zoomOut: 'Perkecil',
+            zoomIn: 'Perbesar',
+            exports: 'Ekspor',
+            fullScreen: 'Layar penuh',
+            exitFullScreen: 'Keluar dari layar penuh',
+            hamburgerMenu: 'Alat',
+            showSearchBar: 'Bar pencarian Tampilkan',
+            viewMenu: 'Opsi Tata Letak',
+            searchOptions: 'Opsi Pencarian',
+            matchCaseMenuItem: 'Cocokkan huruf',
+            wholeWordMenuItem: 'Cocokkan dengan seluruh kata',
+            thumbnails: 'Halaman thumbnail',
+            outlines: 'Peta Dokumen',
+            loading: 'Memuat…',
+            pdfExportName: 'Adobe PDF',
+            docxExportName: 'Open XML Word',
+            xlsxExportName: 'Open XML Excel',
+            docExportName: 'Microsoft Word',
+            xlsExportName: 'Microsoft Excel',
+            mhtmlExportName: 'Web Arsip (MHTML)',
+            htmlExportName: 'Dokumen HTML',
+            rtfExportName: 'RTF dokumen',
+            metafileExportName: 'Terkompresi metafiles',
+            csvExportName: 'CSV',
+            tiffExportName: 'Gambar TIFF',
+            bmpExportName: 'Gambar BMP',
+            emfExportName: 'Enhanced metafile',
+            gifExportName: 'Gambar GIF',
+            jpgExportName: 'Gambar JPEG',
+            jpegExportName: 'Gambar JPEG',
+            pngExportName: 'Gambar PNG',
+            abstractMethodException: 'Ini adalah metode yang abstrak, harap menerapkannya.',
+            cannotRenderPageNoViewPage: 'Tidak dapat membuat halaman tanpa dokumen sumber dan pemandangan halaman.',
+            cannotRenderPageNoDoc: 'Tidak dapat membuat halaman tanpa dokumen sumber dan pemandangan halaman.',
+            exportFormat: 'Format ekspor:',
+            exportOptionTitle: 'Ekspor opsi',
+            documentRestrictionsGroup: 'Pembatasan dokumen',
+            passwordSecurityGroup: 'Password keamanan',
+            outputRangeGroup: 'Berbagai output',
+            documentInfoGroup: 'Dokumen info',
+            generalGroup: 'Umum',
+            docInfoTitle: 'Gelar',
+            docInfoAuthor: 'Penulis',
+            docInfoManager: 'Manajer',
+            docInfoOperator: 'Operator',
+            docInfoCompany: 'Perusahaan',
+            docInfoSubject: 'Topik',
+            docInfoComment: 'Komentar',
+            docInfoCreator: 'Pembuat',
+            docInfoProducer: 'Produser',
+            docInfoCreationTime: 'Waktu penciptaan',
+            docInfoRevisionTime: 'Revisi waktu',
+            docInfoKeywords: 'Kata kunci',
+            embedFonts: 'Menanamkan font tipe Asli',
+            pdfACompatible: 'PDF A kompatibel (tingkat 2B)',
+            useCompression: 'Menggunakan kompresi',
+            useOutlines: 'Menghasilkan garis',
+            allowCopyContent: 'Memungkinkan menyalin konten atau ekstraksi',
+            allowEditAnnotations: 'Memungkinkan mengedit anotasi',
+            allowEditContent: 'Memungkinkan mengedit konten',
+            allowPrint: 'Memungkinkan pencetakan',
+            ownerPassword: 'Sandi izin (pemilik):',
+            userPassword: 'Dokumen terbuka (user) sandi:',
+            encryptionType: 'Tingkat enkripsi:',
+            paged: 'Tersimpan di halaman',
+            showNavigator: 'Navigator Tampilkan',
+            singleFile: 'File tunggal',
+            tolerance: 'Toleransi ketika mendeteksi teks batas (poin):',
+            pictureLayer: 'Gunakan gambar terpisah lapisan',
+            metafileType: 'Metafile jenis:',
+            monochrome: 'Monokrom',
+            resolution: 'Resolusi:',
+            outputRange: 'Rentang Halaman:',
+            outputRangeInverted: 'Terbalik',
+            showZoomBar: 'Zoom Bar',
+            searchPrev: 'Cari sebelumnya',
+            searchNext: 'Pencarian selanjutnya',
+            checkMark: '\u2713',
+            exportOk: 'Ekspor…',
+            parameters: 'Parameter',
+            requiringParameters: 'Silahkan masukan parameter.',
+            nullParameterError: 'Nilai tidak boleh null.',
+            invalidParameterError: 'Valid masukan.',
+            parameterNoneItemsSelected: '(tidak ada)',
+            parameterAllItemsSelected: '(semua)',
+            parameterSelectAllItemText: '(Pilih Semua)',
+            selectParameterValue: '(pilih nilai)',
+            apply: 'Terapkan',
+            errorOccured: 'Sebuah kesalahan telah terjadi.'
         }
     };
+    var updc = window['wijmo']._updateCulture;
+    if (updc) {
+        updc();
+    }
 })(wijmo || (wijmo = {}));
 ;
-//# sourceMappingURL=wijmo.culture.id.js.map
+

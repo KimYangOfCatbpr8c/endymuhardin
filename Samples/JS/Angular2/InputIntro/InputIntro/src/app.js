@@ -1,4 +1,3 @@
-///<reference path="../typings/globals/core-js/index.d.ts"/>
 "use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -9,17 +8,16 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
+///<reference path="../typings/globals/core-js/index.d.ts"/>
+var wjcCore = require('wijmo/wijmo');
 // Angular
 var core_1 = require('@angular/core');
-//import { bootstrap } from '@angular/platform-browser-dynamic';
 var platform_browser_dynamic_1 = require('@angular/platform-browser-dynamic');
 var platform_browser_1 = require('@angular/platform-browser');
 var wijmo_angular2_input_1 = require('wijmo/wijmo.angular2.input');
 var appPipes_1 = require('./pipes/appPipes');
-//import { AppTab, AppTabPane } from './components/AppTab';
 var AppTab_1 = require('./components/AppTab');
 var DataSvc_1 = require('./services/DataSvc');
-//import {TestModule} from './testcmp';
 'use strict';
 // The Explorer application root component.
 var AppCmp = (function () {
@@ -40,7 +38,7 @@ var AppCmp = (function () {
                 _this.tax += arg;
             },
             canExecuteCommand: function (arg) {
-                if (wijmo.isNumber(arg)) {
+                if (wjcCore.isNumber(arg)) {
                     var val = _this.tax + arg;
                     return val >= 0 && val <= 1;
                 }
@@ -84,18 +82,19 @@ var AppCmp = (function () {
             "Singapore", "Surabaya", "Surat", "Suzhou", "Sydney", "Taipei", "Tehran", "Tianjin", "Toronto", "Washington", "Wuhan", "Xi'an-Xianyang", "Yangoon",
             "Zhengzhou", "Tokyo"
         ];
+        this.selectedCountries = ['Belgium', 'Vietnam'];
         // apply special styles to weekends and holidays, use arrow function to ensure correct 'this'
         this.formatItem = function (s, e) {
             var weekday = e.data.getDay(), holiday = _this._getHoliday(e.data);
-            wijmo.toggleClass(e.item, 'date-weekend', weekday == 0 || weekday == 6);
-            wijmo.toggleClass(e.item, 'date-holiday', !!holiday);
+            wjcCore.toggleClass(e.item, 'date-weekend', weekday == 0 || weekday == 6);
+            wjcCore.toggleClass(e.item, 'date-holiday', !!holiday);
             e.item.title = holiday;
         };
         // show item formatter and validator, use arrow function to ensure correct 'this'
         this.itemFormatter = function (date, element) {
             var weekday = date.getDay(), holiday = _this._getHoliday(date);
-            wijmo.toggleClass(element, 'date-weekend', weekday == 0 || weekday == 6);
-            wijmo.toggleClass(element, 'date-holiday', !!holiday);
+            wjcCore.toggleClass(element, 'date-weekend', weekday == 0 || weekday == 6);
+            wjcCore.toggleClass(element, 'date-holiday', !!holiday);
             element.title = holiday;
         };
         this.itemValidator = function (date) {
@@ -117,7 +116,7 @@ var AppCmp = (function () {
         this.maxDate = new Date(today.getFullYear(), 11, 31);
         var theDate = new Date();
         while (!this.itemValidator(theDate)) {
-            theDate = wijmo.DateTime.addDays(theDate, 1);
+            theDate = wjcCore.DateTime.addDays(theDate, 1);
         }
         this.theDate = theDate; // start with a valid date
         this.musicians = this.dataSvc.getMusicians();
@@ -150,7 +149,6 @@ var AppCmp = (function () {
     AppCmp = __decorate([
         core_1.Component({
             selector: 'app-cmp',
-            //template: `<div>Hello <test-cmp></test-cmp></div>`,
             templateUrl: 'src/app.html',
         }),
         __param(0, core_1.Inject(DataSvc_1.DataSvc))
@@ -173,9 +171,6 @@ var AppModule = (function () {
 }());
 exports.AppModule = AppModule;
 core_1.enableProdMode();
-// Bootstrap application with hash style navigation and global services.
-//bootstrap(AppCmp, [
-//    DataSvc
-//]);
+// Bootstrap application 
 platform_browser_dynamic_1.platformBrowserDynamic().bootstrapModule(AppModule);
 //# sourceMappingURL=app.js.map

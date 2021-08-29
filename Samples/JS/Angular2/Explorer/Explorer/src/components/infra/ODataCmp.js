@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
@@ -13,6 +13,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
+var wjcCore = require('wijmo/wijmo');
+'use strict';
 var core_1 = require('@angular/core');
 var common_1 = require('@angular/common');
 var forms_1 = require('@angular/forms');
@@ -25,8 +27,8 @@ var ODataCmp = (function (_super) {
     __extends(ODataCmp, _super);
     function ODataCmp(dataSvc) {
         _super.call(this, dataSvc);
-        this.categories = new wijmo.collections.CollectionView();
-        this.products = new wijmo.collections.CollectionView();
+        this.categories = new wjcCore.CollectionView();
+        this.products = new wjcCore.CollectionView();
     }
     ODataCmp.prototype.ngAfterViewInit = function () {
         this.dataSvc.initOData(this.categories, this.products, this.supplierMap);

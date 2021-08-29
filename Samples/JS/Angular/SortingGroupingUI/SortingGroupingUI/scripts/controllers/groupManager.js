@@ -1,7 +1,7 @@
 /**
-* Class used as a controller for the groupDescriptions collection of a
-* Wijmo 5 CollectionView class.
-*/
+ * Class used as a controller for the groupDescriptions collection of a
+ * Wijmo 5 CollectionView class.
+ */
 var GroupManager = (function () {
     function GroupManager() {
     }

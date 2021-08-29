@@ -1,4 +1,3 @@
-///<reference path="../typings/globals/core-js/index.d.ts"/>
 "use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -9,6 +8,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
+var wjcGrid = require('wijmo/wijmo.grid');
 var core_1 = require('@angular/core');
 var forms_1 = require('@angular/forms');
 var platform_browser_dynamic_1 = require('@angular/platform-browser-dynamic');
@@ -84,7 +84,7 @@ var AppCmp = (function () {
     }
     AppCmp.prototype.ngAfterViewInit = function () {
         if (this.flex1) {
-            this.flex1.columnFooters.rows.push(new wijmo.grid.GroupRow());
+            this.flex1.columnFooters.rows.push(new wjcGrid.GroupRow());
         }
         if (this.flex2) {
             this.flex2.collapseGroupsToLevel(0);

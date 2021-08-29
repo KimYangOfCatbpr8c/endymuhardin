@@ -10,7 +10,7 @@
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <DebugType>full</DebugType>
     <DebugSymbols>true</DebugSymbols>
-    <TypeScriptToolsVersion>1.8</TypeScriptToolsVersion>
+    <TypeScriptToolsVersion>2.0</TypeScriptToolsVersion>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
@@ -102,24 +102,6 @@
     <PreBuildEvent>REM copy /B /Y $(ProjectDir)scripts\wijmo.angular2\ControlMetaFactory_Internal.ts+$(ProjectDir)scripts\wijmo.angular2\ControlMetaFactory_External.ts $(ProjectDir)scripts\wijmo.angular2\ControlMetaFactory.ts</PreBuildEvent>
   </PropertyGroup>
   <ItemGroup>
-    <Content Include="scripts\vendor\wijmo.min.js" />
-    <Content Include="scripts\vendor\wijmo.odata.min.js" />
-    <Content Include="scripts\vendor\wijmo.input.min.js" />
-    <Content Include="scripts\vendor\wijmo.grid.min.js" />
-    <Content Include="scripts\vendor\wijmo.grid.filter.min.js" />
-    <Content Include="scripts\vendor\wijmo.grid.grouppanel.min.js" />
-    <Content Include="scripts\vendor\wijmo.grid.detail.min.js" />
-    <Content Include="scripts\vendor\wijmo.grid.xlsx.min.js" />
-    <Content Include="scripts\vendor\wijmo.chart.min.js" />
-    <Content Include="scripts\vendor\wijmo.chart.analytics.min.js" />
-    <Content Include="scripts\vendor\wijmo.chart.annotation.min.js" />
-    <Content Include="scripts\vendor\wijmo.chart.interaction.min.js" />
-    <Content Include="scripts\vendor\wijmo.chart.animation.min.js" />
-    <Content Include="scripts\vendor\wijmo.gauge.min.js" />
-    <Content Include="scripts\vendor\wijmo.xlsx.min.js" />
-    <Content Include="scripts\vendor\wijmo.pdf.min.js" />
-    <Content Include="scripts\vendor\wijmo.grid.pdf.min.js" />
-    <Content Include="scripts\vendor\wijmo.angular2.min.js" />
     <Content Include="styles\vendor\wijmo.min.css" />
   </ItemGroup>
 </Project>

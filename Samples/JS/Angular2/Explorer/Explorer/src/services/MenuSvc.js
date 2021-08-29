@@ -38,6 +38,7 @@ var MenuSvc = (function () {
                     { "text": "ComboBox", "url": "/input/combo", "alias": "InputCombo" },
                     { "text": "AutoComplete", "url": "/input/autocomplete", "alias": "InputAutoComplete" },
                     { "text": "MultiSelect", "url": "/input/multiselect", "alias": "InputMultiSelect" },
+                    { "text": "MultiAutoSelect", "url": "/input/multiautoselect", "alias": "InputMultiAutoSelect" },
                     { "text": "Menu", "url": "/input/menu", "alias": "InputMenu" },
                     { "text": "Date, Time", "url": "/input/datetime", "alias": "InputDateTime" },
                     { "text": "Numbers", "url": "/input/number", "alias": "InputNumber" },

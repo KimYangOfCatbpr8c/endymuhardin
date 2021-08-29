@@ -67,6 +67,8 @@
     
     
     <Content Include="default.htm" />
+    <Content Include="partials\boxwhisker.htm" />
+    <Content Include="partials\errorbar.htm" />
     <Content Include="partials\waterfall.htm" />
     <Content Include="partials\yfunctionseries.htm" />
     <Content Include="partials\movingaverage.htm" />
@@ -75,6 +77,8 @@
     <Content Include="readme.txt" />
     <Content Include="resources\wijmo5.png" />
     <Content Include="scripts\app.js" />
+    <Content Include="scripts\controllers\boxwhiskerCtrl.js" />
+    <Content Include="scripts\controllers\errorbarCtrl.js" />
     <Content Include="scripts\controllers\functionseriesCtrl.js" />
     <Content Include="scripts\controllers\movingaverageCtrl.js" />
     <Content Include="scripts\controllers\navigationCtrl.js" />

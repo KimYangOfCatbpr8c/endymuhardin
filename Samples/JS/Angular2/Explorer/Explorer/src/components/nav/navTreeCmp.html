@@ -1,0 +1,26 @@
+﻿<div>
+    <div class="copy">
+        <h3>
+            Navigation Trees
+        </h3>
+        <p>
+            The simplest and most common use for the TreeView control is navigation.
+            The TreeView's hierarchical structure and auto-search functionality make
+            it easy for users to drill-down and find the items they are interested in.</p>
+        <p>
+            You can navigate the tree using the mouse or the keyboard. To navigate 
+            with the mouse, click the node you want. To navigate with the keyboard,
+            use the arrow keys to select the node you want and press Enter to commit
+            the selection. Or type the node content to auto-search and press Enter to 
+            commit the selection.</p>
+    </div>
+    <div>
+        <wj-tree-view #tvNav
+                      [itemsSource]="items"
+                      [displayMemberPath]="'header'"
+                      [childItemsPath]="'items'"
+                      (itemClicked)="navTo(tvNav)">
+        </wj-tree-view>
+        <div id="tvNavItem">{{navItem}}</div>
+    </div>
+</div>

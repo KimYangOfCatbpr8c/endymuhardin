@@ -1,0 +1,591 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Server端wijmo.olap简介</title>
+
+    <!-- Material Lite -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <link rel="stylesheet" href="https://code.getmdl.io/1.1.1/material.indigo-red.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en" />
+    <script defer src="https://code.getmdl.io/1.1.1/material.min.js"></script>
+
+    <!-- Syntax Highlighter -->
+    <!-- <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/styles/default.min.css"> -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/styles/github.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/highlight.min.js"></script>
+
+    <!-- jszip (required for xlsx export) -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+
+    <!-- Wijmo -->
+    <link rel="stylesheet" href="styles/vendor/wijmo.min.css" />
+    <link href="styles/vendor/wijmo.theme.material.min.css" rel="stylesheet" />
+    <script src="scripts/vendor/wijmo.min.js"></script>
+    <script src="scripts/vendor/wijmo.input.min.js"></script>
+    <script src="scripts/vendor/wijmo.grid.min.js"></script>
+    <script src="scripts/vendor/wijmo.grid.filter.min.js"></script>
+    <script src="scripts/vendor/wijmo.chart.min.js"></script>
+    <script src="scripts/vendor/wijmo.xlsx.min.js"></script>
+    <script src="scripts/vendor/wijmo.grid.xlsx.min.js"></script>
+    <script src="scripts/vendor/wijmo.odata.min.js"></script>
+    <script src="scripts/vendor/wijmo.olap.min.js"></script>
+
+    <!-- sample styles and scripts -->
+    <link rel="stylesheet" href="styles/app.css" />
+    <script src="scripts/app.js"></script>
+</head>
+
+<body>
+
+    <div class="mdl-layout mdl-js-layout">
+
+        <header class="mdl-layout__header mdl-layout__header--waterfall">
+            <div class="mdl-layout__header-row">
+                <img src="resources/wijmo5.png" alt="Wijmo 5" />
+                <span class="mdl-layout-title">
+                    Olap Server 101
+                </span>
+            </div>
+            <!--<div class="mdl-layout__header-row">
+                <p>
+                    Add Excel-style pivot tables and charts to your HTML applications.</p>
+            </div>-->
+        </header>
+
+        <main class="mdl-layout__content">
+            <div class="container">
+
+                <h3>
+                    介绍服务端wijmo.olap
+                </h3>
+                <p>
+                    <b>wijmo.olap</b>模块包含允许你添加类Excel的数据透视表和透视图的功能到你的JavaScript应用中的控件。
+                    按照下面的步骤，在你的应用中使用Wijmo.olap模块：
+                </p>
+                <ol>
+                    <li>
+                        向页面添加<b>wijmo</b>和<b>wijmo.olap</b>模块。
+                    </li>
+                    <li>
+                        向页面添加<b>PivotPanel</b>控件。
+                    </li>
+                    <li>
+                        向页面添加一个或者多个<b>PivotGrid</b>和<b>PivotChart</b>控件，
+                        并且通过设置它们的<b>itemsSource</b>属性为<b>PivotPanel</b>控件来将它们连接到<b>PivotPanel</b>。
+                    </li>
+                    <li>
+                        设置PivotPanel的<b>itemsSource</b>属性为一个包含你希望分析的原始数据的数组。
+                    </li>
+                    <li>
+                        （可选）添加代码以打印，导出，保存和加载视图，并查看定义
+                    </li>
+                </ol>
+                <p>
+                    在这样做时，一个包含可用字段的列表会出现在<b>PivotPanel</b>，用户可以在总计区域拖动这些字段来生成数据摘要（也被称为“视图”）。
+                    用户也可以通过设置它们的头部，摘要函数，过滤器，格式来配置这些字段。
+                </p>
+                <p>
+                    用户可以对数据进行分析并打印结果，导出为XLSX或者PDF格式，并保存视图的定义以备以后重用。
+                </p>
+                <p>
+                    这是一个简单的示例：
+                </p>
+
+                <h4>
+                    向当前页面添加一个PivotPanel和一个PivotGrid
+                </h4>
+                <p>
+                    <b>PivotPanel</b>控件与Excel中与数据透视表关联的的“字段列表”窗口相似。
+                </p>
+                <ol>
+                    <li>
+                        通过拖动或使用复选框向视图添加字段。
+                    </li>
+                    <li>
+                        通过将字段拖回顶部区域或使用它们的上下文菜单来从视图中移除字段。
+                    </li>
+                    <li>
+                        使用字段的上下文菜单配置字段。你可能会修改它们的头部，总计函数和格式。
+                        注意格式在对数据分组时使用，所以，你可以通过更改日期字段的格式对数据按日，月，季度或年分组
+                    </li>
+                </ol>
+
+                <p>
+                    <b>PivotGrid</b>控件扩展了<b>FlexGrid</b>控件以支持数据透视的功能，
+                    包括自定义单元格合并，分级的行组和列组以及一个自定义上下文菜单，允许用户配置数据透视字段，
+                    发掘用在指定的小计单元格计算的数据项。
+                </p>
+
+                <div class="mdl-grid" id="theView">
+                    <div class="mdl-cell mdl-cell--4-col">
+                        <div id="pivotPanel"></div>
+                    </div>
+                    <div class="mdl-cell mdl-cell--8-col">
+                        <div id="pivotGrid"></div>
+                    </div>
+                </div>
+                <div id="collapseButtons">
+                    将行/列折叠到级别：
+                    <button id="b0" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect">0</button>
+                    <button id="b1" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect">1</button>
+                    <button id="b2" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect">2</button>
+                </div>
+
+                <div class="source-card mdl-card mdl-shadow--2dp">
+                    <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+                        <div class="mdl-tabs__tab-bar">
+                            <a href="#html-1" class="mdl-tabs__tab">HTML</a>
+                            <a href="#js-1" class="mdl-tabs__tab">JS</a>
+                            <a href="#close-1" class="mdl-tabs__tab is-active">X</a>
+                        </div>
+                        <div class="mdl-tabs__panel" id="html-1">
+                            <code class="pane-content">
+&lt;div class="mdl-grid"&gt;
+&lt;div class="mdl-cell mdl-cell--4-col"&gt;
+&lt;div id="pivotPanel"&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="mdl-cell mdl-cell--8-col"&gt;
+&lt;div id="pivotGrid"&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+                            </code>
+                        </div>
+                        <div class="mdl-tabs__panel" id="js-1">
+                            <code class="pane-content">
+// create PivotPanel and PivotGrid
+var app = {};
+app.panel = new wijmo.olap.PivotPanel('#pivotPanel');
+app.pivotGrid = new wijmo.olap.PivotGrid('#pivotGrid', {
+    itemsSource: app.panel
+});
+
+// configure the PivotPanel's initial view
+var ng = app.panel.engine;
+ng.itemsSource = app.dataSets[0].value;
+ng.rowFields.push('Product', 'Country');
+ng.valueFields.push('Sales', 'Downloads');
+                            </code>
+                        </div>
+                        <div class="mdl-tabs__panel" id="close-1">
+                        </div>
+                    </div>
+                </div>
+
+                <p>
+                    使用<b>viewDefinition</b>属性保存或恢复视图定义。就像在下面的样例中那样：
+                </p>
+
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect"
+                        onclick="app.saveView()">
+                    Save View
+                </button>
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect"
+                        onclick="app.loadView()">
+                    Load View
+                </button>
+
+                <p></p>
+                <p>
+                    使用<b>viewDefinition</b>属性，你也可以组建一个预定义的列视图供用户选择，就像在下面的样例中那样：
+                </p>
+                <ul id="views"></ul>
+
+                <div class="source-card mdl-card mdl-shadow--2dp">
+                    <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+                        <div class="mdl-tabs__tab-bar">
+                            <a href="#html-2" class="mdl-tabs__tab">HTML</a>
+                            <a href="#js-2" class="mdl-tabs__tab">JS</a>
+                            <a href="#close-2" class="mdl-tabs__tab is-active">X</a>
+                        </div>
+                        <div class="mdl-tabs__panel" id="html-2">
+                            <code class="pane-content">
+&lt;button
+    class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect"
+    onclick="app.saveView()"&gt;
+    Save View
+&lt;/button&gt;
+&lt;button
+    class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect"
+    onclick="app.loadView()"&gt;
+    Load View
+&lt;/button&gt;
+
+&lt;ul id="views"&gt;
+                            </code>
+                        </div>
+                        <div class="mdl-tabs__panel" id="js-2">
+                            <code class="pane-content">
+// save/restore view definitions
+app.saveView = function () {
+    var ng = app.panel.engine;
+    if (ng.isViewDefined) {
+        localStorage.viewDefinition = ng.viewDefinition;
+    }
+}
+app.loadView = function () {
+    if (localStorage.viewDefinition) {
+        var ng = app.panel.engine;
+        ng.viewDefinition = localStorage.viewDefinition;
+    }
+}
+
+// populate list of pre-defined views
+var viewList = document.getElementById('views');
+for (var i = 0; i &lt; app.viewDefs.length; i++) {
+    var li = wijmo.createElement('&lt;li&gt;&lt;a href="" index="' + i + '"&gt;' + app.viewDefs[i].name + '&lt;/a&gt;&lt;/li&gt;');
+    viewList.appendChild(li);
+}
+
+// apply pre-defined views
+viewList.addEventListener('click', function (e) {
+    if (e.target.tagName == 'A') {
+        app.setProperty('data', app.dataSets[3].value);
+        var index = parseInt(e.target.getAttribute('index'));
+        ng.viewDefinition = app.viewDefs[index].def;
+        e.preventDefault();
+    }
+});
+                            </code>
+                        </div>
+                        <div class="mdl-tabs__panel" id="close-2">
+                        </div>
+                    </div>
+                </div>
+
+                <h4>
+                    配置PivotPanel属性
+                </h4>
+                <p>
+                    <b>PivotPanel</b>控件拥有允许你自定义视图的属性。使用下面的控件修改一些属性值，查看产生的影响：
+                </p>
+                <dl class="dl-horizontal">
+                    <dt>Dataset</dt>
+                    <dd><div id="cmbDataSets"></div></dd>
+                    <dt>Row totals</dt>
+                    <dd><div id="cmbRowTotals"></div></dd>
+                    <dt>Column totals</dt>
+                    <dd><div id="cmbColTotals"></div></dd>
+                    <dt>Show Zeros</dt>
+                    <dd><input id="chkShowZeros" type="checkbox" /></dd>
+                    <dt>Totals Before Data</dt>
+                    <dd><input id="chkTotalsBeforeData" type="checkbox" /></dd>
+                </dl>
+
+                <div class="source-card mdl-card mdl-shadow--2dp">
+                    <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+                        <div class="mdl-tabs__tab-bar">
+                            <a href="#html-3" class="mdl-tabs__tab">HTML</a>
+                            <a href="#js-3" class="mdl-tabs__tab">JS</a>
+                            <a href="#close-3" class="mdl-tabs__tab is-active">X</a>
+                        </div>
+                        <div class="mdl-tabs__panel" id="html-3">
+                            <code class="pane-content">
+&lt;dl class="dl-horizontal"&gt;
+    &lt;dt&gt;Dataset&lt;dt&gt;
+    &lt;dd&gt;&lt;div id="cmbDataSets"&gt;&lt;/div&gt;&lt;/dd&gt;
+
+    &lt;dt&gt;Row totals&lt;dt&gt;
+    &lt;dd&gt;&lt;div id="cmbRowTotals"&gt;&lt;/div&gt;&lt;/dd&gt;
+
+    &lt;dt&gt;Column totals&lt;dt&gt;
+    &lt;dd&gt;&lt;div id="cmbColTotals"&gt;&lt;/div&gt;&lt;/dd&gt;
+
+    &lt;dt&gt;Show Zeros&lt;/dt&gt;
+    &lt;dd&gt;&lt;input id="chkShowZeros" type="checkbox" /&gt;&lt;/dd&gt;
+
+    &lt;dt&gt;Totals Before Data&lt;/dt&gt;
+    &lt;dd&gt;&lt;input id="chkTotalsBeforeData" type="checkbox" /&gt;&lt;/dd&gt;
+&lt;/dl&gt;
+                            </code>
+                        </div>
+                        <div class="mdl-tabs__panel" id="js-3">
+                            <code class="pane-content">
+app.cmbDataSets = new wijmo.input.ComboBox('#cmbDataSets', {
+    itemsSource: app.dataSets,
+    displayMemberPath: 'name',
+    selectedValuePath: 'value',
+    selectedIndexChanged: function (s, e) {
+        app.setProperty('data', s.selectedValue);
+    }
+});
+app.cmbRowTotals = new wijmo.input.ComboBox('#cmbRowTotals', {
+    itemsSource: app.showTotals,
+    displayMemberPath: 'name',
+    selectedValuePath: 'value',
+    selectedIndexChanged: function (s, e) {
+        app.setProperty('showRowTotals', s.selectedValue);
+    }
+});
+app.cmbColTotals = new wijmo.input.ComboBox('#cmbColTotals', {
+    itemsSource: app.showTotals,
+    displayMemberPath: 'name',
+    selectedValuePath: 'value',
+    selectedIndexChanged: function (s, e) {
+        app.setProperty('showColTotals', s.selectedValue);
+    }
+});
+app.chkShowZeros = document.getElementById('chkShowZeros');
+app.chkShowZeros.addEventListener('click', function (e) {
+    app.setProperty('showZeros', app.chkShowZeros.checked);
+});
+app.chkTotalsBeforeData = document.getElementById('chkTotalsBeforeData');
+app.chkTotalsBeforeData.addEventListener('click', function (e) {
+    app.setProperty('totalsBeforeData', app.chkTotalsBeforeData.checked);
+});
+                            </code>
+                        </div>
+                        <div class="mdl-tabs__panel" id="close-3">
+                        </div>
+                    </div>
+                </div>
+
+                <h4>
+                    在PivotChart上显示结果
+                </h4>
+                <p>
+                    <b>PivotChart</b>控件提供了图形化的结果。
+                    与Excel的数据透视表类似，包括对多种图表类型和分级轴的支持。
+                </p>
+                <p>
+                    要使用<b>PivotChart</b>控件，使用<b>itemsSource</b>属性，将其与<b>PivotPanel</b>连接：
+                </p>
+
+                <div id="chartPanel">
+                    <dl class="dl-horizontal">
+                        <dt>Chart Type</dt>
+                        <dd><div id="cmbChartType"></div></dd>
+                    </dl>
+                    <div id="pivotChart"></div>
+                </div>
+                <div id="noChartPanel" style="display:none">
+                    <p>
+                        Please create a view in order to see the chart.
+                    </p>
+                </div>
+
+                <div class="source-card mdl-card mdl-shadow--2dp">
+                    <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+                        <div class="mdl-tabs__tab-bar">
+                            <a href="#html-c" class="mdl-tabs__tab">HTML</a>
+                            <a href="#js-c" class="mdl-tabs__tab">JS</a>
+                            <a href="#close-c" class="mdl-tabs__tab is-active">X</a>
+                        </div>
+                        <div class="mdl-tabs__panel" id="html-c">
+                            <code class="pane-content">
+&lt;dl class="dl-horizontal"&gt;
+    &lt;dt&gt;Chart Type&lt;/dt&gt;
+    &lt;dd&gt;&lt;div id="cmbChartType"&gt;&lt;/div&gt;&lt;/dd&gt;
+&lt;/dl&gt;
+&lt;div id="pivotChart"&gt;&lt;/div&gt;
+                            </code>
+                        </div>
+                        <div class="mdl-tabs__panel" id="js-c">
+                            <code class="pane-content">
+app.pivotChart = new wijmo.olap.PivotChart('#pivotChart', {
+    itemsSource: app.panel
+});
+app.cmbChartType = new wijmo.input.ComboBox('#cmbChartType', {
+    itemsSource: app.chartTypes,
+    displayMemberPath: 'name',
+    selectedValuePath: 'value',
+    selectedIndexChanged: function (s, e) {
+        app.pivotChart.chartType = s.selectedValue;
+    }
+});
+                            </code>
+                        </div>
+                        <div class="mdl-tabs__panel" id="close-c">
+                        </div>
+                    </div>
+                </div>
+
+                <h4>
+                    查看并且编辑源数据
+                </h4>
+                <p id="serverData">
+                    原始数据不可用，因为PivotEngine连接到服务器。
+                </p>
+                <div id="clientData">
+                    <p>
+                        数据透视表是实时的，如果你编辑<span id="itemCount">n</span>项目中的任意一个，数据透视表会自动更新。
+
+                        <span id="readOnlyData" class="text-info">
+                            (This grid is read-only because it is bound to a read-only data source.)
+                        </span>
+                    </p>
+                    <div id="rawGrid" style="border:none"></div>
+                </div>
+
+                <div class="source-card mdl-card mdl-shadow--2dp">
+                    <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+                        <div class="mdl-tabs__tab-bar">
+                            <a href="#html-4" class="mdl-tabs__tab">HTML</a>
+                            <a href="#js-4" class="mdl-tabs__tab">JS</a>
+                            <a href="#close-4" class="mdl-tabs__tab is-active">X</a>
+                        </div>
+                        <div class="mdl-tabs__panel" id="html-4">
+                            <code class="pane-content">
+&lt;div id="rawGrid" style="border:none"&gt;&lt;/div&gt;
+                            </code>
+                        </div>
+                        <div class="mdl-tabs__panel" id="js-4">
+                            <code class="pane-content">
+app.rawGrid = new wijmo.grid.FlexGrid('#rawGrid');
+app.rawGridFilter = new wijmo.grid.filter.FlexGridFilter(app.rawGrid);
+                            </code>
+                        </div>
+                        <div class="mdl-tabs__panel" id="close-4">
+                        </div>
+                    </div>
+                </div>
+
+                <h4>
+                    将结果导出为Excel
+                </h4>
+                <p>
+                    <b>PivotGrid</b>控件扩展了<b>FlexGrid</b>，因此你可以将它导出为<b>FlexGrid</b>提供的拓展模块支持的任意格式。
+                    支持的格式包括XLSLX, CSV和PDF。
+                </p>
+                <p>
+                    例如，下面的按钮创建了一个有三个sheet的Excel文件：当前视图，当前视图的转换版本和原始数据：
+                </p>
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect"
+                        onclick="app.export()">
+                    Export to XLSX
+                </button>
+
+                <div class="source-card mdl-card mdl-shadow--2dp">
+                    <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+                        <div class="mdl-tabs__tab-bar">
+                            <a href="#html-5" class="mdl-tabs__tab">HTML</a>
+                            <a href="#js-5" class="mdl-tabs__tab">JS</a>
+                            <a href="#close-5" class="mdl-tabs__tab is-active">X</a>
+                        </div>
+                        <div class="mdl-tabs__panel" id="html-5">
+                            <code class="pane-content">
+&lt;button
+    class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect"
+    onclick="app.export()"&gt;
+    Export to XLSX
+&lt;/button&gt;
+                            </code>
+                        </div>
+                        <div class="mdl-tabs__panel" id="js-5">
+                            <code class="pane-content">
+app.export = function () {
+
+    // create book with current view
+    var book = wijmo.grid.xlsx.FlexGridXlsxConverter.save(app.pivotGrid, {
+        includeColumnHeaders: true,
+        includeRowHeaders: true
+    });
+    book.sheets[0].name = 'Main View';
+
+    // add sheet with raw data
+    if (app.rawGrid.rows.length &lt; 20000) {
+        var raw = wijmo.grid.xlsx.FlexGridXlsxConverter.save(app.rawGrid, {
+            includeColumnHeaders: true,
+            includeRowHeaders: false
+        });
+        raw.sheets[0].name = 'Raw Data';
+        book.sheets.push(raw.sheets[0]);
+    }
+
+    // save book
+    book.save('wijmo.olap.xlsx');
+}
+                            </code>
+                        </div>
+                        <div class="mdl-tabs__panel" id="close-5">
+                        </div>
+                    </div>
+                </div>
+
+                <h4>
+                    自定义PivotGrid单元格
+                </h4>
+                <p>
+                    <b>PivotGrid</b>控件扩展了<b>FlexGrid</b>控件，
+                    所以你可以使用<b>formatItem</b>事件来自定义网格单元格的显示并且完全灵活地修改每个单元格的内容。
+                </p>
+                <p>
+                    例如，下面的<b>PivotGrid</b>使用了与微软Excel图标集相同的颜色和图标来显示销量在季度间的变化：
+                </p>
+
+                <div id="formattedGrid" style="border:none">
+                </div>
+
+                <div class="source-card mdl-card mdl-shadow--2dp">
+                    <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+                        <div class="mdl-tabs__tab-bar">
+                            <a href="#html-6" class="mdl-tabs__tab">HTML</a>
+                            <a href="#js-6" class="mdl-tabs__tab">JS</a>
+                            <a href="#close-6" class="mdl-tabs__tab is-active">X</a>
+                        </div>
+                        <div class="mdl-tabs__panel" id="html-6">
+                            <code class="pane-content">
+&lt;div id="formattedGrid" style="border:none"&gt;
+&lt;/div&gt;
+                            </code>
+                        </div>
+                        <div class="mdl-tabs__panel" id="js-6">
+                            <code class="pane-content">
+// create a PivotEngine with a custom view
+var ngFmt = new wijmo.olap.PivotEngine({
+    autoGenerateFields: false,
+    itemsSource: getSimpleDataSet(10000),
+    showColumnTotals: wijmo.olap.ShowTotals.GrandTotals,
+    showRowTotals: wijmo.olap.ShowTotals.None,
+    fields: [
+        { binding: 'product', header: 'Product' },
+        { binding: 'date', header: 'Date', format: 'yyyy \"Q\"q' },
+        { binding: 'sales', header: 'Sales', format: 'n0' },
+        { binding: 'sales', header: 'Diff', format: 'p0', showAs: wijmo.olap.ShowAs.DiffRowPct }
+    ]
+});
+ngFmt.rowFields.push('Date');
+ngFmt.columnFields.push('Product');
+ngFmt.valueFields.push('Sales', 'Diff');
+
+// create a PivotGrid to show the custom view
+app.formattedGrid = new wijmo.olap.PivotGrid('#formattedGrid', {
+    itemsSource: ngFmt,
+    formatItem: function (s, e) {
+        if (e.panel == s.cells && e.col % 2 == 1) {
+            var value = s.getCellData(e.row, e.col),
+            color = '#d8b400',
+            glyph = 'circle';
+            if (value != null) {
+                if (value &lt; 0) { // negative variation
+                    color = '#9f0000';
+                    glyph = 'down';
+                } else if (value &gt; 0.05) { // positive variation
+                    color = '#4c8f00';
+                    glyph = 'down';
+                }
+                e.cell.style.color = color;
+                e.cell.innerHTML += ' &lt;span style="font-size:120%" class="wj-glyph-' + glyph + '"&gt;&lt;/span&gt;';
+            }
+        }
+    }
+});
+                            </code>
+                        </div>
+                        <div class="mdl-tabs__panel" id="close-6">
+                        </div>
+                    </div>
+                </div>
+
+                <p>
+                    注意，在样例中，我们只有一个预定义的视图，不需要<b>PivotPanel</b>。
+                    相反，代码直接创建了一个<b>PivotEngine</b>并且将它作为网格的<b>itemsSource</b>。
+                </p>
+            </div>
+        </main>
+    </div>
+    <script src="scripts/wijmo.sample.toolbar.js" type="text/javascript"></script>
+</body>
+</html>

@@ -86,7 +86,7 @@ console.log(wijmo.Globalize.format(d, '"FY"EEEE"Q"U') + ' (US culture)');
 <a href="http://msdn.microsoft.com/en-us/library/dwhawy9k(v=vs.110).aspx">
 Standard Numeric Format Strings</a>, except for the 'e' and 'x' formats
 (scientific notation and hexadecimal) which are not supported.</p>
-<p>Numeric format strings takes the form <i>Axxccss</i>, where:
+<p>Numeric format strings take the form <i>Axxccss</i>, where:
 <ul>
 <li>
  <i>A</i> is a single case-insensitive alphabetic character called the 
@@ -164,7 +164,24 @@ in millions and GDP in trillions:</p>
 <div id="parseDate" class="member-panel mmethod">
 <h3><span class="badge">Static</span> parseDate</h3>
 <pre>parseDate(value: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank"><span class="identifier">string</span></a>, format: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank"><span class="identifier">string</span></a>): <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Date" target="_blank"><span class="identifier">Date</span></a></pre>
-<div class="comment"><p>Parses a string into a Date.</p></div>
+<div class="comment"><p>Parses a string into a Date.</p>
+<p>Two-digit years are converted to full years based on the value of the
+calendar's <b>twoDigitYearMax</b> property. By default, this is set to
+2029, meaning two-digit values of 30 to 99 are parsed as 19**, and values
+from zero to 29 are parsed as 20**.</p>
+<p>You can change this threshold by assigning a new value to the calendar.
+For example:</p>
+
+
+<pre>// get calendar
+var cal = wijmo.culture.Globalize.calendar;
+
+// default threshold is 2029, so "30" is parsed as 1930
+cal.twoDigitYearMax = 2029;
+var d1 = wijmo.Globalize.parseDate('30/12', 'yy/MM'); // dec 1930
+// changing threshold to 2100, so all values are parsed as 20**
+cal.twoDigitYearMax = 2100;
+var d2 = wijmo.Globalize.parseDate('30/12', 'yy/MM'); // dec 2030</pre></div>
 <dl class="dl-horizontal">
   <dt>Parameters</dt><dd></dd>
 </dl>

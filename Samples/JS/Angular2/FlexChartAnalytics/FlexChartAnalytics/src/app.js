@@ -14,34 +14,31 @@ var wijmo_angular2_input_1 = require('wijmo/wijmo.angular2.input');
 // Services
 //import { MenuSvc } from './services/MenuSvc';
 var DataSvc_1 = require('./services/DataSvc');
-var FlexChartAnalytics;
-(function (FlexChartAnalytics) {
-    'use strict';
-    // The FlexChartAnalytics application root component.
-    var AppCmp = (function () {
-        function AppCmp() {
-            // Used to show navigation links and section headers in markup.
-            this.routTree = app_routing_1.routeTree;
-        }
-        AppCmp = __decorate([
-            core_1.Component({
-                selector: 'app-cmp',
-                templateUrl: 'src/app.html'
-            })
-        ], AppCmp);
-        return AppCmp;
-    }());
-    FlexChartAnalytics.AppCmp = AppCmp;
-})(FlexChartAnalytics = exports.FlexChartAnalytics || (exports.FlexChartAnalytics = {}));
+'use strict';
+// The FlexChartAnalytics application root component.
+var AppCmp = (function () {
+    function AppCmp() {
+        // Used to show navigation links and section headers in markup.
+        this.routTree = app_routing_1.routeTree;
+    }
+    AppCmp = __decorate([
+        core_1.Component({
+            selector: 'app-cmp',
+            templateUrl: 'src/app.html'
+        })
+    ], AppCmp);
+    return AppCmp;
+}());
+exports.AppCmp = AppCmp;
 var AppModule = (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         core_1.NgModule({
             imports: [platform_browser_1.BrowserModule, app_routing_1.routing, wijmo_angular2_input_1.WjInputModule],
-            declarations: [FlexChartAnalytics.AppCmp],
+            declarations: [AppCmp],
             providers: [DataSvc_1.DataSvc],
-            bootstrap: [FlexChartAnalytics.AppCmp]
+            bootstrap: [AppCmp]
         })
     ], AppModule);
     return AppModule;

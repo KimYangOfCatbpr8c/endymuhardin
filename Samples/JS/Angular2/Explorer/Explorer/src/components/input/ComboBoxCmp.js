@@ -29,8 +29,6 @@ var ComboBoxCmp = (function (_super) {
         this.country1 = '';
         this.country2 = 'Algeria';
         this.country3 = '';
-        this.item1 = '';
-        this.item2 = '';
     }
     ComboBoxCmp = __decorate([
         core_1.Component({

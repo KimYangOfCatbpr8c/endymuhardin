@@ -40,7 +40,7 @@
      */
     this.getSampleByName = function (params) {
         for (var i = 0; i < samples.length; i++) {
-            if (samples[i].DirTitle === params['name']) {
+            if (samples[i].DirTitle.toLowerCase() === params['name'].toLowerCase()) {
                 params['success'](samples[i]);
                 return;
             }

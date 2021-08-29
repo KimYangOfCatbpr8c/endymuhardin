@@ -1,4 +1,3 @@
-///<reference path="../typings/globals/core-js/index.d.ts"/>
 "use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -9,6 +8,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
+///<reference path="../typings/globals/core-js/index.d.ts"/>
+var wjcCore = require('wijmo/wijmo');
 // Angular
 var core_1 = require('@angular/core');
 var platform_browser_dynamic_1 = require('@angular/platform-browser-dynamic');
@@ -22,9 +23,9 @@ var DataSvc_1 = require('./services/DataSvc');
 var AppCmp = (function () {
     function AppCmp(dataSvc) {
         this.dataSvc = dataSvc;
-        this.data = new wijmo.collections.CollectionView(this.dataSvc.getData());
-        this.data.groupDescriptions.push(new wijmo.collections.PropertyGroupDescription('name'));
-        this.data.groupDescriptions.push(new wijmo.collections.PropertyGroupDescription('checked'));
+        this.data = new wjcCore.CollectionView(this.dataSvc.getData());
+        this.data.groupDescriptions.push(new wjcCore.PropertyGroupDescription('name'));
+        this.data.groupDescriptions.push(new wjcCore.PropertyGroupDescription('checked'));
     }
     __decorate([
         core_1.ViewChild('flex')

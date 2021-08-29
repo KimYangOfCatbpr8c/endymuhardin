@@ -1,0 +1,69 @@
+﻿<div>
+    <h2>FlexChart {{title}}</h2>
+
+    <p>
+        This view shows {{title}} in FlexChart.
+    </p>
+    <p>
+        The {{title}} series helps you see margins of error and standard deviations at a glance.
+    </p>
+    <!-- Settings -->
+    <div class="panel-group" id="settings">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <ul class="list-inline">
+                    <li>
+                        <wj-menu [(value)]="chartType" header="Chart Type" text="chartType">
+                            <wj-menu-item value="Column">Column</wj-menu-item>
+                            <wj-menu-item value="Bar">Bar</wj-menu-item>
+                            <wj-menu-item value="Scatter">Scatter</wj-menu-item>
+                            <wj-menu-item value="Line">Line</wj-menu-item>
+                            <wj-menu-item value="LineSymbols">LineSymbols</wj-menu-item>
+                            <wj-menu-item value="Area">Area</wj-menu-item>
+                            <wj-menu-item value="Spline">Spline</wj-menu-item>
+                            <wj-menu-item value="SplineSymbols">SplineSymbols</wj-menu-item>
+                            <wj-menu-item value="SplineArea">SplineArea</wj-menu-item>
+                        </wj-menu>
+                    </li>
+                    <li>
+                        <wj-menu #eaMenu [(value)]="errorAmount" header="ErrorAmount" text="errorAmount" (itemClicked)="errorAmountChanged(eaMenu)">
+                            <wj-menu-item value="FixedValue">FixedValue</wj-menu-item>
+                            <wj-menu-item value="Percentage">Percentage</wj-menu-item>
+                            <wj-menu-item value="StandardDeviation">StandardDeviation</wj-menu-item>
+                            <wj-menu-item value="StandardError">StandardError</wj-menu-item>
+                            <wj-menu-item value="Custom">Custom</wj-menu-item>
+                        </wj-menu>
+                    </li>
+                    <li>
+                        <wj-menu [(value)]="endStyle" header="EndStyle" text="endStyle">
+                            <wj-menu-item value="Cap">Cap</wj-menu-item>
+                            <wj-menu-item value="NoCap">NoCap</wj-menu-item>
+                        </wj-menu>
+                    </li>
+                    <li>
+                        <wj-menu [(value)]="direction" header="Direction" text="direction">
+                            <wj-menu-item value="Both">Both</wj-menu-item>
+                            <wj-menu-item value="Minus">Minus</wj-menu-item>
+                            <wj-menu-item value="Plus">Plus</wj-menu-item>
+                        </wj-menu>
+                    </li>
+                    <li>
+                        <label for="checkboxRotated">Rotated:</label>
+                        <input type="checkbox" id="checkboxRotated" [(ngModel)]="rotated" />
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div>
+        <wj-flex-chart #errorbarChart [itemsSource]="itemsSource" bindingX="country" [chartType]="chartType" [rotated]="rotated">
+            <wj-flex-chart-error-bar #errorbar binding="downloads" name="downloads"
+                                     [value]="value"
+                                     [errorAmount]="errorAmount"
+                                     [endStyle]="endStyle"
+                                     [direction]="direction">
+            </wj-flex-chart-error-bar>
+        </wj-flex-chart>
+    </div>
+
+</div>

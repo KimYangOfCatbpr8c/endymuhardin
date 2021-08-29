@@ -1,18 +1,18 @@
 ﻿/*
     *
-    * Wijmo Library 5.20162.211
+    * Wijmo Library 5.20171.282
     * http://wijmo.com/
     *
     * Copyright(c) GrapeCity, Inc.  All rights reserved.
     *
     * Licensed under the Wijmo Commercial License.
     * sales@wijmo.com
-    * http://wijmo.com/products/wijmo-5/license/
+    * wijmo.com/products/wijmo-5/license/
     *
     */
 /*
-* Wijmo culture file: el (Greek)
-*/
+ * Wijmo culture file: el (Greek)
+ */
 var wijmo;
 (function (wijmo) {
     wijmo.culture = {
@@ -51,7 +51,7 @@ var wijmo;
             itemsSelected: '{count:n0} αντικείμενα που επιλέγονται'
         },
         FlexGrid: {
-            groupHeaderFormat: '{name}: <b>{value} </b>({count:n0} στοιχεία)'
+            groupHeaderFormat: '{name}: <b>{value}</b> ({count:n0} στοιχεία)'
         },
         FlexGridFilter: {
             // filter
@@ -68,7 +68,7 @@ var wijmo;
             // condition filter
             header: 'Εμφάνιση στοιχείων όπου η τιμή',
             and: 'Και',
-            or: 'Ή',
+            or: 'ή',
             stringOperators: [
                 { name: '(δεν έχει οριστεί)', op: null },
                 { name: 'Ισούται με', op: 0 },
@@ -101,104 +101,237 @@ var wijmo;
         },
         olap: {
             PivotFieldEditor: {
-                dialogHeader: 'Field settings:',
-                header: 'Header:',
-                summary: 'Summary:',
-                showAs: 'Show As:',
-                weighBy: 'Weigh by:',
-                sort: 'Sort:',
-                filter: 'Filter:',
-                format: 'Format:',
-                sample: 'Sample:',
-                edit: 'Edit...',
-                clear: 'Clear',
-                ok: 'OK',
-                cancel: 'Cancel',
-                none: '(none)',
+                dialogHeader: 'Ρυθμίσεις πεδίου:',
+                header: 'Κεφαλ.:',
+                summary: 'Περίληψη:',
+                showAs: 'Εμφάνιση ως:',
+                weighBy: 'Ζυγίζουν από:',
+                sort: 'Ταξινόμηση:',
+                filter: 'Φιλτράρισμα:',
+                format: 'Μορφή:',
+                sample: 'Δείγμα:',
+                edit: 'Επεξεργαστείτε…',
+                clear: 'Απαλοιφή',
+                ok: 'ΟΚ',
+                cancel: 'Άκυρο',
+                none: '(καμία)',
                 sorts: {
-                    asc: 'Ascending',
-                    desc: 'Descending'
+                    asc: 'Αύξουσα',
+                    desc: 'Φθίνουσα'
                 },
                 aggs: {
-                    sum: 'Sum',
-                    cnt: 'Count',
-                    avg: 'Average',
-                    max: 'Max',
-                    min: 'Min',
-                    rng: 'Range',
-                    std: 'StdDev',
-                    var: 'Var',
+                    sum: 'Άθροισμα',
+                    cnt: 'Πλήθος',
+                    avg: 'Μέσος όρος',
+                    max: 'Μέγιστη',
+                    min: 'Ελάχιστο',
+                    rng: 'Περιοχή',
+                    std: 'Τυπική απόκλιση',
+                    var: 'Διακύμανσης',
                     stdp: 'StdDevPop',
                     varp: 'VarPop'
                 },
                 calcs: {
-                    noCalc: 'No Calculation',
-                    dRow: 'Difference from previous row',
-                    dRowPct: '% Difference from previous row',
-                    dCol: 'Difference from previous column',
-                    dColPct: '% Difference from previous column'
+                    noCalc: 'Χωρίς υπολογισμό',
+                    dRow: 'Διαφορά από την προηγούμενη γραμμή',
+                    dRowPct: '% Διαφορά από προηγούμενη γραμμή',
+                    dCol: 'Διαφορά από την προηγούμενη στήλη',
+                    dColPct: '% Διαφορά από την προηγούμενη στήλη',
+                    dPctGrand: '% του γενικού αθροίσματος',
+                    dPctRow: '% της γραμμής συνολικού',
+                    dPctCol: '% σύνολο της στήλης',
+                    dRunTot: 'Τρέχον σύνολο',
+                    dRunTotPct: 'λειτουργία της συνολικής'
                 },
                 formats: {
-                    n0: 'Integer (n0)',
-                    n2: 'Float (n2)',
-                    c: 'Currency (c)',
-                    p0: 'Percentage (p0)',
-                    p2: 'Percentage (p2)',
-                    n2c: 'Thousands (n2,)',
-                    n2cc: 'Millions (n2,,)',
-                    n2ccc: 'Billions (n2,,,)',
-                    d: 'Date (d)',
-                    MMMMddyyyy: 'Month Day Year (MMMM dd, yyyy)',
-                    dMyy: 'Day Month Year (d/M/yy)',
-                    ddMyy: 'Day Month Year (dd/M/yy)',
-                    dMyyyy: 'Day Month Year (dd/M/yyyy)',
-                    MMMyyyy: 'Month Year (MMM yyyy)',
-                    MMMMyyyy: 'Month Year (MMMM yyyy)',
-                    yyyyQq: 'Year Quarter (yyyy "Q"q)',
-                    FYEEEEQU: 'Fiscal Year Quarter ("FY"EEEE "Q"U)'
+                    n0: 'Ακέραιος (n0)',
+                    n2: 'Αριθμός (n2)',
+                    c: 'Νόμισμα (c)',
+                    p0: 'Ποσοστό (p0)',
+                    p2: 'Ποσοστό (p2)',
+                    n2c: 'Χιλιάδες (n2,)',
+                    n2cc: 'Εκατομμύρια (n2,,)',
+                    n2ccc: 'Δισεκατομμύρια (n2,,,)',
+                    d: '(Δ) ημερομηνία',
+                    MMMMddyyyy: 'Ημέρα μήνας έτος (ΜΜΜΜ dd, yyyy)',
+                    dMyy: 'Ημέρα μήνας έτος (d/M/yy)',
+                    ddMyy: 'Ημέρα μήνας έτος (M/dd/yy)',
+                    dMyyyy: 'Ημέρα μήνας έτος (dd/Μ/yyyy)',
+                    MMMyyyy: 'Μήνας έτος (ΜΜΜ yyyy)',
+                    MMMMyyyy: 'Μήνας έτος (ΜΜΜΜ yyyy)',
+                    yyyyQq: 'Τέταρτο έτος (yyyy "Q"q)',
+                    FYEEEEQU: 'Τρίμηνο του οικονομικού έτους ("FY"EEEE "Q"U)'
                 }
             },
             PivotEngine: {
-                grandTotal: 'Grand Total',
-                subTotal: 'Subtotal'
+                grandTotal: 'Τελικό σύνολο',
+                subTotal: 'Μερικό άθροισμα'
             },
             PivotPanel: {
-                fields: 'Choose fields to add to report',
-                drag: 'Drag fields between areas below:',
-                filters: 'Filters',
-                cols: 'Columns',
-                rows: 'Rows',
-                vals: 'Values',
-                defer: 'Defer Updates',
-                update: 'Update'
+                fields: 'Επιλέξτε τα πεδία για να προσθέσω στην έκθεση:',
+                drag: 'Σύρετε τα πεδία μεταξύ των παρακάτω περιοχών:',
+                filters: 'Φίλτρα',
+                cols: 'Στήλες',
+                rows: 'σειρές',
+                vals: 'Τιμές',
+                defer: 'Αναβάλει ενημερώσεις',
+                update: 'Ενημέρωση'
             },
             _ListContextMenu: {
-                up: 'Move Up',
-                down: 'Move Down',
-                first: 'Move do Beginning',
-                last: 'Move to End',
-                filter: 'Move to Report Filter',
-                rows: 'Move to Row Labels',
-                cols: 'Move to Column Labels',
-                vals: 'Move to Values',
-                remove: 'Remove Field',
-                edit: 'Field Settings...',
-                detail: 'Show Detail...'
+                up: 'Μετακίνηση επάνω',
+                down: 'Μετακίνηση κάτω',
+                first: 'Μετακίνηση στην αρχή',
+                last: 'Μετακίνηση στο τέλος',
+                filter: 'Μετακίνηση στο φίλτρο αναφοράς',
+                rows: 'Μετακίνηση στις ετικέτες γραμμών',
+                cols: 'Μετακίνηση στις ετικέτες στηλών',
+                vals: 'Μετακίνηση στις τιμές',
+                remove: 'Κατάργηση πεδίου',
+                edit: 'Ρυθμίσεις πεδίου…',
+                detail: 'Εμφάνιση λεπτομερειών…'
             },
             PivotChart: {
-                by: 'by',
-                and: 'and'
+                by: 'κατά',
+                and: 'των Windows 10 και τη'
             },
             DetailDialog: {
-                header: 'Detail View:',
-                ok: 'OK',
-                items: '{cnt:n0} items',
-                item: '{cnt} item',
-                row: 'Row',
-                col: 'Column'
+                header: 'Προβολή λεπτομερειών:',
+                ok: 'ΟΚ',
+                items: 'στοιχεία {cnt:n0}',
+                item: 'το στοιχείο {cnt}',
+                row: 'Γραμμή',
+                col: 'Στήλη'
             }
+        },
+        Viewer: {
+            cancel: 'Άκυρο',
+            ok: 'ΟΚ',
+            bottom: 'Κάτω:',
+            top: 'Top:',
+            right: 'Δεξί:',
+            left: 'Αριστ.:',
+            margins: 'Περιθώρια (ίντσες)',
+            orientation: 'Προσανατολισμός:',
+            paperKind: 'Το είδος χαρτιού:',
+            pageSetup: 'Διαμόρφωση σελίδας',
+            landscape: 'Οριζόντιος',
+            portrait: 'Κατακόρυφος',
+            pageNumber: 'Αριθμός σελίδας',
+            zoomFactor: 'Παράγοντας κλίμακας',
+            paginated: 'Διάταξη εκτύπωσης',
+            print: 'Εκτύπωση',
+            search: 'Αναζήτηση',
+            matchCase: 'Ταίριασμα πεζών/κεφαλαίων',
+            wholeWord: 'Μόνο ολόκληρες λέξεις',
+            searchResults: 'Αποτελέσματα αναζήτησης',
+            previousPage: 'Προηγούμενη σελίδα',
+            nextPage: 'Επόμενη σελίδα',
+            firstPage: 'Πρώτη σελίδα',
+            lastPage: 'Τελευταία σελίδα',
+            backwardHistory: 'Πίσω',
+            forwardHistory: 'Εμπρός',
+            pageCount: 'Πλήθος σελίδων',
+            selectTool: 'Επιλέξτε το εργαλείο',
+            moveTool: 'Εργαλείο μετακίνησης',
+            continuousMode: 'Συνεχής Προβολή σελίδας',
+            singleMode: 'Ενιαία σελίδα Προβολή',
+            wholePage: 'Ολόκληρη σελίδα Fit',
+            pageWidth: 'Ταιριάζουν με το πλάτος της σελίδας',
+            zoomOut: 'Σμίκρυνση',
+            zoomIn: 'Μεγέθυνση',
+            exports: 'Εξαγωγή',
+            fullScreen: 'Πλήρης οθόνη',
+            exitFullScreen: 'Έξοδος από πλήρη οθόνη',
+            hamburgerMenu: 'Εργαλεία',
+            showSearchBar: 'Εμφάνιση γραμμής αναζήτησης',
+            viewMenu: 'Επιλογές διάταξης',
+            searchOptions: 'Επιλογές αναζήτησης',
+            matchCaseMenuItem: 'Ταίριασμα Πεζών-Κεφαλαίων',
+            wholeWordMenuItem: 'Ταίριασμα ολόκληρης λέξης',
+            thumbnails: 'Μικρογραφίες σελίδων',
+            outlines: 'Χάρτης εγγράφου',
+            loading: 'Φόρτωση…',
+            pdfExportName: 'Adobe PDF',
+            docxExportName: 'Open XML του Word',
+            xlsxExportName: 'Open XML Excel',
+            docExportName: 'Microsoft Word',
+            xlsExportName: 'Microsoft Excel',
+            mhtmlExportName: 'Αρχειοθέτηση Web (MHTML)',
+            htmlExportName: 'Έγγραφο HTML',
+            rtfExportName: 'Έγγραφο RTF',
+            metafileExportName: 'Μετα-συμπιεσμένα αρχεία',
+            csvExportName: 'CSV',
+            tiffExportName: 'Εικόνες του TIFF',
+            bmpExportName: 'Εικόνες BMP',
+            emfExportName: 'Εμπλουτισμένο μετα-αρχείο',
+            gifExportName: 'Εικόνες GIF',
+            jpgExportName: 'Εικόνες JPEG',
+            jpegExportName: 'Εικόνες JPEG',
+            pngExportName: 'Εικόνες PNG',
+            abstractMethodException: 'Αυτή είναι μια αφηρημένη μέθοδο, παρακαλούμε να εφαρμόσει.',
+            cannotRenderPageNoViewPage: 'Δεν μπορεί να αποδώσει χωρίς έγγραφο προέλευσης και προβολή σελίδας.',
+            cannotRenderPageNoDoc: 'Δεν μπορεί να αποδώσει χωρίς έγγραφο προέλευσης και προβολή σελίδας.',
+            exportFormat: 'Μορφή εξαγωγής:',
+            exportOptionTitle: 'Επιλογές εξαγωγής',
+            documentRestrictionsGroup: 'Έγγραφο περιορισμοί',
+            passwordSecurityGroup: 'Ασφάλεια κωδικού πρόσβασης',
+            outputRangeGroup: 'Περιοχή εξόδου',
+            documentInfoGroup: 'Πληροφορίες εγγράφου',
+            generalGroup: 'Γενικά',
+            docInfoTitle: 'Title',
+            docInfoAuthor: 'Συντάκτης',
+            docInfoManager: 'Διευθυντής',
+            docInfoOperator: 'Τελεστής',
+            docInfoCompany: 'Εταιρεία',
+            docInfoSubject: 'Θέμα',
+            docInfoComment: 'Σχόλιο',
+            docInfoCreator: 'Δημιουργός',
+            docInfoProducer: 'Παραγωγός',
+            docInfoCreationTime: 'Ώρα δημιουργίας',
+            docInfoRevisionTime: 'Χρόνου αναθεώρηση',
+            docInfoKeywords: 'Λέξεις-κλειδιά',
+            embedFonts: 'Ενσωμάτωση γραμματοσειρών TrueType',
+            pdfACompatible: 'Συμβατό με PDF/A (επίπεδο 2B)',
+            useCompression: 'Χρήση Συμπίεσης',
+            useOutlines: 'Δημιουργία περιγραμμάτων',
+            allowCopyContent: 'Επιτρέψτε περιεχόμενο αντιγραφή ή εξαγωγή',
+            allowEditAnnotations: 'Επιτρέπει την επεξεργασία σχολίου',
+            allowEditContent: 'Επιτρέπεται η επεξεργασία περιεχομένου',
+            allowPrint: 'Να επιτρέπεται η εκτύπωση',
+            ownerPassword: 'Κωδικός εγκρίσεων (κάτοχος):',
+            userPassword: 'Έγγραφο ανοιχτό (χρήστη) τον κωδικό πρόσβασης:',
+            encryptionType: 'Επίπεδο κρυπτογράφησης:',
+            paged: 'Σελιδοποιημένη',
+            showNavigator: 'Εμφάνιση πλοήγησης',
+            singleFile: 'Ενιαίο αρχείο',
+            tolerance: 'Ανοχή όταν ανιχνεύει τα όρια του κειμένου (μονάδες):',
+            pictureLayer: 'Χρήση ξεχωριστή εικόνα στρώμα',
+            metafileType: 'Τύπος μετα-αρχείο:',
+            monochrome: 'Μονόχρωμο',
+            resolution: 'Επίλυση:',
+            outputRange: 'Περιοχή σελίδων:',
+            outputRangeInverted: 'Ανεστραμμένη',
+            showZoomBar: 'Γραμμή ζουμ',
+            searchPrev: 'Αναζήτηση προηγούμενων',
+            searchNext: 'Κάνετε αναζήτηση στη συνέχεια',
+            checkMark: '\u2713',
+            exportOk: 'Εξαγωγή…',
+            parameters: 'parameters',
+            requiringParameters: 'Παρακαλώ παράμετροι εισόδου.',
+            nullParameterError: 'Η τιμή δεν πρέπει να είναι null.',
+            invalidParameterError: 'Η εισαγωγή δεν είναι έγκυρη.',
+            parameterNoneItemsSelected: '(καμία)',
+            parameterAllItemsSelected: '(όλα)',
+            parameterSelectAllItemText: '(Επιλογή όλων)',
+            selectParameterValue: '(επιλέξτε τιμή)',
+            apply: 'Εφαρμογή',
+            errorOccured: 'Παρουσιάστηκε σφάλμα.'
         }
     };
+    var updc = window['wijmo']._updateCulture;
+    if (updc) {
+        updc();
+    }
 })(wijmo || (wijmo = {}));
 ;
-//# sourceMappingURL=wijmo.culture.el.js.map
+

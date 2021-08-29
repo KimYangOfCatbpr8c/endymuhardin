@@ -4,21 +4,30 @@
 <dt>File</dt><dd class="filename">wijmo.angular2.js</dd>
 <dt>Module</dt><dd><span class="identifier">wijmo/wijmo.angular2.grid</span></dd>
 </dl>
-<div class="comment"><p>Contains Angular 2 components for the <b>wijmo.grid</b> module. </p>
+<div class="comment"><p>Contains Angular 2 components for the <b>wijmo.grid</b> module.</p>
 <p><b>wijmo.angular2.grid</b> is an external TypeScript module that can be imported to your code
 using its ambient module name. For example:</p>
 
 
-<pre>import * as wjGrid from 'wijmo/wijmo.angular2.grid';
-&nbsp;
-&#64;Component({
-    directives: [wjGrid.WjFlexGrid],
-    template: '&lt;wj-flex-grid [itemsSource]="data"&gt;&lt;/wj-flex-grid&gt;',
-    selector: 'my-cmp',
-})
-export class MyCmp {
-    data: any[];
-}</pre></div>
+<pre>&lt;p&gt;Here is a data bound FlexGrid control with four columns:&lt;/p&gt;
+&lt;wj-flex-grid [itemsSource]="data"&gt;
+  &lt;wj-flex-grid-column 
+    [header]="'Country'" 
+    [binding]="'country'"&gt;
+  &lt;/wj-flex-grid-column&gt;
+  &lt;wj-flex-grid-column 
+    [header]="'Sales'" 
+    [binding]="'sales'"&gt;
+  &lt;/wj-flex-grid-column&gt;
+  &lt;wj-flex-grid-column 
+    [header]="'Expenses'" 
+    [binding]="'expenses'"&gt;
+  &lt;/wj-flex-grid-column&gt;
+  &lt;wj-flex-grid-column 
+    [header]="'Downloads'" 
+    [binding]="'downloads'"&gt;
+  &lt;/wj-flex-grid-column&gt;
+&lt;/wj-flex-grid&gt;</pre></div>
 </div>
 <div class="member-panel module members">
 <h3 class="node">Classes</h3>

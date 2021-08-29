@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
@@ -13,6 +13,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
+var wjcCore = require('wijmo/wijmo');
+var wjcGrid = require('wijmo/wijmo.grid');
+'use strict';
 var core_1 = require('@angular/core');
 var common_1 = require('@angular/common');
 var router_1 = require('@angular/router');
@@ -32,15 +35,15 @@ var TooltipsCmp = (function (_super) {
             // store reference to grid
             var flex = this.flex;
             // create tooltip
-            var tip = new wijmo.Tooltip(), rng = null;
+            var tip = new wjcCore.Tooltip(), rng = null;
             // monitor the mouse over the grid
             flex.hostElement.addEventListener('mousemove', function (evt) {
                 var ht = flex.hitTest(evt);
                 if (!ht.range.equals(rng)) {
                     // new cell selected, show tooltip
-                    if (ht.cellType == wijmo.grid.CellType.Cell) {
+                    if (ht.cellType == wjcGrid.CellType.Cell) {
                         rng = ht.range;
-                        var cellElement = document.elementFromPoint(evt.clientX, evt.clientY), cellBounds = flex.getCellBoundingRect(ht.row, ht.col), data = wijmo.escapeHtml(flex.getCellData(rng.row, rng.col, true)), tipContent = 'cell (' + rng.row + ' ' + rng.col + ') contains "<b>' + data + '</b>"';
+                        var cellElement = document.elementFromPoint(evt.clientX, evt.clientY), cellBounds = flex.getCellBoundingRect(ht.row, ht.col), data = wjcCore.escapeHtml(flex.getCellData(rng.row, rng.col, true)), tipContent = 'cell (' + rng.row + ' ' + rng.col + ') contains "<b>' + data + '</b>"';
                         if (cellElement.className.indexOf('wj-cell') > -1) {
                             tip.show(flex.hostElement, tipContent, cellBounds);
                         }

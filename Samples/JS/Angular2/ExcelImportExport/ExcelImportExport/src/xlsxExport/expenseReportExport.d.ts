@@ -1,3 +1,2 @@
-declare module XlsxExport {
-    function exportExpenseReport(employees: any[]): wijmo.xlsx.IWorkbook;
-}
+import * as wjcXlsx from 'wijmo/wijmo.xlsx';
+export declare function exportExpenseReport(employees: any[]): wjcXlsx.IWorkbook;

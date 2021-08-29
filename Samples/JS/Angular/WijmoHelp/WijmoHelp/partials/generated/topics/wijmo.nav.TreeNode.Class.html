@@ -1,0 +1,278 @@
+<div class="header-panel member">
+<h2><span class="identifier">TreeNode</span> Class</h2>
+<dl class="dl-horizontal">
+<dt>File</dt><dd class="filename">wijmo.nav.js</dd>
+<dt>Module</dt><dd><a href="topic/wijmo.nav.Module.html"><span class="identifier">wijmo.nav</span></a></dd>
+</dl>
+<div class="comment"><p>Class that represents a node in a <a href="topic/wijmo.nav.TreeView.Class.html"><span class="identifier">TreeView</span></a>.</p></div>
+</div>
+<div class="member-panel class members" ng-class="{ 'show-inherited' : ctx.showInherited, 'show-raisers' : ctx.showRaisers }">
+<h3 class="node">Constructor</h3>
+<ul>
+<li class="mmethod"><a href="topic/wijmo.nav.TreeNode.Class.html/#constructor">constructor</a></li>
+</ul>
+<h3 class="node">Properties</h3>
+<ul>
+<li class="mproperty"><a href="topic/wijmo.nav.TreeNode.Class.html/#checkBox">checkBox</a></li>
+<li class="mproperty"><a href="topic/wijmo.nav.TreeNode.Class.html/#dataItem">dataItem</a></li>
+<li class="mproperty"><a href="topic/wijmo.nav.TreeNode.Class.html/#element">element</a></li>
+<li class="mproperty"><a href="topic/wijmo.nav.TreeNode.Class.html/#hasChildren">hasChildren</a></li>
+<li class="mproperty"><a href="topic/wijmo.nav.TreeNode.Class.html/#hasPendingChildren">hasPendingChildren</a></li>
+<li class="mproperty"><a href="topic/wijmo.nav.TreeNode.Class.html/#index">index</a></li>
+<li class="mproperty"><a href="topic/wijmo.nav.TreeNode.Class.html/#isChecked">isChecked</a></li>
+<li class="mproperty"><a href="topic/wijmo.nav.TreeNode.Class.html/#isCollapsed">isCollapsed</a></li>
+<li class="mproperty"><a href="topic/wijmo.nav.TreeNode.Class.html/#isDisabled">isDisabled</a></li>
+<li class="mproperty"><a href="topic/wijmo.nav.TreeNode.Class.html/#level">level</a></li>
+<li class="mproperty"><a href="topic/wijmo.nav.TreeNode.Class.html/#nodes">nodes</a></li>
+<li class="mproperty"><a href="topic/wijmo.nav.TreeNode.Class.html/#parentNode">parentNode</a></li>
+<li class="mproperty"><a href="topic/wijmo.nav.TreeNode.Class.html/#treeView">treeView</a></li>
+</ul>
+<h3 class="node">Methods</h3>
+<ul>
+<li class="mmethod"><a href="topic/wijmo.nav.TreeNode.Class.html/#ensureVisible">ensureVisible</a></li>
+<li class="mmethod"><a href="topic/wijmo.nav.TreeNode.Class.html/#equals">equals</a></li>
+<li class="mmethod"><a href="topic/wijmo.nav.TreeNode.Class.html/#move">move</a></li>
+<li class="mmethod"><a href="topic/wijmo.nav.TreeNode.Class.html/#next">next</a></li>
+<li class="mmethod"><a href="topic/wijmo.nav.TreeNode.Class.html/#nextSibling">nextSibling</a></li>
+<li class="mmethod"><a href="topic/wijmo.nav.TreeNode.Class.html/#previous">previous</a></li>
+<li class="mmethod"><a href="topic/wijmo.nav.TreeNode.Class.html/#previousSibling">previousSibling</a></li>
+<li class="mmethod"><a href="topic/wijmo.nav.TreeNode.Class.html/#select">select</a></li>
+<li class="mmethod"><a href="topic/wijmo.nav.TreeNode.Class.html/#setChecked">setChecked</a></li>
+<li class="mmethod"><a href="topic/wijmo.nav.TreeNode.Class.html/#setCollapsed">setCollapsed</a></li>
+</ul>
+</div>
+<h3>Constructor</h3>
+<div id="constructor" class="member-panel mmethod">
+<h3>constructor</h3>
+<pre>constructor(treeView: <a href="topic/wijmo.nav.TreeView.Class.html"><span class="identifier">TreeView</span></a>, nodeElement: <a href="https://developer.mozilla.org/en/docs/Web/API/HTMLElement" target="_blank"><span class="identifier">HTMLElement</span></a>): <a href="topic/wijmo.nav.TreeNode.Class.html"><span class="identifier">TreeNode</span></a></pre>
+<div class="comment"><p>Initializes a new instance of a <a href="topic/wijmo.nav.TreeNode.Class.html"><span class="identifier">TreeNode</span></a>.</p></div>
+<dl class="dl-horizontal">
+  <dt>Parameters</dt><dd></dd>
+</dl>
+<ul>
+<li><b>treeView</b>: <a href="topic/wijmo.nav.TreeView.Class.html"><span class="identifier">TreeView</span></a><br/><p><a href="topic/wijmo.nav.TreeView.Class.html"><span class="identifier">TreeView</span></a> that contains the node.</p></li><li><b>nodeElement</b>: <a href="https://developer.mozilla.org/en/docs/Web/API/HTMLElement" target="_blank"><span class="identifier">HTMLElement</span></a><br/><p>HTML element that represents the node on the <a href="topic/wijmo.nav.TreeView.Class.html"><span class="identifier">TreeView</span></a>.</p></li></ul>
+<dl class="dl-horizontal">
+  <dt>Returns</dt><dd><a href="topic/wijmo.nav.TreeNode.Class.html"><span class="identifier">TreeNode</span></a></dd>
+</dl>
+</div>
+<h3 class="node">Properties</h3>
+<div class="member-list" ng-class="{ 'show-inherited' : ctx.showInherited, 'show-raisers' : ctx.showRaisers }">
+<div id="checkBox" class="member-panel mproperty">
+<h3>checkBox</h3>
+<div class="comment"><p>Gets the HTMLInputElement that represents the checkbox associated
+with this node.</p></div>
+<dl class="dl-horizontal">
+  <dt>Type</dt><dd><a href="https://developer.mozilla.org/en/docs/Web/API/HTMLInputElement" target="_blank"><span class="identifier">HTMLInputElement</span></a></dd>
+</dl>
+</div>
+<div id="dataItem" class="member-panel mproperty">
+<h3>dataItem</h3>
+<div class="comment"><p>Gets the data item that this node represents.</p></div>
+<dl class="dl-horizontal">
+  <dt>Type</dt><dd><span class="identifier">any</span></dd>
+</dl>
+</div>
+<div id="element" class="member-panel mproperty">
+<h3>element</h3>
+<div class="comment"><p>Gets the HTML element that represents this node on the <a href="topic/wijmo.nav.TreeView.Class.html"><span class="identifier">TreeView</span></a>.</p></div>
+<dl class="dl-horizontal">
+  <dt>Type</dt><dd><span class="identifier">any</span></dd>
+</dl>
+</div>
+<div id="hasChildren" class="member-panel mproperty">
+<h3>hasChildren</h3>
+<div class="comment"><p>Gets a value that indicates whether this node has child nodes.</p></div>
+<dl class="dl-horizontal">
+  <dt>Type</dt><dd><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a></dd>
+</dl>
+</div>
+<div id="hasPendingChildren" class="member-panel mproperty">
+<h3>hasPendingChildren</h3>
+<div class="comment"><p>Gets a value that indicates whether this node has pending child nodes
+that will be lazy-loaded when the node is expanded.</p></div>
+<dl class="dl-horizontal">
+  <dt>Type</dt><dd><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a></dd>
+</dl>
+</div>
+<div id="index" class="member-panel mproperty">
+<h3>index</h3>
+<div class="comment"><p>Gets this node's index within the parent's node collection.</p></div>
+<dl class="dl-horizontal">
+  <dt>Type</dt><dd><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Number" target="_blank"><span class="identifier">number</span></a></dd>
+</dl>
+</div>
+<div id="isChecked" class="member-panel mproperty">
+<h3>isChecked</h3>
+<div class="comment"><p>Gets or sets a value that determines whether this node is checked.</p>
+<p>When the value of this property changes, child and ancestor nodes
+are automatically updated, and the parent <a href="topic/wijmo.nav.TreeView.Class.html"><span class="identifier">TreeView</span></a>'s
+<a href="topic/wijmo.nav.TreeView.Class.html/#checkedItemsChanged"><span class="identifier">checkedItemsChanged</span></a> event is raised.</p></div>
+<dl class="dl-horizontal">
+  <dt>Type</dt><dd><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a></dd>
+</dl>
+</div>
+<div id="isCollapsed" class="member-panel mproperty">
+<h3>isCollapsed</h3>
+<div class="comment"><p>Gets or sets a value that determines whether this node is expanded or collapsed.</p></div>
+<dl class="dl-horizontal">
+  <dt>Type</dt><dd><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a></dd>
+</dl>
+</div>
+<div id="isDisabled" class="member-panel mproperty">
+<h3>isDisabled</h3>
+<div class="comment"><p>Gets or sets a value that determines whether this node is disabled.</p>
+<p>Disabled nodes cannot get mouse or keyboard events.</p></div>
+<dl class="dl-horizontal">
+  <dt>Type</dt><dd><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a></dd>
+</dl>
+</div>
+<div id="level" class="member-panel mproperty">
+<h3>level</h3>
+<div class="comment"><p>Gets this node's level.</p>
+<p>Top-level nodes have level zero.</p></div>
+<dl class="dl-horizontal">
+  <dt>Type</dt><dd><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Number" target="_blank"><span class="identifier">number</span></a></dd>
+</dl>
+</div>
+<div id="nodes" class="member-panel mproperty">
+<h3>nodes</h3>
+<div class="comment"><p>Gets an array containing this node's child nodes.</p>
+<p>This property returns null if the node has no children.</p></div>
+<dl class="dl-horizontal">
+  <dt>Type</dt><dd><a href="topic/wijmo.nav.TreeNode.Class.html"><span class="identifier">TreeNode</span></a>[]</dd>
+</dl>
+</div>
+<div id="parentNode" class="member-panel mproperty">
+<h3>parentNode</h3>
+<div class="comment"><p>Gets this node's parent node.</p>
+<p>This property returns null for top-level nodes.</p></div>
+<dl class="dl-horizontal">
+  <dt>Type</dt><dd><a href="topic/wijmo.nav.TreeNode.Class.html"><span class="identifier">TreeNode</span></a></dd>
+</dl>
+</div>
+<div id="treeView" class="member-panel mproperty">
+<h3>treeView</h3>
+<div class="comment"><p>Gets a reference to the <a href="topic/wijmo.nav.TreeView.Class.html"><span class="identifier">TreeView</span></a> that contains this node.</p></div>
+<dl class="dl-horizontal">
+  <dt>Type</dt><dd><a href="topic/wijmo.nav.TreeView.Class.html"><span class="identifier">TreeView</span></a></dd>
+</dl>
+</div>
+</div>
+<h3 class="node">Methods</h3>
+<div class="member-list" ng-class="{ 'show-inherited' : ctx.showInherited, 'show-raisers' : ctx.showRaisers }">
+<div id="ensureVisible" class="member-panel mmethod">
+<h3>ensureVisible</h3>
+<pre>ensureVisible(): <span class="identifier">void</span></pre>
+<div class="comment"><p>Ensures that a node is visible by expanding any collapsed
+ancestors and scrolling the element into view.</p></div>
+<dl class="dl-horizontal">
+  <dt>Returns</dt><dd><span class="identifier">void</span></dd>
+</dl>
+</div>
+<div id="equals" class="member-panel mmethod">
+<h3>equals</h3>
+<pre>equals(node: <a href="topic/wijmo.nav.TreeNode.Class.html"><span class="identifier">TreeNode</span></a>): <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a></pre>
+<div class="comment"><p>Checks whether this node refers to the same element as another node.</p></div>
+<dl class="dl-horizontal">
+  <dt>Parameters</dt><dd></dd>
+</dl>
+<ul>
+<li><b>node</b>: <a href="topic/wijmo.nav.TreeNode.Class.html"><span class="identifier">TreeNode</span></a><br/><p>@TreeNode to compare with this one.</p></li></ul>
+<dl class="dl-horizontal">
+  <dt>Returns</dt><dd><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a></dd>
+</dl>
+</div>
+<div id="move" class="member-panel mmethod">
+<h3>move</h3>
+<pre>move(refNode: <a href="topic/wijmo.nav.TreeNode.Class.html"><span class="identifier">TreeNode</span></a>, position: <a href="topic/wijmo.nav.DropPosition.Enum.html"><span class="identifier">DropPosition</span></a>): <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a></pre>
+<div class="comment"><p>Moves a <a href="topic/wijmo.nav.TreeNode.Class.html"><span class="identifier">TreeNode</span></a> to a new position on the <a href="topic/wijmo.nav.TreeView.Class.html"><span class="identifier">TreeView</span></a>.</p></div>
+<dl class="dl-horizontal">
+  <dt>Parameters</dt><dd></dd>
+</dl>
+<ul>
+<li><b>refNode</b>: <a href="topic/wijmo.nav.TreeNode.Class.html"><span class="identifier">TreeNode</span></a><br/><p>Reference <a href="topic/wijmo.nav.TreeNode.Class.html"><span class="identifier">TreeNode</span></a> that defines the location
+where the node will be moved.</p></li><li><b>position</b>: <a href="topic/wijmo.nav.DropPosition.Enum.html"><span class="identifier">DropPosition</span></a><br/><p>Whether to move the node before, after, or into
+the reference node.</p></li></ul>
+<dl class="dl-horizontal">
+  <dt>Returns</dt><dd><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a></dd>
+</dl>
+</div>
+<div id="next" class="member-panel mmethod">
+<h3>next</h3>
+<pre>next(visible?: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a>, enabled?: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a>): <a href="topic/wijmo.nav.TreeNode.Class.html"><span class="identifier">TreeNode</span></a></pre>
+<div class="comment"><p>Gets a reference to the next node in the view.</p></div>
+<dl class="dl-horizontal">
+  <dt>Parameters</dt><dd></dd>
+</dl>
+<ul>
+<li><b>visible</b>: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a> <span class="badge">Optional</span><br/><p>Whether to return only visible nodes (whose ancestors are not collapsed).</p></li><li><b>enabled</b>: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a> <span class="badge">Optional</span><br/><p>Whether to return only enabled nodes (whose ancestors are not disabled).</p></li></ul>
+<dl class="dl-horizontal">
+  <dt>Returns</dt><dd><a href="topic/wijmo.nav.TreeNode.Class.html"><span class="identifier">TreeNode</span></a></dd>
+</dl>
+</div>
+<div id="nextSibling" class="member-panel mmethod">
+<h3>nextSibling</h3>
+<pre>nextSibling(): <a href="topic/wijmo.nav.TreeNode.Class.html"><span class="identifier">TreeNode</span></a></pre>
+<div class="comment"><p>Gets a reference to the next sibling node in the view.</p></div>
+<dl class="dl-horizontal">
+  <dt>Returns</dt><dd><a href="topic/wijmo.nav.TreeNode.Class.html"><span class="identifier">TreeNode</span></a></dd>
+</dl>
+</div>
+<div id="previous" class="member-panel mmethod">
+<h3>previous</h3>
+<pre>previous(visible?: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a>, enabled?: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a>): <a href="topic/wijmo.nav.TreeNode.Class.html"><span class="identifier">TreeNode</span></a></pre>
+<div class="comment"><p>Gets a reference to the previous node in the view.</p></div>
+<dl class="dl-horizontal">
+  <dt>Parameters</dt><dd></dd>
+</dl>
+<ul>
+<li><b>visible</b>: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a> <span class="badge">Optional</span><br/><p>Whether to return only visible nodes (whose ancestors are not collapsed).</p></li><li><b>enabled</b>: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a> <span class="badge">Optional</span><br/><p>Whether to return only enabled nodes (whose ancestors are not disabled).</p></li></ul>
+<dl class="dl-horizontal">
+  <dt>Returns</dt><dd><a href="topic/wijmo.nav.TreeNode.Class.html"><span class="identifier">TreeNode</span></a></dd>
+</dl>
+</div>
+<div id="previousSibling" class="member-panel mmethod">
+<h3>previousSibling</h3>
+<pre>previousSibling(): <a href="topic/wijmo.nav.TreeNode.Class.html"><span class="identifier">TreeNode</span></a></pre>
+<div class="comment"><p>Gets a reference to the next sibling node in the view.</p></div>
+<dl class="dl-horizontal">
+  <dt>Returns</dt><dd><a href="topic/wijmo.nav.TreeNode.Class.html"><span class="identifier">TreeNode</span></a></dd>
+</dl>
+</div>
+<div id="select" class="member-panel mmethod">
+<h3>select</h3>
+<pre>select(): <span class="identifier">void</span></pre>
+<div class="comment"><p>Selects this node.</p></div>
+<dl class="dl-horizontal">
+  <dt>Returns</dt><dd><span class="identifier">void</span></dd>
+</dl>
+</div>
+<div id="setChecked" class="member-panel mmethod">
+<h3>setChecked</h3>
+<pre>setChecked(checked: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a>, updateParent?: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a>): <span class="identifier">void</span></pre>
+<div class="comment"><p>Sets the checked state of this node and its children.</p></div>
+<dl class="dl-horizontal">
+  <dt>Parameters</dt><dd></dd>
+</dl>
+<ul>
+<li><b>checked</b>: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a><br/><p>Whether to check or uncheck the node and its children.</p></li><li><b>updateParent</b>: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a> <span class="badge">Optional</span><br/><p>Whether to update the checked state of this node's
+ancestor nodes.</p></li></ul>
+<dl class="dl-horizontal">
+  <dt>Returns</dt><dd><span class="identifier">void</span></dd>
+</dl>
+</div>
+<div id="setCollapsed" class="member-panel mmethod">
+<h3>setCollapsed</h3>
+<pre>setCollapsed(collapsed: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a>, animate?: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a>, collapseSiblings?: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a>): <span class="identifier">void</span></pre>
+<div class="comment"><p>Sets the collapsed state of the node.</p></div>
+<dl class="dl-horizontal">
+  <dt>Parameters</dt><dd></dd>
+</dl>
+<ul>
+<li><b>collapsed</b>: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a><br/><p>Whether to collapse or expand the node.</p></li><li><b>animate</b>: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a> <span class="badge">Optional</span><br/><p>Whether to use animation when applying the new state.</p></li><li><b>collapseSiblings</b>: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a> <span class="badge">Optional</span><br/><p>Whether to collapse sibling nodes when expanding
+this node.</p></li></ul>
+<dl class="dl-horizontal">
+  <dt>Returns</dt><dd><span class="identifier">void</span></dd>
+</dl>
+</div>
+</div>

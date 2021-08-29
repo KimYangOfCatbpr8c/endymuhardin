@@ -17,7 +17,7 @@ to and from OData sources.</p>
 and use it as a data source for any Wijmo controls.</p>
 <p>In addition to full CRUD support you get all the <a href="topic/wijmo.collections.CollectionView.Class.html"><span class="identifier">CollectionView</span></a> features 
 including sorting, filtering, paging, and grouping. The sorting, filtering, and
-paging functions may be peformed on the server or on the client.</p>
+paging functions may be performed on the server or on the client.</p>
 <p>The code below shows how you can instantiate an <a href="topic/wijmo.odata.ODataCollectionView.Class.html"><span class="identifier">ODataCollectionView</span></a> that
 selects some fields from the data source and provides sorting on the client.
 Notice how the 'options' parameter is used to pass in initialization data,
@@ -53,6 +53,7 @@ var categories = new wijmo.odata.ODataCollectionView(url, 'Categories', {
 <li class="mproperty inherited"><a href="topic/wijmo.odata.ODataCollectionView.Class.html/#filter">filter</a></li>
 <li class="mproperty"><a href="topic/wijmo.odata.ODataCollectionView.Class.html/#filterDefinition">filterDefinition</a></li>
 <li class="mproperty"><a href="topic/wijmo.odata.ODataCollectionView.Class.html/#filterOnServer">filterOnServer</a></li>
+<li class="mproperty inherited"><a href="topic/wijmo.odata.ODataCollectionView.Class.html/#getError">getError</a></li>
 <li class="mproperty inherited"><a href="topic/wijmo.odata.ODataCollectionView.Class.html/#groupDescriptions">groupDescriptions</a></li>
 <li class="mproperty inherited"><a href="topic/wijmo.odata.ODataCollectionView.Class.html/#groups">groups</a></li>
 <li class="mproperty"><a href="topic/wijmo.odata.ODataCollectionView.Class.html/#inferDataTypes">inferDataTypes</a></li>
@@ -365,11 +366,47 @@ the server or on the client.</p>
 <p>In some cases it may be desirable to apply independent filters on the client 
 <b>and</b> on the server. </p>
 <p>You can achieve this by setting (1) the <a href="topic/wijmo.odata.ODataCollectionView.Class.html/#filterOnServer"><span class="identifier">filterOnServer</span></a> property to false 
-and the <a href="topic/wijmo.odata.ODataCollectionView.Class.html/#filter"><span class="identifier">filter</span></a> property to a  filter function (to enable client-side filtering) 
+and the <a href="topic/wijmo.odata.ODataCollectionView.Class.html/#filter"><span class="identifier">filter</span></a> property to a filter function (to enable client-side filtering) 
 and (2) the <a href="topic/wijmo.odata.ODataCollectionView.Class.html/#filterDefinition"><span class="identifier">filterDefinition</span></a> property to a filter string (to enable server-side 
 filtering).</p></div>
 <dl class="dl-horizontal">
   <dt>Type</dt><dd><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank"><span class="identifier">boolean</span></a></dd>
+</dl>
+</div>
+<div id="getError" class="member-panel mproperty inherited">
+<h3>getError</h3>
+<div class="comment"><p>Gets or sets a callback that determines whether a specific property
+of an item contains validation errors.</p>
+<p>If provided, the callback should take two parameters containing the
+item and the property to validate, and should return a string describing
+the error (or null if there are no errors).</p>
+<p>For example:</p>
+
+
+<pre>var view = new wijmo.collections.CollectionView(data, {
+    getError: function (item, property) {
+        switch (property) {
+            case 'country':
+                return countries.indexOf(item.country) &lt; 0
+                    ? 'Invalid Country'
+                    : null;
+            case 'downloads':
+            case 'sales':
+            case 'expenses':
+                return item[property] &lt; 0
+                    ? 'Cannot be negative!'
+                    : null;
+            case 'active':
+                return item.active && item.country.match(/US|UK/)
+                    ? 'No active items allowed in the US or UK!'
+                    : null;
+        }
+        return null;
+    }
+});</pre></div>
+<dl class="dl-horizontal">
+  <dt>Inherited From</dt><dd><a href="topic/wijmo.collections.CollectionView.Class.html"><span class="identifier">CollectionView</span></a></dd>
+  <dt>Type</dt><dd><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Function" target="_blank"><span class="identifier">Function</span></a></dd>
 </dl>
 </div>
 <div id="groupDescriptions" class="member-panel mproperty inherited">
@@ -601,7 +638,8 @@ comparer is used.</p>
 <p>This <a href="topic/wijmo.odata.ODataCollectionView.Class.html/#sortComparer"><span class="identifier">sortComparer</span></a> property allows you to use custom comparison
 algorithms that in some cases result in sorting sequences that are
 more consistent with user's expectations than plain string comparisons.</p>
-<p>For example, see <a href="http://www.davekoelle.com/alphanum.html">Dave Koele's Alphanum algorithm</a>.
+<p>For example, see
+<a href="http://www.davekoelle.com/alphanum.html">Dave Koele's Alphanum algorithm</a>.
 It breaks up strings into chunks composed of strings or numbers, then
 sorts number chunks in value order and string chunks in ASCII order.
 Dave calls the result a "natural sorting order".</p>
@@ -734,7 +772,7 @@ can be significant for large collections.</p></div>
 <pre>addNew(): <span class="identifier">any</span></pre>
 <div class="comment"><p>Creates a new item and adds it to the collection.</p>
 <p>This method takes no parameters. It creates a new item, adds it to the
-collection, and prevents refresh operations until the new item is
+collection, and defers refresh operations until the new item is
 committed using the <a href="topic/wijmo.odata.ODataCollectionView.Class.html/#commitNew"><span class="identifier">commitNew</span></a> method or canceled using the 
 <a href="topic/wijmo.odata.ODataCollectionView.Class.html/#cancelNew"><span class="identifier">cancelNew</span></a> method.</p>
 <p>The code below shows how the <a href="topic/wijmo.odata.ODataCollectionView.Class.html/#addNew"><span class="identifier">addNew</span></a> method is typically used:</p>

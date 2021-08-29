@@ -5,21 +5,40 @@ var app = angular.module('app');
 app.controller('appCtrl', function appCtrl($scope) {
 
     // show that edit events fire also for custom editors
+    $scope.beginningEdit = function (s, e) {
+        log(wijmo.format('Edit starting for cell {row}, {col}', e));
+
+        // optional: customize editor
+        if ($scope.positiveNumbersOnly) {
+            setTimeout(function () {
+                var ctl = wijmo.Control.getControl(document.activeElement);
+                if (ctl instanceof wijmo.input.InputNumber) {
+                    ctl.min = 0;
+                }
+            });
+        }
+    }
     $scope.editEnding = function (s, e) {
         log(wijmo.format('Edit ending for cell {row}, {col}', e));
     }
     $scope.editEnded = function (s, e) {
         log(wijmo.format('Edit ended for cell {row}, {col}', e));
     }
+
+    // console may not be available in IE9
     function log(msg) {
-        if (console) { // console not available in IE9
-            console.log(msg);
+        if (window.console && window.console.log) {
+            window.console.log(msg);
         }
     }
 
     // expose some data
     $scope.countries = 'US,Germany,UK,Japan,Italy,Greece'.split(',');
-    $scope.products = 'Widget,Gadget,Doohickey'.split(',');
+    $scope.products = [
+        { id: 0, name: 'Widget', unitPrice: 23.43 },
+        { id: 1, name: 'Gadget', unitPrice: 12.33 },
+        { id: 2, name: 'Doohickey', unitPrice: 53.07 },
+    ];
     $scope.companies = [
         { symbol: 'BH', name: 'Biglari Holdings Inc.', country: 'US' },
         { symbol: 'CMG', name: 'Chipotle Mexican Grill, Inc.', country: 'US' },
@@ -75,7 +94,8 @@ app.controller('appCtrl', function appCtrl($scope) {
                 date: new Date(dt.getFullYear(), i % 12, 25, i % 24, i % 60, i % 60),
                 time: new Date(dt.getFullYear(), i % 12, 25, i % 24, i % 60, i % 60),
                 country: countries[Math.floor(Math.random() * countries.length)],
-                product: products[Math.floor(Math.random() * products.length)],
+                countries: [countries[0], countries[1]],
+                product: products[Math.floor(Math.random() * products.length)].name,
                 company: companies[Math.floor(Math.random() * companies.length)].symbol,
                 amount: Math.random() * 10000 - 5000,
                 discount: Math.random() / 4
@@ -107,4 +127,14 @@ app.controller('appCtrl', function appCtrl($scope) {
         return wijmo.format('<b>{symbol}</b>: {name}', item);
     }
 
+    // format product for multi-column combo
+    $scope.formatProductForCombo = function (s, e) {
+        e.item.innerHTML = '<table><tr>' +
+            '<td style="width:30px;text-align:right;padding-right:6px">' + e.data.id + '</td>' +
+            '<td style="width:100px;padding-right:6px"><b>' + e.data.name + '</b></td>' +
+            '<td style="width:80px;text-align:right;padding-right:6px">' +
+                wijmo.Globalize.format(e.data.unitPrice, 'c') +
+            '</td>' +
+        '</tr></table>';
+    }
 });

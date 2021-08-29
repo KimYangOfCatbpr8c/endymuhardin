@@ -1,3 +1,4 @@
+import * as wjcCore from 'wijmo/wijmo';
 import { Company } from './Company';
 import { DataSvc } from './DataSvc';
 /**
@@ -23,8 +24,8 @@ export declare enum ChartPeriod {
 export declare class Portfolio {
     static STGKEY: string;
     static _companyCache: {};
-    _items: wijmo.collections.ObservableArray;
-    _cv: wijmo.collections.CollectionView;
+    _items: wjcCore.ObservableArray;
+    _cv: wjcCore.CollectionView;
     _newItemSymbol: string;
     _mainItemSymbol: string;
     _chartPeriod: ChartPeriod;
@@ -36,14 +37,14 @@ export declare class Portfolio {
     _requestNum: number;
     _dataSvc: DataSvc;
     constructor(dataSvc: DataSvc);
-    itemsChanged: wijmo.Event;
+    itemsChanged: wjcCore.Event;
     viewChanged(): void;
-    view: wijmo.collections.CollectionView;
+    readonly view: wjcCore.CollectionView;
     chartPeriod: ChartPeriod;
     startDate: Date;
     endDate: Date;
-    displayChartSeriesNum: number;
-    requestNum: number;
+    readonly displayChartSeriesNum: number;
+    readonly requestNum: number;
     mainQuoteUpdated: boolean;
     getChartStartDate(): Date;
     addMainQuote(): void;

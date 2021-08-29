@@ -57,6 +57,9 @@
                     <app-tab-pane title="TS">
                         <div class="pane-content">
 // Angular
+import * as wjcCore from 'wijmo/wijmo';
+import * as wjcInput from 'wijmo/wijmo.input';
+
 import &#123; Component, EventEmitter, Input, Inject, enableProdMode, NgModule } from '@angular/core';
 import &#123; CommonModule } from '@angular/common';
 import &#123; platformBrowserDynamic } from '@angular/platform-browser-dynamic';
@@ -177,6 +180,77 @@ export class AppCmp &#123;
         </div>
     </div>
 
+                    <!-- MultiAutoComplete -->
+        <div>
+            <h2 id="MultiAutoComplete">MultiAutoComplete</h2>
+            <p>
+                The MultiAutoComplete control allows users to pick items from lists
+                that contain custom objects or simple strings.
+            </p>
+            <p>
+                To use the MultiAutoComplete control, you must set the <b>itemsSource</b>
+                property to an array containing the data used to populate its item list.
+            </p>
+            <p>
+                User can set the <b>maxSelectedItems</b> property to limit the maximum 
+                number of items that can be selected.
+            </p>
+            <div class="row">
+                <div class="col-md-6">
+                    <app-tab>
+                        <app-tab-pane title="HTML">
+                            <div class="pane-content">
+&lt;div&gt;
+  &lt;label>maxSelectedItems setting is 4&lt;/label&gt;
+  &lt;wj-multi-auto-complete  #mac1
+                            [itemsSource]="countries"
+                            [maxSelectedItems]="4"
+                            [selectedItems]="selectedCountries"
+                            [placeholder]="'country'"&gt;
+  &lt;/wj-multi-auto-complete&gt;
+ &lt;ol&gt;
+      &lt;li *ngFor="let item of selectedCountries"&gt;
+          &#123;&#8203;&#123; item }&#8203;}
+      &lt;/li&gt;
+ &lt;/ol&gt;
+&lt;/div&gt;
+                            </div>
+                        </app-tab-pane>
+                        <app-tab-pane title="TS">
+                            <div class="pane-content">
+ // The application root component.
+ @Component(&#123;
+     selector: 'app-cmp'
+ })
+export class AppCmp &#123;
+     // Data for for AutoComplete
+  selectedCountries = ['Belgium', 'Vietnam'];
+} 
+                            </div>
+                        </app-tab-pane>
+                    </app-tab>
+                </div>
+                <div class="col-md-6">
+                    <h4>Result (live):</h4>
+                    <div class="app-input-group">
+                        <label>maxSelectedItems is set to 4</label>
+                        <wj-multi-auto-complete
+                            #mac1
+                            [itemsSource]="countries"
+                            [maxSelectedItems]="4"
+                            [selectedItems]="selectedCountries"
+                            [placeholder]="'country'">
+                        </wj-multi-auto-complete>
+                        <ol>
+                            <li *ngFor="let item of selectedCountries">
+                                {{item}}
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     <!-- ComboBox -->
     <div>
         <h2 id="ComboBox">ComboBox</h2>
@@ -279,7 +353,7 @@ export class AppCmp &#123;
             that you can use to customize the display of specific days in the calendar. The sample
             below uses this event to customize the appearance of weekends and holidays.
         </p>
-        <div class="row">
+        <div class="row" style="min-height: 470px">
             <div class="col-md-6">
                 <app-tab>
                     <app-tab-pane title="HTML">
@@ -287,17 +361,17 @@ export class AppCmp &#123;
 &lt;div&gt;
 &lt;label&gt;Bound InputDate with min &amp; max&lt;/label&gt;
 &lt;wj-input-date [(value)]="today"
-               [min]="minDate"
-               [max]="maxDate"&gt;
+    [min]="minDate"
+    [max]="maxDate"&gt;
 &lt;/wj-input-date&gt;
 
-&lt;label>Bound Calendar with min &amp; max&lt;/label>
+&lt;label&gt;Bound Calendar with min &amp; max&lt;/label&gt;
 &lt;wj-calendar #calendar
-             style="width:300px;display:block"
-             [(value)]="today"
-             [min]="minDate"
-             [max]="maxDate"
-             (formatItem)="formatItem(calendar,$event)"&gt;
+    style="width:300px;display:block"
+    [(value)]="today"
+    [min]="minDate"
+    [max]="maxDate"
+    (formatItem)="formatItem(calendar,$event)"&gt;
 &lt;/wj-calendar&gt;
 &lt;p&gt;
 &lt;b>Selected Date: &#123;&#8203;&#123; today | date }&#8203;}&lt;/b&gt;
@@ -326,11 +400,11 @@ export class AppCmp &#123;
      }
 
      // apply special styles to weekends and holidays, use arrow function to ensure correct 'this'
-     formatItem = (s: wijmo.input.Calendar, e: wijmo.input.FormatItemEventArgs) => &#123;
+     formatItem = (s: wjcInput.Calendar, e: wjcInput.FormatItemEventArgs) => &#123;
          let weekday = e.data.getDay(),
          holiday = this._getHoliday(e.data);
-         wijmo.toggleClass(e.item, 'date-weekend', weekday == 0 || weekday == 6);
-         wijmo.toggleClass(e.item, 'date-holiday', !!holiday);
+         wjcCore.toggleClass(e.item, 'date-weekend', weekday == 0 || weekday == 6);
+         wjcCore.toggleClass(e.item, 'date-holiday', !!holiday);
          e.item.title = holiday;
     }
 
@@ -574,7 +648,7 @@ export class AppCmp &#123;
         // Value for InputDate
        let theDate = new Date();
        while (!this.itemValidator(theDate)) &#123;
-        theDate = wijmo.DateTime.addDays(theDate, 1);
+        theDate = wjcCore.DateTime.addDays(theDate, 1);
        }
        this.theDate = theDate; // start with a valid date
      }
@@ -583,8 +657,8 @@ export class AppCmp &#123;
      itemFormatter = (date: Date, element: HTMLElement) => &#123;
          let weekday = date.getDay(),
          holiday = this._getHoliday(date);
-         wijmo.toggleClass(element, 'date-weekend', weekday == 0 || weekday == 6);
-         wijmo.toggleClass(element, 'date-holiday', !!holiday);
+         wjcCore.toggleClass(element, 'date-weekend', weekday == 0 || weekday == 6);
+         wjcCore.toggleClass(element, 'date-holiday', !!holiday);
          element.title = holiday;
      }
 
@@ -1144,7 +1218,7 @@ export class AppCmp &#123;
             this.tax += arg;
         },
         canExecuteCommand: (arg) => &#123;
-            if (wijmo.isNumber(arg)) &#123;
+            if (wjcCore.isNumber(arg)) &#123;
                 var val = this.tax + arg;
                 return val >= 0 && val <= 1;
             }
@@ -1152,7 +1226,7 @@ export class AppCmp &#123;
          }
     };
 
-    menuItemClicked(menu: wijmo.input.Menu) &#123;
+    menuItemClicked(menu: wjcInput.Menu) &#123;
         alert('You\'ve selected option ' + menu.selectedIndex + ' from the ' + menu.header + ' menu!');
     };
 }
