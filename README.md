@@ -8,7 +8,7 @@
 
 **演示**：http://wijmo.gcpowertools.com.cn/products/wijmo-5/#demos
 
-![葡萄城控件微信服务号](http://weixin.gcpowertools.com.cn/images/public_Signature.png "葡萄城控件微信服务号")
+![葡萄城控件微信服务号](http://www.gcpowertools.com.cn/newimages/qrgrapecity.png "葡萄城控件微信服务号")
 
 ----------
 
