@@ -1,0 +1,116 @@
+<h2>模块 wijmo.chart.analytics</h2>
+<dl class="dl-horizontal">
+<dt>文件</dt><dd>wijmo.chart.analytics.js</dd>
+</dl>
+<p>定义了向图表添加分析功能的一些类，包括 <a href="topic/wijmo.chart.analytics.TrendLine.Class.html"><b>TrendLine</b></a>，
+<a href="topic/wijmo.chart.analytics.MovingAverage.Class.html"><b>MovingAverage</b></a> 以及 <a href="topic/wijmo.chart.analytics.FunctionSeries.Class.html"><b>FunctionSeries</b></a>。</p>
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideClasses = !hideClasses">
+<span class="glyph-collapsed" ng-show="hideClasses"></span>
+<span class="glyph-expanded" ng-hide="hideClasses"></span>
+类
+</h3>
+</div>
+<table ng-hide="hideClasses" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th>名称</th>
+
+<th>描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.chart.analytics.FunctionSeries.Class.html"><b>FunctionSeries</b></a></td>
+      <td>表示 <a href="topic/wijmo.chart.FlexChart.Class.html"><b>FlexChart</b></a> 的函数系列的一个基类。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.chart.analytics.MovingAverage.Class.html"><b>MovingAverage</b></a></td>
+      <td>表示 <a href="topic/wijmo.chart.FlexChart.Class.html"><b>FlexChart</b></a> 以及 <a href="topic/wijmo.chart.finance.FinancialChart.Class.html"><b>FinancialChart</b></a> 的一个移动平均趋势线。
+        它是一种计算分析，通过创建整个数据集的不同子集的平均值系列，以分析数据。
+        您可以在 MovingAverage 自身上通过设置 <b>MovingAverage</b> 对象上的 type 属性来定义不同的类型。
+        MovingAverage class 具有一个 period 属性，该属性允许您设置计算平均值的区间值。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.chart.analytics.ParametricFunctionSeries.Class.html"><b>ParametricFunctionSeries</b></a></td>
+      <td><p>表示 <a href="topic/wijmo.chart.FlexChart.Class.html"><b>FlexChart</b></a> 的一个参数化函数系列。</p>
+
+<p> <b>ParametricFunctionSeries</b> 允许绘制一个由公式组
+x=f(t) 和 y=f(t) 定义的函数图形。
+X 和 Y 的值由给定的 xFunc 以及 yFunc 计算。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.chart.analytics.TrendLine.Class.html"><b>TrendLine</b></a></td>
+      <td><p>表示 <a href="topic/wijmo.chart.FlexChart.Class.html"><b>FlexChart</b></a> 以及 <a href="topic/wijmo.chart.finance.FinancialChart.Class.html"><b>FinancialChart</b></a> 上的一条趋势线。</p>
+
+<p>        趋势线是一条叠加在图表上的一条线，用来显示数据的整体变化趋势。
+        您可以通过 fitType 属性为每一个可以添加到 <b>FlexChart</b> 系列集合中的 <b>TrendLine</b> 对象定义一个不同的拟合类型。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.chart.analytics.TrendLineBase.Class.html"><b>TrendLineBase</b></a></td>
+      <td>表示各种趋势线的基类。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.chart.analytics.Waterfall.Class.html"><b>Waterfall</b></a></td>
+      <td>代表<a href="topic/wijmo.chart.FlexChart.Class.html"><b>FlexChart</b></a> 的一个瀑布系列。
+        <b>Waterfall</b> 系列主要用于展示开始的位置的增长或下降情况。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.chart.analytics.YFunctionSeries.Class.html"><b>YFunctionSeries</b></a></td>
+      <td><p>表示 <b>FlexChar</b> 的 Y 函数系列。</p>
+
+<p> <b>YFunctionSeries</b> 允许绘制一个由公式 y=f(x) 定义的函数图形。</p></td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideEnumerations = !hideEnumerations">
+<span class="glyph-collapsed" ng-show="hideEnumerations"></span>
+<span class="glyph-expanded" ng-hide="hideEnumerations"></span>
+枚举
+</h3>
+</div>
+<table ng-hide="hideEnumerations" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th>名称</th>
+
+<th>描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.chart.analytics.MovingAverageType.Enum.html"><b>MovingAverageType</b></a></td>
+      <td>指定 MovingAverage 系列的类型。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.chart.analytics.TrendLineFitType.Enum.html"><b>TrendLineFitType</b></a></td>
+      <td>指定趋势线系列的拟合类型。</td>
+    </tr>
+</tbody>
+</table>
+</div>
+

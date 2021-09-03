@@ -1,0 +1,512 @@
+<h2>PivotPanel 类</h2>
+<dl class="dl-horizontal">
+<dt>基类</dt><dd><a href="topic/wijmo.Control.Class.html"><b>Control</b></a></dd>
+<dt>派生类</dt><dd><a href="topic/wijmo.angular.WjPivotPanel.Class.html"><b>WjPivotPanel</b></a></dd>
+<dt>模块</dt><dd>wijmo.olap</dd>
+<dt>文件</dt><dd>wijmo.olap.js</dd>
+<dt>表示</dt><dd><label style="font-weight:normal">继承成员 <input type="checkbox" ng-model="showInherited"></label></dd>
+</dl>
+<p><p>提供一个将常规数据表交互式转换至 Olap pivot table 的用户界面。</p>
+
+<p>Olap Pivot table 将数据分组成一个或多个维度。不同的维度由表格中的行和列表示，汇总数据保存在表格中的单元格中。</p>
+
+<p>使用 <b>itemsSource</b> 属性设置源数据，同时使用 <b>pivotView</b> 属性获取包含汇总数据的输出表。</p></p>
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideConstructor = !hideConstructor">
+<span class="glyph-collapsed" ng-show="hideConstructor"></span>
+<span class="glyph-expanded" ng-hide="hideConstructor"></span>
+ 构造函数
+</h3>
+</div>
+<table ng-hide="hideConstructor" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-2">名称</th>
+
+<th class="col-md-5">参数</th>
+
+<th class="col-md-5">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><b>constructor</b>&#8203;(element, options?): <a href="topic/wijmo.olap.PivotPanel.Class.html"><b>PivotPanel</b></a></td>
+      <td><p>
+<b>element</b> (<b>any</b>): 包含该控件的 DOM 元素容器，或者一个查找容器元素的选择器（例如 '#theCtrl'）。<br/><b>options?</b> (): 包含用于初始化该控件数据的 JavaScript 对象。<br/></p>
+</td>
+      <td>初始化 <a href="topic/wijmo.olap.PivotPanel.Class.html"><b>PivotPanel</b></a> 类的一个新的实例。</td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideProperties = !hideProperties">
+<span class="glyph-collapsed" ng-show="hideProperties"></span>
+<span class="glyph-expanded" ng-hide="hideProperties"></span>
+属性
+</h3>
+</div>
+<table ng-hide="hideProperties" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-3">名称</th>
+
+<th class="col-md-2">类型</th>
+
+<th class="col-md-7">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><b>autoGenerateFields</b></td>
+      <td><b>boolean</b></td>
+      <td>获取或设置一个值，该值决定是否
+引擎应当基于 <b>itemsSource</b> 自动生成 <b>fields</b> 集合。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>collectionView</b></td>
+      <td><b>ICollectionView</b></td>
+      <td>获取包含原始数据的 <a href="topic/wijmo.collections.ICollectionView.Interface.html"><b>ICollectionView</b></a>。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>columnFields</b></td>
+      <td><a href="topic/wijmo.olap.PivotFieldCollection.Class.html"><b>PivotFieldCollection</b></a></td>
+      <td>获取一个定义输出表列的field 的列表。</td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="静态">S</span><span class="badge" title="字段">F</span></td>
+      <td><b>controlTemplate</b></td>
+      <td><b>any</b></td>
+      <td>获取或设置用来实例化 <a href="topic/wijmo.olap.PivotPanel.Class.html"><b>PivotPanel</b></a> 控件的模板。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>engine</b></td>
+      <td><a href="topic/wijmo.olap.PivotEngine.Class.html"><b>PivotEngine</b></a></td>
+      <td>获取或设置受到该 <a href="topic/wijmo.olap.PivotPanel.Class.html"><b>PivotPanel</b></a> 控制的 <a href="topic/wijmo.olap.PivotEngine.Class.html"><b>PivotEngine</b></a>。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>fields</b></td>
+      <td><a href="topic/wijmo.olap.PivotFieldCollection.Class.html"><b>PivotFieldCollection</b></a></td>
+      <td>获取一个可用构建视图的 field 的列表。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>filterFields</b></td>
+      <td><a href="topic/wijmo.olap.PivotFieldCollection.Class.html"><b>PivotFieldCollection</b></a></td>
+      <td>获取一个field列表，该 filed 定义了当在生产输出表时使用的过滤器。</td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>hostElement</b></td>
+      <td><b>HTMLElement</b></td>
+      <td>获取托管着控件的DOM元素。<br/><span class="text-info">(继承自 <a href="topic/wijmo.Control.Class.html"><b>Control</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>isDisabled</b></td>
+      <td><b>boolean</b></td>
+      <td>获取或设置一个值，决定是否控件被禁用。
+      禁用的控件不能响应鼠标和键盘事件。<br/><span class="text-info">(继承自 <a href="topic/wijmo.Control.Class.html"><b>Control</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>isTouching</b></td>
+      <td><b>boolean</b></td>
+      <td>获取表明控件当前是否处理了一个异常事件的值。.<br/><span class="text-info">(继承自 <a href="topic/wijmo.Control.Class.html"><b>Control</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>isUpdating</b></td>
+      <td><b>boolean</b></td>
+      <td>获取表明控件当前是否被更新的值。<br/><span class="text-info">(继承自 <a href="topic/wijmo.Control.Class.html"><b>Control</b></a>).</span></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>isViewDefined</b></td>
+      <td><b>boolean</b></td>
+      <td><p>获取一个值，该值决定是否当前已经定义了一个 pivot view。</p>
+
+<p>如果 <b>valueFields</b> 列表不为空，且 <b>rowFields</b> 或者 <b>columnFields</b> 列表不为空，则定义了一个 Pivot View。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>itemsSource</b></td>
+      <td><b>any</b></td>
+      <td>获取或设置包含原始数据的数组或者 <a href="topic/wijmo.collections.ICollectionView.Interface.html"><b>ICollectionView</b></a> 对象。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>pivotView</b></td>
+      <td><b>ICollectionView</b></td>
+      <td>获取包含输出 pivot 视图的 <a href="topic/wijmo.collections.ICollectionView.Interface.html"><b>ICollectionView</b></a>。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>rowFields</b></td>
+      <td><a href="topic/wijmo.olap.PivotFieldCollection.Class.html"><b>PivotFieldCollection</b></a></td>
+      <td>获取一个定义输出表行的 field 的列表。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>valueFields</b></td>
+      <td><a href="topic/wijmo.olap.PivotFieldCollection.Class.html"><b>PivotFieldCollection</b></a></td>
+      <td>获取一个定义输出表显示的值的 field 的列表。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>viewDefinition</b></td>
+      <td><b>string</b></td>
+      <td><p>获取或设置以 JSON 字符串表示的 pivot 视图定义。</p>
+
+<p>该属性典型地被用来将当前视图设置作为应用程序设置持久保存。</p>
+
+<p>例如，以下代码实现了两个函数，通过 local storage 保存/读取视图定义：</p>
+
+<p><pre>// 保存/加载视图
+function saveView() {
+  localStorage.viewDefinition = pivotPanel.viewDefinition;
+}
+function loadView() {
+  pivotPanel.viewDefinition = localStorage.viewDefinition;
+}</pre></p></td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideMethods = !hideMethods">
+<span class="glyph-collapsed" ng-show="hideMethods"></span>
+<span class="glyph-expanded" ng-hide="hideMethods"></span>
+方法
+</h3>
+</div>
+<table ng-hide="hideMethods" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-2">名称</th>
+
+<th class="col-md-5">参数</th>
+
+<th class="col-md-5">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>addEventListener</b>&#8203;(target, type, fn, capture?)</td>
+      <td><p>
+<b>target</b> (<b>EventTarget</b>): 时间的目标元素。<br/><b>type</b> (<b>string</b>): 指定该事件的字符串。<br/><b>fn</b> (<b>any</b>): 当事件发生时执行的函数。<br/><b>capture?</b> (<b>boolean</b>): 监听是否正在捕获。<br/><span class="text-info">(默认值: <b>false</b>)</span><br/></p>
+</td>
+      <td><p>为<a href="topic/wijmo.Control.Class.html"><b>Control</b></a> 上的元素增加一个事件监听。</p>
+
+<p>该控件持有依附于监听和处理器的列表，当控件被处理掉时使它更容易地移除这些监听和处理器（参见<b>dispose</b> 和<b>removeEventListener</b> 方法）。</p>
+
+<p>移除事件监听失败时，可能引起内存泄露。</p><br/><span class="text-info">(继承自 <a href="topic/wijmo.Control.Class.html"><b>Control</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>applyTemplate</b>&#8203;(classNames, template, parts, namePart?): <b>HTMLElement</b></td>
+      <td><p>
+<b>classNames</b> (<b>string</b>): 添加到控件主元素上的类的名称。<br/><b>template</b> (<b>string</b>): 定义控件模板的HTML字符串。<br/><b>parts</b> (<b>Object</b>): 部分变量及其名称的字典。<br/><b>namePart?</b> (<b>string</b>): 部分名称将以主元素命名。
+确定控件在表单中使用时如何提交数据。<br/></p>
+</td>
+      <td><p>将这个模板应用到控件的一个新的实例上，并且返回根元素。</p>
+
+<p>这个方法应该被模板化控件的构造器调用。它的职责是绑定模板部分到相应的控件成员上。</p>
+
+<p>例如，下面的代码应用一个模板到<a href="topic/wijmo.input.InputNumber.Class.html"><b>InputNumber</b></a> 控件的实例上。这个模板必须包含有'wj-part'属性的元素，该属性值可以被设置为'input', 'btn-inc'，和'btn-dec'。
+该控件的成员'_tbx', '_btnUp', 和 '_btnDn'将被分配一些引用到这些元素上。</p>
+
+<p><pre>this.applyTemplate('wj-control wj-inputnumber', template, {
+  _tbx: 'input',
+  _btnUp: 'btn-inc',
+  _btnDn: 'btn-dec'
+}, 'input');</pre></p><br/><span class="text-info">(继承自 <a href="topic/wijmo.Control.Class.html"><b>Control</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>beginUpdate</b>&#8203;()</td>
+      <td></td>
+      <td>直到下一次调用<b>endUpdate</b> 之前暂停通知。<br/><span class="text-info">(继承自 <a href="topic/wijmo.Control.Class.html"><b>Control</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>containsFocus</b>&#8203;(): <b>boolean</b></td>
+      <td></td>
+      <td>检查该控件是否包含有获得焦点的元素。<br/><span class="text-info">(继承自 <a href="topic/wijmo.Control.Class.html"><b>Control</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>deferUpdate</b>&#8203;(fn)</td>
+      <td><p>
+<b>fn</b> (<b>Function</b>): 函数被执行。<br/></p>
+</td>
+      <td><p>执行在<b>beginUpdate</b>/<b>endUpdate</b> 块中的函数。</p>
+
+<p>控件直到该方法已经被执行时才被更新。该方法确保<b>endUpdate</b> 被调用，即使该方法抛出异常。</p><br/><span class="text-info">(继承自 <a href="topic/wijmo.Control.Class.html"><b>Control</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>dispose</b>&#8203;()</td>
+      <td></td>
+      <td><p>通过移除控件相关的主元素来配置控件。</p>
+
+<p> <b>dispose</b> 方法自动移除增加在<b>addEventListener</b> 方法上的任何事件监听。</p>
+
+<p>在应用中调用<b>dispose</b> 方法很重要，这样能自动地创建和移除控件。当处理掉控件时，可能会引起内存泄露。</p><br/><span class="text-info">(继承自 <a href="topic/wijmo.Control.Class.html"><b>Control</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td><span class="badge" title="静态">S</span></td>
+      <td><b>disposeAll</b>&#8203;(e?)</td>
+      <td><p>
+<b>e?</b> (<b>HTMLElement</b>): 容器元素。<br/></p>
+</td>
+      <td>处理掉包含在HTML元素上的Wijmo控件。<br/><span class="text-info">(继承自 <a href="topic/wijmo.Control.Class.html"><b>Control</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>endUpdate</b>&#8203;()</td>
+      <td></td>
+      <td>通过调用<b>beginUpdate</b> 重新开始被暂停的通知。<br/><span class="text-info">(继承自 <a href="topic/wijmo.Control.Class.html"><b>Control</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>focus</b>&#8203;()</td>
+      <td></td>
+      <td>为该控件设置焦点。<br/><span class="text-info">(继承自 <a href="topic/wijmo.Control.Class.html"><b>Control</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td><span class="badge" title="静态">S</span></td>
+      <td><b>getControl</b>&#8203;(element): <a href="topic/wijmo.Control.Class.html"><b>Control</b></a></td>
+      <td><p>
+<b>element</b> (<b>any</b>): DOM元素托管着控件，或者托管着主元素的选择器（例如'#theCtrl'）。<br/></p>
+</td>
+      <td>获取托管在给定的DOM元素上的控件。<br/><span class="text-info">(继承自 <a href="topic/wijmo.Control.Class.html"><b>Control</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>getTemplate</b>&#8203;(): <b>string</b></td>
+      <td></td>
+      <td><p>获取HTML模板来创建控件的实例。</p>
+
+<p>这个方法遍历类的层次结构来发现最近的祖先元素，该祖先元素指定了一个控件模板。例如，如果你指定了一个<a href="topic/wijmo.input.ComboBox.Class.html"><b>ComboBox</b></a> 控件的原型，它将重载由基类<a href="topic/wijmo.input.DropDown.Class.html"><b>DropDown</b></a> 定义的模板。</p><br/><span class="text-info">(继承自 <a href="topic/wijmo.Control.Class.html"><b>Control</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>initialize</b>&#8203;(options)</td>
+      <td><p>
+<b>options</b> (<b>any</b>): Object that contains the initialization data.<br/></p>
+</td>
+      <td><p>通过从给定的对象中拷贝属性来初始化控件。</p>
+
+<p>该方法允许你使用普通的数据对象代替在代码中为每一个属性设置值来初始化控件。</p>
+
+<p>例如:
+<pre>
+grid.initialize({
+  itemsSource: myList,
+  autoGenerateColumns: false,
+  columns: [
+    { binding: 'id', header: 'Code', width: 130 },
+    { binding: 'name', header: 'Name', width: 60 } 
+  ]
+});
+// 相当于
+grid.itemsSource = myList;
+grid.autoGenerateColumns = false;
+// 等等.
+</pre></p>
+
+<p>初始化数据被应用时，它作为一种类型检查。如果初始化的对象包含不知名的属性名称或者无效的数据类型时，该方法将被抛出。</p><br/><span class="text-info">(继承自 <a href="topic/wijmo.Control.Class.html"><b>Control</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>invalidate</b>&#8203;(fullUpdate?)</td>
+      <td><p>
+<b>fullUpdate?</b> (<b>boolean</b>): 是否更新该控件的布局和内容。<br/><span class="text-info">(默认值: <b>true</b>)</span><br/></p>
+</td>
+      <td>使能够引起异步刷新的控件无效。<br/><span class="text-info">(继承自 <a href="topic/wijmo.Control.Class.html"><b>Control</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td><span class="badge" title="静态">S</span></td>
+      <td><b>invalidateAll</b>&#8203;(e?)</td>
+      <td><p>
+<b>e?</b> (<b>HTMLElement</b>): Container element. If set to null, all Wijmo controls
+on the page will be invalidated.<br/></p>
+</td>
+      <td><p>使所有包含在HTML元素中的Wijmo控件无效。</p>
+
+<p>当你的应用包含有动态的面板，且该面板能改变控件的可见性或者面积时，可以使用该方法。例如，splitters，accordions，
+和tab控件通常改变控件内容元素的可见性。在这种情况下，通知包含在该元素中的控件失败时，将会引起它们适当地停止工作。</p>
+
+<p>如果此情况发生，你必须处理在动态容器中合适的事件，并且调用<a href="topic/wijmo.Control.Class.html"><b>Control</b></a> 使所有的方法无效，这样包含的Wijmo控件将适当地更新它们的布局信息。</p><br/><span class="text-info">(继承自 <a href="topic/wijmo.Control.Class.html"><b>Control</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>onGotFocus</b>&#8203;(e?)</td>
+      <td><p>
+<b>e?</b> (<a href="topic/wijmo.EventArgs.Class.html"><b>EventArgs</b></a>)<br/></p>
+</td>
+      <td>增加<b>gotFocus</b> 事件。<br/><span class="text-info">(继承自 <a href="topic/wijmo.Control.Class.html"><b>Control</b></a>).</span></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>onItemsSourceChanged</b>&#8203;(e?)</td>
+      <td><p>
+<b>e?</b> (<a href="topic/wijmo.EventArgs.Class.html"><b>EventArgs</b></a>)<br/></p>
+</td>
+      <td>触发 <b>itemsSourceChanged</b> 事件。</td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>onLostFocus</b>&#8203;(e?)</td>
+      <td><p>
+<b>e?</b> (<a href="topic/wijmo.EventArgs.Class.html"><b>EventArgs</b></a>)<br/></p>
+</td>
+      <td>增加<b>lostFocus</b> 事件。<br/><span class="text-info">(继承自 <a href="topic/wijmo.Control.Class.html"><b>Control</b></a>).</span></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>onUpdatedView</b>&#8203;(e?)</td>
+      <td><p>
+<b>e?</b> (<a href="topic/wijmo.EventArgs.Class.html"><b>EventArgs</b></a>)<br/></p>
+</td>
+      <td>触发 <b>updatedView</b> 事件。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>onUpdatingView</b>&#8203;(e)</td>
+      <td><p>
+<b>e</b> (<a href="topic/wijmo.olap.ProgressEventArgs.Class.html"><b>ProgressEventArgs</b></a>): 提供事件参数的 <a href="topic/wijmo.olap.ProgressEventArgs.Class.html"><b>ProgressEventArgs</b></a> 对象。<br/></p>
+</td>
+      <td>触发 <b>updatingView</b> 事件。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>onViewDefinitionChanged</b>&#8203;(e?)</td>
+      <td><p>
+<b>e?</b> (<a href="topic/wijmo.EventArgs.Class.html"><b>EventArgs</b></a>)<br/></p>
+</td>
+      <td>触发 <b>viewDefinitionChanged</b> 事件。</td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>refresh</b>&#8203;(fullUpdate?)</td>
+      <td><p>
+<b>fullUpdate?</b> (<b>boolean</b>): 是否更新该控件的布局和内容。<br/><span class="text-info">(默认值: <b>true</b>)</span><br/></p>
+</td>
+      <td>刷新控件。<br/><span class="text-info">(继承自 <a href="topic/wijmo.Control.Class.html"><b>Control</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td><span class="badge" title="静态">S</span></td>
+      <td><b>refreshAll</b>&#8203;(e?)</td>
+      <td><p>
+<b>e?</b> (<b>HTMLElement</b>): 容器元素。如果设置为null，所有在页面上的Wijmo控件
+将无效。<br/></p>
+</td>
+      <td><p>刷新包含在HTML元素中所有的Wijmo控件。</p>
+
+<p>该方法与<b>invalidateAll</b> 相似，除过控件被立即更新，而不是一段时间之后。</p><br/><span class="text-info">(继承自 <a href="topic/wijmo.Control.Class.html"><b>Control</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>removeEventListener</b>&#8203;(target?, type?, capture?): <b>number</b></td>
+      <td><p>
+<b>target?</b> (<b>EventTarget</b>): 事件的目标元素。如果为null，移除在依附在所有目标上的监听。<br/><b>type?</b> (<b>string</b>): 指定事件的字符串。如果为null，移除依附在所有事件上的监听。<br/><b>capture?</b> (<b>boolean</b>): 监听是否正在捕获。如果为null，移除捕获的和没有捕获的监听。<br/></p>
+</td>
+      <td>移除一个或者更多的依附在<a href="topic/wijmo.Control.Class.html"><b>Control</b></a> 中的元素上的事件监听。<br/><br/><b>返回值</b> 被移除的监听数量。<br/><span class="text-info">(继承自 <a href="topic/wijmo.Control.Class.html"><b>Control</b></a>).</span></td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideEvents = !hideEvents">
+<span class="glyph-collapsed" ng-show="hideEvents"></span>
+<span class="glyph-expanded" ng-hide="hideEvents"></span>
+事件
+</h3>
+</div>
+<table ng-hide="hideEvents" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-2">名称</th>
+
+<th class="col-md-5">参数</th>
+
+<th class="col-md-5">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>gotFocus</b></td>
+      <td><a href="topic/wijmo.EventArgs.Class.html"><b>EventArgs</b></a></td>
+      <td>当控件获取焦点时发生。<br/><span class="text-info">(继承自 <a href="topic/wijmo.Control.Class.html"><b>Control</b></a>).</span></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>itemsSourceChanged</b></td>
+      <td><a href="topic/wijmo.EventArgs.Class.html"><b>EventArgs</b></a></td>
+      <td>在 <b>itemsSource</b> 属性的值发生变化之后触发。</td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>lostFocus</b></td>
+      <td><a href="topic/wijmo.EventArgs.Class.html"><b>EventArgs</b></a></td>
+      <td>当控件失去焦点时发生。<br/><span class="text-info">(继承自 <a href="topic/wijmo.Control.Class.html"><b>Control</b></a>).</span></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>updatedView</b></td>
+      <td><a href="topic/wijmo.EventArgs.Class.html"><b>EventArgs</b></a></td>
+      <td>在引擎完成更新 <b>pivotView</b> 列表之后触发。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>updatingView</b></td>
+      <td><a href="topic/wijmo.olap.ProgressEventArgs.Class.html"><b>ProgressEventArgs</b></a></td>
+      <td>当引擎开始更新 <b>pivotView</b> 列表时触发。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>viewDefinitionChanged</b></td>
+      <td><a href="topic/wijmo.EventArgs.Class.html"><b>EventArgs</b></a></td>
+      <td>在视图定义发生变化之后触发。</td>
+    </tr>
+</tbody>
+</table>
+</div>
+

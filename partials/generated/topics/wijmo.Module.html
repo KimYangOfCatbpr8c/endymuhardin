@@ -1,0 +1,942 @@
+<h2>模块 wijmo</h2>
+<dl class="dl-horizontal">
+<dt>文件</dt><dd>wijmo.js</dd>
+</dl>
+<p>包含被用作控制器和模型的工具包，也可以参考<b>控制器和</b><b>事件类型</b>。</p>
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideClasses = !hideClasses">
+<span class="glyph-collapsed" ng-show="hideClasses"></span>
+<span class="glyph-expanded" ng-hide="hideClasses"></span>
+类
+</h3>
+</div>
+<table ng-hide="hideClasses" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th>名称</th>
+
+<th>描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.Binding.Class.html"><b>Binding</b></a></td>
+      <td>提供绑定到复杂的属性（例如'customer.address.city'）</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.CancelEventArgs.Class.html"><b>CancelEventArgs</b></a></td>
+      <td>为可取消的事件提供参数。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.Clipboard.Class.html"><b>Clipboard</b></a></td>
+      <td><p>提供剪贴板操作的实用方法的静态类。 </p>
+
+<p><b>Clipboard</b> 类提供了静态 <b>copy</b> 和<b>paste</b> 方法，它可以使用控件来自定义剪贴板操作中的剪贴板内容。 </p>
+
+<p>例如，下面的代码演示了如何控制可以截取剪贴板快捷键，并提供自定义剪贴板处理：</p>
+
+<p><pre>
+rootElement.addEventListener('keydown', function(e) {
+  // 拷贝： ctrl+c 或者 ctrl+Insert
+  if (e.ctrlKey && (e.keyCode == 67 || e.keyCode == 45)) {
+    var text = this.getClipString();
+    Clipboard.copy(text);
+    return;
+  }
+  // 粘贴： ctrl+v 或者 shift+Insert
+  if ((e.ctrlKey && e.keyCode == 86) || (e.shiftKey && e.keyCode == 45)) {
+    Clipboard.paste(function (text) {
+      this.setClipString(text);
+    });
+    return;
+  }
+});</pre></p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.Color.Class.html"><b>Color</b></a></td>
+      <td><p>颜色类。</p>
+
+<p><b>Color</b> 类指定CSS字符串来解析颜色，并且暴露了它们的红，绿，蓝，和alpha通道作为读写属性。</p>
+
+<p><b>Color</b> 类也提供了<b>fromHsb</b> 和<b>fromHsl</b> 方法，使用HSB和HSL颜色模型代替RGB创建颜色。
+并且用see:getHsb 和<b>getHsl</b> 方法来检索使用这些颜色模型的颜色组件。</p>
+
+<p>最后，<b>Color</b> 类提供了一个<b>interpolate</b> 方法来通过插值使用HSL模型和两种颜色之间 
+创建颜色。这种方法是特别有用的，用于创建彩色动画的方法。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.Control.Class.html"><b>Control</b></a></td>
+      <td><p>所有Wijmo控件的基础类。</p>
+
+<p><b>Control</b> 类处理DOM元素和实际控件之间的联系。使用<b>hostElement</b> 属性获取托管在控件上的DOM元素，或者 <b>getControl</b> 方法获取托管在给定DOM元素上的控件。</p>
+
+<p><b>Control</b> 类也为无效和刷新控件，改变尺寸更新控件布局，处理定义在控件结构上的HTML模板提供了公共的模式。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.DateTime.Class.html"><b>DateTime</b></a></td>
+      <td>提供日期和时间的工具包。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.Event.Class.html"><b>Event</b></a></td>
+      <td><p>描述一个事件。</p>
+
+<p>Wijmo 事件相似于.NET 事件。任何类可能将它们声明为字段来定义事件。任何类可以使用事件的<b>addHandler</b> 方法来订阅事件，也可以使用<b>removeHandler</b> 方法取消订阅。</p>
+
+<p>Wijmo 事件处理器有两个参数: <i>sender</i> 和 <i>args</i>. 
+第一个参数是引发事件的对象，而第二个参数是包含事件参数的对象。</p>
+
+<p>根据.NET模型为每一个事件定义事件的类。<i>on[EVENTNAME]</i> 方法引发事件。该模式允许衍生的来重载<i>on[EVENTNAME]</i> 方法，并且在引发基础类之前或者之后处理事件。
+衍生的类可以甚至通过不调用基础类来阻止事件的实现。</p>
+
+<p>例如，下面类脚本化的代码重载控件的 <b>onValueChanged</b>
+事件，在执行一些处理之前且在<b>valueChanged</b>事件触发之后：</p>
+
+<p><pre>// 重载基础类
+onValueChanged(e: EventArgs) {
+  // 在事件触发前执行一些代码
+  console.log('about to fire valueChanged');
+  // 可选择地，调用基础类来触发事件
+  super.onValueChanged(e);
+  // 在事件触发之后执行一些代码
+  console.log('valueChanged event just fired');
+}</pre></p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.EventArgs.Class.html"><b>EventArgs</b></a></td>
+      <td>事件参数的基础类。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.Globalize.Class.html"><b>Globalize</b></a></td>
+      <td><p>类实现数字和日期的格式化和解析。</p>
+
+<p>默认地, <b>Globalize</b> 使用美国英语文化。
+为了切换多种文化，包含wijmo文件之后的合适的 <b>wijmo.culture.*.js</b> 
+文件.</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.Point.Class.html"><b>Point</b></a></td>
+      <td>类代表一个点(x坐标和y坐标)。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.PrintDocument.Class.html"><b>PrintDocument</b></a></td>
+      <td><p>类可以创建自定义文档的打印。 </p>
+
+<p><b>PrintDocument</b> 类可以创建打印或输出为PDF文件。大多数浏览器允许你选择纸张大小，方向，空间，以及是否包含页眉和页脚。</p>
+
+<p>为了使用，实例化一个<b>PrintDocument</b>，使用<b>append</b> 方法添加内容，并且通过调用<b>print</b> 方法来完成。 </p>
+
+<p>例如：
+<pre>// 创建文档
+var doc = new wijmo.PrintDocument({
+  title: 'PrintDocument Test'
+});</p>
+
+<p>// 添加一些简单的文本
+doc.append('<h1>Printing Example</h1>');
+doc.append('<p>This document was created using the <b>PrintDocument</b> class.</p>');</p>
+
+<p>// 添加一些存在的元素
+doc.append(document.getElementById('gaugeControl'));</p>
+
+<p>// 打印文档(或者输出它为 PDF)
+doc.print();</pre></p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.PropertyChangedEventArgs.Class.html"><b>PropertyChangedEventArgs</b></a></td>
+      <td>为属性更改事件提供参数。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.Rect.Class.html"><b>Rect</b></a></td>
+      <td>类代表矩形(左, 上, 宽, 和高)。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.RequestErrorEventArgs.Class.html"><b>RequestErrorEventArgs</b></a></td>
+      <td>为<b>XMLHttpRequest</b> 错误事件提供参数。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.Size.Class.html"><b>Size</b></a></td>
+      <td>类代表了一个尺寸(宽和高)。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.Tooltip.Class.html"><b>Tooltip</b></a></td>
+      <td><p>提供一个弹出窗口，该窗口显示页面上的其他元素的附加信息。 </p>
+
+<p><b>Tooltip</b> 类可以在两个模式中使用：</p>
+
+<p><b>Automatic 模式：</b> 使用<b>setTooltip</b> 方法连接<b>Tooltip</b> 到页面上的一个或者更多个元素。
+<b>Tooltip</b> 自动监听事件，并且当用户执行操作时触发提示信息。例如：</p>
+
+<p><pre>var tt = new wijmo.Tooltip();
+tt.setTooltip('#menu', 'Select commands.');
+tt.setTooltip('#tree', 'Explore the hierarchy.');
+tt.setTooltip('#chart', '#idChartTooltip');</pre></p>
+
+<p><b>Manual 模式：</b> 调用者使用<b>show</b> 和<b>hide</b> 方法负责显示和隐藏工具提示。例如：</p>
+
+<p><pre>var tt = new wijmo.Tooltip();
+element.addEventListener('click', function () {
+  if (tt.isVisible) {
+    tt.hide();
+  } else {
+    tt.show(element, 'This is an important element!');
+  }
+});</pre></p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.TooltipEventArgs.Class.html"><b>TooltipEventArgs</b></a></td>
+      <td>为<b>popup</b> 事件提供参数。</td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideInterfaces = !hideInterfaces">
+<span class="glyph-collapsed" ng-show="hideInterfaces"></span>
+<span class="glyph-expanded" ng-hide="hideInterfaces"></span>
+接口
+</h3>
+</div>
+<table ng-hide="hideInterfaces" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th>名称</th>
+
+<th>描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.IEventHandler.Interface.html"><b>IEventHandler</b></a></td>
+      <td><p>描述一个事件处理器。
+事件处理器是在事件发生时调用的函数。</p>
+
+<p>每一个事件处理器有两个参数：
+<ul>
+  <li><b>sender</b> 是引发事件的对象，并且</li>
+  <li><b>args</b> 是一个包含事件参数的可选对象。</li>
+</ul></p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.IQueryInterface.Interface.html"><b>IQueryInterface</b></a></td>
+      <td>允许访问者验证是否一个对象实现一个接口。</td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideEnumerations = !hideEnumerations">
+<span class="glyph-collapsed" ng-show="hideEnumerations"></span>
+<span class="glyph-expanded" ng-hide="hideEnumerations"></span>
+枚举
+</h3>
+</div>
+<table ng-hide="hideEnumerations" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th>名称</th>
+
+<th>描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.Aggregate.Enum.html"><b>Aggregate</b></a></td>
+      <td>指定聚合的类型来计算在一个组中的值。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.DataType.Enum.html"><b>DataType</b></a></td>
+      <td><p>具有值类型的枚举。</p>
+
+<p>使用<b>getType方法</b>，从一个值中获取<b>DataType</b>。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.Key.Enum.html"><b>Key</b></a></td>
+      <td><p>具有关键值的枚举。</p>
+
+<p>当处理<b>keyDown</b>事件时，该枚举很有用。</p></td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideProperties = !hideProperties">
+<span class="glyph-collapsed" ng-show="hideProperties"></span>
+<span class="glyph-expanded" ng-hide="hideProperties"></span>
+属性
+</h3>
+</div>
+<table ng-hide="hideProperties" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-3">名称</th>
+
+<th class="col-md-2">类型</th>
+
+<th class="col-md-7">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><b>culture</b></td>
+      <td><b>any</b></td>
+      <td><p>在Wijmo库中，获取或者设置包含所有本地化字符串的对象。</p>
+
+<p>该文化选择器是一个两个字母的字符串，该选择器呈现了一个 
+<a href='http://en.wikipedia.org/wiki/List_of_ISO_639-1_codes'>ISO 639 culture</a>。</p></td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideMethods = !hideMethods">
+<span class="glyph-collapsed" ng-show="hideMethods"></span>
+<span class="glyph-expanded" ng-hide="hideMethods"></span>
+方法
+</h3>
+</div>
+<table ng-hide="hideMethods" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-2">名称</th>
+
+<th class="col-md-5">参数/返回类型</th>
+
+<th class="col-md-5">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><b>addClass</b>&#8203;(e, className)</td>
+      <td><p>
+<b>e</b> (<b>HTMLElement</b>): 将有一个类被添加到元素上<br/><b>className</b> (<b>string</b>): 类被添加到元素上。<br/></p>
+</td>
+      <td>给一个元素增加一个类。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>animate</b>&#8203;(apply, duration?, step?): <b>number</b></td>
+      <td><p>
+<b>apply</b> (<b>Function</b>): 回调函数修改该文档
+该函数需要一个单独的参数，表示百分比。<br/><b>duration?</b> (<b>number</b>): 在动画期间，以毫秒为单位计算。<br/><span class="text-info">(默认值: <b>400</b>)</span><br/><b>step?</b> (<b>number</b>): 在动画帧之间，以毫秒为单位计算。<br/><span class="text-info">(默认值: <b>35</b>)</span><br/></p>
+</td>
+      <td><p>调用在计时器中的参数变量值在零和一之间变化的函数。</p>
+
+<p>在计时器中使用该函数，通过修改文档属性或者样式来创建动画。</p>
+
+<p>例如，在下面的代码中，一秒之内参数从零到一进行变化来改变元素的透明度：
+<pre>var element = document.getElementById('someElement');
+animate(function(pct) {
+  element.style.opacity = pct;
+}, 1000);</pre></p>
+
+<p>该函数返回一个间隔的ID，以便你可以使用它来停止动画。当你开始一个新动画时，通常都是这样做的，
+并且希望在同一个元素上暂停另一个正在进行的动画。例如，在下面的代码中，如果开始一个新的动画，
+可以跟踪间隔的ID和清除动画：
+<pre>var element = document.getElementById('someElement');
+if (this._animInterval) {
+  clearInterval(this._animInterval);
+}
+var self = this;
+self._animInterval = animate(function(pct) {
+  element.style.opacity = pct;
+  if (pct == 1) {
+    self._animInterval = null;
+  }
+}, 1000);</pre></p><br/><b>返回值</b> 你可以使用一个间隔的id来暂停动画。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>asArray</b>&#8203;(value, nullOK?): <b>any</b><b>[]</b></td>
+      <td><p>
+<b>value</b> (<b>any</b>): 假设值为数组。<br/><b>nullOK?</b> (<b>boolean</b>): null值是否可接受。<br/><span class="text-info">(默认值: <b>true</b>)</span><br/></p>
+</td>
+      <td>断言一个值为数组。<br/><b>返回值</b> 传入数组。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>asBoolean</b>&#8203;(value, nullOK?): <b>boolean</b></td>
+      <td><p>
+<b>value</b> (<b>boolean</b>): 假设值为布尔型。<br/><b>nullOK?</b> (<b>boolean</b>): null值是否可接受。<br/><span class="text-info">(默认值: <b>false</b>)</span><br/></p>
+</td>
+      <td>断言一个值为布尔值。<br/><b>返回值</b> 传入一个布尔值。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>asCollectionView</b>&#8203;(value, nullOK?): <b>ICollectionView</b></td>
+      <td><p>
+<b>value</b> (<b>any</b>): 数组或者 <a href="topic/wijmo.collections.ICollectionView.Interface.html"><b>ICollectionView</b></a>.<br/><b>nullOK?</b> (<b>boolean</b>): null值是否可接受。<br/><span class="text-info">(默认值: <b>true</b>)</span><br/></p>
+</td>
+      <td>断言一个值是 <a href="topic/wijmo.collections.ICollectionView.Interface.html"><b>ICollectionView</b></a> 或者一个数组。<br/><b>返回值</b> 从传入的数组中， <a href="topic/wijmo.collections.ICollectionView.Interface.html"><b>ICollectionView</b></a> 被传入或者 a <a href="topic/wijmo.collections.CollectionView.Class.html"><b>CollectionView</b></a> 被创建。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>asDate</b>&#8203;(value, nullOK?): <b>Date</b></td>
+      <td><p>
+<b>value</b> (<b>Date</b>): 假设值为日期类型。<br/><b>nullOK?</b> (<b>boolean</b>): null值是否可接受。<br/><span class="text-info">(默认值: <b>false</b>)</span><br/></p>
+</td>
+      <td>断言一个值为日期类型。<br/><b>返回值</b> 传入一个日期。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>asEnum</b>&#8203;(value, enumType, nullOK?): <b>number</b></td>
+      <td><p>
+<b>value</b> (<b>number</b>): 作为一个枚举值。<br/><b>enumType</b> (<b>any</b>): 要测试的枚举类型。<br/><b>nullOK?</b> (<b>boolean</b>): null值是否可接受。<br/><span class="text-info">(默认值: <b>false</b>)</span><br/></p>
+</td>
+      <td>断言一个值是一个枚举类型的有效设置。<br/><b>返回值</b> 传入一个值。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>asFunction</b>&#8203;(value, nullOK?): <b>Function</b></td>
+      <td><p>
+<b>value</b> (<b>any</b>): 假设值为函数。<br/><b>nullOK?</b> (<b>boolean</b>): null值是否可接受。<br/><span class="text-info">(默认值: <b>true</b>)</span><br/></p>
+</td>
+      <td>断言一个值为函数。<br/><b>返回值</b> 传入一个函数。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>asInt</b>&#8203;(value, nullOK?, positive?): <b>number</b></td>
+      <td><p>
+<b>value</b> (<b>number</b>): 假设值为整型。<br/><b>nullOK?</b> (<b>boolean</b>): null值是否可接受。<br/><span class="text-info">(默认值: <b>false</b>)</span><br/><b>positive?</b> (<b>boolean</b>): 是否只接受负的整型值。<br/><span class="text-info">(默认值: <b>false</b>)</span><br/></p>
+</td>
+      <td>断言一个值为整型。<br/><b>返回值</b> 传入一个数字。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>asNumber</b>&#8203;(value, nullOK?, positive?): <b>number</b></td>
+      <td><p>
+<b>value</b> (<b>number</b>): 假设值为数字。<br/><b>nullOK?</b> (<b>boolean</b>): null值是否可接受。<br/><span class="text-info">(默认值: <b>false</b>)</span><br/><b>positive?</b> (<b>boolean</b>): 是否只接受负值。<br/><span class="text-info">(默认值: <b>false</b>)</span><br/></p>
+</td>
+      <td>断言值为数字。<br/><b>返回值</b> 传入数字。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>assert</b>&#8203;(condition, msg)</td>
+      <td><p>
+<b>condition</b> (<b>boolean</b>): 条件期望为真。<br/><b>msg</b> (<b>string</b>): 如果条件不为真，则消息异常。<br/></p>
+</td>
+      <td>如果条件为false，则抛出异常。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>asString</b>&#8203;(value, nullOK?): <b>string</b></td>
+      <td><p>
+<b>value</b> (<b>string</b>): 假设值为字符串。<br/><b>nullOK?</b> (<b>boolean</b>): null值是否可接受。<br/><span class="text-info">(默认值: <b>true</b>)</span><br/></p>
+</td>
+      <td>断言一个值为字符串。<br/><b>返回值</b> 传入一个字符串。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>asType</b>&#8203;(value, type, nullOK?): <b>any</b></td>
+      <td><p>
+<b>value</b> (<b>any</b>): 被检查的值。<br/><b>type</b> (<b>any</b>): 期望值得类型。<br/><b>nullOK?</b> (<b>boolean</b>): null值是否可接受。<br/><span class="text-info">(默认值: <b>false</b>)</span><br/></p>
+</td>
+      <td>断言一个值是一个给定类型的实例。<br/><b>返回值</b> 传入一个值。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>changeType</b>&#8203;(value, type, format): <b>any</b></td>
+      <td><p>
+<b>value</b> (<b>any</b>): 值进行转换。<br/><b>type</b> (<a href="topic/wijmo.DataType.Enum.html"><b>DataType</b></a>): <a href="topic/wijmo.DataType.Enum.html"><b>DataType</b></a> 进行值转换。<br/><b>format</b> (<b>string</b>): 转换成字符串或从字符串转换时使用的格式。<br/></p>
+</td>
+      <td><p>改变值的类型。</p>
+
+<p>如果转换失败，返回原始的值。检查一个转换是否成功，你应该检查返回值的类型。</p><br/><b>返回值</b> 转换后的值，或者原始的值如果一个转换不可能的话。The converted value, or the original value if a conversion was not possible.</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>clamp</b>&#8203;(value, min, max): <b>number</b></td>
+      <td><p>
+<b>value</b> (<b>number</b>): 原始值。<br/><b>min</b> (<b>number</b>): 被允许的最小值。<br/><b>max</b> (<b>number</b>): 被允许的最大值。<br/></p>
+</td>
+      <td>夹在最大值和最小值中的一个值。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>closest</b>&#8203;(e, selector): <b>Node</b></td>
+      <td><p>
+<b>e</b> (<b>any</b>): 搜索应该开始的元素。<br/><b>selector</b> (<b>string</b>): 一个字符串包含一个选择器表达式来匹配元素。<br/></p>
+</td>
+      <td>找到最近的一个祖先元素，来满足一个选择器。<br/><b>返回值</b> 满足选择器的最近的祖先元素(包括原始的元素)，如果找不到则为Null。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>contains</b>&#8203;(parent, child): <b>boolean</b></td>
+      <td><p>
+<b>parent</b> (<b>any</b>): 父元素。<br/><b>child</b> (<b>any</b>): 子元素。<br/></p>
+</td>
+      <td>检查一个HTML元素是否包含另一个元素。<br/><b>返回值</b> 如果父元素包含子元素。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>copy</b>&#8203;(dst, src)</td>
+      <td><p>
+<b>dst</b> (<b>any</b>): 目标对象。<br/><b>src</b> (<b>any</b>): 源对象。<br/></p>
+</td>
+      <td><p>从一个对象给另一个对象复制属性。</p>
+
+<p>该方法被典型的用作初始化控制器和其他的Wijmo对象，通过设置他们的属性和分配事件处理器。</p>
+
+<p>目标对象必须定义在源代码中定义的所有的属性，否则就会抛出一个错误。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>createElement</b>&#8203;(html, appendTo?): <b>HTMLElement</b></td>
+      <td><p>
+<b>html</b> (<b>string</b>): HTML片段转换为HTMLElement。<br/><b>appendTo?</b> (<b>HTMLElement</b>): 可选的HTMLElement添加到新的元素上。<br/></p>
+</td>
+      <td>从一个HTML字符串创建一个元素。<br/><b>返回值</b> 新的元素。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>enable</b>&#8203;(e, value)</td>
+      <td><p>
+<b>e</b> (<b>HTMLElement</b>): 使元素可用或者禁用。<br/><b>value</b> (<b>boolean</b>): 是否启用或禁用元素。<br/></p>
+</td>
+      <td>可用和禁用一个元素。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>escapeHtml</b>&#8203;(text)</td>
+      <td><p>
+<b>text</b> (<b>string</b>): 文本编码。<br/></p>
+</td>
+      <td><p>通过将一个HTML字符替换成文本实体，来对字符串进行编码。</p>
+
+<p>用户键入的字符串应该在HTML页面中显示之前就被编码。这样确保页面完整，并且阻止HTML/javascript注入损坏。</p><br/><b>返回值</b> 一个原始字符串转义的HTML版本。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>format</b>&#8203;(format, data, formatFunction?): <b>string</b></td>
+      <td><p>
+<b>format</b> (<b>string</b>): 复合格式字符串。<br/><b>data</b> (<b>any</b>): 数据对象被用作构造字符串。<br/><b>formatFunction?</b> (<b>Function</b>): 一个可选的函数用于格式化上下文中的项。<br/></p>
+</td>
+      <td><p>在指定的字符串中替换每一个格式项，该指定字符串具有有对象值相等的文本。
+      
+该函数通过替换<b>formatString</b>的部分进行工作，该字符串格式具有'{name:format}'模型，具有<b>data</b>属性的参数。例如：</p>
+
+<p><pre>
+var data = { name: 'Joe', amount: 123456 };
+var msg = wijmo.format('Hello {name}, you won {amount:n2}!', data);
+</pre></p>
+
+<p>可选项 <b>formatFunction</b> 允许你通过提供上下文敏感的格式来自定义内容。如果已经提供，该格式函数为每一个格式化的元素获取调用，并且获取传递的数据对象，参数名称，格式和值；并将返回一个输出字符串。例如：</p>
+
+<p><pre>
+var data = { name: 'Joe', amount: 123456 };
+var msg = wijmo.format('Hello {name}, you won {amount:n2}!', data,
+            function (data, name, fmt, val) {
+              if (wijmo.isString(data[name])) {
+                  val = wijmo.escapeHtml(data[name]);
+              }
+              return val;
+            });
+</pre></p><br/><b>返回值</b> 格式化的字符串。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>getActiveElement</b>&#8203;()</td>
+      <td></td>
+      <td>Gets a reference to the element that contains the focus,
+accounting for shadow document fragments.</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>getAggregate</b>&#8203;(aggType, items, binding?)</td>
+      <td><p>
+<b>aggType</b> (<a href="topic/wijmo.Aggregate.Enum.html"><b>Aggregate</b></a>): Type of aggregate to calculate.<br/><b>items</b> (<b>any</b><b>[]</b>): Array with the items to aggregate.<br/><b>binding?</b> (<b>string</b>): Name of the property to aggregate on (in case the items are not simple values).<br/></p>
+</td>
+      <td>计算一个数组中值的聚合。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>getElement</b>&#8203;(selector): <b>HTMLElement</b></td>
+      <td><p>
+<b>selector</b> (<b>any</b>): 一个元素，一个查询选择器字符串，或者jQuery对象。<br/></p>
+</td>
+      <td>从jQuery样式选择器中获取一个元素。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>getElementRect</b>&#8203;(e): <a href="topic/wijmo.Rect.Class.html"><b>Rect</b></a></td>
+      <td><p>
+<b>e</b> (<b>Element</b>)<br/></p>
+</td>
+      <td><p>在页坐标中获取一个元素的边界矩形。</p>
+
+<p>此功能相似于<b>getBoundingClientRect</b> 函数，
+除过使用窗口坐标，且当文档滚动时可以改变。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>getType</b>&#8203;(value): <a href="topic/wijmo.DataType.Enum.html"><b>DataType</b></a></td>
+      <td><p>
+<b>value</b> (<b>any</b>): 值进行测试。<br/></p>
+</td>
+      <td>获取一个值得类型。<br/><b>返回值</b> <a href="topic/wijmo.DataType.Enum.html"><b>DataType</b></a> 的值代表了传入值得类型。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>getVersion</b>&#8203;(): <b>string</b></td>
+      <td></td>
+      <td>获取Wijmo库当前加载的版本。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>hasClass</b>&#8203;(e, className): <b>boolean</b></td>
+      <td><p>
+<b>e</b> (<b>HTMLElement</b>): 元素检查。<br/><b>className</b> (<b>string</b>): 类检查。<br/></p>
+</td>
+      <td>检查一个元素是否包含一个类。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>hasItems</b>&#8203;(value)</td>
+      <td><p>
+<b>value</b> (<b>ICollectionView</b>): 检查 <a href="topic/wijmo.collections.ICollectionView.Interface.html"><b>ICollectionView</b></a><br/></p>
+</td>
+      <td>检查一个 <a href="topic/wijmo.collections.ICollectionView.Interface.html"><b>ICollectionView</b></a> 是否被定义并且不为空。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>hidePopup</b>&#8203;(popup, remove?, fadeOut?)</td>
+      <td><p>
+<b>popup</b> (<b>HTMLElement</b>): 隐藏弹出的元素。<br/><b>remove?</b> (<b>boolean</b>): 是否从DOM或只是隐藏删除弹出。<br/><span class="text-info">(默认值: <b>true</b>)</span><br/><b>fadeOut?</b> (<b>boolean</b>): 是否使用淡入淡出动画制作弹出逐渐消失。<br/><span class="text-info">(默认值: <b>false</b>)</span><br/></p>
+</td>
+      <td>隐藏弹出元素先前显示的<b>showPopup方法</b>。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>httpRequest</b>&#8203;(url, settings?): <b>XMLHttpRequest</b></td>
+      <td><p>
+<b>url</b> (<b>string</b>): 字符串包含发送请求的网址。<br/><b>settings?</b> (<b>any</b>): <p>使用可选的对象来配置请求。</p>
+
+<p> <b>设置</b> 对象可能包含下面的：</p>
+
+<p><table>
+<tr>
+  <td><b>method</b></td>
+  <td>           使用请求的HTTP方法 (e.g. "POST", "GET", "PUT").
+      默认的方法为 "GET".</td>
+</tr>
+<tr>
+  <td><b>data</b></td>
+  <td>           数据被发送到服务器端。 该数据被添加到网址来进行GET请求，
+      并且转换为其他请求的字符串。</td>
+</tr>
+<tr>
+  <td><b>async</b></td>
+  <td>           默认的，所有的请求都是异步发送的（例如 该选项默认被置为真）。
+      如果你需要同步请求，设置该选项为假。</td>
+</tr>
+<tr>
+  <td><b>success</b></td>
+  <td>           如果请求成功，将调用一个函数。
+      该函数获得通过一个<b>XMLHttpRequest</b>类型的单一参数。</td>
+</tr>
+<tr>
+  <td><b>error</b></td>
+  <td>           如果请求失败，将调用一个函数。
+      该函数获得通过一个<b>XMLHttpRequest</b>类型的单一参数。</td>
+</tr>
+<tr>
+  <td><b>complete</b></td>
+  <td>           如果请求完成（在执行成功和错误回调之后），将调用一个函数。
+      该函数获得通过一个<b>XMLHttpRequest</b>类型的单一参数。</td>
+</tr>
+<tr>
+  <td><b>beforeSend</b></td>
+  <td>           发送请求之前，将立刻调用一个函数。
+     该函数获得通过一个<b>XMLHttpRequest</b>类型的单一参数。</td>
+</tr>
+<tr>
+  <td><b>requestHeaders</b></td>
+  <td>           一个JavaScript对象包含key/value对，呗添加到该请求
+ 头。</td>
+</tr>
+<tr>
+  <td><b>user</b></td>
+  <td>           在<b>XMLHttpRequest</b> 响应中，一个用户名被使用到一个HTTP访问
+权限的请求中。</td>
+</tr>
+<tr>
+  <td><b>password</b></td>
+  <td>           在<b>XMLHttpRequest</b>  响应中，一个密码被使用到一个HTTP访问
+权限的请求中。</td>
+</tr>
+</table></p>
+
+<p>使用<b>成功</b>            来获取请求的结果，该请求被提供在
+回调函数的<b>XMLHttpRequest</b> 参数。 例如，下面的代码使用
+           <b>httpRequest</b> 方法来从一个OData服务中检索客户列表：</p>
+
+<p><pre>wijmo.httpRequest('http://services.odata.org/Northwind/Northwind.svc/Customers?$format=json', {
+  success: function (xhr) {
+    var response = JSON.parse(xhr.response),
+                   customers = response.value;
+    // 为客户做些什么。。。
+  }
+});</pre></p><br/></p>
+</td>
+      <td>执行HTTP请求。<br/><b>返回值</b> 使用 <b>XMLHttpRequest</b> 对象执行请求。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>isArray</b>&#8203;(value): <b>boolean</b></td>
+      <td><p>
+<b>value</b> (<b>any</b>): 值进行测试。<br/></p>
+</td>
+      <td>确定一个对象是否为数组。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>isBoolean</b>&#8203;(value): <b>boolean</b></td>
+      <td><p>
+<b>value</b> (<b>any</b>): 值进行测试。<br/></p>
+</td>
+      <td>确定一个对象是否为布尔值。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>isDate</b>&#8203;(value): <b>boolean</b></td>
+      <td><p>
+<b>value</b> (<b>any</b>): 值进行测试。<br/></p>
+</td>
+      <td>确定一个对象是否为日期。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>isFunction</b>&#8203;(value): <b>boolean</b></td>
+      <td><p>
+<b>value</b> (<b>any</b>): 值进行测试。<br/></p>
+</td>
+      <td>确定一个对象是否为函数。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>isInt</b>&#8203;(value): <b>boolean</b></td>
+      <td><p>
+<b>value</b> (<b>any</b>): 值进行测试。<br/></p>
+</td>
+      <td>确定一个对象是否为整型。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>isNullOrWhiteSpace</b>&#8203;(value): <b>boolean</b></td>
+      <td><p>
+<b>value</b> (<b>string</b>): 值进行测试。<br/></p>
+</td>
+      <td>决定一个字符串为null，空 或者只有空白字符。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>isNumber</b>&#8203;(value): <b>boolean</b></td>
+      <td><p>
+<b>value</b> (<b>any</b>): 值进行测试。<br/></p>
+</td>
+      <td>确定一个对象是否为数字。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>isObject</b>&#8203;(value): <b>boolean</b></td>
+      <td><p>
+<b>value</b> (<b>any</b>): 值进行测试。<br/></p>
+</td>
+      <td>确定一个值是否为一个对象。
+（与值类型，数组，或者日期相对）。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>isPrimitive</b>&#8203;(value): <b>boolean</b></td>
+      <td><p>
+<b>value</b> (<b>any</b>): 值进行测试。<br/></p>
+</td>
+      <td>确定一个对象是否为一个原生的类型（字符串，数字，布尔值，或者日期）。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>isString</b>&#8203;(value): <b>boolean</b></td>
+      <td><p>
+<b>value</b> (<b>any</b>): 值进行测试。<br/></p>
+</td>
+      <td>确定一个对象是否为字符串。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>isUndefined</b>&#8203;(value): <b>boolean</b></td>
+      <td><p>
+<b>value</b> (<b>any</b>): 值进行测试。<br/></p>
+</td>
+      <td>确定一个对象是否为undefined。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>mouseToPage</b>&#8203;(e): <a href="topic/wijmo.Point.Class.html"><b>Point</b></a></td>
+      <td><p>
+<b>e</b> (<b>any</b>)<br/></p>
+</td>
+      <td>在页面坐标中，将鼠标或者触摸事件的参数转换成<b>点</b>。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>moveFocus</b>&#8203;(parent, offset)</td>
+      <td><p>
+<b>parent</b> (<b>HTMLElement</b>): 父元素<br/><b>offset</b> (<b>number</b>): 移动焦点时的偏移量。（使用0来聚焦第一个可聚焦的元素。）<br/></p>
+</td>
+      <td>将焦点移到下一个/上/第一聚焦的子元素。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>removeClass</b>&#8203;(e, className)</td>
+      <td><p>
+<b>e</b> (<b>HTMLElement</b>): 将要移除类的元素。<br/><b>className</b> (<b>string</b>): 类从元素中移除。<br/></p>
+</td>
+      <td>从一个元素中移除一个类。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>setCss</b>&#8203;(e, css)</td>
+      <td><p>
+<b>e</b> (<b>any</b>): 将要改变样式的元素或者元素数组<br/><b>css</b> (<b>any</b>): 对象包含应用到元素上的样式属性。<br/></p>
+</td>
+      <td>通过在一个对象上应用指定的属性来修改一个元素的样式。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>setSelectionRange</b>&#8203;(e, start, end?)</td>
+      <td><p>
+<b>e</b> (<b>HTMLInputElement</b>)<br/><b>start</b> (<b>number</b>): 偏移到文本区域中选中部分的开始位置。<br/><b>end?</b> (<b>number</b>): 偏移到文本区域中选中部分的结束位置。<br/><span class="text-info">(默认值: <b>start</b>)</span><br/></p>
+</td>
+      <td><p>在一个文本区域，设置选中部分的开始和结束位置。</p>
+
+<p>该方法与HTMLInputElement对象中的本地 <b>setSelectionRange</b> 方法相似，除过检查条件可能引起的异常(元素不在DOM中,禁用,或者隐藏)之外。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>setText</b>&#8203;(e, text)</td>
+      <td><p>
+<b>e</b> (<b>HTMLElement</b>): 将内容更新的元素。<br/><b>text</b> (<b>string</b>): 纯文本被指定到元素上。<br/></p>
+</td>
+      <td>设置元素的文本内容。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>showPopup</b>&#8203;(popup, ref?, above?, fadeIn?, copyStyles?)</td>
+      <td><p>
+<b>popup</b> (<b>HTMLElement</b>): 显示弹窗的元素。<br/><b>ref?</b> (<b>any</b>): 参考元件或矩形用于位置出。<br/><span class="text-info">(默认值: <b>null</b>)</span><br/><b>above?</b> (<b>boolean</b>): 如果可能的话位置弹出高于参考矩形。<br/><span class="text-info">(默认值: <b>false</b>)</span><br/><b>fadeIn?</b> (<b>boolean</b>): 使用淡入动画制作弹出逐渐显现。<br/><span class="text-info">(默认值: <b>false</b>)</span><br/><b>copyStyles?</b> (<b>boolean</b>): 复制字体和颜色样式从引用元素。<br/><span class="text-info">(默认值: <b>true</b>)</span><br/></p>
+</td>
+      <td><p>将一个元素作为一个弹出显示。 </p>
+
+<p>弹出元素成为身体的元素的子元素，并定位高于或低于一个参考矩形，取决于多少空间可用。</p>
+
+<p>参考矩形可以指定为以下的一个:</p>
+
+<p><dl class="dl-horizontal">
+  <dt>HTMLElement</dt>
+  <dd>元素的包围矩形。</dd>
+  <dt>MouseEvent</dt>
+  <dd>事件目标元素的包围矩形。</dd>
+  <dt>Rect</dt>
+  <dd>给定的矩形。</dd>
+  <dt>null</dt>
+  <dd>没有引用的矩形; 弹框在窗口的中间。</dd>
+</dl></p>
+
+<p>调用<b>hidePopup</b> 方法来隐藏弹窗。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>toFixed</b>&#8203;(value, prec, truncate): <b>number</b></td>
+      <td><p>
+<b>value</b> (<b>number</b>): 值进行四舍五入或者截取。<br/><b>prec</b> (<b>number</b>): 结果的若干小数位数。<br/><b>truncate</b> (<b>boolean</b>): 是否截取或者四舍五入原始值。<br/></p>
+</td>
+      <td>将一个数字进行四舍五入或者截取到一个指定的精度。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>toggleClass</b>&#8203;(e, className, addOrRemove)</td>
+      <td><p>
+<b>e</b> (<b>HTMLElement</b>): 将有一个类被添加到元素上。<br/><b>className</b> (<b>string</b>): 类添加到元素上或者从该元素移除。<br/><b>addOrRemove</b> (<b>boolean</b>): 是否添加或者移除一个类。
+使用true表示为元素添加类，而使用false表示从该元素移除一个类。<br/></p>
+</td>
+      <td>给一个元素添加一个类，或者从该元素中移除一个类。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>toHeaderCase</b>&#8203;(text): <b>string</b></td>
+      <td><p>
+<b>text</b> (<b>string</b>): 字符串转换为头类型。<br/></p>
+</td>
+      <td><p>通过首字母大写，将驼峰格式的字符串转换为头类型的字符串，并且在大写字母之前小写字符之后添加空格。</p>
+
+<p>例如，‘somePropertyName’变为‘Some Property Name’。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>tryCast</b>&#8203;(value, type): <b>any</b></td>
+      <td><p>
+<b>value</b> (<b>any</b>): 值进行类型转换。<br/><b>type</b> (<b>any</b>): 类型或者接口名称进行类型转换。<br/></p>
+</td>
+      <td>如果可能的话，将一个值转换为一个类型。<br/><b>返回值</b> 如果类型转换成功，该值被传递，否则为null。</td>
+    </tr>
+</tbody>
+</table>
+</div>
+

@@ -1,0 +1,951 @@
+<h2>ODataCollectionView 类</h2>
+<dl class="dl-horizontal">
+<dt>基类</dt><dd><a href="topic/wijmo.collections.CollectionView.Class.html"><b>CollectionView</b></a></dd>
+<dt>派生类</dt><dd><a href="topic/wijmo.odata.ODataVirtualCollectionView.Class.html"><b>ODataVirtualCollectionView</b></a></dd>
+<dt>模块</dt><dd>wijmo.odata</dd>
+<dt>文件</dt><dd>wijmo.odata.js</dd>
+<dt>表示</dt><dd><label style="font-weight:normal">继承成员 <input type="checkbox" ng-model="showInherited"></label></dd>
+</dl>
+<p><p>扩展 <a href="topic/wijmo.collections.CollectionView.Class.html"><b>CollectionView</b></a> 类支持从 OData 数据源加载和保存数据。</p>
+
+<p>您可以使用 <b>ODataCollectionView</b> 类从 OData 服务加载数据，并将其用做任何 Wijmo 控件的数据源。</p>
+
+<p>为了额外的获取完整的 CRUD 支持，您需要获取全部的 <b>CollectionView</b> 的功能，
+包括排序，筛选，分页，以及分组。排序，筛选，分页功能既可以在服务器端完成也可以在客户端完成。</p>
+
+<p>以下代码展示了如何实例化一个 <b>ODataCollectionView</b>，从数据源选择一些字段并在客户端提供排序。
+请注意这里是如何通过使用‘Options’参数传递初始化数据，
+这一过程和初始化控件相同：</p>
+
+<p><pre>var url = 'http://services.odata.org/Northwind/Northwind.svc';
+var categories = new wijmo.odata.ODataCollectionView(url, 'Categories', {
+  fields: ['CategoryID', 'CategoryName', 'Description'],
+  sortOnServer: false
+});</pre></p></p>
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideConstructor = !hideConstructor">
+<span class="glyph-collapsed" ng-show="hideConstructor"></span>
+<span class="glyph-expanded" ng-hide="hideConstructor"></span>
+ 构造函数
+</h3>
+</div>
+<table ng-hide="hideConstructor" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-2">名称</th>
+
+<th class="col-md-5">参数</th>
+
+<th class="col-md-5">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><b>constructor</b>&#8203;(url, tableName, options?): <a href="topic/wijmo.odata.ODataCollectionView.Class.html"><b>ODataCollectionView</b></a></td>
+      <td><p>
+<b>url</b> (<b>string</b>): 数据服务的 Url(比如 
+'http://services.odata.org/Northwind/Northwind.svc').<br/><b>tableName</b> (<b>string</b>): 从服务获得的表（实体）的名称。
+如果没有提供，,一个合适的表（实体）列表将会获得。<br/><b>options?</b> (<b>any</b>): 包含初始化数据的Javascript对象(属性，值和事件处理程序)。<br/></p>
+</td>
+      <td>初始化 <a href="topic/wijmo.odata.ODataCollectionView.Class.html"><b>ODataCollectionView</b></a> 类的一个新实例。</td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideProperties = !hideProperties">
+<span class="glyph-collapsed" ng-show="hideProperties"></span>
+<span class="glyph-expanded" ng-hide="hideProperties"></span>
+属性
+</h3>
+</div>
+<table ng-hide="hideProperties" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-3">名称</th>
+
+<th class="col-md-2">类型</th>
+
+<th class="col-md-7">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>canAddNew</b></td>
+      <td><b>boolean</b></td>
+      <td>获取一个值，该值指示是否可将新项添加到集合中。<br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.CollectionView.Class.html"><b>CollectionView</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>canCancelEdit</b></td>
+      <td><b>boolean</b></td>
+      <td>获取一个值，该值指示集合视图是否可以丢弃挂起的更改，并且回复一个编辑对象的原始值。<br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.CollectionView.Class.html"><b>CollectionView</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>canChangePage</b></td>
+      <td><b>boolean</b></td>
+      <td>获取一个值，该值指示<b>pageIndex</b> 值是否可以更改。<br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.CollectionView.Class.html"><b>CollectionView</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>canFilter</b></td>
+      <td><b>boolean</b></td>
+      <td>获取一个值，该值指示此视图是否支持通过<b>filter</b> 属性进行筛选。<br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.CollectionView.Class.html"><b>CollectionView</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>canGroup</b></td>
+      <td><b>boolean</b></td>
+      <td>获取一个值，该值指示此视图是否支持通过<b>groupDescriptions</b> 属性进行分组。<br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.CollectionView.Class.html"><b>CollectionView</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>canRemove</b></td>
+      <td><b>boolean</b></td>
+      <td>获取一个值，该值指示是否可从集合中删除项目。<br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.CollectionView.Class.html"><b>CollectionView</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>canSort</b></td>
+      <td><b>boolean</b></td>
+      <td>获取一个值，该值指示此视图是否支持通过<b>sortDescriptions</b> 属性进行分类。<br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.CollectionView.Class.html"><b>CollectionView</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>currentAddItem</b></td>
+      <td><b>any</b></td>
+      <td>获取在当前添加事务处理期间添加的项目。<br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.CollectionView.Class.html"><b>CollectionView</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>currentEditItem</b></td>
+      <td><b>any</b></td>
+      <td>获取在当前编辑事务中编辑的项目。<br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.CollectionView.Class.html"><b>CollectionView</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>currentItem</b></td>
+      <td><b>any</b></td>
+      <td>在视图中获取或者设置当前项目。<br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.CollectionView.Class.html"><b>CollectionView</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>currentPosition</b></td>
+      <td><b>number</b></td>
+      <td>在视图中获取当前项目的顺序位置。<br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.CollectionView.Class.html"><b>CollectionView</b></a>).</span></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>dataTypes</b></td>
+      <td><b>any</b></td>
+      <td><p>获取或设置当加载数据时，一个用来强制数据类型的 JavaScript 对象。</p>
+
+<p>表示字段名称和值的对象键值是 <a href="topic/wijmo.DataType.Enum.html"><b>DataType</b></a> 类型的值，该值表示如何将数据进行强制转换。</p>
+
+<p>例如，以下代码创建了一个 <a href="topic/wijmo.odata.ODataCollectionView.Class.html"><b>ODataCollectionView</b></a> 并指定
+在数据库中存储为字符串类型的 ‘Freight’ 字段的值，应当被转换为数值类型；
+另外三个日期类型的字段应当被转换为日期：</p>
+
+<p><pre>var orders = new wijmo.data.ODataCollectionView(url, 'Orders', {
+  dataTypes: {
+    Freight: wijmo.DataType.Number 
+    OrderDate: wijmo.DataType.Date,
+    RequiredDate: wijmo.DataType.Date,
+    ShippedDate: wijmo.DataType.Date,
+  }
+});</pre></p>
+
+<p>该属性当数据库包含了和通常使用不一致的数据格式时，非常有用。</p>
+
+<p>在大多数场景下，您不需要提供关于数据类型的信息，
+因为 <b>inferDataTypes</b> 属性自动地处理了对 Date 类型值的转换。</p>
+
+<p>如果您确实提供了显示的类型信息，则 <b>inferDataTypes</b> 将不会被应用上。
+正因为如此，任何提供的数据类型信息应当是完整的，包括全部的具有 Date 类型的字段信息。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>fields</b></td>
+      <td><b>string</b><b>[]</b></td>
+      <td><p>获取或设置一个包含从数据源获取的字段名称的数组。</p>
+
+<p>如果该属性设置为 null 或者一个空白的数组，则将获取全部的字段。</p>
+
+<p>例如，以下代码创建了一个 <a href="topic/wijmo.odata.ODataCollectionView.Class.html"><b>ODataCollectionView</b></a>
+仅从数据库‘Categories’表获取三个字段：</p>
+
+<p><pre>var categories = new wijmo.data.ODataCollectionView(url, 'Categories', {
+  fields: ['CategoryID', 'CategoryName', 'Description']
+});</pre></p></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>filter</b></td>
+      <td><a href="topic/wijmo.collections.IPredicate.Interface.html"><b>IPredicate</b></a></td>
+      <td><p>获取或设置用于确定一个项目是否适合包含在视图中的回调函数。</p>
+
+<p>如果将以参数传递的项目作为参数中的项目，则应返回到真。</p>
+
+<p>注意： 如果筛选器功能需要一个范围（例如 一个有意义的'this'值）记住要使用“绑定”函数来指定'this'对象。例如：
+<pre>
+  collectionView.filter = this._filter.bind(this);
+</pre></p><br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.CollectionView.Class.html"><b>CollectionView</b></a>).</span></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>filterDefinition</b></td>
+      <td><b>string</b></td>
+      <td><p>获取或设置一个字符串，指定包含在服务器端筛选数据的 OData 筛选器。</p>
+
+<p>筛选器的定义语法在
+<a href="http://www.odata.org/documentation/odata-version-2-0/uri-conventions/">OData 文档</a> 中有描述。</p>
+
+<p>例如，以下代码将使得服务器端返回 ‘CompanyName’ 字段以 ‘A’ 开头 ‘S’ 结尾的记录：</p>
+
+<p><pre>view.filterDefinition = "startswith(CompanyName, 'A') and endswith(CompanyName, 'B')";</pre></p>
+
+<p>筛选器定义可以被自动生成。
+例如，<a href="topic/wijmo.grid.filter.FlexGridFilter.Class.html"><b>FlexGridFilter</b></a> 组件将检测其数据源是一个 <a href="topic/wijmo.odata.ODataCollectionView.Class.html"><b>ODataCollectionView</b></a> 并且将自动地更新 <b>filter</b> 以及 <b>filterDefinition</b> 属性。</p>
+
+<p>请注意即使是 <b>filterOnServer</b> 属性设置为 false，<b>filterDefinition</b> 也将生效。
+这允许您有机会同时在服务器端和客户端针对同一集合应用筛选，这在某些场景下将非常有用。</p>
+
+<p>例如，以下代码使用 <b>filterDefinition</b> 属性在服务器端进行筛选，同时通过 <b>filter</b> 属性在客户端对数据进行进一步的筛选。
+集合将显示具有以字母‘C’开头，且单价大于 20 的记录。</p>
+
+<p><pre>var url = 'http://services.odata.org/V4/Northwind/Northwind.svc/';
+var data = new wijmo.odata.ODataCollectionView(url, 'Products', {
+  oDataVersion: 4,
+  filterDefinition: 'startswith(ProductName, \'C\')', // 服务器端筛选
+  filterOnServer: false, // 客户端筛选
+  filter: function(product) { 
+    return product.UnitPrice &gt; 20;
+  },
+});</pre></p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>filterOnServer</b></td>
+      <td><b>boolean</b></td>
+      <td><p>获取或设置一个值，该值决定是否筛选操作应当在服务器端完成还是在客户端完成。</p>
+
+<p>使用 <b>filter</b> 属性在客户端执行筛选，使用
+<b>filterDefinition</b> 属性在服务器端执行筛选。</p>
+
+<p>在某些场景下，有可能需要应用独立的筛选器到客户端
+<b>以及</b> 服务器端。</p>
+
+<p>您可以完成以下步骤以达到此效果 （一）设置 <b>filterOnServer</b> 属性为 false
+同时设置 <b>filter</b> 属性为一个筛选器函数（以启用客户端筛选），同时
+（二）设置 <b>filterDefinition</b> 属性为一个筛选字符串（以启用服务器端筛选）。</p></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>groupDescriptions</b></td>
+      <td><a href="topic/wijmo.collections.ObservableArray.Class.html"><b>ObservableArray</b></a></td>
+      <td>获取<a href="topic/wijmo.collections.GroupDescription.Class.html"><b>GroupDescription</b></a> 对象的集合，该集合描述了集合中的项目如何分组。<br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.CollectionView.Class.html"><b>CollectionView</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>groups</b></td>
+      <td><a href="topic/wijmo.collections.CollectionViewGroup.Class.html"><b>CollectionViewGroup</b></a><b>[]</b></td>
+      <td>获取<a href="topic/wijmo.collections.CollectionViewGroup.Class.html"><b>CollectionViewGroup</b></a> 对象的数组，该数组代表了顶级群体。<br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.CollectionView.Class.html"><b>CollectionView</b></a>).</span></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>inferDataTypes</b></td>
+      <td><b>boolean</b></td>
+      <td><p>获取或设置一个值，该值决定是否
+包含形如标准日期格式的字符串的字段应当自动地被转换为日期类型。</p>
+
+<p>默认情况下，该属性设置为 true，因为 <a href="topic/wijmo.odata.ODataCollectionView.Class.html"><b>ODataCollectionView</b></a> 类使用 JSON，而 JSON 格式不支持 Date 对象。</p>
+
+<p>如果特定的类型信息通过 <b>dataTypes</b> 属性指定，则该属性没有效果。</p></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>isAddingNew</b></td>
+      <td><b>boolean</b></td>
+      <td>获取一个值，指示是否添加事务正在进行中。<br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.CollectionView.Class.html"><b>CollectionView</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>isEditingItem</b></td>
+      <td><b>boolean</b></td>
+      <td>获取一个值，这个值指示编辑事务是否正在进行中。<br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.CollectionView.Class.html"><b>CollectionView</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>isEmpty</b></td>
+      <td><b>boolean</b></td>
+      <td>获取一个值，该值指示该视图是否包含任何项目。<br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.CollectionView.Class.html"><b>CollectionView</b></a>).</span></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>isLoading</b></td>
+      <td><b>boolean</b></td>
+      <td><p>获取一个值，该值指示 <a href="topic/wijmo.odata.ODataCollectionView.Class.html"><b>ODataCollectionView</b></a> 是否正在加载数据。</p>
+
+<p>该属性可以被用作提供进度条。</p></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>isPageChanging</b></td>
+      <td><b>boolean</b></td>
+      <td>获取一个值，该值指示该页索引是否正在更改。<br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.CollectionView.Class.html"><b>CollectionView</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>isUpdating</b></td>
+      <td></td>
+      <td>获取一个值，指示当前是否暂停通知（参见<b>beginUpdate</b> 和 <b>endUpdate</b>）。<br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.CollectionView.Class.html"><b>CollectionView</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>itemCount</b></td>
+      <td><b>number</b></td>
+      <td>获取视图中的项目总数，以考虑到帐目的分页。<br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.CollectionView.Class.html"><b>CollectionView</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>items</b></td>
+      <td><b>any</b><b>[]</b></td>
+      <td>获得视图中的项目。<br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.CollectionView.Class.html"><b>CollectionView</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>itemsAdded</b></td>
+      <td><a href="topic/wijmo.collections.ObservableArray.Class.html"><b>ObservableArray</b></a></td>
+      <td>获取一个包含记录的<a href="topic/wijmo.collections.ObservableArray.Class.html"><b>ObservableArray</b></a> ，当<b>trackChanges</b> 可用后它会被添加到集合<br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.CollectionView.Class.html"><b>CollectionView</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>itemsEdited</b></td>
+      <td><a href="topic/wijmo.collections.ObservableArray.Class.html"><b>ObservableArray</b></a></td>
+      <td>获取一个包含记录的<a href="topic/wijmo.collections.ObservableArray.Class.html"><b>ObservableArray</b></a> ，当<b>trackChanges</b> 可用后它在集合中可以被编辑。<br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.CollectionView.Class.html"><b>CollectionView</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>itemsRemoved</b></td>
+      <td><a href="topic/wijmo.collections.ObservableArray.Class.html"><b>ObservableArray</b></a></td>
+      <td>获取一个包含记录的<a href="topic/wijmo.collections.ObservableArray.Class.html"><b>ObservableArray</b></a> ，当<b>trackChanges</b> 可用后它会从集合中删除。<br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.CollectionView.Class.html"><b>CollectionView</b></a>).</span></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>keys</b></td>
+      <td><b>string</b><b>[]</b></td>
+      <td><p>获取或设置一个包含键值字段名称的数组。</p>
+
+<p>对于更新操作（add/remove/delete）来说，键值字段是必须的。</p></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>newItemCreator</b></td>
+      <td><b>Function</b></td>
+      <td><p>获取或设置为集合创建新项的函数。</p>
+
+<p>如果不提供创建者功能，<a href="topic/wijmo.collections.CollectionView.Class.html"><b>CollectionView</b></a> 将试着创建一个合适的类型的未初始化的项目。</p>
+
+<p>如果提供创建者功能，它应该是一个不需要参数的函数，并且返回一个集合的适当类型的初始化对象。</p><br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.CollectionView.Class.html"><b>CollectionView</b></a>).</span></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>oDataVersion</b></td>
+      <td><b>number</b></td>
+      <td><p>获取或设置服务器使用的 OData 版本。</p>
+
+<p>当前共有四个版本的 OData 服务，从版本 1.0 到版本 4.0。
+版本 4.0 被大多数最新的服务所采纳，但是仍旧有大量的旧版服务仍然在正常运营。</p>
+
+<p>如果您清楚您的服务实现，可以在创建 <a href="topic/wijmo.odata.ODataCollectionView.Class.html"><b>ODataCollectionView</b></a> 时，设置 <b>oDataVersion</b> 属性为一个合适的值（从 1 到 4）（参见以下示例）。</p>
+
+<p><pre>var url = 'http://services.odata.org/Northwind/Northwind.svc';
+var categories = new wijmo.odata.ODataCollectionView(url, 'Categories', {
+  oDataVersion: 1.0, // 旧版的 OData 源
+  fields: ['CategoryID', 'CategoryName', 'Description'],
+  sortOnServer: false
+});</pre></p>
+
+<p>如果您不清楚您所用到的服务所采用的 OData 实现的版本（也许
+您正在做一个 OData 资源管理器程序），那么请不用指定此版本号。
+在这种情况下，<b>ODataCollectionView</b> 将从服务器获取该信息。
+这一操作将需要额外的信息请求，但是每一个服务 URL 仅请求一次，
+因此所带来的影响甚微。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>pageCount</b></td>
+      <td><b>number</b></td>
+      <td>获取总页数。</td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>pageIndex</b></td>
+      <td><b>number</b></td>
+      <td>获取当前页的基于零的索引。<br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.CollectionView.Class.html"><b>CollectionView</b></a>).</span></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>pageOnServer</b></td>
+      <td><b>boolean</b></td>
+      <td><p>获取或设置一个值，该值决定是否分页操作应当在服务器端进行还是在客户端进行。</p>
+
+<p>使用 <b>pageSize</b> 属性以启用分页。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>pageSize</b></td>
+      <td><b>number</b></td>
+      <td>获取或设置显示在一页上的项目的数量。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>requestHeaders</b></td>
+      <td><b>any</b></td>
+      <td><p>获取或设置包含当提交或请求数据时请求的 http header 的一个对象。</p>
+
+<p>使用该属性最典型的用例是当需要进行身份验证的场景。例如：</p>
+
+<p><pre>var categories = new wijmo.odata.ODataCollectionView(serviceUrl, 'Categories', {
+  fields: ['Category_ID', 'Category_Name'],
+  requestHeaders: { Authorization: db.token }
+});</pre></p></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>sortComparer</b></td>
+      <td><b>Function</b></td>
+      <td><p>获取或设置一个函数用于在排序的基准。
+        如果提供，这个函数应该接受两个任意类型的值。 返回-1, 0, 或者 +1，制定第一个值小于，等于，或大于第二个值。 如果返回null，标准内置的比较器会被使用。
+       <b>sortComparer</b> 属性允许你使用自定义排序算法，以保证在某些情况下，用于的需求不仅仅是按照字符串排序。比如，</p>
+
+<p> <a href="http://www.davekoelle.com/alphanum.html">Dave Koele's Alphanum algorithm</a> 它将字符串拆分为字符串串和数字。然后数字按照值排序，字符串按照ASCII码排序。Dave 把这个叫做“自然顺序”。
+ 这个例子展示了 <b>sortComparer</b>  属性的常见用法。
+<pre>// 使用自定义排序创建一个 CollectionView。
+var dataCustomSort = new wijmo.collections.CollectionView(data, {
+  sortComparer: function (a, b) {
+    return wijmo.isString(a) && wijmo.isString(b)
+      ? alphanum(a, b) // custom comparer used for strings
+      : null; // use default comparer used for everything else
+  }
+});</pre></p><br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.CollectionView.Class.html"><b>CollectionView</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>sortConverter</b></td>
+      <td><b>Function</b></td>
+      <td><p>获取或设置排序时用作转换数据的函数。 </p>
+
+<p>如果提供了，函数应该被当作<a href="topic/wijmo.collections.SortDescription.Class.html"><b>SortDescription</b></a> ，数据项和转换值的参数，并且应该返回转换的值。 </p>
+
+<p>此属性提供了一种自定义排序的方法。例如，<a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a> 控件使用该属性来排序映射列的显示值，而不是由原始值。</p>
+
+<p>例如，下面的代码引起<a href="topic/wijmo.collections.CollectionView.Class.html"><b>CollectionView</b></a> 来排序'country'属性，该属性包含国家代码整数 ，使用相应的国家代码名称：</p>
+
+<p><pre>var countries = 'US,Germany,UK,Japan,Italy,Greece'.split(',');
+collectionView.sortConverter = function (sd, item, value) {
+  if (sd.property == 'countryMapped') {
+    value = countries[value]; // 转换国家id为名称
+  }
+  return value;
+}</pre></p><br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.CollectionView.Class.html"><b>CollectionView</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>sortDescriptions</b></td>
+      <td><a href="topic/wijmo.collections.ObservableArray.Class.html"><b>ObservableArray</b></a></td>
+      <td>获取<a href="topic/wijmo.collections.SortDescription.Class.html"><b>SortDescription</b></a> 对象的集合，该集合描述了该集合描述了集合中的项目如何分类。<br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.CollectionView.Class.html"><b>CollectionView</b></a>).</span></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>sortOnServer</b></td>
+      <td><b>boolean</b></td>
+      <td><p>获取或设置一个值，该值决定是否排序操作应当在服务器端完成还是在客户端完成。</p>
+
+<p>使用 <b>sortDescriptions</b> 属性指定数据如何进行排序。</p></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>sourceCollection</b></td>
+      <td><b>any</b></td>
+      <td>获取或者设置基础的（没有过滤和分类的）集合。<br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.CollectionView.Class.html"><b>CollectionView</b></a>).</span></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>tableName</b></td>
+      <td><b>string</b></td>
+      <td>获取该集合绑定至的数据表（实体）的名称。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>totalItemCount</b></td>
+      <td><b>number</b></td>
+      <td>在应用分页之前，获取视图中项目的总数。</td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>trackChanges</b></td>
+      <td><b>boolean</b></td>
+      <td><p>获取或设置一个值，该值确定该控件是否对数据进行跟踪更改。 </p>
+
+<p>如果<b>trackChanges</b> 被设置为真，<a href="topic/wijmo.collections.CollectionView.Class.html"><b>CollectionView</b></a> 对数据的更改进行跟踪，并且通过 
+<b>itemsAdded</b>， <b>itemsRemoved</b>，和<b>itemsEdited</b> 集合暴漏它们。</p>
+
+<p>跟踪变化在多种情况下是非常有用的，当用户确认该修改是有效的之后你需要更新服务器。</p>
+
+<p>在提交或取消更改后，使用<b>clearChanges</b> 方法来清除<b>itemsAdded</b>， <b>itemsRemoved</b> 和<b>itemsEdited</b> 集合。</p>
+
+<p><b>CollectionView</b> 只跟踪正式的<b>CollectionView</b> 方法被使用时的改变（<b>editItem</b>/<b>commitEdit</b>，<b>addNew</b>/<b>commitNew</b> 和<b>remove</b>）。
+直接对数据的更改不被跟踪。</p><br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.CollectionView.Class.html"><b>CollectionView</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>useStableSort</b></td>
+      <td><b>boolean</b></td>
+      <td><p>获取或设置是否使用稳定排序算法。 </p>
+
+<p>稳定的排序算法以相等的键值保持记录的相对顺序。 
+例如，考虑一个“Amount”字段集合的对象。. 
+如果你按"Amount"对该集合进行排序，,一个稳定的排序将保留原始的记录的顺序和相同Amount值.</p>
+
+<p>该属性默认为假，使类使用JavaScript内置的排序方法，非常快，但不稳定。设置
+<b>stableSort</b> 为真，从百分之三十到五十增加排序次数，这些对大的集合有意义。</p><br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.CollectionView.Class.html"><b>CollectionView</b></a>).</span></td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideMethods = !hideMethods">
+<span class="glyph-collapsed" ng-show="hideMethods"></span>
+<span class="glyph-expanded" ng-hide="hideMethods"></span>
+方法
+</h3>
+</div>
+<table ng-hide="hideMethods" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-2">名称</th>
+
+<th class="col-md-5">参数</th>
+
+<th class="col-md-5">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>addNew</b>&#8203;(): <b>any</b></td>
+      <td></td>
+      <td><p>创建一个新项目并将其添加到集合中。 </p>
+
+<p>该方法没有参数。它创建了一个新的项目，将它添加到集合中，并防止刷新操作，直到新项目使用<b>commitNew</b> 方法提交或者使用<b>cancelNew</b> 方法取消。</p>
+
+<p>下面的代码显示<b>addNew</b> 方法被典型的使用:</p>
+
+<p><pre>
+// 创建新项目，将其添加到集合中
+var newItem = view.addNew();
+// initialize the new item
+newItem.id = getFreshId();
+newItem.name = 'New Customer';
+// 提交新的项目，这样可以刷新视图 
+view.commitNew();
+</pre></p>
+
+<p>您还可以通过将它们推到<b>sourceCollection</b> 中，然后调用<b>refresh</b> 方法来添加新项目。<b>addNew的主要优点是在用户交互的情况下</b> 
+（像在数据网格中添加新的项目），因为它给用户取消添加操作的能力。它还可以防止新的项目被排序或过滤掉，直到添加操作提交。</p><br/><br/><b>返回值</b> 被添加到集合中的项。<br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.CollectionView.Class.html"><b>CollectionView</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>beginUpdate</b>&#8203;()</td>
+      <td></td>
+      <td>直到 下一次调用<b>endUpdate</b> 之前暂停刷新。<br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.CollectionView.Class.html"><b>CollectionView</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>cancelEdit</b>&#8203;()</td>
+      <td></td>
+      <td>结束当前编辑事务，如果可能的话，将原始值还原为该项目。<br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.CollectionView.Class.html"><b>CollectionView</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>cancelNew</b>&#8203;()</td>
+      <td></td>
+      <td>结束当前事务将等待添加新项目。<br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.CollectionView.Class.html"><b>CollectionView</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>clearChanges</b>&#8203;()</td>
+      <td></td>
+      <td><p>通过移除<b>itemsAdded</b>，<b>itemsRemoved</b> 和<b>itemsEdited</b> 集合中的所有项目来清除所有改变。</p>
+
+<p>在向服务器提交更改或刷新来自服务器的数据之后调用此方法。</p><br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.CollectionView.Class.html"><b>CollectionView</b></a>).</span></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>commitEdit</b>&#8203;()</td>
+      <td></td>
+      <td>覆盖 <b>commitEdit</b> 以修改数据库中的项。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>commitNew</b>&#8203;()</td>
+      <td></td>
+      <td>覆盖 <b>commitNew</b> 以添加新的项目至数据库。</td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>contains</b>&#8203;(item): <b>boolean</b></td>
+      <td><p>
+<b>item</b> (<b>any</b>): 项目寻求。<br/></p>
+</td>
+      <td>返回一个值，该值指示给定的项目是否属于这个视图。<br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.CollectionView.Class.html"><b>CollectionView</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>deferUpdate</b>&#8203;(fn)</td>
+      <td><p>
+<b>fn</b> (<b>Function</b>): 没有更新的函数被执行。<br/></p>
+</td>
+      <td><p>在<b>beginUpdate</b>/<b>endUpdate</b> 块中执行函数。</p>
+
+<p>直到函数完成之前集合将不会被刷新。
+该方法确保<b>endUpdate</b> 被调用即使函数会抛出异常。</p><br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.CollectionView.Class.html"><b>CollectionView</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>editItem</b>&#8203;(item)</td>
+      <td><p>
+<b>item</b> (<b>any</b>): 编辑项目。<br/></p>
+</td>
+      <td>开始指定项目的编辑事务。<br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.CollectionView.Class.html"><b>CollectionView</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>endUpdate</b>&#8203;()</td>
+      <td></td>
+      <td>通过调用<b>beginUpdate</b> 重新开始暂停的刷新。<br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.CollectionView.Class.html"><b>CollectionView</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>getAggregate</b>&#8203;(aggType, binding, currentPage?)</td>
+      <td><p>
+<b>aggType</b> (<a href="topic/wijmo.Aggregate.Enum.html"><b>Aggregate</b></a>): Type of aggregate to calculate.<br/><b>binding</b> (<b>string</b>): Property to aggregate on.<br/><b>currentPage?</b> (<b>boolean</b>): Whether to include only items on the current page.<br/></p>
+</td>
+      <td>Calculates an aggregate value for the items in this collection.<br/><br/><b>返回值</b> The aggregate value.<br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.CollectionView.Class.html"><b>CollectionView</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>implementsInterface</b>&#8203;(interfaceName): <b>boolean</b></td>
+      <td><p>
+<b>interfaceName</b> (<b>string</b>): 查找接口的名称。<br/></p>
+</td>
+      <td>如果调用者查询支持的接口则返回真。<br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.CollectionView.Class.html"><b>CollectionView</b></a>).</span></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>load</b>&#8203;()</td>
+      <td></td>
+      <td>从 OData source 加载或重新加载数据 。</td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>moveCurrentTo</b>&#8203;(item): <b>boolean</b></td>
+      <td><p>
+<b>item</b> (<b>any</b>): 将成为当前的项目。<br/></p>
+</td>
+      <td>将指定项目设置为视图中的当前项。<br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.CollectionView.Class.html"><b>CollectionView</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>moveCurrentToFirst</b>&#8203;(): <b>boolean</b></td>
+      <td></td>
+      <td>将第一项设置为当前项目。<br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.CollectionView.Class.html"><b>CollectionView</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>moveCurrentToLast</b>&#8203;(): <b>boolean</b></td>
+      <td></td>
+      <td>将最后一项设置为当前项目。<br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.CollectionView.Class.html"><b>CollectionView</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>moveCurrentToNext</b>&#8203;(): <b>boolean</b></td>
+      <td></td>
+      <td>将当前项目后的项目设置为当前项目。<br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.CollectionView.Class.html"><b>CollectionView</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>moveCurrentToPosition</b>&#8203;(index): <b>boolean</b></td>
+      <td><p>
+<b>index</b> (<b>number</b>): 将成为当前项目的索引。<br/></p>
+</td>
+      <td>将该项目在视图中的指定索引处设置为当前项目。<br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.CollectionView.Class.html"><b>CollectionView</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>moveCurrentToPrevious</b>&#8203;(): <b>boolean</b></td>
+      <td></td>
+      <td>在视图中当前项目之前的项目作为当前项目。<br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.CollectionView.Class.html"><b>CollectionView</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>moveToFirstPage</b>&#8203;(): <b>boolean</b></td>
+      <td></td>
+      <td>将第一页设置为当前页。<br/><br/><b>返回值</b> 如果页面索引被更改成功则为真。<br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.CollectionView.Class.html"><b>CollectionView</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>moveToLastPage</b>&#8203;(): <b>boolean</b></td>
+      <td></td>
+      <td>将最后一页设置为当前页。<br/><br/><b>返回值</b> 如果页面索引被更改成功则为真。<br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.CollectionView.Class.html"><b>CollectionView</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>moveToNextPage</b>&#8203;(): <b>boolean</b></td>
+      <td></td>
+      <td>移动到当前页后的页面。<br/><br/><b>返回值</b> 如果页面索引被更改成功则为真。<br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.CollectionView.Class.html"><b>CollectionView</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>moveToPage</b>&#8203;(index): <b>boolean</b></td>
+      <td><p>
+<b>index</b> (<b>number</b>): 移动到页的索引。<br/></p>
+</td>
+      <td>移动到指定索引处的页。<br/><br/><b>返回值</b> 如果页面索引被更改成功则为真。<br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.CollectionView.Class.html"><b>CollectionView</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>moveToPreviousPage</b>&#8203;(): <b>boolean</b></td>
+      <td></td>
+      <td>移动到当前页之前的页。<br/><br/><b>返回值</b> 如果页面索引被更改成功则为真。<br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.CollectionView.Class.html"><b>CollectionView</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>onCollectionChanged</b>&#8203;(e?)</td>
+      <td><p>
+<b>e?</b> (): 包含了变化的描述。<br/><span class="text-info">(默认值: <b>NotifyCollectionChangedEventArgs.&#8203;reset</b>)</span><br/></p>
+</td>
+      <td>引发<b>collectionChanged</b> 事件。<br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.CollectionView.Class.html"><b>CollectionView</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>onCurrentChanged</b>&#8203;(e?)</td>
+      <td><p>
+<b>e?</b> ()<br/><span class="text-info">(默认值: <b>EventArgs.&#8203;empty</b>)</span><br/></p>
+</td>
+      <td>引发<b>currentChanged</b> 事件。<br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.CollectionView.Class.html"><b>CollectionView</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>onCurrentChanging</b>&#8203;(e): <b>boolean</b></td>
+      <td><p>
+<b>e</b> (<a href="topic/wijmo.CancelEventArgs.Class.html"><b>CancelEventArgs</b></a>): <a href="topic/wijmo.CancelEventArgs.Class.html"><b>CancelEventArgs</b></a> 包含事件数据。<br/></p>
+</td>
+      <td>引发 <b>currentChanging</b> 事件。<br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.CollectionView.Class.html"><b>CollectionView</b></a>).</span></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>onError</b>&#8203;(e): <b>boolean</b></td>
+      <td><p>
+<b>e</b> (<a href="topic/wijmo.RequestErrorEventArgs.Class.html"><b>RequestErrorEventArgs</b></a>): 包含关于该错误信息的 <a href="topic/wijmo.RequestErrorEventArgs.Class.html"><b>RequestErrorEventArgs</b></a> 对象。<br/></p>
+</td>
+      <td><p>触发 <b>error</b> 事件。</p>
+
+<p>默认情况下，错误将抛出异常并引发一次数据刷新。如果
+您希望防止这一行为，在事件处理函数中设置 <b>cancel</b> 参数为 true。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>onLoaded</b>&#8203;(e?)</td>
+      <td><p>
+<b>e?</b> (<a href="topic/wijmo.EventArgs.Class.html"><b>EventArgs</b></a>)<br/></p>
+</td>
+      <td>触发 <b>loaded</b> 事件。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>onLoading</b>&#8203;(e?)</td>
+      <td><p>
+<b>e?</b> (<a href="topic/wijmo.EventArgs.Class.html"><b>EventArgs</b></a>)<br/></p>
+</td>
+      <td>触发 <b>loading</b> 事件。</td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>onPageChanged</b>&#8203;(e?)</td>
+      <td><p>
+<b>e?</b> ()<br/><span class="text-info">(默认值: <b>EventArgs.&#8203;empty</b>)</span><br/></p>
+</td>
+      <td>引发<b>pageChanged</b> 事件。<br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.CollectionView.Class.html"><b>CollectionView</b></a>).</span></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>onPageChanging</b>&#8203;(e): <b>boolean</b></td>
+      <td><p>
+<b>e</b> (<a href="topic/wijmo.collections.PageChangingEventArgs.Class.html"><b>PageChangingEventArgs</b></a>): 包含事件数据的 <a href="topic/wijmo.collections.PageChangingEventArgs.Class.html"><b>PageChangingEventArgs</b></a> 对象。<br/></p>
+</td>
+      <td>触发 <b>pageChanging</b> 事件。</td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>onSourceCollectionChanged</b>&#8203;(e?)</td>
+      <td><p>
+<b>e?</b> (<a href="topic/wijmo.EventArgs.Class.html"><b>EventArgs</b></a>)<br/></p>
+</td>
+      <td>触发 <b>sourceCollectionChanged</b> 事件。<br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.CollectionView.Class.html"><b>CollectionView</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>onSourceCollectionChanging</b>&#8203;(e): <b>boolean</b></td>
+      <td><p>
+<b>e</b> (<a href="topic/wijmo.CancelEventArgs.Class.html"><b>CancelEventArgs</b></a>): <a href="topic/wijmo.CancelEventArgs.Class.html"><b>CancelEventArgs</b></a> that contains the event data.<br/></p>
+</td>
+      <td>触发 <b>sourceCollectionChanging</b> 事件。<br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.CollectionView.Class.html"><b>CollectionView</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>refresh</b>&#8203;()</td>
+      <td></td>
+      <td>重新创建使用当前排序、筛选器和组参数的视图。<br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.CollectionView.Class.html"><b>CollectionView</b></a>).</span></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>remove</b>&#8203;(item)</td>
+      <td><p>
+<b>item</b> (<b>any</b>): 待从数据库中移除的项。<br/></p>
+</td>
+      <td>覆盖 <b>remove</b> 以从数据库中移除一项。</td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>removeAt</b>&#8203;(index)</td>
+      <td><p>
+<b>index</b> (<b>number</b>): 从集合中移除的项的索引。
+该索引与视图是相对的，而不是源集合。<br/></p>
+</td>
+      <td>从集合中移除指定索引处的项。<br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.CollectionView.Class.html"><b>CollectionView</b></a>).</span></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>updateFilterDefinition</b>&#8203;(filterProvider)</td>
+      <td><p>
+<b>filterProvider</b> (<b>any</b>): 一个已知的筛选器 Provider，比如说 <b>FlexGridFilter</b>。<br/></p>
+</td>
+      <td>基于一个已知的筛选器 Provider，比如说 <b>FlexGridFilter</b>，更新筛选器定义。</td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideEvents = !hideEvents">
+<span class="glyph-collapsed" ng-show="hideEvents"></span>
+<span class="glyph-expanded" ng-hide="hideEvents"></span>
+事件
+</h3>
+</div>
+<table ng-hide="hideEvents" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-2">名称</th>
+
+<th class="col-md-5">参数</th>
+
+<th class="col-md-5">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>collectionChanged</b></td>
+      <td></td>
+      <td>集合改变时发生。<br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.CollectionView.Class.html"><b>CollectionView</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>currentChanged</b></td>
+      <td></td>
+      <td>在当前项目改变后发生。<br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.CollectionView.Class.html"><b>CollectionView</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>currentChanging</b></td>
+      <td><a href="topic/wijmo.CancelEventArgs.Class.html"><b>CancelEventArgs</b></a></td>
+      <td>在当前项目改变之前发生。<br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.CollectionView.Class.html"><b>CollectionView</b></a>).</span></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>error</b></td>
+      <td><a href="topic/wijmo.RequestErrorEventArgs.Class.html"><b>RequestErrorEventArgs</b></a></td>
+      <td>当在读取或写入数据是发生一个错误时触发。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>loaded</b></td>
+      <td><a href="topic/wijmo.EventArgs.Class.html"><b>EventArgs</b></a></td>
+      <td>当 <b>ODataCollectionView</b> 结束加载数据时触发。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>loading</b></td>
+      <td><a href="topic/wijmo.EventArgs.Class.html"><b>EventArgs</b></a></td>
+      <td>当 <b>ODataCollectionView</b> 开始加载数据时触发。</td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>pageChanged</b></td>
+      <td></td>
+      <td>在页面索引改变之后发生。<br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.CollectionView.Class.html"><b>CollectionView</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>pageChanging</b></td>
+      <td><a href="topic/wijmo.collections.PageChangingEventArgs.Class.html"><b>PageChangingEventArgs</b></a></td>
+      <td>在页面索引改变之前发生。<br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.CollectionView.Class.html"><b>CollectionView</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>sourceCollectionChanged</b></td>
+      <td><a href="topic/wijmo.EventArgs.Class.html"><b>EventArgs</b></a></td>
+      <td>在 <b>sourceCollection</b> 属性改变后触发。<br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.CollectionView.Class.html"><b>CollectionView</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>sourceCollectionChanging</b></td>
+      <td><a href="topic/wijmo.CancelEventArgs.Class.html"><b>CancelEventArgs</b></a></td>
+      <td>在 <b>sourceCollection</b>  属性更改前触发。<br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.CollectionView.Class.html"><b>CollectionView</b></a>).</span></td>
+    </tr>
+</tbody>
+</table>
+</div>
+

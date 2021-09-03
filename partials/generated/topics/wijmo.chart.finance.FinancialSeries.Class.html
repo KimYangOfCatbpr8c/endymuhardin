@@ -1,0 +1,272 @@
+<h2>FinancialSeries 类</h2>
+<dl class="dl-horizontal">
+<dt>基类</dt><dd><a href="topic/wijmo.chart.SeriesBase.Class.html"><b>SeriesBase</b></a></dd>
+<dt>派生类</dt><dd><a href="topic/wijmo.angular.WjFinancialChartSeries.Class.html"><b>WjFinancialChartSeries</b></a></dd>
+<dt>模块</dt><dd>wijmo.chart.finance</dd>
+<dt>文件</dt><dd>wijmo.chart.finance.js</dd>
+<dt>表示</dt><dd><label style="font-weight:normal">继承成员 <input type="checkbox" ng-model="showInherited"></label></dd>
+</dl>
+<p><p>表示显示在图表中的一系列数据点。</p>
+
+<p><a href="topic/wijmo.chart.Series.Class.html"><b>Series</b></a> 类支持全部的基本图表类型。您可以为添加到 <a href="topic/wijmo.chart.FlexChart.Class.html"><b>FlexChart</b></a> 系列集合中的每一个 <b>Series</b> 对象定义一个不同的图表类型。这将覆盖该集合中为全部 <b>Series</b> 对象设置的默认的 <b>chartType</b> 属性。</p></p>
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideProperties = !hideProperties">
+<span class="glyph-collapsed" ng-show="hideProperties"></span>
+<span class="glyph-expanded" ng-hide="hideProperties"></span>
+属性
+</h3>
+</div>
+<table ng-hide="hideProperties" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-3">名称</th>
+
+<th class="col-md-2">类型</th>
+
+<th class="col-md-7">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>altStyle</b></td>
+      <td><b>any</b></td>
+      <td><p>获取或设置系列的交替样式。来自于该属性的值将用作
+      Bar，Column，以及 Scatter 图表上的负值；以及金融图表，
+      比如说 Candlestick，LineBreak，EquiVolume 等等，的上升值。</p>
+
+<p>如果没有提供该值，则使用默认的样式。</p><br/><span class="text-info">(继承自 <a href="topic/wijmo.chart.SeriesBase.Class.html"><b>SeriesBase</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>axisX</b></td>
+      <td><a href="topic/wijmo.chart.Axis.Class.html"><b>Axis</b></a></td>
+      <td>获取或设置系列的 X 坐标轴。<br/><span class="text-info">(继承自 <a href="topic/wijmo.chart.SeriesBase.Class.html"><b>SeriesBase</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>axisY</b></td>
+      <td><a href="topic/wijmo.chart.Axis.Class.html"><b>Axis</b></a></td>
+      <td>获取或设置系列的 Y 坐标轴。<br/><span class="text-info">(继承自 <a href="topic/wijmo.chart.SeriesBase.Class.html"><b>SeriesBase</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>binding</b></td>
+      <td><b>string</b></td>
+      <td>获取或设置包含系列 Y 值的属性名称。<br/><span class="text-info">(继承自 <a href="topic/wijmo.chart.SeriesBase.Class.html"><b>SeriesBase</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>bindingX</b></td>
+      <td><b>string</b></td>
+      <td>获取或设置包含系列 X 值的属性名称。<br/><span class="text-info">(继承自 <a href="topic/wijmo.chart.SeriesBase.Class.html"><b>SeriesBase</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>chart</b></td>
+      <td><a href="topic/wijmo.chart.FlexChartCore.Class.html"><b>FlexChartCore</b></a></td>
+      <td>获取拥有该系列的 <a href="topic/wijmo.chart.FlexChart.Class.html"><b>FlexChart</b></a> 对象。<br/><span class="text-info">(继承自 <a href="topic/wijmo.chart.SeriesBase.Class.html"><b>SeriesBase</b></a>).</span></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>chartType</b></td>
+      <td><a href="topic/wijmo.chart.finance.FinancialChartType.Enum.html"><b>FinancialChartType</b></a></td>
+      <td>获取或设置一个特定系列的图表类型，这将覆盖设置给全部图表的默认图表类型。请注意 ColumnVolume，EquiVolume，CandleVolume 以及 ArmsCandleVolume 图表不支持，这些图表类型仅能应用给 <a href="topic/wijmo.chart.finance.FinancialChart.Class.html"><b>FinancialChart</b></a>。</td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>collectionView</b></td>
+      <td><a href="topic/wijmo.collections.ICollectionView.Interface.html"><b>ICollectionView</b></a></td>
+      <td>获取包含系列数据的 <b>ICollectionView的对象</b>。<br/><span class="text-info">(继承自 <a href="topic/wijmo.chart.SeriesBase.Class.html"><b>SeriesBase</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>cssClass</b></td>
+      <td><b>string</b></td>
+      <td>获取或设置系列的 CSS 类。<br/><span class="text-info">(继承自 <a href="topic/wijmo.chart.SeriesBase.Class.html"><b>SeriesBase</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>hostElement</b></td>
+      <td><b>SVGGElement</b></td>
+      <td>获取对象容器元素。<br/><span class="text-info">(继承自 <a href="topic/wijmo.chart.SeriesBase.Class.html"><b>SeriesBase</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>itemsSource</b></td>
+      <td><b>any</b></td>
+      <td>获取或设置包含系列数据的数组或者 <a href="topic/wijmo.collections.ICollectionView.Interface.html"><b>ICollectionView</b></a> 对象。<br/><span class="text-info">(继承自 <a href="topic/wijmo.chart.SeriesBase.Class.html"><b>SeriesBase</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>legendElement</b></td>
+      <td><b>SVGGElement</b></td>
+      <td>获取图例区对应的该系列的元素。<br/><span class="text-info">(继承自 <a href="topic/wijmo.chart.SeriesBase.Class.html"><b>SeriesBase</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>name</b></td>
+      <td><b>string</b></td>
+      <td><p>获取或设置系列名称。</p>
+
+<p>系列名称显示在图表图例区。任何不具有名称的系列将不会显示在图例区域。</p><br/><span class="text-info">(继承自 <a href="topic/wijmo.chart.SeriesBase.Class.html"><b>SeriesBase</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>style</b></td>
+      <td><b>any</b></td>
+      <td>获取或设置系列样式。<br/><span class="text-info">(继承自 <a href="topic/wijmo.chart.SeriesBase.Class.html"><b>SeriesBase</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>symbolMarker</b></td>
+      <td><a href="topic/wijmo.chart.Marker.Enum.html"><b>Marker</b></a></td>
+      <td>获取或设置系列中每一个数据点的标记形状。
+应用到 Scatter，LineSymbols，以及 SplineSymbols 图表类型。<br/><span class="text-info">(继承自 <a href="topic/wijmo.chart.SeriesBase.Class.html"><b>SeriesBase</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>symbolSize</b></td>
+      <td><b>number</b></td>
+      <td>获取或设置用来呈现该 <a href="topic/wijmo.chart.Series.Class.html"><b>Series</b></a> 的符号的尺寸（单位是像素）。
+应用到 Scatter，LineSymbols，以及 SplineSymbols 图表类型。<br/><span class="text-info">(继承自 <a href="topic/wijmo.chart.SeriesBase.Class.html"><b>SeriesBase</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>symbolStyle</b></td>
+      <td><b>any</b></td>
+      <td>获取或设置系列符号样式。
+应用到 Scatter，LineSymbols，以及 SplineSymbols 图表类型。<br/><span class="text-info">(继承自 <a href="topic/wijmo.chart.SeriesBase.Class.html"><b>SeriesBase</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>visibility</b></td>
+      <td><a href="topic/wijmo.chart.SeriesVisibility.Enum.html"><b>SeriesVisibility</b></a></td>
+      <td>获取或设置一个枚举值，表示是否显示该系列以及在何处显示该系列。<br/><span class="text-info">(继承自 <a href="topic/wijmo.chart.SeriesBase.Class.html"><b>SeriesBase</b></a>).</span></td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideMethods = !hideMethods">
+<span class="glyph-collapsed" ng-show="hideMethods"></span>
+<span class="glyph-expanded" ng-hide="hideMethods"></span>
+方法
+</h3>
+</div>
+<table ng-hide="hideMethods" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-2">名称</th>
+
+<th class="col-md-5">参数</th>
+
+<th class="col-md-5">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>drawLegendItem</b>&#8203;(engine, rect, index)</td>
+      <td><p>
+<b>engine</b> (<a href="topic/wijmo.chart.IRenderEngine.Interface.html"><b>IRenderEngine</b></a>): 所使用的呈现引擎。<br/><b>rect</b> (<a href="topic/wijmo.Rect.Class.html"><b>Rect</b></a>): 该图例区项目的位置。<br/><b>index</b> (<b>number</b>): 图例区项目的索引（针对具有多个图例区项目的系列）。<br/></p>
+</td>
+      <td>在指定的位置绘制一个图例区项目。<br/><span class="text-info">(继承自 <a href="topic/wijmo.chart.SeriesBase.Class.html"><b>SeriesBase</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>getDataRect</b>&#8203;(): <a href="topic/wijmo.Rect.Class.html"><b>Rect</b></a></td>
+      <td></td>
+      <td><p>返回系列基于数据坐标系的边界。</p>
+
+<p>如果 getDataRect() 返回 null，则限制将基于实际的数据值自动计算。</p><br/><span class="text-info">(继承自 <a href="topic/wijmo.chart.SeriesBase.Class.html"><b>SeriesBase</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>getPlotElement</b>&#8203;(pointIndex): <b>any</b></td>
+      <td><p>
+<b>pointIndex</b> (<b>number</b>): 该数据点的索引。<br/></p>
+</td>
+      <td>获取关联到指定点索引的绘图区元素。<br/><span class="text-info">(继承自 <a href="topic/wijmo.chart.SeriesBase.Class.html"><b>SeriesBase</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>hitTest</b>&#8203;(pt, y?): <a href="topic/wijmo.chart.HitTestInfo.Class.html"><b>HitTestInfo</b></a></td>
+      <td><p>
+<b>pt</b> (<b>any</b>): 待调查的点，基于窗体坐标系。<br/><b>y?</b> (<b>number</b>): 该点的 Y-轴坐标（如果第一个参数是一个数值）。<br/></p>
+</td>
+      <td>获取一个包含指定点信息的 <a href="topic/wijmo.chart.HitTestInfo.Class.html"><b>HitTestInfo</b></a> 对象。<br/><span class="text-info">(继承自 <a href="topic/wijmo.chart.SeriesBase.Class.html"><b>SeriesBase</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>legendItemLength</b>&#8203;(): <b>number</b></td>
+      <td></td>
+      <td>返回图例区系列项目的个数。<br/><span class="text-info">(继承自 <a href="topic/wijmo.chart.SeriesBase.Class.html"><b>SeriesBase</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>measureLegendItem</b>&#8203;(engine, index): <a href="topic/wijmo.Size.Class.html"><b>Size</b></a></td>
+      <td><p>
+<b>engine</b> (<a href="topic/wijmo.chart.IRenderEngine.Interface.html"><b>IRenderEngine</b></a>): 所使用的呈现引擎。<br/><b>index</b> (<b>number</b>): 图例区项目的索引（针对具有多个图例区项目的系列）。<br/></p>
+</td>
+      <td>测量该图例区项目的宽度和高度。<br/><span class="text-info">(继承自 <a href="topic/wijmo.chart.SeriesBase.Class.html"><b>SeriesBase</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>onRendering</b>&#8203;(engine)</td>
+      <td><p>
+<b>engine</b> (<a href="topic/wijmo.chart.IRenderEngine.Interface.html"><b>IRenderEngine</b></a>): 用来呈现该系列的 <a href="topic/wijmo.chart.IRenderEngine.Interface.html"><b>IRenderEngine</b></a> 对象。<br/></p>
+</td>
+      <td>触发 <b>rendering</b> 事件。<br/><span class="text-info">(继承自 <a href="topic/wijmo.chart.SeriesBase.Class.html"><b>SeriesBase</b></a>).</span></td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideEvents = !hideEvents">
+<span class="glyph-collapsed" ng-show="hideEvents"></span>
+<span class="glyph-expanded" ng-hide="hideEvents"></span>
+事件
+</h3>
+</div>
+<table ng-hide="hideEvents" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-2">名称</th>
+
+<th class="col-md-5">参数</th>
+
+<th class="col-md-5">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>rendering</b></td>
+      <td><a href="topic/wijmo.chart.IRenderEngine.Interface.html"><b>IRenderEngine</b></a></td>
+      <td>当系列即将被呈现时触发。<br/><span class="text-info">(继承自 <a href="topic/wijmo.chart.SeriesBase.Class.html"><b>SeriesBase</b></a>).</span></td>
+    </tr>
+</tbody>
+</table>
+</div>
+

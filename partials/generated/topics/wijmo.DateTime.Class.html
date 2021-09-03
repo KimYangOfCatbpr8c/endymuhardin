@@ -1,0 +1,144 @@
+<h2>DateTime 类</h2>
+<dl class="dl-horizontal">
+<dt>模块</dt><dd>wijmo</dd>
+<dt>文件</dt><dd>wijmo.js</dd>
+</dl>
+<p>提供日期和时间的工具包。</p>
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideMethods = !hideMethods">
+<span class="glyph-collapsed" ng-show="hideMethods"></span>
+<span class="glyph-expanded" ng-hide="hideMethods"></span>
+方法
+</h3>
+</div>
+<table ng-hide="hideMethods" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-2">名称</th>
+
+<th class="col-md-5">参数</th>
+
+<th class="col-md-5">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td><span class="badge" title="静态">S</span></td>
+      <td><b>addDays</b>&#8203;(value, days): <b>Date</b></td>
+      <td><p>
+<b>value</b> (<b>Date</b>): 原始日期。<br/><b>days</b> (<b>number</b>): 为给定的日期添加天数。<br/></p>
+</td>
+      <td>通过添加指定的天数到给定的日期上来获取新的日期。</td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="静态">S</span></td>
+      <td><b>addHours</b>&#8203;(value, hours): <b>Date</b></td>
+      <td><p>
+<b>value</b> (<b>Date</b>): 原始日期。<br/><b>hours</b> (<b>number</b>): 向给定的日期添加数小时。<br/></p>
+</td>
+      <td>获取一个新的日期，该日期将在给定日期中添加指定数量的小时。</td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="静态">S</span></td>
+      <td><b>addMinutes</b>&#8203;(value, minutes): <b>Date</b></td>
+      <td><p>
+<b>value</b> (<b>Date</b>): 原始日期。<br/><b>minutes</b> (<b>number</b>): 向给定的日期添加数分钟。<br/></p>
+</td>
+      <td>获取一个新的日期，该日期将在给定日期中添加指定数量的分钟时间。</td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="静态">S</span></td>
+      <td><b>addMonths</b>&#8203;(value, months): <b>Date</b></td>
+      <td><p>
+<b>value</b> (<b>Date</b>): 原始日期。<br/><b>months</b> (<b>number</b>): 向给定的日期添加数月。<br/></p>
+</td>
+      <td>获取一个新的日期，该日期将在给定日期中添加指定数量的月份。</td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="静态">S</span></td>
+      <td><b>addSeconds</b>&#8203;(value, seconds): <b>Date</b></td>
+      <td><p>
+<b>value</b> (<b>Date</b>): 原始日期。<br/><b>seconds</b> (<b>number</b>): 向给定的日期添加数秒。<br/></p>
+</td>
+      <td>获取一个新的日期，该日期将在给定日期中添加指定数量的秒数。</td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="静态">S</span></td>
+      <td><b>addYears</b>&#8203;(value, years): <b>Date</b></td>
+      <td><p>
+<b>value</b> (<b>Date</b>): 原始日期。<br/><b>years</b> (<b>number</b>): 向给定的日期添加数年。<br/></p>
+</td>
+      <td>获取一个新的日期，该日期将在给定日期中添加指定数量的年。</td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="静态">S</span></td>
+      <td><b>clone</b>&#8203;(date): <b>Date</b></td>
+      <td><p>
+<b>date</b> (<b>Date</b>): 日期对象进行复制。<br/></p>
+</td>
+      <td>为给定的日期对象创建一个副本。</td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="静态">S</span></td>
+      <td><b>equals</b>&#8203;(d1, d2): <b>boolean</b></td>
+      <td><p>
+<b>d1</b> (<b>Date</b>): 第一个日期<br/><b>d2</b> (<b>Date</b>): 第二个日期。<br/></p>
+</td>
+      <td>如果两个日期对象引用相同的日期和时间，则返回真。</td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="静态">S</span></td>
+      <td><b>fromDateTime</b>&#8203;(date, time): <b>Date</b></td>
+      <td><p>
+<b>date</b> (<b>Date</b>): 日期对象包含这样的日期（天/月/年）。<br/><b>time</b> (<b>Date</b>): 日期对象包含这样的时间（时:分:秒）。<br/></p>
+</td>
+      <td>获取日期对象，日期和时间日期设置在两个日期对象上。</td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="静态">S</span></td>
+      <td><b>fromFiscal</b>&#8203;(date, govt)</td>
+      <td><p>
+<b>date</b> (<b>Date</b>): 财年日期。<br/><b>govt</b> (<b>boolean</b>): 是否使用政府或企业财年。<br/></p>
+</td>
+      <td>使用当前文化，将财年日期转换为日历日期。</td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="静态">S</span></td>
+      <td><b>newDate</b>&#8203;(): <b>Date</b></td>
+      <td></td>
+      <td>Gets a new Date object set to today's date and no time portion.</td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="静态">S</span></td>
+      <td><b>sameDate</b>&#8203;(d1, d2): <b>boolean</b></td>
+      <td><p>
+<b>d1</b> (<b>Date</b>): 第一个日期。<br/><b>d2</b> (<b>Date</b>): 第二个日期。<br/></p>
+</td>
+      <td>如果两个日期对象引用相同的日期（忽略时间），则返回真。</td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="静态">S</span></td>
+      <td><b>sameTime</b>&#8203;(d1, d2): <b>boolean</b></td>
+      <td><p>
+<b>d1</b> (<b>Date</b>): 第一个日期。<br/><b>d2</b> (<b>Date</b>): 第二个日期。<br/></p>
+</td>
+      <td>如果两个日期对象引用相同的时间（忽略日期），则返回真。</td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="静态">S</span></td>
+      <td><b>toFiscal</b>&#8203;(date, govt)</td>
+      <td><p>
+<b>date</b> (<b>Date</b>): 日历日期。<br/><b>govt</b> (<b>boolean</b>): 是否使用政府或企业财年。<br/></p>
+</td>
+      <td>使用当前文化，将日历日期转换为财政日期。</td>
+    </tr>
+</tbody>
+</table>
+</div>
+

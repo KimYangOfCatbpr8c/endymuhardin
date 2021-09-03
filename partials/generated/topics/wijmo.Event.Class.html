@@ -1,0 +1,120 @@
+<h2>Event 类</h2>
+<dl class="dl-horizontal">
+<dt>模块</dt><dd>wijmo</dd>
+<dt>文件</dt><dd>wijmo.js</dd>
+</dl>
+<p><p>描述一个事件。</p>
+
+<p>Wijmo 事件相似于.NET 事件。任何类可能将它们声明为字段来定义事件。任何类可以使用事件的<b>addHandler</b> 方法来订阅事件，也可以使用<b>removeHandler</b> 方法取消订阅。</p>
+
+<p>Wijmo 事件处理器有两个参数: <i>sender</i> 和 <i>args</i>. 
+第一个参数是引发事件的对象，而第二个参数是包含事件参数的对象。</p>
+
+<p>根据.NET模型为每一个事件定义事件的类。<i>on[EVENTNAME]</i> 方法引发事件。该模式允许衍生的来重载<i>on[EVENTNAME]</i> 方法，并且在引发基础类之前或者之后处理事件。
+衍生的类可以甚至通过不调用基础类来阻止事件的实现。</p>
+
+<p>例如，下面类脚本化的代码重载控件的 <b>onValueChanged</b>
+事件，在执行一些处理之前且在<b>valueChanged</b>事件触发之后：</p>
+
+<p><pre>// 重载基础类
+onValueChanged(e: EventArgs) {
+  // 在事件触发前执行一些代码
+  console.log('about to fire valueChanged');
+  // 可选择地，调用基础类来触发事件
+  super.onValueChanged(e);
+  // 在事件触发之后执行一些代码
+  console.log('valueChanged event just fired');
+}</pre></p></p>
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideProperties = !hideProperties">
+<span class="glyph-collapsed" ng-show="hideProperties"></span>
+<span class="glyph-expanded" ng-hide="hideProperties"></span>
+属性
+</h3>
+</div>
+<table ng-hide="hideProperties" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-3">名称</th>
+
+<th class="col-md-2">类型</th>
+
+<th class="col-md-7">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><b>hasHandlers</b></td>
+      <td><b>boolean</b></td>
+      <td>获取一个值，该值指示该事件是否有任何处理器。</td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideMethods = !hideMethods">
+<span class="glyph-collapsed" ng-show="hideMethods"></span>
+<span class="glyph-expanded" ng-hide="hideMethods"></span>
+方法
+</h3>
+</div>
+<table ng-hide="hideMethods" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-2">名称</th>
+
+<th class="col-md-5">参数</th>
+
+<th class="col-md-5">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><b>addHandler</b>&#8203;(handler, self?)</td>
+      <td><p>
+<b>handler</b> (<a href="topic/wijmo.IEventHandler.Interface.html"><b>IEventHandler</b></a>): 当事件被引发时调用的函数。<br/><b>self?</b> (<b>any</b>): 定义事件处理器的对象
+（从处理器代码中访可访问'this'）。<br/></p>
+</td>
+      <td>为该事件增加一个处理器。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>raise</b>&#8203;(sender, args?)</td>
+      <td><p>
+<b>sender</b> (<b>any</b>): 源对象。<br/><b>args?</b> (): 事件参数。<br/><span class="text-info">(默认值: <b>EventArgs.&#8203;empty</b>)</span><br/></p>
+</td>
+      <td>引发该事件，引起所有相关联的处理器被调用。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>removeAllHandlers</b>&#8203;()</td>
+      <td></td>
+      <td>移除该事件相关联的所有得处理器。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>removeHandler</b>&#8203;(handler, self?)</td>
+      <td><p>
+<b>handler</b> (<a href="topic/wijmo.IEventHandler.Interface.html"><b>IEventHandler</b></a>): 当事件被引发时调用的函数。<br/><b>self?</b> (<b>any</b>): 定义事件处理器的对象（从处理器代码中访可访问'this'）<br/></p>
+</td>
+      <td>从事件中移除一个处理器。</td>
+    </tr>
+</tbody>
+</table>
+</div>
+

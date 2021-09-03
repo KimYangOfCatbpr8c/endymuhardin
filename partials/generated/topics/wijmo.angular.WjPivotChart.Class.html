@@ -1,0 +1,36 @@
+<h2>WjPivotChart 类</h2>
+<dl class="dl-horizontal">
+<dt>基类</dt><dd><b>WjDirective</b></dd>
+<dt>模块</dt><dd>wijmo.angular</dd>
+<dt>文件</dt><dd>wijmo.angular.js</dd>
+<dt>表示</dt><dd><label style="font-weight:normal">继承成员 <input type="checkbox" ng-model="showInherited"></label></dd>
+</dl>
+<p><p>AngularJS 指令应用于 <a href="topic/wijmo.olap.PivotChart.Class.html"><b>PivotChart</b></a> control.</p>
+
+<p>使用 <b>wj-pivot-chart</b> 和 <b>wj-pivot-panel</b> 指令
+添加转置图表到 AngularJS 应用中。</p>
+
+<p>指令和参数名称必须使用小写字母+短线语法替代驼峰命名。 示例：</p>
+
+<p><pre>&lt;wj-pivot-panel
+    control="thePanel"
+    items-source="rawData"&gt;
+&lt;/wj-pivot-panel&gt;
+&lt;wj-pivot-chart
+    items-source="thePanel"
+    chart-type="Bar"
+    max-series="10"
+    max-points="100"&gt;
+&lt;/wj-pivot-chart&gt;</pre></p>
+
+<p><b>wj-pivot-chart</b> 指令支持以下属性:</p>
+
+<p><dl class="dl-horizontal">
+  <dt>items-source</dt>                  <dd>获取或设置 <a href="topic/wijmo.olap.PivotPanel.Class.html"><b>PivotPanel</b></a> ，使用这个 <b>PivotChart</b> 定义了视图的显示。</dd>
+  <dt>chart-type</dt>                    <dd>获取或设置 <a href="topic/wijmo.olap.PivotChartType.Enum.html"><b>PivotChartType</b></a> 值，用于定义图表的显示类型。</dd>
+  <dt>show-hierarchical-axes</dt>        <dd>获取或设置图表是否需要分级显示数据。</dd>
+  <dt>stacking</dt>                      <dd>获取或设置 <a href="topic/wijmo.chart.Stacking.Enum.html"><b>Stacking</b></a> 值，用来指定序列的重叠交互方式。</dd>
+  <dt>show-totals</dt>                   <dd>获取或设置图表是否只包含总数。</dd>
+  <dt>max-series</dt>                    <dd>获取或设置图表显示的最大序列数。</dd>
+  <dt>max-points</dt>                    <dd>获取或设置每一个序列显示的最大点数。</dd>
+</dl></p></p>

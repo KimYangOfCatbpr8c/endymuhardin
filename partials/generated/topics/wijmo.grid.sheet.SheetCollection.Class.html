@@ -1,0 +1,352 @@
+<h2>SheetCollection 类</h2>
+<dl class="dl-horizontal">
+<dt>基类</dt><dd><a href="topic/wijmo.collections.ObservableArray.Class.html"><b>ObservableArray</b></a></dd>
+<dt>模块</dt><dd>wijmo.grid.sheet</dd>
+<dt>文件</dt><dd>wijmo.grid.sheet.js</dd>
+<dt>表示</dt><dd><label style="font-weight:normal">继承成员 <input type="checkbox" ng-model="showInherited"></label></dd>
+</dl>
+<p>定义 <a href="topic/wijmo.grid.sheet.Sheet.Class.html"><b>Sheet</b></a> 对象的集合。</p>
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideProperties = !hideProperties">
+<span class="glyph-collapsed" ng-show="hideProperties"></span>
+<span class="glyph-expanded" ng-hide="hideProperties"></span>
+属性
+</h3>
+</div>
+<table ng-hide="hideProperties" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-3">名称</th>
+
+<th class="col-md-2">类型</th>
+
+<th class="col-md-7">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>isUpdating</b></td>
+      <td></td>
+      <td>获取一个值，该值指示当前是否暂停通知（参见<b>beginUpdate</b> 和<b>endUpdate</b>）。<br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.ObservableArray.Class.html"><b>ObservableArray</b></a>).</span></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>selectedIndex</b></td>
+      <td><b>number</b></td>
+      <td>获取或设置当前选中表单的索引。</td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideMethods = !hideMethods">
+<span class="glyph-collapsed" ng-show="hideMethods"></span>
+<span class="glyph-expanded" ng-hide="hideMethods"></span>
+方法
+</h3>
+</div>
+<table ng-hide="hideMethods" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-2">名称</th>
+
+<th class="col-md-5">参数</th>
+
+<th class="col-md-5">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>beginUpdate</b>&#8203;()</td>
+      <td></td>
+      <td>直到下一次调用<b>endUpdate</b> 之前暂停通知。<br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.ObservableArray.Class.html"><b>ObservableArray</b></a>).</span></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>clear</b>&#8203;()</td>
+      <td></td>
+      <td>清除该 SheetCollection。</td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>constructor</b>&#8203;(data?): <a href="topic/wijmo.collections.ObservableArray.Class.html"><b>ObservableArray</b></a></td>
+      <td><p>
+<b>data?</b> (<b>any</b><b>[]</b>): Array containing items used to populate the <a href="topic/wijmo.collections.ObservableArray.Class.html"><b>ObservableArray</b></a>.<br/></p>
+</td>
+      <td>初始化类 <a href="topic/wijmo.collections.ObservableArray.Class.html"><b>ObservableArray</b></a> 的一个新实例。<br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.ObservableArray.Class.html"><b>ObservableArray</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>deferUpdate</b>&#8203;(fn)</td>
+      <td><p>
+<b>fn</b> (<b>Function</b>): 被执行的没有更新的函数。<br/></p>
+</td>
+      <td><p>在<b>beginUpdate</b>/<b>endUpdate</b> 块中执行函数。</p>
+
+<p>直到函数完成前集合将不会被刷新。该方法确保<b>endUpdate</b> 会被调用即使函数会抛出异常。</p><br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.ObservableArray.Class.html"><b>ObservableArray</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>endUpdate</b>&#8203;()</td>
+      <td></td>
+      <td>通过调用<b>beginUpdate</b> 重新开始被暂停的通知。<br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.ObservableArray.Class.html"><b>ObservableArray</b></a>).</span></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>getValidSheetName</b>&#8203;(currentSheet): <b>string</b></td>
+      <td><p>
+<b>currentSheet</b> (<a href="topic/wijmo.grid.sheet.Sheet.Class.html"><b>Sheet</b></a>): 待获取合法名称的 <a href="topic/wijmo.grid.sheet.Sheet.Class.html"><b>Sheet</b></a>。<br/></p>
+</td>
+      <td>获取表单的合法名称。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>hide</b>&#8203;(pos): <b>boolean</b></td>
+      <td><p>
+<b>pos</b> (<b>number</b>): 待隐藏表单的位置。<br/></p>
+</td>
+      <td>隐藏指定位置的表单。</td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>implementsInterface</b>&#8203;(interfaceName): <b>boolean</b></td>
+      <td><p>
+<b>interfaceName</b> (<b>string</b>): 查找接口的名称。<br/></p>
+</td>
+      <td>如果一个调用者查询一个被支持的接口，则返回真。<br/><br/><b>返回值</b> 如果一个调用者查询一个被支持的接口，则为真。<br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.ObservableArray.Class.html"><b>ObservableArray</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>indexOf</b>&#8203;(searchElement, fromIndex?): <b>number</b></td>
+      <td><p>
+<b>searchElement</b> (<b>any</b>): 元素在数组中定位。<br/><b>fromIndex?</b> (<b>number</b>): 查找应该开始的位置。.<br/></p>
+</td>
+      <td>查找数组中的项。<br/><br/><b>返回值</b> 数组中项目的索引，或者如果一个项没有被发现，则索引为-1。<br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.ObservableArray.Class.html"><b>ObservableArray</b></a>).</span></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>insert</b>&#8203;(index, item)</td>
+      <td><p>
+<b>index</b> (<b>number</b>): 待添加新项目的位置。<br/><b>item</b> (<b>any</b>): 待添加到数组中的项。<br/></p>
+</td>
+      <td>向数组中的指定位置插入一个项目。
+覆盖基类 <a href="topic/wijmo.collections.ObservableArray.Class.html"><b>ObservableArray</b></a> 上的 insert 方法。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>isValidSheetName</b>&#8203;(sheet): <b>boolean</b></td>
+      <td><p>
+<b>sheet</b> (<a href="topic/wijmo.grid.sheet.Sheet.Class.html"><b>Sheet</b></a>): 待检查名称的 <a href="topic/wijmo.grid.sheet.Sheet.Class.html"><b>Sheet</b></a>。<br/></p>
+</td>
+      <td>检查是否表单名称合法。</td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>onCollectionChanged</b>&#8203;(e?)</td>
+      <td><p>
+<b>e?</b> (): 包含一个改变的描述。<br/><span class="text-info">(默认值: <b>NotifyCollectionChangedEventArgs.&#8203;reset</b>)</span><br/></p>
+</td>
+      <td>引发<b>collectionChanged</b> 事件。<br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.ObservableArray.Class.html"><b>ObservableArray</b></a>).</span></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>onSelectedSheetChanged</b>&#8203;(e)</td>
+      <td><p>
+<b>e</b> (<a href="topic/wijmo.PropertyChangedEventArgs.Class.html"><b>PropertyChangedEventArgs</b></a>): 包含事件数据的 <a href="topic/wijmo.PropertyChangedEventArgs.Class.html"><b>PropertyChangedEventArgs</b></a> 对象。<br/></p>
+</td>
+      <td>触发 <b>currentChanged</b> 事件。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>onSheetCleared</b>&#8203;()</td>
+      <td></td>
+      <td>触发 sheetCleared 事件。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>onSheetNameChanged</b>&#8203;(e)</td>
+      <td><p>
+<b>e</b> (<a href="topic/wijmo.collections.NotifyCollectionChangedEventArgs.Class.html"><b>NotifyCollectionChangedEventArgs</b></a>)<br/></p>
+</td>
+      <td>触发 <b>sheetNameChanged</b> 事件。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>onSheetVisibleChanged</b>&#8203;(e)</td>
+      <td><p>
+<b>e</b> (<a href="topic/wijmo.collections.NotifyCollectionChangedEventArgs.Class.html"><b>NotifyCollectionChangedEventArgs</b></a>)<br/></p>
+</td>
+      <td>触发 <b>sheetVisibleChanged</b> 事件。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>push</b>&#8203;(...item): <b>number</b></td>
+      <td><p>
+<b>...item</b> (<b>any</b><b>[]</b>): 待添加至数组的一个或多个项目。<br/></p>
+</td>
+      <td>添加一个或多个新项目至数组末尾。
+覆盖基类 <a href="topic/wijmo.collections.ObservableArray.Class.html"><b>ObservableArray</b></a> 上的 push 方法。<br/><br/><b>返回值</b> 数组新的长度。</td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>remove</b>&#8203;(item): <b>boolean</b></td>
+      <td><p>
+<b>item</b> (<b>any</b>): 项目移除。<br/></p>
+</td>
+      <td>从一个数组中移除项目。<br/><br/><b>返回值</b> 如果项目被移除则为真，如果项目在数组中没有被找到则为假。<br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.ObservableArray.Class.html"><b>ObservableArray</b></a>).</span></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>removeAt</b>&#8203;(index)</td>
+      <td><p>
+<b>index</b> (<b>number</b>): 待移除项目的位置。<br/></p>
+</td>
+      <td>从数组中指定的位置移除一个项目。
+覆盖基类 <a href="topic/wijmo.collections.ObservableArray.Class.html"><b>ObservableArray</b></a> 上的 removeAt 方法。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>selectFirst</b>&#8203;(): <b>boolean</b></td>
+      <td></td>
+      <td>选择 <a href="topic/wijmo.grid.sheet.FlexSheet.Class.html"><b>FlexSheet</b></a> 控件的第一个表单。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>selectLast</b>&#8203;(): <b>boolean</b></td>
+      <td></td>
+      <td>选择 <a href="topic/wijmo.grid.sheet.FlexSheet.Class.html"><b>FlexSheet</b></a> 控件的最后一个表单。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>selectNext</b>&#8203;(): <b>boolean</b></td>
+      <td></td>
+      <td>选择 <a href="topic/wijmo.grid.sheet.FlexSheet.Class.html"><b>FlexSheet</b></a> 控件的下一个表单。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>selectPrevious</b>&#8203;(): <b>boolean</b></td>
+      <td></td>
+      <td>选择 <a href="topic/wijmo.grid.sheet.FlexSheet.Class.html"><b>FlexSheet</b></a> 控件的上一个表单。</td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>setAt</b>&#8203;(index, item)</td>
+      <td><p>
+<b>index</b> (<b>number</b>): 项目将被分配的位置。<br/><b>item</b> (<b>any</b>): 分配给数组的项目。<br/></p>
+</td>
+      <td>在数组中的特定位置分配一个项目。<br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.ObservableArray.Class.html"><b>ObservableArray</b></a>).</span></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>show</b>&#8203;(pos): <b>boolean</b></td>
+      <td><p>
+<b>pos</b> (<b>number</b>): 待重新显示的表单所在的位置。<br/></p>
+</td>
+      <td>重新显示指定位置处的表单 <a href="topic/wijmo.grid.sheet.Sheet.Class.html"><b>Sheet</b></a> 并选中。</td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>slice</b>&#8203;(begin?, end?): <b>any</b><b>[]</b></td>
+      <td><p>
+<b>begin?</b> (<b>number</b>): 拷贝开始的位置。<br/><b>end?</b> (<b>number</b>): 拷贝结束的位置。<br/></p>
+</td>
+      <td>创建一个数组中一部分的浅拷贝。<br/><br/><b>返回值</b> 一个数组的浅拷贝。<br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.ObservableArray.Class.html"><b>ObservableArray</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>sort</b>&#8203;(compareFn?): <b>any</b><b>[]</b></td>
+      <td><p>
+<b>compareFn?</b> (<b>Function</b>): 指定定义排序顺序的函数。
+如果已经指定了， 函数应采取两个参数并且应该返回
+-1， +1，或者0 来指明第一个参数比第二个参数较小，较大，
+或者相等。
+如果被省略了，数组按照每个元素的字符串转换在字典顺序中进行排序的。<br/></p>
+</td>
+      <td>将数组中的元素排序。<br/><br/><b>返回值</b> 排序数组的副本。<br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.ObservableArray.Class.html"><b>ObservableArray</b></a>).</span></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>splice</b>&#8203;(index, count, item?): <b>any</b><b>[]</b></td>
+      <td><p>
+<b>index</b> (<b>number</b>): 元素添加或移除的位置。<br/><b>count</b> (<b>number</b>): 待从数组中移除的项目的个数。<br/><b>item?</b> (<b>any</b>): 待添加到数组中的项。<br/></p>
+</td>
+      <td>从数组中移除并且/或者添加项目至数组。
+覆盖基类 <a href="topic/wijmo.collections.ObservableArray.Class.html"><b>ObservableArray</b></a> 上的 splice 方法。<br/><br/><b>返回值</b> 包含移除的元素的一个数组。</td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideEvents = !hideEvents">
+<span class="glyph-collapsed" ng-show="hideEvents"></span>
+<span class="glyph-expanded" ng-hide="hideEvents"></span>
+事件
+</h3>
+</div>
+<table ng-hide="hideEvents" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-2">名称</th>
+
+<th class="col-md-5">参数</th>
+
+<th class="col-md-5">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>collectionChanged</b></td>
+      <td></td>
+      <td>当集合更改时发生。<br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.ObservableArray.Class.html"><b>ObservableArray</b></a>).</span></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>selectedSheetChanged</b></td>
+      <td><a href="topic/wijmo.PropertyChangedEventArgs.Class.html"><b>PropertyChangedEventArgs</b></a></td>
+      <td>当 <b>selectedIndex</b> 属性发生变化时触发。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>sheetCleared</b></td>
+      <td><a href="topic/wijmo.EventArgs.Class.html"><b>EventArgs</b></a></td>
+      <td>当 <b>SheetCollection</b> 清空时触发。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>sheetNameChanged</b></td>
+      <td><a href="topic/wijmo.collections.NotifyCollectionChangedEventArgs.Class.html"><b>NotifyCollectionChangedEventArgs</b></a></td>
+      <td>在集合中表单的名称发生变化之后触发。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>sheetVisibleChanged</b></td>
+      <td><a href="topic/wijmo.collections.NotifyCollectionChangedEventArgs.Class.html"><b>NotifyCollectionChangedEventArgs</b></a></td>
+      <td>在集合中表单的可见状态发生变化之后触发。</td>
+    </tr>
+</tbody>
+</table>
+</div>
+

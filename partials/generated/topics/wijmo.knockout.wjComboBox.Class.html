@@ -1,0 +1,28 @@
+<h2>wjComboBox 类</h2>
+<dl class="dl-horizontal">
+<dt>基类</dt><dd><b>WjDropDownBinding</b></dd>
+<dt>派生类</dt><dd><a href="topic/wijmo.knockout.wjAutoComplete.Class.html"><b>wjAutoComplete</b></a>, <a href="topic/wijmo.knockout.wjInputTime.Class.html"><b>wjInputTime</b></a>, <a href="topic/wijmo.knockout.wjMenu.Class.html"><b>wjMenu</b></a>, <a href="topic/wijmo.knockout.wjMultiSelect.Class.html"><b>wjMultiSelect</b></a></dd>
+<dt>模块</dt><dd>wijmo.knockout</dd>
+<dt>文件</dt><dd>wijmo.knockout.js</dd>
+<dt>表示</dt><dd><label style="font-weight:normal">继承成员 <input type="checkbox" ng-model="showInherited"></label></dd>
+</dl>
+<p><p>使用 KnockoutJS 绑定 <a href="topic/wijmo.input.ComboBox.Class.html"><b>ComboBox</b></a> 控件。</p>
+
+<p>使用 <b>wjComboBox</b> 绑定添加 <b>ComboBox</b> 控件，例如:</p>
+
+<p><pre>&lt;p&gt;Here is a ComboBox control:&lt;/p&gt;
+&lt;div data-bind="wjComboBox: {
+  itemsSource: countries,
+  text: theCountry,
+  isEditable: false,
+  placeholder: 'country' }"&gt;
+&lt;/div&gt;</pre></p>
+
+<p><b>wjComboBox</b> 支持 <b>ComboBox</b> 控件上的所有可读写属性和事件。以下属性提供了双向绑定：
+<ul>
+	<li><b>isDroppedDown</b></li>
+	<li><b>text</b></li>
+	<li><b>selectedIndex</b></li>
+	<li><b>selectedItem</b></li>
+	<li><b>selectedValue</b></li>
+</ul></p></p>

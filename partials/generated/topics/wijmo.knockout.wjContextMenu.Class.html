@@ -1,0 +1,28 @@
+<h2>wjContextMenu 类</h2>
+<dl class="dl-horizontal">
+<dt>基类</dt><dd><b>WjBinding</b></dd>
+<dt>模块</dt><dd>wijmo.knockout</dd>
+<dt>文件</dt><dd>wijmo.knockout.js</dd>
+<dt>表示</dt><dd><label style="font-weight:normal">继承成员 <input type="checkbox" ng-model="showInherited"></label></dd>
+</dl>
+<p><p>KnockoutJS 为上下文菜单做绑定。
+使用 <b>wjContextMenu</b> binding 将上下文菜单添加到页面的元素上。<b>wjContextMenu</b> binding  是在<a href="topic/wijmo.knockout.wjMenu.Class.html"><b>wjMenu</b></a> 基础上的。
+当用于在元素上请求一个上下文菜单（通常是右键菜单），它展示一个弹出式菜单。
+wjContextMenu binding 作为一个参数添加到上下文菜单应用的元素。参数值是一个元素的选择器，包含这个菜单，比如</p>
+
+<p></p>
+
+<p>
+<pre>&lt;!-- paragraph with a context menu --&gt;
+&lt;p data-bind="wjContextMenu: { id: '#idMenu'}" &gt;
+ 这个段落有一个上下文菜单
+ &lt;/p&gt;</p>
+
+<p>&lt;!-- define the context menu (hidden and with an id) --&gt;
+&lt;div id="contextmenu" data-bind="wjMenu: { header: 'File', itemClicked: menuItemClicked}"&gt;
+    &lt;span data-bind="wjMenuItem: {}"&gt;New&lt;/span&gt;
+    &lt;span data-bind="wjMenuItem: {}"&gt;open an existing file or folder&lt;/span&gt;
+    &lt;span data-bind="wjMenuItem: {}"&gt;save the current file&lt;/span&gt;
+    &lt;span data-bind="wjMenuSeparator: {}"&gt;&lt;/span&gt;
+    &lt;span data-bind="wjMenuItem: {}"&gt;exit the application&lt;/span&gt;
+&lt;/div&gt;</pre></p></p>

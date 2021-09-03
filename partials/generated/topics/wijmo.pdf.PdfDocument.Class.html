@@ -1,0 +1,504 @@
+<h2>PdfDocument 类</h2>
+<dl class="dl-horizontal">
+<dt>基类</dt><dd><a href="topic/wijmo.pdf.PdfPageArea.Class.html"><b>PdfPageArea</b></a></dd>
+<dt>模块</dt><dd>wijmo.pdf</dd>
+<dt>文件</dt><dd>wijmo.pdf.js</dd>
+<dt>表示</dt><dd><label style="font-weight:normal">继承成员 <input type="checkbox" ng-model="showInherited"></label></dd>
+</dl>
+<p>表示一个基于 <a href="https://github.com/devongovett/pdfkit">PDFKit</a> JavaScript 类库的一个 PDF 文档对象。</p>
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideConstructor = !hideConstructor">
+<span class="glyph-collapsed" ng-show="hideConstructor"></span>
+<span class="glyph-expanded" ng-hide="hideConstructor"></span>
+ 构造函数
+</h3>
+</div>
+<table ng-hide="hideConstructor" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-2">名称</th>
+
+<th class="col-md-5">参数</th>
+
+<th class="col-md-5">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><b>constructor</b>&#8203;(options?): <a href="topic/wijmo.pdf.PdfDocument.Class.html"><b>PdfDocument</b></a></td>
+      <td><p>
+<b>options?</b> (<b>any</b>): An optional object containing initialization settings.<br/></p>
+</td>
+      <td>初始化 <b>PdfDocument类的新实例</b>。</td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideProperties = !hideProperties">
+<span class="glyph-collapsed" ng-show="hideProperties"></span>
+<span class="glyph-expanded" ng-hide="hideProperties"></span>
+属性
+</h3>
+</div>
+<table ng-hide="hideProperties" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-3">名称</th>
+
+<th class="col-md-2">类型</th>
+
+<th class="col-md-7">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><b>bufferPages</b></td>
+      <td><b>boolean</b></td>
+      <td><p>获取一个值，该值表示是否页面缓冲模式被启用，这意味着
+文档的页面可以通过使用 <b>pageIndex</b> 以及 <b>bufferedPageRange</b> 进行迭代。</p>
+
+<p>该属性仅可以在 <a href="topic/wijmo.pdf.PdfDocument.Class.html"><b>PdfDocument</b></a> 构造器中被指定。
+当且仅当 <b>header</b> 和 <b>footer</b> 均不可见时，该属性的值可以设置为 false。</p>
+
+<p>默认值为 true。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>compress</b></td>
+      <td><b>boolean</b></td>
+      <td><p>获取一个值，该值表示是否启用文档压缩。
+该属性仅可以在 <a href="topic/wijmo.pdf.PdfDocument.Class.html"><b>PdfDocument</b></a> 构造器中被指定。</p>
+
+<p>默认值为 true。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>currentPageSettings</b></td>
+      <td><a href="topic/wijmo.pdf.IPdfPageSettings.Interface.html"><b>IPdfPageSettings</b></a></td>
+      <td>获取一个对象，该对象表示当前的页面设置（只读）。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>footer</b></td>
+      <td><a href="topic/wijmo.pdf.PdfRunningTitle.Class.html"><b>PdfRunningTitle</b></a></td>
+      <td>获取一个表示页脚的对象，一个紧挨着页面底部边距上方的页面区域。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>header</b></td>
+      <td><a href="topic/wijmo.pdf.PdfRunningTitle.Class.html"><b>PdfRunningTitle</b></a></td>
+      <td>获取一个表示页眉的对象，一个紧挨着页面顶部边距的页面区域。</td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>height</b></td>
+      <td><b>number</b></td>
+      <td>获取区域的高度，单位是点。<br/><span class="text-info">(继承自 <a href="topic/wijmo.pdf.PdfPageArea.Class.html"><b>PdfPageArea</b></a>).</span></td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="字段">F</span></td>
+      <td><b>info</b></td>
+      <td><a href="topic/wijmo.pdf.IPdfDocumentInfo.Interface.html"><b>IPdfDocumentInfo</b></a></td>
+      <td>获取或设置文档信息，比如说作者名，文档创建日期等等。</td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>lineGap</b></td>
+      <td><b>number</b></td>
+      <td><p>获取或设置文本行之间的间隔，单位是点。</p>
+
+<p>默认值为 0。</p><br/><span class="text-info">(继承自 <a href="topic/wijmo.pdf.PdfPageArea.Class.html"><b>PdfPageArea</b></a>).</span></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>pageIndex</b></td>
+      <td><b>number</b></td>
+      <td><p>获取或设置当前页面在缓冲页面范围中的索引。</p>
+
+<p>使用 <b>bufferedPageRange</b> 方法获取一个缓冲页范围。</p></td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="字段">F</span></td>
+      <td><b>pageSettings</b></td>
+      <td><a href="topic/wijmo.pdf.IPdfPageSettings.Interface.html"><b>IPdfPageSettings</b></a></td>
+      <td>获取一个对象，该对象表示当自动添加页面或者使用 <b>addPage</b> 方法时，默认的页面设置。</td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>paths</b></td>
+      <td><a href="topic/wijmo.pdf.PdfPaths.Class.html"><b>PdfPaths</b></a></td>
+      <td>获取一个能够绘制路径的对象。<br/><span class="text-info">(继承自 <a href="topic/wijmo.pdf.PdfPageArea.Class.html"><b>PdfPageArea</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>width</b></td>
+      <td><b>number</b></td>
+      <td>获取区域的宽度，单位是点。<br/><span class="text-info">(继承自 <a href="topic/wijmo.pdf.PdfPageArea.Class.html"><b>PdfPageArea</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>x</b></td>
+      <td><b>number</b></td>
+      <td>获取或设置文本流中的当前点的 X-轴坐标（单位是点），用来绘制一个文本或者图像。<br/><span class="text-info">(继承自 <a href="topic/wijmo.pdf.PdfPageArea.Class.html"><b>PdfPageArea</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>y</b></td>
+      <td><b>number</b></td>
+      <td>获取或设置文本流中的当前点的 Y-轴坐标（单位是点），用来绘制一个文本或者图像。<br/><span class="text-info">(继承自 <a href="topic/wijmo.pdf.PdfPageArea.Class.html"><b>PdfPageArea</b></a>).</span></td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideMethods = !hideMethods">
+<span class="glyph-collapsed" ng-show="hideMethods"></span>
+<span class="glyph-expanded" ng-hide="hideMethods"></span>
+方法
+</h3>
+</div>
+<table ng-hide="hideMethods" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-2">名称</th>
+
+<th class="col-md-5">参数</th>
+
+<th class="col-md-5">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><b>addPage</b>&#8203;(settings?): <a href="topic/wijmo.pdf.PdfDocument.Class.html"><b>PdfDocument</b></a></td>
+      <td><p>
+<b>settings?</b> (<a href="topic/wijmo.pdf.IPdfPageSettings.Interface.html"><b>IPdfPageSettings</b></a>): 页面设置。<br/></p>
+</td>
+      <td><p>添加一个具有指定设置的页面。</p>
+
+<p>如果该设置被忽略，则将替代地使用 <b>pageSettings</b> 属性上的设置。</p><br/><br/><b>返回值</b>  <a href="topic/wijmo.pdf.PdfDocument.Class.html"><b>PdfDocument</b></a> 对象。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>bufferedPageRange</b>&#8203;(): <a href="topic/wijmo.pdf.IPdfBufferedPageRange.Interface.html"><b>IPdfBufferedPageRange</b></a></td>
+      <td></td>
+      <td>获取缓冲页面的范围。<br/><br/><b>返回值</b> 一个<a href="topic/wijmo.pdf.IPdfBufferedPageRange.Interface.html"><b>IPdfBufferedPageRange</b></a> 对象代表当前缓冲页的范围。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>dispose</b>&#8203;(): <b>void</b></td>
+      <td></td>
+      <td>销毁该文档。</td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>drawImage</b>&#8203;(url, x?, y?, options?): <a href="topic/wijmo.pdf.PdfPageArea.Class.html"><b>PdfPageArea</b></a></td>
+      <td><p>
+<b>url</b> (<b>string</b>): 一个 URL，用于从中获取一个图像，或者是一个 Data URI，包含一个 base64 编码的图像的字符串。<br/><b>x?</b> (<b>number</b>): 绘制图像目标位置的点的 X-轴坐标，单位是点。<br/><b>y?</b> (<b>number</b>): 绘制图像目标位置的点的 Y-轴坐标，单位是点。<br/><b>options?</b> (<a href="topic/wijmo.pdf.IPdfImageDrawSettings.Interface.html"><b>IPdfImageDrawSettings</b></a>): 确定图像的绘制选项。<br/></p>
+</td>
+      <td><p>使用给定的选项绘制一个 JPG 或者 PNG 格式的图像。</p>
+
+<p>如果 x 和 y 未指定，则相应地使用 <b>x</b> 以及 <b>y</b> 替代。
+最终，该方法更新 <b>y</b> 的值。
+于是，任何后续的文本或者图像将从该点开始进行绘制。</p><br/><br/><b>返回值</b> The <a href="topic/wijmo.pdf.PdfPageArea.Class.html"><b>PdfPageArea</b></a> object.<br/><span class="text-info">(继承自 <a href="topic/wijmo.pdf.PdfPageArea.Class.html"><b>PdfPageArea</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>drawSvg</b>&#8203;(url, x?, y?, options?): <a href="topic/wijmo.pdf.PdfPageArea.Class.html"><b>PdfPageArea</b></a></td>
+      <td><p>
+<b>url</b> (<b>string</b>): A string containing the URL to get the SVG image from or the data URI containing a base64 encoded SVG image.<br/><b>x?</b> (<b>number</b>): The x-coordinate of the point to draw the image at, in points.<br/><b>y?</b> (<b>number</b>): The y-coordinate of the point to draw the image at, in points.<br/><b>options?</b> (<a href="topic/wijmo.pdf.IPdfSvgDrawSettings.Interface.html"><b>IPdfSvgDrawSettings</b></a>): Determines the SVG image drawing options.<br/></p>
+</td>
+      <td>用给定的选项绘制一个SVG图形。
+        如果 x 和 y 没有指定，那么使用 <b>x</b> 和 <b>y</b> 来代替。
+这个方法使用svg元素的宽高属性值，通过选项的options.width 和 options.height属性来决定缩放因素。
+如果参数忽略，那么缩放将不会生效，图片会按照原始大小绘制。
+    
+最终，如果图片使用文本流，那么方法会更新<b>y</b>.
+Hence。 任何连续的文本或图片都会从这个点开始绘制。
+增长值使用 options.height 属性提供，或者 outermost svg  元素的高度，取决于谁先定义。
+如果上面的值都没有提供，那么 <b>y</b> 将会保持不变。
+这个方法提供限制的SVG 功能集合，主要用于绘制WIjmo5控件。<br/><br/><b>返回值</b> The <a href="topic/wijmo.pdf.PdfPageArea.Class.html"><b>PdfPageArea</b></a> object.<br/><span class="text-info">(继承自 <a href="topic/wijmo.pdf.PdfPageArea.Class.html"><b>PdfPageArea</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>drawText</b>&#8203;(text, x?, y?, options?): <a href="topic/wijmo.pdf.IPdfTextMeasurementInfo.Interface.html"><b>IPdfTextMeasurementInfo</b></a></td>
+      <td><p>
+<b>text</b> (<b>string</b>): 待绘制的文本。<br/><b>x?</b> (<b>number</b>): 待绘制文本的点的 X-轴坐标，单位是点。<br/><b>y?</b> (<b>number</b>): 待绘制文本的点的 Y-轴坐标，单位是点。<br/><b>options?</b> (<a href="topic/wijmo.pdf.IPdfTextDrawSettings.Interface.html"><b>IPdfTextDrawSettings</b></a>): 确定文本的绘制选项。<br/></p>
+</td>
+      <td><p>使用指定的选项绘制一个文本，并返回文本的测量信息。</p>
+
+<p>如果 <b>pen</b>，<b>brush</b> 或者 <b>font</b> 属性的值被忽略，则使用当前文档上的
+画笔，画刷或者字体（<b>setPen</b>，<b>setBrush</b>，<b>setFont</b>）。</p>
+
+<p>文本在一个指定的矩形区域内绘制，左上角，宽度和高度分别由 x，y，options.width 以及 options.height 定义。
+如果 x 和 y 没有定义，则相应地使用 <b>x</b> 以及 <b>y</b> 替代。</p>
+
+<p>文本自动地在该区域内折行并裁剪。
+如果没有指定 options.height，并且文本超出了 body 底部边缘，则文本将自动地扩展到一个新页面上。</p>
+
+<p>最终，该方法更新 <b>x</b> 以及 <b>y</b> 的值。
+于是，任何后续的文本或者图像将从该点开始进行绘制（取决于 options.continued 的设置）。</p>
+
+<p>测量结果并不反映文本实际上可以被拆分到多页或者多列的事实；该文本将被看作一个单一的块对待。</p><br/><br/><b>返回值</b> A <a href="topic/wijmo.pdf.IPdfTextMeasurementInfo.Interface.html"><b>IPdfTextMeasurementInfo</b></a> object determines the measurement information.<br/><span class="text-info">(继承自 <a href="topic/wijmo.pdf.PdfPageArea.Class.html"><b>PdfPageArea</b></a>).</span></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>end</b>&#8203;(): <b>void</b></td>
+      <td></td>
+      <td>结束文档呈现。</td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>lineHeight</b>&#8203;(font?): <b>number</b></td>
+      <td><p>
+<b>font?</b> (<a href="topic/wijmo.pdf.PdfFont.Class.html"><b>PdfFont</b></a>): 用来获取行高的字体。<br/></p>
+</td>
+      <td><p>通过给定的字体获取行高。</p>
+
+<p>如果字体未指定，则使用当前文档上使用的字体。</p><br/><br/><b>返回值</b> 行高，单位是像素。<br/><span class="text-info">(继承自 <a href="topic/wijmo.pdf.PdfPageArea.Class.html"><b>PdfPageArea</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>measureText</b>&#8203;(text, font?, options?): <a href="topic/wijmo.pdf.IPdfTextMeasurementInfo.Interface.html"><b>IPdfTextMeasurementInfo</b></a></td>
+      <td><p>
+<b>text</b> (<b>string</b>): 待测量的文本。<br/><b>font?</b> (<a href="topic/wijmo.pdf.PdfFont.Class.html"><b>PdfFont</b></a>): 待应用到该文本的字体。<br/><b>options?</b> (<a href="topic/wijmo.pdf.IPdfTextSettings.Interface.html"><b>IPdfTextSettings</b></a>): 确定文本的绘制选项。<br/></p>
+</td>
+      <td><p>使用指定的字体以及文本绘制选项测量一段文本，无须将其真实呈现。</p>
+
+<p>如果字体未指定，则使用当前文档上使用的字体。</p>
+
+<p>该方法使用和 <b>drawText</b> 相同的文本呈现引擎，因此当 option.width 未指定时，它以相同的方式关联到 <b>x</b> 以及右侧页面边距。
+测量结果将不会反映文本实际上可以拆分成多页或多列的事实；文本被当作一个单一的块对待。</p><br/><br/><b>返回值</b> A <a href="topic/wijmo.pdf.IPdfTextMeasurementInfo.Interface.html"><b>IPdfTextMeasurementInfo</b></a> object determines the measurement information.<br/><span class="text-info">(继承自 <a href="topic/wijmo.pdf.PdfPageArea.Class.html"><b>PdfPageArea</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>moveDown</b>&#8203;(lines?, font?): <a href="topic/wijmo.pdf.PdfPageArea.Class.html"><b>PdfPageArea</b></a></td>
+      <td><p>
+<b>lines?</b> (<b>number</b>): 待向下移动的行数。<br/><span class="text-info">(默认值: <b>1</b>)</span><br/><b>font?</b> (<a href="topic/wijmo.pdf.PdfFont.Class.html"><b>PdfFont</b></a>): 用做计算行高的字体。<br/></p>
+</td>
+      <td>将 <b>y</b> 向下移动指定的行，使用指定的字体或者，
+当未指定时，使用当前文档的字体。<br/><br/><b>返回值</b>  <a href="topic/wijmo.pdf.PdfPageArea.Class.html"><b>PdfPageArea</b></a> 对象。<br/><span class="text-info">(继承自 <a href="topic/wijmo.pdf.PdfPageArea.Class.html"><b>PdfPageArea</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>moveUp</b>&#8203;(lines?, font?): <a href="topic/wijmo.pdf.PdfPageArea.Class.html"><b>PdfPageArea</b></a></td>
+      <td><p>
+<b>lines?</b> (<b>number</b>): 待向上移动的行数。<br/><span class="text-info">(默认值: <b>1</b>)</span><br/><b>font?</b> (<a href="topic/wijmo.pdf.PdfFont.Class.html"><b>PdfFont</b></a>): 用做计算行高的字体。<br/></p>
+</td>
+      <td>将 <b>y</b> 向上移动指定的行，使用指定的字体或者，
+当未指定时，使用当前文档的字体。<br/><br/><b>返回值</b>  object 对象<br/><span class="text-info">(继承自 <a href="topic/wijmo.pdf.PdfPageArea.Class.html"><b>PdfPageArea</b></a>).</span></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>onEnded</b>&#8203;(args): <b>void</b></td>
+      <td><p>
+<b>args</b> (<a href="topic/wijmo.pdf.PdfDocumentEndedEventArgs.Class.html"><b>PdfDocumentEndedEventArgs</b></a>): 一个 <a href="topic/wijmo.pdf.PdfDocumentEndedEventArgs.Class.html"><b>PdfDocumentEndedEventArgs</b></a> 类型的对象，包含事件数据。<br/></p>
+</td>
+      <td>触发 <b>end</b> 事件。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>onPageAdded</b>&#8203;(args): <b>void</b></td>
+      <td><p>
+<b>args</b> (<a href="topic/wijmo.EventArgs.Class.html"><b>EventArgs</b></a>): 一个 <a href="topic/wijmo.EventArgs.Class.html"><b>EventArgs</b></a> 类型的对象，包含事件数据。<br/></p>
+</td>
+      <td>触发 <b>pageAdded</b> 事件。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>registerFont</b>&#8203;(font): <a href="topic/wijmo.pdf.PdfDocument.Class.html"><b>PdfDocument</b></a></td>
+      <td><p>
+<b>font</b> (<a href="topic/wijmo.pdf.IPdfFontFile.Interface.html"><b>IPdfFontFile</b></a>): 待注册的字体。<br/></p>
+</td>
+      <td>从一个源注册一个字体，并将其关联到一个指定的字体集名称以及字体属性。<br/><br/><b>返回值</b> The <a href="topic/wijmo.pdf.PdfDocument.Class.html"><b>PdfDocument</b></a> object.</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>registerFontAsync</b>&#8203;(font, callback): <b>void</b></td>
+      <td><p>
+<b>font</b> (<a href="topic/wijmo.pdf.IPdfFontFile.Interface.html"><b>IPdfFontFile</b></a>): 待注册的字体。<br/><b>callback</b> (<b>Function</b>): 当字体注册完成时，将要调用的回调函数。<br/></p>
+</td>
+      <td><p>异步地从一个 URL 注册一个字体，并将其关联到一个指定的字体集名称以及字体属性。</p>
+
+<p>回调函数接受一个 <a href="topic/wijmo.pdf.IPdfFontFile.Interface.html"><b>IPdfFontFile</b></a> 对象做为参数。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>restoreState</b>&#8203;(): <a href="topic/wijmo.pdf.PdfDocument.Class.html"><b>PdfDocument</b></a></td>
+      <td></td>
+      <td>从堆栈中恢复状态，并将其应用到当前图形上下文。<br/><br/><b>返回值</b> 一个 <a href="topic/wijmo.pdf.PdfDocument.Class.html"><b>PdfDocument</b></a> 对象。</td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>rotate</b>&#8203;(angle, origin?): <a href="topic/wijmo.pdf.PdfPageArea.Class.html"><b>PdfPageArea</b></a></td>
+      <td><p>
+<b>angle</b> (<b>number</b>): 旋转的角度，单位是度。<br/><b>origin?</b> (<a href="topic/wijmo.Point.Class.html"><b>Point</b></a>): 旋转的中心点 <a href="topic/wijmo.Point.Class.html"><b>Point</b></a>，单位是点。如果没有提供，则使用左上角。<br/></p>
+</td>
+      <td>顺时针旋转图形上下文为一个指定的角度。<br/><span class="text-info">(继承自 <a href="topic/wijmo.pdf.PdfPageArea.Class.html"><b>PdfPageArea</b></a>).</span></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>saveState</b>&#8203;(): <a href="topic/wijmo.pdf.PdfDocument.Class.html"><b>PdfDocument</b></a></td>
+      <td></td>
+      <td>将图形上下文的状态（包括当前使用的画笔，画刷以及变换状态）保存并送入堆栈。<br/><br/><b>返回值</b> The <a href="topic/wijmo.pdf.PdfDocument.Class.html"><b>PdfDocument</b></a> object.</td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>scale</b>&#8203;(xFactor, yFactor?, origin?): <a href="topic/wijmo.pdf.PdfPageArea.Class.html"><b>PdfPageArea</b></a></td>
+      <td><p>
+<b>xFactor</b> (<b>number</b>): 缩放 X 轴维度的缩放因子。<br/><b>yFactor?</b> (<b>number</b>): 缩放 Y 轴维度的缩放因子。如果没有提供，则假定和 xFactor 相等。<br/><span class="text-info">(默认值: <b>xFactor</b>)</span><br/><b>origin?</b> (<a href="topic/wijmo.Point.Class.html"><b>Point</b></a>): 缩放的中心点的 <a href="topic/wijmo.Point.Class.html"><b>Point</b></a>，单位是点。如果没有提供，则使用左上角。<br/></p>
+</td>
+      <td><p>按照一个指定的缩放因子缩放图形上下文。</p>
+
+<p>介于 [0 ,1] 范围之间的缩放因子表示尺寸将缩小。
+值大于 1 的缩放因子表示尺寸将增大。</p><br/><br/><b>返回值</b> The <a href="topic/wijmo.pdf.PdfPageArea.Class.html"><b>PdfPageArea</b></a> object.<br/><span class="text-info">(继承自 <a href="topic/wijmo.pdf.PdfPageArea.Class.html"><b>PdfPageArea</b></a>).</span></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>setBrush</b>&#8203;(brushOrColor): <a href="topic/wijmo.pdf.PdfDocument.Class.html"><b>PdfDocument</b></a></td>
+      <td><p>
+<b>brushOrColor</b> (<b>any</b>): 待使用的画刷或颜色。<br/></p>
+</td>
+      <td><p>设置默认的文档画刷。
+如果没有特定的画刷指定，该画刷将被用在 <b>fill</b>，<b>fillAndStroke</b> 以及 <b>drawText</b> 方法中。</p>
+
+<p>brushOrColor 参数可以接受以下值：
+<ul>
+  <li>一个 <a href="topic/wijmo.pdf.PdfBrush.Class.html"><b>PdfBrush</b></a> 对象。</li>
+  <li>
+    为一个 <a href="topic/wijmo.Color.Class.html"><b>Color</b></a> 对象或者任何可以被 <b>fromString</b> 方法接受的字符串。 
+    在这种情形下，具有指定颜色的 <b>PdfBrush</b> 对象将在内部被创建。
+   </li>
+</ul></p><br/><br/><b>返回值</b> The <a href="topic/wijmo.pdf.PdfDocument.Class.html"><b>PdfDocument</b></a> object.</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>setFont</b>&#8203;(font): <a href="topic/wijmo.pdf.PdfDocument.Class.html"><b>PdfDocument</b></a></td>
+      <td><p>
+<b>font</b> (<a href="topic/wijmo.pdf.PdfFont.Class.html"><b>PdfFont</b></a>): 待设置的字体对象。<br/></p>
+</td>
+      <td>设置文档字体。
+		
+如果使用指定样式和粗细属性的字体没有精确匹配，则
+<ul>
+  <li>
+    <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/font-weight">字体粗细 fallback</a> 尝试搜索最接近的字体。
+  </li>
+  <li>
+    如果仍旧什么都找不到，则尝试以下顺序查找最接近的字体：
+    <ul>
+	    <li><b>'italic'</b>: 'oblique'，'normal'。</li>
+	    <li><b>'oblique'</b>: 'italic'，'normal'。</li>
+	    <li><b>'normal'</b>: 'oblique'，'italic'。</li>
+    </ul>
+  </li>
+</ul><br/><br/><b>返回值</b> The <a href="topic/wijmo.pdf.PdfDocument.Class.html"><b>PdfDocument</b></a> object.</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>setPen</b>&#8203;(penOrColor): <a href="topic/wijmo.pdf.PdfDocument.Class.html"><b>PdfDocument</b></a></td>
+      <td><p>
+<b>penOrColor</b> (<b>any</b>): 待使用的画笔或颜色。<br/></p>
+</td>
+      <td><p>设置默认的文档画笔。
+如果没有特定的画笔指定，该画笔将被用在 <b>stroke</b>，<b>fillAndStroke</b> 以及 <b>drawText</b> 方法中。</p>
+
+<p>penOrColor 参数可以接受以下值：
+<ul>
+  <li>一个 <a href="topic/wijmo.pdf.PdfPen.Class.html"><b>PdfPen</b></a> 对象。</li>
+  <li>
+    为一个 <a href="topic/wijmo.Color.Class.html"><b>Color</b></a> 对象或者任何可以被 <b>fromString</b> 方法接受的字符串。 
+    在这种情形下，具有指定颜色的 <b>PdfPen</b> 对象将在内部被创建。
+  </li>
+</ul></p><br/><br/><b>返回值</b>  <a href="topic/wijmo.pdf.PdfDocument.Class.html"><b>PdfDocument</b></a> 对象。</td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>transform</b>&#8203;(a, b, c, d, e, f): <a href="topic/wijmo.pdf.PdfPageArea.Class.html"><b>PdfPageArea</b></a></td>
+      <td><p>
+<b>a</b> (<b>number</b>): 第一行和第一列的值。<br/><b>b</b> (<b>number</b>): 第一行和第二列的值。<br/><b>c</b> (<b>number</b>): 第二行和第一列的值。<br/><b>d</b> (<b>number</b>): 第二行和第二列的值。<br/><b>e</b> (<b>number</b>): 第三行和第一列的值。<br/><b>f</b> (<b>number</b>): 第三行和第二列的值。<br/></p>
+</td>
+      <td><p>通过给定的六个值，该值表示一个 3 乘以 3 的转换矩阵，对一个图形上下文进行变换。</p>
+
+<p>一个变换矩阵书写格式如下：
+<table>
+  <tr><td>a</td><td>b</td><td>0</td></tr>
+  <tr><td>c</td><td>d</td><td>0</td></tr>
+  <tr><td>e</td><td>f</td><td>1</td></tr>
+</table></p><br/><br/><b>返回值</b> The <a href="topic/wijmo.pdf.PdfPageArea.Class.html"><b>PdfPageArea</b></a> object.<br/><span class="text-info">(继承自 <a href="topic/wijmo.pdf.PdfPageArea.Class.html"><b>PdfPageArea</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>translate</b>&#8203;(x, y): <a href="topic/wijmo.pdf.PdfPageArea.Class.html"><b>PdfPageArea</b></a></td>
+      <td><p>
+<b>x</b> (<b>number</b>): 沿着 X-轴平移的距离，单位是点。<br/><b>y</b> (<b>number</b>): 沿着 Y-轴平移的距离，单位是点。<br/></p>
+</td>
+      <td>按照指定的距离平移图形上下文。<br/><br/><b>返回值</b>  <a href="topic/wijmo.pdf.PdfPageArea.Class.html"><b>PdfPageArea</b></a> 对象。<br/><span class="text-info">(继承自 <a href="topic/wijmo.pdf.PdfPageArea.Class.html"><b>PdfPageArea</b></a>).</span></td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideEvents = !hideEvents">
+<span class="glyph-collapsed" ng-show="hideEvents"></span>
+<span class="glyph-expanded" ng-hide="hideEvents"></span>
+事件
+</h3>
+</div>
+<table ng-hide="hideEvents" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-2">名称</th>
+
+<th class="col-md-5">参数</th>
+
+<th class="col-md-5">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><b>ended</b></td>
+      <td><a href="topic/wijmo.pdf.PdfDocumentEndedEventArgs.Class.html"><b>PdfDocumentEndedEventArgs</b></a></td>
+      <td>当文档被呈现时触发。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>pageAdded</b></td>
+      <td><a href="topic/wijmo.EventArgs.Class.html"><b>EventArgs</b></a></td>
+      <td>当一个新页面添加到文档时触发。</td>
+    </tr>
+</tbody>
+</table>
+</div>
+

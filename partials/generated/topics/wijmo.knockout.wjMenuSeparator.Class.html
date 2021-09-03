@@ -1,0 +1,22 @@
+<h2>wjMenuSeparator 类</h2>
+<dl class="dl-horizontal">
+<dt>基类</dt><dd><b>WjBinding</b></dd>
+<dt>模块</dt><dd>wijmo.knockout</dd>
+<dt>文件</dt><dd>wijmo.knockout.js</dd>
+<dt>表示</dt><dd><label style="font-weight:normal">继承成员 <input type="checkbox" ng-model="showInherited"></label></dd>
+</dl>
+<p><p>使用 KnockoutJS 绑定菜单分割器 menu separators.</p>
+
+<p>使用 <b>wjMenuSeparator</b> 为 <a href="topic/wijmo.input.Menu.Class.html"><b>Menu</b></a> 控件添加一个不可选的分离器，它没有属性并且必须包含在 <a href="topic/wijmo.knockout.wjMenu.Class.html"><b>wjMenu</b></a> 绑定中，示例如下：</p>
+
+<p><pre>&lt;p&gt;
+这是一个菜单控件，拥有四个子项目和一个分隔符。</p>
+
+<p>&lt;/p&gt;
+&lt;div data-bind="wjMenu: { value: tax, header: 'Tax' }"&gt;
+    &lt;span data-bind="wjMenuItem: { value: 0 }"&gt;Exempt&lt;/span&gt;
+    &lt;span data-bind="wjMenuSeparator: {}"&gt;&lt;/span&gt;
+    &lt;span data-bind="wjMenuItem: { value: .05 }"&gt;5%&lt;/span&gt;
+    &lt;span data-bind="wjMenuItem: { value: .1 }"&gt;10%&lt;/span&gt;
+    &lt;span data-bind="wjMenuItem: { value: .15 }"&gt;15%&lt;/span&gt;
+&lt;/div&gt;</pre></p></p>

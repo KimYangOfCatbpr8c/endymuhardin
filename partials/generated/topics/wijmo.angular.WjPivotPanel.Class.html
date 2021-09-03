@@ -1,0 +1,31 @@
+<h2>WjPivotPanel 类</h2>
+<dl class="dl-horizontal">
+<dt>基类</dt><dd><b>WjDirective</b></dd>
+<dt>模块</dt><dd>wijmo.angular</dd>
+<dt>文件</dt><dd>wijmo.angular.js</dd>
+<dt>表示</dt><dd><label style="font-weight:normal">继承成员 <input type="checkbox" ng-model="showInherited"></label></dd>
+</dl>
+<p><p>AngularJS 指令应用于 <a href="topic/wijmo.olap.PivotPanel.Class.html"><b>PivotPanel</b></a> 控件。</p>
+
+<p>使用 <b>wj-pivot-panel</b> 指令作为数据源用于 <b>wj-pivot-grid</b> 和 <b>wj-pivot-chart</b> 指令，来添加转置表格和图表到 AngularJS 应用中。</p>
+
+<p>指令和参数名称必须使用小写字母+短线语法替代驼峰命名。 示例：</p>
+
+<p><pre>&lt;wj-pivot-panel
+    control="thePanel"
+    items-source="rawData"&gt;
+&lt;/wj-pivot-panel&gt;
+&lt;wj-pivot-grid
+    items-source="thePanel"
+    show-detail-on-double-click="false"
+    custom-context-menu="true"&gt;
+&lt;/wj-pivot-grid&gt;</pre></p>
+
+<p><b>wj-pivot-panel</b> 指令支持以下属性:</p>
+
+<p><dl class="dl-horizontal">
+  <dt>items-source</dt>                  <dd>获取或设置行数据用于生成转置视图。</dd>
+  <dt>auto-generate-fields</dt>          <dd>是否基于数据源 <b>itemsSource</b> 自动生成字段。</dd>
+  <dt>view-definition</dt>               <dd>基于JSON字符串获取或设置转置视图定义。</dd>
+  <dt>engine</dt>                        <dd>获取 <a href="topic/wijmo.olap.PivotEngine.Class.html"><b>PivotEngine</b></a> 引用。</dd>
+</dl></p></p>

@@ -1,0 +1,168 @@
+<h2>PdfRadialGradientBrush 类</h2>
+<dl class="dl-horizontal">
+<dt>基类</dt><dd><a href="topic/wijmo.pdf.PdfGradientBrush.Class.html"><b>PdfGradientBrush</b></a></dd>
+<dt>模块</dt><dd>wijmo.pdf</dd>
+<dt>文件</dt><dd>wijmo.pdf.js</dd>
+<dt>表示</dt><dd><label style="font-weight:normal">继承成员 <input type="checkbox" ng-model="showInherited"></label></dd>
+</dl>
+<p>表示通过放射状渐变填充一个区域的画刷。</p>
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideConstructor = !hideConstructor">
+<span class="glyph-collapsed" ng-show="hideConstructor"></span>
+<span class="glyph-expanded" ng-hide="hideConstructor"></span>
+ 构造函数
+</h3>
+</div>
+<table ng-hide="hideConstructor" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-2">名称</th>
+
+<th class="col-md-5">参数</th>
+
+<th class="col-md-5">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><b>constructor</b>&#8203;(x1, y1, r1, x2, y2, r2, stops, opacity): <a href="topic/wijmo.pdf.PdfRadialGradientBrush.Class.html"><b>PdfRadialGradientBrush</b></a></td>
+      <td><p>
+<b>x1</b> (<b>number</b>): 径向渐变的内圆的圆心的X坐标。 The X-coordinate of the inner circle's center of the radial gradient.<br/><b>y1</b> (<b>number</b>): 径向渐变的内圆的圆心的Y坐标。The Y-coordinate of the inner circle's center of the radial gradient.<br/><b>r1</b> (<b>number</b>): 径向渐变的内圆半径。The radius of the inner circle of the radial gradient.<br/><b>x2</b> (<b>number</b>): 径向渐变的外圆的圆心的X坐标。The X-coordinate of the outer circle's center of the radial gradient.<br/><b>y2</b> (<b>number</b>): 径向渐变的外圆的圆心的X坐标。The Y-coordinate of the outer circle's center of the radial gradient.<br/><b>r2</b> (<b>number</b>): 径向渐变的外圆的半径。The radius of the outer circle of the radial gradient.<br/><b>stops</b> (<a href="topic/wijmo.pdf.PdfGradientStop.Class.html"><b>PdfGradientStop</b></a><b>[]</b>): 设置在这个画刷上的 <a href="topic/wijmo.pdf.PdfGradientStop.Class.html"><b>PdfGradientStop</b></a><br/><b>opacity</b> (<b>number</b>): 这个画刷的透明度。<br/></p>
+</td>
+      <td>初始化 PdfRadialGradientBrush 的一个新实例。</td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideProperties = !hideProperties">
+<span class="glyph-collapsed" ng-show="hideProperties"></span>
+<span class="glyph-expanded" ng-hide="hideProperties"></span>
+属性
+</h3>
+</div>
+<table ng-hide="hideProperties" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-3">名称</th>
+
+<th class="col-md-2">类型</th>
+
+<th class="col-md-7">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>opacity</b></td>
+      <td><b>number</b></td>
+      <td>获取或设置画刷的不透明度。
+值必须位于范围 [0, 1] 之间， 这里 0 表示画刷完全透明，而 1 表示画刷完全不透明。
+默认值为 1。<br/><span class="text-info">(继承自 <a href="topic/wijmo.pdf.PdfGradientBrush.Class.html"><b>PdfGradientBrush</b></a>).</span></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>r1</b></td>
+      <td><b>number</b></td>
+      <td>获取或设置表示放射状渐变起始点的内圆半径，位于页面区域坐标系，单位是点。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>r2</b></td>
+      <td><b>number</b></td>
+      <td>获取或设置表示放射状渐变结束点的外圆半径，位于页面区域坐标系，单位是点。</td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>stops</b></td>
+      <td><a href="topic/wijmo.pdf.PdfGradientStop.Class.html"><b>PdfGradientStop</b></a><b>[]</b></td>
+      <td>获取或设置一个 <a href="topic/wijmo.pdf.PdfGradientStop.Class.html"><b>PdfGradientStop</b></a> 对象的集合，每一个对象表示在画刷的渐变轴上的一个颜色，偏移量以及不透明度。
+默认值为一个空白集合。<br/><span class="text-info">(继承自 <a href="topic/wijmo.pdf.PdfGradientBrush.Class.html"><b>PdfGradientBrush</b></a>).</span></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>x1</b></td>
+      <td><b>number</b></td>
+      <td>获取或设置内圆圆心处的 X-轴坐标
+表示放射状渐变的起始点，位于页面区域坐标系，单位是点。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>x2</b></td>
+      <td><b>number</b></td>
+      <td>获取或设置外圆圆心处的 X-轴坐标表示放射状渐变的结束点，位于页面区域坐标系，单位是点。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>y1</b></td>
+      <td><b>number</b></td>
+      <td>获取或设置内圆圆心处的 Y-轴坐标
+表示放射状渐变的起始点，位于页面区域坐标系，单位是点。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>y2</b></td>
+      <td><b>number</b></td>
+      <td>获取或设置外圆圆心处的 Y-轴坐标
+表示放射状渐变的结束点，位于页面区域坐标系，单位是点。</td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideMethods = !hideMethods">
+<span class="glyph-collapsed" ng-show="hideMethods"></span>
+<span class="glyph-expanded" ng-hide="hideMethods"></span>
+方法
+</h3>
+</div>
+<table ng-hide="hideMethods" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-2">名称</th>
+
+<th class="col-md-5">参数</th>
+
+<th class="col-md-5">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><b>clone</b>&#8203;(): <a href="topic/wijmo.pdf.PdfRadialGradientBrush.Class.html"><b>PdfRadialGradientBrush</b></a></td>
+      <td></td>
+      <td>创建该 <a href="topic/wijmo.pdf.PdfRadialGradientBrush.Class.html"><b>PdfRadialGradientBrush</b></a> 的一份拷贝。<br/><br/><b>返回值</b> 这个画刷的一个拷贝。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>equals</b>&#8203;(value): <b>boolean</b></td>
+      <td><p>
+<b>value</b> (<a href="topic/wijmo.pdf.PdfRadialGradientBrush.Class.html"><b>PdfRadialGradientBrush</b></a>): 待比较的 <a href="topic/wijmo.pdf.PdfRadialGradientBrush.Class.html"><b>PdfRadialGradientBrush</b></a> 对象。<br/></p>
+</td>
+      <td>确定是否指定的 <a href="topic/wijmo.pdf.PdfRadialGradientBrush.Class.html"><b>PdfRadialGradientBrush</b></a> 实例和当前的实例相等。<br/><br/><b>返回值</b> 如果指定对象与当前对象相等，则返回真，否则返回假。</td>
+    </tr>
+</tbody>
+</table>
+</div>
+

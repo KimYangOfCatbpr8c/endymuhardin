@@ -1,0 +1,62 @@
+<h2>wjFlexGridColumn 类</h2>
+<dl class="dl-horizontal">
+<dt>基类</dt><dd><b>WjBinding</b></dd>
+<dt>模块</dt><dd>wijmo.knockout</dd>
+<dt>文件</dt><dd>wijmo.knockout.js</dd>
+<dt>表示</dt><dd><label style="font-weight:normal">继承成员 <input type="checkbox" ng-model="showInherited"></label></dd>
+</dl>
+<p><p>使用 KnockoutJS 绑定 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a> <a href="topic/wijmo.grid.Column.Class.html"><b>Column</b></a> 对象</p>
+
+<p><b>wjFlexGridColumn</b> 绑定必须包含在 <a href="topic/wijmo.knockout.wjFlexGrid.Class.html"><b>wjFlexGrid</b></a> 绑定中，示例如下：</p>
+
+<p><pre>&lt;p&gt;Here is a FlexGrid control:&lt;/p&gt;
+&lt;div data-bind="wjFlexGrid: { itemsSource: data }"&gt;
+    &lt;div data-bind="wjFlexGridColumn: { 
+        header: 'Country', 
+        binding: 'country', 
+        width: '*' }"&gt;
+    &lt;/div&gt;
+    &lt;div data-bind="wjFlexGridColumn: { 
+        header: 'Date', 
+        binding: 'date' }"&gt;
+    &lt;/div&gt;
+    &lt;div data-bind="wjFlexGridColumn: { 
+        header: 'Revenue', 
+        binding: 'amount', 
+        format: 'n0' }"&gt;
+    &lt;/div&gt;
+    &lt;div data-bind="wjFlexGridColumn: { 
+        header: 'Active', 
+        binding: 'active' }"&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</pre></p>
+
+<p><b>wjFlexGridColumn</b> 支持 <b>Column</b> 类的所有可读写属性及事件。<b>isSelected</b> 属性支持双向绑定。</p>
+
+<p>可以向 <b>Column</b> 类的属性添加匹配的正则式，一个 <b>wjFlexGridColumn</b> 绑定可能包含一个 <a href="topic/wijmo.knockout.wjStyle.Class.html"><b>wjStyle</b></a>  绑定，该绑定可以为单元格设置条件格式化和 HTML 模板片段。表格行会自动验证填充定制单元格的内容。</p>
+
+<p><b>wjStyle</b> 绑定和 HTML 片段都可以使用 <b>$item</b> 监控属性变量，<b>$item</b> 监控属性在 KnockoutJS 绑定中是一个指向当前行的引用。 <b>$row</b> 和 <b>$col</b> 监控属性属性也是可用的，他们分别执行行列的索引，示例如下：</p>
+
+<p><pre>&lt;div data-bind="wjFlexGridColumn: { 
+        header: 'Symbol', 
+        binding: 'symbol', 
+        readOnly: true, 
+        width: '*' }"&gt;
+  &lt;a data-bind="attr: { 
+        href: 'https://finance.yahoo.com/q?s=' + $item().symbol() }, 
+        text: $item().symbol"&gt;
+  &lt;/a&gt;
+&lt;/div&gt;
+&lt;div data-bind="wjFlexGridColumn: { 
+     header: 'Change',
+        binding: 'changePercent',
+        format: 'p2',
+        width: '*'
+        },
+        wjStyle: { 
+        color: getAmountColor($item().change) }"&gt;
+&lt;/div&gt;</pre></p>
+
+<p>上述的绑定创建了两列。
+第一列拥有一个模板，可以基于绑定的"symbol"属性生成一个链接； 
+第二列拥有一个条件样式，使用controller中定义的函数决定渲染value值时使用的颜色。</p></p>

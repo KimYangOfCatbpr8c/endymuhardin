@@ -1,0 +1,44 @@
+<h2>WjInputTime 类</h2>
+<dl class="dl-horizontal">
+<dt>基类</dt><dd><a href="topic/wijmo.angular.WjComboBox.Class.html"><b>WjComboBox</b></a></dd>
+<dt>模块</dt><dd>wijmo.angular</dd>
+<dt>文件</dt><dd>wijmo.angular.js</dd>
+<dt>表示</dt><dd><label style="font-weight:normal">继承成员 <input type="checkbox" ng-model="showInherited"></label></dd>
+</dl>
+<p><p>AngularJS 指令应用于 <a href="topic/wijmo.input.InputTime.Class.html"><b>InputTime</b></a> control.</p>
+
+<p>使用 <b>wj-input-time</b> 指令添加 <b>InputTime</b> 到 AngularJS 应用中。 
+注意指令和参数名称必须使用小写字母+短线语法替代驼峰命名。 示例：</p>
+
+<p><pre>&lt;p&gt;Here is an InputTime control:&lt;/p&gt;
+&lt;wj-input-time 
+  value="theDate" 
+  format="h:mm tt"
+  min="09:00" max="17:00"
+  step="15"&gt;
+&lt;/wj-input-time&gt;</pre></p>
+
+<p><a href="http://jsfiddle.net/Wijmo5/46PhD/" target="_blank" class="btn btn-info">
+  <img src="images/fiddle.png"/>
+  在线示例
+</a>
+</p>
+
+<p>这个例子使用 <a href="topic/wijmo.input.InputDate.Class.html"><b>InputDate</b></a> 和 an <b>InputTime</b> 控件呈现 <b>Date</b> 值 (包含日期和时间信息)，需要注意两个控件是怎样绑定到同一个控制器属性变量上的，并每个编辑数据的不同部分。这个例子同时展示了 <a href="topic/wijmo.input.Calendar.Class.html"><b>Calendar</b></a> 控件可以通过单击选择日期。</p>
+
+<p><b>wj-input-time</b> 指令扩展了 <a href="topic/wijmo.angular.WjComboBox.Class.html"><b>WjComboBox</b></a> ，添加了如下特性:</p>
+
+<p><dl class="dl-horizontal">
+  <dt>ng-model</dt>      <dd><code>@</code> 使用Angular的ng-model指令绑定控件的 <b>value</b> 属性。使用ng-model指令绑定属性能够获得一些共通的特性，例如验证，自动添加控件状态到form实例，等等。 使用 wj-model-property 重定义被 ng-model指定绑定的控件属性。</dd>
+  <dt>wj-model-property</dt><dd><code>@</code> 使用 <b>ng-model</b> 指令指定控件绑定的作用域。</dd>
+  <dt>control</dt>       <dd><code>=</code> 该指令创建的指向 <b>InputDate</b> 的引用。</dd>
+  <dt>format</dt>        <dd><code>@</code> 选中事件的格式化字符串。</dd>
+  <dt>mask</dt>          <dd><code>@</code> 用户输入的验证蒙版 (参见 <a href="topic/wijmo.input.InputMask.Class.html"><b>InputMask</b></a>)。</dd>
+  <dt>max</dt>           <dd><code>@</code> 最小有效时间（格式化为 "hh:mm"）。</dd>
+  <dt>min</dt>           <dd><code>@</code> 最大有效时间（格式化为 "hh:mm"）。</dd>
+  <dt>step</dt>          <dd><code>@</code> 下拉列表的步进值。</dd>
+  <dt>value</dt>         <dd><code>=</code> 编辑的时间 (以 Data 对象的形式).</dd>
+  <dt>value-changed</dt> <dd><code>&</code> @see: valueChanged 事件。</dd>
+</dl></p>
+
+<p><b>min</b> 和 <b>max</b> 属性需要指定为格式化 "yyyy-MM-dd" 的日期字符串， 技术上讲，你可以使用符合W3C <a href="http://tools.ietf.org/html/rfc3339" target="_blank">[RFC 3339]</a> 定义的任何格式化字符，只要它们是能够被HTML5支持格式化字符。</p></p>

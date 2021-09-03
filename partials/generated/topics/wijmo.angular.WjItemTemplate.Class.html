@@ -1,0 +1,25 @@
+<h2>WjItemTemplate 类</h2>
+<dl class="dl-horizontal">
+<dt>基类</dt><dd><b>WjDirective</b></dd>
+<dt>模块</dt><dd>wijmo.angular</dd>
+<dt>文件</dt><dd>wijmo.angular.js</dd>
+<dt>表示</dt><dd><label style="font-weight:normal">继承成员 <input type="checkbox" ng-model="showInherited"></label></dd>
+</dl>
+<p><p>AngularJS 指令应用于 <a href="topic/wijmo.input.ListBox.Class.html"><b>ListBox</b></a> 和 <a href="topic/wijmo.input.Menu.Class.html"><b>Menu</b></a> 项目模板。</p>
+
+<p><b>wj-item-template</b> 指令必须包含在一个 <a href="topic/wijmo.angular.WjListBox.Class.html"><b>WjListBox</b></a> 或者 <a href="topic/wijmo.angular.WjMenu.Class.html"><b>WjMenu</b></a> 指令中。</p>
+
+<p><b>wj-item-template</b> 定义了一个 <b>ListBox</b> 的项目模板，并绑定到 <b>Menu</b> 控件上。
+该模板包含使用了 AngularJS 绑定和指令的任意 HTML 代码段。除了控制器上任何可用的属性变量之外， <b>$item</b>, 
+<b>$itemIndex</b> 和 <b>$control</b> 模板变量也可用于 AngularJS 绑定中，用以指定数据项，索引，以及父控件等。</p>
+
+<p>注意指令和参数名称必须使用小写字母+短线语法替代驼峰命名。 示例：</p>
+
+<p><pre>&lt;p&gt;Here is a ListBox control with an item template:&lt;/p&gt;
+&lt;wj-list-box items-source="musicians"&gt;
+    &lt;wj-item-template&gt;
+        {&#8203;{$itemIndex}}. &lt;b&gt;{&#8203;{$item.name}}&lt;/b&gt;
+        &lt;br /&gt;
+        &lt;img ng-src="{&#8203;{$item.photo}}"/&gt;
+    &lt;/wj-item-template&gt;
+&lt;/wj-list-box&gt;</pre></p></p>

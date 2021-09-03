@@ -1,0 +1,397 @@
+<h2>Column 类</h2>
+<dl class="dl-horizontal">
+<dt>基类</dt><dd><a href="topic/wijmo.grid.RowCol.Class.html"><b>RowCol</b></a></dd>
+<dt>派生类</dt><dd><a href="topic/wijmo.angular.WjFlexGridColumn.Class.html"><b>WjFlexGridColumn</b></a></dd>
+<dt>模块</dt><dd>wijmo.grid</dd>
+<dt>文件</dt><dd>wijmo.grid.js</dd>
+<dt>表示</dt><dd><label style="font-weight:normal">继承成员 <input type="checkbox" ng-model="showInherited"></label></dd>
+</dl>
+<p>表示表单中的一列。</p>
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideConstructor = !hideConstructor">
+<span class="glyph-collapsed" ng-show="hideConstructor"></span>
+<span class="glyph-expanded" ng-hide="hideConstructor"></span>
+ 构造函数
+</h3>
+</div>
+<table ng-hide="hideConstructor" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-2">名称</th>
+
+<th class="col-md-5">参数</th>
+
+<th class="col-md-5">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><b>constructor</b>&#8203;(options?): <a href="topic/wijmo.grid.Column.Class.html"><b>Column</b></a></td>
+      <td><p>
+<b>options?</b> (<b>any</b>): Initialization options for the column.<br/></p>
+</td>
+      <td>初始化类 <a href="topic/wijmo.grid.Column.Class.html"><b>Column</b></a> 的一个新实例</td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideProperties = !hideProperties">
+<span class="glyph-collapsed" ng-show="hideProperties"></span>
+<span class="glyph-expanded" ng-hide="hideProperties"></span>
+属性
+</h3>
+</div>
+<table ng-hide="hideProperties" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-3">名称</th>
+
+<th class="col-md-2">类型</th>
+
+<th class="col-md-7">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><b>aggregate</b></td>
+      <td><a href="topic/wijmo.Aggregate.Enum.html"><b>Aggregate</b></a></td>
+      <td>获取或设置该列显示在分组页眉行上的 <a href="topic/wijmo.Aggregate.Enum.html"><b>Aggregate</b></a>。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>align</b></td>
+      <td><b>string</b></td>
+      <td><p>获取或设置该列中项目的水平对齐方式。</p>
+
+<p>该属性的默认值为null，这将使得表单将基于列的 <b>dataType</b> 自动选择对齐方式
+（数值将右对齐，布尔类型的值将居中，其他类型的值将左对齐）。</p>
+
+<p>如果您希望覆盖默认的对齐方式，设置该属性的值为 ‘Left’，‘Right’，或者‘Center’。</p></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>allowDragging</b></td>
+      <td><b>boolean</b></td>
+      <td>获取或设置一个值，该值表示是否用户可以通过鼠标将行或者列移动到一个新位置。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.RowCol.Class.html"><b>RowCol</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>allowMerging</b></td>
+      <td><b>boolean</b></td>
+      <td>获取或设置一个值，该值表示是否位于该行或该列的单元格可以被合并。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.RowCol.Class.html"><b>RowCol</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>allowResizing</b></td>
+      <td><b>boolean</b></td>
+      <td>获取或设置一个值，该值表示是否用户可以通过鼠标改变行或者列的尺寸。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.RowCol.Class.html"><b>RowCol</b></a>).</span></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>allowSorting</b></td>
+      <td><b>boolean</b></td>
+      <td>获取或设置一个值，该值表示是否用户可以通过单击其列头对该列进行排序。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>binding</b></td>
+      <td><b>string</b></td>
+      <td>获取或设置该列绑定到的列的属性的名称。</td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>collectionView</b></td>
+      <td><b>ICollectionView</b></td>
+      <td>获取绑定到该行或者列的 <a href="topic/wijmo.collections.ICollectionView.Interface.html"><b>ICollectionView</b></a> 对象。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.RowCol.Class.html"><b>RowCol</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>cssClass</b></td>
+      <td><b>string</b></td>
+      <td>获取或设置当呈现非行或者列中间的行头或列头单元格时，使用的一个 CSS 类名。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.RowCol.Class.html"><b>RowCol</b></a>).</span></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>currentSort</b></td>
+      <td><b>string</b></td>
+      <td>获取一个字符串，描述当前应用到该列上的排序。
+可能的值为‘+’表示正序，‘-’表示逆序，或者对于未排序的列，该值为 null。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>dataMap</b></td>
+      <td><a href="topic/wijmo.grid.DataMap.Class.html"><b>DataMap</b></a></td>
+      <td><p>获取或设置列上用来转换原始值为显示值的 <a href="topic/wijmo.grid.DataMap.Class.html"><b>DataMap</b></a>。</p>
+
+<p>具有相关联的 <b>DataMap</b> 的列将显示一个下拉按钮，
+可以用来快速的编辑。如果您不希望显示该下拉按钮，
+可以设置列上的 <b>showDropDown</b> 属性为 false。</p>
+
+<p>单元格的下拉框需要加载 wijmo.input 模块。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>dataType</b></td>
+      <td><a href="topic/wijmo.DataType.Enum.html"><b>DataType</b></a></td>
+      <td><p>获取或设置保存在该列中的值的类型。</p>
+
+<p>当编辑表单时，值将被转换为合适的类型。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>dropDownCssClass</b></td>
+      <td><b>string</b></td>
+      <td><p>获取或设置待添加到该列 Drop-Down 的 CSS 类名。</p>
+
+<p>下拉按钮仅在列设置了 <b>dataMap</b> 并且该列是可编辑时显示。
+单击下拉按钮将使得表单显示一个列表，用户可以从中为单元格选择一个值。</p>
+
+<p>单元格下拉框需要加载 wijmo.input 模块。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>format</b></td>
+      <td><b>string</b></td>
+      <td>获取或设置用来将一列的原始值转换为显示值（参见 <a href="topic/wijmo.Globalize.Class.html"><b>Globalize</b></a>）的格式化字符串。</td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>grid</b></td>
+      <td><a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a></td>
+      <td>获取拥有该行或者列的 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a> 对象。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.RowCol.Class.html"><b>RowCol</b></a>).</span></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>header</b></td>
+      <td><b>string</b></td>
+      <td>获取或设置显示在列头上的文本。</td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>index</b></td>
+      <td><b>number</b></td>
+      <td>获取位于父集合中的行或列的索引。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.RowCol.Class.html"><b>RowCol</b></a>).</span></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>inputType</b></td>
+      <td><b>string</b></td>
+      <td><p>获取或设置用做编辑该列中的值的 HTML 输入元素的“type”属性。</p>
+
+<p>        默认情况下，对于数值类型的列，该属性设置为“tel”，对于其他全部的非布尔类型的列，设置为“text”。
+        “tel”输入类型将使得移动设备显示一个数字键盘，包括负数符号以及一个小数点。</p>
+
+<p>        如果对于当前的 Culture，设备或者应用程序而言，默认值工作不正常，则可以使用该属性改变默认设置。
+        在这些情况下，请尝试将此值修改为“number”或者“text”。</p></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>isContentHtml</b></td>
+      <td><b>boolean</b></td>
+      <td>获取或设置一个值，该值表示是否位于该行或该列中的单元格包含 HTML 格式的文本内容而不是纯文本。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.RowCol.Class.html"><b>RowCol</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>isReadOnly</b></td>
+      <td><b>boolean</b></td>
+      <td>获取或设置一个值，该值表示是否位于该行或该列中的单元格可以被编辑。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.RowCol.Class.html"><b>RowCol</b></a>).</span></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>isRequired</b></td>
+      <td><b>boolean</b></td>
+      <td><p>获取或设置一个值，该值表示是否该列中的值为必须。</p>
+
+<p>默认情况下，该属性设置为 null，这表示值为必须，但是字符串类型的列可以包含空白字符串。</p>
+
+<p>当设置该属性的值为 true 时，数值为必须，此时不接受空白字符串。</p>
+
+<p>当设置该属性的值为 false 是，null 值和空白字符串都将被接受。</p></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>isSelected</b></td>
+      <td><b>boolean</b></td>
+      <td>获取或设置一个值，该值表示是否行或者列处于被选中状态。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.RowCol.Class.html"><b>RowCol</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>isVisible</b></td>
+      <td><b>boolean</b></td>
+      <td><p>获取一个值，该值表示是否该行或列为可见，且不是收起状态。</p>
+
+<p>该属性为只读状态。为改变一行或一列的可见性，请使用 <b>visible</b> 属性以取代。</p><br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.RowCol.Class.html"><b>RowCol</b></a>).</span></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>mask</b></td>
+      <td><b>string</b></td>
+      <td><p>获取或设置当编辑该列中的值时所使用的掩码。</p>
+
+<p>掩码格式和 <a href="topic/wijmo.input.InputMask.Class.html"><b>InputMask</b></a> 控件所使用的相同。</p>
+
+<p>如果指定了该属性，掩码必须和 <b>format</b> 属性的值兼容。
+例如，掩码 ‘99/99/9999’ 可以被用来输入格式为 ‘MM/dd/yyyy’ 的日期。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>maxWidth</b></td>
+      <td><b>number</b></td>
+      <td>获取或设置列的最大宽度。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>minWidth</b></td>
+      <td><b>number</b></td>
+      <td>获取或设置列的最小宽度。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>name</b></td>
+      <td><b>string</b></td>
+      <td><p>获取或设置该列的名称。</p>
+
+<p>列名可以被用来通过 <b>getColumn</b> 方法获取列。</p></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>pos</b></td>
+      <td><b>number</b></td>
+      <td>获取该行或列的位置。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.RowCol.Class.html"><b>RowCol</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>renderSize</b></td>
+      <td><b>number</b></td>
+      <td>获取该行或列的呈现尺寸。
+该属性受 visibility，默认尺寸，以及最小值和最大值的影响。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.RowCol.Class.html"><b>RowCol</b></a>).</span></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>renderWidth</b></td>
+      <td><b>number</b></td>
+      <td><p>获取列的呈现宽度。</p>
+
+<p>返回值会考虑到列的可见性，默认尺寸，以及最小和最大尺寸。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>showDropDown</b></td>
+      <td><b>boolean</b></td>
+      <td><p>获取或设置一个值，该值表示是否该表单向该列中的单元格添加下拉按钮。</p>
+
+<p>下拉按钮仅在列设置了 <b>dataMap</b> 并且该列是可编辑时显示。
+单击下拉按钮将使得表单显示一个列表，用户可以从中为单元格选择一个值。</p>
+
+<p>单元格下拉框需要加载 wijmo.input 模块。</p></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>size</b></td>
+      <td><b>number</b></td>
+      <td>获取或设置行或列的尺寸。
+设置该属性为 null 或者负值将使得该元素使用父集合的默认尺寸。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.RowCol.Class.html"><b>RowCol</b></a>).</span></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>sortMemberPath</b></td>
+      <td><b>string</b></td>
+      <td><p>获取或设置当对该列进行排序时使用到的属性的名称。</p>
+
+<p>当您希望该排序操作基于值，而不是其它由 <b>binding</b> 属性指定的内容进行排序时，可以使用到该属性。</p>
+
+<p>设置该属性的值为 null 将使得表单使用 <b>binding</b> 属性的值对列进行排序。</p></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>visible</b></td>
+      <td><b>boolean</b></td>
+      <td>获取或设置一个值，该值表示是否该行或列为可见。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.RowCol.Class.html"><b>RowCol</b></a>).</span></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>width</b></td>
+      <td><b>any</b></td>
+      <td><p>获取或设置列的宽度。</p>
+
+<p>列宽可以为正数值（以像素数设置列宽），
+null 或者 负数值（使用集合上的默认列宽），或者
+具有 '{number}*' 格式的字符串（星号尺寸标记）。</p>
+
+<p>星号尺寸标记执行一种 XAML-样式的动态尺寸，列宽和星号之前的数字成比例。 
+例如，如果一个表单具有三个列，宽度分别设置为 “100”，“*”，以及“3*”，
+则第一列宽度将会是 100 像素，第二列将占用余下空间的四分之一，最后一列
+将占用余下的四分之三的空间。</p>
+
+<p>星号尺寸标记允许您定义一列自动地拉伸填充可用的宽度。
+例如，设置最后一列的宽度为“*”，它将自动的拉伸以填充表单余下的空间，因此，表单上将不存在剩余的空白区。
+您也许可以通过设置列上的 <b>minWidth</b> 属性，以防止列宽变得过于狭窄。</p></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>wordWrap</b></td>
+      <td><b>boolean</b></td>
+      <td>获取或设置一个值，该值表示是否位于该行或该列中的单元格可以折行显示。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.RowCol.Class.html"><b>RowCol</b></a>).</span></td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideMethods = !hideMethods">
+<span class="glyph-collapsed" ng-show="hideMethods"></span>
+<span class="glyph-expanded" ng-hide="hideMethods"></span>
+方法
+</h3>
+</div>
+<table ng-hide="hideMethods" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-2">名称</th>
+
+<th class="col-md-5">参数</th>
+
+<th class="col-md-5">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><b>getAlignment</b>&#8203;(): <b>string</b></td>
+      <td></td>
+      <td><p>获取实际的列的对齐方式。 </p>
+
+<p>如果 <b>align</b> 属性的值不为 null，则返回该属性的值，或者基于列的 <b>dataType</b> 属性选择不同的对齐方式。</p></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>onPropertyChanged</b>&#8203;()</td>
+      <td></td>
+      <td>将 owner 标记为 dirty 状态，并刷新 owner 表单。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.RowCol.Class.html"><b>RowCol</b></a>).</span></td>
+    </tr>
+</tbody>
+</table>
+</div>
+

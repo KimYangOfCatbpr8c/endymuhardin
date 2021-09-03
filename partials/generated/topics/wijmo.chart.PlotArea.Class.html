@@ -1,0 +1,132 @@
+<h2>PlotArea 类</h2>
+<dl class="dl-horizontal">
+<dt>派生类</dt><dd><a href="topic/wijmo-wijmo.angular2.chart.WjFlexChartPlotArea.Class.html"><b>WjFlexChartPlotArea</b></a></dd>
+<dt>模块</dt><dd>wijmo.chart</dd>
+<dt>文件</dt><dd>wijmo.chart.js</dd>
+</dl>
+<p><p>表示图表中的一个绘图区域。</p>
+
+<p>图表可以具有多个绘图区域以及多组坐标轴。
+通过 <b>Axis.plotArea</b> 属性向绘图区添加坐标轴。例如：
+<pre>
+ // 创建一个绘图区
+ var pa = new wijmo.chart.PlotArea();
+ pa.row = 1;
+ chart.plotAreas.push(pa);
+ // 创建辅助 Y 轴
+ var ay2 = new wijmo.chart.Axis(wijmo.chart.Position.Left);
+ ay2.plotArea = pa; // 将坐标轴关联到绘图区
+ chart.axes.push(ay2);
+ // 沿 Y 轴绘制第一个系列
+ chart.series[0].axisY = ay2;
+</pre></p></p>
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideConstructor = !hideConstructor">
+<span class="glyph-collapsed" ng-show="hideConstructor"></span>
+<span class="glyph-expanded" ng-hide="hideConstructor"></span>
+ 构造函数
+</h3>
+</div>
+<table ng-hide="hideConstructor" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-2">名称</th>
+
+<th class="col-md-5">参数</th>
+
+<th class="col-md-5">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><b>constructor</b>&#8203;(): <a href="topic/wijmo.chart.PlotArea.Class.html"><b>PlotArea</b></a></td>
+      <td></td>
+      <td>初始化类 <a href="topic/wijmo.chart.PlotArea.Class.html"><b>PlotArea</b></a> 的一个新实例。</td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideProperties = !hideProperties">
+<span class="glyph-collapsed" ng-show="hideProperties"></span>
+<span class="glyph-expanded" ng-hide="hideProperties"></span>
+属性
+</h3>
+</div>
+<table ng-hide="hideProperties" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-3">名称</th>
+
+<th class="col-md-2">类型</th>
+
+<th class="col-md-7">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><b>column</b></td>
+      <td><b>number</b></td>
+      <td>获取或设置绘图区域的列号。
+通过 <b>column</b> 属性，您可以设置绘图区在图表中的垂直位置。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>height</b></td>
+      <td><b>any</b></td>
+      <td><p>获取或设置绘图区的高度。 </p>
+
+<p>高度可以指定为一个数值（按像素数指定宽度）或者具有'{number}*'格式的字符串（星号尺寸标记）。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>name</b></td>
+      <td><b>string</b></td>
+      <td>获取或设置绘图区域的名称。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>row</b></td>
+      <td><b>number</b></td>
+      <td>获取或设置绘图区域的行号。 
+通过 <b>row</b> 属性，您可以设置绘图区在图表中的水平位置。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>style</b></td>
+      <td><b>any</b></td>
+      <td><p>获取或设置绘图区域的样式。 </p>
+
+<p>通过 <b>style</b> 属性，您可以设置绘图区的外观。
+例如：
+<pre>
+  pa.style = { fill: 'rgba(0,255,0,0.1)' };
+</pre></p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>width</b></td>
+      <td><b>any</b></td>
+      <td><p>获取或设置绘图区的宽度。 </p>
+
+<p>宽度可以指定为一个数值（按像素数指定宽度）或者具有'{number}*'格式的字符串（星号尺寸标记）。</p></td>
+    </tr>
+</tbody>
+</table>
+</div>
+

@@ -1,0 +1,89 @@
+﻿<h2>
+    创建  Wijmo 5 控件
+</h2>
+<p>
+    每一个 Wijmo 5 控件都关联到一个在页面上承载该控件的 HTML 元素容器。
+    为创建一个控件，您首先需要在页面上添加一个 <b>div</b> 元素，之后使用 JavaScript 代码
+    实例化该控件，并将其绑定到容器元素。
+</p>
+<p>
+    例如，以下 filddle 上的代码片段展示了您如何创建一个 <b>FlexGrid</b> 以及一个 <b>FlexChart</b> 并将其绑定到一个小型的数据源：
+</p>
+<p>
+    <a href="http://jsfiddle.net/Wijmo5/MWue8/" target="_blank" class="btn btn-info">
+        <img src="images/fiddle.png" />
+        创建控件
+    </a>
+</p>
+<p>
+    该代码片段包含了全部所必须的引用（如同<a href="static/references.html">在应用程序中引用 Wijmo 5</a>主题中介绍的那样）。
+    同时该代码片段的 HTML 部分则声明了两个 <b>div</b> 元素，分别叫做 'theGrid' 和 'theChart'：
+</p>
+<pre>&lt;h1&gt;Hello&lt;/h1&gt;
+
+&lt;p&gt;这是一个 FlexGrid 控件：&lt;/p&gt;
+&lt;div id="theGrid" style="width:100%;height:auto;"&gt;&lt;/div&gt;
+
+&lt;p&gt;这是一个 FlexChart 控件：&lt;/p&gt;
+&lt;div id="theChart" style="width:100%;height:350px;"&gt;&lt;/div&gt;
+
+&lt;p&gt;对于目前而言，就是这样了...&lt;/p&gt;</pre>
+<p>
+    该代码片段的 JavaScript 部分在文档加载之后执行。
+    它创建了一个小型的数据集，同时绑定控件至 <b>div</b> 元素，最后将控件绑定到数据集：
+</p>
+<pre>&lt;script id="scriptInit" type="text/javascript"&gt;
+$(document).ready(function () {
+
+  // 生成一些随机数据
+  var countries = 'US,Germany,UK,Japan,Italy,Greece'.split(','),
+      data = [];
+  for (var i = 0; i &lt; countries.length; i++) {
+    data.push({
+      country: countries[i],
+      downloads: Math.round(Math.random() * 20000),
+      sales: Math.random() * 10000,
+      expenses: Math.random() * 5000
+    });
+  }
+
+  // 创建 grid 并展示数据
+  var grid = new wijmo.grid.FlexGrid('#theGrid');
+  grid.itemsSource = data;
+    
+  // 创建一个图表，并展示一些数据
+  var chart = new wijmo.chart.FlexChart('#theChart');
+  chart.initialize({
+      itemsSource: data,
+      bindingX: 'country',
+      series: [
+          { name: 'Sales', binding: 'sales' },
+          { name: 'Expenses', binding: 'expenses' },
+          { name: 'Downloads', binding: 'downloads', chartType: wijmo.chart.ChartType.LineSymbols } ]
+  });
+});
+&lt;/script&gt;
+</pre>
+<p>
+    请注意控件的位置和大小由其容器元素决定。
+    在上例中，我们设置了 grid 的高度为“auto”，使得其按照包含的内容自动计算合适的尺寸。
+    我们也可以将高度设置为一个固定值，在必要的时候，grid 可以显示滚动条。
+</p>
+<p>
+    在大多数情况下，您会使用一些 CSS 框架，比如 Bootstrap 以便对页面进行布局，
+    您可以使用对其他 HTML 元素完全一样的方法对这些控件进行布局。
+</p>
+<p>
+    您可以通过控件上的 <b>hostElement</b> 属性获取该 Wijmo 控件容器的引用。
+    您也可以通过使用 <b>Control.getControl(element)</b> 静态方法获取一个指定的 HTML
+    元素所包含的控件的引用。
+</p>
+<p>
+    更多关于控件排布和改变尺寸的细节，请参见
+    <a href="static/sizingAndStyling.html">控件的布局和样式</a> 
+    主题。</p>
+<p>
+    您可以使用 <b>div</b> 元素作为全部的 Wijmo 控件的容器。除此之外，您可以使用 <b>input</b> 元素作为大部分的
+    输入类控件的容器，<b>select</b> 元素作为 <b>ListBox</b>，<b>ComboBox</b>，<b>AutoComplete</b>，以及 <b>Menu</b>
+    控件的容器。
+</p>

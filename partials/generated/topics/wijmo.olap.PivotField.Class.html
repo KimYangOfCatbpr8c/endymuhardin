@@ -1,0 +1,249 @@
+<h2>PivotField 类</h2>
+<dl class="dl-horizontal">
+<dt>模块</dt><dd>wijmo.olap</dd>
+<dt>文件</dt><dd>wijmo.olap.js</dd>
+</dl>
+<p>表示位于 wijmo.olap 数据源中的一个项目的属性。</p>
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideConstructor = !hideConstructor">
+<span class="glyph-collapsed" ng-show="hideConstructor"></span>
+<span class="glyph-expanded" ng-hide="hideConstructor"></span>
+ 构造函数
+</h3>
+</div>
+<table ng-hide="hideConstructor" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-2">名称</th>
+
+<th class="col-md-5">参数</th>
+
+<th class="col-md-5">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><b>constructor</b>&#8203;(engine, binding, header?, options?): <a href="topic/wijmo.olap.PivotField.Class.html"><b>PivotField</b></a></td>
+      <td><p>
+<b>engine</b> (<a href="topic/wijmo.olap.PivotEngine.Class.html"><b>PivotEngine</b></a>): 拥有该字段的 <a href="topic/wijmo.olap.PivotEngine.Class.html"><b>PivotEngine</b></a>。<br/><b>binding</b> (<b>string</b>): 该字段绑定的属性。<br/><b>header?</b> (<b>string</b>): 用来标识该字段的Header（默认值和绑定相关）。<br/><b>options?</b> (<b>any</b>): 包含该字段初始化数据的 JavaScript 对象。<br/></p>
+</td>
+      <td>初始化 <a href="topic/wijmo.olap.PivotField.Class.html"><b>PivotField</b></a> 类的一个新实例。</td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideProperties = !hideProperties">
+<span class="glyph-collapsed" ng-show="hideProperties"></span>
+<span class="glyph-expanded" ng-hide="hideProperties"></span>
+属性
+</h3>
+</div>
+<table ng-hide="hideProperties" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-3">名称</th>
+
+<th class="col-md-2">类型</th>
+
+<th class="col-md-7">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><b>aggregate</b></td>
+      <td><a href="topic/wijmo.Aggregate.Enum.html"><b>Aggregate</b></a></td>
+      <td>获取或设置该字段如何进行概括。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>binding</b></td>
+      <td><b>string</b></td>
+      <td>获取或设置该字段绑定的属性的名称。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>collectionView</b></td>
+      <td><b>ICollectionView</b></td>
+      <td>获取绑定至该字段的 <a href="topic/wijmo.collections.ICollectionView.Interface.html"><b>ICollectionView</b></a>。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>dataType</b></td>
+      <td><a href="topic/wijmo.DataType.Enum.html"><b>DataType</b></a></td>
+      <td>获取或设置字段的数据类型。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>descending</b></td>
+      <td><b>boolean</b></td>
+      <td>获取或设置一个值，该值决定是否该字段上的键应当按照降序顺序进行排序。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>engine</b></td>
+      <td><a href="topic/wijmo.olap.PivotEngine.Class.html"><b>PivotEngine</b></a></td>
+      <td>获取拥有该 <a href="topic/wijmo.olap.PivotField.Class.html"><b>PivotField</b></a> 的 <a href="topic/wijmo.olap.PivotEngine.Class.html"><b>PivotEngine</b></a> 对象的一个引用。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>filter</b></td>
+      <td><a href="topic/wijmo.olap.PivotFilter.Class.html"><b>PivotFilter</b></a></td>
+      <td>获取到用来对该字段的值进行筛选的 <a href="topic/wijmo.olap.PivotFilter.Class.html"><b>PivotFilter</b></a> 的对象的一个引用。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>format</b></td>
+      <td><b>string</b></td>
+      <td>获取或设置当显示字段值时，所使用的格式。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>header</b></td>
+      <td><b>string</b></td>
+      <td>获取或设置在用户界面上表示该字段的字符串。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>isActive</b></td>
+      <td><b>boolean</b></td>
+      <td><p>获取或设置一个值，该值决定是否该字段当前是否在视图中被使用。</p>
+
+<p>设置该属性的值为 true 将使得该字段添加到视图的 <b>rowFields</b> 或者 <b>valueFields</b>，取决于字段本身的数据类型。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>isContentHtml</b></td>
+      <td><b>boolean</b></td>
+      <td>获取或设置一个值，该值表示是否该字段中的项目包含 HTML 格式的文本而不是纯文本。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>parentField</b></td>
+      <td><a href="topic/wijmo.olap.PivotField.Class.html"><b>PivotField</b></a></td>
+      <td><p>获取该字段的父字段。</p>
+
+<p>当您多次拖拽了相同的字段至 Values 列表，则该字段的不同拷贝将被创建，您可以用不同的参数使用这个绑定。
+这些拷贝保存了一份到其父字段的引用。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>showAs</b></td>
+      <td><a href="topic/wijmo.olap.ShowAs.Enum.html"><b>ShowAs</b></a></td>
+      <td>获取或设置字段结果如何被格式化。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>weightField</b></td>
+      <td><a href="topic/wijmo.olap.PivotField.Class.html"><b>PivotField</b></a></td>
+      <td><p>获取或设置该字段的 <a href="topic/wijmo.olap.PivotField.Class.html"><b>PivotField</b></a>，做为该字段上计算汇总的一个权重。</p>
+
+<p>如果该属性设置为 null，则全部的值都假定具有相同的权重 1。</p>
+
+<p>该属性允许您计算加权平均值和总量。
+比如说，假定数据包含‘Quantity’字段以及'Price'字段，
+您可以将‘Price’字段用做值字段，同时将‘Quantity’字段做为权重。
+输出将包含数据的加权平均。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>width</b></td>
+      <td><b>number</b></td>
+      <td>获取或设置当在用户界面上显示该字段时，所使用的首选宽度。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>wordWrap</b></td>
+      <td><b>boolean</b></td>
+      <td>Gets or sets a value that indicates whether the content of this field should
+be allowed to wrap within cells.</td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideMethods = !hideMethods">
+<span class="glyph-collapsed" ng-show="hideMethods"></span>
+<span class="glyph-expanded" ng-hide="hideMethods"></span>
+方法
+</h3>
+</div>
+<table ng-hide="hideMethods" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-2">名称</th>
+
+<th class="col-md-5">参数</th>
+
+<th class="col-md-5">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><b>onPropertyChanged</b>&#8203;(e)</td>
+      <td><p>
+<b>e</b> (<a href="topic/wijmo.PropertyChangedEventArgs.Class.html"><b>PropertyChangedEventArgs</b></a>): 一个包含属性名称，旧值和新值的 <a href="topic/wijmo.PropertyChangedEventArgs.Class.html"><b>PropertyChangedEventArgs</b></a> 对象。<br/></p>
+</td>
+      <td>触发 <b>propertyChanged</b> 事件。</td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideEvents = !hideEvents">
+<span class="glyph-collapsed" ng-show="hideEvents"></span>
+<span class="glyph-expanded" ng-hide="hideEvents"></span>
+事件
+</h3>
+</div>
+<table ng-hide="hideEvents" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-2">名称</th>
+
+<th class="col-md-5">参数</th>
+
+<th class="col-md-5">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><b>propertyChanged</b></td>
+      <td><a href="topic/wijmo.PropertyChangedEventArgs.Class.html"><b>PropertyChangedEventArgs</b></a></td>
+      <td>当位于该 <a href="topic/wijmo.gauge.Range.Class.html"><b>Range</b></a> 内的一个属性的值发生变化时触发。</td>
+    </tr>
+</tbody>
+</table>
+</div>
+

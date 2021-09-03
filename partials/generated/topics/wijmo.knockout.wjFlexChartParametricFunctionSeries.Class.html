@@ -1,0 +1,17 @@
+<h2>wjFlexChartParametricFunctionSeries 类</h2>
+<dl class="dl-horizontal">
+<dt>基类</dt><dd><b>WjTrendLineBase</b></dd>
+<dt>模块</dt><dd>wijmo.knockout</dd>
+<dt>文件</dt><dd>wijmo.knockout.js</dd>
+<dt>表示</dt><dd><label style="font-weight:normal">继承成员 <input type="checkbox" ng-model="showInherited"></label></dd>
+</dl>
+<p><p>KnockoutJS 绑定用于 <a href="topic/wijmo.chart.analytics.ParametricFunctionSeries.Class.html"><b>ParametricFunctionSeries</b></a> 对象。</p>
+
+<p>使用 <b>wjFlexChartParametricFunctionSeries</b> 绑定向你的 KnockoutJS 应用程序添加 <b>ParametricFunctionSeries</b> 对象。比如：
+<pre>&lt;p&gt;Here is a ParametricFunctionSeries:&lt;/p&gt;
+&lt;div data-bind="wjFlexChart: { itemsSource: trendItemsSource, bindingX: 'x' }"&gt;
+    &lt;div data-bind="wjFlexChartSeries: { name: 'Sales', binding: 'sales' }"&gt;&lt;/div&gt;
+    &lt;div data-bind="wjFlexChartParametricFunctionSeries: {  sampleCount:1000, max: max,xFunc:xFunc,yFunc:yFunc  }"&gt;&lt;/div&gt;
+&lt;/div&gt;</pre></p>
+
+<p><b>wjFlexChartParametricFunctionSeries</b> 绑定支持所有 <b>ParametricFunctionSeries</b> 的读写属性和事件</p></p>

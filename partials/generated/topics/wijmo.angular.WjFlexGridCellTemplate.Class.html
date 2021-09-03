@@ -1,0 +1,170 @@
+<h2>WjFlexGridCellTemplate 类</h2>
+<dl class="dl-horizontal">
+<dt>基类</dt><dd><b>WjDirective</b></dd>
+<dt>模块</dt><dd>wijmo.angular</dd>
+<dt>文件</dt><dd>wijmo.angular.js</dd>
+<dt>表示</dt><dd><label style="font-weight:normal">继承成员 <input type="checkbox" ng-model="showInherited"></label></dd>
+</dl>
+<p><p>AngularJS 指令应用于 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a> 单元格模板。</p>
+
+<p><b>wj-flex-grid-cell-template</b> 指令定义 <b>FlexGrid</b> 确定的单元格类型的模板, 并且必须使用 <a href="topic/wijmo.angular.CellTemplateType.Enum.html"><b>CellTemplateType</b></a> 指定 <b>cell-type</b> 属性。 依赖于模板的单元格类型，<b>wj-flex-grid-cell-template</b> 指令必须包含一个子指令，<a href="topic/wijmo.angular.WjFlexGrid.Class.html"><b>WjFlexGrid</b></a> 或者  <a href="topic/wijmo.angular.WjFlexGridColumn.Class.html"><b>WjFlexGridColumn</b></a> 指令。</p>
+
+<p>指定列的模板必须包含于 <b>wj-flex-grid-column</b>
+指令中，并且所有不符合指定列的单元格（如行头或左上单元格）必须包含于 <b>wj-flex-grid </b>指令中。</p>
+
+<p>为了添加 HTML 代码段， <b>wj-flex-grid-cell-template</b> 指令可以包含 <b>ng-style</b> or <b>ng-class</b> 属性用以提供单元的条件格式化。</p>
+
+<p><b>ng-style/ng-class</b> 属性和 HTML 代码段都可以 <b>$col</b>, 
+<b>$row</b> and <b>$item</b>使用模板变量引用 <a href="topic/wijmo.grid.Column.Class.html"><b>Column</b></a>, 
+<a href="topic/wijmo.grid.Row.Class.html"><b>Row</b></a> 和 <b>Row.dataItem</b> 对象，以及其上的单元格。</p>
+
+<p>对于这些单元格类型如 <b>Group</b> 和 <b>CellEdit</b>, 附加的 <b>$value</b> 
+变量包含一个未被格式化的单元格值。示例是一个 FlexGrid ，为 Country 列常规和列头单元格使用了不同的模板:</p>
+
+<p><pre>&lt;wj-flex-grid items-source="data"&gt;
+  &lt;wj-flex-grid-cell-template cell-type="RowHeader"&gt;
+    {&#8203;{$row.index}}
+  &lt;/wj-flex-grid-cell-template&gt;
+  &lt;wj-flex-grid-cell-template cell-type="RowHeaderEdit"&gt;
+    ...
+  &lt;/wj-flex-grid-cell-template&gt;
+&nbsp;
+  &lt;wj-flex-grid-column header="Country" binding="country"&gt;
+    &lt;wj-flex-grid-cell-template cell-type="ColumnHeader"&gt;
+      &lt;img ng-src="resources/globe.png" /&gt;
+        {&#8203;{$col.header}}
+      &lt;/wj-flex-grid-cell-template&gt;
+      &lt;wj-flex-grid-cell-template cell-type="Cell"&gt;
+        &lt;img ng-src="resources/{&#8203;{$item.country}}.png" /&gt;
+        {&#8203;{$item.country}}
+      &lt;/wj-flex-grid-cell-template&gt;
+    &lt;/wj-flex-grid-column&gt;
+  &lt;wj-flex-grid-column header="Sales" binding="sales"&gt;&lt;/wj-flex-grid-column&gt;
+&lt;/wj-flex-grid&gt;</pre></p>
+
+<p>关于单元格模板更多细节请参见 <b>CellTemplateType</b> 枚举.</p>
+
+<p>注意 <b>wj-flex-grid-column</b> 指令可以包含任意的，被常规单元格 (<i>cell-type="Cell"</i>)模板处理过的内容. 但是如果 <b>wj-flex-grid-cell-template</b> 存在并且被设置为 <b>wj-flex-grid-column</b> 指令下的 <i>cell-type="Cell"</i>，它将获得更高的优先级。</p>
+
+<p><b>wj-flex-grid-cell-template</b> 指令支持以下属性:</p>
+
+<p><dl class="dl-horizontal">
+  <dt>cell-type</dt>
+  <dd><code>@</code>
+    <b>CellTemplateType</b> 值，定义了模板支持的单元格类型。
+  </dd>
+  <dt>cell-overflow</dt>
+  <dd><code>@</code>
+    为单元格定义了 <b>style.overflow</b> 属性值。
+  </dd>
+</dl></p>
+
+<p><b>cell-type</b> 属性需要下列枚举值:</p>
+
+<p><p><b>Cell</b><p>
+定义常规（数据）单元格模板，必须是 <b>WjFlexGridColumn</b> 指令的子指令。
+例如, 在 Country 列单元格显示国旗的模板定义:</p>
+
+<p><pre>&lt;wj-flex-grid-column header="Country" binding="country"&gt;
+  &lt;wj-flex-grid-cell-template cell-type="Cell"&gt;
+    &lt;img ng-src="resources/{&#8203;{$item.country}}.png" /&gt;
+    {&#8203;{$item.country}}
+  &lt;/wj-flex-grid-cell-template&gt;
+&lt;/wj-flex-grid-column&gt;</pre></p>
+
+<p>在分级 <b>FlexGrid</b> 中(也就是说，有属性被指定为 <b>childItemsPath</b> ), 如果没有 <b>Group</b> 模板被提供，这个列 <b>Column</b> 中的无分组单元格也是使用该模板。</p>
+
+<p><p><b>CellEdit</b></p></p>
+
+<p>定义单元格编辑模式模板，必须是 <b>WjFlexGridColumn</b> 指令的子指令。 
+该单元格类型拥有一个附加的 <b>$value</b> 属性用于绑定。它包含更新前后的值。
+示例中，使用 Wijmo <a href="topic/wijmo.input.InputNumber.Class.html"><b>InputNumber</b></a> 控件作为 "Sales" 列的编辑器:</p>
+
+<p><pre>&lt;wj-flex-grid-column header="Sales" binding="sales"&gt;
+  &lt;wj-flex-grid-cell-template cell-type="CellEdit"&gt;
+    &lt;wj-input-number value="$value" step="1"&gt;&lt;/wj-input-number&gt;
+  &lt;/wj-flex-grid-cell-template&gt;
+&lt;/wj-flex-grid-column&gt;</pre></p>
+
+<p><p><b>ColumnHeader</b></p></p>
+
+<p>定义列头单元格模板，必须是 <b>WjFlexGridColumn</b> 指令的子指令。 
+示例中，该模板为 "Country" 列的列头添加了图片:</p>
+
+<p><pre>&lt;wj-flex-grid-column header="Country" binding="country"&gt;
+  &lt;wj-flex-grid-cell-template cell-type="ColumnHeader"&gt;
+    &lt;img ng-src="resources/globe.png" /&gt;
+    {&#8203;{$col.header}}
+  &lt;/wj-flex-grid-cell-template&gt;
+&lt;/wj-flex-grid-column&gt;</pre></p>
+
+<p><p><b>RowHeader</b></p></p>
+
+<p>定义行头单元格模板， 必须是 <b>WjFlexGrid</b> 指令的子指令。
+示例中，该模板在行头中显示了目录:</p>
+
+<p><pre>&lt;wj-flex-grid items-source="data"&gt;
+  &lt;wj-flex-grid-cell-template cell-type="RowHeader"&gt;
+    {&#8203;{$row.index}}
+  &lt;/wj-flex-grid-cell-template&gt;
+&lt;/wj-flex-grid&gt;</pre></p>
+
+<p>注意该模板适用于行头单元格，即使该行处理编辑模式。为了处理行头的编辑模式，需要定义 <b>RowHeaderEdit</b> 模板。</p>
+
+<p><p><b>RowHeaderEdit</b></p></p>
+
+<p>定义行头编辑模式模板，必须是 <b>WjFlexGrid</b> 指令的子指令。 
+示例中，该模板将在行头被编辑时显示点"."号:</p>
+
+<p><pre>&lt;wj-flex-grid items-source="data"&gt;
+  &lt;wj-flex-grid-cell-template cell-type="RowHeaderEdit"&gt;
+      ...
+  &lt;/wj-flex-grid-cell-template&gt;
+&lt;/wj-flex-grid&gt;</pre></p>
+
+<p>为行头 <b>RowHeader</b> 模板添加标准的编辑指示器，使用 <b>RowHeaderEdit</b> 模板:</p>
+
+<p><pre>&lt;wj-flex-grid items-source="data"&gt;
+  &lt;wj-flex-grid-cell-template cell-type="RowHeaderEdit"&gt;
+    {&#8203;{&amp;#x270e;}}
+  &lt;/wj-flex-grid-cell-template&gt;
+&lt;/wj-flex-grid&gt;</pre></p>
+
+<p><p><b>TopLeft</b></p></p>
+
+<p>定义左上角单元格模板，必须是 <b>WjFlexGrid</b> 指令的子指令。 
+示例中，表格左上角单元将显示一个 down/right 字符:</p>
+
+<p><pre>&lt;wj-flex-grid items-source="data"&gt;
+  &lt;wj-flex-grid-cell-template cell-type="TopLeft"&gt;
+    &lt;span class="wj-glyph-down-right"&gt;&lt;/span&gt;
+  &lt;/wj-flex-grid-cell-template&gt;
+&lt;/wj-flex-grid&gt;</pre></p>
+
+<p><p><b>GroupHeader</b></p></p>
+
+<p>定义分组头单元格模板 <a href="topic/wijmo.grid.GroupRow.Class.html"><b>GroupRow</b></a>, 必须是 <b>WjFlexGridColumn</b> 指令的子指令。</p>
+
+<p><b>$row</b> 变量包含一个 <b>GroupRow</b> 类的实例。如果分组来自于 <a href="topic/wijmo.collections.CollectionView.Class.html"><b>CollectionView</b></a>, 那么 <b>$item</b> 变量将引用 <a href="topic/wijmo.collections.CollectionViewGroup.Class.html"><b>CollectionViewGroup</b></a> 对象。</p>
+
+<p>示例中，模板使用 checkbox 元素作为收缩/扩展标记:</p>
+
+<p><pre>&lt;wj-flex-grid-column header="Country" binding="country"&gt;
+  &lt;wj-flex-grid-cell-template cell-type="GroupHeader"&gt;
+    &lt;input type="checkbox" ng-model="$row.isCollapsed"/&gt; 
+    {&#8203;{$item.name}} ({&#8203;{$item.items.length}} items)
+  &lt;/wj-flex-grid-cell-template&gt;
+&lt;/wj-flex-grid-column&gt;</pre></p>
+
+<p><p><b>Group</b></p></p>
+
+<p>定义常规单元模板 (非分组头) <b>GroupRow</b>. 必须是 <b>WjFlexGridColumn</b> 指令的子指令。 
+该单元格有一个附加的 <b>$value</b> 变量可用于绑定，当列上指定了聚集属性 <b>aggregate</b> 时, 它包含未被格式化的值。</p>
+
+<p>示例中，模板显示了 "Sales" 列上聚集的值和分组的类型:</p>
+
+<p><pre>&lt;wj-flex-grid-column header="Sales" binding="sales" aggregate="Avg"&gt;
+  &lt;wj-flex-grid-cell-template cell-type="Group"&gt;
+    Average: {&#8203;{$value | number:2}}
+  &lt;/wj-flex-grid-cell-template&gt;
+&lt;/wj-flex-grid-column&gt;</pre></p></p>

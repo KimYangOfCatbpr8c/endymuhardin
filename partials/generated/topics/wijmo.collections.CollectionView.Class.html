@@ -1,0 +1,722 @@
+<h2>CollectionView 类</h2>
+<dl class="dl-horizontal">
+<dt>派生类</dt><dd><a href="topic/wijmo.odata.ODataCollectionView.Class.html"><b>ODataCollectionView</b></a>, <a href="topic/wijmo.olap.PivotCollectionView.Class.html"><b>PivotCollectionView</b></a></dd>
+<dt>实现</dt><dd><a href="topic/wijmo.collections.IEditableCollectionView.Interface.html"><b>IEditableCollectionView</b></a>, <a href="topic/wijmo.collections.IPagedCollectionView.Interface.html"><b>IPagedCollectionView</b></a></dd>
+<dt>模块</dt><dd>wijmo.collections</dd>
+<dt>文件</dt><dd>wijmo.js</dd>
+</dl>
+<p><p>实现该<a href="topic/wijmo.collections.ICollectionView.Interface.html"><b>ICollectionView</b></a> 接口的类，在正规的JavaScript数组中暴漏数据。</p>
+
+<p><b>CollectionView</b> 类实现下面的接口： 
+<ul>
+  <li><b>ICollectionView</b>: 提供当前的记录管理，自定义的排序，过滤，和分组归类。</li>
+  <li><a href="topic/wijmo.collections.IEditableCollectionView.Interface.html"><b>IEditableCollectionView</b></a>: 提供编辑，添加和移除项目的方法。</li>
+  <li><a href="topic/wijmo.collections.IPagedCollectionView.Interface.html"><b>IPagedCollectionView</b></a>: 提供分页功能。</li>
+</ul></p>
+
+<p>为了使用<b>CollectionView</b> 类， 通过将其声明为一个数据源，并通过一个规则数组开始。然后使用 
+<b>filter</b>， <b>sortDescriptions</b>， <b>groupDescriptions</b> 和<b>pageSize</b> 属性配置视图。最后，使用<b>items</b> 属性访问视图。例如： </p>
+
+<p><pre>
+  // 创建一个新的CollectionView 
+  var cv = new wijmo.collections.CollectionView(myArray);
+  // 按降序的数量排序项目
+  var sd = new wijmo.collections.SortDescription('amount', false);
+  cv.sortDescriptions.push(sd);
+  // 显示数量只大于100的项目
+  cv.filter = function(item) { return item.amount > 100 };
+  // 在控制台里显示排序的过滤后的结果
+  for (var i = 0; i &lt; cv.items.length; i++) {
+    var item = cv.items[i]; 
+    console.log(i + ': ' + item.name + ' ' + item.amount);
+  }
+</pre></p></p>
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideConstructor = !hideConstructor">
+<span class="glyph-collapsed" ng-show="hideConstructor"></span>
+<span class="glyph-expanded" ng-hide="hideConstructor"></span>
+ 构造函数
+</h3>
+</div>
+<table ng-hide="hideConstructor" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-2">名称</th>
+
+<th class="col-md-5">参数</th>
+
+<th class="col-md-5">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><b>constructor</b>&#8203;(sourceCollection?, options?): <a href="topic/wijmo.collections.CollectionView.Class.html"><b>CollectionView</b></a></td>
+      <td><p>
+<b>sourceCollection?</b> (<b>any</b>): Array that serves as a source for this 
+<a href="topic/wijmo.collections.CollectionView.Class.html"><b>CollectionView</b></a>.<br/><b>options?</b> (<b>any</b>): 包含控件初始化数据的Javascript对象。<br/></p>
+</td>
+      <td>初始化类 <a href="topic/wijmo.collections.CollectionView.Class.html"><b>CollectionView</b></a> 的一个新实例。</td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideProperties = !hideProperties">
+<span class="glyph-collapsed" ng-show="hideProperties"></span>
+<span class="glyph-expanded" ng-hide="hideProperties"></span>
+属性
+</h3>
+</div>
+<table ng-hide="hideProperties" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-3">名称</th>
+
+<th class="col-md-2">类型</th>
+
+<th class="col-md-7">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><b>canAddNew</b></td>
+      <td><b>boolean</b></td>
+      <td>获取一个值，该值指示是否可将新项添加到集合中。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>canCancelEdit</b></td>
+      <td><b>boolean</b></td>
+      <td>获取一个值，该值指示集合视图是否可以丢弃挂起的更改，并且回复一个编辑对象的原始值。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>canChangePage</b></td>
+      <td><b>boolean</b></td>
+      <td>获取一个值，该值指示<b>pageIndex</b> 值是否可以更改。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>canFilter</b></td>
+      <td><b>boolean</b></td>
+      <td>获取一个值，该值指示此视图是否支持通过<b>filter</b> 属性进行筛选。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>canGroup</b></td>
+      <td><b>boolean</b></td>
+      <td>获取一个值，该值指示此视图是否支持通过<b>groupDescriptions</b> 属性进行分组。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>canRemove</b></td>
+      <td><b>boolean</b></td>
+      <td>获取一个值，该值指示是否可从集合中删除项目。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>canSort</b></td>
+      <td><b>boolean</b></td>
+      <td>获取一个值，该值指示此视图是否支持通过<b>sortDescriptions</b> 属性进行分类。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>currentAddItem</b></td>
+      <td><b>any</b></td>
+      <td>获取在当前添加事务处理期间添加的项目。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>currentEditItem</b></td>
+      <td><b>any</b></td>
+      <td>获取在当前编辑事务中编辑的项目。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>currentItem</b></td>
+      <td><b>any</b></td>
+      <td>在视图中获取或者设置当前项目。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>currentPosition</b></td>
+      <td><b>number</b></td>
+      <td>在视图中获取当前项目的顺序位置。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>filter</b></td>
+      <td><a href="topic/wijmo.collections.IPredicate.Interface.html"><b>IPredicate</b></a></td>
+      <td><p>获取或设置用于确定一个项目是否适合包含在视图中的回调函数。</p>
+
+<p>如果将以参数传递的项目作为参数中的项目，则应返回到真。</p>
+
+<p>注意： 如果筛选器功能需要一个范围（例如 一个有意义的'this'值）记住要使用“绑定”函数来指定'this'对象。例如：
+<pre>
+  collectionView.filter = this._filter.bind(this);
+</pre></p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>groupDescriptions</b></td>
+      <td><a href="topic/wijmo.collections.ObservableArray.Class.html"><b>ObservableArray</b></a></td>
+      <td>获取<a href="topic/wijmo.collections.GroupDescription.Class.html"><b>GroupDescription</b></a> 对象的集合，该集合描述了集合中的项目如何分组。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>groups</b></td>
+      <td><a href="topic/wijmo.collections.CollectionViewGroup.Class.html"><b>CollectionViewGroup</b></a><b>[]</b></td>
+      <td>获取<a href="topic/wijmo.collections.CollectionViewGroup.Class.html"><b>CollectionViewGroup</b></a> 对象的数组，该数组代表了顶级群体。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>isAddingNew</b></td>
+      <td><b>boolean</b></td>
+      <td>获取一个值，指示是否添加事务正在进行中。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>isEditingItem</b></td>
+      <td><b>boolean</b></td>
+      <td>获取一个值，这个值指示编辑事务是否正在进行中。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>isEmpty</b></td>
+      <td><b>boolean</b></td>
+      <td>获取一个值，该值指示该视图是否包含任何项目。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>isPageChanging</b></td>
+      <td><b>boolean</b></td>
+      <td>获取一个值，该值指示该页索引是否正在更改。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>isUpdating</b></td>
+      <td></td>
+      <td>获取一个值，指示当前是否暂停通知（参见<b>beginUpdate</b> 和 <b>endUpdate</b>）。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>itemCount</b></td>
+      <td><b>number</b></td>
+      <td>获取视图中的项目总数，以考虑到帐目的分页。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>items</b></td>
+      <td><b>any</b><b>[]</b></td>
+      <td>获得视图中的项目。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>itemsAdded</b></td>
+      <td><a href="topic/wijmo.collections.ObservableArray.Class.html"><b>ObservableArray</b></a></td>
+      <td>获取一个包含记录的<a href="topic/wijmo.collections.ObservableArray.Class.html"><b>ObservableArray</b></a> ，当<b>trackChanges</b> 可用后它会被添加到集合</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>itemsEdited</b></td>
+      <td><a href="topic/wijmo.collections.ObservableArray.Class.html"><b>ObservableArray</b></a></td>
+      <td>获取一个包含记录的<a href="topic/wijmo.collections.ObservableArray.Class.html"><b>ObservableArray</b></a> ，当<b>trackChanges</b> 可用后它在集合中可以被编辑。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>itemsRemoved</b></td>
+      <td><a href="topic/wijmo.collections.ObservableArray.Class.html"><b>ObservableArray</b></a></td>
+      <td>获取一个包含记录的<a href="topic/wijmo.collections.ObservableArray.Class.html"><b>ObservableArray</b></a> ，当<b>trackChanges</b> 可用后它会从集合中删除。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>newItemCreator</b></td>
+      <td><b>Function</b></td>
+      <td><p>获取或设置为集合创建新项的函数。</p>
+
+<p>如果不提供创建者功能，<a href="topic/wijmo.collections.CollectionView.Class.html"><b>CollectionView</b></a> 将试着创建一个合适的类型的未初始化的项目。</p>
+
+<p>如果提供创建者功能，它应该是一个不需要参数的函数，并且返回一个集合的适当类型的初始化对象。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>pageCount</b></td>
+      <td><b>number</b></td>
+      <td>获取页面总数。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>pageIndex</b></td>
+      <td><b>number</b></td>
+      <td>获取当前页的基于零的索引。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>pageSize</b></td>
+      <td><b>number</b></td>
+      <td>获取或设置页面上显示的项的数量。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>sortComparer</b></td>
+      <td><b>Function</b></td>
+      <td><p>获取或设置一个函数用于在排序的基准。
+        如果提供，这个函数应该接受两个任意类型的值。 返回-1, 0, 或者 +1，制定第一个值小于，等于，或大于第二个值。 如果返回null，标准内置的比较器会被使用。
+       <b>sortComparer</b> 属性允许你使用自定义排序算法，以保证在某些情况下，用于的需求不仅仅是按照字符串排序。比如，</p>
+
+<p> <a href="http://www.davekoelle.com/alphanum.html">Dave Koele's Alphanum algorithm</a> 它将字符串拆分为字符串串和数字。然后数字按照值排序，字符串按照ASCII码排序。Dave 把这个叫做“自然顺序”。
+ 这个例子展示了 <b>sortComparer</b>  属性的常见用法。
+<pre>// 使用自定义排序创建一个 CollectionView。
+var dataCustomSort = new wijmo.collections.CollectionView(data, {
+  sortComparer: function (a, b) {
+    return wijmo.isString(a) && wijmo.isString(b)
+      ? alphanum(a, b) // custom comparer used for strings
+      : null; // use default comparer used for everything else
+  }
+});</pre></p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>sortConverter</b></td>
+      <td><b>Function</b></td>
+      <td><p>获取或设置排序时用作转换数据的函数。 </p>
+
+<p>如果提供了，函数应该被当作<a href="topic/wijmo.collections.SortDescription.Class.html"><b>SortDescription</b></a> ，数据项和转换值的参数，并且应该返回转换的值。 </p>
+
+<p>此属性提供了一种自定义排序的方法。例如，<a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a> 控件使用该属性来排序映射列的显示值，而不是由原始值。</p>
+
+<p>例如，下面的代码引起<a href="topic/wijmo.collections.CollectionView.Class.html"><b>CollectionView</b></a> 来排序'country'属性，该属性包含国家代码整数 ，使用相应的国家代码名称：</p>
+
+<p><pre>var countries = 'US,Germany,UK,Japan,Italy,Greece'.split(',');
+collectionView.sortConverter = function (sd, item, value) {
+  if (sd.property == 'countryMapped') {
+    value = countries[value]; // 转换国家id为名称
+  }
+  return value;
+}</pre></p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>sortDescriptions</b></td>
+      <td><a href="topic/wijmo.collections.ObservableArray.Class.html"><b>ObservableArray</b></a></td>
+      <td>获取<a href="topic/wijmo.collections.SortDescription.Class.html"><b>SortDescription</b></a> 对象的集合，该集合描述了该集合描述了集合中的项目如何分类。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>sourceCollection</b></td>
+      <td><b>any</b></td>
+      <td>获取或者设置基础的（没有过滤和分类的）集合。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>totalItemCount</b></td>
+      <td><b>number</b></td>
+      <td>在使用分页之前获取视图中的项目总数。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>trackChanges</b></td>
+      <td><b>boolean</b></td>
+      <td><p>获取或设置一个值，该值确定该控件是否对数据进行跟踪更改。 </p>
+
+<p>如果<b>trackChanges</b> 被设置为真，<a href="topic/wijmo.collections.CollectionView.Class.html"><b>CollectionView</b></a> 对数据的更改进行跟踪，并且通过 
+<b>itemsAdded</b>， <b>itemsRemoved</b>，和<b>itemsEdited</b> 集合暴漏它们。</p>
+
+<p>跟踪变化在多种情况下是非常有用的，当用户确认该修改是有效的之后你需要更新服务器。</p>
+
+<p>在提交或取消更改后，使用<b>clearChanges</b> 方法来清除<b>itemsAdded</b>， <b>itemsRemoved</b> 和<b>itemsEdited</b> 集合。</p>
+
+<p><b>CollectionView</b> 只跟踪正式的<b>CollectionView</b> 方法被使用时的改变（<b>editItem</b>/<b>commitEdit</b>，<b>addNew</b>/<b>commitNew</b> 和<b>remove</b>）。
+直接对数据的更改不被跟踪。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>useStableSort</b></td>
+      <td><b>boolean</b></td>
+      <td><p>获取或设置是否使用稳定排序算法。 </p>
+
+<p>稳定的排序算法以相等的键值保持记录的相对顺序。 
+例如，考虑一个“Amount”字段集合的对象。. 
+如果你按"Amount"对该集合进行排序，,一个稳定的排序将保留原始的记录的顺序和相同Amount值.</p>
+
+<p>该属性默认为假，使类使用JavaScript内置的排序方法，非常快，但不稳定。设置
+<b>stableSort</b> 为真，从百分之三十到五十增加排序次数，这些对大的集合有意义。</p></td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideMethods = !hideMethods">
+<span class="glyph-collapsed" ng-show="hideMethods"></span>
+<span class="glyph-expanded" ng-hide="hideMethods"></span>
+方法
+</h3>
+</div>
+<table ng-hide="hideMethods" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-2">名称</th>
+
+<th class="col-md-5">参数</th>
+
+<th class="col-md-5">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><b>addNew</b>&#8203;(): <b>any</b></td>
+      <td></td>
+      <td><p>创建一个新项目并将其添加到集合中。 </p>
+
+<p>该方法没有参数。它创建了一个新的项目，将它添加到集合中，并防止刷新操作，直到新项目使用<b>commitNew</b> 方法提交或者使用<b>cancelNew</b> 方法取消。</p>
+
+<p>下面的代码显示<b>addNew</b> 方法被典型的使用:</p>
+
+<p><pre>
+// 创建新项目，将其添加到集合中
+var newItem = view.addNew();
+// initialize the new item
+newItem.id = getFreshId();
+newItem.name = 'New Customer';
+// 提交新的项目，这样可以刷新视图 
+view.commitNew();
+</pre></p>
+
+<p>您还可以通过将它们推到<b>sourceCollection</b> 中，然后调用<b>refresh</b> 方法来添加新项目。<b>addNew的主要优点是在用户交互的情况下</b> 
+（像在数据网格中添加新的项目），因为它给用户取消添加操作的能力。它还可以防止新的项目被排序或过滤掉，直到添加操作提交。</p><br/><br/><b>返回值</b> 被添加到集合中的项。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>beginUpdate</b>&#8203;()</td>
+      <td></td>
+      <td>直到 下一次调用<b>endUpdate</b> 之前暂停刷新。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>cancelEdit</b>&#8203;()</td>
+      <td></td>
+      <td>结束当前编辑事务，如果可能的话，将原始值还原为该项目。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>cancelNew</b>&#8203;()</td>
+      <td></td>
+      <td>结束当前事务将等待添加新项目。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>clearChanges</b>&#8203;()</td>
+      <td></td>
+      <td><p>通过移除<b>itemsAdded</b>，<b>itemsRemoved</b> 和<b>itemsEdited</b> 集合中的所有项目来清除所有改变。</p>
+
+<p>在向服务器提交更改或刷新来自服务器的数据之后调用此方法。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>commitEdit</b>&#8203;()</td>
+      <td></td>
+      <td>结束当前的编辑事务，并保存更改。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>commitNew</b>&#8203;()</td>
+      <td></td>
+      <td>结束当前的添加事务，并保存正在等待的新项目。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>contains</b>&#8203;(item): <b>boolean</b></td>
+      <td><p>
+<b>item</b> (<b>any</b>): 项目寻求。<br/></p>
+</td>
+      <td>返回一个值，该值指示给定的项目是否属于这个视图。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>deferUpdate</b>&#8203;(fn)</td>
+      <td><p>
+<b>fn</b> (<b>Function</b>): 没有更新的函数被执行。<br/></p>
+</td>
+      <td><p>在<b>beginUpdate</b>/<b>endUpdate</b> 块中执行函数。</p>
+
+<p>直到函数完成之前集合将不会被刷新。
+该方法确保<b>endUpdate</b> 被调用即使函数会抛出异常。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>editItem</b>&#8203;(item)</td>
+      <td><p>
+<b>item</b> (<b>any</b>): 编辑项目。<br/></p>
+</td>
+      <td>开始指定项目的编辑事务。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>endUpdate</b>&#8203;()</td>
+      <td></td>
+      <td>通过调用<b>beginUpdate</b> 重新开始暂停的刷新。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>getAggregate</b>&#8203;(aggType, binding, currentPage?)</td>
+      <td><p>
+<b>aggType</b> (<a href="topic/wijmo.Aggregate.Enum.html"><b>Aggregate</b></a>): Type of aggregate to calculate.<br/><b>binding</b> (<b>string</b>): Property to aggregate on.<br/><b>currentPage?</b> (<b>boolean</b>): Whether to include only items on the current page.<br/></p>
+</td>
+      <td>Calculates an aggregate value for the items in this collection.<br/><br/><b>返回值</b> The aggregate value.</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>implementsInterface</b>&#8203;(interfaceName): <b>boolean</b></td>
+      <td><p>
+<b>interfaceName</b> (<b>string</b>): 查找接口的名称。<br/></p>
+</td>
+      <td>如果调用者查询支持的接口则返回真。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>moveCurrentTo</b>&#8203;(item): <b>boolean</b></td>
+      <td><p>
+<b>item</b> (<b>any</b>): 将成为当前的项目。<br/></p>
+</td>
+      <td>将指定项目设置为视图中的当前项。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>moveCurrentToFirst</b>&#8203;(): <b>boolean</b></td>
+      <td></td>
+      <td>将第一项设置为当前项目。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>moveCurrentToLast</b>&#8203;(): <b>boolean</b></td>
+      <td></td>
+      <td>将最后一项设置为当前项目。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>moveCurrentToNext</b>&#8203;(): <b>boolean</b></td>
+      <td></td>
+      <td>将当前项目后的项目设置为当前项目。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>moveCurrentToPosition</b>&#8203;(index): <b>boolean</b></td>
+      <td><p>
+<b>index</b> (<b>number</b>): 将成为当前项目的索引。<br/></p>
+</td>
+      <td>将该项目在视图中的指定索引处设置为当前项目。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>moveCurrentToPrevious</b>&#8203;(): <b>boolean</b></td>
+      <td></td>
+      <td>在视图中当前项目之前的项目作为当前项目。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>moveToFirstPage</b>&#8203;(): <b>boolean</b></td>
+      <td></td>
+      <td>将第一页设置为当前页。<br/><br/><b>返回值</b> 如果页面索引被更改成功则为真。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>moveToLastPage</b>&#8203;(): <b>boolean</b></td>
+      <td></td>
+      <td>将最后一页设置为当前页。<br/><br/><b>返回值</b> 如果页面索引被更改成功则为真。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>moveToNextPage</b>&#8203;(): <b>boolean</b></td>
+      <td></td>
+      <td>移动到当前页后的页面。<br/><br/><b>返回值</b> 如果页面索引被更改成功则为真。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>moveToPage</b>&#8203;(index): <b>boolean</b></td>
+      <td><p>
+<b>index</b> (<b>number</b>): 移动到页的索引。<br/></p>
+</td>
+      <td>移动到指定索引处的页。<br/><br/><b>返回值</b> 如果页面索引被更改成功则为真。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>moveToPreviousPage</b>&#8203;(): <b>boolean</b></td>
+      <td></td>
+      <td>移动到当前页之前的页。<br/><br/><b>返回值</b> 如果页面索引被更改成功则为真。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>onCollectionChanged</b>&#8203;(e?)</td>
+      <td><p>
+<b>e?</b> (): 包含了变化的描述。<br/><span class="text-info">(默认值: <b>NotifyCollectionChangedEventArgs.&#8203;reset</b>)</span><br/></p>
+</td>
+      <td>引发<b>collectionChanged</b> 事件。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>onCurrentChanged</b>&#8203;(e?)</td>
+      <td><p>
+<b>e?</b> ()<br/><span class="text-info">(默认值: <b>EventArgs.&#8203;empty</b>)</span><br/></p>
+</td>
+      <td>引发<b>currentChanged</b> 事件。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>onCurrentChanging</b>&#8203;(e): <b>boolean</b></td>
+      <td><p>
+<b>e</b> (<a href="topic/wijmo.CancelEventArgs.Class.html"><b>CancelEventArgs</b></a>): <a href="topic/wijmo.CancelEventArgs.Class.html"><b>CancelEventArgs</b></a> 包含事件数据。<br/></p>
+</td>
+      <td>引发 <b>currentChanging</b> 事件。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>onPageChanged</b>&#8203;(e?)</td>
+      <td><p>
+<b>e?</b> ()<br/><span class="text-info">(默认值: <b>EventArgs.&#8203;empty</b>)</span><br/></p>
+</td>
+      <td>引发<b>pageChanged</b> 事件。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>onPageChanging</b>&#8203;(e): <b>boolean</b></td>
+      <td><p>
+<b>e</b> (<a href="topic/wijmo.collections.PageChangingEventArgs.Class.html"><b>PageChangingEventArgs</b></a>): <a href="topic/wijmo.collections.PageChangingEventArgs.Class.html"><b>PageChangingEventArgs</b></a> 包含事件数据。<br/></p>
+</td>
+      <td>引发<b>pageChanging</b> 事件。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>onSourceCollectionChanged</b>&#8203;(e?)</td>
+      <td><p>
+<b>e?</b> (<a href="topic/wijmo.EventArgs.Class.html"><b>EventArgs</b></a>)<br/></p>
+</td>
+      <td>触发 <b>sourceCollectionChanged</b> 事件。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>onSourceCollectionChanging</b>&#8203;(e): <b>boolean</b></td>
+      <td><p>
+<b>e</b> (<a href="topic/wijmo.CancelEventArgs.Class.html"><b>CancelEventArgs</b></a>): <a href="topic/wijmo.CancelEventArgs.Class.html"><b>CancelEventArgs</b></a> that contains the event data.<br/></p>
+</td>
+      <td>触发 <b>sourceCollectionChanging</b> 事件。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>refresh</b>&#8203;()</td>
+      <td></td>
+      <td>重新创建使用当前排序、筛选器和组参数的视图。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>remove</b>&#8203;(item)</td>
+      <td><p>
+<b>item</b> (<b>any</b>): 从集合中删除项目。<br/></p>
+</td>
+      <td>从集合中移除指定的项。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>removeAt</b>&#8203;(index)</td>
+      <td><p>
+<b>index</b> (<b>number</b>): 从集合中移除的项的索引。
+该索引与视图是相对的，而不是源集合。<br/></p>
+</td>
+      <td>从集合中移除指定索引处的项。</td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideEvents = !hideEvents">
+<span class="glyph-collapsed" ng-show="hideEvents"></span>
+<span class="glyph-expanded" ng-hide="hideEvents"></span>
+事件
+</h3>
+</div>
+<table ng-hide="hideEvents" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-2">名称</th>
+
+<th class="col-md-5">参数</th>
+
+<th class="col-md-5">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><b>collectionChanged</b></td>
+      <td></td>
+      <td>集合改变时发生。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>currentChanged</b></td>
+      <td></td>
+      <td>在当前项目改变后发生。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>currentChanging</b></td>
+      <td><a href="topic/wijmo.CancelEventArgs.Class.html"><b>CancelEventArgs</b></a></td>
+      <td>在当前项目改变之前发生。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>pageChanged</b></td>
+      <td></td>
+      <td>在页面索引改变之后发生。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>pageChanging</b></td>
+      <td><a href="topic/wijmo.collections.PageChangingEventArgs.Class.html"><b>PageChangingEventArgs</b></a></td>
+      <td>在页面索引改变之前发生。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>sourceCollectionChanged</b></td>
+      <td><a href="topic/wijmo.EventArgs.Class.html"><b>EventArgs</b></a></td>
+      <td>在 <b>sourceCollection</b> 属性改变后触发。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>sourceCollectionChanging</b></td>
+      <td><a href="topic/wijmo.CancelEventArgs.Class.html"><b>CancelEventArgs</b></a></td>
+      <td>在 <b>sourceCollection</b>  属性更改前触发。</td>
+    </tr>
+</tbody>
+</table>
+</div>
+

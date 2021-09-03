@@ -1,0 +1,47 @@
+<h2>Stacking 枚举</h2>
+<dl class="dl-horizontal">
+  <dt>模块</dt><dd>wijmo.chart</dd>
+  <dt>文件</dt><dd>wijmo.chart.js</dd>
+</dl>
+<p>指定是否以及如何将图表的数据值堆叠。</p>
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideValues = !hideValues">
+<span class="glyph-collapsed" ng-show="hideValues"></span>
+<span class="glyph-expanded" ng-hide="hideValues"></span>
+值
+</h3>
+</div>
+<table ng-hide="hideValues" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th>名称</th>
+
+<th>描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><b>None</b></td>
+      <td>没有堆叠。每一个系列对象独立进行绘制。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>Stacked</b></td>
+      <td>图表堆叠显示每一个值如何占整体的构成比。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>Stacked100pc</b></td>
+      <td>100% 堆叠图表显示每一个值占整体的构成比例，显示为每一个系列相对总量的贡献比例。</td>
+    </tr>
+</tbody>
+</table>
+</div>
+

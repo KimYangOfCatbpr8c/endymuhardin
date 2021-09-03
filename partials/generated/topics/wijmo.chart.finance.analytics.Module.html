@@ -1,0 +1,152 @@
+<h2>模块 wijmo.chart.finance.analytics</h2>
+<dl class="dl-horizontal">
+<dt>文件</dt><dd>wijmo.chart.finance.analytics.js</dd>
+</dl>
+<p><a href="topic/wijmo.chart.finance.FinancialChart.Class.html"><b>FinancialChart</b></a> 的分析扩展。</p>
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideClasses = !hideClasses">
+<span class="glyph-collapsed" ng-show="hideClasses"></span>
+<span class="glyph-expanded" ng-hide="hideClasses"></span>
+类
+</h3>
+</div>
+<table ng-hide="hideClasses" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th>名称</th>
+
+<th>描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.chart.finance.analytics.ATR.Class.html"><b>ATR</b></a></td>
+      <td><p>表示 <a href="topic/wijmo.chart.finance.FinancialChart.Class.html"><b>FinancialChart</b></a> 的一个真实波动幅度均值指标系列。</p>
+
+<p>        真实波动幅度均值用来衡量资产的波动性。真实波动幅度均值不提供价格趋势的任何指标，而是价格的
+        波动程度。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.chart.finance.analytics.BollingerBands.Class.html"><b>BollingerBands</b></a></td>
+      <td><p>表示 <a href="topic/wijmo.chart.finance.FinancialChart.Class.html"><b>FinancialChart</b></a> 的一个 Bollinger Bands&reg; 覆盖系列。</p>
+
+<p><i>Bollinger Bands 是一个 John Bollinger 所持有的注册商标。</i></p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.chart.finance.analytics.CCI.Class.html"><b>CCI</b></a></td>
+      <td><p>表示 <a href="topic/wijmo.chart.finance.FinancialChart.Class.html"><b>FinancialChart</b></a> 的一个商品通道指数指标系列。</p>
+
+<p>        商品通道指数指标是是衡量资产的现行价格振荡
+        相对于平均价格水平以上的指定时间段的水平。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.chart.finance.analytics.Envelopes.Class.html"><b>Envelopes</b></a></td>
+      <td><p>表示 <a href="topic/wijmo.chart.finance.FinancialChart.Class.html"><b>FinancialChart</b></a> 的一个移动平均包围覆盖系列。</p>
+
+<p>        移动平均包围是一种移动平均值，设置为移动平均值的上下限。
+        高于/低于移动平均值的范围由百分比指定，最终由 <b>size</b> 属性决定。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.chart.finance.analytics.Fibonacci.Class.html"><b>Fibonacci</b></a></td>
+      <td><p>表示 <a href="topic/wijmo.chart.finance.FinancialChart.Class.html"><b>FinancialChart</b></a> 的一个斐波那契回调线工具。
+        该工具允许在不同的警告级别计算和绘图，在金融图表中非常有用。</p>
+
+<p>        为了向 <b>FinancialChart</b> 控件添加一个斐波那契工具，创建一个 <b>Fibonacci</b> 的实例并将其添加至
+        图表的 <b>series</b> 集合。
+例如：</p>
+
+<p><pre>
+// 创建图表
+var chart = new wijmo.chart.finance.FinancialChart('#chartElement');
+// 创建斐波那契工具
+var ftool = new wijmo.chart.finance.analytics.Fibonacci();
+chart.series.push(ftool);
+</pre></p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.chart.finance.analytics.FibonacciArcs.Class.html"><b>FibonacciArcs</b></a></td>
+      <td>表示 <a href="topic/wijmo.chart.finance.FinancialChart.Class.html"><b>FinancialChart</b></a> 的一个斐波纳契弧线工具。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.chart.finance.analytics.FibonacciFans.Class.html"><b>FibonacciFans</b></a></td>
+      <td>表示 <a href="topic/wijmo.chart.finance.FinancialChart.Class.html"><b>FinancialChart</b></a> 的一个斐波那契 Fans 工具。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.chart.finance.analytics.FibonacciTimeZones.Class.html"><b>FibonacciTimeZones</b></a></td>
+      <td>表示 <a href="topic/wijmo.chart.finance.FinancialChart.Class.html"><b>FinancialChart</b></a> 的一个斐波那契 Time Zones 工具。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.chart.finance.analytics.Macd.Class.html"><b>Macd</b></a></td>
+      <td><p>表示 <a href="topic/wijmo.chart.finance.FinancialChart.Class.html"><b>FinancialChart</b></a> 的一个移动平均汇总/分离（MACD）指标系列。</p>
+
+<p>        MCAD指标旨在揭示资产的价格趋势的强度，方向，动量以及持续时间。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.chart.finance.analytics.MacdBase.Class.html"><b>MacdBase</b></a></td>
+      <td><a href="topic/wijmo.chart.finance.analytics.Macd.Class.html"><b>Macd</b></a> 以及 <a href="topic/wijmo.chart.finance.analytics.MacdHistogram.Class.html"><b>MacdHistogram</b></a> 系列的基类（抽象类）。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.chart.finance.analytics.MacdHistogram.Class.html"><b>MacdHistogram</b></a></td>
+      <td><p>表示 <a href="topic/wijmo.chart.finance.FinancialChart.Class.html"><b>FinancialChart</b></a> 的一个移动平均汇总/分离（MACD）历史的指标系列。</p>
+
+<p>        MCAD指标旨在揭示资产的价格趋势的强度，方向，动量以及持续时间。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.chart.finance.analytics.OverlayIndicatorBase.Class.html"><b>OverlayIndicatorBase</b></a></td>
+      <td>Overlay 以及指标系列的基类（抽象类）。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.chart.finance.analytics.RSI.Class.html"><b>RSI</b></a></td>
+      <td><p>表示 <a href="topic/wijmo.chart.finance.FinancialChart.Class.html"><b>FinancialChart</b></a> 的一个相对强弱指数指标系列。</p>
+
+<p>        相对强弱指数是一个动量振荡器，被设计用来根据近期的交易时段的收盘价，衡量资产
+        当前以及历史的强弱。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.chart.finance.analytics.SingleOverlayIndicatorBase.Class.html"><b>SingleOverlayIndicatorBase</b></a></td>
+      <td>仅绘制一个系列的 Overlay 以及指标系列的基类（抽象类）。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.chart.finance.analytics.Stochastic.Class.html"><b>Stochastic</b></a></td>
+      <td><p>表示 <a href="topic/wijmo.chart.finance.FinancialChart.Class.html"><b>FinancialChart</b></a> 的一个随机摆动指标系列。</p>
+
+<p>        随机指标旨在通过资产的收盘价相比其高低范围来预测价格拐点的动量指标。</p>
+
+<p>        <b>Stochastic</b> 系列可以用在快速（默认值），慢速以及完全随机振荡器上。
+        为创建一个慢速或者完全随机振荡器，请设置 <b>smoothingPeriod</b> 属性的值为一个大于 1 的整数值；
+        慢速振荡器通常是将 <b>smoothingPeriod</b> 设置为 3。
+        为了创建或者回复到快速随机震荡，设置 <b>smoothingPeriod</b> 属性为整数值 1。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.chart.finance.analytics.WilliamsR.Class.html"><b>WilliamsR</b></a></td>
+      <td><p>表示 <a href="topic/wijmo.chart.finance.FinancialChart.Class.html"><b>FinancialChart</b></a> 的一个Willaims％R指标系列。</p>
+
+<p>        Williams %R 指标是一种动能指标，是一个快速随机的逆振荡器（<a href="topic/wijmo.chart.finance.analytics.Stochastic.Class.html"><b>Stochastic</b></a>）。
+        Williams %R 指标被设计为告诉一个资产的交易是否已经接近高或者低的交易区间。</p></td>
+    </tr>
+</tbody>
+</table>
+</div>
+

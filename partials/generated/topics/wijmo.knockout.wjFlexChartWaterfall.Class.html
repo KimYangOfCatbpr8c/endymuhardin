@@ -1,0 +1,17 @@
+<h2>wjFlexChartWaterfall 类</h2>
+<dl class="dl-horizontal">
+<dt>基类</dt><dd><b>WjSeriesBase</b></dd>
+<dt>模块</dt><dd>wijmo.knockout</dd>
+<dt>文件</dt><dd>wijmo.knockout.js</dd>
+<dt>表示</dt><dd><label style="font-weight:normal">继承成员 <input type="checkbox" ng-model="showInherited"></label></dd>
+</dl>
+<p><p>KnockoutJS 绑定用于 <a href="topic/wijmo.chart.analytics.Waterfall.Class.html"><b>Waterfall</b></a> 对象。</p>
+
+<p>使用 <b>wjFlexChartWaterfall</b> 绑定向你的 KnockoutJS 应用程序添加 <b>Waterfall</b> 对象。比如：
+<pre>&lt;p&gt;Here is a Waterfall:&lt;/p&gt;
+&lt;div data-bind="wjFlexChart: { itemsSource: trendItemsSource,  binding:'value',bindingX: 'name' }"&gt;
+    &lt;div data-bind="wjFlexChartWaterfall: {  relativeData:true, connectorLines: true, start:1000,showIntermediateTotal: true,
+                      intermediateTotalPositions: [3, 6, 9, 12], intermediateTotalLabels: ['Q1', 'Q2', 'Q3', 'Q4'],name:'Increase,Decrease,Total'}"&gt;&lt;/div&gt;
+&lt;/div&gt;</pre></p>
+
+<p><b>wjFlexChartWaterfall</b> 绑定支持所有 <b>Waterfall</b> 的读写属性和事件</p></p>

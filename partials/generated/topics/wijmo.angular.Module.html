@@ -1,0 +1,2824 @@
+<h2>模块 wijmo.angular</h2>
+<dl class="dl-horizontal">
+<dt>文件</dt><dd>wijmo.angular.js</dd>
+</dl>
+<p><p>为 Wijmo 控件包含 AngularJS 指令。</p>
+
+<p>这些指令允许在 HTML 页面中使用简单的标记添加 Wijmo 控件到 
+<a href="https://angularjs.org/" target="_blank">AngularJS</a>
+应用中。</p>
+
+<p>可以像常规的 HTML 标记那样使用这些指令，标签的名字与控件名称相对应，添加了前缀 "wj-," 并且属性名称和事件名称都是相互对应的。</p>
+
+<p>所有的控件，属性，和事件名称都使用约定的横线分隔的小写替代驼峰命名。</p>
+
+<p>AngularJS 有3种指令参数，依赖于使用的绑定类型，下表对其进行了描述:</p>
+
+<p><dl class="dl-horizontal">
+  <dt><code>@</code></dt>   <dd>值绑定，即单向绑定，属性值被解释为字面量。</dd>
+  <dt><code>=</code></dt>   <dd>引用绑定，即双向绑定。属性值被解释为表达式。</dd>
+  <dt><code>&</code></dt>   <dd>函数绑定。 属性值被解释为带有参数的回调函数。</dd>
+</dl></p>
+
+<p>关于绑定类型的更多细节，请参见 <a href=
+"http://weblogs.asp.net/dwahlin/creating-custom-angularjs-directives-part-2-isolate-scope"
+target="_blank"> Dan Wahlin's blog on directives</a>.
+ 
+文档没有描述指令事件，因为其通常与控件事件致，并且绑定机制也相同（函数绑定）。</p>
+
+<p>举例说明，这是用于创建 <a href="topic/wijmo.input.ComboBox.Class.html"><b>ComboBox</b></a> 控件的标签:</p>
+
+<p><pre>&lt;wj-combo-box 
+  text="ctx.theCountry"
+  items-source="ctx.countries"
+  is-editable="true"
+  selected-index-changed="ctx.selChanged(s, e)"&gt;
+&lt;/wj-combo-box&gt;</pre></p>
+
+<p>注意 <b>ComboBox</b> 的 <b>text</b> 属性绑定到控制器的 "ctx.theCountry" 属性上，该绑定使用双向绑定；控件和值域的更新会互相作用。初始化 <b>text</b> 属性是使用的是单引号中的字符常量(例如, <code>text="'constant'"</code>).</p>
+
+<p>注意 <b>selected-index-changed</b> 事件绑定到控件 "selChanged"，并且绑定包含两个事件参数(没有参数，该函数不会被调用).
+任何时候只要控件触发了事件，指令就会调用控制器方法。</p></p>
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideClasses = !hideClasses">
+<span class="glyph-collapsed" ng-show="hideClasses"></span>
+<span class="glyph-expanded" ng-hide="hideClasses"></span>
+类
+</h3>
+</div>
+<table ng-hide="hideClasses" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th>名称</th>
+
+<th>描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.angular.WjAutoComplete.Class.html"><b>WjAutoComplete</b></a></td>
+      <td><p>AngularJS 指令应用于 <a href="topic/wijmo.input.AutoComplete.Class.html"><b>AutoComplete</b></a> 控件.</p>
+
+<p>使用 <b>wj-auto-complete</b> 指令添加 <b>AutoComplete</b> 控件到 AngularJS 应用中。 注意指令和参数名称必须使用小写字母+短线语法替代驼峰命名。 示例：</p>
+
+<p><pre>&lt;p&gt;Here is an AutoComplete control:&lt;/p&gt;
+&lt;wj-auto-complete
+  text="theCountry" 
+  items-source="countries"
+  is-editable="false" 
+  placeholder="country"&gt;
+&lt;/wj-auto-complete&gt;</pre></p>
+
+<p>下面的例子创建了一个 <b>AutoComplete</b> 控件，并绑定到控制器公开的 'countries' 数组上。 <b>AutoComplete</b> 根据用户类型检索country，在列表项中自动匹配当前输入。</p>
+
+<p><a href="http://jsfiddle.net/Wijmo5/37GHw/" target="_blank" class="btn btn-info">
+  <img src="images/fiddle.png"/>
+  在线示例
+</a>
+</p>
+
+<p><b>wj-auto-complete</b> 指令扩展了 <a href="topic/wijmo.angular.WjComboBox.Class.html"><b>WjComboBox</b></a> ，增加了下列特性:</p>
+
+<p><dl class="dl-horizontal">
+  <dt>css-match</dt>            <dd><code>@</code> 指定css类名称，用来使匹配到的查找内容显示高亮。</dd>
+  <dt>delay</dt>                <dd><code>@</code> 键盘输入后延迟执行检索的毫秒数。</dd>
+  <dt>items-source-function</dt><dd><code>=</code> 动态提供用户类型数据源的函数。</dd>
+  <dt>max-items</dt>            <dd><code>@</code> 下拉列表最多显示多少项</dd>
+  <dt>min-length</dt>           <dd><code>@</code> 触发自动检索执行所需输入的最小字符数量.</dd>
+</dl></p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.angular.WjBulletGraph.Class.html"><b>WjBulletGraph</b></a></td>
+      <td><p>AngularJS 指令应用于 <a href="topic/wijmo.gauge.BulletGraph.Class.html"><b>BulletGraph</b></a> 控件。</p>
+
+<p>使用 <b>wj-bullet-graph</b> 指令添加 bullet graphs 到 AngularJS 应用中。 
+注意指令和参数名称必须使用小写字母+短线语法替代驼峰命名。 示例：</p>
+
+<p><pre>&lt;wj-bullet-graph 
+  value="ctx.gauge.value" 
+  min="0" max="10"
+  target="{&#8203;{item.target}}"
+  bad="{&#8203;{item.target * .75}}"
+  good="{&#8203;{item.target * 1.25}}"&gt;
+&lt;/wj-bullet-graph&gt;</pre></p>
+
+<p><b>wj-bullet-graph</b> 指令支持以下属性:</p>
+
+<p><dl class="dl-horizontal">
+  <dt>control</dt>       <dd><code>=</code> 该指令创建的指向 BulletGraph control 
+                         created by this 指令。</dd>
+  <dt>direction</dt>     <dd><code>@</code> <a href="topic/wijmo.gauge.GaugeDirection.Enum.html"><b>GaugeDirection</b></a> 值，测量值增长的方向。</dd>
+  <dt>initialized</dt>   <dd><code>&</code> 该事件在绑定完成控件特性值的初始化后被触发。</dd>
+  <dt>is-initialized</dt> <dd><code>=</code> 绑定是否已经完成控件特性值的初始化。 </dd>
+  <dt>target</dt>        <dd><code>@</code> 测量的目标值。</dd>
+  <dt>good</dt>          <dd><code>@</code> 测量时判断为正确的值。</dd>
+  <dt>bad</dt>           <dd><code>@</code> 测量时判断为错误的值。</dd>
+  <dt>value</dt>         <dd><code>=</code> 测量的实际值。</dd>
+</dl></p>
+
+<p><b>wj-bullet-graph</b> 指令可以包含一个或多个 <a href="topic/wijmo.angular.WjRange.Class.html"><b>WjRange</b></a> 指令。</p>
+
+<p><a href="http://jsfiddle.net/Wijmo5/8uxb1vwf/" target="_blank" class="btn btn-info">
+  <img src="images/fiddle.png"/>
+  在线示例
+</a>
+</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.angular.WjCalendar.Class.html"><b>WjCalendar</b></a></td>
+      <td><p>AngularJS 指令应用于 <a href="topic/wijmo.input.Calendar.Class.html"><b>Calendar</b></a> 控件.</p>
+
+<p>使用 <b>wj-calendar</b> 指令添加 <b>Calendar</b> 控件到 AngularJS 应用中。 
+注意指令和参数名称必须使用小写字母+短线语法替代驼峰命名。 示例：</p>
+
+<p><pre>&lt;p&gt;Here is a Calendar control:&lt;/p&gt;
+&lt;wj-calendar 
+  value="theDate"&gt;
+&lt;/wj-calendar&gt;</pre></p>
+
+<p><a href="http://jsfiddle.net/Wijmo5/46PhD/" target="_blank" class="btn btn-info">
+  <img src="images/fiddle.png"/>
+  在线示例
+</a>
+</p>
+
+<p>下面的例子创建了一个 <b>Calendar</b> 控件，并绑定到控制器公开的 'date' 变量上。 使用 <b>min</b> 和 <b>max</b> 属性限制日期的有效范围.</p>
+
+<p><b>wj-calendar</b> 指令支持以下属性:</p>
+
+<p><dl class="dl-horizontal">
+  <dt>ng-model</dt>      <dd><code>@</code> 使用Angular的ng-model指令绑定控件的 <b>value</b> 属性。使用ng-model指令绑定属性能够获得一些共通的特性，例如验证，自动添加控件状态到form实例，等等。 使用 wj-model-property 重定义被 ng-model指定绑定的控件属性。</dd>
+  <dt>wj-model-property</dt>  <dd><code>@</code> 使用 <b>ng-model</b> 指令指定控件绑定的作用域。</dd>
+  <dt>control</dt>        <dd><code>=</code> 该指令创建的指向 <b>Calendar</b> 控件的引用。</dd>
+  <dt>display-month</dt>  <dd><code>=</code> 指定日历显示的月份。</dd>
+  <dt>first-day-of-week</dt> <dd><code>@</code> 指定星期开始日。</dd>
+  <dt>initialized</dt>          <dd><code>&</code> 该事件在绑定完成控件特性值的初始化后被触发。</dd>
+  <dt>is-initialized</dt>       <dd><code>=</code> 绑定是否已经完成控件特性值的初始化。 </dd>
+  <dt>item-formatter</dt> <dd><code>=</code> 自定义显示的格式化函数。</dd>
+  <dt>max</dt>            <dd><code>@</code> 最大有效日期 (格式化字符串为 "yyyy-MM-dd")。</dd>
+  <dt>min</dt>            <dd><code>@</code> 最小有效日期 (格式化字符串为 "yyyy-MM-dd")。lt;/dd>
+  <dt>month-view</dt>     <dd><code>@</code> 指定显示月视图还是年视图。</dd>
+  <dt>show-header</dt>    <dd><code>@</code> 是否显示标题区域。</dd>
+  <dt>value</dt>          <dd><code>=</code> 编辑的日期。</dd>
+  <dt>got-focus</dt>      <dd><code>&</code> <b>gotFocus</b> 事件。</dd>
+  <dt>lost-focus</dt>     <dd><code>&</code> <b>lostFocus</b> 事件。</dd>
+  <dt>value-changed</dt>  <dd><code>&</code> <b>valueChanged</b> 事件。</dd>
+</dl></p>
+
+<p><b>min</b> 和 <b>max</b> 属性需要指定为格式化 "yyyy-MM-dd" 的日期字符串， 技术上讲，你可以使用符合W3C <a href="http://tools.ietf.org/html/rfc3339" target="_blank">[RFC 3339]</a> 定义的任何格式化字符，只要它们是能够被HTML5支持格式化字符。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.angular.WjCollectionViewNavigator.Class.html"><b>WjCollectionViewNavigator</b></a></td>
+      <td><p>AngularJS 指令应用到 <a href="topic/wijmo.collections.ICollectionView.Interface.html"><b>ICollectionView</b></a> 导航元素。</p>
+
+<p>使用 <b>wj-collection-view-navigator</b> 指令添加元素，允许用户通过 <b>ICollectionView</b> 中的项目进行导航。
+注意指令和参数名称必须使用小写字母+短线语法替代驼峰命名。 示例：</p>
+
+<p><pre>Here is a CollectionViewNavigator:&lt;/p&gt;
+&lt;wj-collection-view-navigator 
+  cv="myCollectionView"&gt;
+&lt;/wj-collection-view-navigator&gt;</pre></p>
+
+<p><a href="http://jsfiddle.net/Wijmo5/s8tT4/" target="_blank" class="btn btn-info">
+  <img src="images/fiddle.png"/>
+  在线示例
+</a>
+</p>
+
+<p>这个例子创建了一个拥有100,000个项目和每页20个项目的 CollectionView ，它定义了一个导航器用以选择当前页，当前项目，并使用 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a> 呈现数据。</p>
+
+<p><b>wj-collection-view-navigator</b> 指令只有一个属性：</p>
+
+<p><dl class="dl-horizontal">
+  <dt>cv</dt>  <dd><code>=</code> 指向 <b>ICollectionView</b> 对象的引用。</dd>
+</dl></p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.angular.WjCollectionViewPager.Class.html"><b>WjCollectionViewPager</b></a></td>
+      <td><p>AngularJS directive for an <a href="topic/wijmo.collections.ICollectionView.Interface.html"><b>ICollectionView</b></a> pager element.</p>
+
+<p>使用 <b>wj-collection-view-pager</b> 指令添加元素，允许用户通过 <b>ICollectionView</b> 中的页面进行导航。 
+注意指令和参数名称必须使用小写字母+短线语法替代驼峰命名。 示例：</p>
+
+<p><pre>Here is a CollectionViewPager:&lt;/p&gt;
+&lt;wj-collection-view-pager
+  cv="myCollectionView"&gt;
+&lt;/wj-collection-view-pager&gt;</pre></p>
+
+<p><a href="http://jsfiddle.net/Wijmo5/s8tT4/" target="_blank" class="btn btn-info">
+  <img src="images/fiddle.png"/>
+  在线示例
+</a>
+</p>
+
+<p>这个例子创建了一个拥有100,000个项目和每页20个项目的 CollectionView ，它定义了一个导航器用以选择当前页，当前项目，并使用 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a> 呈现数据。</p>
+
+<p><b>wj-collection-view-pager</b> 指令只有一个属性：</p>
+
+<p><dl class="dl-horizontal">
+  <dt>cv</dt>  <dd><code>=</code> 指向 paged <b>ICollectionView</b> 对象的引用。 </dd>
+</dl></p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.angular.WjColorPicker.Class.html"><b>WjColorPicker</b></a></td>
+      <td><p>AngularJS 指令应用于 <a href="topic/wijmo.input.ColorPicker.Class.html"><b>ColorPicker</b></a> 控件.</p>
+
+<p>使用 <b>wj-color-picker</b> 指令添加 <b>ColorPicker</b> 到 AngularJS 应用中。 注意指令和参数名称必须使用小写字母+短线语法替代驼峰命名。 示例：</p>
+
+<p><pre>&lt;p&gt;Here is a ColorPicker control:&lt;/p&gt;
+&lt;wj-color-picker
+  value="theColor"
+  show-alpha-channel="false"&gt;
+&lt;/wj-color-picker&gt;</pre></p>
+
+<p><b>wj-color-picker</b> 指令支持以下属性:</p>
+
+<p><dl class="dl-horizontal">
+  <dt>ng-model</dt>      <dd><code>@</code> 使用Angular的ng-model指令绑定控件的 <b>value</b> 属性。使用ng-model指令绑定属性能够获得一些共通的特性，例如验证，自动添加控件状态到form实例，等等。 使用 wj-model-property 重定义被 ng-model指定绑定的控件属性。</dd>
+  <dt>wj-model-property</dt>  <dd><code>@</code> 使用 <b>ng-model</b> 指令指定控件绑定的作用域。</dd>
+  <dt>control</dt>           <dd><code>=</code> 该指令创建的指向 <b>ColorPicker</b> 控件的引用。</dd>
+  <dt>initialized</dt>          <dd><code>&</code> 该事件在绑定完成控件特性值的初始化后被触发。</dd>
+  <dt>is-initialized</dt>       <dd><code>=</code> 绑定是否已经完成控件特性值的初始化。 </dd>
+  <dt>show-alpha-channel</dt><dd><code>@</code> 是否显示透明度编辑器。</dd>
+  <dt>show-color-string</dt> <dd><code>@</code> 是否显示颜色名称用于编辑。</dd>
+  <dt>palette</dt>           <dd><code>=</code> 一个包含十个颜色值的数组，作为调色板使用。</dd>
+  <dt>value</dt>             <dd><code>=</code> 编辑的颜色值。</dd>
+  <dt>got-focus</dt>         <dd><code>&</code> <b>gotFocus</b> 事件。</dd>
+  <dt>lost-focus</dt>        <dd><code>&</code> <b>lostFocus</b> 事件。</dd>
+  <dt>value-changed</dt>     <dd><code>&</code> <b>valueChanged</b> 事件。</dd>
+</dl></p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.angular.WjComboBox.Class.html"><b>WjComboBox</b></a></td>
+      <td><p>AngularJS 指令应用于 <a href="topic/wijmo.input.ComboBox.Class.html"><b>ComboBox</b></a> 控件.</p>
+
+<p>使用 <b>wj-combo-box</b> 指令添加 <b>ComboBox</b> 控件到 AngularJS 应用中。 
+注意指令和参数名称必须使用小写字母+短线语法替代驼峰命名。 示例：</p>
+
+<p><pre>&lt;p&gt;Here is a ComboBox control:&lt;/p&gt;
+&lt;wj-combo-box 
+  text="theCountry" 
+  items-source="countries"
+  is-editable="false" 
+  placeholder="country"&gt;
+&lt;/wj-combo-box&gt;</pre></p>
+
+<p>下面的例子创建了一个 <b>ComboBox</b> 控件，并绑定到控制器公开的'countries'数组上。<b>ComboBox</b> 根据用户类型检索country。<b>isEditable</b> 属性被设置为 false，因此用户只能从列表中选择。</p>
+
+<p><a href="http://jsfiddle.net/Wijmo5/37GHw/" target="_blank" class="btn btn-info">
+  <img src="images/fiddle.png"/>
+  在线示例
+</a>
+</p>
+
+<p><b>wj-combo-box</b> 指令支持以下属性:</p>
+
+<p><dl class="dl-horizontal">
+  <dt>ng-model</dt>      <dd><code>@</code> 使用Angular的ng-model指令绑定控件的 <b>selectedValue</b> 属性。使用ng-model指令绑定属性能够获得一些共通的特性，例如验证，自动添加控件状态到form实例，等等。 使用 wj-model-property 重定义被 ng-model指定绑定的控件属性。</dd>
+  <dt>wj-model-property</dt>  <dd><code>@</code> 使用 <b>ng-model</b> 指令指定控件绑定的作用域。</dd>
+  <dt>control</dt>              <dd><code>=</code> 该指令创建的指向 <b>ComboBox</b> 控件的引用。</dd>
+  <dt>display-member-path</dt>  <dd><code>@</code> 表示可视化项目的属性名称。</dd>
+  <dt>is-content-html</dt>      <dd><code>@</code> 以纯文本还是HTML显示内容。</dd>
+  <dt>is-dropped-down</dt>      <dd><code>@</code> 下拉列表是否当前可见。</dd>
+  <dt>is-editable</dt>          <dd><code>@</code> 用户是否可以输入列表中不存在的项目。</dd>
+  <dt>initialized</dt>          <dd><code>&</code> 该事件在绑定完成控件特性值的初始化后被触发。</dd>
+  <dt>is-initialized</dt>       <dd><code>=</code> 绑定是否已经完成控件特性值的初始化。</dd>
+  <dt>item-formatter</dt>       <dd><code>=</code> 自定义显示的格式化函数。</dd>
+  <dt>items-source</dt>         <dd><code>=</code> 一个数组或者一个包含列表项的 <a href="topic/wijmo.collections.ICollectionView.Interface.html"><b>ICollectionView</b></a>。</dd>
+  <dt>max-drop-down-height</dt> <dd><code>@</code> 下拉列表的最大高度。</dd>
+  <dt>max-drop-down-width</dt>  <dd><code>@</code> 下拉列表的最大宽度。</dd>
+  <dt>placeholder</dt>          <dd><code>@</code> 当控件为空时显示的占位字符。</dd>
+  <dt>required</dt>             <dd><code>@</code> 是否阻止null值。</dd>
+  <dt>show-drop-down-button</dt><dd><code>@</code> 是否显示下拉按钮。</dd>
+  <dt>selected-index</dt>       <dd><code>=</code> 当前选中的下拉列表项的索引。</dd>
+  <dt>selected-item</dt>        <dd><code>=</code> 当前选中的下拉列表项。</dd>
+  <dt>selected-value</dt>       <dd><code>=</code> 当前选中的下拉列表项的值,使用 <b>selected-value-path</b> 获得。</dd>
+  <dt>selected-value-path</dt>  <dd><code>@</code> 属性名，用来从<b>selected-item</b>获取 <b>selected-value</b> 的值。</dd>
+  <dt>text</dt>                 <dd><code>=</code> 控件显示文本。</dd>
+  <dt>is-dropped-down-changing</dt> <dd><code>&</code> <b>isDroppedDownChanging</b> 事件。</dd>
+  <dt>is-dropped-down-changed</dt>  <dd><code>&</code> <b>isDroppedDownChanged</b> 事件。</dd>
+  <dt>selected-index-changed</dt>   <dd><code>&</code> <b>selectedIndexChanged</b> 事件。</dd>
+  <dt>got-focus</dt>            <dd><code>&</code> <b>gotFocus</b> 事件。</dd>
+  <dt>lost-focus</dt>           <dd><code>&</code> <b>lostFocus</b> 事件。</dd>
+  <dt>text-changed</dt>         <dd><code>&</code> <b>textChanged</b> 事件。</dd>
+</dl></p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.angular.WjContextMenu.Class.html"><b>WjContextMenu</b></a></td>
+      <td><p>AngularJS 指令应用于上下文菜单 context menus.</p>
+
+<p>使用 <b>wj-context-menu</b> 指令为画面元素添加上下文菜单。wj-context-menu 指令基于 <b>wj-menu</b> 
+指令; 当用户发出上下文菜单请求（通常是一个右键单击）时显示一个弹出菜单。</p>
+
+<p>wj-context-menu 指令作为一个参数指定给需要添加上下文菜单的元素。该参数是一个包含菜单的选择器。 示例：</p>
+
+<p><pre>&lt;!-- paragraph with a context menu --&gt;
+&lt;p wj-context-menu="#idMenu" &gt;
+ This paragraph has a context menu.&lt;/p&gt;</p>
+
+<p>&lt;!-- define the context menu (hidden and with an id) --&gt;
+&lt;wj-menu id="idMenu" ng-show="false"&gt;
+ &lt;wj-menu-item cmd="cmdOpen" cmd-param ="1"&gt;Open...&lt;/wj-menu-item&gt;
+ &lt;wj-menu-item cmd="cmdSave" cmd-param="2"&gt;Save &lt;/wj-menu-item&gt;
+ &lt;wj-menu-item cmd="cmdSave" cmd-param="3"&gt;Save As...&lt;/wj-menu-item&gt;
+ &lt;wj-menu-item cmd="cmdNew" cmd-param ="4"&gt;New...&lt;/wj-menu-item&gt;
+ &lt;wj-menu-separator&gt;&lt;/wj-menu-separator&gt;
+ &lt;wj-menu-item cmd="cmdExit" cmd-param="5"&gt;Exit&lt;/wj-menu-item&gt;
+&lt;/wj-menu &gt;</pre></p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.angular.WjFinancialChart.Class.html"><b>WjFinancialChart</b></a></td>
+      <td><p>AngularJS 指令应用于 <a href="topic/wijmo.chart.finance.FinancialChart.Class.html"><b>FinancialChart</b></a> 控件。</p>
+
+<p>使用 <b>wj-financial-chart</b> 指令添加 financial charts 到 AngularJS 应用中。
+注意指令和参数名称必须使用小写字母+短线语法替代驼峰命名。 </p>
+
+<p>wj-financial-chart 指令支持以下属性:</p>
+
+<p><dl class="dl-horizontal">
+  <dt>binding</dt>           <dd><code>@</code> 包含Y轴数据的属性名。该值可被任意重写以绑定图表数据。</dd>
+  <dt>binding-x</dt>         <dd><code>@</code> 包含X轴数据的属性名。该值可被任意重写以绑定图表数据。</dd>
+  <dt>chart-type</dt>        <dd><code>@</code> 图表默认类型，可以重写这个。参见 <a href="topic/wijmo.chart.finance.FinancialChartType.Enum.html"><b>FinancialChartType</b></a>.</dd>
+  <dt>control</dt>           <dd><code>=</code> 该指令创建的指向 <b>FinancialChart</b> 控件的引用。</dd>
+  <dt>footer</dt>            <dd><code>@</code> 页脚显示的文本。</dd>
+  <dt>footer-style</dt>       <dd><code>=</code> 页脚显示的文本的样式。</dd>
+  <dt>header</dt>            <dd><code>@</code> 页头显示的文本。</dd>
+  <dt>header-style</dt>      <dd><code>=</code> 页头显示的文本的样式。</dd>
+  <dt>initialized</dt>       <dd><code>&</code> 该事件在绑定完成控件特性值的初始化后被触发。</dd>
+  <dt>is-initialized</dt><dd><code>=</code> 绑定是否已经完成控件特性值的初始化。 </dd>
+  <dt>interpolate-nulls</dt> <dd><code>@</code> 是否篡改或移除数据中的null值。</dd>
+  <dt>item-formatter</dt>    <dd><code>=</code> 自定义显示的格式化函数。</dd>
+  <dt>items-source</dt>      <dd><code>=</code> 一个数组或者 <a href="topic/wijmo.collections.ICollectionView.Interface.html"><b>ICollectionView</b></a> 对象，其中包含序列数据。</dd>
+  <dt>legend-toggle</dt>     <dd><code>@</code> 是否点击示例项目切换序列可见性。</dd>
+  <dt>options</dt>           <dd><code>=</code>只适用于特定类型的图表选项。更多细节参见 <a href="topic/wijmo.chart.FlexChart.Class.html"><b>FlexChart</b></a> 下的 <b>options</b> </dd>
+  <dt>palette</dt>           <dd><code>=</code> 包含用于显示项目的默认颜色的数组。</dd>
+  <dt>plot-margin</dt>       <dd><code>=</code> 控件与边际之间的像素点数，或者 CSS-Style margins。</dd>
+  <dt>selection</dt>         <dd><code>=</code> 选中序列。</dd>
+  <dt>selection-mode</dt>    <dd><code>@</code> <a href="topic/wijmo.grid.SelectionMode.Enum.html"><b>SelectionMode</b></a> 值，指定选中模式。</dd>
+  <dt>symbol-size</dt>       <dd><code>@</code> 渲染数据点的像素级尺寸。可以重写这个。</dd>
+  <dt>tooltip-content</dt>   <dd><code>@</code> 图表提示 <a href="topic/wijmo.chart.ChartTooltip.Class.html"><b>ChartTooltip</b></a> 内容。</dd>
+  <dt>got-focus</dt>         <dd><code>&</code> <b>gotFocus</b> 事件。</dd>
+  <dt>lost-focus</dt>        <dd><code>&</code> <b>lostFocus</b> 事件。</dd>
+  <dt>rendering</dt>         <dd><code>&</code> <b>rendering</b> 事件。</dd>
+  <dt>rendered</dt>          <dd><code>&</code> <b>rendered</b> 事件。</dd>
+  <dt>series-visibility-changed</dt>
+                             <dd><code>&</code> <b>seriesVisibilityChanged</b> 事件。</dd>
+  <dt>selection-changed</dt> <dd><code>&</code> <b>selectionChanged</b> 事件。</dd>
+</dl></p>
+
+<p>wj-financial-chart 指令可能包含以下子指令:
+<a href="topic/wijmo.angular.WjFlexChartAxis.Class.html"><b>WjFlexChartAxis</b></a>, <a href="topic/wijmo.angular.WjFlexChartSeries.Class.html"><b>WjFlexChartSeries</b></a>, <a href="topic/wijmo.angular.WjFlexChartLegend.Class.html"><b>WjFlexChartLegend</b></a> 和 <a href="topic/wijmo.angular.WjFlexChartDataLabel.Class.html"><b>WjFlexChartDataLabel</b></a>.</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.angular.WjFinancialChartSeries.Class.html"><b>WjFinancialChartSeries</b></a></td>
+      <td><p>AngularJS 指令应用于 <a href="topic/wijmo.chart.finance.FinancialChart.Class.html"><b>FinancialChart</b></a> <a href="topic/wijmo.chart.finance.FinancialSeries.Class.html"><b>FinancialSeries</b></a> 对象。</p>
+
+<p><b>wj-financial-chart-series</b> 指令必须包含于 <a href="topic/wijmo.angular.WjFinancialChart.Class.html"><b>WjFinancialChart</b></a> 指令。
+支持以下属性:</p>
+
+<p><dl class="dl-horizontal">
+  <dt>axis-x</dt>       <dd><code>@</code> X轴。</dd>
+  <dt>axis-y</dt>       <dd><code>@</code> Y轴。</dd>
+  <dt>binding</dt>      <dd><code>@</code> 包含Y轴数据的属性名。该值可被任意重写以绑定图表数据。</dd>
+  <dt>binding-x</dt>    <dd><code>@</code> 包含X轴数据的属性名。该值可被任意重写以绑定图表数据。</dd>
+  <dt>chart-type</dt>   <dd><code>@</code> 图表默认类型，可以重写这个。参见 <a href="topic/wijmo.chart.ChartType.Enum.html"><b>ChartType</b></a>。</dd>
+  <dt>css-class</dt>    <dd><code>@</code> 渲染序列的 CSS 样式类。</dd>
+  <dt>items-source</dt> <dd><code>=</code> 一个数组或者 <a href="topic/wijmo.collections.ICollectionView.Interface.html"><b>ICollectionView</b></a> 对象，其中包含序列数据。</dd>
+  <dt>name</dt>         <dd><code>@</code> 序列显示的图例名称。</dd>
+  <dt>style</dt>        <dd><code>=</code> 渲染序列的样式，使用 ng-attr-style 指定序列对象。参见 ngAttr <a target="_blank" href="https://docs.angularjs.org/guide/directive">
+                        AngularJS Creating Custom Directives</a> 以及 <a target="_blank" href=
+                        "http://demos.wijmo.com/5/Angular/FlexChartIntro/FlexChartIntro/#Styling">
+                        FlexChart 101 Styling Series</a> 上的实例以获取更多信息。</dd>
+  <dt>altStyle</dt>     <dd><code>=</code> 序列交替样式。</dd>
+  <dt>symbol-marker</dt><dd><code>@</code> 标记序列的形状。可重写默认值。 参见 <a href="topic/wijmo.chart.Marker.Enum.html"><b>Marker</b></a>。</dd>
+  <dt>symbol-size</dt>  <dd><code>@</code> 渲染数据点的像素级尺寸。可以重写这个。</dd>
+  <dt>symbol-style</dt> <dd><code>=</code> 渲染数据点的样式。可以重写这个。</dd>
+  <dt>visibility</dt>   <dd><code>=</code> <a href="topic/wijmo.chart.SeriesVisibility.Enum.html"><b>SeriesVisibility</b></a> 值，用于指定是否显示序列。</dd>
+</dl></p>
+
+<p>多数场景下，the <b>wj-financial-chart-series</b> 仅指定 <b>name</b> 和 <b>binding</b> 属性。其他的继承自父指令 <b>wj-financial-chart</b> 指令。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.angular.WjFlexChart.Class.html"><b>WjFlexChart</b></a></td>
+      <td><p>AngularJS 指令应用于 <a href="topic/wijmo.chart.FlexChart.Class.html"><b>FlexChart</b></a> 控件。</p>
+
+<p>使用 <b>wj-flex-chart</b> 指令添加 charts 到 AngularJS 应用中。
+注意指令和参数名称必须使用小写字母+短线语法替代驼峰命名。 示例：</p>
+
+<p><pre>&lt;p&gt;Here is a FlexChart control:&lt;/p&gt;
+&lt;wj-flex-chart
+  style="height:300px"
+  items-source="data"
+  binding-x="country"&gt;
+  &lt;wj-flex-chart-axis
+    wj-property="axisY"
+    major-unit="5000"&gt;
+  &lt;/wj-flex-chart-axis&gt;
+  &lt;wj-flex-chart-series
+    binding="sales"
+    name="Sales"&gt;
+  &lt;/wj-flex-chart-series&gt;
+  &lt;wj-flex-chart-series
+    binding="expenses"
+    name="Expenses"&gt;
+  &lt;/wj-flex-chart-series&gt;
+  &lt;wj-flex-chart-series
+    binding="downloads"
+    name="Downloads"
+    chart-type="LineSymbols"&gt;
+  &lt;/wj-flex-chart-series&gt;
+&lt;/wj-flex-chart&gt;</pre></p>
+
+<p>下面的例子创建了一个 <b>FlexChart</b> 控件，并绑定到控制器公开的 'data' 数组上。该图标拥有3个对象，每一个数据源对应于对象包含的的数组上。最后系列图表使用了 'chart-type' 属性重写了默认的图标类型。</p>
+
+<p><a href="http://jsfiddle.net/Wijmo5/QNb9X/" target="_blank" class="btn btn-info">
+  <img src="images/fiddle.png"/>
+  在线示例
+</a>
+</p>
+
+<p>wj-flex-chart 指令支持以下属性:</p>
+
+<p><dl class="dl-horizontal">
+  <dt>binding</dt>           <dd><code>@</code> 包含Y轴数据的属性名。该值可被任意重写以绑定图表数据。</dd>
+  <dt>binding-x</dt>         <dd><code>@</code> 包含X轴数据的属性名。该值可被任意重写以绑定图表数据。</dd>
+  <dt>chart-type</dt>        <dd><code>@</code> 图表默认类型，可以重写这个。参见 <a href="topic/wijmo.chart.ChartType.Enum.html"><b>ChartType</b></a>。</dd>
+  <dt>control</dt>           <dd><code>=</code> 该指令创建的指向 <b>FlexChart</b> 控件的引用。</dd>
+  <dt>footer</dt>            <dd><code>@</code> 页脚显示的文本。</dd>
+  <dt>footer-style</dt>       <dd><code>=</code> 页脚显示的文本的样式。</dd>
+  <dt>header</dt>            <dd><code>@</code> 页头显示的文本。</dd>
+  <dt>header-style</dt>      <dd><code>=</code> 页头显示的文本的样式。</dd>
+  <dt>initialized</dt>       <dd><code>&</code> 该事件在绑定完成控件特性值的初始化后被触发。</dd>
+  <dt>is-initialized</dt><dd><code>=</code> 绑定是否已经完成控件特性值的初始化。 </dd>
+  <dt>interpolate-nulls</dt> <dd><code>@</code> 是否篡改或移除数据中的null值。</dd>
+  <dt>item-formatter</dt>    <dd><code>=</code> 自定义显示的格式化函数。</dd>
+  <dt>items-source</dt>      <dd><code>=</code> 一个数组或者 <a href="topic/wijmo.collections.ICollectionView.Interface.html"><b>ICollectionView</b></a> 对象，其中包含用于创建图表的数据。</dd>
+  <dt>legend-toggle</dt>     <dd><code>@</code> 是否点击示例项目切换序列可见性。</dd>
+  <dt>options</dt>           <dd><code>=</code> 只适用于特定类型的图表选项。更多细节参见 <b>FlexChart</b> 下的 <b>options</b> </dd>
+  <dt>palette</dt>           <dd><code>=</code> 包含用于显示项目的默认颜色的数组。</dd>
+  <dt>plot-margin</dt>       <dd><code>=</code> 控件与边际之间的像素点数，或者 CSS-Style margins。</dd>
+  <dt>rotated</dt>           <dd><code>@</code> 是否旋转X轴和Y轴</dd>
+  <dt>selection</dt>         <dd><code>=</code> 选中的序列</dd>
+  <dt>selection-mode</dt>    <dd><code>@</code> <a href="topic/wijmo.grid.SelectionMode.Enum.html"><b>SelectionMode</b></a> 值，定义用户点击时怎样选中序列。</dd>
+  <dt>stacking</dt>          <dd><code>@</code> <a href="topic/wijmo.chart.Stacking.Enum.html"><b>Stacking</b></a> 值，定义序列堆叠和描绘的方式。</dd>
+  <dt>symbol-size</dt>       <dd><code>@</code> 渲染数据点的像素级尺寸。可以重写这个。</dd>
+  <dt>tooltip-content</dt>   <dd><code>@</code> 提示栏 <a href="topic/wijmo.chart.ChartTooltip.Class.html"><b>ChartTooltip</b></a> 的内容。</dd>
+  <dt>got-focus</dt>         <dd><code>&</code> <b>gotFocus</b> 事件。</dd>
+  <dt>lost-focus</dt>        <dd><code>&</code> <b>lostFocus</b> 事件。</dd>
+  <dt>rendering</dt>         <dd><code>&</code> <b>rendering</b> 事件。</dd>
+  <dt>rendered</dt>          <dd><code>&</code> <b>rendered</b> 事件。</dd>
+  <dt>series-visibility-changed</dt>
+                             <dd><code>&</code> <b>seriesVisibilityChanged</b> 事件。</dd>
+  <dt>selection-changed</dt> <dd><code>&</code> <b>selectionChanged</b> 事件。</dd>
+</dl></p>
+
+<p>wj-flex-chart 指令通常包含以下的子指令:
+<a href="topic/wijmo.angular.WjFlexChartAxis.Class.html"><b>WjFlexChartAxis</b></a>, <a href="topic/wijmo.angular.WjFlexChartSeries.Class.html"><b>WjFlexChartSeries</b></a>, <a href="topic/wijmo.angular.WjFlexChartLegend.Class.html"><b>WjFlexChartLegend</b></a> and <a href="topic/wijmo.angular.WjFlexChartDataLabel.Class.html"><b>WjFlexChartDataLabel</b></a>.</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.angular.WjFlexChartAnimation.Class.html"><b>WjFlexChartAnimation</b></a></td>
+      <td><p>AngularJS 指令应用于 <a href="topic/wijmo.chart.FlexChart.Class.html"><b>FlexChart</b></a> <a href="topic/wijmo.chart.animation.ChartAnimation.Class.html"><b>ChartAnimation</b></a> 对象。</p>
+
+<p><b>wj-flex-chart-animation</b> 指令必须包含于 <a href="topic/wijmo.angular.WjFlexChart.Class.html"><b>WjFlexChart</b></a> or <a href="topic/wijmo.angular.WjFlexPie.Class.html"><b>WjFlexPie</b></a> or <a href="topic/wijmo.angular.WjFinancialChart.Class.html"><b>WjFinancialChart</b></a> 指令。
+支持以下属性:</p>
+
+<p><dl class="dl-horizontal">
+  <dt>animation-mode</dt>     <dd><code>@</code> 显示一次还是多次动画效果。</dd>
+  <dt>easing</dt>           <dd><code>@</code> 指定应用到动画效果的函数。</dd>
+  <dt>duration</dt>           <dd><code>@</code> 指定动画效果的毫秒数。</dd>
+  <dt>axis-animation</dt>           <dd><code>@</code> 是否启用轴线动画。</dd>
+</dl></p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.angular.WjFlexChartAnnotation.Class.html"><b>WjFlexChartAnnotation</b></a></td>
+      <td><p>AngularJS 指令应用于 annotations.</p>
+
+<p><b>wj-flex-chart-annotation</b> 指令必须包含于
+<a href="topic/wijmo.angular.WjFlexChartAnnotationLayer.Class.html"><b>WjFlexChartAnnotationLayer</b></a> 指令。</p>
+
+<p><b>wj-flex-chart-annotation</b> 指令用于所有类型的注释区域，如 <b>Circle</b>, <b>Rectangle</b>, <b>Polygon</b> 等等。 指令的注释区域的类型由 <b>type</b> 属性指定。</p>
+
+<p>指令支持以下属性:</p>
+
+<p><dl class="dl-horizontal"></p>
+
+<p>  <dt>type</dt>                  <dd><code>@</code> 指令注释的类型，可能的值有 <a href="topic/wijmo.chart.annotation.Circle.Class.html"><b>Circle</b></a>, <a href="topic/wijmo.chart.annotation.Ellipse.Class.html"><b>Ellipse</b></a>, <a href="topic/wijmo.chart.annotation.Image.Class.html"><b>Image</b></a>, <a href="topic/wijmo.chart.annotation.Line.Class.html"><b>Line</b></a>, <a href="topic/wijmo.chart.annotation.Polygon.Class.html"><b>Polygon</b></a>,
+                                     <a href="topic/wijmo.chart.annotation.Rectangle.Class.html"><b>Rectangle</b></a>, <a href="topic/wijmo.chart.annotation.Square.Class.html"><b>Square</b></a>, <a href="topic/wijmo.chart.annotation.Text.Class.html"><b>Text</b></a>.</dd>
+  <dt>attachment</dt>            <dd><code>@</code> <a href="topic/wijmo.chart.annotation.AnnotationAttachment.Enum.html"><b>AnnotationAttachment</b></a> 值，定义注释的附件。
+                                     </dd>
+  <dt>content</dt>               <dd><code>@</code> <b>Circle</b>, <b>Ellipse</b>, <b>Image</b>, <b>Line</b>,
+                                     <b>Polygon</b>, <b>Rectangle</b> 或者 <b>Square</b> 注释文本。</dd>
+  <dt>end</dt>                   <dd><code>@</code> <b>Line</b> 注释的截止位置。</dd>
+  <dt>height</dt>                <dd><code>@</code> <b>Ellipse</b>, <b>Image</b> 或者 <b>Rectangle</b> 注释的高度。</dd>
+  <dt>href</dt>                  <dd><code>@</code> <b>Image</b> 注释的图片源。</dd>
+  <dt>is-visible</dt>             <dd><code>@</code> 注释的可见性。</dd>
+  <dt>length</dt>                <dd><code>@</code> <b>Square</b> 注释的长度。</dd>
+  <dt>name</dt>                  <dd><code>@</code> 注释的名称。</dd>
+  <dt>offset</dt>                <dd><code>@</code> 注释的偏移量。</dd>
+  <dt>point</dt>                 <dd><code>@</code> 注释的位置，间隔控件依赖 <b>attachment</b>  属性值。
+                                     该属性在以下注释类型有效 <b>Circle</b>, <b>Ellipse</b>, <b>Image</b>, <b>Rectangle</b>, <b>Square</b>
+                                     和 <b>Text</b> 。</dd>
+  <dt>point-index</dt>           <dd><code>@</code> 注释附加的序列的索引。</dd>
+  <dt>position</dt>              <dd><code>@</code> <a href="topic/wijmo.chart.annotation.AnnotationPosition.Enum.html"><b>AnnotationPosition</b></a> 值，注释的位置对应的 <b>point</b>.</dd>
+  <dt>radius</dt>                <dd><code>@</code> <b>Circle</b> 注释的半径。</dd>
+  <dt>series-index</dt>          <dd><code>@</code> 注释附件的数据序列的索引。</dd>
+  <dt>start</dt>                 <dd><code>@</code> <b>Line</b> 注释的起始位置。</dd>
+  <dt>style</dt>                 <dd><code>@</code> 注释的样式。</dd>
+  <dt>text</dt>                  <dd><code>@</code> <b>Text</b> 注释的文本。</dd>
+  <dt>tooltip</dt>               <dd><code>@</code> 注释的工具提示。</dd>
+  <dt>width</dt>                 <dd><code>@</code> <b>Ellipse</b>, <b>Image</b> or <b>Rectangle</b> 注释的宽度。</dd>
+</dl></p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.angular.WjFlexChartAnnotationLayer.Class.html"><b>WjFlexChartAnnotationLayer</b></a></td>
+      <td><p>AngularJS 指令应用于 <a href="topic/wijmo.chart.FlexChart.Class.html"><b>FlexChart</b></a> <a href="topic/wijmo.chart.annotation.AnnotationLayer.Class.html"><b>AnnotationLayer</b></a> 对象。</p>
+
+<p><b>wj-flex-chart-annotation-layer</b> 指令必须包含于 <a href="topic/wijmo.angular.WjFlexChart.Class.html"><b>WjFlexChart</b></a> 指令或者 <a href="topic/wijmo.angular.WjFinancialChart.Class.html"><b>WjFinancialChart</b></a> 指令。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.angular.WjFlexChartAtr.Class.html"><b>WjFlexChartAtr</b></a></td>
+      <td><p>AngularJS 指令应用于 <a href="topic/wijmo.chart.finance.FinancialChart.Class.html"><b>FinancialChart</b></a> <a href="topic/wijmo.chart.finance.analytics.ATR.Class.html"><b>ATR</b></a> 对象。</p>
+
+<p><b>wj-flex-chart-atr</b> 指令必须包含于 <a href="topic/wijmo.angular.WjFinancialChart.Class.html"><b>WjFinancialChart</b></a> 指令。
+支持以下属性:</p>
+
+<p><dl class="dl-horizontal">
+  <dt>binding</dt>      <dd><code>@</code> 包含Y轴数据的属性名。该值可被任意重写以绑定图表数据。</dd>
+  <dt>binding-x</dt>    <dd><code>@</code> 包含X轴数据的属性名。该值可被任意重写以绑定图表数据。</dd>
+  <dt>css-class</dt>    <dd><code>@</code> 渲染序列的 CSS 样式类。</dd>
+  <dt>items-source</dt> <dd><code>=</code> 一个数组或者 <a href="topic/wijmo.collections.ICollectionView.Interface.html"><b>ICollectionView</b></a> 对象，其中包含序列数据。</dd>
+  <dt>name</dt>         <dd><code>@</code> 序列显示的图例名称。</dd>
+  <dt>style</dt>        <dd><code>=</code> 渲染序列的样式，使用 ng-attr-style 指定序列对象。参见 ngAttr <a target="_blank" href="https://docs.angularjs.org/guide/directive">
+                        AngularJS Creating Custom Directives</a> 以及 <a target="_blank" href=
+                        "http://demos.wijmo.com/5/Angular/FlexChartIntro/FlexChartIntro/#Styling">
+                        FlexChart 101 Styling Series</a> 上的实例以获取更多信息。</dd>
+  <dt>symbol-marker</dt><dd><code>@</code> 标记序列的形状。可重写默认值。 参见 <a href="topic/wijmo.chart.Marker.Enum.html"><b>Marker</b></a>。</dd>
+  <dt>symbol-size</dt>  <dd><code>@</code> 渲染数据点的像素级尺寸。可以重写这个。</dd>
+  <dt>symbol-style</dt> <dd><code>=</code> 渲染数据点的样式。可以重写这个。</dd>
+  <dt>visibility</dt>   <dd><code>=</code> <a href="topic/wijmo.chart.SeriesVisibility.Enum.html"><b>SeriesVisibility</b></a> 值，用于指定是否显示序列。</dd>
+  <dt>period</dt>       <dd><code>@</code> 计算平均值的周期。</dd>
+</dl></p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.angular.WjFlexChartAxis.Class.html"><b>WjFlexChartAxis</b></a></td>
+      <td><p>AngularJS 指令应用于 <a href="topic/wijmo.chart.FlexChart.Class.html"><b>FlexChart</b></a> <a href="topic/wijmo.chart.Axis.Class.html"><b>Axis</b></a> 对象.</p>
+
+<p><b>wj-flex-chart-axis</b> 指令必须包含在一个 <a href="topic/wijmo.angular.WjFlexChart.Class.html"><b>WjFlexChart</b></a> 指令或者 <a href="topic/wijmo.angular.WjFinancialChart.Class.html"><b>WjFinancialChart</b></a> 指令中.
+支持以下特性:</p>
+
+<p><dl class="dl-horizontal">
+  <dt>wj-property</dt>     <dd><code>@</code> 定义 <b>FlexChart</b> 属性名, x轴，y轴 用于初始化指令。</dd>
+  <dt>axis-line</dt>       <dd><code>@</code> 轴线是否可见。</dd>
+  <dt>format</dt>          <dd><code>@</code> 轴标签的格式化字符串 (参见 <a href="topic/wijmo.Globalize.Class.html"><b>Globalize</b></a>).</dd>
+  <dt>labels</dt>          <dd><code>@</code> 轴标签是否可见。</dd>
+  <dt>label-angle</dt>     <dd><code>@</code> 轴标签旋转角度。</dd>
+  <dt>label-align</dt>     <dd><code>@</code> 轴标签对齐方式。</dd>
+  <dt>label-padding</dt>   <dd><code>@</code> 轴标签内边距</dd>
+  <dt>major-grid</dt>      <dd><code>@</code> 轴线是否包含主网格线。</dd>
+  <dt>major-tick-marks</dt><dd><code>@</code> 定义轴上的主刻度线。(参见 <a href="topic/wijmo.chart.TickMark.Enum.html"><b>TickMark</b></a>).</dd>
+  <dt>major-unit</dt>      <dd><code>@</code> 轴主单位刻度的单位。</dd>
+  <dt>max</dt>             <dd><code>@</code> 轴线表示的最大值。</dd>
+  <dt>min</dt>             <dd><code>@</code> 轴线表示的最小值。</dd>
+  <dt>minor-grid</dt>      <dd><code>@</code> 轴线是否包含小网格线。</dd>
+  <dt>minor-tick-marks</dt><dd><code>@</code> D定义轴上小刻度线间距。(参见 <b>TickMark</b>).</dd>
+  <dt>minor-unit</dt>      <dd><code>@</code> 轴小单位刻度的单位。</dd>
+  <dt>origin</dt>          <dd><code>@</code> 轴线原点。</dd>
+  <dt>overlappingLabels</dt><dd><code>@</code> <a href="topic/wijmo.chart.OverlappingLabels.Enum.html"><b>OverlappingLabels</b></a> 值，定义怎样处理重叠轴标签。</dd>
+  <dt>position</dt>        <dd><code>@</code> <a href="topic/wijmo.chart.Position.Enum.html"><b>Position</b></a> 值，定义轴的位置。</dd>
+  <dt>reversed</dt>        <dd><code>@</code> 是否翻转 (顶转到底，右转到左)。</dd>
+  <dt>title</dt>           <dd><code>@</code> 标题。</dd>
+</dl></p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.angular.WjFlexChartBollingerBands.Class.html"><b>WjFlexChartBollingerBands</b></a></td>
+      <td><p>AngularJS 指令应用于 <a href="topic/wijmo.chart.finance.FinancialChart.Class.html"><b>FinancialChart</b></a> <a href="topic/wijmo.chart.finance.analytics.BollingerBands.Class.html"><b>BollingerBands</b></a> 对象。</p>
+
+<p><b>wj-flex-chart-bollinger-bands</b> 指令必须包含于 <a href="topic/wijmo.angular.WjFinancialChart.Class.html"><b>WjFinancialChart</b></a> 指令。
+支持以下属性:</p>
+
+<p><dl class="dl-horizontal">
+  <dt>binding</dt>      <dd><code>@</code> 包含Y轴数据的属性名。该值可被任意重写以绑定图表数据。</dd>
+  <dt>binding-x</dt>    <dd><code>@</code> 包含X轴数据的属性名。该值可被任意重写以绑定图表数据。</dd>
+  <dt>css-class</dt>    <dd><code>@</code> 渲染序列的 CSS 样式类。</dd>
+  <dt>items-source</dt> <dd><code>=</code> 一个数组或者 <a href="topic/wijmo.collections.ICollectionView.Interface.html"><b>ICollectionView</b></a> 对象，其中包含序列数据。</dd>
+  <dt>name</dt>         <dd><code>@</code> 序列显示的图例名称。</dd>
+  <dt>style</dt>        <dd><code>=</code> 渲染序列的样式，使用 ng-attr-style 指定序列对象。参见 ngAttr <a target="_blank" href="https://docs.angularjs.org/guide/directive">
+                        AngularJS Creating Custom Directives</a> 以及 <a target="_blank" href=
+                        "http://demos.wijmo.com/5/Angular/FlexChartIntro/FlexChartIntro/#Styling">
+                        FlexChart 101 Styling Series</a> 上的实例以获取更多信息。</dd>
+  <dt>symbol-marker</dt><dd><code>@</code> 标记序列的形状。可重写默认值。 参见 <a href="topic/wijmo.chart.Marker.Enum.html"><b>Marker</b></a>。</dd>
+  <dt>symbol-size</dt>  <dd><code>@</code> 渲染数据点的像素级尺寸。可以重写这个。</dd>
+  <dt>symbol-style</dt> <dd><code>=</code> 渲染数据点的样式。可以重写这个。</dd>
+  <dt>visibility</dt>   <dd><code>=</code> <a href="topic/wijmo.chart.SeriesVisibility.Enum.html"><b>SeriesVisibility</b></a> 值，用于指定是否显示序列。</dd>
+  <dt>period</dt>       <dd><code>@</code>  计算平均值的周期。</dd>
+  <dt>multiplier</dt>    <dd><code>@</code> 标准方差计算。</dd>
+</dl></p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.angular.WjFlexChartCci.Class.html"><b>WjFlexChartCci</b></a></td>
+      <td><p>AngularJS 指令应用于 <a href="topic/wijmo.chart.finance.FinancialChart.Class.html"><b>FinancialChart</b></a> <a href="topic/wijmo.chart.finance.analytics.CCI.Class.html"><b>CCI</b></a> 对象。</p>
+
+<p><b>wj-flex-chart-cci</b> 指令必须包含于 <a href="topic/wijmo.angular.WjFinancialChart.Class.html"><b>WjFinancialChart</b></a> 指令。
+支持以下属性:</p>
+
+<p><dl class="dl-horizontal">
+  <dt>binding</dt>      <dd><code>@</code> 包含Y轴数据的属性名。该值可被任意重写以绑定图表数据。</dd>
+  <dt>binding-x</dt>    <dd><code>@</code> 包含X轴数据的属性名。该值可被任意重写以绑定图表数据。</dd>
+  <dt>css-class</dt>    <dd><code>@</code> 渲染序列的 CSS 样式类。</dd>
+  <dt>items-source</dt> <dd><code>=</code> 一个数组或者 <a href="topic/wijmo.collections.ICollectionView.Interface.html"><b>ICollectionView</b></a> 对象，其中包含序列数据。</dd>
+  <dt>name</dt>         <dd><code>@</code> 序列显示的图例名称。</dd>
+  <dt>style</dt>        <dd><code>=</code> 渲染序列的样式，使用 ng-attr-style 指定序列对象。参见 ngAttr <a target="_blank" href="https://docs.angularjs.org/guide/directive">
+                        AngularJS Creating Custom Directives</a> 以及 <a target="_blank" href=
+                        "http://demos.wijmo.com/5/Angular/FlexChartIntro/FlexChartIntro/#Styling">
+                        FlexChart 101 Styling Series</a> 上的实例以获取更多信息。</dd>
+  <dt>symbol-marker</dt><dd><code>@</code> 标记序列的形状。可重写默认值。 参见 <a href="topic/wijmo.chart.Marker.Enum.html"><b>Marker</b></a>。</dd>
+  <dt>symbol-size</dt>  <dd><code>@</code> 渲染数据点的像素级尺寸。可以重写这个。</dd>
+  <dt>symbol-style</dt> <dd><code>=</code> 渲染数据点的样式。可以重写这个。</dd>
+  <dt>visibility</dt>   <dd><code>=</code> <a href="topic/wijmo.chart.SeriesVisibility.Enum.html"><b>SeriesVisibility</b></a> 值，用于指定是否显示序列。</dd>
+  <dt>period</dt>       <dd><code>@</code> 计算平均值的周期。</dd>
+</dl></p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.angular.WjFlexChartChartGestures.Class.html"><b>WjFlexChartChartGestures</b></a></td>
+      <td><p>AngularJS 指令应用于 <a href="topic/wijmo.chart.FlexChart.Class.html"><b>FlexChart</b></a> <a href="topic/wijmo.chart.interaction.ChartGestures.Class.html"><b>ChartGestures</b></a> 对象。</p>
+
+<p><b>wj-flex-chart-gestures</b> 指令必须包含于 <a href="topic/wijmo.angular.WjFlexChart.Class.html"><b>WjFlexChart</b></a> 指令或者 <a href="topic/wijmo.angular.WjFinancialChart.Class.html"><b>WjFinancialChart</b></a> 指令。
+支持以下属性:</p>
+
+<p><dl class="dl-horizontal">
+  <dt>mouse-action</dt>     <dd><code>@</code> 鼠标操作是缩放或者移动。</dd>
+  <dt>interactive-axes</dt> <dd><code>@</code> 轴是否交互。</dd>
+  <dt>enable</dt>          <dd><code>@</code> 是否支持手势操作。</dd>
+  <dt>scale-x</dt>          <dd><code>@</code> x 轴的最大最小区间。</dd>
+  <dt>scale-y</dt>          <dd><code>@</code> y 轴的最大最小区间。</dd>
+  <dt>pos-x</dt>            <dd><code>@</code> x 轴初始位置。</dd>
+  <dt>pos-y</dt>            <dd><code>@</code> y 轴初始位置。</dd>
+</dl></p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.angular.WjFlexChartDataLabel.Class.html"><b>WjFlexChartDataLabel</b></a></td>
+      <td><p>AngularJS 指令应用于 <a href="topic/wijmo.chart.FlexChart.Class.html"><b>FlexChart</b></a> <a href="topic/wijmo.chart.DataLabel.Class.html"><b>DataLabel</b></a> 对象。</p>
+
+<p><b>wj-flex-chart-data-label</b> 指令必须包含于 <a href="topic/wijmo.angular.WjFlexChart.Class.html"><b>WjFlexChart</b></a> 指令。
+支持以下属性:</p>
+
+<p><dl class="dl-horizontal">
+  <dt>content</dt>       <dd><code>=</code> 标签内容，可以是字符串或函数。</dd>
+  <dt>border</dt>        <dd><code>@</code> 是否包含边框。</dd>
+  <dt>position</dt>      <dd><code>@</code> <a href="topic/wijmo.chart.LabelPosition.Enum.html"><b>LabelPosition</b></a> 值，标签的位置。</dd>
+</dl></p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.angular.WjFlexChartDataPoint.Class.html"><b>WjFlexChartDataPoint</b></a></td>
+      <td><p>AngularJS 指令应用于 <a href="topic/wijmo.chart.FlexChart.Class.html"><b>FlexChart</b></a> <a href="topic/wijmo.chart.DataPoint.Class.html"><b>DataPoint</b></a> 对象.</p>
+
+<p><b>wj-flex-chart-data-point</b> 指令必须包含于
+<a href="topic/wijmo.angular.WjFlexChartAnnotation.Class.html"><b>WjFlexChartAnnotation</b></a> 指令。 并且 <b>wj-flex-data-point</b> 指向父指令对象的属性必须指定成特定的<b>wj-property</b> 属性。</p>
+
+<p>指令支持以下属性:</p>
+
+<p><dl class="dl-horizontal"></p>
+
+<p>  <dt>wj-property</dt>        <dd><code>@</code> 指定到 <b>DataPoint</b> 的父指令的属性名。</dd>
+  <dt>x</dt>                  <dd><code>@</code> x 坐标，可以是数字或者数据值。</dd>
+  <dt>y</dt>                  <dd><code>@</code> y 坐标，可以是数字或者数据值。</dd>
+</dl></p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.angular.WjFlexChartEnvelopes.Class.html"><b>WjFlexChartEnvelopes</b></a></td>
+      <td><p>AngularJS 指令应用于 <a href="topic/wijmo.chart.finance.FinancialChart.Class.html"><b>FinancialChart</b></a> <a href="topic/wijmo.chart.finance.analytics.Envelopes.Class.html"><b>Envelopes</b></a> 对象。</p>
+
+<p><b>wj-flex-chart-envelopes</b> 指令必须包含于 <a href="topic/wijmo.angular.WjFinancialChart.Class.html"><b>WjFinancialChart</b></a> 指令。
+支持以下属性:</p>
+
+<p><dl class="dl-horizontal">
+  <dt>binding</dt>      <dd><code>@</code> 包含Y轴数据的属性名。该值可被任意重写以绑定图表数据。</dd>
+  <dt>binding-x</dt>    <dd><code>@</code> 包含X轴数据的属性名。该值可被任意重写以绑定图表数据。</dd>
+  <dt>css-class</dt>    <dd><code>@</code> 渲染序列的 CSS 样式类。</dd>
+  <dt>items-source</dt> <dd><code>=</code> 一个数组或者 <a href="topic/wijmo.collections.ICollectionView.Interface.html"><b>ICollectionView</b></a> 对象，其中包含序列数据。</dd>
+  <dt>name</dt>         <dd><code>@</code> 序列显示的图例名称。</dd>
+  <dt>style</dt>        <dd><code>=</code> 渲染序列的样式，使用 ng-attr-style 指定序列对象。参见 ngAttr <a target="_blank" href="https://docs.angularjs.org/guide/directive">
+                        AngularJS Creating Custom Directives</a> 以及 <a target="_blank" href=
+                        "http://demos.wijmo.com/5/Angular/FlexChartIntro/FlexChartIntro/#Styling">
+                        FlexChart 101 Styling Series</a> 上的实例以获取更多信息。</dd>
+  <dt>symbol-marker</dt><dd><code>@</code> 标记序列的形状。可重写默认值。 参见 <a href="topic/wijmo.chart.Marker.Enum.html"><b>Marker</b></a>。</dd>
+  <dt>symbol-size</dt>  <dd><code>@</code> 渲染数据点的像素级尺寸。可以重写这个。</dd>
+  <dt>symbol-style</dt> <dd><code>=</code> 渲染数据点的样式。可以重写这个。</dd>
+  <dt>visibility</dt>   <dd><code>=</code> <a href="topic/wijmo.chart.SeriesVisibility.Enum.html"><b>SeriesVisibility</b></a> 值，用于指定是否显示序列。</dd>
+  <dt>period</dt>       <dd><code>@</code>  计算平均值的周期。</dd>
+  <dt>size</dt>          <dd><code>@</code> 移动平均值轨道线的尺寸。</dd>
+  <dt>type</dt>          <dd><code>@</code> <a href="topic/wijmo.chart.analytics.MovingAverageType.Enum.html"><b>MovingAverageType</b></a> 值，用于移动平均值轨道线。</dd>
+</dl></p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.angular.WjFlexChartFibonacci.Class.html"><b>WjFlexChartFibonacci</b></a></td>
+      <td><p>AngularJS 指令应用于 <a href="topic/wijmo.chart.finance.FinancialChart.Class.html"><b>FinancialChart</b></a> <a href="topic/wijmo.chart.finance.analytics.Fibonacci.Class.html"><b>Fibonacci</b></a> 对象。</p>
+
+<p><b>wj-flex-chart-fibonacci</b> 指令必须包含于 <a href="topic/wijmo.angular.WjFinancialChart.Class.html"><b>WjFinancialChart</b></a> 指令。
+支持以下属性:</p>
+
+<p><dl class="dl-horizontal">
+  <dt>binding</dt>      <dd><code>@</code> 包含Y轴数据的属性名。该值可被任意重写以绑定图表数据。</dd>
+  <dt>binding-x</dt>    <dd><code>@</code> 包含X轴数据的属性名。该值可被任意重写以绑定图表数据。</dd>
+  <dt>css-class</dt>    <dd><code>@</code> 渲染序列的 CSS 样式类。</dd>
+  <dt>items-source</dt> <dd><code>=</code> 一个数组或者 <a href="topic/wijmo.collections.ICollectionView.Interface.html"><b>ICollectionView</b></a> 对象，其中包含序列数据。</dd>
+  <dt>high</dt>         <dd><code>@</code> <b>Fibonacci</b> 的高度。</dd>
+  <dt>labelPosition</dt> <dd><code>@</code> <b>Fibonacci</b> 的标签级别位置。</dd>
+  <dt>levels</dt>       <dd><code>@</code> <b>Fibonacci</b> 的 Level 值。</dd>
+  <dt>low</dt>          <dd><code>@</code> <b>Fibonacci</b> 的低值。</dd>
+  <dt>minX</dt>         <dd><code>@</code> <b>Fibonacci</b> 的最小值。</dd>
+  <dt>maxX</dt>         <dd><code>@</code> <b>Fibonacci</b> 的最大值。</dd>
+  <dt>name</dt>         <dd><code>@</code> 序列显示的图例名称。</dd>
+  <dt>style</dt>        <dd><code>=</code> 渲染序列的样式，使用 ng-attr-style 指定序列对象。参见 ngAttr <a target="_blank" href="https://docs.angularjs.org/guide/directive">
+                        AngularJS Creating Custom Directives</a> 以及 <a target="_blank" href=
+                        "http://demos.wijmo.com/5/Angular/FlexChartIntro/FlexChartIntro/#Styling">
+                        FlexChart 101 Styling Series</a> 上的实例以获取更多信息。</dd>
+  <dt>altStyle</dt>     <dd><code>=</code> 序列交替样式。</dd>
+  <dt>visibility</dt>   <dd><code>=</code> <a href="topic/wijmo.chart.SeriesVisibility.Enum.html"><b>SeriesVisibility</b></a> 值，用于指定是否显示序列。</dd>
+  <dt>uptrend</dt>      <dd><code>@</code> 是否创建增加趋势的 <b>Fibonacci</b> 。</dd>
+</dl></p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.angular.WjFlexChartFibonacciArcs.Class.html"><b>WjFlexChartFibonacciArcs</b></a></td>
+      <td><p>AngularJS 指令应用于 <a href="topic/wijmo.chart.finance.FinancialChart.Class.html"><b>FinancialChart</b></a> <a href="topic/wijmo.chart.finance.analytics.FibonacciArcs.Class.html"><b>FibonacciArcs</b></a> 对象。</p>
+
+<p><b>wj-flex-chart-fibonacci-arcs</b> 指令必须包含于 <a href="topic/wijmo.angular.WjFinancialChart.Class.html"><b>WjFinancialChart</b></a> 指令。
+支持以下属性:</p>
+
+<p><dl class="dl-horizontal">
+  <dt>binding</dt>      <dd><code>@</code> 包含Y轴数据的属性名。该值可被任意重写以绑定图表数据。</dd>
+  <dt>binding-x</dt>    <dd><code>@</code> 包含X轴数据的属性名。该值可被任意重写以绑定图表数据。</dd>
+  <dt>css-class</dt>    <dd><code>@</code> 渲染序列的 CSS 样式类。</dd>
+  <dt>items-source</dt> <dd><code>=</code> 一个数组或者 <a href="topic/wijmo.collections.ICollectionView.Interface.html"><b>ICollectionView</b></a> 对象，其中包含序列数据。</dd>
+  <dt>labelPosition</dt> <dd><code>@</code> <b>FibonacciArcs</b> 标签级别位置。</dd>
+  <dt>levels</dt>       <dd><code>@</code> <b>FibonacciArcs</b> 标签 Level。</dd>
+  <dt>start-x</dt>       <dd><code>@</code> <b>FibonacciArcs</b> 起始 x 的值。</dd>
+  <dt>end-x</dt>         <dd><code>@</code> <b>FibonacciArcs</b> 截止 x 的值。</dd>
+  <dt>name</dt>         <dd><code>@</code> 序列显示的图例名称。</dd>
+  <dt>style</dt>        <dd><code>=</code> 渲染序列的样式，使用 ng-attr-style 指定序列对象。参见 ngAttr <a target="_blank" href="https://docs.angularjs.org/guide/directive">
+                        AngularJS Creating Custom Directives</a> 以及 <a target="_blank" href=
+                        "http://demos.wijmo.com/5/Angular/FlexChartIntro/FlexChartIntro/#Styling">
+                        FlexChart 101 Styling Series</a> 上的实例以获取更多信息。</dd>
+  <dt>altStyle</dt>     <dd><code>=</code> 序列交替样式。</dd>
+  <dt>visibility</dt>   <dd><code>=</code> <a href="topic/wijmo.chart.SeriesVisibility.Enum.html"><b>SeriesVisibility</b></a> 值，用于指定是否显示序列。</dd>
+</dl></p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.angular.WjFlexChartFibonacciFans.Class.html"><b>WjFlexChartFibonacciFans</b></a></td>
+      <td><p>AngularJS 指令应用于 <a href="topic/wijmo.chart.finance.FinancialChart.Class.html"><b>FinancialChart</b></a> <a href="topic/wijmo.chart.finance.analytics.FibonacciFans.Class.html"><b>FibonacciFans</b></a> 对象。</p>
+
+<p><b>wj-flex-chart-fibonacci-fans</b> 指令必须包含于 <a href="topic/wijmo.angular.WjFinancialChart.Class.html"><b>WjFinancialChart</b></a> 指令。
+支持以下属性:</p>
+
+<p><dl class="dl-horizontal">
+  <dt>binding</dt>      <dd><code>@</code> 包含Y轴数据的属性名。该值可被任意重写以绑定图表数据。</dd>
+  <dt>binding-x</dt>    <dd><code>@</code> 包含X轴数据的属性名。该值可被任意重写以绑定图表数据。</dd>
+  <dt>css-class</dt>    <dd><code>@</code> 渲染序列的 CSS 样式类。</dd>
+  <dt>items-source</dt> <dd><code>=</code> 一个数组或者 <a href="topic/wijmo.collections.ICollectionView.Interface.html"><b>ICollectionView</b></a> 对象，其中包含序列数据。</dd>
+  <dt>labelPosition</dt> <dd><code>@</code> <b>FibonacciFans</b> 标签级别位置。</dd>
+  <dt>levels</dt>       <dd><code>@</code> <b>FibonacciFans</b> 标签 Level。</dd>
+  <dt>start</dt>        <dd><code>@</code> <b>FibonacciFans</b> 的起始数据点 <a href="topic/wijmo.chart.DataPoint.Class.html"><b>DataPoint</b></a>。</dd>
+  <dt>end</dt>          <dd><code>@</code> <b>FibonacciFans</b> 的截止数据点 <b>DataPoint</b>。</dd>
+  <dt>name</dt>         <dd><code>@</code> 序列显示的图例名称。</dd>
+  <dt>style</dt>        <dd><code>=</code> 渲染序列的样式，使用 ng-attr-style 指定序列对象。参见 ngAttr <a target="_blank" href="https://docs.angularjs.org/guide/directive">
+                        AngularJS Creating Custom Directives</a> 以及 <a target="_blank" href=
+                        "http://demos.wijmo.com/5/Angular/FlexChartIntro/FlexChartIntro/#Styling">
+                        FlexChart 101 Styling Series</a> 上的实例以获取更多信息。</dd>
+  <dt>altStyle</dt>     <dd><code>=</code> 序列交替样式。</dd>
+  <dt>visibility</dt>   <dd><code>=</code> <a href="topic/wijmo.chart.SeriesVisibility.Enum.html"><b>SeriesVisibility</b></a> 值，用于指定是否显示序列。</dd>
+</dl></p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.angular.WjFlexChartFibonacciTimeZones.Class.html"><b>WjFlexChartFibonacciTimeZones</b></a></td>
+      <td><p>AngularJS 指令应用于 <a href="topic/wijmo.chart.finance.FinancialChart.Class.html"><b>FinancialChart</b></a> <a href="topic/wijmo.chart.finance.analytics.FibonacciTimeZones.Class.html"><b>FibonacciTimeZones</b></a> 对象。</p>
+
+<p><b>wj-flex-chart-fibonacci-time-zones</b> 指令必须包含于 <a href="topic/wijmo.angular.WjFinancialChart.Class.html"><b>WjFinancialChart</b></a> 指令。
+支持以下属性:</p>
+
+<p><dl class="dl-horizontal">
+  <dt>binding</dt>      <dd><code>@</code> 包含Y轴数据的属性名。该值可被任意重写以绑定图表数据。</dd>
+  <dt>binding-x</dt>    <dd><code>@</code> 包含X轴数据的属性名。该值可被任意重写以绑定图表数据。</dd>
+  <dt>css-class</dt>    <dd><code>@</code> 渲染序列的 CSS 样式类。</dd>
+  <dt>items-source</dt> <dd><code>=</code> 一个数组或者 <a href="topic/wijmo.collections.ICollectionView.Interface.html"><b>ICollectionView</b></a> 对象，其中包含序列数据。</dd>
+  <dt>labelPosition</dt> <dd><code>@</code> <b>FibonacciTimeZones</b> 标签级别位置。</dd>
+  <dt>levels</dt>       <dd><code>@</code> <b>FibonacciTimeZones</b> 的 Level 。</dd>
+  <dt>startX</dt>       <dd><code>@</code> <b>FibonacciTimeZones</b> 起始 x 的值。</dd>
+  <dt>endX</dt>         <dd><code>@</code> <b>FibonacciTimeZones</b> 截止 x 的值。</dd>
+  <dt>name</dt>         <dd><code>@</code> 序列显示的图例名称。</dd>
+  <dt>style</dt>        <dd><code>=</code> 渲染序列的样式，使用 ng-attr-style 指定序列对象。参见 ngAttr <a target="_blank" href="https://docs.angularjs.org/guide/directive">
+                        AngularJS Creating Custom Directives</a> 以及 <a target="_blank" href=
+                        "http://demos.wijmo.com/5/Angular/FlexChartIntro/FlexChartIntro/#Styling">
+                        FlexChart 101 Styling Series</a> 上的实例以获取更多信息。</dd>
+  <dt>altStyle</dt>     <dd><code>=</code> 序列交替样式。</dd>
+  <dt>visibility</dt>   <dd><code>=</code> <a href="topic/wijmo.chart.SeriesVisibility.Enum.html"><b>SeriesVisibility</b></a> 值，用于指定是否显示序列。</dd>
+</dl></p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.angular.WjFlexChartLegend.Class.html"><b>WjFlexChartLegend</b></a></td>
+      <td><p>AngularJS 指令应用于 <a href="topic/wijmo.chart.FlexChart.Class.html"><b>FlexChart</b></a> <a href="topic/wijmo.chart.Legend.Class.html"><b>Legend</b></a> 对象.</p>
+
+<p><b>wj-flex-chart-legend</b> 指令必须包含于 <a href="topic/wijmo.angular.WjFlexChart.Class.html"><b>WjFlexChart</b></a> 指令, <a href="topic/wijmo.angular.WjFlexPie.Class.html"><b>WjFlexPie</b></a> 指令或者 <a href="topic/wijmo.angular.WjFinancialChart.Class.html"><b>WjFinancialChart</b></a> 指令中。
+支持以下属性:</p>
+
+<p><dl class="dl-horizontal">
+  <dt>position</dt>       <dd><code>@</code> <a href="topic/wijmo.chart.Position.Enum.html"><b>Position</b></a> 定义示例的位置。</dd>
+</dl></p>
+
+<p>下面的例子演示了怎样使用 wj-flex-chart-legend 指令改变示例图表的位置:</p>
+
+<p><pre>&lt;wj-flex-chart
+  items-source="data"
+  binding-x="country"&gt;
+  &lt;wj-flex-chart-axis
+      wj-property="axisY"
+      major-unit="5000"&gt;
+    &lt;/wj-flex-chart-axis&gt;
+    &lt;wj-flex-chart-series
+      binding="sales"
+      name="Sales"&gt;
+    &lt;/wj-flex-chart-series&gt;
+  &lt;wj-flex-chart-legend
+    position="Bottom"&gt;
+  &lt;/wj-flex-chart-legend&gt;
+&lt;/wj-flex-chart&gt;</pre></p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.angular.WjFlexChartLineMarker.Class.html"><b>WjFlexChartLineMarker</b></a></td>
+      <td><p>AngularJS 指令应用于 <a href="topic/wijmo.chart.FlexChart.Class.html"><b>FlexChart</b></a> <a href="topic/wijmo.chart.LineMarker.Class.html"><b>LineMarker</b></a> 对象.</p>
+
+<p><b>wj-flex-line-marker</b> 指令必须包含于 <a href="topic/wijmo.angular.WjFlexChart.Class.html"><b>WjFlexChart</b></a> 指令或者 <a href="topic/wijmo.angular.WjFinancialChart.Class.html"><b>WjFinancialChart</b></a> 指令。
+支持以下属性:</p>
+
+<p><dl class="dl-horizontal">
+  <dt>is-visible</dt>             <dd><code>@</code> LineMarker 是否可见。</dd>
+  <dt>series-index</dt>           <dd><code>@</code> 呈现 LineMarker 的序列的索引。</dd>
+  <dt>horizontal-position</dt>    <dd><code>@</code> LineMarker 的水平位置。</dd>
+  <dt>content</dt>               <dd><code>@</code> 自定义 LineMarker 文本内容的函数。</dd>
+  <dt>vertical-position</dt>      <dd><code>@</code> LineMarker 的垂直位置。</dd>
+  <dt>alignment</dt>             <dd><code>@</code> <a href="topic/wijmo.chart.LineMarkerAlignment.Enum.html"><b>LineMarkerAlignment</b></a> 值，指定 LineMarker 对齐方式。</dd>
+  <dt>lines</dt>                 <dd><code>@</code> <a href="topic/wijmo.chart.LineMarkerLines.Enum.html"><b>LineMarkerLines</b></a> 值，指定 LineMarker's 线的外观。</dd>
+  <dt>interaction</dt>           <dd><code>@</code> <a href="topic/wijmo.chart.LineMarkerInteraction.Enum.html"><b>LineMarkerInteraction</b></a> 值，指定 LineMarker 的交互方式。</dd>
+  <dt>drag-threshold</dt>         <dd><code>@</code> 拖拽 LineMarker 的水平和垂直最大距离。</dd>
+  <dt>drag-content</dt>           <dd><code>@</code> 是否可以在交互模式为 "Drag" 时拖拽 LineMarker。</dd>
+  <dt>drag-lines</dt>             <dd><code>@</code> 是否可以在交互模式为 "Drag" 时拖拽线条。</dd>
+</dl></p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.angular.WjFlexChartMacd.Class.html"><b>WjFlexChartMacd</b></a></td>
+      <td><p>AngularJS 指令应用于 <a href="topic/wijmo.chart.finance.FinancialChart.Class.html"><b>FinancialChart</b></a> <a href="topic/wijmo.chart.finance.analytics.Macd.Class.html"><b>Macd</b></a> 对象。</p>
+
+<p><b>wj-flex-chart-macd</b> 指令必须包含于 <a href="topic/wijmo.angular.WjFinancialChart.Class.html"><b>WjFinancialChart</b></a> 指令。
+支持以下属性:</p>
+
+<p><dl class="dl-horizontal">
+  <dt>binding</dt>      <dd><code>@</code> 包含Y轴数据的属性名。该值可被任意重写以绑定图表数据。</dd>
+  <dt>binding-x</dt>    <dd><code>@</code> 包含X轴数据的属性名。该值可被任意重写以绑定图表数据。</dd>
+  <dt>css-class</dt>    <dd><code>@</code> 渲染序列的 CSS 样式类。</dd>
+  <dt>items-source</dt> <dd><code>=</code> 一个数组或者 <a href="topic/wijmo.collections.ICollectionView.Interface.html"><b>ICollectionView</b></a> 对象，其中包含序列数据。</dd>
+  <dt>name</dt>         <dd><code>@</code> 序列显示的图例名称。</dd>
+  <dt>style</dt>        <dd><code>=</code> 渲染序列的样式，使用 ng-attr-style 指定序列对象。参见 ngAttr <a target="_blank" href="https://docs.angularjs.org/guide/directive">
+                        AngularJS Creating Custom Directives</a> 以及 <a target="_blank" href=
+                        "http://demos.wijmo.com/5/Angular/FlexChartIntro/FlexChartIntro/#Styling">
+                        FlexChart 101 Styling Series</a> 上的实例以获取更多信息。</dd>
+  <dt>styles/dt>        <dd><code></code> MACD 和标线的样式。</dd>
+  <dt>symbol-marker</dt><dd><code>@</code> 标记序列的形状。可重写默认值。 参见 <a href="topic/wijmo.chart.Marker.Enum.html"><b>Marker</b></a>。</dd>
+  <dt>symbol-size</dt>  <dd><code>@</code> 渲染数据点的像素级尺寸。可以重写这个。</dd>
+  <dt>symbol-style</dt> <dd><code>=</code> 渲染数据点的样式。可以重写这个。</dd>
+  <dt>visibility</dt>   <dd><code>=</code> <a href="topic/wijmo.chart.SeriesVisibility.Enum.html"><b>SeriesVisibility</b></a> 值，用于指定是否显示序列。</dd>
+  <dt>fast-period</dt>  <dd><code>@</code> 快速 MACD 计算平均值的周期。</dd>
+  <dt>slow-period</dt>  <dd><code>@</code> 慢速 MACD 计算平均值的周期。</dd>
+  <dt>signal-smoothing-period</dt>    <dd><code>@</code> 平滑 MACD 计算平均值的周期。</dd>
+</dl></p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.angular.WjFlexChartMacdHistogram.Class.html"><b>WjFlexChartMacdHistogram</b></a></td>
+      <td><p>AngularJS 指令应用于 <a href="topic/wijmo.chart.finance.FinancialChart.Class.html"><b>FinancialChart</b></a> <a href="topic/wijmo.chart.finance.analytics.MacdHistogram.Class.html"><b>MacdHistogram</b></a> 对象。</p>
+
+<p><b>wj-flex-chart-macd-histogram</b> 指令必须包含于 <a href="topic/wijmo.angular.WjFinancialChart.Class.html"><b>WjFinancialChart</b></a> 指令。
+支持以下属性:</p>
+
+<p><dl class="dl-horizontal">
+  <dt>binding</dt>      <dd><code>@</code> 包含Y轴数据的属性名。该值可被任意重写以绑定图表数据。</dd>
+  <dt>binding-x</dt>    <dd><code>@</code> 包含X轴数据的属性名。该值可被任意重写以绑定图表数据。</dd>
+  <dt>css-class</dt>    <dd><code>@</code> 渲染序列的 CSS 样式类。</dd>
+  <dt>items-source</dt> <dd><code>=</code> 一个数组或者 <a href="topic/wijmo.collections.ICollectionView.Interface.html"><b>ICollectionView</b></a> 对象，其中包含序列数据。</dd>
+  <dt>name</dt>         <dd><code>@</code> 序列显示的图例名称。</dd>
+  <dt>style</dt>        <dd><code>=</code> 渲染序列的样式，使用 ng-attr-style 指定序列对象。参见 ngAttr <a target="_blank" href="https://docs.angularjs.org/guide/directive">
+                        AngularJS Creating Custom Directives</a> 以及 <a target="_blank" href=
+                        "http://demos.wijmo.com/5/Angular/FlexChartIntro/FlexChartIntro/#Styling">
+                        FlexChart 101 Styling Series</a> 上的实例以获取更多信息。</dd>
+  <dt>symbol-marker</dt><dd><code>@</code> 标记序列的形状。可重写默认值。 参见 <a href="topic/wijmo.chart.Marker.Enum.html"><b>Marker</b></a>。</dd>
+  <dt>symbol-size</dt>  <dd><code>@</code> 渲染数据点的像素级尺寸。可以重写这个。</dd>
+  <dt>symbol-style</dt> <dd><code>=</code> 渲染数据点的样式。可以重写这个。</dd>
+  <dt>visibility</dt>   <dd><code>=</code> <a href="topic/wijmo.chart.SeriesVisibility.Enum.html"><b>SeriesVisibility</b></a> 值，用于指定是否显示序列。</dd>
+  <dt>fast-period</dt>  <dd><code>@</code> 快速 MACD 计算平均值的周期。</dd>
+  <dt>slow-period</dt>  <dd><code>@</code> 慢速 MACD 计算平均值的周期。</dd>
+  <dt>signal-smoothing-period</dt>    <dd><code>@</code> 平滑 MACD 计算平均值的周期。</dd>
+</dl></p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.angular.WjFlexChartMovingAverage.Class.html"><b>WjFlexChartMovingAverage</b></a></td>
+      <td><p>AngularJS 指令应用于 <a href="topic/wijmo.chart.FlexChart.Class.html"><b>FlexChart</b></a> 和 <a href="topic/wijmo.chart.finance.FinancialChart.Class.html"><b>FinancialChart</b></a> <a href="topic/wijmo.chart.analytics.MovingAverage.Class.html"><b>MovingAverage</b></a> 对象。</p>
+
+<p><b>wj-flex-chart-moving-average</b> 指令必须包含于 <a href="topic/wijmo.angular.WjFlexChart.Class.html"><b>WjFlexChart</b></a> or <a href="topic/wijmo.angular.WjFinancialChart.Class.html"><b>WjFinancialChart</b></a> 指令。
+支持以下属性:</p>
+
+<p><dl class="dl-horizontal">
+  <dt>binding</dt>      <dd><code>@</code> 包含Y轴数据的属性名。该值可被任意重写以绑定图表数据。</dd>
+  <dt>binding-x</dt>    <dd><code>@</code> 包含X轴数据的属性名。该值可被任意重写以绑定图表数据。</dd>
+  <dt>chart-type</dt>   <dd><code>@</code> 图表默认类型，可以重写这个。参见 <a href="topic/wijmo.chart.ChartType.Enum.html"><b>ChartType</b></a>。</dd>
+  <dt>css-class</dt>    <dd><code>@</code> 渲染序列的 CSS 样式类。</dd>
+  <dt>items-source</dt> <dd><code>=</code> 一个数组或者 <a href="topic/wijmo.collections.ICollectionView.Interface.html"><b>ICollectionView</b></a> 对象，其中包含序列数据。</dd>
+  <dt>name</dt>         <dd><code>@</code> 序列显示的图例名称。</dd>
+  <dt>style</dt>        <dd><code>=</code> 渲染序列的样式，使用 ng-attr-style 指定序列对象。参见 ngAttr <a target="_blank" href="https://docs.angularjs.org/guide/directive">
+                        AngularJS Creating Custom Directives</a> 以及 <a target="_blank" href=
+                        "http://demos.wijmo.com/5/Angular/FlexChartIntro/FlexChartIntro/#Styling">
+                        FlexChart 101 Styling Series</a> 上的实例以获取更多信息。</dd>
+  <dt>symbol-marker</dt><dd><code>@</code> 标记序列的形状。可重写默认值。 参见 <a href="topic/wijmo.chart.Marker.Enum.html"><b>Marker</b></a>。</dd>
+  <dt>symbol-size</dt>  <dd><code>@</code> 渲染数据点的像素级尺寸。可以重写这个。</dd>
+  <dt>symbol-style</dt> <dd><code>=</code> 渲染数据点的样式。可以重写这个。</dd>
+  <dt>visibility</dt>   <dd><code>=</code> <a href="topic/wijmo.chart.SeriesVisibility.Enum.html"><b>SeriesVisibility</b></a> 值，用于指定是否显示序列。</dd>
+  <dt>type</dt>         <dd><code>@</code> <a href="topic/wijmo.chart.analytics.MovingAverageType.Enum.html"><b>MovingAverageType</b></a> 值，用于移除平均序列。</dd>
+  <dt>period</dt>       <dd><code>@</code> 计算平均值的周期。</dd>
+</dl></p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.angular.WjFlexChartParametricFunctionSeries.Class.html"><b>WjFlexChartParametricFunctionSeries</b></a></td>
+      <td><p>AngularJS 指令应用于 <a href="topic/wijmo.chart.FlexChart.Class.html"><b>FlexChart</b></a> 和 <a href="topic/wijmo.chart.finance.FinancialChart.Class.html"><b>FinancialChart</b></a> <a href="topic/wijmo.chart.analytics.MovingAverage.Class.html"><b>MovingAverage</b></a> 对象。</p>
+
+<p><b>wj-flex-chart-moving-average</b> 指令必须包含于 <a href="topic/wijmo.angular.WjFlexChart.Class.html"><b>WjFlexChart</b></a> 或者 <a href="topic/wijmo.angular.WjFinancialChart.Class.html"><b>WjFinancialChart</b></a> 指令。
+支持以下属性:</p>
+
+<p><dl class="dl-horizontal">
+  <dt>binding</dt>      <dd><code>@</code> 包含Y轴数据的属性名。该值可被任意重写以绑定图表数据。</dd>
+  <dt>binding-x</dt>    <dd><code>@</code> 包含X轴数据的属性名。该值可被任意重写以绑定图表数据。</dd>
+  <dt>chart-type</dt>   <dd><code>@</code> 图表默认类型，可以重写这个。参见 <a href="topic/wijmo.chart.ChartType.Enum.html"><b>ChartType</b></a>。</dd>
+  <dt>css-class</dt>    <dd><code>@</code> 渲染序列的 CSS 样式类。</dd>
+  <dt>items-source</dt> <dd><code>=</code> 一个数组或者 <a href="topic/wijmo.collections.ICollectionView.Interface.html"><b>ICollectionView</b></a> 对象，其中包含序列数据。</dd>
+  <dt>name</dt>         <dd><code>@</code> 序列显示的图例名称。</dd>
+  <dt>style</dt>        <dd><code>=</code> 渲染序列的样式，使用 ng-attr-style 指定序列对象。参见 ngAttr <a target="_blank" href="https://docs.angularjs.org/guide/directive">
+                        AngularJS Creating Custom Directives</a> 以及 <a target="_blank" href=
+                        "http://demos.wijmo.com/5/Angular/FlexChartIntro/FlexChartIntro/#Styling">
+                        FlexChart 101 Styling Series</a> 上的实例以获取更多信息。</dd>
+  <dt>symbol-marker</dt><dd><code>@</code> 标记序列的形状。可重写默认值。 参见 <a href="topic/wijmo.chart.Marker.Enum.html"><b>Marker</b></a>。lt;/dd>
+  <dt>symbol-size</dt>  <dd><code>@</code> 渲染数据点的像素级尺寸。可以重写这个。</dd>
+  <dt>symbol-style</dt> <dd><code>=</code> 渲染数据点的样式。可以重写这个。</dd>
+  <dt>visibility</dt>   <dd><code>=</code> <a href="topic/wijmo.chart.SeriesVisibility.Enum.html"><b>SeriesVisibility</b></a> 值，用于指定是否显示序列。</dd>
+  <dt>sample-count</dt> <dd><code>@</code> 计算样品数量。</dd>
+  <dt>min</dt>       <dd><code>@</code> 计算函数的参数的最小值。</dd>
+  <dt>max</dt>       <dd><code>@</code> 计算函数的参数的最大值。</dd>
+  <dt>x-func</dt>       <dd><code>@</code> 计算 x 值的函数。</dd>
+  <dt>y-func</dt>       <dd><code>@</code> 计算 y 值的函数。</dd>
+</dl></p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.angular.WjFlexChartRangeSelector.Class.html"><b>WjFlexChartRangeSelector</b></a></td>
+      <td><p>AngularJS 指令应用于 <a href="topic/wijmo.chart.FlexChart.Class.html"><b>FlexChart</b></a> <a href="topic/wijmo.chart.interaction.RangeSelector.Class.html"><b>RangeSelector</b></a> 对象。</p>
+
+<p><b>wj-flex-chart-range-selector</b> 指令必须包含于 <a href="topic/wijmo.angular.WjFlexChart.Class.html"><b>WjFlexChart</b></a> 指令或者 <a href="topic/wijmo.angular.WjFinancialChart.Class.html"><b>WjFinancialChart</b></a> 指令。
+支持以下属性:</p>
+
+<p><dl class="dl-horizontal">
+  <dt>is-visible</dt>     <dd><code>@</code> 范围选择器是否可见。</dd>
+  <dt>min</dt>           <dd><code>@</code> 范围的最小值。</dd>
+  <dt>max</dt>           <dd><code>@</code> 范围的最大值。</dd>
+  <dt>orientation</dt>   <dd><code>@</code> 范围选择器的方向。</dd>
+  <dt>seamless</dt>      <dd><code>@</code> 指定最大最小值是否平滑处理。</dd>
+  <dt>min-scale</dt>      <dd><code>@</code> 范围选择器的最小有效值。</dd>
+  <dt>max-scale</dt>      <dd><code>@</code> 范围选择器的最大有效值。</dd>
+</dl></p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.angular.WjFlexChartRsi.Class.html"><b>WjFlexChartRsi</b></a></td>
+      <td><p>AngularJS 指令应用于 <a href="topic/wijmo.chart.finance.FinancialChart.Class.html"><b>FinancialChart</b></a> <a href="topic/wijmo.chart.finance.analytics.RSI.Class.html"><b>RSI</b></a> 对象。</p>
+
+<p><b>wj-flex-chart-rsi</b> 指令必须包含于 <a href="topic/wijmo.angular.WjFinancialChart.Class.html"><b>WjFinancialChart</b></a> 指令。
+支持以下属性:</p>
+
+<p><dl class="dl-horizontal">
+  <dt>binding</dt>      <dd><code>@</code> 包含Y轴数据的属性名。该值可被任意重写以绑定图表数据。</dd>
+  <dt>binding-x</dt>    <dd><code>@</code> 包含X轴数据的属性名。该值可被任意重写以绑定图表数据。</dd>
+  <dt>css-class</dt>    <dd><code>@</code> 渲染序列的 CSS 样式类。</dd>
+  <dt>items-source</dt> <dd><code>=</code> 一个数组或者 <a href="topic/wijmo.collections.ICollectionView.Interface.html"><b>ICollectionView</b></a> 对象，其中包含序列数据。</dd>
+  <dt>name</dt>         <dd><code>@</code> 序列显示的图例名称。</dd>
+  <dt>style</dt>        <dd><code>=</code> 渲染序列的样式，使用 ng-attr-style 指定序列对象。参见 ngAttr <a target="_blank" href="https://docs.angularjs.org/guide/directive">
+                        AngularJS Creating Custom Directives</a> 以及 <a target="_blank" href=
+                        "http://demos.wijmo.com/5/Angular/FlexChartIntro/FlexChartIntro/#Styling">
+                        FlexChart 101 Styling Series</a> 上的实例以获取更多信息。</dd>
+  <dt>symbol-marker</dt><dd><code>@</code> 标记序列的形状。可重写默认值。 参见 <a href="topic/wijmo.chart.Marker.Enum.html"><b>Marker</b></a>。</dd>
+  <dt>symbol-size</dt>  <dd><code>@</code> 渲染数据点的像素级尺寸。可以重写这个。</dd>
+  <dt>symbol-style</dt> <dd><code>=</code> 渲染数据点的样式。可以重写这个。</dd>
+  <dt>visibility</dt>   <dd><code>=</code> <a href="topic/wijmo.chart.SeriesVisibility.Enum.html"><b>SeriesVisibility</b></a> 值，用于指定是否显示序列。</dd>
+  <dt>period</dt>       <dd><code>@</code> 计算平均值的周期。</dd>
+</dl></p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.angular.WjFlexChartSeries.Class.html"><b>WjFlexChartSeries</b></a></td>
+      <td><p>AngularJS 指令应用于 <a href="topic/wijmo.chart.FlexChart.Class.html"><b>FlexChart</b></a> <a href="topic/wijmo.chart.Series.Class.html"><b>Series</b></a> 对象。</p>
+
+<p><b>wj-flex-chart-series</b> 指令必须包含于 <a href="topic/wijmo.angular.WjFlexChart.Class.html"><b>WjFlexChart</b></a> 指令。
+支持以下属性:</p>
+
+<p><dl class="dl-horizontal">
+  <dt>axis-x</dt>       <dd><code>@</code> X轴。</dd>
+  <dt>axis-y</dt>       <dd><code>@</code> Y轴。</dd>
+  <dt>binding</dt>      <dd><code>@</code> 包含Y轴数据的属性名。该值可被任意重写以绑定图表数据。</dd>
+  <dt>binding-x</dt>    <dd><code>@</code> 包含X轴数据的属性名。该值可被任意重写以绑定图表数据。</dd>
+  <dt>chart-type</dt>   <dd><code>@</code> 图表默认类型，可以重写这个。参见 <a href="topic/wijmo.chart.ChartType.Enum.html"><b>ChartType</b></a>。</dd>
+  <dt>css-class</dt>    <dd><code>@</code> 渲染序列的 CSS 样式类。</dd>
+  <dt>items-source</dt> <dd><code>=</code> 一个数组或者 <a href="topic/wijmo.collections.ICollectionView.Interface.html"><b>ICollectionView</b></a> 对象，其中包含序列数据。</dd>
+  <dt>name</dt>         <dd><code>@</code> 序列显示的图例名称。</dd>
+  <dt>style</dt>        <dd><code>=</code> 渲染序列的样式，使用 ng-attr-style 指定序列对象。参见 ngAttr <a target="_blank" href="https://docs.angularjs.org/guide/directive">
+                        AngularJS Creating Custom Directives</a> 以及 <a target="_blank" href=
+                        "http://demos.wijmo.com/5/Angular/FlexChartIntro/FlexChartIntro/#Styling">
+                        FlexChart 101 Styling Series</a> 上的实例以获取更多信息。</dd>
+  <dt>altStyle</dt>     <dd><code>=</code> 序列交替样式。</dd>
+  <dt>symbol-marker</dt><dd><code>@</code> 标记序列的形状。可重写默认值。 参见 <a href="topic/wijmo.chart.Marker.Enum.html"><b>Marker</b></a>。</dd>
+  <dt>symbol-size</dt>  <dd><code>@</code> 渲染数据点的像素级尺寸。可以重写这个。</dd>
+  <dt>symbol-style</dt> <dd><code>=</code> 渲染数据点的样式。可以重写这个。</dd>
+  <dt>visibility</dt>   <dd><code>=</code> <a href="topic/wijmo.chart.SeriesVisibility.Enum.html"><b>SeriesVisibility</b></a> 值，用于指定是否显示序列。</dd>
+</dl></p>
+
+<p>大多数情况下, <b>wj-flex-chart-series</b> 只指定 <b>name</b> 和 <b>binding</b> 属性。其他的值都继承自父指令 <b>wj-flex-chart</b> 指令。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.angular.WjFlexChartStochastic.Class.html"><b>WjFlexChartStochastic</b></a></td>
+      <td><p>AngularJS 指令应用于 <a href="topic/wijmo.chart.finance.FinancialChart.Class.html"><b>FinancialChart</b></a> <a href="topic/wijmo.chart.finance.analytics.Stochastic.Class.html"><b>Stochastic</b></a> 对象。</p>
+
+<p><b>wj-flex-chart-stochastic</b> 指令必须包含于 <a href="topic/wijmo.angular.WjFinancialChart.Class.html"><b>WjFinancialChart</b></a> 指令。
+支持以下属性:</p>
+
+<p><dl class="dl-horizontal">
+  <dt>binding</dt>      <dd><code>@</code> 包含Y轴数据的属性名。该值可被任意重写以绑定图表数据。</dd>
+  <dt>binding-x</dt>    <dd><code>@</code> 包含X轴数据的属性名。该值可被任意重写以绑定图表数据。</dd>
+  <dt>css-class</dt>    <dd><code>@</code> 渲染序列的 CSS 样式类。</dd>
+  <dt>items-source</dt> <dd><code>=</code> 一个数组或者 <a href="topic/wijmo.collections.ICollectionView.Interface.html"><b>ICollectionView</b></a> 对象，其中包含序列数据。</dd>
+  <dt>name</dt>         <dd><code>@</code> 序列显示的图例名称。</dd>
+  <dt>style</dt>        <dd><code>=</code> 渲染序列的样式，使用 ng-attr-style 指定序列对象。参见 ngAttr <a target="_blank" href="https://docs.angularjs.org/guide/directive">
+                        AngularJS Creating Custom Directives</a> 以及 <a target="_blank" href=
+                        "http://demos.wijmo.com/5/Angular/FlexChartIntro/FlexChartIntro/#Styling">
+                        FlexChart 101 Styling Series</a> 上的实例以获取更多信息。</dd>
+  <dt>styles</dt>        <dd><code></code> %K 和 %D 的样式。</dd>
+  <dt>symbol-marker</dt><dd><code>@</code> 标记序列的形状。可重写默认值。 参见 <a href="topic/wijmo.chart.Marker.Enum.html"><b>Marker</b></a>。</dd>
+  <dt>symbol-size</dt>  <dd><code>@</code> 渲染数据点的像素级尺寸。可以重写这个。</dd>
+  <dt>symbol-style</dt> <dd><code>=</code> 渲染数据点的样式。可以重写这个。</dd>
+  <dt>visibility</dt>   <dd><code>=</code> <a href="topic/wijmo.chart.SeriesVisibility.Enum.html"><b>SeriesVisibility</b></a> 值，用于指定是否显示序列。</dd>
+  <dt>k-period</dt>     <dd><code>@</code>  %K 计算周期。</dd>
+  <dt>d-period</dt>     <dd><code>@</code>  %D 计算周期。</dd>
+  <dt>smoothing-period</dt>     <dd><code>@</code>  平滑 %K 计算周期。</dd>
+</dl></p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.angular.WjFlexChartTrendLine.Class.html"><b>WjFlexChartTrendLine</b></a></td>
+      <td><p>AngularJS 指令应用于 <a href="topic/wijmo.chart.FlexChart.Class.html"><b>FlexChart</b></a> 和 <a href="topic/wijmo.chart.finance.FinancialChart.Class.html"><b>FinancialChart</b></a> <a href="topic/wijmo.chart.analytics.TrendLine.Class.html"><b>TrendLine</b></a> 对象。</p>
+
+<p><b>wj-flex-chart-trend-line</b> 指令必须包含于 <a href="topic/wijmo.angular.WjFlexChart.Class.html"><b>WjFlexChart</b></a> 或者 <a href="topic/wijmo.angular.WjFinancialChart.Class.html"><b>WjFinancialChart</b></a> 指令。
+支持以下属性:</p>
+
+<p><dl class="dl-horizontal">
+  <dt>binding</dt>      <dd><code>@</code> 包含Y轴数据的属性名。该值可被任意重写以绑定图表数据。</dd>
+  <dt>binding-x</dt>    <dd><code>@</code> 包含X轴数据的属性名。该值可被任意重写以绑定图表数据。</dd>
+  <dt>chart-type</dt>   <dd><code>@</code> 图表默认类型，可以重写这个。参见 <a href="topic/wijmo.chart.ChartType.Enum.html"><b>ChartType</b></a>。</dd>
+  <dt>css-class</dt>    <dd><code>@</code> 渲染序列的 CSS 样式类。</dd>
+  <dt>items-source</dt> <dd><code>=</code> 一个数组或者 <a href="topic/wijmo.collections.ICollectionView.Interface.html"><b>ICollectionView</b></a> 对象，其中包含序列数据。</dd>
+  <dt>name</dt>         <dd><code>@</code> 序列显示的图例名称。</dd>
+  <dt>style</dt>        <dd><code>=</code> 渲染序列的样式，使用 ng-attr-style 指定序列对象。参见 ngAttr <a target="_blank" href="https://docs.angularjs.org/guide/directive">
+                        AngularJS Creating Custom Directives</a> 以及 <a target="_blank" href=
+                        "http://demos.wijmo.com/5/Angular/FlexChartIntro/FlexChartIntro/#Styling">
+                        FlexChart 101 Styling Series</a> 上的实例以获取更多信息。</dd>
+  <dt>symbol-marker</dt><dd><code>@</code> 标记序列的形状。可重写默认值。 参见 <a href="topic/wijmo.chart.Marker.Enum.html"><b>Marker</b></a>。</dd>
+  <dt>symbol-size</dt>  <dd><code>@</code> 渲染数据点的像素级尺寸。可以重写这个。</dd>
+  <dt>symbol-style</dt> <dd><code>=</code> 渲染数据点的样式。可以重写这个。</dd>
+  <dt>visibility</dt>   <dd><code>=</code> <a href="topic/wijmo.chart.SeriesVisibility.Enum.html"><b>SeriesVisibility</b></a> 值，用于指定是否显示序列。</dd>
+  <dt>sample-count</dt> <dd><code>@</code> 计算样品数量。</dd>
+  <dt>fit-type</dt>     <dd><code>@</code> <a href="topic/wijmo.chart.analytics.TrendLineFitType.Enum.html"><b>TrendLineFitType</b></a> 值，指定趋势线.</dd>
+  <dt>order</dt>        <dd><code>@</code> 排序。</dd>
+</dl></p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.angular.WjFlexChartWaterfall.Class.html"><b>WjFlexChartWaterfall</b></a></td>
+      <td><p>AngularJS 指令用于<a href="topic/wijmo.chart.FlexChart.Class.html"><b>FlexChart</b></a> 和 <a href="topic/wijmo.chart.finance.FinancialChart.Class.html"><b>FinancialChart</b></a> <a href="topic/wijmo.chart.analytics.Waterfall.Class.html"><b>Waterfall</b></a>。
+<b>wj-flex-chart-waterfall</b>  指令必须包含在 <a href="topic/wijmo.angular.WjFlexChart.Class.html"><b>WjFlexChart</b></a> or <a href="topic/wijmo.angular.WjFinancialChart.Class.html"><b>WjFinancialChart</b></a> 指令中。
+它支持下面的属性：</p>
+
+<p><dl class="dl-horizontal">
+  <dt>binding</dt>      <dd><code>@</code> 包含系列Y值的属性名。这个值覆盖在图表级别的设置。
+  </dd>
+  <dt>binding-x</dt>    <dd><code>@</code> 
+包含系列X值的属性名。这个值覆盖在图表级别的设置。</dd>
+  <dt>items-source</dt> <dd><code>=</code> 
+包含这个系列数据的数组或者 <a href="topic/wijmo.collections.ICollectionView.Interface.html"><b>ICollectionView</b></a>  对象。
+</dd>
+  <dt>name</dt>         <dd><code>@</code> 
+展示在图例上的这个系列的名称。
+</dd>
+  <dt>visibility</dt>   <dd><code>=</code>
+<a href="topic/wijmo.chart.SeriesVisibility.Enum.html"><b>SeriesVisibility</b></a> 决定是否和在哪展示系列。
+</dd>
+  <dt>relative-data</dt> <dd><code>@</code> 
+这个值决定是否给定的数据是相对的。
+</dd>
+  <dt>start</dt>        <dd><code>@</code> 
+开始栏的值。
+</dd>
+  <dt>start-label</dt>  <dd><code>@</code> 
+开始栏的标签。
+</dd>
+  <dt>show-total</dt>   <dd><code>@</code> 
+这个值决定是否展示合计栏。</dd>
+  <dt>total-label</dt>  <dd><code>@</code>
+合计栏的标签。</dd>
+  <dt>show-intermediate-total</dt>      <dd><code>@</code>
+这个值决定是否展示
+   决定是否显示中间合计栏。</dd>
+  <dt>intermediate-total-positions</dt> <dd><code>@</code> 
+包含用于中间合计栏的位置的索引的值。</dd>
+  <dt>intermediate-total-labels</dt>    <dd><code>@</code>
+这个值包含中间合计栏的标签。</dd>
+  <dt>connector-lines</dt>  <dd><code>@</code> 
+决定是否展示连接线。
+  The value that determines whether to show connector lines.</dd>
+  <dt>styles</dt>       <dd><code>@</code> 
+瀑布图样式的值。
+</dd>
+</dl></p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.angular.WjFlexChartWilliamsR.Class.html"><b>WjFlexChartWilliamsR</b></a></td>
+      <td><p>AngularJS 指令应用于 <a href="topic/wijmo.chart.finance.FinancialChart.Class.html"><b>FinancialChart</b></a> <a href="topic/wijmo.chart.finance.analytics.WilliamsR.Class.html"><b>WilliamsR</b></a> 对象。</p>
+
+<p><b>wj-flex-chart-williams-r</b> 指令必须包含于 <a href="topic/wijmo.angular.WjFinancialChart.Class.html"><b>WjFinancialChart</b></a> 指令。
+支持以下属性:</p>
+
+<p><dl class="dl-horizontal">
+  <dt>binding</dt>      <dd><code>@</code> 包含Y轴数据的属性名。该值可被任意重写以绑定图表数据。</dd>
+  <dt>binding-x</dt>    <dd><code>@</code> 包含X轴数据的属性名。该值可被任意重写以绑定图表数据。</dd>
+  <dt>css-class</dt>    <dd><code>@</code> 渲染序列的 CSS 样式类。</dd>
+  <dt>items-source</dt> <dd><code>=</code> 一个数组或者 <a href="topic/wijmo.collections.ICollectionView.Interface.html"><b>ICollectionView</b></a> 对象，其中包含序列数据。</dd>
+  <dt>name</dt>         <dd><code>@</code> 序列显示的图例名称。</dd>
+  <dt>style</dt>        <dd><code>=</code> 渲染序列的样式，使用 ng-attr-style 指定序列对象。参见 ngAttr <a target="_blank" href="https://docs.angularjs.org/guide/directive">
+                        AngularJS Creating Custom Directives</a> 以及 <a target="_blank" href=
+                        "http://demos.wijmo.com/5/Angular/FlexChartIntro/FlexChartIntro/#Styling">
+                        FlexChart 101 Styling Series</a> 上的实例以获取更多信息。</dd>
+  <dt>symbol-marker</dt><dd><code>@</code> 标记序列的形状。可重写默认值。 参见 <a href="topic/wijmo.chart.Marker.Enum.html"><b>Marker</b></a>。</dd>
+  <dt>symbol-size</dt>  <dd><code>@</code> 渲染数据点的像素级尺寸。可以重写这个。</dd>
+  <dt>symbol-style</dt> <dd><code>=</code> 渲染数据点的样式。可以重写这个。</dd>
+  <dt>visibility</dt>   <dd><code>=</code> <a href="topic/wijmo.chart.SeriesVisibility.Enum.html"><b>SeriesVisibility</b></a> 值，用于指定是否显示序列。</dd>
+  <dt>period</dt>       <dd><code>@</code> 计算平均值的周期。</dd>
+</dl></p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.angular.WjFlexChartYFunctionSeries.Class.html"><b>WjFlexChartYFunctionSeries</b></a></td>
+      <td><p>AngularJS 指令应用于 <a href="topic/wijmo.chart.FlexChart.Class.html"><b>FlexChart</b></a> 和 <a href="topic/wijmo.chart.finance.FinancialChart.Class.html"><b>FinancialChart</b></a> <a href="topic/wijmo.chart.analytics.YFunctionSeries.Class.html"><b>YFunctionSeries</b></a> 对象。</p>
+
+<p><b>wj-flex-chart-y-function-series</b> 指令必须包含于 <a href="topic/wijmo.angular.WjFlexChart.Class.html"><b>WjFlexChart</b></a> 或者 <a href="topic/wijmo.angular.WjFinancialChart.Class.html"><b>WjFinancialChart</b></a> 指令。
+支持以下属性:</p>
+
+<p><dl class="dl-horizontal">
+  <dt>binding</dt>      <dd><code>@</code> 包含Y轴数据的属性名。该值可被任意重写以绑定图表数据。</dd>
+  <dt>binding-x</dt>    <dd><code>@</code> 包含X轴数据的属性名。该值可被任意重写以绑定图表数据。</dd>
+  <dt>chart-type</dt>   <dd><code>@</code> 图表默认类型，可以重写这个。参见 <a href="topic/wijmo.chart.ChartType.Enum.html"><b>ChartType</b></a>。</dd>
+  <dt>css-class</dt>    <dd><code>@</code> 渲染序列的 CSS 样式类。</dd>
+  <dt>items-source</dt> <dd><code>=</code> 一个数组或者 <a href="topic/wijmo.collections.ICollectionView.Interface.html"><b>ICollectionView</b></a> 对象，其中包含序列数据。</dd>
+  <dt>name</dt>         <dd><code>@</code> 序列显示的图例名称。</dd>
+  <dt>style</dt>        <dd><code>=</code> 渲染序列的样式，使用 ng-attr-style 指定序列对象。参见 ngAttr <a target="_blank" href="https://docs.angularjs.org/guide/directive">
+                        AngularJS Creating Custom Directives</a> 以及 <a target="_blank" href=
+                        "http://demos.wijmo.com/5/Angular/FlexChartIntro/FlexChartIntro/#Styling">
+                        FlexChart 101 Styling Series</a> 上的实例以获取更多信息。</dd>
+  <dt>symbol-marker</dt><dd><code>@</code> 标记序列的形状。可重写默认值。 参见 <a href="topic/wijmo.chart.Marker.Enum.html"><b>Marker</b></a>。</dd>
+  <dt>symbol-size</dt>  <dd><code>@</code> 渲染数据点的像素级尺寸。可以重写这个。</dd>
+  <dt>symbol-style</dt> <dd><code>=</code> 渲染数据点的样式。可以重写这个。</dd>
+  <dt>visibility</dt>   <dd><code>=</code> <a href="topic/wijmo.chart.SeriesVisibility.Enum.html"><b>SeriesVisibility</b></a> 值，用于指定是否显示序列。</dd>
+  <dt>sample-count</dt> <dd><code>@</code> 计算样品数量。</dd>
+  <dt>min</dt>       <dd><code>@</code> 计算函数的参数的最小值。</dd>
+  <dt>max</dt>       <dd><code>@</code> 计算函数的参数的最大值。</dd>
+  <dt>func</dt>       <dd><code>@</code> 计算 Y 值的函数。</dd>
+</dl></p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.angular.WjFlexGrid.Class.html"><b>WjFlexGrid</b></a></td>
+      <td><p>AngularJS 指令应用于 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a> 控件。</p>
+
+<p>使用 <b>wj-flex-grid</b> 指令添加 grids 到 AngularJS 应用中。 
+注意指令和参数名称必须使用小写字母+短线语法替代驼峰命名。 示例：</p>
+
+<p><pre>&lt;p&gt;Here is a FlexGrid control:&lt;/p&gt;
+&lt;wj-flex-grid items-source="data"&gt;
+  &lt;wj-flex-grid-column 
+    header="Country" 
+    binding="country"&gt;
+  &lt;/wj-flex-grid-column&gt;
+  &lt;wj-flex-grid-column 
+    header="Sales" 
+    binding="sales"&gt;
+  &lt;/wj-flex-grid-column&gt;
+  &lt;wj-flex-grid-column 
+    header="Expenses" 
+    binding="expenses"&gt;
+  &lt;/wj-flex-grid-column&gt;
+  &lt;wj-flex-grid-column 
+    header="Downloads" 
+    binding="downloads"&gt;
+  &lt;/wj-flex-grid-column&gt;
+&lt;/wj-flex-grid&gt;</pre></p>
+
+<p>下面的例子创建了一个 FlexGrid 控件，并绑定了控制器公开的 'data' 数组上。这个表格有3列，每一列对应于数据源数组上的一个对象属性。</p>
+
+<p><a href="http://jsfiddle.net/Wijmo5/QNb9X/" target="_blank" class="btn btn-info">
+  <img src="images/fiddle.png"/>
+  在线示例
+</a>
+</p>
+
+<p><b>wj-flex-grid</b> 指令支持以下属性:</p>
+
+<p><dl class="dl-horizontal">
+  <dt>allowAddNew</dt>              <dd><code>@</code> 是否允许添加新行。</dd>
+  <dt>allow-delete</dt>             <dd><code>@</code> 是否允许删除选中行。</dd>
+  <dt>allow-dragging</dt>           <dd><code>@</code> <a href="topic/wijmo.grid.AllowDragging.Enum.html"><b>AllowDragging</b></a> 值，指定拖拽行为。</dd>
+  <dt>allow-merging</dt>            <dd><code>@</code> <a href="topic/wijmo.grid.AllowMerging.Enum.html"><b>AllowMerging</b></a> 值，指定合并行为。</dd>
+  <dt>allow-resizing</dt>           <dd><code>@</code> <a href="topic/wijmo.grid.AllowResizing.Enum.html"><b>AllowResizing</b></a> 值，指定是否允许用户重置行列尺寸。</dd>
+  <dt>allow-sorting</dt>            <dd><code>@</code> 是否允许列头排序。</dd>
+  <dt>auto-generate-columns</dt>    <dd><code>@</code> 是否基于数据源自 <b>items-source</b> 动生成列 。</dd>
+  <dt>child-items-path</dt>         <dd><code>@</code> 用于生成子表格的属性名 (或者一个数组属性名，该数组项为子级表格项目)。</dd>
+  <dt>control</dt>                  <dd><code>=</code> 指向该指令创建的 <b>FlexGrid</b> 控件的引用。</dd>
+  <dt>defer-resizing</dt>           <dd><code>=</code> 延迟重计算行列尺寸。</dd>
+  <dt>frozen-columns</dt>           <dd><code>@</code> 固定列数量。</dd>
+  <dt>frozen-rows</dt>              <dd><code>@</code> 固定行数量。</dd>
+  <dt>group-header-format</dt>      <dd><code>@</code> 分组列头格式化字符</dd>
+  <dt>headers-visibility</dt>       <dd><code>=</code> <a href="topic/wijmo.grid.HeadersVisibility.Enum.html"><b>HeadersVisibility</b></a> 值，指定列头或行头是否可见。 </dd>
+  <dt>ime-enabled</dt>              <dd><code>@</code> 设置IME。</dd>
+  <dt>initialized</dt>              <dd><code>&</code> 该事件在绑定完成控件特性值的初始化后被触发。</dd>
+  <dt>is-initialized</dt>           <dd><code>=</code> 绑定是否已经完成控件特性值的初始化。 </dd>
+  <dt>item-formatter</dt>           <dd><code>=</code> 自定义显示的格式化函数。</dd>
+  <dt>items-source</dt>             <dd><code>=</code> 一个数组或者 <a href="topic/wijmo.collections.ICollectionView.Interface.html"><b>ICollectionView</b></a> 对象，包含用于在表格中呈现的数据。</dd>
+  <dt>is-read-only</dt>             <dd><code>@</code>是否只读。</dd>
+  <dt>merge-manager</dt>            <dd><code>=</code> <a href="topic/wijmo.grid.MergeManager.Class.html"><b>MergeManager</b></a> 对象，指定特殊的单元格合并</dd>
+  <dt>selection-mode</dt>           <dd><code>@</code> <a href="topic/wijmo.grid.SelectionMode.Enum.html"><b>SelectionMode</b></a> 值，指定单元格选中模式。</dd>
+  <dt>show-groups</dt>              <dd><code>@</code> 是否显示分组行。</dd>
+  <dt>show-sort</dt>                <dd><code>@</code> 是否显示列头排序。</dd>
+  <dt>sort-row-index</dt>           <dd><code>@</code> 指定列头区域的特定行显示排序，替换当前排序。</dd>
+  <dt>tree-indent</dt>              <dd><code>@</code> 使用缩进显示分组。</dd>
+  <dt>beginning-edit</dt>           <dd><code>&</code> <b>beginningEdit</b> 事件。</dd>
+  <dt>cell-edit-ended</dt>          <dd><code>&</code> <b>cellEditEnded</b> 事件。</dd>
+  <dt>cell-edit-ending</dt>         <dd><code>&</code> <b>cellEditEnding</b> 事件。</dd>
+  <dt>prepare-cell-for-edit</dt>    <dd><code>&</code> <b>prepareCellForEdit</b> 事件。</dd>
+  <dt>resizing-column</dt>          <dd><code>&</code> <b>resizingColumn</b> 事件。</dd>
+  <dt>resized-column</dt>           <dd><code>&</code> <b>resizedColumn</b> 事件。</dd>
+  <dt>dragged-column</dt>           <dd><code>&</code> <b>draggedColumn</b> 事件。</dd>
+  <dt>dragging-column</dt>          <dd><code>&</code> <b>draggingColumn</b> 事件。</dd>
+  <dt>sorted-column</dt>            <dd><code>&</code> <b>sortedColumn</b> 事件。</dd>
+  <dt>sorting-column</dt>           <dd><code>&</code> <b>sortingColumn</b> 事件。</dd>
+  <dt>deleting-row</dt>             <dd><code>&</code> <b>deletingRow</b> 事件。</dd>
+  <dt>dragging-row</dt>             <dd><code>&</code> <b>draggingRow</b> 事件。</dd>
+  <dt>dragged-row</dt>              <dd><code>&</code> <b>draggedRow</b> 事件。</dd>
+  <dt>resizing-row</dt>             <dd><code>&</code> <b>resizingRow</b> 事件。</dd>
+  <dt>resized-row</dt>              <dd><code>&</code> <b>resizedRow</b> 事件。</dd>
+  <dt>row-added</dt>                <dd><code>&</code> <b>rowAdded</b> 事件。</dd>
+  <dt>row-edit-ended</dt>           <dd><code>&</code> <b>rowEditEnded</b> 事件。</dd>
+  <dt>row-edit-ending</dt>          <dd><code>&</code> <b>rowEditEnding</b> 事件。</dd>
+  <dt>loaded-rows</dt>              <dd><code>&</code> <b>loadedRows</b> 事件。</dd>
+  <dt>loading-rows</dt>             <dd><code>&</code> <b>loadingRows</b> 事件。</dd>
+  <dt>group-collapsed-changed</dt>  <dd><code>&</code> <b>groupCollapsedChanged</b> 事件。</dd>
+  <dt>group-collapsed-changing</dt> <dd><code>&</code> <b>groupCollapsedChanging</b> 事件。</dd>
+  <dt>items-source-changed</dt>     <dd><code>&</code> <b>itemsSourceChanged</b> 事件。</dd>
+  <dt>selection-changing</dt>       <dd><code>&</code> <b>selectionChanging</b> 事件。</dd>
+  <dt>selection-changed</dt>        <dd><code>&</code> <b>selectionChanged</b> 事件。</dd>
+  <dt>got-focus</dt>                <dd><code>&</code> <b>gotFocus</b> 事件。</dd>
+  <dt>lost-focus</dt>               <dd><code>&</code> <b>lostFocus</b> 事件。</dd>
+  <dt>scroll-position-changed</dt>  <dd><code>&</code> <b>scrollPositionChanged</b> 事件。</dd>
+</dl></p>
+
+<p><b>wj-flex-grid</b> 指令可以包含 <a href="topic/wijmo.angular.WjFlexGridColumn.Class.html"><b>WjFlexGridColumn</b></a>, <a href="topic/wijmo.angular.WjFlexGridCellTemplate.Class.html"><b>WjFlexGridCellTemplate</b></a> 和 
+<a href="topic/wijmo.angular.WjFlexGridDetail.Class.html"><b>WjFlexGridDetail</b></a> 子指令。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.angular.WjFlexGridCellTemplate.Class.html"><b>WjFlexGridCellTemplate</b></a></td>
+      <td><p>AngularJS 指令应用于 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a> 单元格模板。</p>
+
+<p><b>wj-flex-grid-cell-template</b> 指令定义 <b>FlexGrid</b> 确定的单元格类型的模板, 并且必须使用 <a href="topic/wijmo.angular.CellTemplateType.Enum.html"><b>CellTemplateType</b></a> 指定 <b>cell-type</b> 属性。 依赖于模板的单元格类型，<b>wj-flex-grid-cell-template</b> 指令必须包含一个子指令，<a href="topic/wijmo.angular.WjFlexGrid.Class.html"><b>WjFlexGrid</b></a> 或者  <a href="topic/wijmo.angular.WjFlexGridColumn.Class.html"><b>WjFlexGridColumn</b></a> 指令。</p>
+
+<p>指定列的模板必须包含于 <b>wj-flex-grid-column</b>
+指令中，并且所有不符合指定列的单元格（如行头或左上单元格）必须包含于 <b>wj-flex-grid </b>指令中。</p>
+
+<p>为了添加 HTML 代码段， <b>wj-flex-grid-cell-template</b> 指令可以包含 <b>ng-style</b> or <b>ng-class</b> 属性用以提供单元的条件格式化。</p>
+
+<p><b>ng-style/ng-class</b> 属性和 HTML 代码段都可以 <b>$col</b>, 
+<b>$row</b> and <b>$item</b>使用模板变量引用 <a href="topic/wijmo.grid.Column.Class.html"><b>Column</b></a>, 
+<a href="topic/wijmo.grid.Row.Class.html"><b>Row</b></a> 和 <b>Row.dataItem</b> 对象，以及其上的单元格。</p>
+
+<p>对于这些单元格类型如 <b>Group</b> 和 <b>CellEdit</b>, 附加的 <b>$value</b> 
+变量包含一个未被格式化的单元格值。示例是一个 FlexGrid ，为 Country 列常规和列头单元格使用了不同的模板:</p>
+
+<p><pre>&lt;wj-flex-grid items-source="data"&gt;
+  &lt;wj-flex-grid-cell-template cell-type="RowHeader"&gt;
+    {&#8203;{$row.index}}
+  &lt;/wj-flex-grid-cell-template&gt;
+  &lt;wj-flex-grid-cell-template cell-type="RowHeaderEdit"&gt;
+    ...
+  &lt;/wj-flex-grid-cell-template&gt;
+&nbsp;
+  &lt;wj-flex-grid-column header="Country" binding="country"&gt;
+    &lt;wj-flex-grid-cell-template cell-type="ColumnHeader"&gt;
+      &lt;img ng-src="resources/globe.png" /&gt;
+        {&#8203;{$col.header}}
+      &lt;/wj-flex-grid-cell-template&gt;
+      &lt;wj-flex-grid-cell-template cell-type="Cell"&gt;
+        &lt;img ng-src="resources/{&#8203;{$item.country}}.png" /&gt;
+        {&#8203;{$item.country}}
+      &lt;/wj-flex-grid-cell-template&gt;
+    &lt;/wj-flex-grid-column&gt;
+  &lt;wj-flex-grid-column header="Sales" binding="sales"&gt;&lt;/wj-flex-grid-column&gt;
+&lt;/wj-flex-grid&gt;</pre></p>
+
+<p>关于单元格模板更多细节请参见 <b>CellTemplateType</b> 枚举.</p>
+
+<p>注意 <b>wj-flex-grid-column</b> 指令可以包含任意的，被常规单元格 (<i>cell-type="Cell"</i>)模板处理过的内容. 但是如果 <b>wj-flex-grid-cell-template</b> 存在并且被设置为 <b>wj-flex-grid-column</b> 指令下的 <i>cell-type="Cell"</i>，它将获得更高的优先级。</p>
+
+<p><b>wj-flex-grid-cell-template</b> 指令支持以下属性:</p>
+
+<p><dl class="dl-horizontal">
+  <dt>cell-type</dt>
+  <dd><code>@</code>
+    <b>CellTemplateType</b> 值，定义了模板支持的单元格类型。
+  </dd>
+  <dt>cell-overflow</dt>
+  <dd><code>@</code>
+    为单元格定义了 <b>style.overflow</b> 属性值。
+  </dd>
+</dl></p>
+
+<p><b>cell-type</b> 属性需要下列枚举值:</p>
+
+<p><p><b>Cell</b><p>
+定义常规（数据）单元格模板，必须是 <b>WjFlexGridColumn</b> 指令的子指令。
+例如, 在 Country 列单元格显示国旗的模板定义:</p>
+
+<p><pre>&lt;wj-flex-grid-column header="Country" binding="country"&gt;
+  &lt;wj-flex-grid-cell-template cell-type="Cell"&gt;
+    &lt;img ng-src="resources/{&#8203;{$item.country}}.png" /&gt;
+    {&#8203;{$item.country}}
+  &lt;/wj-flex-grid-cell-template&gt;
+&lt;/wj-flex-grid-column&gt;</pre></p>
+
+<p>在分级 <b>FlexGrid</b> 中(也就是说，有属性被指定为 <b>childItemsPath</b> ), 如果没有 <b>Group</b> 模板被提供，这个列 <b>Column</b> 中的无分组单元格也是使用该模板。</p>
+
+<p><p><b>CellEdit</b></p></p>
+
+<p>定义单元格编辑模式模板，必须是 <b>WjFlexGridColumn</b> 指令的子指令。 
+该单元格类型拥有一个附加的 <b>$value</b> 属性用于绑定。它包含更新前后的值。
+示例中，使用 Wijmo <a href="topic/wijmo.input.InputNumber.Class.html"><b>InputNumber</b></a> 控件作为 "Sales" 列的编辑器:</p>
+
+<p><pre>&lt;wj-flex-grid-column header="Sales" binding="sales"&gt;
+  &lt;wj-flex-grid-cell-template cell-type="CellEdit"&gt;
+    &lt;wj-input-number value="$value" step="1"&gt;&lt;/wj-input-number&gt;
+  &lt;/wj-flex-grid-cell-template&gt;
+&lt;/wj-flex-grid-column&gt;</pre></p>
+
+<p><p><b>ColumnHeader</b></p></p>
+
+<p>定义列头单元格模板，必须是 <b>WjFlexGridColumn</b> 指令的子指令。 
+示例中，该模板为 "Country" 列的列头添加了图片:</p>
+
+<p><pre>&lt;wj-flex-grid-column header="Country" binding="country"&gt;
+  &lt;wj-flex-grid-cell-template cell-type="ColumnHeader"&gt;
+    &lt;img ng-src="resources/globe.png" /&gt;
+    {&#8203;{$col.header}}
+  &lt;/wj-flex-grid-cell-template&gt;
+&lt;/wj-flex-grid-column&gt;</pre></p>
+
+<p><p><b>RowHeader</b></p></p>
+
+<p>定义行头单元格模板， 必须是 <b>WjFlexGrid</b> 指令的子指令。
+示例中，该模板在行头中显示了目录:</p>
+
+<p><pre>&lt;wj-flex-grid items-source="data"&gt;
+  &lt;wj-flex-grid-cell-template cell-type="RowHeader"&gt;
+    {&#8203;{$row.index}}
+  &lt;/wj-flex-grid-cell-template&gt;
+&lt;/wj-flex-grid&gt;</pre></p>
+
+<p>注意该模板适用于行头单元格，即使该行处理编辑模式。为了处理行头的编辑模式，需要定义 <b>RowHeaderEdit</b> 模板。</p>
+
+<p><p><b>RowHeaderEdit</b></p></p>
+
+<p>定义行头编辑模式模板，必须是 <b>WjFlexGrid</b> 指令的子指令。 
+示例中，该模板将在行头被编辑时显示点"."号:</p>
+
+<p><pre>&lt;wj-flex-grid items-source="data"&gt;
+  &lt;wj-flex-grid-cell-template cell-type="RowHeaderEdit"&gt;
+      ...
+  &lt;/wj-flex-grid-cell-template&gt;
+&lt;/wj-flex-grid&gt;</pre></p>
+
+<p>为行头 <b>RowHeader</b> 模板添加标准的编辑指示器，使用 <b>RowHeaderEdit</b> 模板:</p>
+
+<p><pre>&lt;wj-flex-grid items-source="data"&gt;
+  &lt;wj-flex-grid-cell-template cell-type="RowHeaderEdit"&gt;
+    {&#8203;{&amp;#x270e;}}
+  &lt;/wj-flex-grid-cell-template&gt;
+&lt;/wj-flex-grid&gt;</pre></p>
+
+<p><p><b>TopLeft</b></p></p>
+
+<p>定义左上角单元格模板，必须是 <b>WjFlexGrid</b> 指令的子指令。 
+示例中，表格左上角单元将显示一个 down/right 字符:</p>
+
+<p><pre>&lt;wj-flex-grid items-source="data"&gt;
+  &lt;wj-flex-grid-cell-template cell-type="TopLeft"&gt;
+    &lt;span class="wj-glyph-down-right"&gt;&lt;/span&gt;
+  &lt;/wj-flex-grid-cell-template&gt;
+&lt;/wj-flex-grid&gt;</pre></p>
+
+<p><p><b>GroupHeader</b></p></p>
+
+<p>定义分组头单元格模板 <a href="topic/wijmo.grid.GroupRow.Class.html"><b>GroupRow</b></a>, 必须是 <b>WjFlexGridColumn</b> 指令的子指令。</p>
+
+<p><b>$row</b> 变量包含一个 <b>GroupRow</b> 类的实例。如果分组来自于 <a href="topic/wijmo.collections.CollectionView.Class.html"><b>CollectionView</b></a>, 那么 <b>$item</b> 变量将引用 <a href="topic/wijmo.collections.CollectionViewGroup.Class.html"><b>CollectionViewGroup</b></a> 对象。</p>
+
+<p>示例中，模板使用 checkbox 元素作为收缩/扩展标记:</p>
+
+<p><pre>&lt;wj-flex-grid-column header="Country" binding="country"&gt;
+  &lt;wj-flex-grid-cell-template cell-type="GroupHeader"&gt;
+    &lt;input type="checkbox" ng-model="$row.isCollapsed"/&gt; 
+    {&#8203;{$item.name}} ({&#8203;{$item.items.length}} items)
+  &lt;/wj-flex-grid-cell-template&gt;
+&lt;/wj-flex-grid-column&gt;</pre></p>
+
+<p><p><b>Group</b></p></p>
+
+<p>定义常规单元模板 (非分组头) <b>GroupRow</b>. 必须是 <b>WjFlexGridColumn</b> 指令的子指令。 
+该单元格有一个附加的 <b>$value</b> 变量可用于绑定，当列上指定了聚集属性 <b>aggregate</b> 时, 它包含未被格式化的值。</p>
+
+<p>示例中，模板显示了 "Sales" 列上聚集的值和分组的类型:</p>
+
+<p><pre>&lt;wj-flex-grid-column header="Sales" binding="sales" aggregate="Avg"&gt;
+  &lt;wj-flex-grid-cell-template cell-type="Group"&gt;
+    Average: {&#8203;{$value | number:2}}
+  &lt;/wj-flex-grid-cell-template&gt;
+&lt;/wj-flex-grid-column&gt;</pre></p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.angular.WjFlexGridColumn.Class.html"><b>WjFlexGridColumn</b></a></td>
+      <td><p>AngularJS 指令应用于 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a> <a href="topic/wijmo.grid.Column.Class.html"><b>Column</b></a> 对象。</p>
+
+<p><b>wj-flex-grid-column</b> 指令必须包含于 <a href="topic/wijmo.angular.WjFlexGrid.Class.html"><b>WjFlexGrid</b></a> 指令。
+支持以下属性:</p>
+
+<p><dl class="dl-horizontal">
+  <dt>aggregate</dt>         <dd><code>@</code> <a href="topic/wijmo.Aggregate.Enum.html"><b>Aggregate</b></a> 对象，用于显示合计行和合计列。</dd>
+  <dt>align</dt>             <dd><code>@</code> 设置数据列的水平对齐方式。</dd>
+  <dt>allow-dragging</dt>    <dd><code>@</code> 指定拖拽行为。</dd>
+  <dt>allow-sorting</dt>     <dd><code>@</code> 是否允许排序。</dd>
+  <dt>allow-resizing</dt>    <dd><code>@</code> 是否重置行列尺寸</dd>
+  <dt>allow-merging</dt>     <dd><code>@</code> 是否允许列合并。</dd>
+  <dt>binding</dt>           <dd><code>@</code> 数据源绑定。</dd>
+  <dt>css-class</dt>         <dd><code>@</code> 渲染列的 css 样式类。</dd>
+  <dt>data-map</dt>          <dd><code>=</code> <a href="topic/wijmo.grid.DataMap.Class.html"><b>DataMap</b></a> 对象，用于编辑数据行的值。</dd>
+  <dt>data-type</dt>         <dd><code>@</code> <a href="topic/wijmo.DataType.Enum.html"><b>DataType</b></a> 枚举值，指定列存储的数据类型。</dd>
+  <dt>format</dt>            <dd><code>@</code> 用于显示行值的格式化字符串 (参见 <a href="topic/wijmo.Globalize.Class.html"><b>Globalize</b></a>)。</dd>
+  <dt>header</dt>            <dd><code>@</code> 列标题。</dd>
+  <dt>input-type</dt>        <dd><code>@</code> 列的输入类型。</dd>
+  <dt>is-content-html</dt>   <dd><code>@</code> 以纯文本还是HTML显示内容。</dd>
+  <dt>is-read-only</dt>      <dd><code>@</code> 是否只读。</dd>
+  <dt>is-selected</dt>       <dd><code>@</code> 是否选中。</dd>
+  <dt>mask</dt>              <dd><code>@</code> 编辑列时显示的掩饰字符。</dd>
+  <dt>max-width</dt>         <dd><code>@</code> 最大列宽。</dd>
+  <dt>min-width</dt>         <dd><code>@</code> 最小列宽。</dd>
+  <dt>name</dt>              <dd><code>@</code> 列名称。</dd>
+  <dt>required</dt>          <dd><code>@</code> 是否是必须列，即不能是null值。</dd>
+  <dt>show-drop-down</dt>    <dd><code>@</code> 是否下拉列表编辑基于 <b>DataMap</b> 的值。</dd>
+  <dt>visible</dt>           <dd><code>@</code> 列是否可见。</dd>
+  <dt>width</dt>             <dd><code>@</code> 列宽。</dd>
+  <dt>word-wrap</dt>         <dd><code>@</code> 单元格字符折行方式。</dd>
+</dl></p>
+
+<p><b>wj-flex-grid-column</b> 指令中的任何 HTML 内容将被处理成列上的单元格模板。模板仅适用于正常的单元格，如果你想指定特殊的单元格如列头或分组标题，那么需要使用 <a href="topic/wijmo.angular.WjFlexGridCellTemplate.Class.html"><b>WjFlexGridCellTemplate</b></a> 指令。</p>
+
+<p>下面的例子创建了两列，使用模板和条件样式:</p>
+
+<p><a href="http://jsfiddle.net/Wijmo5/5L423/" target="_blank" class="btn btn-info">
+  <img src="images/fiddle.png"/>
+  在线示例
+</a>
+</p>
+
+<p><b>wj-flex-grid-column</b> 指令可能包含 <b>WjFlexGridCellTemplate</b> 自治领。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.angular.WjFlexGridDetail.Class.html"><b>WjFlexGridDetail</b></a></td>
+      <td><p>AngularJS 指令应用于 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a> <a href="topic/wijmo.grid.detail.DetailRow.Class.html"><b>DetailRow</b></a> 模板。</p>
+
+<p><b>wj-flex-grid-detail</b> 指令必须包含于 
+<b>wj-flex-grid</b> 指令。</p>
+
+<p><b>wj-flex-grid-detail</b> 使用 <a href="topic/wijmo.grid.detail.FlexGridDetailProvider.Class.html"><b>FlexGridDetailProvider</b></a> 对象描述细节可见性，可以使用任意的的 HTML 代码段定义行内容的细节，该代码段可以包含 AngularJS 绑定和指令。
+除了控制器中的任意属性，本地变量 <b>$row</b> 和 
+<b>$item</b> 等模板变量可以在 AngularJS 绑定中使用，并使用其引用 <a href="topic/wijmo.grid.Row.Class.html"><b>Row</b></a> 和 <b>Row.dataItem</b> 等对象。 示例：</p>
+
+<p><pre>&lt;p&gt;Here is a detail row with a nested FlexGrid:&lt;/p&gt;
+&nbsp;
+&lt;wj-flex-grid 
+  items-source="categories"&gt;
+  &lt;wj-flex-grid-column header="Name" binding="CategoryName"&gt;&lt;/wj-flex-grid-column&gt;
+  &lt;wj-flex-grid-column header="Description" binding="Description" width="*"&gt;&lt;/wj-flex-grid-column&gt;
+  &lt;wj-flex-grid-detail max-height="250" detail-visibility-mode="detailMode"&gt;
+    &lt;wj-flex-grid 
+      items-source="getProducts($item.CategoryID)"
+      headers-visibility="Column"&gt;
+    &lt;/wj-flex-grid&gt;
+  &lt;/wj-flex-grid-detail&gt;
+&lt;/wj-flex-grid&gt;</pre></p>
+
+<p>表示为<b>wj-flex-grid-detail</b> 指令的 <b>FlexGridDetailProvider</b> 对象引用能够以简便的方式检索绑定到该指令的 <b>control</b> 的属性。这样的机制为所有的 API 提供简便的方式在模板中使用
+<b>FlexGridDetailProvider</b> 变量，给你用户体验方面完全的控制。
+下面的例子在名称列单元格上添加了一个自定义的显示/隐藏编辑, 以及隐藏明细行的按钮。这些元素调用 <b>FlexGridDetailProvider</b>, <b>hideDetail</b> 和 <b>showDetail</b> 方法，在它们的 <b>ng-click</b> 事件绑定中实现自己的显示隐藏逻辑:</p>
+
+<p><pre>&lt;p&gt;Here is a FlexGrid with custom show/hide detail elements:&lt;/p&gt;
+&nbsp;
+&lt;wj-flex-grid 
+  items-source="categories"
+  headers-visibility="Column"
+  selection-mode="Row"&gt;
+  &lt;wj-flex-grid-column header="Name" binding="CategoryName" is-read-only="true" width="200"&gt;
+    &lt;img ng-show="dp.isDetailVisible($row)" ng-click="dp.hideDetail($row)" src="resources/hide.png" /&gt;
+    &lt;img ng-hide="dp.isDetailVisible($row)" ng-click="dp.showDetail($row, true)" src="resources/show.png" /&gt;
+    {&#8203;{$item.CategoryName}}
+  &lt;/wj-flex-grid-column&gt;
+  &lt;wj-flex-grid-column header="Description" binding="Description" width="2*"&gt;&lt;/wj-flex-grid-column&gt;
+  &lt;wj-flex-grid-detail control="dp" detail-visibility-mode="Code"&gt;
+    &lt;div style="padding:12px;background-color:#cee6f7"&gt;
+      ID: &lt;b&gt;{&#8203;{$item.CategoryID}}&lt;/b&gt;&lt;br /&gt;
+      Name: &lt;b&gt;{&#8203;{$item.CategoryName}}&lt;/b&gt;&lt;br /&gt;
+      Description: &lt;b&gt;{&#8203;{$item.Description}}&lt;/b&gt;&lt;br /&gt;
+      &lt;button class="btn btn-default" ng-click="dp.hideDetail($row)"&gt;Hide Detail&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/wj-flex-grid-detail&gt;
+&lt;/wj-flex-grid&gt;</pre></p>
+
+<p><b>wj-flex-grid-detail</b> 指令支持以下属性:</p>
+
+<p><dl class="dl-horizontal">
+  <dt>control</dt>                <dd><code>=</code> 该指令创建的指向 <b>FlexGridDetailProvider</b> 对象的引用。</dd>
+  <dt>detail-visibility-mode</dt> <dd><code>@</code> <a href="topic/wijmo.grid.detail.DetailVisibilityMode.Enum.html"><b>DetailVisibilityMode</b></a> 值，定义合适显示明细行。</dd>
+  <dt>max-height</dt>             <dd><code>@</code>明细行的最大高度，像素值。</dd>
+  <dt>row-has-detail</dt>         <dd><code>=</code>判断是否有明细行的回调函数。</dd>
+</dl></p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.angular.WjFlexGridFilter.Class.html"><b>WjFlexGridFilter</b></a></td>
+      <td><p>AngularJS 指令应用于 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a> <a href="topic/wijmo.grid.filter.FlexGridFilter.Class.html"><b>FlexGridFilter</b></a> 对象。</p>
+
+<p><b>wj-flex-grid-filter</b> 指令必须包含于 <a href="topic/wijmo.angular.WjFlexGrid.Class.html"><b>WjFlexGrid</b></a> 指令。 示例：</p>
+
+<p><pre>&lt;p&gt;Here is a FlexGrid control with column filters:&lt;/p&gt;
+&lt;wj-flex-grid items-source="data"&gt;
+  &lt;wj-flex-grid-filter filter-columns="['country', 'expenses']"&gt;&lt;/wj-flex-grid-filter&gt;
+&nbsp;
+  &lt;wj-flex-grid-column 
+    header="Country" 
+    binding="country"&gt;
+  &lt;/wj-flex-grid-column&gt;
+  &lt;wj-flex-grid-column 
+    header="Sales" 
+    binding="sales"&gt;
+  &lt;/wj-flex-grid-column&gt;
+  &lt;wj-flex-grid-column 
+    header="Expenses" 
+    binding="expenses"&gt;
+  &lt;/wj-flex-grid-column&gt;
+  &lt;wj-flex-grid-column 
+    header="Downloads" 
+    binding="downloads"&gt;
+  &lt;/wj-flex-grid-column&gt;
+&lt;/wj-flex-grid&gt;</pre></p>
+
+<p><b>wj-flex-grid-filter</b> 指令支持以下属性:</p>
+
+<p><dl class="dl-horizontal">
+  <dt>filter-columns</dt>    <dd><code>=</code> 包含列过滤器的数组。</dd>
+  <dt>show-filter-icons</dt> <dd><code>@</code>  是否在列头显示过滤器图标。</dd>
+  <dt>filter-changing</dt>   <dd><code>&</code> <b>filterChanging</b> 事件。</dd>
+  <dt>filter-changed</dt>    <dd><code>&</code> <b>filterChanged</b> 事件。</dd>
+  <dt>filter-applied</dt>    <dd><code>&</code> <b>filterApplied</b> 事件。</dd>
+</dl></p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.angular.WjFlexPie.Class.html"><b>WjFlexPie</b></a></td>
+      <td><p>AngularJS 指令应用于 <a href="topic/wijmo.chart.FlexPie.Class.html"><b>FlexPie</b></a> 控件。</p>
+
+<p><dl class="dl-horizontal">
+  <dt>items-source</dt>      <dd><code>=</code> 一个数组或者 <a href="topic/wijmo.collections.ICollectionView.Interface.html"><b>ICollectionView</b></a> 对象，其中包含序列数据。</dd>
+  <dt>binding</dt>           <dd><code>@</code> 包含绑定项目的属性名称。</dd>
+  <dt>binding-name</dt>      <dd><code>@</code> 包含绑定项目名称的属性名称。</dd>
+  <dt>footer</dt>            <dd><code>@</code> 页脚显示的文本。</dd>
+  <dt>footer-style</dt>       <dd><code>=</code> 页脚显示的文本的样式。</dd>
+  <dt>header</dt>            <dd><code>@</code> 页头显示的文本。</dd>
+  <dt>header-style</dt>      <dd><code>=</code> 页头显示的文本的样式。</dd>
+  <dt>initialized</dt>       <dd><code>&</code> 该事件在绑定完成控件特性值的初始化后被触发。</dd>
+  <dt>is-initialized</dt><dd><code>=</code> 绑定是否已经完成控件特性值的初始化。 </dd>
+  <dt>inner-radius</dt>      <dd><code>@</code> 内圆的半径。</dd>
+  <dt>is-animated</dt>       <dd><code>@</code> 是否使用动画效果将选中项目移动到 selectedItemPosition。</dd>
+  <dt>item-formatter</dt>    <dd><code>=</code> 自定义显示的格式化函数。</dd>
+  <dt>offset</dt>            <dd><code>@</code> 饼图到中心的偏移量。</dd>
+  <dt>palette</dt>           <dd><code>=</code> 包含用于显示项目的默认颜色的数组。</dd>
+  <dt>plot-margin</dt>       <dd><code>=</code> 控件与边际之间的像素点数，或者 CSS-Style margins。</dd>
+  <dt>reversed</dt>          <dd><code>@</code> 是否逆时针绘制饼图。</dd>
+  <dt>start-angle</dt>       <dd><code>@</code> 绘制饼图的起始角度。</dd>
+  <dt>selected-item-offset</dt>
+                             <dd><code>@</code> 选中的项目的偏移量。</dd>
+  <dt>selected-item-position</dt>
+                             <dd><code>@</code> <a href="topic/wijmo.chart.Position.Enum.html"><b>Position</b></a> 值，指定选中项目的显示位置。</dd>
+  <dt>selection-mode</dt>    <dd><code>@</code> <a href="topic/wijmo.grid.SelectionMode.Enum.html"><b>SelectionMode</b></a> 值，指定选中模式。</dd>
+  <dt>tooltip-content</dt>   <dd><code>@</code> 图表提示 <a href="topic/wijmo.chart.ChartTooltip.Class.html"><b>ChartTooltip</b></a> 内容。</dd>
+  <dt>got-focus</dt>         <dd><code>&</code> <b>gotFocus</b> 事件。</dd>
+  <dt>lost-focus</dt>        <dd><code>&</code> <b>lostFocus</b> 事件。</dd>
+  <dt>rendering</dt>         <dd><code>&</code> <b>rendering</b> 事件。</dd>
+  <dt>rendered</dt>          <dd><code>&</code> <b>rendered</b> 事件。</dd>
+</dl></p>
+
+<p>wj-flex-pie 指令可能包含以下子指令:
+<a href="topic/wijmo.angular.WjFlexChartLegend.Class.html"><b>WjFlexChartLegend</b></a> and <a href="topic/wijmo.angular.WjFlexPieDataLabel.Class.html"><b>WjFlexPieDataLabel</b></a>.</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.angular.WjFlexPieDataLabel.Class.html"><b>WjFlexPieDataLabel</b></a></td>
+      <td><p>AngularJS 指令应用于 <a href="topic/wijmo.chart.FlexPie.Class.html"><b>FlexPie</b></a> <a href="topic/wijmo.chart.PieDataLabel.Class.html"><b>PieDataLabel</b></a> 对象.</p>
+
+<p><b>wj-flex-pie-data-label</b> 指令必须包含于 <a href="topic/wijmo.angular.WjFlexPie.Class.html"><b>WjFlexPie</b></a> 指令。
+支持以下属性:</p>
+
+<p><dl class="dl-horizontal">
+  <dt>content</dt>       <dd><code>=</code> 标签内容，可以是字符串或函数。</dd>
+  <dt>border</dt>        <dd><code>@</code> 是否包含边框。</dd>
+  <dt>position</dt>      <dd><code>@</code> <a href="topic/wijmo.chart.PieLabelPosition.Enum.html"><b>PieLabelPosition</b></a> 值，标签的位置。</dd>
+</dl></p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.angular.WjFlexRadar.Class.html"><b>WjFlexRadar</b></a></td>
+      <td><p>AngularJS 指令用于 <a href="topic/wijmo.chart.radar.FlexRadar.Class.html"><b>FlexRadar</b></a> 控件。
+使用 <b>wj-flex-radar</b>  指令想你的 AngularJs 应用添加雷达图。注意，指令和参数名必须使用小写加短线格式。
+wj-flex-radar  指令支持下面的属性：</p>
+
+<p><dl class="dl-horizontal">
+  <dt>binding</dt>           <dd><code>@</code>包含图表Y轴值的属性名。你可以在系列级别上覆盖它。
+ </dd>
+  <dt>binding-x</dt>         <dd><code>@</code>
+  包含图表X轴值的属性名。你可以在系列级别上覆盖它。
+ </dd>
+  <dt>chart-type</dt>        <dd><code>@</code> 选择这个系列对象的默认图表类型。你可以在系列级别上覆盖它。
+  The default chart type to use in rendering series
+                             objects. 你可以在系列级别上覆盖它。 查看 <a href="topic/wijmo.chart.radar.RadarChartType.Enum.html"><b>RadarChartType</b></a>.</dd>
+  <dt>control</dt>           <dd><code>=</code>指向这里指定创建的<b>FlexRadar控件的引用</b>。</dd>
+  <dt>footer</dt>            <dd><code>@</code> 在图表底部展示的图表内容（纯文本）。</dd>
+  <dt>footer-style</dt>       <dd><code>=</code> 
+  应用到图表底部的样式。</dd>
+  <dt>header</dt>            <dd><code>@</code> 在图表标题展示的图表内容（纯文本）。</dd>
+  <dt>header-style</dt>      <dd><code>=</code> 应用到图表标题的样式。</dd>
+  <dt>initialized</dt>       <dd><code>&</code> 
+  在绑定完成对控件的初始化后触发。</dd>
+  <dt>is-initialized</dt><dd><code>=</code>
+一个值指示绑定是否完成对控件的初始化。 </dd>
+  <dt>interpolate-nulls</dt> <dd><code>@</code> 
+  获取一个值，决定当数据为null是，插入值还是留空隙。</p>
+
+<p> </dd>
+  <dt>item-formatter</dt>    <dd><code>=</code> 
+  自定义数据点外观的格式化函数。</dd>
+  <dt>items-source</dt>      <dd><code>=</code>
+包含用于创建图表数据的数组或者<a href="topic/wijmo.collections.ICollectionView.Interface.html"><b>ICollectionView</b></a> 对象。</dd>
+  <dt>legend-toggle</dt>     <dd><code>@</code>
+获取一个值，决定在点击图例时是否切换图表可见性。</dd>
+  <dt>options</dt>           <dd><code>=</code> 
+只能应用与确定图表类型的 <b>options</b> 。</dd>
+  <dt>palette</dt>           <dd><code>=</code> 
+包含用于展示每个系列的颜色的数组。</dd>
+  <dt>plot-margin</dt>       <dd><code>=</code> 
+在控件边缘留空隙的像素数，或是 CSS-style 的margin。
+</dd>
+  <dt>stacking</dt>          <dd><code>@</code>
+ <a href="topic/wijmo.chart.Stacking.Enum.html"><b>Stacking</b></a>  值指定系列堆积还是独立绘制。
+ </dd>
+  <dt>reversed</dt>          <dd><code>@</code> 
+ <b>reversed</b>  决定角度是否为逆时针。
+ </dd>
+  <dt>startAngle</dt>        <dd><code>@</code>
+指定控件的其实角度，单位是度。
+</dd>
+  <dt>totalAngle</dt>        <dd><code>@</code> 
+指定控件的总角度，单位是度。
+</dd>
+  <dt>symbol-size</dt>       <dd><code>@</code>
+用于在Scatter,LineSymbols, 和 SplineSymbols 图表中绘制数据点的符号尺寸，单位是像素，你可以在系列级别覆盖。
+</dd>
+  <dt>tooltip-content</dt>   <dd><code>@</code> 
+ 展示在<a href="topic/wijmo.chart.ChartTooltip.Class.html"><b>ChartTooltip</b></a> 属性中的文本。</dd>
+  <dt>rendering</dt>         <dd><code>&</code> 
+ <b>rendering</b> 事件处理程序。
+ </dd>
+  <dt>rendered</dt>          <dd><code>&</code><b>rendered</b> 事件处理程序 。</dd>
+  <dt>series-visibility-changed</dt>
+                             <dd><code>&</code> <b>seriesVisibilityChanged</b> 事件处理程序。</dd>
+</dl>
+wj-flex-radar 指令可能包含下面的子指令：
+<a href="topic/wijmo.angular.WjFlexChartAxis.Class.html"><b>WjFlexChartAxis</b></a>, <a href="topic/wijmo.angular.WjFlexRadarSeries.Class.html"><b>WjFlexRadarSeries</b></a>, <a href="topic/wijmo.angular.WjFlexChartLegend.Class.html"><b>WjFlexChartLegend</b></a> 和 <a href="topic/wijmo.angular.WjFlexChartDataLabel.Class.html"><b>WjFlexChartDataLabel</b></a>.</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.angular.WjFlexRadarAxis.Class.html"><b>WjFlexRadarAxis</b></a></td>
+      <td><p>AngularJS 指令用于<a href="topic/wijmo.chart.radar.FlexRadar.Class.html"><b>FlexRadar</b></a> <a href="topic/wijmo.chart.radar.FlexRadarAxis.Class.html"><b>FlexRadarAxis</b></a> <a href="topic/wijmo.chart.Axis.Class.html"><b>Axis</b></a>。
+ <b>wj-flex-radar-axis</b>  指令必须包含在 <a href="topic/wijmo.angular.WjFlexRadar.Class.html"><b>WjFlexRadar</b></a> directive 指令中。
+支持下面的特性：</p>
+
+<p><dl class="dl-horizontal">
+  <dt>wj-property</dt>     <dd><code>@</code>
+定义 <b>FlexChart属性名</b>，axis-x 或 axis-y,使用指令初始化。.</dd></p>
+
+<p>
+  <dt>axis-line</dt>       <dd><code>@</code> 这个值指定坐标轴是否可见。</dd>
+  <dt>binding</dt>         <dd><code>@</code> 
+为 <b>itemsSource</b> 属性获取或设置以逗号分割的属性名以用于坐标轴标签，第一个名称指定坐标轴上的值，第二只值代表对in个的坐标轴标签，默认值为：‘value，text’。</dd>
+  <dt>format</dt>          <dd><code>@</code> 
+用于坐标轴表亲啊的格式化字符串。(参见 <a href="topic/wijmo.Globalize.Class.html"><b>Globalize</b></a>).</dd>
+  <dt>item-formatter</dt>  <dd><code>=</code> 
+格式化函数自定义坐标轴标签的外观。</dd>
+  <dt>items-source</dt>    <dd><code>=</code>
+用于坐标轴标签的数据源。</dd>
+  <dt>labels</dt>          <dd><code>@</code>
+指示坐标轴标签是否可见。
+</dd>
+  <dt>label-angle</dt>     <dd><code>@</code>
+坐标轴标签的旋转角度。
+</dd>
+  <dt>label-align</dt>     <dd><code>@</code>
+坐标轴标签的对齐方式。
+  </dd>
+  <dt>label-padding</dt>   <dd><code>@</code> 
+坐标轴标签的填充。</dd>
+  <dt>major-grid</dt>      <dd><code>@</code> 
+决定坐标轴是否包含表格线。</dd>
+  <dt>major-tick-marks</dt><dd><code>@</code> 
+定义坐标轴刻度线的外观。
+                           see <a href="topic/wijmo.chart.TickMark.Enum.html"><b>TickMark</b></a>.</dd>
+  <dt>major-unit</dt>      <dd><code>@</code> 
+坐标轴标间的单位数量。</dd>
+  <dt>max</dt>             <dd><code>@</code> 
+坐标轴上显示的最小值。
+</dd>
+  <dt>min</dt>             <dd><code>@</code>
+坐标轴标签上的最大值。
+</dd>
+  <dt>minor-grid</dt>      <dd><code>@</code>
+决定坐标值是否包含次网格线。</dd>
+  <dt>minor-tick-marks</dt><dd><code>@</code> 
+定义坐标轴上次要刻度线的外观。
+                           (see <b>TickMark</b>).</dd>
+  <dt>minor-unit</dt>      <dd><code>@</code> 
+次要坐标轴间的单位数量。</p>
+
+<p></dd>
+  <dt>origin</dt>          <dd><code>@</code> 坐标原点。</dd>
+  <dt>overlappingLabels</dt><dd><code>@</code> 
+<a href="topic/wijmo.chart.OverlappingLabels.Enum.html"><b>OverlappingLabels</b></a>  指示是否处理重叠轴标签。
+</dd>
+  <dt>position</dt>        <dd><code>@</code> 
+指定坐标轴的位置。</dd>
+  <dt>title</dt>           <dd><code>@</code>
+坐标轴旁的标题文本。</dd>
+</dl></p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.angular.WjFlexRadarSeries.Class.html"><b>WjFlexRadarSeries</b></a></td>
+      <td><p>用于 <a href="topic/wijmo.chart.finance.FinancialSeries.Class.html"><b>FinancialSeries</b></a> 的AngularJs指令。</p>
+
+<p> <b>wj-financial-chart-series</b> 指令可能包含在 <a href="topic/wijmo.angular.WjFinancialChart.Class.html"><b>WjFinancialChart</b></a>  指令中。.
+ 它支持下面的特性：</p>
+
+<p>
+<dl class="dl-horizontal">
+  <dt>axis-x</dt>       <dd><code>@</code>系列的X轴。</dd>
+  <dt>axis-y</dt>       <dd><code>@</code>系列的X轴。</dd>
+  <dt>binding</dt>      <dd><code>@</code> 包含系列Y轴值的属性名。
+  这个值覆盖任何绑定在图表上的设置。</dd>
+  <dt>binding-x</dt>    <dd><code>@</code> 包含系列X轴值的属性名。
+  这个值覆盖任何绑定在图表上的设置。</dd>
+  <dt>chart-type</dt>   <dd><code>@</code> 
+用于为这个系列绘制的图表类型。这个值覆盖任何绑定在图表上的设置。参见
+                        <a href="topic/wijmo.chart.finance.FinancialChartType.Enum.html"><b>FinancialChartType</b></a>.</dd>
+  <dt>css-class</dt>    <dd><code>@</code> 
+用于这个系列的CSS类。</dd>
+  <dt>items-source</dt> <dd><code>=</code> 
+包含这几个系列数据的数组或者<a href="topic/wijmo.collections.ICollectionView.Interface.html"><b>ICollectionView</b></a> 对象。
+</dd>
+  <dt>name</dt>         <dd><code>@</code>
+展示在图例上的系列名称。</dd>
+  <dt>style</dt>        <dd><code>=</code>
+系列样式。 使用ng-attr-style 指令系列样式对象。参见 ngAttr 属性绑定
+   The series style. Use ng-attr-style to specify the series
+                        style object as an object.
+                        <a target="_blank" href="https://docs.angularjs.org/guide/directive">
+                        AngularJS 创建自定义指令。</a> and the <a target="_blank" href=
+                        "http://demos.wijmo.com/5/Angular/FlexChartIntro/FlexChartIntro/#Styling">
+                        FlexChart 101 Styling Series</a></dd>
+  <dt>altStyle</dt>     <dd><code>=</code> 
+系列可替代风格。
+</dd>
+  <dt>symbol-marker</dt><dd><code>@</code>
+这个系列使用的标记形状，这个值覆盖了设置在图表上的默认值。</dd>
+  <dt>symbol-size</dt>  <dd><code>@</code> 
+用于 Scatter, LineSymbols, 或 SplineSymbols 图表的数据点符号的尺寸，单位是像素。
+这个值覆盖了图标级别上的设置。
+</dd>
+  <dt>symbol-style</dt> <dd><code>=</code> </p>
+
+<p>
+ 用于 Scatter, LineSymbols, 或 SplineSymbols 图表的数据点符号的样式，单位是像素。
+这个值覆盖了图标级别上的设置。</dd>
+  <dt>visibility</dt>   <dd><code>=</code> 
+ <a href="topic/wijmo.chart.SeriesVisibility.Enum.html"><b>SeriesVisibility</b></a>  指定是否和在哪里展示系列。</dd>
+</dl>
+在大多数情况下， <b>wj-financial-chart-series</b>  仅指定 <b>name</b> 和 <b>binding</b> 属性。
+保留的值是集成自父  <b>wj-financial-chart</b> 指令。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.angular.WjFlexSheet.Class.html"><b>WjFlexSheet</b></a></td>
+      <td><p>AngularJS 指令应用于 <a href="topic/wijmo.grid.sheet.FlexSheet.Class.html"><b>FlexSheet</b></a> 控件。</p>
+
+<p>使用 <b>wj-flex-sheet</b> 指令添加 <b>FlexSheet</b> 控件到 AngularJS 应用中。 
+注意指令和参数名称必须使用小写字母+短线语法替代驼峰命名。 示例：</p>
+
+<p><pre>&lt;p&gt;这是一个有一个绑定的表单和两个非绑定的表单的FlexSheet控件。:&lt;/p&gt;
+&lt;wj-flex-sheet&gt;
+   &lt;wj-sheet name="Country" items-source="ctx.data"&gt;&lt;/wj-sheet&gt;
+   &lt;wj-sheet name="Report" row-count="25" column-count="13"&gt;&lt;/wj-sheet&gt;
+   &lt;wj-sheet name="Formulas" row-count="310" column-count="10"&gt;&lt;/wj-sheet&gt;
+&lt;/wj-flex-sheet&gt;</pre></p>
+
+<p><b>wj-flex-sheet</b> directive extends <a href="topic/wijmo.angular.WjFlexGrid.Class.html"><b>WjFlexGrid</b></a> with the following attributes:</p>
+
+<p><dl class="dl-horizontal">
+  <dt>control</dt>                   <dd><code>=</code> 该指令创建的指向 <b>FlexSheet</b> 的引用</dd>
+  <dt>is-tab-holder-visible</dt>     <dd><code>@</code> 工作表页签是否可见。 </dd>
+  <dt>selected-sheet-index</dt>      <dd><code>=</code> 获取或设置页签索引。 </dd>
+  <dt>dragging-row-column</dt>    <dd><code>&</code> <b>draggingRowColumn</b> 事件。</dd>
+  <dt>dropping-row-column</dt>    <dd><code>&</code> <b>droppingRowColumn</b> 事件。</dd>
+  <dt>selected-sheet-changed</dt>    <dd><code>&</code> <b>selectedSheetChanged</b> 事件。</dd>
+</dl></p>
+
+<p><b>wj-flex-sheet</b> 指令可以包含 <a href="topic/wijmo.angular.WjSheet.Class.html"><b>WjSheet</b></a> 子指令。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.angular.WjGroupPanel.Class.html"><b>WjGroupPanel</b></a></td>
+      <td><p>AngularJS 指令应用于 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a> <a href="topic/wijmo.grid.grouppanel.GroupPanel.Class.html"><b>GroupPanel</b></a> 控件。</p>
+
+<p><b>wj-group-panel</b> 指令通过 <b>grid</b> 属性连接到 <b>FlexGrid</b> 控件。 
+示例：</p>
+
+<p><pre>&lt;p&gt;Here is a FlexGrid control with GroupPanel:&lt;/p&gt;
+&nbsp;
+&lt;wj-group-panel grid="flex" placeholder="Drag columns here to create groups."&gt;&lt;/wj-group-panel&gt;
+&nbsp;
+&lt;wj-flex-grid control="flex" items-source="data"&gt;
+  &lt;wj-flex-grid-column 
+    header="Country" 
+    binding="country"&gt;
+  &lt;/wj-flex-grid-column&gt;
+  &lt;wj-flex-grid-column 
+    header="Sales" 
+    binding="sales"&gt;
+  &lt;/wj-flex-grid-column&gt;
+  &lt;wj-flex-grid-column 
+    header="Expenses" 
+    binding="expenses"&gt;
+  &lt;/wj-flex-grid-column&gt;
+  &lt;wj-flex-grid-column 
+    header="Downloads" 
+    binding="downloads"&gt;
+  &lt;/wj-flex-grid-column&gt;
+&lt;/wj-flex-grid&gt;</pre></p>
+
+<p><b>wj-group-panel</b> 指令支持以下属性:</p>
+
+<p><dl class="dl-horizontal">
+  <dt>grid</dt>                      <dd><code>@</code> 当前 <b>GroupPanel</b> 连接的 <b>FlexGrid</b> 。</dd>
+  <dt>hide-grouped-columns</dt>      <dd><code>@</code>是否隐藏分组标题区域。</dd>
+  <dt>max-groups</dt>                <dd><code>@</code>最大分组数。</dd>
+  <dt>placeholder</dt>               <dd><code>@</code>当分组为空时显示的占位字符。</dd>
+  <dt>got-focus</dt>                 <dd><code>&</code> <b>gotFocus</b> 事件。</dd>
+  <dt>lost-focus</dt>                <dd><code>&</code> <b>lostFocus</b> 事件。</dd>
+</dl></p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.angular.WjInputColor.Class.html"><b>WjInputColor</b></a></td>
+      <td><p>AngularJS 指令应用于 <a href="topic/wijmo.input.InputColor.Class.html"><b>InputColor</b></a> 控件。</p>
+
+<p>使用 <b>wj-input-color</b> 指令添加 <b>InputColor</b> 到 AngularJS 应用中。 
+注意指令和参数名称必须使用小写字母+短线语法替代驼峰命名。 示例：</p>
+
+<p><pre>&lt;p&gt;Here is an InputColor control:&lt;/p&gt;
+&lt;wj-input-color 
+  value="theColor" 
+  show-alpha-channel="false"&gt;
+&lt;/wj-input-color&gt;</pre></p>
+
+<p><b>wj-input-color</b> 指令支持以下属性:</p>
+
+<p><dl class="dl-horizontal">
+  <dt>ng-model</dt>      <dd><code>@</code> 使用Angular的ng-model指令绑定控件的 <b>value</b> 属性。使用ng-model指令绑定属性能够获得一些共通的特性，例如验证，自动添加控件状态到form实例，等等。 使用 wj-model-property 重定义被 ng-model指定绑定的控件属性。</dd>
+  <dt>wj-model-property</dt>     <dd><code>@</code> 使用 <b>ng-model</b> 指令指定控件绑定的作用域。</dd>
+  <dt>control</dt>               <dd><code>=</code> 该指令创建的指向 InputColor 的引用</dd>
+  <dt>is-dropped-down</dt>       <dd><code>@</code> 下拉列表是否可见。</dd>
+  <dt>initialized</dt>           <dd><code>&</code> 该事件在绑定完成控件特性值的初始化后被触发。</dd>
+  <dt>is-initialized</dt>        <dd><code>=</code> 绑定是否已经完成控件特性值的初始化。 </dd>
+  <dt>show-alpha-channel</dt>    <dd><code>@</code> 是否显示透明度编辑器。</dd>
+  <dt>place-holder</dt>          <dd><code>@</code> 描述输入字段预期值的提示信息。</dd>
+  <dt>required</dt>              <dd><code>@</code> 是否阻止null值。</dd>
+  <dt>show-drop-down-button</dt> <dd><code>@</code> 是否显示下拉按钮。</dd>
+  <dt>text</dt>                  <dd><code>=</code> 控件显示文本。</dd>
+  <dt>value</dt>                 <dd><code>=</code> 编辑的颜色。</dd>
+  <dt>got-focus</dt>             <dd><code>&</code> <b>gotFocus</b> 事件。</dd>
+  <dt>lost-focus</dt>            <dd><code>&</code> <b>lostFocus</b> 事件。</dd>
+  <dt>is-dropped-down-changing</dt><dd><code>&</code> <b>isDroppedDownChanging</b> 事件。</dd>
+  <dt>is-dropped-down-changed</dt><dd><code>&</code> <b>isDroppedDownChanged</b> 事件。</dd>
+  <dt>text-changed</dt>          <dd><code>&</code> <b>textChanged</b> 事件。</dd>
+  <dt>value-changed</dt>         <dd><code>&</code> <b>valueChanged</b> 事件。</dd>
+</dl></p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.angular.WjInputDate.Class.html"><b>WjInputDate</b></a></td>
+      <td><p>AngularJS 指令应用于 <a href="topic/wijmo.input.InputDate.Class.html"><b>InputDate</b></a> 控件。</p>
+
+<p>使用 <b>wj-input-date</b> 指令添加 <b>InputDate</b> 到 AngularJS 应用中。 
+注意指令和参数名称必须使用小写字母+短线语法替代驼峰命名。 示例：</p>
+
+<p><pre>&lt;p&gt;Here is an InputDate control:&lt;/p&gt;
+&lt;wj-input-date 
+  value="theDate" 
+  format="M/d/yyyy"&gt;
+&lt;/wj-input-date&gt;</pre></p>
+
+<p>下面的例子使用 <b>InputDate</b> 和 an <a href="topic/wijmo.input.InputTime.Class.html"><b>InputTime</b></a> 控件呈现 <b>Date</b> 值 (包含日期和时间信息)，需要注意两个控件是怎样绑定到同一个控制器属性变量上的，并每个编辑数据的不同部分。这个例子同时展示了 <a href="topic/wijmo.input.Calendar.Class.html"><b>Calendar</b></a> 控件可以通过单击选择日期。</p>
+
+<p><a href="http://jsfiddle.net/Wijmo5/46PhD/" target="_blank" class="btn btn-info">
+  <img src="images/fiddle.png"/>
+  在线示例
+</a>
+</p>
+
+<p><b>wj-input-date</b> 指令支持以下属性:</p>
+
+<p><dl class="dl-horizontal">
+  <dt>ng-model</dt>      <dd><code>@</code> 使用Angular的ng-model指令绑定控件的 <b>value</b> 属性。使用ng-model指令绑定属性能够获得一些共通的特性，例如验证，自动添加控件状态到form实例，等等。 使用 wj-model-property 重定义被 ng-model指定绑定的控件属性。</dd>
+  <dt>wj-model-property</dt>  <dd><code>@</code> 使用 <b>ng-model</b> 指令指定控件绑定的作用域。</dd>
+  <dt>control</dt>            <dd><code>=</code> 该指令创建的指向 <b>InputDate</b> 的引用</dd>
+  <dt>format</dt>             <dd><code>@</code> 日期编辑时的格式化字符串 (参见 <a href="topic/wijmo.Globalize.Class.html"><b>Globalize</b></a>).</dd>
+  <dt>mask</dt>               <dd><code>@</code> 用于验证用户输入的蒙版 (参见 <a href="topic/wijmo.input.InputMask.Class.html"><b>InputMask</b></a>).</dd>
+  <dt>is-dropped-down</dt>    <dd><code>@</code> 指示下拉当前是否可见。</dd>
+  <dt>initialized</dt>        <dd><code>&</code> 该事件在绑定完成控件特性值的初始化后被触发。</dd>
+  <dt>is-initialized</dt>     <dd><code>=</code> 绑定是否已经完成控件特性值的初始化。 </dd>
+  <dt>max</dt>                <dd><code>@</code> 最大有效日期 (格式化字符串为 "yyyy-MM-dd")。</dd>
+  <dt>min</dt>                <dd><code>@</code> 最小有效日期 (格式化字符串为 "yyyy-MM-dd")。</dd>
+  <dt>place-holder</dt>       <dd><code>@</code> 描述输入字段预期值的提示信息。</dd>
+  <dt>required</dt>           <dd><code>@</code> 是否阻止null值。</dd>
+  <dt>show-drop-down-button</dt><dd><code>@</code> 是否显示下拉按钮。</dd>
+  <dt>text</dt>               <dd><code>=</code> 控件显示文本。</dd>
+  <dt>value</dt>              <dd><code>=</code> 编辑的日期至。</dd>
+  <dt>got-focus</dt>          <dd><code>&</code> <b>gotFocus</b> 事件。</dd>
+  <dt>lost-focus</dt>         <dd><code>&</code> <b>lostFocus</b> 事件。</dd>
+  <dt>is-dropped-down-changing</dt> <dd><code>&</code> <b>isDroppedDownChanging</b> 事件。</dd>
+  <dt>is-dropped-down-changed </dt> <dd><code>&</code> <b>isDroppedDownChanged</b> 事件。</dd>
+  <dt>text-changed</dt>       <dd><code>&</code> <b>textChanged</b> 事件。</dd>
+  <dt>value-changed</dt>      <dd><code>&</code> <b>valueChanged</b> 事件。</dd>
+</dl></p>
+
+<p><b>min</b> 和 <b>max</b> 属性需要指定为格式化 "yyyy-MM-dd" 的日期字符串， 技术上讲，你可以使用符合W3C <a href="http://tools.ietf.org/html/rfc3339" target="_blank">[RFC 3339]</a> 定义的任何格式化字符，只要它们是能够被HTML5支持格式化字符。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.angular.WjInputDateTime.Class.html"><b>WjInputDateTime</b></a></td>
+      <td><p>AngularJS 指令应用于 <a href="topic/wijmo.input.InputDateTime.Class.html"><b>InputDateTime</b></a> 控件。</p>
+
+<p>使用 <b>wj-input-date-time</b> 指令添加 <b>InputDateTime</b> 到 AngularJS 应用中。 
+注意指令和参数名称必须使用小写字母+短线语法替代驼峰命名。 示例：</p>
+
+<p><pre>&lt;p&gt;Here is an InputDateTime control:&lt;/p&gt;
+&lt;wj-input-date-time 
+  value="theDate" 
+  format="M/d/yyyy"&gt;
+&lt;/wj-input-date-time&gt;</pre></p>
+
+<p><b>wj-input-date-time</b> 指令支持以下属性:</p>
+
+<p><dl class="dl-horizontal">
+  <dt>ng-model</dt>      <dd><code>@</code> 使用Angular的ng-model指令绑定控件的 <b>value</b> 属性。使用ng-model指令绑定属性能够获得一些共通的特性，例如验证，自动添加控件状态到form实例，等等。 使用 wj-model-property 重定义被 ng-model指定绑定的控件属性。</dd>
+  <dt>wj-model-property</dt>  <dd><code>@</code> 使用 <b>ng-model</b> 指令指定控件绑定的作用域。</dd>
+  <dt>control</dt>            <dd><code>=</code> 该指令创建的指向 <a href="topic/wijmo.input.InputDate.Class.html"><b>InputDate</b></a> 的引用</dd>
+  <dt>format</dt>             <dd><code>@</code> 该指令创建的指向 <b>InputDate</b> 的引用</dd>
+  <dt>format</dt>             <dd><code>@</code> 日期编辑时的格式化字符串 (参见 <a href="topic/wijmo.Globalize.Class.html"><b>Globalize</b></a>).</dd>
+  <dt>mask</dt>               <dd><code>@</code> 用于验证用户输入的蒙版 (参见 <a href="topic/wijmo.input.InputMask.Class.html"><b>InputMask</b></a>).</dd>
+  <dt>is-dropped-down</dt>    <dd><code>@</code> 指示下拉当前是否可见。</dd>
+  <dt>initialized</dt>        <dd><code>&</code> 该事件在绑定完成控件特性值的初始化后被触发。</dd>
+  <dt>is-initialized</dt>     <dd><code>=</code> 绑定是否已经完成控件特性值的初始化。 </dd>
+  <dt>max</dt>                <dd><code>@</code> 最大有效日期 (格式化字符串为 "yyyy-MM-dd")。</dd>
+  <dt>min</dt>                <dd><code>@</code> 最小有效日期 (格式化字符串为 "yyyy-MM-dd")。</dd>
+  <dt>place-holder</dt>       <dd><code>@</code> 描述输入字段预期值的提示信息。</dd>
+  <dt>required</dt>           <dd><code>@</code> 是否阻止null值。</dd>
+  <dt>show-drop-down-button</dt><dd><code>@</code> 是否显示下拉按钮。</dd>
+  <dt>text</dt>               <dd><code>=</code> 控件显示文本。</dd>
+  <dt>timeMax</dt>            <dd><code>@</code> 最小有效时间（格式化为 "hh:mm"）。</dd>
+  <dt>timeMin</dt>            <dd><code>@</code> 最大有效时间（格式化为 "hh:mm"）。</dd>
+  <dt>timeStep</dt>           <dd><code>@</code> 分钟下拉列表的步进值。</dd>
+  <dt>timeFormat</dt>         <dd><code>@</code> 下拉列表显示的格式化字符。</dd>
+  <dt>value</dt>              <dd><code>=</code> 编辑的日期。</dd>
+  <dt>got-focus</dt>          <dd><code>&</code> <b>gotFocus</b> 事件。</dd>
+  <dt>lost-focus</dt>         <dd><code>&</code> <b>lostFocus</b> 事件。</dd>
+  <dt>is-dropped-down-changing</dt> <dd><code>&</code> <b>isDroppedDownChanging</b> 事件。</dd>
+  <dt>is-dropped-down-changed </dt> <dd><code>&</code> <b>isDroppedDownChanged</b> 事件。</dd>
+  <dt>text-changed</dt>       <dd><code>&</code> <b>textChanged</b> 事件。</dd>
+  <dt>value-changed</dt>      <dd><code>&</code> <b>valueChanged</b> 事件。</dd>
+</dl></p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.angular.WjInputMask.Class.html"><b>WjInputMask</b></a></td>
+      <td><p>AngularJS 指令应用于 <a href="topic/wijmo.input.InputMask.Class.html"><b>InputMask</b></a> 控件。</p>
+
+<p>使用 <b>wj-input-mask</b> 指令添加 <b>InputMask</b> 到 AngularJS 应用中。 
+注意指令和参数名称必须使用小写字母+短线语法替代驼峰命名。 示例：</p>
+
+<p><pre>&lt;p&gt;Here is an InputMask control:&lt;/p&gt;
+&lt;wj-input-mask
+  mask="99/99/99"
+  mask-placeholder="*"&gt;
+&lt;/wj-input-mask&gt;</pre></p>
+
+<p><b>wj-input-mask</b> 指令支持以下属性:</p>
+
+<p><dl class="dl-horizontal">
+  <dt>ng-model</dt>      <dd><code>@</code> 使用Angular的ng-model指令绑定控件的 <b>value</b> 属性。使用ng-model指令绑定属性能够获得一些共通的特性，例如验证，自动添加控件状态到form实例，等等。 使用 wj-model-property 重定义被 ng-model指定绑定的控件属性。</dd>
+  <dt>wj-model-property</dt> <dd><code>@</code> 使用 <b>ng-model</b> 指令指定控件绑定的作用域。</dd>
+  <dt>control</dt>           <dd><code>=</code> 该指令创建的指向 <a href="topic/wijmo.input.InputNumber.Class.html"><b>InputNumber</b></a> 的引用</dd>
+  <dt>initialized</dt>       <dd><code>&</code> 该事件在绑定完成控件特性值的初始化后被触发。</dd>
+  <dt>is-initialized</dt>    <dd><code>=</code> 绑定是否已经完成控件特性值的初始化。 </dd>
+  <dt>mask</dt>              <dd><code>@</code> 格式化用户输入的掩饰字符。</dd>
+  <dt>prompt-char</dt>       <dd><code>@</code> 提示用户输入位置的字符。</dd>
+  <dt>place-holder</dt>      <dd><code>@</code> 描述输入字段预期值的提示信息。</dd>
+  <dt>value</dt>             <dd><code>=</code> 编辑的字符值。</dd>
+  <dt>raw-value</dt>         <dd><code>=</code> 编辑的字符值，移除了占位符等。</dd>
+  <dt>got-focus</dt>         <dd><code>&</code> <b>gotFocus</b> 事件。</dd>
+  <dt>lost-focus</dt>        <dd><code>&</code> <b>lostFocus</b> 事件。</dd>
+  <dt>value-changed</dt>     <dd><code>&</code> <b>valueChanged</b> 事件。</dd>
+</dl></p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.angular.WjInputNumber.Class.html"><b>WjInputNumber</b></a></td>
+      <td><p>AngularJS 指令应用于 <a href="topic/wijmo.input.InputNumber.Class.html"><b>InputNumber</b></a> 控件。</p>
+
+<p>使用 <b>wj-input-number</b> 指令添加 <b>InputNumber</b> 到 AngularJS 应用中。 
+注意指令和参数名称必须使用小写字母+短线语法替代驼峰命名。 示例：</p>
+
+<p><pre>&lt;p&gt;Here is an InputNumber control:&lt;/p&gt;
+&lt;wj-input-number
+  value="theNumber"
+  min="0"
+  max="10"
+  format="n0"
+  placeholder="number between zero and ten"&gt;
+&lt;/wj-input-number&gt;</pre></p>
+
+<p>下面的例子创建了几个 <b>InputNumber</b> 控件，并且展示了不同的格式化字符，范围，步进值的效果。</p>
+
+<p><a href="http://jsfiddle.net/Wijmo5/u7HpD/" target="_blank" class="btn btn-info">
+  <img src="images/fiddle.png"/>
+  在线示例
+</a>
+</p>
+
+<p><b>wj-input-number</b> 指令支持以下属性:</p>
+
+<p><dl class="dl-horizontal">
+  <dt>ng-model</dt>      <dd><code>@</code> 使用Angular的ng-model指令绑定控件的 <b>value</b> 属性。使用ng-model指令绑定属性能够获得一些共通的特性，例如验证，自动添加控件状态到form实例，等等。 使用 wj-model-property 重定义被 ng-model指定绑定的控件属性。</dd>
+  <dt>wj-model-property</dt>  <dd><code>@</code> 使用 <b>ng-model</b> 指令指定控件绑定的作用域。</dd>
+  <dt>control</dt>       <dd><code>=</code> 该指令创建的指向 <b>InputNumber</b> 的引用</dd>
+  <dt>format</dt>        <dd><code>@</code> 显示数字的格式化字符 (参见 <a href="topic/wijmo.Globalize.Class.html"><b>Globalize</b></a>).</dd>
+  <dt>input-type</dt>    <dd><code>@</code> 输入控件的类型。</dd>
+  <dt>initialized</dt>   <dd><code>&</code> 该事件在绑定完成控件特性值的初始化后被触发。</dd>
+  <dt>is-initialized</dt><dd><code>=</code> 绑定是否已经完成控件特性值的初始化。 </dd>
+  <dt>max</dt>           <dd><code>@</code> 最大有效数值。</dd>
+  <dt>min</dt>           <dd><code>@</code> 最小有效数值。</dd>
+  <dt>place-holder</dt>  <dd><code>@</code> 描述输入字段预期值的提示信息。</dd>
+  <dt>required</dt>      <dd><code>@</code> 是否阻止null值。</dd>
+  <dt>show-spinner</dt>  <dd><code>@</code> 是否显示按钮用于改变 <b>step</b> 值。</dd>
+  <dt>step</dt>          <dd><code>@</code> 用户点击按钮时增加或较少的值。</dd>
+  <dt>text</dt>          <dd><code>=</code> 控件显示文本。</dd>
+  <dt>value</dt>         <dd><code>=</code> 编辑的数字。</dd>
+  <dt>got-focus</dt>     <dd><code>&</code> <b>gotFocus</b> 事件。</dd>
+  <dt>lost-focus</dt>    <dd><code>&</code> <b>lostFocus</b> 事件。</dd>
+  <dt>text-changed</dt>  <dd><code>&</code> <b>textChanged</b> 事件。</dd>
+  <dt>value-changed</dt> <dd><code>&</code> <b>valueChanged</b> 事件。</dd>
+</dl></p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.angular.WjInputTime.Class.html"><b>WjInputTime</b></a></td>
+      <td><p>AngularJS 指令应用于 <a href="topic/wijmo.input.InputTime.Class.html"><b>InputTime</b></a> control.</p>
+
+<p>使用 <b>wj-input-time</b> 指令添加 <b>InputTime</b> 到 AngularJS 应用中。 
+注意指令和参数名称必须使用小写字母+短线语法替代驼峰命名。 示例：</p>
+
+<p><pre>&lt;p&gt;Here is an InputTime control:&lt;/p&gt;
+&lt;wj-input-time 
+  value="theDate" 
+  format="h:mm tt"
+  min="09:00" max="17:00"
+  step="15"&gt;
+&lt;/wj-input-time&gt;</pre></p>
+
+<p><a href="http://jsfiddle.net/Wijmo5/46PhD/" target="_blank" class="btn btn-info">
+  <img src="images/fiddle.png"/>
+  在线示例
+</a>
+</p>
+
+<p>这个例子使用 <a href="topic/wijmo.input.InputDate.Class.html"><b>InputDate</b></a> 和 an <b>InputTime</b> 控件呈现 <b>Date</b> 值 (包含日期和时间信息)，需要注意两个控件是怎样绑定到同一个控制器属性变量上的，并每个编辑数据的不同部分。这个例子同时展示了 <a href="topic/wijmo.input.Calendar.Class.html"><b>Calendar</b></a> 控件可以通过单击选择日期。</p>
+
+<p><b>wj-input-time</b> 指令扩展了 <a href="topic/wijmo.angular.WjComboBox.Class.html"><b>WjComboBox</b></a> ，添加了如下特性:</p>
+
+<p><dl class="dl-horizontal">
+  <dt>ng-model</dt>      <dd><code>@</code> 使用Angular的ng-model指令绑定控件的 <b>value</b> 属性。使用ng-model指令绑定属性能够获得一些共通的特性，例如验证，自动添加控件状态到form实例，等等。 使用 wj-model-property 重定义被 ng-model指定绑定的控件属性。</dd>
+  <dt>wj-model-property</dt><dd><code>@</code> 使用 <b>ng-model</b> 指令指定控件绑定的作用域。</dd>
+  <dt>control</dt>       <dd><code>=</code> 该指令创建的指向 <b>InputDate</b> 的引用。</dd>
+  <dt>format</dt>        <dd><code>@</code> 选中事件的格式化字符串。</dd>
+  <dt>mask</dt>          <dd><code>@</code> 用户输入的验证蒙版 (参见 <a href="topic/wijmo.input.InputMask.Class.html"><b>InputMask</b></a>)。</dd>
+  <dt>max</dt>           <dd><code>@</code> 最小有效时间（格式化为 "hh:mm"）。</dd>
+  <dt>min</dt>           <dd><code>@</code> 最大有效时间（格式化为 "hh:mm"）。</dd>
+  <dt>step</dt>          <dd><code>@</code> 下拉列表的步进值。</dd>
+  <dt>value</dt>         <dd><code>=</code> 编辑的时间 (以 Data 对象的形式).</dd>
+  <dt>value-changed</dt> <dd><code>&</code> @see: valueChanged 事件。</dd>
+</dl></p>
+
+<p><b>min</b> 和 <b>max</b> 属性需要指定为格式化 "yyyy-MM-dd" 的日期字符串， 技术上讲，你可以使用符合W3C <a href="http://tools.ietf.org/html/rfc3339" target="_blank">[RFC 3339]</a> 定义的任何格式化字符，只要它们是能够被HTML5支持格式化字符。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.angular.WjItemTemplate.Class.html"><b>WjItemTemplate</b></a></td>
+      <td><p>AngularJS 指令应用于 <a href="topic/wijmo.input.ListBox.Class.html"><b>ListBox</b></a> 和 <a href="topic/wijmo.input.Menu.Class.html"><b>Menu</b></a> 项目模板。</p>
+
+<p><b>wj-item-template</b> 指令必须包含在一个 <a href="topic/wijmo.angular.WjListBox.Class.html"><b>WjListBox</b></a> 或者 <a href="topic/wijmo.angular.WjMenu.Class.html"><b>WjMenu</b></a> 指令中。</p>
+
+<p><b>wj-item-template</b> 定义了一个 <b>ListBox</b> 的项目模板，并绑定到 <b>Menu</b> 控件上。
+该模板包含使用了 AngularJS 绑定和指令的任意 HTML 代码段。除了控制器上任何可用的属性变量之外， <b>$item</b>, 
+<b>$itemIndex</b> 和 <b>$control</b> 模板变量也可用于 AngularJS 绑定中，用以指定数据项，索引，以及父控件等。</p>
+
+<p>注意指令和参数名称必须使用小写字母+短线语法替代驼峰命名。 示例：</p>
+
+<p><pre>&lt;p&gt;Here is a ListBox control with an item template:&lt;/p&gt;
+&lt;wj-list-box items-source="musicians"&gt;
+    &lt;wj-item-template&gt;
+        {&#8203;{$itemIndex}}. &lt;b&gt;{&#8203;{$item.name}}&lt;/b&gt;
+        &lt;br /&gt;
+        &lt;img ng-src="{&#8203;{$item.photo}}"/&gt;
+    &lt;/wj-item-template&gt;
+&lt;/wj-list-box&gt;</pre></p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.angular.WjLinearGauge.Class.html"><b>WjLinearGauge</b></a></td>
+      <td><p>AngularJS 指令应用于 <a href="topic/wijmo.gauge.LinearGauge.Class.html"><b>LinearGauge</b></a> 控件。</p>
+
+<p>使用 <b>wj-linear-gauge</b> 指令添加 linear gauges 到 AngularJS 应用中。 
+注意指令和参数名称必须使用小写字母+短线语法替代驼峰命名。 示例：</p>
+
+<p><pre>&lt;wj-linear-gauge 
+  value="ctx.gauge.value" 
+  show-text="Value"
+  is-read-only="false"&gt;
+  &lt;wj-range 
+    wj-property="pointer" 
+    thickness="0.2"&gt;
+    &lt;wj-range 
+      min="0" 
+      max="33" 
+      color="green"&gt;
+    &lt;/wj-range&gt;
+    &lt;wj-range 
+      min="33" 
+      max="66" 
+      color="yellow"&gt;
+    &lt;/wj-range&gt;
+    &lt;wj-range 
+      min="66" 
+      max="100" 
+      color="red"&gt;
+    &lt;/wj-range&gt;
+  &lt;/wj-range&gt;
+&lt;/wj-linear-gauge&gt;</pre></p>
+
+<p><b>wj-linear-gauge</b> 指令支持以下属性:</p>
+
+<p><dl class="dl-horizontal">
+  <dt>ng-model</dt>      <dd><code>@</code> 使用Angular的ng-model指令绑定控件的 <b>vlue</b> 属性。使用ng-model指令绑定属性能够获得一些共通的特性，例如验证，自动添加控件状态到form实例，等等。 使用 wj-model-property 重定义被 ng-model指定绑定的控件属性。</dd>
+  <dt>wj-model-property</dt>  <dd><code>@</code> 使用 <b>ng-model</b> 指令指定控件绑定的作用域。</dd>
+  <dt>control</dt>       <dd><code>=</code> 该指令创建的指向 <b>LinearGauge</b> 
+                         的引用</dd>
+  <dt>direction</dt>     <dd><code>@</code> <a href="topic/wijmo.gauge.GaugeDirection.Enum.html"><b>GaugeDirection</b></a> 值，测量值增长的方向。</dd>
+  <dt>format</dt>        <dd><code>@</code> 以文本显示测量值时的格式化字符串。</dd>
+  <dt>has-shadow</dt>    <dd><code>@</code> 是否显示阴影。</dd>
+  <dt>initialized</dt>   <dd><code>&</code> 该事件在绑定完成控件特性值的初始化后被触发。</dd>
+  <dt>is-initialized</dt> <dd><code>=</code> 绑定是否已经完成控件特性值的初始化。 </dd>
+  <dt>is-animated</dt>   <dd><code>@</code> 是否使用动画显示测量值的变化。</dd>
+  <dt>is-read-only</dt>  <dd><code>@</code> 是否只读。</dd>
+  <dt>min</dt>           <dd><code>@</code> 显示测量值的最大值。</dd>
+  <dt>max</dt>           <dd><code>@</code> 显示测量值的最小值。</dd>
+  <dt>show-text</dt>     <dd><code>@</code> <a href="topic/wijmo.gauge.ShowText.Enum.html"><b>ShowText</b></a> 值，测量值的显示文本。</dd>
+  <dt>step</dt>          <dd><code>@</code> 用户点击增加或减少按钮时的步进值。</dd>
+  <dt>thickness</dt>     <dd><code>@</code> 测量值的厚度，从0到1的值。</dd>
+  <dt>value</dt>         <dd><code>=</code> 显示的测量值。</dd>
+  <dt>got-focus</dt>     <dd><code>&</code> <b>gotFocus</b> 事件。</dd>
+  <dt>lost-focus</dt>    <dd><code>&</code> <b>lostFocus</b> 事件。</dd>
+</dl></p>
+
+<p><b>wj-linear-gauge</b> 指令可能包含一个或多个 <a href="topic/wijmo.angular.WjRange.Class.html"><b>WjRange</b></a> 指令。</p>
+
+<p><a href="http://jsfiddle.net/Wijmo5/t842jozb/" target="_blank" class="btn btn-info">
+  <img src="images/fiddle.png"/>
+  在线示例
+</a>
+</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.angular.WjListBox.Class.html"><b>WjListBox</b></a></td>
+      <td><p>AngularJS 指令应用于 <a href="topic/wijmo.input.ListBox.Class.html"><b>ListBox</b></a> 控件.</p>
+
+<p>使用 <b>wj-list-box</b> 指令添加 <b>ListBox</b> 到 AngularJS 应用中。
+注意指令和参数名称必须使用小写字母+短线语法替代驼峰命名。 示例：</p>
+
+<p><pre>b&gt;Here is a ListBox control:&lt;/p&gt;
+&lt;wj-list-box
+  selected-item="theCountry" 
+  items-source="countries"
+  placeholder="country"&gt;
+&lt;/wj-list-box&gt;</pre></p>
+
+<p>下面的例子创建了一个 <b>ListBox</b> 控件，并绑定到控制器公开的 'countries' 数组上。 选中的值使用 'theCountry' 控件属性绑定到 <b>selected-item</b> 上。</p>
+
+<p><a href="http://jsfiddle.net/Wijmo5/37GHw/" target="_blank" class="btn btn-info">
+  <img src="images/fiddle.png"/>
+  在线示例
+</a>
+</p>
+
+<p><b>wj-list-box</b> 指令支持以下属性:</p>
+
+<p><dl class="dl-horizontal">
+  <dt>ng-model</dt>      <dd><code>@</code> 使用Angular的ng-model指令绑定控件的 <b>selectedValue</b> 属性。使用ng-model指令绑定属性能够获得一些共通的特性，例如验证，自动添加控件状态到form实例，等等。 使用 wj-model-property 重定义被 ng-model指定绑定的控件属性。</dd>
+  <dt>wj-model-property</dt>  <dd><code>@</code> 使用 <b>ng-model</b> 指令指定控件绑定的作用域。</dd>
+  <dt>control</dt>              <dd><code>=</code> 该指令创建的指向 <b>ListBox</b> 的引用</dd>
+  <dt>display-member-path</dt>  <dd><code>@</code> 表示可视化项目的属性名称。</dd>
+  <dt>is-content-html</dt>      <dd><code>@</code> 以纯文本还是HTML显示内容。</dd>
+  <dt>initialized</dt>          <dd><code>&</code> 该事件在绑定完成控件特性值的初始化后被触发。</dd>
+  <dt>is-initialized</dt>       <dd><code>=</code> 绑定是否已经完成控件特性值的初始化。 </dd>
+  <dt>item-formatter</dt>       <dd><code>=</code> 自定义显示的格式化函数。</dd>
+  <dt>items-source</dt>         <dd><code>=</code> 一个数组或者包含列表项的 <a href="topic/wijmo.collections.ICollectionView.Interface.html"><b>ICollectionView</b></a> 。</dd>
+  <dt>max-height</dt>           <dd><code>@</code> 列表的最大高度。</dd>
+  <dt>selected-index</dt>       <dd><code>=</code> 选中项的索引。</dd>
+  <dt>selected-item</dt>        <dd><code>=</code> 选中项。</dd>
+  <dt>selected-value</dt>       <dd><code>=</code> 使用 <b>selected-value-path</b>.</dd> 获得的选中项 <b>selected-item</b> 的值。
+  <dt>selected-value-path</dt>  <dd><code>@</code> 用于从<b>selected-item</b>.</dd> 获取 <b>selected-value</b> 的属性。 
+  <dt>got-focus</dt>            <dd><code>&</code> <b>gotFocus</b> 事件。</dd>
+  <dt>lost-focus</dt>           <dd><code>&</code> <b>lostFocus</b> 事件。</dd>
+  <dt>items-changed</dt>        <dd><code>&</code> <b>itemsChanged</b> 事件。</dd>
+  <dt>selected-index-changed</dt> <dd><code>&</code> <b>electedIndexChanged</b> 事件。</dd>
+</dl></p>
+
+<p><b>wj-list-box</b> 指令可能包含 <a href="topic/wijmo.angular.WjItemTemplate.Class.html"><b>WjItemTemplate</b></a> 子指令。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.angular.WjMenu.Class.html"><b>WjMenu</b></a></td>
+      <td><p>AngularJS 指令应用于 <a href="topic/wijmo.input.Menu.Class.html"><b>Menu</b></a> 控件.</p>
+
+<p>使用 <b>wj-menu</b> 指令添加 drop-down menus 到 AngularJS 应用中。 
+注意指令和参数名称必须使用小写字母+短线语法替代驼峰命名。 示例：</p>
+
+<p><pre>&lt;p&gt;Here is a Menu control used as a value picker:&lt;/p&gt;
+&lt;wj-menu header="Tax" value="tax"&gt;
+  &lt;wj-menu-item value="0"&gt;Exempt&lt;/wj-menu-item&gt;
+  &lt;wj-menu-item value=".05"&gt;5%&lt;/wj-menu-item&gt;
+  &lt;wj-menu-item value=".1"&gt;10%&lt;/wj-menu-item&gt;
+  &lt;wj-menu-item value=".15"&gt;15%&lt;/wj-menu-item&gt;
+&lt;/wj-menu&gt;</pre></p>
+
+<p><a href="http://jsfiddle.net/Wijmo5/Wc5Mq/" target="_blank" class="btn btn-info">
+  <img src="images/fiddle.png"/>
+  在线示例
+</a>
+</p>
+
+<p>下面的例子创建了3个 <b>Menu</b> 控件。第一个作为数据采集器，第二个使用了包含参数的命令列表，第三个绑定了控制器上的 <b>itemClicked</b> 事件处理函数。</p>
+
+<p><b>wj-menu</b> 指令扩展了 <a href="topic/wijmo.angular.WjComboBox.Class.html"><b>WjComboBox</b></a> ，提供以下特性：</p>
+
+<p><dl class="dl-horizontal">
+  <dt>command-path</dt>          <dd><code>@</code> 项目被点击时执行的命令。</dd>
+  <dt>command-parameter-path</dt><dd><code>@</code> 命令参数名。</dd>
+  <dt>header</dt>                <dd><code>@</code> 控件显示文本。</dd>
+  <dt>is-button</dt>             <dd><code>@</code> 是否响应控件标题区域的点击事件。</dd>
+  <dt>value</dt>                 <dd><code>@</code> 选中的 <b>wj-menu-item</b> 值。 </dd>
+  <dt>item-clicked</dt>          <dd><code>&</code> <b>itemClicked</b> 事件。</dd>
+  <dt>got-focus</dt>             <dd><code>&</code> <b>gotFocus</b> 事件。</dd>
+  <dt>lost-focus</dt>            <dd><code>&</code> <b>lostFocus</b> 事件。</dd>
+</dl></p>
+
+<p><b>wj-menu</b> 指令可能包含以下子指令:
+<a href="topic/wijmo.angular.WjMenuItem.Class.html"><b>WjMenuItem</b></a>, <a href="topic/wijmo.angular.WjMenuSeparator.Class.html"><b>WjMenuSeparator</b></a> 和 <a href="topic/wijmo.angular.WjItemTemplate.Class.html"><b>WjItemTemplate</b></a>(任意菜单绑定控件).</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.angular.WjMenuItem.Class.html"><b>WjMenuItem</b></a></td>
+      <td><p>AngularJS 指令应用于 menu items.</p>
+
+<p><b>wj-menu-item</b> 指令必须包含于 <a href="topic/wijmo.angular.WjMenu.Class.html"><b>WjMenu</b></a> 指令.
+支持以下特性:</p>
+
+<p><dl class="dl-horizontal">
+  <dt>cmd</dt>       <dd><code>=</code> 项目被点击时控制器中执行的函数。</dd>
+  <dt>cmd-param</dt>  <dd><code>=</code> 项目被点击时传递给执行函数<b>cmd</b>的参数。</dd>
+  <dt>value</dt>     <dd><code>=</code> 项目被点击时选中的值 (通过 this 或 <b>cmd</b> 获得).</dd>
+</dl></p>
+
+<p>菜单项显示的内容有可能是包含 AngularJS 绑定和指令的 HTML 代码段。
+也可以使用 <b>ng-repeat</b> 和 <b>ng-if</b> 指令填充菜单项。
+除了控制器上任何可用的属性变量之外， <b>$item</b>, 
+<b>$itemIndex</b> 和 <b>$control</b> 模板变量也可用于 AngularJS 绑定中，用以指定数据项，索引，以及父控件等。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.angular.WjMenuSeparator.Class.html"><b>WjMenuSeparator</b></a></td>
+      <td><p>AngularJS 指令应用于 menu separators.</p>
+
+<p><b>wj-menu-item-separator</b> 指令必须包含于 <a href="topic/wijmo.angular.WjMenu.Class.html"><b>WjMenu</b></a> 指令中.
+该指令给菜单添加一个不可选的分离器, 其没有任何属性。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.angular.WjMultiRow.Class.html"><b>WjMultiRow</b></a></td>
+      <td><p>AngularJS 指令用于 <a href="topic/wijmo.grid.multirow.MultiRow.Class.html"><b>MultiRow</b></a> 控件。
+使用<b>wj-multi-row</b>  指令向应用添加<b>MultiRow</b> 控件。
+注意，指令和参数名必须使用小写加短线形式。
+ <b>wj-multi-row</b> 指令扩展了 <a href="topic/wijmo.angular.WjFlexGrid.Class.html"><b>WjFlexGrid</b></a> ，增加下面属性：</p>
+
+<p><dl class="dl-horizontal">
+  <dt>control</dt>                    <dd><code>=</code> 
+到这个指令创建的 <b>MultiRow</b> 控件的一个引用。</p>
+
+<p></dd>
+  <dt>layout-definition</dt>          <dd><code>@</code> 
+定义行用于展示每个数据项的行布局。
+</dd>
+  <dt>collapsed-headers</dt>          <dd><code>@</code>
+获取或设置一个值，决定是否应该合并列标题，并且在一个单独的行展示组标题，
+</dd>
+  <dt>center-headers-vertically</dt>  <dd><code>@</code> 
+获取或设置一个值，决定跨多行的单元格的文本是否垂直居中。
+</dd>
+  <dt>show-header-collapse-button</dt><dd><code>@</code> 
+获取或设置一个值，决定是否表格在列底面板展示一个按钮，允许用户折叠和展开列标题。
+</dd>
+</dl></p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.angular.WjMultiSelect.Class.html"><b>WjMultiSelect</b></a></td>
+      <td><p>AngularJS 指令应用于 <a href="topic/wijmo.input.MultiSelect.Class.html"><b>MultiSelect</b></a> 控件。</p>
+
+<p>使用 <b>wj-multi-select</b> 指令添加 <b>MultiSelect</b> 到 AngularJS 应用中。 
+注意指令和参数名称必须使用小写字母+短线语法替代驼峰命名。 示例：</p>
+
+<p><pre>&lt;p&gt;Here is a MultiSelect bound to a collection of objects:&lt;/p&gt;
+&lt;wj-multi-select
+    placeholder="Select Countries"
+    items-source="ctx.items"
+    header-format="{count} countries selected"
+    display-Member-path="country"
+    checked-Member-path="selected"&gt;
+&lt;/wj-multi-select&gt;</pre></p>
+
+<p><b>wj-multi-select</b> 指令扩展了 <a href="topic/wijmo.angular.WjComboBox.Class.html"><b>WjComboBox</b></a> ，添加了一下特性：</p>
+
+<p><dl class="dl-horizontal">
+  <dt>checked-member-path</dt>  <dd><code>@</code> 属性的名称用来控制每个条目复选框放置。</dd>
+  <dt>header-format</dt>        <dd><code>@</code> 标题内容的格式化字符，当控件选中了多于 <b>maxHeaderItems</b> 指定的项目时。</dd>
+  <dt>header-formatter</dt>     <dd><code>=</code> 获取控件标题 HTML 的函数。</dd>
+  <dt>max-header-items</dt>     <dd><code>@</code> 标题部分显示的最大项目数。</dd>
+  <dt>checked-items-changed</dt><dd><code>&</code> <b>checkedItemsChanged</b> 事件。</dd>
+</dl></p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.angular.WjPivotChart.Class.html"><b>WjPivotChart</b></a></td>
+      <td><p>AngularJS 指令应用于 <a href="topic/wijmo.olap.PivotChart.Class.html"><b>PivotChart</b></a> control.</p>
+
+<p>使用 <b>wj-pivot-chart</b> 和 <b>wj-pivot-panel</b> 指令
+添加转置图表到 AngularJS 应用中。</p>
+
+<p>指令和参数名称必须使用小写字母+短线语法替代驼峰命名。 示例：</p>
+
+<p><pre>&lt;wj-pivot-panel
+    control="thePanel"
+    items-source="rawData"&gt;
+&lt;/wj-pivot-panel&gt;
+&lt;wj-pivot-chart
+    items-source="thePanel"
+    chart-type="Bar"
+    max-series="10"
+    max-points="100"&gt;
+&lt;/wj-pivot-chart&gt;</pre></p>
+
+<p><b>wj-pivot-chart</b> 指令支持以下属性:</p>
+
+<p><dl class="dl-horizontal">
+  <dt>items-source</dt>                  <dd>获取或设置 <a href="topic/wijmo.olap.PivotPanel.Class.html"><b>PivotPanel</b></a> ，使用这个 <b>PivotChart</b> 定义了视图的显示。</dd>
+  <dt>chart-type</dt>                    <dd>获取或设置 <a href="topic/wijmo.olap.PivotChartType.Enum.html"><b>PivotChartType</b></a> 值，用于定义图表的显示类型。</dd>
+  <dt>show-hierarchical-axes</dt>        <dd>获取或设置图表是否需要分级显示数据。</dd>
+  <dt>stacking</dt>                      <dd>获取或设置 <a href="topic/wijmo.chart.Stacking.Enum.html"><b>Stacking</b></a> 值，用来指定序列的重叠交互方式。</dd>
+  <dt>show-totals</dt>                   <dd>获取或设置图表是否只包含总数。</dd>
+  <dt>max-series</dt>                    <dd>获取或设置图表显示的最大序列数。</dd>
+  <dt>max-points</dt>                    <dd>获取或设置每一个序列显示的最大点数。</dd>
+</dl></p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.angular.WjPivotGrid.Class.html"><b>WjPivotGrid</b></a></td>
+      <td><p>AngularJS 指令应用于 <a href="topic/wijmo.olap.PivotGrid.Class.html"><b>PivotGrid</b></a> control.</p>
+
+<p>使用 <b>wj-pivot-grid</b> 和 <b>wj-pivot-panel</b> 指令
+添加转置表格到 AngularJS 应用中。</p>
+
+<p>指令和参数名称必须使用小写字母+短线语法替代驼峰命名。 示例：</p>
+
+<p><pre>&lt;wj-pivot-panel
+    control="thePanel"
+    items-source="rawData"&gt;
+&lt;/wj-pivot-panel&gt;
+&lt;wj-pivot-grid
+    items-source="thePanel"
+    show-detail-on-double-click="false"
+    custom-context-menu="true"&gt;
+&lt;/wj-pivot-grid&gt;</pre></p>
+
+<p><b>wj-pivot-grid</b> 指令扩展了 <b>wj-flex-grid</b> 指令，并添加了如下属性:</p>
+
+<p><dl class="dl-horizontal">
+  <dt>items-source</dt>                  <dd>获取或设置 <a href="topic/wijmo.olap.PivotPanel.Class.html"><b>PivotPanel</b></a> ，使用这个 <b>PivotGrid</b> 定义了视图的显示。</dd>
+  <dt>show-detail-on-double-click</dt>   <dd>是否在双击时显示明细。</dd>
+  <dt>custom-context-menu</dt>           <dd>获取或设置自定义上下文菜单。</dd>
+  <dt>collapsible-subtotals</dt>         <dd>获取或设置是否允许用户收缩/展开合计行列。</dd>
+  <dt>center-headers-vertically</dt>     <dd>获取或设置行列标题单元格是否需要垂直居中。</dd>
+</dl></p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.angular.WjPivotPanel.Class.html"><b>WjPivotPanel</b></a></td>
+      <td><p>AngularJS 指令应用于 <a href="topic/wijmo.olap.PivotPanel.Class.html"><b>PivotPanel</b></a> 控件。</p>
+
+<p>使用 <b>wj-pivot-panel</b> 指令作为数据源用于 <b>wj-pivot-grid</b> 和 <b>wj-pivot-chart</b> 指令，来添加转置表格和图表到 AngularJS 应用中。</p>
+
+<p>指令和参数名称必须使用小写字母+短线语法替代驼峰命名。 示例：</p>
+
+<p><pre>&lt;wj-pivot-panel
+    control="thePanel"
+    items-source="rawData"&gt;
+&lt;/wj-pivot-panel&gt;
+&lt;wj-pivot-grid
+    items-source="thePanel"
+    show-detail-on-double-click="false"
+    custom-context-menu="true"&gt;
+&lt;/wj-pivot-grid&gt;</pre></p>
+
+<p><b>wj-pivot-panel</b> 指令支持以下属性:</p>
+
+<p><dl class="dl-horizontal">
+  <dt>items-source</dt>                  <dd>获取或设置行数据用于生成转置视图。</dd>
+  <dt>auto-generate-fields</dt>          <dd>是否基于数据源 <b>itemsSource</b> 自动生成字段。</dd>
+  <dt>view-definition</dt>               <dd>基于JSON字符串获取或设置转置视图定义。</dd>
+  <dt>engine</dt>                        <dd>获取 <a href="topic/wijmo.olap.PivotEngine.Class.html"><b>PivotEngine</b></a> 引用。</dd>
+</dl></p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.angular.WjPopup.Class.html"><b>WjPopup</b></a></td>
+      <td><p>AngularJS 指令应用于 <a href="topic/wijmo.input.Popup.Class.html"><b>Popup</b></a> control.</p>
+
+<p>使用 <b>wj-popup</b> 指令添加 <b>Popup</b> 到 AngularJS 应用中。</p>
+
+<p>弹出内容可能包含 <b>wj-popup</b> 标签，可以包含使用了 AngularJS 绑定和指令的 HTML 代码段。</p>
+
+<p>注意指令和参数名称必须使用小写字母+短线语法替代驼峰命名。 示例：</p>
+
+<p><pre>&lt;p&gt;Here is a Popup control triggered by a button:&lt;/p&gt;
+&lt;button id="btn2" type="button"&gt;
+    Click to show Popup
+&lt;/button&gt;
+&lt;wj-popup owner="#btn2" show-trigger="Click" hide-trigger="Blur"&gt;
+    &lt;h3&gt;
+        Salutation
+    &lt;/h3&gt;
+    &lt;div class="popover-content"&gt;
+        Hello {&#8203;{firstName}} {&#8203;{lastName}}
+    &lt;/div&gt;
+&lt;/wj-popup&gt;</pre></p>
+
+<p><b>wj-popup</b> 指令支持以下属性:</p>
+
+<p><dl class="dl-horizontal">
+  <dt>control</dt>         <dd><code>=</code> 该指令创建的指向 Popup 的引用</dd>
+  <dt>fade-in</dt>         <dd><code>@</code> 是否显示淡入效果。</dd>
+  <dt>fade-out</dt>        <dd><code>@</code> 是否显示淡出效果。</dd>
+  <dt>hide-trigger</dt>    <dd><code>@</code> <a href="topic/wijmo.input.PopupTrigger.Enum.html"><b>PopupTrigger</b></a> 值定义隐藏 <b>Popup</b> 的行为。</dd>
+  <dt>initialized</dt>     <dd><code>&</code> 该事件在绑定完成控件特性值的初始化后被触发。</dd>
+  <dt>is-initialized</dt>  <dd><code>=</code> 绑定是否已经完成控件特性值的初始化。 </dd>
+  <dt>owner</dt>           <dd><code>@</code> 一个css选择器，用以定位控制弹出画面可见性的画面元素。</dd>
+  <dt>show-trigger</dt>    <dd><code>@</code> <b>PopupTrigger</b> 值定义显示 <b>Popup</b> 的行为。</dd>
+  <dt>modal</dt>           <dd><code>@</code> 指定是否显示为模态对话框。</dd>
+  <dt>got-focus</dt>       <dd><code>&</code> <b>gotFocus</b> 事件。</dd>
+  <dt>lost-focus</dt>      <dd><code>&</code> <b>lostFocus</b> 事件。</dd>
+  <dt>showing</dt>         <dd><code>&</code> <b>showing</b> 事件。</dd>
+  <dt>shown</dt>           <dd><code>&</code> <b>shown</b> 事件。</dd>
+  <dt>hiding</dt>          <dd><code>&</code> <b>hiding</b> 事件。</dd>
+  <dt>hidden</dt>          <dd><code>&</code> <b>hidden</b> 事件。</dd>
+</dl></p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.angular.WjRadialGauge.Class.html"><b>WjRadialGauge</b></a></td>
+      <td><p>AngularJS 指令应用于 <a href="topic/wijmo.gauge.RadialGauge.Class.html"><b>RadialGauge</b></a> control.</p>
+
+<p>使用 <b>wj-radial-gauge</b> 指令添加 radial gauges 到 AngularJS 应用中。 
+注意指令和参数名称必须使用小写字母+短线语法替代驼峰命名。 示例：</p>
+
+<p><pre>Here is a &lt;b&gt;RadialGauge&lt;/b&gt; control:&lt;/p&gt;
+&lt;wj-radial-gauge
+  style="height:300px" 
+  value="count" 
+  min="0" max="10"
+  is-read-only="false"&gt;
+&lt;/wj-radial-gauge&gt;</pre></p>
+
+<p><b>wj-radial-gauge</b> 指令支持以下属性:</p>
+
+<p><dl class="dl-horizontal">
+  <dt>ng-model</dt>      <dd><code>@</code> 使用Angular的ng-model指令绑定控件的 <b>value</b> 属性。使用ng-model指令绑定属性能够获得一些共通的特性，例如验证，自动添加控件状态到form实例，等等。 使用 wj-model-property 重定义被 ng-model指定绑定的控件属性。</dd>
+  <dt>wj-model-property</dt>  <dd><code>@</code> 使用 <b>ng-model</b> 指令指定控件绑定的作用域。</dd>
+  <dt>control</dt>       <dd><code>=</code> 指向该指令创建的 RadialGauge 的引用</dd>
+  <dt>auto-scale</dt>    <dd><code>@</code> 自动缩放。</dd>
+  <dt>format</dt>        <dd><code>@</code> 以文本显示测量值时的格式化字符串。</dd>
+  <dt>has-shadow</dt>    <dd><code>@</code> 是否显示阴影。</dd>
+  <dt>initialized</dt>   <dd><code>&</code> 该事件在绑定完成控件特性值的初始化后被触发。</dd>
+  <dt>is-initialized</dt> <dd><code>=</code> 绑定是否已经完成控件特性值的初始化。 </dd>
+  <dt>is-animated</dt>   <dd><code>@</code> 是否使用动画显示测量值的变化。</dd>
+  <dt>is-read-only</dt>  <dd><code>@</code> 是否只读。</dd>
+  <dt>min</dt>           <dd><code>@</code> 可显示的最小测量值。</dd>
+  <dt>max</dt>           <dd><code>@</code> 可显示的最大测量值。</dd>
+  <dt>show-text</dt>     <dd><code>@</code> <a href="topic/wijmo.gauge.ShowText.Enum.html"><b>ShowText</b></a> 值，测量值显示的文本</dd>
+  <dt>step</dt>          <dd><code>@</code> 用户按下增加或减小按钮时的步进值。</dd>
+  <dt>start-angle</dt>   <dd><code>@</code> 起始位置的角度。</dd>
+  <dt>sweep-angle</dt>   <dd><code>@</code> 扫描的角度（可正可负） 。</dd>
+  <dt>thickness</dt>     <dd><code>@</code> 测量值的厚度，从0到1的值。</dd>
+  <dt>value</dt>         <dd><code>=</code> 显示的测试值。</dd>
+  <dt>got-focus</dt>     <dd><code>&</code> <b>gotFocus</b> 事件。</dd>
+  <dt>lost-focus</dt>    <dd><code>&</code> <b>lostFocus</b> 事件。</dd>
+</dl></p>
+
+<p><b>wj-radial-gauge</b> 指令可以包含一个或多个 <a href="topic/wijmo.angular.WjRange.Class.html"><b>WjRange</b></a> 指令。</p>
+
+<p><a href="http://jsfiddle.net/Wijmo5/7ec2144u/" target="_blank" class="btn btn-info">
+  <img src="images/fiddle.png"/>
+  在线示例
+</a>
+</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.angular.WjRange.Class.html"><b>WjRange</b></a></td>
+      <td><p>AngularJS 指令应用于 <a href="topic/wijmo.gauge.Range.Class.html"><b>Range</b></a> 对象。</p>
+
+<p><b>wj-range</b> 指令必须包含于 <a href="topic/wijmo.angular.WjLinearGauge.Class.html"><b>WjLinearGauge</b></a>, <a href="topic/wijmo.angular.WjRadialGauge.Class.html"><b>WjRadialGauge</b></a> 
+或者 <a href="topic/wijmo.angular.WjBulletGraph.Class.html"><b>WjBulletGraph</b></a> 指令。 它添加 Range 对象到父指令的 'ranges' 数组属性上。 也可以使用 wj-property 特别指定属性名，用于使用父指令的其他 Range 类型属性。</p>
+
+<p>示例：
+<pre>&lt;wj-radial-gauge 
+    min="0" 
+    max="200" 
+    step="20" 
+    value="theValue" 
+    is-read-only="false"&gt;
+    &lt;wj-range 
+      min="0" 
+      max="100" 
+      color="red"&gt;
+    &lt;/wj-range&gt;
+    &lt;wj-range 
+      min="100" 
+      max="200" 
+      color="green"&gt;
+    &lt;/wj-range&gt;
+    &lt;wj-range 
+      wj-property="pointer" 
+      color="blue"&gt;
+    &lt;/wj-range&gt;
+&lt;/wj-radial-gauge&gt;</pre></p>
+
+<p><b>wj-range</b> 指令支持以下属性:</p>
+
+<p><dl class="dl-horizontal">
+  <dt>min</dt>           <dd><code>@</code> 范围的最小值。</dd>
+  <dt>max</dt>           <dd><code>@</code> 范围的最大值。</dd>
+  <dt>color</dt>         <dd><code>@</code> 范围显示的颜色。</dd>
+  <dt>thickness</dt>     <dd><code>@</code> 测量值的厚度，从0到1的值。</dd>
+  <dt>name</dt>          <dd><code>@</code> 范围的名称。</dd>
+  <dt>wj-property</dt>   <dd><code>@</code> 使用当前指令初始化的属性名称。</dd>
+</dl></p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.angular.WjSheet.Class.html"><b>WjSheet</b></a></td>
+      <td><p>AngularJS 指令应用于 <a href="topic/wijmo.grid.sheet.FlexSheet.Class.html"><b>FlexSheet</b></a> <a href="topic/wijmo.grid.sheet.Sheet.Class.html"><b>Sheet</b></a> 对象。</p>
+
+<p><b>wj-sheet</b> 指令必须包含于 <a href="topic/wijmo.angular.WjFlexSheet.Class.html"><b>WjFlexSheet</b></a> 指令。
+支持以下属性:</p>
+
+<p><dl class="dl-horizontal">
+  <dt>name</dt>               <dd><code>@</code> 工作表名称。
+  <dt>row-count</dt>          <dd><code>@</code> 工作表默认行数，改变该值不影响 AngularJS 对其初始化。
+  <dt>column-count</dt>       <dd><code>@</code> 工作表默认列数，改变该值不影响 AngularJS 对其初始化。
+  <dt>items-source</dt>       <dd><code>=</code> 工作表数据源，改变该值不影响 AngularJS 对其初始化。
+  <dt>visible</dt>            <dd><code>@</code> 该工作表是否可见。
+  <dt>name-changed</dt>       <dd><code>&</code> <b>nameChanged</b> 事件。</dd>
+</dl></p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.angular.WjSunburst.Class.html"><b>WjSunburst</b></a></td>
+      <td><p>AngularJS 指令用于 <a href="topic/wijmo.chart.hierarchical.Sunburst.Class.html"><b>Sunburst</b></a> 图。</p>
+
+<p><dl class="dl-horizontal">
+  <dt>child-items-path</dt>  <dd><code>=</code> 
+一个数组或者字符串，用于在旭日图数据中生成子项。</dd>
+</dl></p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.angular.WjTooltip.Class.html"><b>WjTooltip</b></a></td>
+      <td><p>使用 AngularJS 指令创建 <a href="topic/wijmo.Tooltip.Class.html"><b>Tooltip</b></a> 类.</p>
+
+<p>使用 <b>wj-tooltip</b> 指令给页面添加 tooltips 。
+wj-tooltip 指令支持HTML内容定义,智能定位和触摸。</p>
+
+<p>wj-tooltip 指令作为一个参数被添加到工具提示所要应用的元素上。参数值为工具提示的文本或者包含该文本的元素id。 示例：</p>
+
+<p><pre>&lt;p wj-tooltip="#fineprint" &gt;
+    Regular paragraph content...&lt;/p&gt;
+...
+&lt;div id="fineprint" style="display:none"&gt;
+  &lt;h3&gt;Important Note&lt;/h3&gt;
+  &lt;p&gt;
+    Data for the current quarter is estimated 
+    by pro-rating etc.&lt;/p&gt;
+&lt;/div&gt;</pre></p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.angular.WjValidationError.Class.html"><b>WjValidationError</b></a></td>
+      <td><p>使用 AngularJS 指令创建基于表达式的自定义验证器。</p>
+
+<p><b>wj-validation-error</b> 指令同时支持AngularJS和原生HTML5验证机制。它接受一个AngularJS表达式，该表达式在输入无效时返回错误消息的字符串，在输入有效时返回empty字符串。</p>
+
+<p>为了使用AngularJS验证，必须同时应用 <b>ng-model</b> 指令。 
+<b>wj-validation-error</b> 指令报告一个错误消息，调用 <b>NgModelController.$setValidity</b> 方法，并使用 <b>wjValidationError</b> 错误标识key, AngularJS 原生和自定义验证指令使用相同的机制。</p>
+
+<p>对于HTML5验证, <b>wj-validation-error</b> 指令会用HTML5的验证API提供的 <b>setCustomValidity</b> 方法为元素设置一个错误状态。 示例：</p>
+
+<p><pre>&lt;p&gt;HTML5 validation:&lt;/p&gt;
+&lt;form&gt;
+    &lt;input type="password"
+        placeholder="Password" 
+        name="pwd" ng-model="thePwd" 
+        required minlength="2" /&gt;
+    &lt;input type="password"
+        placeholder="Check Password"
+        name="chk" ng-model="chkPwd"
+        wj-validation-error="chkPwd != thePwd ? 'Passwords don\'t match' : ''" /&gt;
+&lt;/form&gt;</p>
+
+<p>&lt;p&gt;AngularJS validation:&lt;/p&gt;
+&lt;form name="ngForm" novalidate&gt;
+    &lt;input type="password"
+        placeholder="Password" 
+        name="pwd" ng-model="thePwd" 
+        required minlength="2" /&gt;
+    &lt;input type="password"
+        placeholder="Check Password"
+        name="chk" ng-model="chkPwd"
+        wj-validation-error="chkPwd != thePwd" /&gt;
+    &lt;div 
+        ng-show="ngForm.chk.$error.wjValidationError && !ngForm.chk.$pristine"&gt;
+        Sorry, the passwords don't match.
+    &lt;/div&gt;
+&lt;/form&gt;</pre></p></td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideEnumerations = !hideEnumerations">
+<span class="glyph-collapsed" ng-show="hideEnumerations"></span>
+<span class="glyph-expanded" ng-hide="hideEnumerations"></span>
+枚举
+</h3>
+</div>
+<table ng-hide="hideEnumerations" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th>名称</th>
+
+<th>描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.angular.CellTemplateType.Enum.html"><b>CellTemplateType</b></a></td>
+      <td>定义适用于模板的单元格类型。 该值在 <a href="topic/wijmo.angular.WjFlexGridCellTemplate.Class.html"><b>WjFlexGridCellTemplate</b></a> 指令的 <b>cell-type</b> 属性上指定。</td>
+    </tr>
+</tbody>
+</table>
+</div>
+

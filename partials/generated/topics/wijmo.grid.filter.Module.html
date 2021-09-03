@@ -1,0 +1,176 @@
+<h2>模块 wijmo.grid.filter</h2>
+<dl class="dl-horizontal">
+<dt>文件</dt><dd>wijmo.grid.filter.js</dd>
+</dl>
+<p>为 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a> 控件提供 Excel 样式的筛选器界面的扩展包。</p>
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideClasses = !hideClasses">
+<span class="glyph-collapsed" ng-show="hideClasses"></span>
+<span class="glyph-expanded" ng-hide="hideClasses"></span>
+类
+</h3>
+</div>
+<table ng-hide="hideClasses" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th>名称</th>
+
+<th>描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.grid.filter.ColumnFilter.Class.html"><b>ColumnFilter</b></a></td>
+      <td><p>定义一个 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a> 控件上某一列的筛选器。</p>
+
+<p><b>ColumnFilter</b> 包含一个 <a href="topic/wijmo.grid.filter.ConditionFilter.Class.html"><b>ConditionFilter</b></a> 以及一个 <b>ValueFilte</b>；
+同一时刻只能有一个处于活动状态。</p>
+
+<p>该类被 <a href="topic/wijmo.grid.filter.FlexGridFilter.Class.html"><b>FlexGridFilter</b></a> 类所使用；您一般不会直接使用。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.grid.filter.ColumnFilterEditor.Class.html"><b>ColumnFilterEditor</b></a></td>
+      <td><p>用来检查和修改列筛选器的编辑器。</p>
+
+<p>该类被 <a href="topic/wijmo.grid.filter.FlexGridFilter.Class.html"><b>FlexGridFilter</b></a> 类所使用；您将几乎不会直接使用到该类。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.grid.filter.ConditionFilter.Class.html"><b>ConditionFilter</b></a></td>
+      <td><p>为 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a> 上的列定义一个条件筛选器。</p>
+
+<p>条件筛选器包含两个条件，这两个条件可以通过 ‘and’ 或者一个 ‘or’ 操作符连接在一起。</p>
+
+<p>该类被 <a href="topic/wijmo.grid.filter.FlexGridFilter.Class.html"><b>FlexGridFilter</b></a> 类所使用；您将很少有机会直接使用到。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.grid.filter.ConditionFilterEditor.Class.html"><b>ConditionFilterEditor</b></a></td>
+      <td><p>该编辑器用作检查并修改 <a href="topic/wijmo.grid.filter.ConditionFilter.Class.html"><b>ConditionFilter</b></a> 对象。</p>
+
+<p>该类被 <a href="topic/wijmo.grid.filter.FlexGridFilter.Class.html"><b>FlexGridFilter</b></a> 类所使用；您将很少可能会直接使用到。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.grid.filter.FilterCondition.Class.html"><b>FilterCondition</b></a></td>
+      <td><p>定义一个筛选器条件。</p>
+
+<p>该类被 <a href="topic/wijmo.grid.filter.FlexGridFilter.Class.html"><b>FlexGridFilter</b></a> 类所使用；您将几乎不会直接使用。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.grid.filter.FlexGridFilter.Class.html"><b>FlexGridFilter</b></a></td>
+      <td><p>为 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a> 控件实现一个 Excel 样式的筛选器。</p>
+
+<p>为了在 <b>FlexGrid</b> 控件上启用筛选，需要创建一个 <b>FlexGridFilter</b> 的实例，
+并将 grid 作为一个参数传递给构造器。例如：</p>
+
+<p><pre>
+// 创建 FlexGrid
+var flex = new wijmo.grid.FlexGrid('#gridElement');
+// 在 FlexGrid 上启用筛选
+var filter = new wijmo.grid.filter.FlexGridFilter(flex);
+</pre></p>
+
+<p>一旦这一过程完成，则表单的列头上将添加一个筛选器图表。
+单击该图表将显示一个编辑器，用户可以在此编辑该列的筛选
+条件。</p>
+
+<p>该 <b>FlexGridFilter</b> 类依赖 <b>wijmo.grid</b> 以及 
+<b>wijmo.input</b> 模块。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.grid.filter.ValueFilter.Class.html"><b>ValueFilter</b></a></td>
+      <td><p>定义一个 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a> 控件上某一列的值筛选器。</p>
+
+<p>值筛选器包含一个明确的值列表，由表单显示。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.grid.filter.ValueFilterEditor.Class.html"><b>ValueFilterEditor</b></a></td>
+      <td><p>用来检查并修改 <a href="topic/wijmo.grid.filter.ValueFilter.Class.html"><b>ValueFilter</b></a> 对象的编辑器。</p>
+
+<p>该类被 <a href="topic/wijmo.grid.filter.FlexGridFilter.Class.html"><b>FlexGridFilter</b></a> 类所使用；您将很少有机会直接用到该接口。</p></td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideInterfaces = !hideInterfaces">
+<span class="glyph-collapsed" ng-show="hideInterfaces"></span>
+<span class="glyph-expanded" ng-hide="hideInterfaces"></span>
+接口
+</h3>
+</div>
+<table ng-hide="hideInterfaces" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th>名称</th>
+
+<th>描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.grid.filter.IColumnFilter.Interface.html"><b>IColumnFilter</b></a></td>
+      <td><p>定义一个 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a> 控件上某一列的筛选器。</p>
+
+<p>该类被 <a href="topic/wijmo.grid.filter.FlexGridFilter.Class.html"><b>FlexGridFilter</b></a> 类所使用；您将很少有机会直接使用到它。</p></td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideEnumerations = !hideEnumerations">
+<span class="glyph-collapsed" ng-show="hideEnumerations"></span>
+<span class="glyph-expanded" ng-hide="hideEnumerations"></span>
+枚举
+</h3>
+</div>
+<table ng-hide="hideEnumerations" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th>名称</th>
+
+<th>描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.grid.filter.FilterType.Enum.html"><b>FilterType</b></a></td>
+      <td>指定列筛选器的类型。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.grid.filter.Operator.Enum.html"><b>Operator</b></a></td>
+      <td>指定筛选条件操作符。</td>
+    </tr>
+</tbody>
+</table>
+</div>
+

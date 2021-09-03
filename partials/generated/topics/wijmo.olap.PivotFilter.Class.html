@@ -1,0 +1,138 @@
+<h2>PivotFilter 类</h2>
+<dl class="dl-horizontal">
+<dt>模块</dt><dd>wijmo.olap</dd>
+<dt>文件</dt><dd>wijmo.olap.js</dd>
+</dl>
+<p>表示用做在 <a href="topic/wijmo.olap.PivotField.Class.html"><b>PivotField</b></a> 中选择值的一个筛选器。</p>
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideConstructor = !hideConstructor">
+<span class="glyph-collapsed" ng-show="hideConstructor"></span>
+<span class="glyph-expanded" ng-hide="hideConstructor"></span>
+ 构造函数
+</h3>
+</div>
+<table ng-hide="hideConstructor" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-2">名称</th>
+
+<th class="col-md-5">参数</th>
+
+<th class="col-md-5">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><b>constructor</b>&#8203;(field): <a href="topic/wijmo.olap.PivotFilter.Class.html"><b>PivotFilter</b></a></td>
+      <td><p>
+<b>field</b> (<a href="topic/wijmo.olap.PivotField.Class.html"><b>PivotField</b></a>): 拥有这个过滤器的 <a href="topic/wijmo.olap.PivotField.Class.html"><b>PivotField</b></a> 。<br/></p>
+</td>
+      <td>初始化 <a href="topic/wijmo.olap.PivotFilter.Class.html"><b>PivotFilter</b></a> 类的一个新实例。</td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideProperties = !hideProperties">
+<span class="glyph-collapsed" ng-show="hideProperties"></span>
+<span class="glyph-expanded" ng-hide="hideProperties"></span>
+属性
+</h3>
+</div>
+<table ng-hide="hideProperties" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-3">名称</th>
+
+<th class="col-md-2">类型</th>
+
+<th class="col-md-7">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><b>conditionFilter</b></td>
+      <td><a href="topic/wijmo.grid.filter.ConditionFilter.Class.html"><b>ConditionFilter</b></a></td>
+      <td>获取 <a href="topic/wijmo.olap.PivotFilter.Class.html"><b>PivotFilter</b></a> 中的 <a href="topic/wijmo.grid.filter.ConditionFilter.Class.html"><b>ConditionFilter</b></a>。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>filterType</b></td>
+      <td><b>FilterType</b></td>
+      <td><p>获取或设置该筛选器提供的筛选的类型。</p>
+
+<p>设置该属性的值为 null 将使得该筛选器使用由 owner 筛选器的 <b>defaultFilterType</b> 属性定义的值。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>isActive</b></td>
+      <td><b>boolean</b></td>
+      <td>获取一个值，该值表示是否一个筛选器处于活动状态。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>valueFilter</b></td>
+      <td><a href="topic/wijmo.grid.filter.ValueFilter.Class.html"><b>ValueFilter</b></a></td>
+      <td>获取 <a href="topic/wijmo.olap.PivotFilter.Class.html"><b>PivotFilter</b></a> 中的 <a href="topic/wijmo.grid.filter.ValueFilter.Class.html"><b>ValueFilter</b></a>。</td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideMethods = !hideMethods">
+<span class="glyph-collapsed" ng-show="hideMethods"></span>
+<span class="glyph-expanded" ng-hide="hideMethods"></span>
+方法
+</h3>
+</div>
+<table ng-hide="hideMethods" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-2">名称</th>
+
+<th class="col-md-5">参数</th>
+
+<th class="col-md-5">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><b>apply</b>&#8203;(value): <b>boolean</b></td>
+      <td><p>
+<b>value</b> (): 待测试的值。<br/></p>
+</td>
+      <td>获取一个值，该值表示是否测试值通过了该筛选器的筛选。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>clear</b>&#8203;(): <b>void</b></td>
+      <td></td>
+      <td>清除该筛选器。</td>
+    </tr>
+</tbody>
+</table>
+</div>
+

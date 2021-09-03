@@ -1,0 +1,128 @@
+<h2>WorkSheet 类</h2>
+<dl class="dl-horizontal">
+<dt>实现</dt><dd><a href="topic/wijmo.xlsx.IWorkSheet.Interface.html"><b>IWorkSheet</b></a></dd>
+<dt>模块</dt><dd>wijmo.xlsx</dd>
+<dt>文件</dt><dd>wijmo.xlsx.js</dd>
+</dl>
+<p><p>表示包含表单属性和数据的 Workbook 对象模型表单定义。</p>
+
+<p>表单的单元格保存在行对象的数组中，通过类似于 <b>sheet.rows[i].cells[j]</b> 的路径进行访问。</p></p>
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideConstructor = !hideConstructor">
+<span class="glyph-collapsed" ng-show="hideConstructor"></span>
+<span class="glyph-expanded" ng-hide="hideConstructor"></span>
+ 构造函数
+</h3>
+</div>
+<table ng-hide="hideConstructor" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-2">名称</th>
+
+<th class="col-md-5">参数</th>
+
+<th class="col-md-5">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><b>constructor</b>&#8203;(): <a href="topic/wijmo.xlsx.WorkSheet.Class.html"><b>WorkSheet</b></a></td>
+      <td></td>
+      <td>Initializes a new instance of the <a href="topic/wijmo.xlsx.WorkSheet.Class.html"><b>WorkSheet</b></a> class.</td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideProperties = !hideProperties">
+<span class="glyph-collapsed" ng-show="hideProperties"></span>
+<span class="glyph-expanded" ng-hide="hideProperties"></span>
+属性
+</h3>
+</div>
+<table ng-hide="hideProperties" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-3">名称</th>
+
+<th class="col-md-2">类型</th>
+
+<th class="col-md-7">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><b>columns</b></td>
+      <td><a href="topic/wijmo.xlsx.WorkbookColumn.Class.html"><b>WorkbookColumn</b></a><b>[]</b></td>
+      <td><p>获取或设置表单列定义的数组。</p>
+
+<p>数组中的每一个 <a href="topic/wijmo.xlsx.WorkbookColumn.Class.html"><b>WorkbookColumn</b></a> 对象描述了位于 xlsx 表单相关位置的一列，
+比如说，位于索引 0 处的列
+关联到 xlsx 表单索引 A 处的列，具有索引值为 1 的列定义了表单中具有索引值 B 的列，以此类推。 
+如果特定的列在 xlsx 文件中没有描述，则相关的数组元素在导入导出操作时均为 undefined。</p>
+
+<p>如果数组中的 <b>WorkbookColumn</b> 对象没有指定 <b>width</b> 属性的值，则应用默认的列宽值。</p></td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="字段">F</span></td>
+      <td><b>frozenPane</b></td>
+      <td><a href="topic/wijmo.xlsx.WorkbookFrozenPane.Class.html"><b>WorkbookFrozenPane</b></a></td>
+      <td>获取或设置 <a href="topic/wijmo.xlsx.WorkbookFrozenPane.Class.html"><b>WorkbookFrozenPane</b></a> 设置。</td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="字段">F</span></td>
+      <td><b>name</b></td>
+      <td><b>string</b></td>
+      <td>获取或设置表单名称。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>rows</b></td>
+      <td><a href="topic/wijmo.xlsx.WorkbookRow.Class.html"><b>WorkbookRow</b></a><b>[]</b></td>
+      <td><p>获取表单行定义的数组。</p>
+
+<p>数组中的每一个 <a href="topic/wijmo.xlsx.WorkbookRow.Class.html"><b>WorkbookRow</b></a> 对象描述了位于 xlsx 表单相关位置的一行，
+比如说，位于索引 0 处的行
+关联到 xlsx 表单索引 1 处的行，具有索引值为 1 的行定义了表单中具有索引值 2 的行，以此类推。
+如果特定的行在 xlsx 文件中没有描述，则相关的数组元素在导入导出操作时均为 undefined。</p>
+
+<p>如果数组中的 <b>WorkbookRow</b> 对象没有指定 <b>height</b> 属性的值，则应用默认的行高值。</p></td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="字段">F</span></td>
+      <td><b>style</b></td>
+      <td><a href="topic/wijmo.xlsx.WorkbookStyle.Class.html"><b>WorkbookStyle</b></a></td>
+      <td>获取或设置行样式。
+      属性为工作簿中的每一个单元格定义了样式，可以被特定单元格样式覆盖。</td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="字段">F</span></td>
+      <td><b>summaryBelow</b></td>
+      <td><b>boolean</b></td>
+      <td>获取或设置一个值，该值指示是否摘要行出现在内容行的上方还是下方。</td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="字段">F</span></td>
+      <td><b>visible</b></td>
+      <td><b>boolean</b></td>
+      <td>获取或设置工作表的可见性。</td>
+    </tr>
+</tbody>
+</table>
+</div>
+

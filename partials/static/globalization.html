@@ -1,0 +1,88 @@
+﻿<h2>
+    Wijmo 5 应用程序全球化
+</h2>
+<p>
+    默认情况下，Wijmo 将会按照美国英语 Culture 格式化/解析日期。
+    小数点符号是一个句点，千位分隔符是一个逗号，而一周的计算从 “Sunday” 到 “Saturday”。    
+</p>
+<p>
+    如果您的应用程序需要支持其他的 Culture，需要在您的 HTML 页面添加合适的对 Wijmo Culture 文件的引用。
+    默认情况下，我们在 Wijmo 中包含了大约十种不同的 Culture 文件，同时我们也提供了工具用来生成新的 Culture 文件。
+    如果您所希望支持的 Culture 没有被我们支持，请联系我们，我们将帮助您创建您所期望的 Culture 文件。
+</p>
+<p>
+    举个例子，为了为德文 Culture 本地化一个应用程序，应当向页面的 head 部分添加以下代码行：
+</p>
+
+<pre>&lt;!-- 设置德文 Culture --&gt;
+&lt;script src="http://cdn.wijmo.com/5.20142.0/controls/cultures/wijmo.culture.de.min.js" type="text/javascript"&gt;&lt;/script&gt;</pre>
+
+<p>
+    以下代码片演示了设置后的结果。请注意 grid 显示的值以及日历上日期的显示格式均发生了变化。
+</p>
+<p>
+    <a href="http://jsfiddle.net/Wijmo5/wK97R/" target="_blank" class="btn btn-info">
+        <img src="images/fiddle.png" />
+        全球化
+    </a>
+</p>
+<p>
+    您可以在表单中编辑不同的值，以观察全球化在解析数据时是如何工作的。Wijmo 的 <a href="topic/wijmo.Globalize.Class.html">Globalize</a> 类
+    也允许您在应用程序中脱离 Wijmo 控件之外格式化/解析值。
+</p>
+
+<h3>
+    包含的 Cultures
+</h3>
+<p>
+    默认情况下，Wijmo 使用美国英语 Culture，但是为了您使用方便，我们也提供了若干其他 Culture。
+    这些 Culture 文件位于 CDN 上，但您同样也可以在您安装文件夹的 \Dist\Controls\Cultures 目录下
+    找到这些文件。目前我们包含了以下 Culture 文件。
+</p>
+
+<ul>
+    <li><strong>ar-AE</strong> 阿拉伯语（阿拉伯联合酋长国）</li>
+    <li><strong>eu</strong> 巴斯克语言</li>
+    <li><strong>bg</strong> 保加利亚语</li>
+    <li><strong>ca</strong> 加泰罗尼亚语</li>
+    <li><strong>zh</strong> 中文</li>
+    <li><strong>zh-HK</strong> 中国（繁体，香港特别行政区）</li>
+    <li><strong>zh-TW</strong> 中国（繁体，台湾）</li>
+    <li><strong>hr</strong> 克罗地亚语</li>
+    <li><strong>cs</strong> 捷克语</li>
+    <li><strong>da</strong> 丹麦语</li>
+    <li><strong>nl</strong> 荷兰语</li>
+    <li><strong>en</strong> 英语</li>
+    <li><strong>en-CA</strong> 英语（加拿大）</li>
+    <li><strong>en-GB</strong> 英语（英国）</li>
+    <li><strong>et</strong> 爱沙尼亚语</li>
+    <li><strong>fi</strong> 芬兰语</li>
+    <li><strong>fr</strong> 法语</li>
+    <li><strong>fr-CA</strong> 法语（加拿大）</li>
+    <li><strong>gl</strong> 加利西亚语</li>
+    <li><strong>de</strong> 德语</li>
+    <li><strong>el</strong> 希腊语</li>
+    <li><strong>he</strong> 希伯来语</li>
+    <li><strong>hi</strong> 印地语</li>
+    <li><strong>hu</strong> 匈牙利语</li>
+    <li><strong>id</strong> 印度尼西亚语</li>
+    <li><strong>it</strong> 意大利语</li>
+    <li><strong>ja</strong> 日语</li>
+    <li><strong>kk</strong> 哈萨克文</li>
+    <li><strong>ko</strong> 韩语</li>
+    <li><strong>lv</strong> 拉脱维亚语</li>
+    <li><strong>lt</strong> 立陶宛语</li>
+    <li><strong>no</strong> 挪威语</li>
+    <li><strong>pl</strong> 波兰语</li>
+    <li><strong>pt</strong> 葡萄牙语</li>
+    <li><strong>ro</strong> 罗马尼亚语</li>
+    <li><strong>ru</strong> 俄语</li>
+    <li><strong>sr</strong> 塞尔维亚语</li>
+    <li><strong>sk</strong> 斯洛伐克语</li>
+    <li><strong>sl</strong> 斯洛文尼亚语</li>
+    <li><strong>es</strong> 西班牙语</li>
+    <li><strong>sv</strong> 瑞典语</li>
+    <li><strong>th</strong> 泰文</li>
+    <li><strong>tr</strong> 土耳其语</li>
+    <li><strong>uk</strong> 乌克兰语</li>
+</ul>

@@ -1,0 +1,41 @@
+<h2>WjBulletGraph 类</h2>
+<dl class="dl-horizontal">
+<dt>基类</dt><dd><a href="topic/wijmo.angular.WjLinearGauge.Class.html"><b>WjLinearGauge</b></a></dd>
+<dt>模块</dt><dd>wijmo.angular</dd>
+<dt>文件</dt><dd>wijmo.angular.js</dd>
+<dt>表示</dt><dd><label style="font-weight:normal">继承成员 <input type="checkbox" ng-model="showInherited"></label></dd>
+</dl>
+<p><p>AngularJS 指令应用于 <a href="topic/wijmo.gauge.BulletGraph.Class.html"><b>BulletGraph</b></a> 控件。</p>
+
+<p>使用 <b>wj-bullet-graph</b> 指令添加 bullet graphs 到 AngularJS 应用中。 
+注意指令和参数名称必须使用小写字母+短线语法替代驼峰命名。 示例：</p>
+
+<p><pre>&lt;wj-bullet-graph 
+  value="ctx.gauge.value" 
+  min="0" max="10"
+  target="{&#8203;{item.target}}"
+  bad="{&#8203;{item.target * .75}}"
+  good="{&#8203;{item.target * 1.25}}"&gt;
+&lt;/wj-bullet-graph&gt;</pre></p>
+
+<p><b>wj-bullet-graph</b> 指令支持以下属性:</p>
+
+<p><dl class="dl-horizontal">
+  <dt>control</dt>       <dd><code>=</code> 该指令创建的指向 BulletGraph control 
+                         created by this 指令。</dd>
+  <dt>direction</dt>     <dd><code>@</code> <a href="topic/wijmo.gauge.GaugeDirection.Enum.html"><b>GaugeDirection</b></a> 值，测量值增长的方向。</dd>
+  <dt>initialized</dt>   <dd><code>&</code> 该事件在绑定完成控件特性值的初始化后被触发。</dd>
+  <dt>is-initialized</dt> <dd><code>=</code> 绑定是否已经完成控件特性值的初始化。 </dd>
+  <dt>target</dt>        <dd><code>@</code> 测量的目标值。</dd>
+  <dt>good</dt>          <dd><code>@</code> 测量时判断为正确的值。</dd>
+  <dt>bad</dt>           <dd><code>@</code> 测量时判断为错误的值。</dd>
+  <dt>value</dt>         <dd><code>=</code> 测量的实际值。</dd>
+</dl></p>
+
+<p><b>wj-bullet-graph</b> 指令可以包含一个或多个 <a href="topic/wijmo.angular.WjRange.Class.html"><b>WjRange</b></a> 指令。</p>
+
+<p><a href="http://jsfiddle.net/Wijmo5/8uxb1vwf/" target="_blank" class="btn btn-info">
+  <img src="images/fiddle.png"/>
+  在线示例
+</a>
+</p></p>

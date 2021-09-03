@@ -1,0 +1,108 @@
+<h2>PropertyGroupDescription 类</h2>
+<dl class="dl-horizontal">
+<dt>基类</dt><dd><a href="topic/wijmo.collections.GroupDescription.Class.html"><b>GroupDescription</b></a></dd>
+<dt>模块</dt><dd>wijmo.collections</dd>
+<dt>文件</dt><dd>wijmo.js</dd>
+<dt>表示</dt><dd><label style="font-weight:normal">继承成员 <input type="checkbox" ng-model="showInherited"></label></dd>
+</dl>
+<p><p>以属性名为标准来描述项目分组。</p>
+
+<p>例如，下面的代码会引起致<a href="topic/wijmo.collections.CollectionView.Class.html"><b>CollectionView</b></a> 通过它们的‘country’属性的第一个字母来进行分组:
+<pre>
+var cv = new wijmo.collections.CollectionView(items);
+var gd = new wijmo.collections.PropertyGroupDescription('country');
+cv.groupDescriptions.push(gd);
+</pre></p>
+
+<p>您还可以指定一个回调函数，该函数生成该组名。例如，下面的代码会引起致<b>CollectionView</b> 通过它们的‘country’属性的第一个字母来进行分组：
+<pre>
+var cv = new wijmo.collections.CollectionView(items);
+var gd = new wijmo.collections.PropertyGroupDescription('country', 
+  function(item, propName) {
+    return item[propName][0]; // return country's initial
+});
+cv.groupDescriptions.push(gd);
+</pre></p></p>
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideConstructor = !hideConstructor">
+<span class="glyph-collapsed" ng-show="hideConstructor"></span>
+<span class="glyph-expanded" ng-hide="hideConstructor"></span>
+ 构造函数
+</h3>
+</div>
+<table ng-hide="hideConstructor" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-2">名称</th>
+
+<th class="col-md-5">参数</th>
+
+<th class="col-md-5">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><b>constructor</b>&#8203;(property, converter?): <a href="topic/wijmo.collections.PropertyGroupDescription.Class.html"><b>PropertyGroupDescription</b></a></td>
+      <td><p>
+<b>property</b> (<b>string</b>): The name of the property that specifies
+which group an item belongs to.<br/><b>converter?</b> (<b>Function</b>): A callback function that takes an item and 
+a property name and returns the group name. If not specified, 
+the group name is the property value for the item.<br/></p>
+</td>
+      <td>初始化类 <a href="topic/wijmo.collections.PropertyGroupDescription.Class.html"><b>PropertyGroupDescription</b></a> 的一个新实例。</td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideMethods = !hideMethods">
+<span class="glyph-collapsed" ng-show="hideMethods"></span>
+<span class="glyph-expanded" ng-hide="hideMethods"></span>
+方法
+</h3>
+</div>
+<table ng-hide="hideMethods" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-2">名称</th>
+
+<th class="col-md-5">参数</th>
+
+<th class="col-md-5">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><b>groupNameFromItem</b>&#8203;(item, level): <b>any</b></td>
+      <td><p>
+<b>item</b> (<b>any</b>): 为该项目获取组名。<br/><b>level</b> (<b>number</b>): 零基组水平索引。<br/></p>
+</td>
+      <td>返回给定项目的组名。<br/><br/><b>返回值</b> 该项目属于该组的名称。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>namesMatch</b>&#8203;(groupName, itemName): <b>boolean</b></td>
+      <td><p>
+<b>groupName</b> (<b>any</b>): 组名称。<br/><b>itemName</b> (<b>any</b>): 项目名称。<br/></p>
+</td>
+      <td>返回一个值，该值表明组名称和项目名称是否匹配（意味着该项目属于该组）。<br/><br/><b>返回值</b> 如果名称匹配则为真，否则为假。</td>
+    </tr>
+</tbody>
+</table>
+</div>
+

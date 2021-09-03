@@ -1,0 +1,115 @@
+<h2>CellRangeEventArgs 类</h2>
+<dl class="dl-horizontal">
+<dt>基类</dt><dd><a href="topic/wijmo.CancelEventArgs.Class.html"><b>CancelEventArgs</b></a></dd>
+<dt>派生类</dt><dd><a href="topic/wijmo.grid.FormatItemEventArgs.Class.html"><b>FormatItemEventArgs</b></a></dd>
+<dt>模块</dt><dd>wijmo.grid</dd>
+<dt>文件</dt><dd>wijmo.grid.js</dd>
+<dt>表示</dt><dd><label style="font-weight:normal">继承成员 <input type="checkbox" ng-model="showInherited"></label></dd>
+</dl>
+<p>为 <a href="topic/wijmo.grid.CellRange.Class.html"><b>CellRange</b></a> 事件提供事件参数。</p>
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideConstructor = !hideConstructor">
+<span class="glyph-collapsed" ng-show="hideConstructor"></span>
+<span class="glyph-expanded" ng-hide="hideConstructor"></span>
+ 构造函数
+</h3>
+</div>
+<table ng-hide="hideConstructor" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-2">名称</th>
+
+<th class="col-md-5">参数</th>
+
+<th class="col-md-5">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><b>constructor</b>&#8203;(p, rng, data?): <a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><b>CellRangeEventArgs</b></a></td>
+      <td><p>
+<b>p</b> (<a href="topic/wijmo.grid.GridPanel.Class.html"><b>GridPanel</b></a>): 包含该范围的 <a href="topic/wijmo.grid.GridPanel.Class.html"><b>GridPanel</b></a>。<br/><b>rng</b> (<a href="topic/wijmo.grid.CellRange.Class.html"><b>CellRange</b></a>): 该事件影响的单元格范围。<br/><b>data?</b> (<b>string</b>): 关联到该事件的数据。<br/></p>
+</td>
+      <td>初始化类 <a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><b>CellRangeEventArgs</b></a> 的一个新实例</td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideProperties = !hideProperties">
+<span class="glyph-collapsed" ng-show="hideProperties"></span>
+<span class="glyph-expanded" ng-hide="hideProperties"></span>
+属性
+</h3>
+</div>
+<table ng-hide="hideProperties" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-3">名称</th>
+
+<th class="col-md-2">类型</th>
+
+<th class="col-md-7">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr ng-show="showInherited">
+      <td><span class="badge" title="字段">F</span></td>
+      <td><b>cancel</b></td>
+      <td><b>boolean</b></td>
+      <td>获取或者设置一个值，该值指示该事件是否应该被取消。<br/><span class="text-info">(继承自 <a href="topic/wijmo.CancelEventArgs.Class.html"><b>CancelEventArgs</b></a>).</span></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>col</b></td>
+      <td><b>number</b></td>
+      <td>获取该事件影响到的列。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>data</b></td>
+      <td><b>any</b></td>
+      <td>获取或设置该事件关联的数据。</td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td><span class="badge" title="静态">S</span><span class="badge" title="字段">F</span></td>
+      <td><b>empty</b></td>
+      <td><a href="topic/wijmo.EventArgs.Class.html"><b>EventArgs</b></a></td>
+      <td>提供一个值，该值被用作没有事件数据的事件。<br/><span class="text-info">(继承自 <a href="topic/wijmo.EventArgs.Class.html"><b>EventArgs</b></a>).</span></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>panel</b></td>
+      <td><a href="topic/wijmo.grid.GridPanel.Class.html"><b>GridPanel</b></a></td>
+      <td>获取该事件影响到的 <a href="topic/wijmo.grid.GridPanel.Class.html"><b>GridPanel</b></a>。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>range</b></td>
+      <td><a href="topic/wijmo.grid.CellRange.Class.html"><b>CellRange</b></a></td>
+      <td>获取该事件影响到的 <a href="topic/wijmo.grid.CellRange.Class.html"><b>CellRange</b></a>。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>row</b></td>
+      <td><b>number</b></td>
+      <td>获取该事件影响到的行。</td>
+    </tr>
+</tbody>
+</table>
+</div>
+

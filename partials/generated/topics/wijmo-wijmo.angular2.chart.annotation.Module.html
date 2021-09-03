@@ -1,0 +1,162 @@
+<h2>模块 wijmo/wijmo.angular2.chart.annotation</h2>
+<dl class="dl-horizontal">
+<dt>文件</dt><dd>wijmo.angular2.js</dd>
+</dl>
+<p><p>包含 <b>wijmo.chart.annotation</b> 模块的 Angular 2 组件。 </p>
+
+<p><b>wijmo.angular2.chart.annotation</b> 是一个外部的 TypeScript 模块，可以通过其环境模块名称导入到您的代码中。例如：</p>
+
+<p><pre>import * as wjAnnotation from 'wijmo/wijmo.angular2.chart.annotation';
+import * as wjChart from 'wijmo/wijmo.angular2.chart';
+&nbsp;
+&#64;Component({
+    directives: [wjChart.WjFlexChart, wjAnnotation.WjFlexChartAnnotationLayer, 
+           wjAnnotation.WjFlexChartAnnotationCircle, wjChart.WjFlexChartSeries],
+    template: `
+      &lt;wj-flex-chart [itemsSource]="data" [bindingX]="'x'"&gt;
+          &lt;wj-flex-chart-series [binding]="'y'"&gt;&lt;/wj-flex-chart-series&gt;
+          &lt;wj-flex-chart-annotation-layer&gt;&lt;/wj-flex-chart-annotation-layer&gt;
+              &lt;wj-flex-chart-annotation-circle [radius]="40" [point]="{x: 250, y: 150}"&gt;&lt;/wj-flex-chart-annotation-circle&gt;
+          &lt;/wj-flex-chart-annotation-layer&gt;
+      &lt;/wj-flex-chart&gt;`,
+    selector: 'my-cmp',
+})
+export class MyCmp {
+    data: any[];
+}</pre></p></p>
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideClasses = !hideClasses">
+<span class="glyph-collapsed" ng-show="hideClasses"></span>
+<span class="glyph-expanded" ng-hide="hideClasses"></span>
+类
+</h3>
+</div>
+<table ng-hide="hideClasses" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th>名称</th>
+
+<th>描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo-wijmo.angular2.chart.annotation.WjFlexChartAnnotationCircle.Class.html"><b>WjFlexChartAnnotationCircle</b></a></td>
+      <td><p><a href="topic/wijmo.angular.WjFlexChart.Class.html"><b>WjFlexChart</b></a> <a href="topic/wijmo.chart.annotation.Circle.Class.html"><b>Circle</b></a> 标注对象对应的 Angular 2 组件。</p>
+
+<p><b>wj-flex-chart-annotation-circle</b> 组件必须包含在一个 <a href="topic/wijmo-wijmo.angular2.chart.annotation.WjFlexChartAnnotationLayer.Class.html"><b>WjFlexChartAnnotationLayer</b></a> 组件内部。</p>
+
+<p>通过 <b>wj-flex-chart-annotation-circle</b> 组件添加 <b>Circle</b> 标注对象至您的 Angular 2 应用程序。关于 Angular 2 标记语法的更多细节，请参见
+<a href="static/angular2Markup.html">Angular 2 标记</a>。</p>
+
+<p><b>WjFlexChartAnnotationCircle</b> 组件继承自 <b>Circle</b> 类，因此继承了其全部的属性，事件和方法。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo-wijmo.angular2.chart.annotation.WjFlexChartAnnotationEllipse.Class.html"><b>WjFlexChartAnnotationEllipse</b></a></td>
+      <td><p><a href="topic/wijmo.angular.WjFlexChart.Class.html"><b>WjFlexChart</b></a> <a href="topic/wijmo.chart.annotation.Ellipse.Class.html"><b>Ellipse</b></a> 标注对象对应的 Angular 2 组件。</p>
+
+<p><b>wj-flex-chart-annotation-ellipse</b> 组件必须包含在一个 <a href="topic/wijmo-wijmo.angular2.chart.annotation.WjFlexChartAnnotationLayer.Class.html"><b>WjFlexChartAnnotationLayer</b></a> 组件内部。</p>
+
+<p>通过 <b>wj-flex-chart-annotation-ellipse</b> 组件添加 <b>Ellipse</b> 标注对象至您的 Angular 2 应用程序。关于 Angular 2 标记语法的更多细节，请参见
+<a href="static/angular2Markup.html">Angular 2 标记</a>。</p>
+
+<p><b>WjFlexChartAnnotationEllipse</b> 组件继承自 <b>Ellipse</b> 类，因此继承了其全部的属性，事件和方法。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo-wijmo.angular2.chart.annotation.WjFlexChartAnnotationImage.Class.html"><b>WjFlexChartAnnotationImage</b></a></td>
+      <td><p><a href="topic/wijmo.angular.WjFlexChart.Class.html"><b>WjFlexChart</b></a> <a href="topic/wijmo.chart.annotation.Image.Class.html"><b>Image</b></a> 标注对象对应的 Angular 2 组件。</p>
+
+<p><b>wj-flex-chart-annotation-image</b> 组件必须包含在一个 <a href="topic/wijmo-wijmo.angular2.chart.annotation.WjFlexChartAnnotationLayer.Class.html"><b>WjFlexChartAnnotationLayer</b></a> 组件内部。</p>
+
+<p>通过 <b>wj-flex-chart-annotation-image</b> 组件添加 <b>Image</b> 标注对象至您的 Angular 2 应用程序。关于 Angular 2 标记语法的更多细节，请参见
+<a href="static/angular2Markup.html">Angular 2 标记</a>。</p>
+
+<p><b>WjFlexChartAnnotationImage</b> 组件继承自 <b>Image</b> 类，因此继承了其全部的属性，事件和方法。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo-wijmo.angular2.chart.annotation.WjFlexChartAnnotationLayer.Class.html"><b>WjFlexChartAnnotationLayer</b></a></td>
+      <td><p><a href="topic/wijmo.angular.WjFlexChart.Class.html"><b>WjFlexChart</b></a> <a href="topic/wijmo.chart.annotation.AnnotationLayer.Class.html"><b>AnnotationLayer</b></a> 对象对应的 Angular 2 组件。</p>
+
+<p><b>wj-flex-chart-annotation-layer</b> 组件必须包含在一个 <a href="topic/wijmo-wijmo.angular2.chart.WjFlexChart.Class.html"><b>WjFlexChart</b></a> 组件内部。</p>
+
+<p>使用 <b>wj-flex-chart-annotation-layer</b> 组件添加 <b>AnnotationLayer</b> 对象至您的 Angular 2 应用程序中。关于 Angular 2 标记语法的更多细节，请参见
+<a href="static/angular2Markup.html">Angular 2 标记</a>。</p>
+
+<p><b>WjFlexChartAnnotationLayer</b> 组件继承自 <b>AnnotationLayer</b> 类，因此继承了其全部的属性，事件和方法。</p>
+
+<p><b>wj-flex-chart-annotation-layer</b> 组件可以包含继承自 <a href="topic/wijmo.chart.annotation.AnnotationBase.Class.html"><b>AnnotationBase</b></a> 类的子组件。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo-wijmo.angular2.chart.annotation.WjFlexChartAnnotationLine.Class.html"><b>WjFlexChartAnnotationLine</b></a></td>
+      <td><p><a href="topic/wijmo.angular.WjFlexChart.Class.html"><b>WjFlexChart</b></a> <a href="topic/wijmo.chart.annotation.Line.Class.html"><b>Line</b></a> 标注对象对应的 Angular 2 组件。</p>
+
+<p><b>wj-flex-chart-annotation-line</b> 组件必须包含在一个 <a href="topic/wijmo-wijmo.angular2.chart.annotation.WjFlexChartAnnotationLayer.Class.html"><b>WjFlexChartAnnotationLayer</b></a> 组件内部。</p>
+
+<p>通过 <b>wj-flex-chart-annotation-line</b> 组件添加 <b>Line</b> 标注对象至您的 Angular 2 应用程序。关于 Angular 2 标记语法的更多细节，请参见
+<a href="static/angular2Markup.html">Angular 2 标记</a>。</p>
+
+<p><b>WjFlexChartAnnotationLine</b> 组件继承自 <b>Line</b> 类，因此继承了其全部的属性，事件和方法。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo-wijmo.angular2.chart.annotation.WjFlexChartAnnotationPolygon.Class.html"><b>WjFlexChartAnnotationPolygon</b></a></td>
+      <td><p><a href="topic/wijmo.angular.WjFlexChart.Class.html"><b>WjFlexChart</b></a> <a href="topic/wijmo.chart.annotation.Polygon.Class.html"><b>Polygon</b></a> 标注对象对应的 Angular 2 组件。</p>
+
+<p><b>wj-flex-chart-annotation-polygon</b> 组件必须包含在一个 <a href="topic/wijmo-wijmo.angular2.chart.annotation.WjFlexChartAnnotationLayer.Class.html"><b>WjFlexChartAnnotationLayer</b></a> 组件内部。</p>
+
+<p>通过 <b>wj-flex-chart-annotation-polygon</b> 组件添加 <b>Polygon</b> 标注对象至您的 Angular 2 应用程序。关于 Angular 2 标记语法的更多细节，请参见
+<a href="static/angular2Markup.html">Angular 2 标记</a>。</p>
+
+<p><b>WjFlexChartAnnotationPolygon</b> 组件继承自 <b>Polygon</b> 类，因此继承了其全部的属性，事件和方法。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo-wijmo.angular2.chart.annotation.WjFlexChartAnnotationRectangle.Class.html"><b>WjFlexChartAnnotationRectangle</b></a></td>
+      <td><p><a href="topic/wijmo.angular.WjFlexChart.Class.html"><b>WjFlexChart</b></a> <a href="topic/wijmo.chart.annotation.Rectangle.Class.html"><b>Rectangle</b></a> 标注对象对应的 Angular 2 组件。</p>
+
+<p><b>wj-flex-chart-annotation-rectangle</b> 组件必须包含在一个 <a href="topic/wijmo-wijmo.angular2.chart.annotation.WjFlexChartAnnotationLayer.Class.html"><b>WjFlexChartAnnotationLayer</b></a> 组件内部。</p>
+
+<p>通过 <b>wj-flex-chart-annotation-rectangle</b> 组件添加 <b>Rectangle</b> 标注对象至您的 Angular 2 应用程序。关于 Angular 2 标记语法的更多细节，请参见
+<a href="static/angular2Markup.html">Angular 2 标记</a>。</p>
+
+<p><b>WjFlexChartAnnotationRectangle</b> 组件继承自 <b>Rectangle</b> 类，因此继承了其全部的属性，事件和方法。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo-wijmo.angular2.chart.annotation.WjFlexChartAnnotationSquare.Class.html"><b>WjFlexChartAnnotationSquare</b></a></td>
+      <td><p><a href="topic/wijmo.angular.WjFlexChart.Class.html"><b>WjFlexChart</b></a> <a href="topic/wijmo.chart.annotation.Square.Class.html"><b>Square</b></a> 标注对象对应的 Angular 2 组件。</p>
+
+<p><b>wj-flex-chart-annotation-square</b> 组件必须包含在一个 <a href="topic/wijmo-wijmo.angular2.chart.annotation.WjFlexChartAnnotationLayer.Class.html"><b>WjFlexChartAnnotationLayer</b></a> 组件内部。</p>
+
+<p>通过 <b>wj-flex-chart-annotation-square</b> 组件添加 <b>Square</b> 标注对象至您的 Angular 2 应用程序。关于 Angular 2 标记语法的更多细节，请参见
+<a href="static/angular2Markup.html">Angular 2 标记</a>。</p>
+
+<p><b>WjFlexChartAnnotationSquare</b> 组件继承自 <b>Square</b> 类，因此继承了其全部的属性，事件和方法。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo-wijmo.angular2.chart.annotation.WjFlexChartAnnotationText.Class.html"><b>WjFlexChartAnnotationText</b></a></td>
+      <td><p><a href="topic/wijmo.angular.WjFlexChart.Class.html"><b>WjFlexChart</b></a> <a href="topic/wijmo.chart.annotation.Text.Class.html"><b>Text</b></a> 标注对象对应的 Angular 2 组件。</p>
+
+<p><b>wj-flex-chart-annotation-text</b> 组件必须包含在一个 <a href="topic/wijmo-wijmo.angular2.chart.annotation.WjFlexChartAnnotationLayer.Class.html"><b>WjFlexChartAnnotationLayer</b></a> 组件内部。</p>
+
+<p>通过 <b>wj-flex-chart-annotation-text</b> 组件添加 <b>Text</b> 标注对象至您的 Angular 2 应用程序。关于 Angular 2 标记语法的更多细节，请参见
+<a href="static/angular2Markup.html">Angular 2 标记</a>。</p>
+
+<p><b>WjFlexChartAnnotationText</b> 组件继承自 <b>Text</b> 类，因此继承了其全部的属性，事件和方法。</p></td>
+    </tr>
+</tbody>
+</table>
+</div>
+

@@ -1,0 +1,144 @@
+<h2>PdfFont 类</h2>
+<dl class="dl-horizontal">
+<dt>模块</dt><dd>wijmo.pdf</dd>
+<dt>文件</dt><dd>wijmo.pdf.js</dd>
+</dl>
+<p>表示一个字体。</p>
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideConstructor = !hideConstructor">
+<span class="glyph-collapsed" ng-show="hideConstructor"></span>
+<span class="glyph-expanded" ng-hide="hideConstructor"></span>
+ 构造函数
+</h3>
+</div>
+<table ng-hide="hideConstructor" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-2">名称</th>
+
+<th class="col-md-5">参数</th>
+
+<th class="col-md-5">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><b>constructor</b>&#8203;(family?, size?, style?, weight?): <a href="topic/wijmo.pdf.PdfFont.Class.html"><b>PdfFont</b></a></td>
+      <td><p>
+<b>family?</b> (<b>string</b>): 字体名称。<br/><span class="text-info">(默认值: <b>'times'</b>)</span><br/><b>size?</b> (<b>number</b>): 字体大小。<br/><span class="text-info">(默认值: <b>10</b>)</span><br/><b>style?</b> (<b>string</b>): 字体样式。<br/><span class="text-info">(默认值: <b>'normal'</b>)</span><br/><b>weight?</b> (<b>string</b>): 字体粗细<br/><span class="text-info">(默认值: <b>'normal'</b>)</span><br/></p>
+</td>
+      <td>初始化 <a href="topic/wijmo.pdf.PdfFont.Class.html"><b>PdfFont</b></a> 类的一个新实例。</td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideProperties = !hideProperties">
+<span class="glyph-collapsed" ng-show="hideProperties"></span>
+<span class="glyph-expanded" ng-hide="hideProperties"></span>
+属性
+</h3>
+</div>
+<table ng-hide="hideProperties" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-3">名称</th>
+
+<th class="col-md-2">类型</th>
+
+<th class="col-md-7">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><b>family</b></td>
+      <td><b>string</b></td>
+      <td><p>获取或设置字体的字体集名称。</p>
+
+<p>字体集名称的列表按照优先级顺序，
+由逗号分隔。每一个字体集名称可以为之前由 <b>registerFont</b> 方法注册的或者 PDF 标准字体集：'courier'，
+'helvetica'，'symbol'，'times'，'zapfdingbats' 或者一些超级字体集名称：'cursive'，'fantasy'，'monospace'，'serif'，'sans-serif'。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>size</b></td>
+      <td><b>number</b></td>
+      <td>获取或设置字体的尺寸。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>style</b></td>
+      <td><b>string</b></td>
+      <td><p>获取或设置字体的样式。</p>
+
+<p>支持以下值：'normal'，'italic'，'oblique'。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>weight</b></td>
+      <td><b>string</b></td>
+      <td><p>获取或设置字体的粗细。</p>
+
+<p>支持以下值：'normal'，'bold'，'100'，'200'，'300'，'400'，'500'，'600'，'700'，'800'，'900'。</p></td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideMethods = !hideMethods">
+<span class="glyph-collapsed" ng-show="hideMethods"></span>
+<span class="glyph-expanded" ng-hide="hideMethods"></span>
+方法
+</h3>
+</div>
+<table ng-hide="hideMethods" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-2">名称</th>
+
+<th class="col-md-5">参数</th>
+
+<th class="col-md-5">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><b>clone</b>&#8203;(): <a href="topic/wijmo.pdf.PdfFont.Class.html"><b>PdfFont</b></a></td>
+      <td></td>
+      <td>创建该 <a href="topic/wijmo.pdf.PdfFont.Class.html"><b>PdfFont</b></a> 的一份拷贝。<br/><br/><b>返回值</b> 这个字体的一个拷贝 。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>equals</b>&#8203;(value): <b>boolean</b></td>
+      <td><p>
+<b>value</b> (<a href="topic/wijmo.pdf.PdfFont.Class.html"><b>PdfFont</b></a>): 待比较的 <a href="topic/wijmo.pdf.PdfFont.Class.html"><b>PdfFont</b></a> 对象。<br/></p>
+</td>
+      <td>确定是否指定的 <a href="topic/wijmo.pdf.PdfFont.Class.html"><b>PdfFont</b></a> 实例和当前的实例相等。<br/><br/><b>返回值</b> 如果指定对象与当前对象相等，则返回真，否则返回假。</td>
+    </tr>
+</tbody>
+</table>
+</div>
+

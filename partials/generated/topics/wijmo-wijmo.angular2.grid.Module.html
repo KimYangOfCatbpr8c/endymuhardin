@@ -1,0 +1,129 @@
+<h2>模块 wijmo/wijmo.angular2.grid</h2>
+<dl class="dl-horizontal">
+<dt>文件</dt><dd>wijmo.angular2.js</dd>
+</dl>
+<p><p>包含 <b>wijmo.grid</b> 模块的 Angular 2 组件。 </p>
+
+<p><b>wijmo.angular2.grid</b> 是一个外部的 TypeScript 模块，可以通过其环境模块名称导入到您的代码中。例如：</p>
+
+<p><pre>import * as wjGrid from 'wijmo/wijmo.angular2.grid';
+&nbsp;
+&#64;Component({
+    directives: [wjGrid.WjFlexGrid],
+    template: '&lt;wj-flex-grid [itemsSource]="data"&gt;&lt;/wj-flex-grid&gt;',
+    selector: 'my-cmp',
+})
+export class MyCmp {
+    data: any[];
+}</pre></p></p>
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideClasses = !hideClasses">
+<span class="glyph-collapsed" ng-show="hideClasses"></span>
+<span class="glyph-expanded" ng-hide="hideClasses"></span>
+类
+</h3>
+</div>
+<table ng-hide="hideClasses" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th>名称</th>
+
+<th>描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html"><b>WjFlexGrid</b></a></td>
+      <td><p><b>FlexGrid控件对应的</b> Angular 2 组件。</p>
+
+<p>使用 <b>wj-flex-grid</b> 组件添加 <b>FlexGrid</b> 控件至您的 Angular 2 应用程序中。关于 Angular 2 标记语法的更多细节，请参见
+<a href="static/angular2Markup.html">Angular 2 标记</a>。例如：</p>
+
+<p><pre>&lt;p&gt;这是一个具有四列的数据绑定的 FlexGrid 控件：&lt;/p&gt;
+&lt;wj-flex-grid [itemsSource]="data"&gt;
+  &lt;wj-flex-grid-column 
+    [header]="'Country'" 
+    [binding]="'country'"&gt;
+  &lt;/wj-flex-grid-column&gt;
+  &lt;wj-flex-grid-column 
+    [header]="'Sales'" 
+    [binding]="'sales'"&gt;
+  &lt;/wj-flex-grid-column&gt;
+  &lt;wj-flex-grid-column 
+    [header]="'Expenses'" 
+    [binding]="'expenses'"&gt;
+  &lt;/wj-flex-grid-column&gt;
+  &lt;wj-flex-grid-column 
+    [header]="'Downloads'" 
+    [binding]="'downloads'"&gt;
+  &lt;/wj-flex-grid-column&gt;
+&lt;/wj-flex-grid&gt;</pre></p>
+
+<p><b>WjFlexGrid</b> 组件继承自 <b>FlexGrid</b> 控件，因此继承了其全部的属性，事件和方法。</p>
+
+<p><b>wj-flex-grid</b> 组件可以包含 <a href="topic/wijmo-wijmo.angular2.grid.WjFlexGridColumn.Class.html"><b>WjFlexGridColumn</b></a>，
+<a href="topic/wijmo-wijmo.angular2.grid.WjFlexGridCellTemplate.Class.html"><b>WjFlexGridCellTemplate</b></a>，
+<a href="topic/wijmo-wijmo.angular2.grid.detail.WjFlexGridDetail.Class.html"><b>WjFlexGridDetail</b></a> 以及
+<a href="topic/wijmo-wijmo.angular2.grid.filter.WjFlexGridFilter.Class.html"><b>WjFlexGridFilter</b></a> 子组件。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGridCellTemplate.Class.html"><b>WjFlexGridCellTemplate</b></a></td>
+      <td>TBD</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo-wijmo.angular2.grid.WjFlexGridColumn.Class.html"><b>WjFlexGridColumn</b></a></td>
+      <td><p><a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a> <b>Column控件对应的</b> Angular 2 组件。</p>
+
+<p><b>wj-flex-grid-column</b> 组件必须包含在一个 <a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html"><b>WjFlexGrid</b></a> 组件内部。</p>
+
+<p>使用 <b>wj-flex-grid-column</b> 组件添加 <b>Column</b> 对象至您的 Angular 2 应用程序中。关于 Angular 2 标记语法的更多细节，请参见
+<a href="static/angular2Markup.html">Angular 2 标记</a>。</p>
+
+<p><b>WjFlexGridColumn</b> 组件继承自 <b>Column</b> 类，因此继承了其全部的属性，事件和方法。</p>
+
+<p><b>wj-flex-grid-column</b> 组件可以包含 <a href="topic/wijmo-wijmo.angular2.grid.WjFlexGridCellTemplate.Class.html"><b>WjFlexGridCellTemplate</b></a>  子 Directive 指令。</p></td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideEnumerations = !hideEnumerations">
+<span class="glyph-collapsed" ng-show="hideEnumerations"></span>
+<span class="glyph-expanded" ng-hide="hideEnumerations"></span>
+枚举
+</h3>
+</div>
+<table ng-hide="hideEnumerations" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th>名称</th>
+
+<th>描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo-wijmo.angular2.grid.CellTemplateType.Enum.html"><b>CellTemplateType</b></a></td>
+      <td>定义应用该模板的单元格的类型。该值指定在 <a href="topic/wijmo-wijmo.angular2.grid.WjFlexGridCellTemplate.Class.html"><b>WjFlexGridCellTemplate</b></a> 指令的 <b>cell-type</b> attribute 属性中。</td>
+    </tr>
+</tbody>
+</table>
+</div>
+

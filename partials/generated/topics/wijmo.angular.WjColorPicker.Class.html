@@ -1,0 +1,33 @@
+<h2>WjColorPicker 类</h2>
+<dl class="dl-horizontal">
+<dt>基类</dt><dd><b>WjDirective</b></dd>
+<dt>模块</dt><dd>wijmo.angular</dd>
+<dt>文件</dt><dd>wijmo.angular.js</dd>
+<dt>表示</dt><dd><label style="font-weight:normal">继承成员 <input type="checkbox" ng-model="showInherited"></label></dd>
+</dl>
+<p><p>AngularJS 指令应用于 <a href="topic/wijmo.input.ColorPicker.Class.html"><b>ColorPicker</b></a> 控件.</p>
+
+<p>使用 <b>wj-color-picker</b> 指令添加 <b>ColorPicker</b> 到 AngularJS 应用中。 注意指令和参数名称必须使用小写字母+短线语法替代驼峰命名。 示例：</p>
+
+<p><pre>&lt;p&gt;Here is a ColorPicker control:&lt;/p&gt;
+&lt;wj-color-picker
+  value="theColor"
+  show-alpha-channel="false"&gt;
+&lt;/wj-color-picker&gt;</pre></p>
+
+<p><b>wj-color-picker</b> 指令支持以下属性:</p>
+
+<p><dl class="dl-horizontal">
+  <dt>ng-model</dt>      <dd><code>@</code> 使用Angular的ng-model指令绑定控件的 <b>value</b> 属性。使用ng-model指令绑定属性能够获得一些共通的特性，例如验证，自动添加控件状态到form实例，等等。 使用 wj-model-property 重定义被 ng-model指定绑定的控件属性。</dd>
+  <dt>wj-model-property</dt>  <dd><code>@</code> 使用 <b>ng-model</b> 指令指定控件绑定的作用域。</dd>
+  <dt>control</dt>           <dd><code>=</code> 该指令创建的指向 <b>ColorPicker</b> 控件的引用。</dd>
+  <dt>initialized</dt>          <dd><code>&</code> 该事件在绑定完成控件特性值的初始化后被触发。</dd>
+  <dt>is-initialized</dt>       <dd><code>=</code> 绑定是否已经完成控件特性值的初始化。 </dd>
+  <dt>show-alpha-channel</dt><dd><code>@</code> 是否显示透明度编辑器。</dd>
+  <dt>show-color-string</dt> <dd><code>@</code> 是否显示颜色名称用于编辑。</dd>
+  <dt>palette</dt>           <dd><code>=</code> 一个包含十个颜色值的数组，作为调色板使用。</dd>
+  <dt>value</dt>             <dd><code>=</code> 编辑的颜色值。</dd>
+  <dt>got-focus</dt>         <dd><code>&</code> <b>gotFocus</b> 事件。</dd>
+  <dt>lost-focus</dt>        <dd><code>&</code> <b>lostFocus</b> 事件。</dd>
+  <dt>value-changed</dt>     <dd><code>&</code> <b>valueChanged</b> 事件。</dd>
+</dl></p></p>

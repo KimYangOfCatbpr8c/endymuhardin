@@ -1,0 +1,218 @@
+<h2>模块 wijmo.grid</h2>
+<dl class="dl-horizontal">
+<dt>文件</dt><dd>wijmo.grid.js</dd>
+</dl>
+<p><p>定义 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a> 控件及其相关类。</p>
+
+<p>以下示例创建了一个 <b>FlexGrid</b> 控件，并将其绑定至一个‘Data’数组。
+该表单具有三列，显示地通过生成 <b>columns</b> 数组指定。</p>
+
+<p><a href="http://jsfiddle.net/Wijmo5/6GB66/" target="_blank" class="btn btn-info">
+  <img src="images/fiddle.png"/>
+  在线示例
+</a>
+</p></p>
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideClasses = !hideClasses">
+<span class="glyph-collapsed" ng-show="hideClasses"></span>
+<span class="glyph-expanded" ng-hide="hideClasses"></span>
+类
+</h3>
+</div>
+<table ng-hide="hideClasses" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th>名称</th>
+
+<th>描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.grid.CellFactory.Class.html"><b>CellFactory</b></a></td>
+      <td>创建表示在一个 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a> 控件内部单元格的 HTML 元素。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.grid.CellRange.Class.html"><b>CellRange</b></a></td>
+      <td>表示由两个行索引以及两个列索引定义的一个方形的单元格分组。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><b>CellRangeEventArgs</b></a></td>
+      <td>为 <a href="topic/wijmo.grid.CellRange.Class.html"><b>CellRange</b></a> 事件提供事件参数。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.grid.Column.Class.html"><b>Column</b></a></td>
+      <td>表示表单中的一列。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.grid.ColumnCollection.Class.html"><b>ColumnCollection</b></a></td>
+      <td>表示一个 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a> 控件中 <a href="topic/wijmo.grid.Column.Class.html"><b>Column</b></a> 对象的集合。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.grid.DataMap.Class.html"><b>DataMap</b></a></td>
+      <td><p>表示列的 <b>dataMap</b> 属性的数据映射。</p>
+
+<p>数据列向表单提供了自动查找的能力。比如说，您希望显示一个客户的名称，而不是 ID，或者
+一个颜色值，而不是其原始的 RGB 值。</p>
+
+<p>以下代码将一个表单绑定到一组产品的集合，之后指定一个 <b>DataMap</b> 至表单的 ‘CategoryID’
+列，因此表单显示分类的名称而不是其原始的 ID。</p>
+
+<p><pre>
+// 绑定表单至产品
+var flex = new wijmo.grid.FlexGrid();
+flex.itemsSource = products;
+// 映射 CategoryID 列以显示分类的名称而不是原始的 ID
+var col = flex.columns.getColumn('CategoryID');
+col.dataMap = new wijmo.grid.DataMap(categories, 'CategoryID', 'CategoryName');
+</pre></p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a></td>
+      <td><p><b>FlexGrid</b> 控件提供了一种强大而灵活的在一个表格格式下显示和编辑数据的一种方式。</p>
+
+<p><b>FlexGrid</b> 控件是一个全功能的表格，提供了您所需用到的全部功能，包括集中不同的选择模式，排序，
+改变列的顺序，分组，筛选，编辑，自定义单元格，XAML 样式的星号列宽计算，行和列的虚绑定，等等。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.grid.FormatItemEventArgs.Class.html"><b>FormatItemEventArgs</b></a></td>
+      <td>为 <b>formatItem</b> event 事件提供事件参数。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.grid.GridPanel.Class.html"><b>GridPanel</b></a></td>
+      <td>表示表单的一个逻辑部分，比如说列头，行头，以及可滚动数据区。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.grid.GroupRow.Class.html"><b>GroupRow</b></a></td>
+      <td>表示作为一组行的页眉的行。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.grid.HitTestInfo.Class.html"><b>HitTestInfo</b></a></td>
+      <td>包含 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a> 控件上，位于指定页面坐标位置的部分的信息的类。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.grid.MergeManager.Class.html"><b>MergeManager</b></a></td>
+      <td><p>定义 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a> 的单元格合并行为。</p>
+
+<p>该类的一个实例将自动地被创建并添加到表单的 <b>mergeManager</b> 属性，以实现表单的默认合并行为。</p>
+
+<p>如果您希望自定义默认的合并行为，可以创建一个类，继承自 <b>MergeManager</b> 类，并覆盖 <b>getMergedRange</b> 方法。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.grid.Row.Class.html"><b>Row</b></a></td>
+      <td>表示表单中的一行。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.grid.RowCol.Class.html"><b>RowCol</b></a></td>
+      <td><a href="topic/wijmo.grid.Row.Class.html"><b>Row</b></a> 以及 <a href="topic/wijmo.grid.Column.Class.html"><b>Column</b></a> 类的一个抽象基类。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.grid.RowColCollection.Class.html"><b>RowColCollection</b></a></td>
+      <td>做为行和列集合的基类的抽象类。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.grid.RowCollection.Class.html"><b>RowCollection</b></a></td>
+      <td>表示一个 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a> 控件中的 <a href="topic/wijmo.grid.Row.Class.html"><b>Row</b></a> 对象的集合。</td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideEnumerations = !hideEnumerations">
+<span class="glyph-collapsed" ng-show="hideEnumerations"></span>
+<span class="glyph-expanded" ng-hide="hideEnumerations"></span>
+枚举
+</h3>
+</div>
+<table ng-hide="hideEnumerations" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th>名称</th>
+
+<th>描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.grid.AllowDragging.Enum.html"><b>AllowDragging</b></a></td>
+      <td>指定定义行/列拖拽行为的常量。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.grid.AllowMerging.Enum.html"><b>AllowMerging</b></a></td>
+      <td>指定定义表单的哪些区域支持单元格合并的常量。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.grid.AllowResizing.Enum.html"><b>AllowResizing</b></a></td>
+      <td>指定定义了行/列改变尺寸行为的常量。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.grid.AutoSizeMode.Enum.html"><b>AutoSizeMode</b></a></td>
+      <td>指定定义行/列自动计算尺寸行为的常量。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.grid.CellType.Enum.html"><b>CellType</b></a></td>
+      <td>标识 <a href="topic/wijmo.grid.GridPanel.Class.html"><b>GridPanel</b></a> 中的单元格的类型。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.grid.HeadersVisibility.Enum.html"><b>HeadersVisibility</b></a></td>
+      <td>指定指定行头和列头可见性的常量。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.grid.RowColFlags.Enum.html"><b>RowColFlags</b></a></td>
+      <td>指定一个表单行或列的状态的 Flag。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.grid.SelectedState.Enum.html"><b>SelectedState</b></a></td>
+      <td>指定一个单元格的选中状态。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.grid.SelectionMode.Enum.html"><b>SelectionMode</b></a></td>
+      <td>指定定义选择行为的常量。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.grid.SelMove.Enum.html"><b>SelMove</b></a></td>
+      <td>指定选择移动的类型。</td>
+    </tr>
+</tbody>
+</table>
+</div>
+

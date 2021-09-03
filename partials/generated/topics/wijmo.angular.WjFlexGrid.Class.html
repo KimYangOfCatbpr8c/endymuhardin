@@ -1,0 +1,102 @@
+<h2>WjFlexGrid 类</h2>
+<dl class="dl-horizontal">
+<dt>基类</dt><dd><b>WjDirective</b></dd>
+<dt>派生类</dt><dd><a href="topic/wijmo.angular.WjFlexSheet.Class.html"><b>WjFlexSheet</b></a>, <a href="topic/wijmo.angular.WjMultiRow.Class.html"><b>WjMultiRow</b></a>, <a href="topic/wijmo.angular.WjPivotGrid.Class.html"><b>WjPivotGrid</b></a></dd>
+<dt>模块</dt><dd>wijmo.angular</dd>
+<dt>文件</dt><dd>wijmo.angular.js</dd>
+<dt>表示</dt><dd><label style="font-weight:normal">继承成员 <input type="checkbox" ng-model="showInherited"></label></dd>
+</dl>
+<p><p>AngularJS 指令应用于 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a> 控件。</p>
+
+<p>使用 <b>wj-flex-grid</b> 指令添加 grids 到 AngularJS 应用中。 
+注意指令和参数名称必须使用小写字母+短线语法替代驼峰命名。 示例：</p>
+
+<p><pre>&lt;p&gt;Here is a FlexGrid control:&lt;/p&gt;
+&lt;wj-flex-grid items-source="data"&gt;
+  &lt;wj-flex-grid-column 
+    header="Country" 
+    binding="country"&gt;
+  &lt;/wj-flex-grid-column&gt;
+  &lt;wj-flex-grid-column 
+    header="Sales" 
+    binding="sales"&gt;
+  &lt;/wj-flex-grid-column&gt;
+  &lt;wj-flex-grid-column 
+    header="Expenses" 
+    binding="expenses"&gt;
+  &lt;/wj-flex-grid-column&gt;
+  &lt;wj-flex-grid-column 
+    header="Downloads" 
+    binding="downloads"&gt;
+  &lt;/wj-flex-grid-column&gt;
+&lt;/wj-flex-grid&gt;</pre></p>
+
+<p>下面的例子创建了一个 FlexGrid 控件，并绑定了控制器公开的 'data' 数组上。这个表格有3列，每一列对应于数据源数组上的一个对象属性。</p>
+
+<p><a href="http://jsfiddle.net/Wijmo5/QNb9X/" target="_blank" class="btn btn-info">
+  <img src="images/fiddle.png"/>
+  在线示例
+</a>
+</p>
+
+<p><b>wj-flex-grid</b> 指令支持以下属性:</p>
+
+<p><dl class="dl-horizontal">
+  <dt>allowAddNew</dt>              <dd><code>@</code> 是否允许添加新行。</dd>
+  <dt>allow-delete</dt>             <dd><code>@</code> 是否允许删除选中行。</dd>
+  <dt>allow-dragging</dt>           <dd><code>@</code> <a href="topic/wijmo.grid.AllowDragging.Enum.html"><b>AllowDragging</b></a> 值，指定拖拽行为。</dd>
+  <dt>allow-merging</dt>            <dd><code>@</code> <a href="topic/wijmo.grid.AllowMerging.Enum.html"><b>AllowMerging</b></a> 值，指定合并行为。</dd>
+  <dt>allow-resizing</dt>           <dd><code>@</code> <a href="topic/wijmo.grid.AllowResizing.Enum.html"><b>AllowResizing</b></a> 值，指定是否允许用户重置行列尺寸。</dd>
+  <dt>allow-sorting</dt>            <dd><code>@</code> 是否允许列头排序。</dd>
+  <dt>auto-generate-columns</dt>    <dd><code>@</code> 是否基于数据源自 <b>items-source</b> 动生成列 。</dd>
+  <dt>child-items-path</dt>         <dd><code>@</code> 用于生成子表格的属性名 (或者一个数组属性名，该数组项为子级表格项目)。</dd>
+  <dt>control</dt>                  <dd><code>=</code> 指向该指令创建的 <b>FlexGrid</b> 控件的引用。</dd>
+  <dt>defer-resizing</dt>           <dd><code>=</code> 延迟重计算行列尺寸。</dd>
+  <dt>frozen-columns</dt>           <dd><code>@</code> 固定列数量。</dd>
+  <dt>frozen-rows</dt>              <dd><code>@</code> 固定行数量。</dd>
+  <dt>group-header-format</dt>      <dd><code>@</code> 分组列头格式化字符</dd>
+  <dt>headers-visibility</dt>       <dd><code>=</code> <a href="topic/wijmo.grid.HeadersVisibility.Enum.html"><b>HeadersVisibility</b></a> 值，指定列头或行头是否可见。 </dd>
+  <dt>ime-enabled</dt>              <dd><code>@</code> 设置IME。</dd>
+  <dt>initialized</dt>              <dd><code>&</code> 该事件在绑定完成控件特性值的初始化后被触发。</dd>
+  <dt>is-initialized</dt>           <dd><code>=</code> 绑定是否已经完成控件特性值的初始化。 </dd>
+  <dt>item-formatter</dt>           <dd><code>=</code> 自定义显示的格式化函数。</dd>
+  <dt>items-source</dt>             <dd><code>=</code> 一个数组或者 <a href="topic/wijmo.collections.ICollectionView.Interface.html"><b>ICollectionView</b></a> 对象，包含用于在表格中呈现的数据。</dd>
+  <dt>is-read-only</dt>             <dd><code>@</code>是否只读。</dd>
+  <dt>merge-manager</dt>            <dd><code>=</code> <a href="topic/wijmo.grid.MergeManager.Class.html"><b>MergeManager</b></a> 对象，指定特殊的单元格合并</dd>
+  <dt>selection-mode</dt>           <dd><code>@</code> <a href="topic/wijmo.grid.SelectionMode.Enum.html"><b>SelectionMode</b></a> 值，指定单元格选中模式。</dd>
+  <dt>show-groups</dt>              <dd><code>@</code> 是否显示分组行。</dd>
+  <dt>show-sort</dt>                <dd><code>@</code> 是否显示列头排序。</dd>
+  <dt>sort-row-index</dt>           <dd><code>@</code> 指定列头区域的特定行显示排序，替换当前排序。</dd>
+  <dt>tree-indent</dt>              <dd><code>@</code> 使用缩进显示分组。</dd>
+  <dt>beginning-edit</dt>           <dd><code>&</code> <b>beginningEdit</b> 事件。</dd>
+  <dt>cell-edit-ended</dt>          <dd><code>&</code> <b>cellEditEnded</b> 事件。</dd>
+  <dt>cell-edit-ending</dt>         <dd><code>&</code> <b>cellEditEnding</b> 事件。</dd>
+  <dt>prepare-cell-for-edit</dt>    <dd><code>&</code> <b>prepareCellForEdit</b> 事件。</dd>
+  <dt>resizing-column</dt>          <dd><code>&</code> <b>resizingColumn</b> 事件。</dd>
+  <dt>resized-column</dt>           <dd><code>&</code> <b>resizedColumn</b> 事件。</dd>
+  <dt>dragged-column</dt>           <dd><code>&</code> <b>draggedColumn</b> 事件。</dd>
+  <dt>dragging-column</dt>          <dd><code>&</code> <b>draggingColumn</b> 事件。</dd>
+  <dt>sorted-column</dt>            <dd><code>&</code> <b>sortedColumn</b> 事件。</dd>
+  <dt>sorting-column</dt>           <dd><code>&</code> <b>sortingColumn</b> 事件。</dd>
+  <dt>deleting-row</dt>             <dd><code>&</code> <b>deletingRow</b> 事件。</dd>
+  <dt>dragging-row</dt>             <dd><code>&</code> <b>draggingRow</b> 事件。</dd>
+  <dt>dragged-row</dt>              <dd><code>&</code> <b>draggedRow</b> 事件。</dd>
+  <dt>resizing-row</dt>             <dd><code>&</code> <b>resizingRow</b> 事件。</dd>
+  <dt>resized-row</dt>              <dd><code>&</code> <b>resizedRow</b> 事件。</dd>
+  <dt>row-added</dt>                <dd><code>&</code> <b>rowAdded</b> 事件。</dd>
+  <dt>row-edit-ended</dt>           <dd><code>&</code> <b>rowEditEnded</b> 事件。</dd>
+  <dt>row-edit-ending</dt>          <dd><code>&</code> <b>rowEditEnding</b> 事件。</dd>
+  <dt>loaded-rows</dt>              <dd><code>&</code> <b>loadedRows</b> 事件。</dd>
+  <dt>loading-rows</dt>             <dd><code>&</code> <b>loadingRows</b> 事件。</dd>
+  <dt>group-collapsed-changed</dt>  <dd><code>&</code> <b>groupCollapsedChanged</b> 事件。</dd>
+  <dt>group-collapsed-changing</dt> <dd><code>&</code> <b>groupCollapsedChanging</b> 事件。</dd>
+  <dt>items-source-changed</dt>     <dd><code>&</code> <b>itemsSourceChanged</b> 事件。</dd>
+  <dt>selection-changing</dt>       <dd><code>&</code> <b>selectionChanging</b> 事件。</dd>
+  <dt>selection-changed</dt>        <dd><code>&</code> <b>selectionChanged</b> 事件。</dd>
+  <dt>got-focus</dt>                <dd><code>&</code> <b>gotFocus</b> 事件。</dd>
+  <dt>lost-focus</dt>               <dd><code>&</code> <b>lostFocus</b> 事件。</dd>
+  <dt>scroll-position-changed</dt>  <dd><code>&</code> <b>scrollPositionChanged</b> 事件。</dd>
+</dl></p>
+
+<p><b>wj-flex-grid</b> 指令可以包含 <a href="topic/wijmo.angular.WjFlexGridColumn.Class.html"><b>WjFlexGridColumn</b></a>, <a href="topic/wijmo.angular.WjFlexGridCellTemplate.Class.html"><b>WjFlexGridCellTemplate</b></a> 和 
+<a href="topic/wijmo.angular.WjFlexGridDetail.Class.html"><b>WjFlexGridDetail</b></a> 子指令。</p></p>

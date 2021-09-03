@@ -1,0 +1,334 @@
+<h2>RowColCollection 类</h2>
+<dl class="dl-horizontal">
+<dt>基类</dt><dd><a href="topic/wijmo.collections.ObservableArray.Class.html"><b>ObservableArray</b></a></dd>
+<dt>派生类</dt><dd><a href="topic/wijmo.grid.ColumnCollection.Class.html"><b>ColumnCollection</b></a>, <a href="topic/wijmo.grid.RowCollection.Class.html"><b>RowCollection</b></a></dd>
+<dt>模块</dt><dd>wijmo.grid</dd>
+<dt>文件</dt><dd>wijmo.grid.js</dd>
+<dt>表示</dt><dd><label style="font-weight:normal">继承成员 <input type="checkbox" ng-model="showInherited"></label></dd>
+</dl>
+<p>做为行和列集合的基类的抽象类。</p>
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideConstructor = !hideConstructor">
+<span class="glyph-collapsed" ng-show="hideConstructor"></span>
+<span class="glyph-expanded" ng-hide="hideConstructor"></span>
+ 构造函数
+</h3>
+</div>
+<table ng-hide="hideConstructor" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-2">名称</th>
+
+<th class="col-md-5">参数</th>
+
+<th class="col-md-5">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><b>constructor</b>&#8203;(g, defaultSize): <a href="topic/wijmo.grid.RowColCollection.Class.html"><b>RowColCollection</b></a></td>
+      <td><p>
+<b>g</b> (<a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>): 拥有该集合的 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a> 对象。<br/><b>defaultSize</b> (<b>number</b>): 集合中元素的默认尺寸。<br/></p>
+</td>
+      <td>初始化类 <a href="topic/wijmo.grid.RowColCollection.Class.html"><b>RowColCollection</b></a> 的一个新实例</td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideProperties = !hideProperties">
+<span class="glyph-collapsed" ng-show="hideProperties"></span>
+<span class="glyph-expanded" ng-hide="hideProperties"></span>
+属性
+</h3>
+</div>
+<table ng-hide="hideProperties" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-3">名称</th>
+
+<th class="col-md-2">类型</th>
+
+<th class="col-md-7">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><b>defaultSize</b></td>
+      <td><b>number</b></td>
+      <td>获取或设置集合中元素的默认尺寸。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>frozen</b></td>
+      <td><b>number</b></td>
+      <td><p>获取或设置集合中冻结行或者冻结列的个数。</p>
+
+<p>冻结的行或者列不会滚动，会保持在表单的顶部或者左侧，紧邻着固定单元格。
+和固定单元格不同，冻结的单元格可以像普通单元格一样被选择和编辑。</p></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>isUpdating</b></td>
+      <td></td>
+      <td>获取一个值，该值指示当前是否暂停通知（参见<b>beginUpdate</b> 和<b>endUpdate</b>）。<br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.ObservableArray.Class.html"><b>ObservableArray</b></a>).</span></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>maxSize</b></td>
+      <td><b>number</b></td>
+      <td>获取或设置集合中元素的最大尺寸。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>minSize</b></td>
+      <td><b>number</b></td>
+      <td>获取或设置集合中元素的最小尺寸。</td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideMethods = !hideMethods">
+<span class="glyph-collapsed" ng-show="hideMethods"></span>
+<span class="glyph-expanded" ng-hide="hideMethods"></span>
+方法
+</h3>
+</div>
+<table ng-hide="hideMethods" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-2">名称</th>
+
+<th class="col-md-5">参数</th>
+
+<th class="col-md-5">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><b>beginUpdate</b>&#8203;()</td>
+      <td></td>
+      <td>挂起全部的通知，直至下一次调用了 <b>endUpdate</b>。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>canMoveElement</b>&#8203;(src, dst): <b>boolean</b></td>
+      <td><p>
+<b>src</b> (<b>number</b>): 待移动的元素的索引。<br/><b>dst</b> (<b>number</b>): 移动该元素的目标位置，或者指定 -1 以扩展该元素。<br/></p>
+</td>
+      <td>检查一个元素是否可以从一个位置移动到另一个位置。<br/><br/><b>返回值</b> 如果移动合法，则返回 true，否则返回 false。</td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>clear</b>&#8203;()</td>
+      <td></td>
+      <td>从数组中移除所有项目。<br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.ObservableArray.Class.html"><b>ObservableArray</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>deferUpdate</b>&#8203;(fn)</td>
+      <td><p>
+<b>fn</b> (<b>Function</b>): 被执行的没有更新的函数。<br/></p>
+</td>
+      <td><p>在<b>beginUpdate</b>/<b>endUpdate</b> 块中执行函数。</p>
+
+<p>直到函数完成前集合将不会被刷新。该方法确保<b>endUpdate</b> 会被调用即使函数会抛出异常。</p><br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.ObservableArray.Class.html"><b>ObservableArray</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>endUpdate</b>&#8203;()</td>
+      <td></td>
+      <td>通过调用<b>beginUpdate</b> 重新开始被暂停的通知。<br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.ObservableArray.Class.html"><b>ObservableArray</b></a>).</span></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>getItemAt</b>&#8203;(position): <b>number</b></td>
+      <td><p>
+<b>position</b> (<b>number</b>): 集合中项目的位置，单位是像素。<br/></p>
+</td>
+      <td>获取指定物理位置的元素的索引。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>getNextCell</b>&#8203;(index, move, pageSize)</td>
+      <td><p>
+<b>index</b> (<b>number</b>): 待搜索的起始位置的索引。<br/><b>move</b> (<a href="topic/wijmo.grid.SelMove.Enum.html"><b>SelMove</b></a>): 移动的类型（尺寸和方向）。<br/><b>pageSize</b> (<b>number</b>): 一页的尺寸（假设移动是一个页面向上/向下的操作）。<br/></p>
+</td>
+      <td>为一个选择范围查找下一个可见单元格。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>getTotalSize</b>&#8203;(): <b>number</b></td>
+      <td></td>
+      <td>获取集合中元素的总体尺寸。</td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>implementsInterface</b>&#8203;(interfaceName): <b>boolean</b></td>
+      <td><p>
+<b>interfaceName</b> (<b>string</b>): 查找接口的名称。<br/></p>
+</td>
+      <td>如果一个调用者查询一个被支持的接口，则返回真。<br/><br/><b>返回值</b> 如果一个调用者查询一个被支持的接口，则为真。<br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.ObservableArray.Class.html"><b>ObservableArray</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>indexOf</b>&#8203;(searchElement, fromIndex?): <b>number</b></td>
+      <td><p>
+<b>searchElement</b> (<b>any</b>): 元素在数组中定位。<br/><b>fromIndex?</b> (<b>number</b>): 查找应该开始的位置。.<br/></p>
+</td>
+      <td>查找数组中的项。<br/><br/><b>返回值</b> 数组中项目的索引，或者如果一个项没有被发现，则索引为-1。<br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.ObservableArray.Class.html"><b>ObservableArray</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>insert</b>&#8203;(index, item)</td>
+      <td><p>
+<b>index</b> (<b>number</b>): 项目被添加的位置。<br/><b>item</b> (<b>any</b>): 添加到数组中的项目。<br/></p>
+</td>
+      <td>在数组中的特定位置插入一个项目。<br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.ObservableArray.Class.html"><b>ObservableArray</b></a>).</span></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>isFrozen</b>&#8203;(index): <b>boolean</b></td>
+      <td><p>
+<b>index</b> (<b>number</b>): 待检查的行或者列的索引。<br/></p>
+</td>
+      <td>检查是否一列或一行为冻结状态。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>moveElement</b>&#8203;(src, dst)</td>
+      <td><p>
+<b>src</b> (<b>number</b>): 待移动的元素的索引。<br/><b>dst</b> (<b>number</b>): 移动该元素的目标位置，或者指定 -1 以扩展该元素。<br/></p>
+</td>
+      <td>将一个元素从一个位置移动到另一个位置。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>onCollectionChanged</b>&#8203;(e?)</td>
+      <td><p>
+<b>e?</b> ()<br/><span class="text-info">(默认值: <b>collections.&#8203;NotifyCollectionChangedEventArgs.&#8203;reset</b>)</span><br/></p>
+</td>
+      <td>追踪 dirty 状态，并在发生改变时至表单为无效。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>push</b>&#8203;(item): <b>number</b></td>
+      <td><p>
+<b>item</b> (<b>any</b>): 待添加到数组中的项。<br/></p>
+</td>
+      <td>扩展一个元素至数组。<br/><br/><b>返回值</b> 数组新的长度。</td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>remove</b>&#8203;(item): <b>boolean</b></td>
+      <td><p>
+<b>item</b> (<b>any</b>): 项目移除。<br/></p>
+</td>
+      <td>从一个数组中移除项目。<br/><br/><b>返回值</b> 如果项目被移除则为真，如果项目在数组中没有被找到则为假。<br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.ObservableArray.Class.html"><b>ObservableArray</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>removeAt</b>&#8203;(index)</td>
+      <td><p>
+<b>index</b> (<b>number</b>): 项目删除的位置。<br/></p>
+</td>
+      <td>在数组中的特定位置中移除项。<br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.ObservableArray.Class.html"><b>ObservableArray</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>setAt</b>&#8203;(index, item)</td>
+      <td><p>
+<b>index</b> (<b>number</b>): 项目将被分配的位置。<br/><b>item</b> (<b>any</b>): 分配给数组的项目。<br/></p>
+</td>
+      <td>在数组中的特定位置分配一个项目。<br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.ObservableArray.Class.html"><b>ObservableArray</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>slice</b>&#8203;(begin?, end?): <b>any</b><b>[]</b></td>
+      <td><p>
+<b>begin?</b> (<b>number</b>): 拷贝开始的位置。<br/><b>end?</b> (<b>number</b>): 拷贝结束的位置。<br/></p>
+</td>
+      <td>创建一个数组中一部分的浅拷贝。<br/><br/><b>返回值</b> 一个数组的浅拷贝。<br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.ObservableArray.Class.html"><b>ObservableArray</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>sort</b>&#8203;(compareFn?): <b>any</b><b>[]</b></td>
+      <td><p>
+<b>compareFn?</b> (<b>Function</b>): 指定定义排序顺序的函数。
+如果已经指定了， 函数应采取两个参数并且应该返回
+-1， +1，或者0 来指明第一个参数比第二个参数较小，较大，
+或者相等。
+如果被省略了，数组按照每个元素的字符串转换在字典顺序中进行排序的。<br/></p>
+</td>
+      <td>将数组中的元素排序。<br/><br/><b>返回值</b> 排序数组的副本。<br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.ObservableArray.Class.html"><b>ObservableArray</b></a>).</span></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>splice</b>&#8203;(index, count, item?): <b>any</b><b>[]</b></td>
+      <td><p>
+<b>index</b> (<b>number</b>): 项目添加或移除的位置。<br/><b>count</b> (<b>number</b>): 待从数组中移除的项目的个数。<br/><b>item?</b> (<b>any</b>): 待添加到数组中的项。<br/></p>
+</td>
+      <td>从数组中移除或者向数组添加项目。<br/><br/><b>返回值</b> 包含移除的元素的一个数组。</td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideEvents = !hideEvents">
+<span class="glyph-collapsed" ng-show="hideEvents"></span>
+<span class="glyph-expanded" ng-hide="hideEvents"></span>
+事件
+</h3>
+</div>
+<table ng-hide="hideEvents" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-2">名称</th>
+
+<th class="col-md-5">参数</th>
+
+<th class="col-md-5">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>collectionChanged</b></td>
+      <td></td>
+      <td>当集合更改时发生。<br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.ObservableArray.Class.html"><b>ObservableArray</b></a>).</span></td>
+    </tr>
+</tbody>
+</table>
+</div>
+

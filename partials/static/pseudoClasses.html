@@ -1,0 +1,48 @@
+﻿<h2>
+    伪类</h2>
+<p> 
+    CSS 伪类是一些添加到选择器上面的关键字，指定要选择的元素的一些特殊的状态。比如<code>:hover</code>  将会为鼠标经过的选择到的元素应用样式。
+
+  </p>
+<p>
+伪类在表单是非常重要，它们能让你不仅设置dom树的样式，还能设置因为外部因素产生的样式，比如元素获得焦点 (<code>:focus</code>)或者无效 (<code>:invalid</code>)。
+
+<p>
+某些伪类限制了它们自己的用法，因为他们只能用于指定的元素，不能用于元素祖先。 比如，许多Wijmo的input 控件包含很多input元素，当input元素获得焦点，内部的input元素可以通过 <code>:focus</code>伪类选择，但是控件宿主元素无法选择。
+  </p>
+<p>
+因为这些原因，Wijmo添加了一些自己的伪类，用于更加容易构建高效的表单，
+    </p>
+<ul>
+    <li>
+        <b>wj-state-focused</b>: 
+当控件包含正在活动的子元素（不必托管元素就是活动元素）时，宿主元素被选中。</li>
+    <li>
+        <b>wj-state-invalid</b>: 
+        当控件包含的输入控件处于无效状态时，宿主元素被选中。</li>
+    <li>
+        <b>wj-state-empty</b>:
+    当控件包含一个没有任何内容的input子元素时被选中。（不同于 <code>:empty</code> 伪类，empty 应用与没有任何子元素的元素）。
+        </li>
+    <li>
+        <b>wj-state-readonly</b>: 
+        当控件的<b>isReadOnly</b> 属性设置为true，宿主元素被选中。
+        </li>
+    <li>
+        <b>wj-state-disabled</b>:
+当控件<b>isDisabled</b> 属性为true时，宿主元素被选中。
+（）
+        </li>
+</ul>
+<p>
+ 下面的列子展示了如何使用<b>wj-state-focused</b>  伪类来使用CSS 动画，当线性和径向仪表盘获得焦点时，它们的宿主会有效果。</p>
+<p>
+  <div class="member-panel example">
+    <h3 class="node collapsed">
+      Example: Pseudo Classes
+    </h3>
+    <div class="fiddle">
+      <script async src="http://jsfiddle.net/Wijmo5/450s0Lym/embed/result,html,js,css"></script>
+    </div>
+  </div>
+</p>

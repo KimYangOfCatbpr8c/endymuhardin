@@ -1,0 +1,44 @@
+<h2>WjFlexChartAnnotation 类</h2>
+<dl class="dl-horizontal">
+<dt>基类</dt><dd><b>WjDirective</b></dd>
+<dt>模块</dt><dd>wijmo.angular</dd>
+<dt>文件</dt><dd>wijmo.angular.js</dd>
+<dt>表示</dt><dd><label style="font-weight:normal">继承成员 <input type="checkbox" ng-model="showInherited"></label></dd>
+</dl>
+<p><p>AngularJS 指令应用于 annotations.</p>
+
+<p><b>wj-flex-chart-annotation</b> 指令必须包含于
+<a href="topic/wijmo.angular.WjFlexChartAnnotationLayer.Class.html"><b>WjFlexChartAnnotationLayer</b></a> 指令。</p>
+
+<p><b>wj-flex-chart-annotation</b> 指令用于所有类型的注释区域，如 <b>Circle</b>, <b>Rectangle</b>, <b>Polygon</b> 等等。 指令的注释区域的类型由 <b>type</b> 属性指定。</p>
+
+<p>指令支持以下属性:</p>
+
+<p><dl class="dl-horizontal"></p>
+
+<p>  <dt>type</dt>                  <dd><code>@</code> 指令注释的类型，可能的值有 <a href="topic/wijmo.chart.annotation.Circle.Class.html"><b>Circle</b></a>, <a href="topic/wijmo.chart.annotation.Ellipse.Class.html"><b>Ellipse</b></a>, <a href="topic/wijmo.chart.annotation.Image.Class.html"><b>Image</b></a>, <a href="topic/wijmo.chart.annotation.Line.Class.html"><b>Line</b></a>, <a href="topic/wijmo.chart.annotation.Polygon.Class.html"><b>Polygon</b></a>,
+                                     <a href="topic/wijmo.chart.annotation.Rectangle.Class.html"><b>Rectangle</b></a>, <a href="topic/wijmo.chart.annotation.Square.Class.html"><b>Square</b></a>, <a href="topic/wijmo.chart.annotation.Text.Class.html"><b>Text</b></a>.</dd>
+  <dt>attachment</dt>            <dd><code>@</code> <a href="topic/wijmo.chart.annotation.AnnotationAttachment.Enum.html"><b>AnnotationAttachment</b></a> 值，定义注释的附件。
+                                     </dd>
+  <dt>content</dt>               <dd><code>@</code> <b>Circle</b>, <b>Ellipse</b>, <b>Image</b>, <b>Line</b>,
+                                     <b>Polygon</b>, <b>Rectangle</b> 或者 <b>Square</b> 注释文本。</dd>
+  <dt>end</dt>                   <dd><code>@</code> <b>Line</b> 注释的截止位置。</dd>
+  <dt>height</dt>                <dd><code>@</code> <b>Ellipse</b>, <b>Image</b> 或者 <b>Rectangle</b> 注释的高度。</dd>
+  <dt>href</dt>                  <dd><code>@</code> <b>Image</b> 注释的图片源。</dd>
+  <dt>is-visible</dt>             <dd><code>@</code> 注释的可见性。</dd>
+  <dt>length</dt>                <dd><code>@</code> <b>Square</b> 注释的长度。</dd>
+  <dt>name</dt>                  <dd><code>@</code> 注释的名称。</dd>
+  <dt>offset</dt>                <dd><code>@</code> 注释的偏移量。</dd>
+  <dt>point</dt>                 <dd><code>@</code> 注释的位置，间隔控件依赖 <b>attachment</b>  属性值。
+                                     该属性在以下注释类型有效 <b>Circle</b>, <b>Ellipse</b>, <b>Image</b>, <b>Rectangle</b>, <b>Square</b>
+                                     和 <b>Text</b> 。</dd>
+  <dt>point-index</dt>           <dd><code>@</code> 注释附加的序列的索引。</dd>
+  <dt>position</dt>              <dd><code>@</code> <a href="topic/wijmo.chart.annotation.AnnotationPosition.Enum.html"><b>AnnotationPosition</b></a> 值，注释的位置对应的 <b>point</b>.</dd>
+  <dt>radius</dt>                <dd><code>@</code> <b>Circle</b> 注释的半径。</dd>
+  <dt>series-index</dt>          <dd><code>@</code> 注释附件的数据序列的索引。</dd>
+  <dt>start</dt>                 <dd><code>@</code> <b>Line</b> 注释的起始位置。</dd>
+  <dt>style</dt>                 <dd><code>@</code> 注释的样式。</dd>
+  <dt>text</dt>                  <dd><code>@</code> <b>Text</b> 注释的文本。</dd>
+  <dt>tooltip</dt>               <dd><code>@</code> 注释的工具提示。</dd>
+  <dt>width</dt>                 <dd><code>@</code> <b>Ellipse</b>, <b>Image</b> or <b>Rectangle</b> 注释的宽度。</dd>
+</dl></p></p>

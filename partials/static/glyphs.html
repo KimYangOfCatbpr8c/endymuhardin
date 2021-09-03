@@ -1,0 +1,39 @@
+﻿<h2>
+    Wijmo Glyphs
+</h2>
+<p>
+    <b>wijmo.css</b> 文件包含了若干以纯 CSS 方式定义的 glyph。
+    这些 glyph 在 Wijmo 控件以及其扩展中使用，您的应用程序也可以使用它们。
+</p>
+<p>
+    使用 CSS 定义 glyph 免去了部署额外字体或者图片文件的困扰，同时可以确保各种图形按照
+    当前主题指定的前景色和字体呈现。
+</p>
+<p>
+    为了在您的应用程序中使用 glyph，需要向您的标记语言中添加一个 span 元素，同时设置其
+    class 为 glyph 的名称。例如：
+</p>
+
+<pre>&lt;span class="<b>wj-glyph-diamond</b>"&gt;&lt;/span&gt;</pre>
+
+<p>
+    下表展示了在 <b>wijmo.css</b> 文件中定义的 glyph。
+</p>
+
+<table class="table table-condensed">
+    <thead>
+        <tr>
+            <th>名称</th>
+            <th>Glyph</th>
+            <th>标记语法</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="g in ['up', 'down', 'left', 'step-backward', 'right', 'step-forward', 'down-left', 'down-right', 'up-left', 'up-right', 'circle', 'square', 'diamond', 'check', 'filter', 'plus', 'minus', 'file', 'calendar', 'clock']">
+            <td>{{g}}</td>
+            <td style="font-size:125%;"><span ng-class="'wj-glyph-' + g"></span></td>
+            <td><code>&lt;span class="wj-glyph-{{g}}"&gt;&lt;/span&gt;</code></td>
+        </tr>
+    </tbody>
+</table>
+

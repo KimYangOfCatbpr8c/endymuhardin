@@ -1,0 +1,55 @@
+<h2>MovingAverageType 枚举</h2>
+<dl class="dl-horizontal">
+  <dt>模块</dt><dd>wijmo.chart.analytics</dd>
+  <dt>文件</dt><dd>wijmo.chart.analytics.js</dd>
+</dl>
+<p>指定 MovingAverage 系列的类型。</p>
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideValues = !hideValues">
+<span class="glyph-collapsed" ng-show="hideValues"></span>
+<span class="glyph-expanded" ng-hide="hideValues"></span>
+值
+</h3>
+</div>
+<table ng-hide="hideValues" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th>名称</th>
+
+<th>描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><b>Exponential</b></td>
+      <td>最后 n 个值的加权平均值，
+其中，每一个点权重相对于每个前值呈指数下降。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>Simple</b></td>
+      <td>最后 n 个值的平均值。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>Triangular</b></td>
+      <td>最后 n 个值的加权平均值，
+结果等于双平滑的简单移动平均线。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>Weighted</b></td>
+      <td>最后 n 个值的加权平均值，
+其中每一个点的权值相比前一个点减少 1。</td>
+    </tr>
+</tbody>
+</table>
+</div>
+

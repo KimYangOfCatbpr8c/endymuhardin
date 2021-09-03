@@ -1,0 +1,373 @@
+<h2>模块 wijmo.input</h2>
+<dl class="dl-horizontal">
+<dt>文件</dt><dd>wijmo.input.js</dd>
+</dl>
+<p>定义用来编辑字符串，数值，日期，时间以及颜色的输入控件。</p>
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideClasses = !hideClasses">
+<span class="glyph-collapsed" ng-show="hideClasses"></span>
+<span class="glyph-expanded" ng-hide="hideClasses"></span>
+类
+</h3>
+</div>
+<table ng-hide="hideClasses" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th>名称</th>
+
+<th>描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.input.AutoComplete.Class.html"><b>AutoComplete</b></a></td>
+      <td><p><b>AutoComplete</b> 控件是一种允许调用者基于用户输入自定义下拉框显示项目的输入控件。</p>
+
+<p>        该控件和 <a href="topic/wijmo.input.ComboBox.Class.html"><b>ComboBox</b></a> 类似，除了项目源是一个函数（<b>itemsSourceFunction</b>）而不是一个静态的列表。
+        例如，您可以在远程的数据库上，按照用户的输入查找项目。</p>
+
+<p>        以下示例创建了一个 <b>AutoComplete</b> 控件，并使用一个 ‘countries’ 数组填充数据。
+        <b>AutoComplete</b> 将根据用户输入搜索国家信息，并且缩小匹配当前用户输入的国家列表。</p>
+
+<p>        <a href="http://jsfiddle.net/Wijmo5/8HnLx/" target="_blank" class="btn btn-info">
+  <img src="images/fiddle.png"/>
+  在线示例
+</a>
+</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.input.Calendar.Class.html"><b>Calendar</b></a></td>
+      <td><p><b>Calendar</b> 控件显示了单月的日历，并允许用户选择一个日期。</p>
+
+<p>        您可以使用 <b>min</b> 以及 <b>max</b> 属性限制用户可以选择的日期范围。
+        关于使用 <b>min</b> 以及 <b>max</b> 属性的更多细节，请参见
+        <a href="static/minMax.html">使用 min 和 max 属性</a> 主题。</p>
+
+<p>        使用 <b>value</b> 属性以获取或设置当前选中的日期。</p>
+
+<p>        以下示例演示使用一个 <a href="topic/wijmo.input.InputDate.Class.html"><b>InputDate</b></a> 以及一个 <a href="topic/wijmo.input.InputTime.Class.html"><b>InputTime</b></a> 控件显示一个 <b>Date</b> 类型的值。
+        请注意示例中是如何将两个控件绑定到相同的 controller 变量，以及如何每一个控件编辑适当的信息（日期或者时间）。
+        该示例同样也会显示一个 <b>Calendar</b> 控件，允许用户单击选择一个日期。</p>
+
+<p><a href="http://jsfiddle.net/Wijmo5/vgc3Y/" target="_blank" class="btn btn-info">
+  <img src="images/fiddle.png"/>
+  在线示例
+</a>
+</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.input.ColorPicker.Class.html"><b>ColorPicker</b></a></td>
+      <td><p><b>ColorPicker</b> 控件允许用户通过单击面板选择一个颜色，并可以修改颜色色彩分量通道
+        （色调，饱和度，亮度，透明度）。</p>
+
+<p>        使用 <b>value</b> 属性以获取和设置当前选中的颜色。</p>
+
+<p>        该控件作为 <a href="topic/wijmo.input.InputColor.Class.html"><b>InputColor</b></a> 控件的下拉控件使用。</p>
+
+<p>        <a href="http://jsfiddle.net/Wijmo5/84xvsz90/" target="_blank" class="btn btn-info">
+  <img src="images/fiddle.png"/>
+  在线示例
+</a>
+</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.input.ComboBox.Class.html"><b>ComboBox</b></a></td>
+      <td><p><b>ComboBox</b> 控件允许用户从列表中选取字符串。</p>
+
+<p>        该控件可以自动地按照用户输入完成当前条目的填写，同时允许用户显示一个下拉列表，显示全部可用的项目。</p>
+
+<p>        使用 <b>selectedIndex</b> 或者 <b>text</b> 属性以确定当前哪一个项目被选中。</p>
+
+<p>        <b>isEditable</b> 属性决定是否用户可以输入当前在列表中不存在的值。</p>
+
+<p>        以下示例演示创建一个 <b>ComboBox</b> 控件，并使用一个国家的列表填充数据。当用户进行输入时，
+        <b>ComboBox</b> 将依照用户的输入，查找对应的国家。
+        <b>isEditable</b> 属性被设置为 false，因此用户被强制从列表中选择项目。</p>
+
+<p>        该示例也展示了如何通过一个具有子 <b>&lt;option;&gt</b> 项目的
+        HTML <b>&lt;select;&gt</b> 元素创建并生成一个 <b>ComboBox</b>。</p>
+
+<p><a href="http://jsfiddle.net/Wijmo5/8HnLx/" target="_blank" class="btn btn-info">
+  <img src="images/fiddle.png"/>
+  在线示例
+</a>
+</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.input.DropDown.Class.html"><b>DropDown</b></a></td>
+      <td><p>DropDown 控件（抽象类）。</p>
+
+<p>包含一个输入元素，以及一个按钮，用作显示或隐藏下拉框。</p>
+
+<p>派生类必须重写 _createDropDown 方法以创建任何希望显示在下拉框区域的 editor（一个项目列表，日历控件，颜色编辑器，等等）。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.input.FormatItemEventArgs.Class.html"><b>FormatItemEventArgs</b></a></td>
+      <td>为 <b>formatItem</b> event 事件提供事件参数。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.input.InputColor.Class.html"><b>InputColor</b></a></td>
+      <td><p><b>InputColor</b> 控件允许用户通过输入HTML支持的颜色字符串或者从一个下拉框显示的 <a href="topic/wijmo.input.ColorPicker.Class.html"><b>ColorPicker</b></a> 中选取一个颜色的方式选择颜色。
+        
+        通过 <b>value</b> 属性以获取或设置当前选中的颜色。</p>
+
+<p><a href="http://jsfiddle.net/Wijmo5/84xvsz90/" target="_blank" class="btn btn-info">
+  <img src="images/fiddle.png"/>
+  在线示例
+</a>
+</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.input.InputDate.Class.html"><b>InputDate</b></a></td>
+      <td><p><b>InputDate</b> 控件允许用户使用任何 <a href="topic/wijmo.Globalize.Class.html"><b>Globalize</b></a> 类支持的格式输入日期，或者从一个下拉框所显示的 <a href="topic/wijmo.input.Calendar.Class.html"><b>Calendar</b></a> 控件上选取一个日期。</p>
+
+<p>使用 <b>min</b> 以及 <b>max</b> 属性以限制用户可以输入的值。</p>
+
+<p>关于使用 <b>min</b> 以及 <b>max</b> 属性的更多细节，请参见
+<a href="static/minMax.html">使用 min 和 max 属性</a> 主题。</p>
+
+<p>使用 <b>value</b> 属性以获取或设置当前选中的日期。</p>
+
+<p>以下示例通过使用一个 <b>InputDate</b> 以及一个 <a href="topic/wijmo.input.InputTime.Class.html"><b>InputTime</b></a> 控件显示了一个 <b>Date</b> 类型的值（包含了日期和时间信息）。
+请注意这里是如何将两个控件绑定到相同的 controller 变量，同时每一个控件编辑合适的信息（日期或者时间）。
+该示例同时也展示了如何通过 <b>Calendar</b> 单击选择一个日期。</p>
+
+<p><a href="http://jsfiddle.net/Wijmo5/vgc3Y/" target="_blank" class="btn btn-info">
+  <img src="images/fiddle.png"/>
+  在线示例
+</a>
+</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.input.InputDateTime.Class.html"><b>InputDateTime</b></a></td>
+      <td><p><b>InputDateTime</b> 控件扩展自 <a href="topic/wijmo.input.InputDate.Class.html"><b>InputDate</b></a> 控件，允许用户输入日期和时间，
+      既可以是通过输入完整的日期/时间（任何 <a href="topic/wijmo.Globalize.Class.html"><b>Globalize</b></a> 类支持的格式），也可以从一个下拉日历选择一个日期，同时
+      从一个下拉列表选择任意时间。</p>
+
+<p>使用 <b>min</b> 以及 <b>max</b> 属性以限制用户可以输入的日期。
+使用 <b>minTime</b> 以及 <b>maxTime</b> 属性以限制用户可以输入的时间范围。</p>
+
+<p>使用 <b>value</b> 属性获取或设置当前选中的日期/时间。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.input.InputMask.Class.html"><b>InputMask</b></a></td>
+      <td><p><b>InputMask</b> 控件提供了一种可以支配用户可以输入内容的方式。</p>
+
+<p>该控件防止用户意外地输入无效数据，并且可以在用户输入时，通过跳过字面值（比方说日期格式中的斜线）的方式节约输入时间。</p>
+
+<p>用来校验输入的掩码通过 <b>mask</b> 属性定义，掩码可能包含一个或者多个以下特殊字符：</p>
+
+<p> <dl class="dl-horizontal">
+     <dt>0</dt>      <dd>数字位。</dd>
+     <dt>9</dt>      <dd>数字或空格。</dd>
+     <dt>#</dt>      <dd>数字，符号，或者空格。</dd>
+     <dt>L</dt>      <dd>字母。</dd>
+     <dt>l</dt>      <dd>字母或空格。</dd>
+     <dt>A</dt>      <dd>字母或数字。</dd>
+     <dt>a</dt>      <dd>字母数字或者空格。</dd>
+     <dt>.</dt>      <dd>本地化的小数点。</dd>
+     <dt>,</dt>      <dd>本地化的千位分隔符。</dd>
+     <dt>:</dt>      <dd>本地化的时间分隔符。</dd>
+     <dt>/</dt>      <dd>本地化的日期分隔符。</dd>
+     <dt>$</dt>      <dd>本地化的货币符号。</dd>
+     <dt>&lt;</dt>   <dd>将字符转换为小写形式。</dd>
+     <dt>&gt;</dt>   <dd>将字符转换为大写形式。</dd>
+     <dt>|</dt>      <dd>禁用大小写转换。</dd>
+     <dt>\</dt>      <dd>转义任意字符，将其转变为普通字符。</dd>
+     <dt>其它字符</dt><dd>字面值。</dd>
+ </dl></p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.input.InputNumber.Class.html"><b>InputNumber</b></a></td>
+      <td><p><b>InputNumber</b> 控件允许用户输入数值。
+        
+该控件防止用户意外地输入无效数据，并在输入时格式化输入的数值。</p>
+
+<p>按下减号键将反转正在编辑的值的符号，无论当前输入光标在任何位置。</p>
+
+<p>您可以通过 <b>min</b> 以及 <b>max</b> 属性限制可接受值的范围，而 <b>step</b> 属性将指示
+spinner 按钮在单击时增加或减少的值的大小。</p>
+
+<p>关于使用 <b>min</b> 以及 <b>max</b> 属性的更多细节，请参见
+<a href="static/minMax.html">使用 min 和 max 属性</a> 主题。</p>
+
+<p>使用 <b>value</b> 属性获取或设置当前选中的数值。</p>
+
+<p>以下示例创建了几个 <b>InputNumber</b> 控件，并展示当使用不同的格式，范围，以及步进值时不同的效果。</p>
+
+<p><a href="http://jsfiddle.net/Wijmo5/Cf9L9/" target="_blank" class="btn btn-info">
+  <img src="images/fiddle.png"/>
+  在线示例
+</a>
+</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.input.InputTime.Class.html"><b>InputTime</b></a></td>
+      <td><p><b>InputTime</b> 控件允许用户使用任何 <a href="topic/wijmo.Globalize.Class.html"><b>Globalize</b></a> 类支持的格式输入时间，或者从一个下拉列表选取一个时间。</p>
+
+<p><b>min</b>，<b>max</b>，以及 <b>step</b> 属性将决定显示在列表上的值。</p>
+
+<p>关于使用 <b>min</b> 以及 <b>max</b> 属性的更多细节，请参见
+<a href="static/minMax.html">使用 min 和 max 属性</a> 主题。</p>
+
+<p><b>value</b> 属性用来获取或设置一个表示用户选择时间的 <b>Date</b> 对象。</p>
+
+<p>以下示例展示了通过一个 <a href="topic/wijmo.input.InputDate.Class.html"><b>InputDate</b></a> 以及一个 <b>InputTime</b> 编辑 <b>Date</b> 类型的值（包括日期和时间信息）
+请注意这里是如何将两个控件绑定到相同的 controller 变量，同时每一个控件编辑合适的信息（日期或者时间）。
+该示例同时也展示了如何通过 <a href="topic/wijmo.input.Calendar.Class.html"><b>Calendar</b></a> 单击选择一个日期。</p>
+
+<p><a href="http://jsfiddle.net/Wijmo5/vgc3Y/" target="_blank" class="btn btn-info">
+  <img src="images/fiddle.png"/>
+  在线示例
+</a>
+</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.input.ListBox.Class.html"><b>ListBox</b></a></td>
+      <td><p><b>ListBox</b> 控件显示一组项目，每个项目可以是纯文本或者是 HTML 元素，
+        允许用户通过鼠标或者键盘对这些项目进行选择。</p>
+
+<p>        通过 <b>selectedIndex</b> 属性以确定当前哪一个项目被选中。</p>
+
+<p>        您可以通过一个字符串数组生成一个 <b>ListBox</b> 或者您也可以使用一个对象的数组，
+        在后面这种情况下， <b>displayPath</b> 属性将决定该对象上的哪一个属性将被展示在列表中。</p>
+
+<p>        为了显示 HTML 元素而不是纯文本，请设置 <b>isContentHtml</b> 属性的值为 true。</p>
+
+<p>        以下示例创建了一个 <b>ListBox</b> 控件，并使用一个 ‘countries’ 数组填充数据。
+        该控件将在用户移动选择时更新其 <b>selectedIndex</b> 以及 <b>selectedItem</b> 属性。</p>
+
+<p>        <a href="http://jsfiddle.net/Wijmo5/8HnLx/" target="_blank" class="btn btn-info">
+  <img src="images/fiddle.png"/>
+  在线示例
+</a>
+</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.input.Menu.Class.html"><b>Menu</b></a></td>
+      <td><p><b>Menu</b> 控件显示一个具有一个下拉命令列表的一个文本元素，当用户通过单击或触摸点击时，调用这些命令。</p>
+
+<p>        <b>Menu</b> 控件继承自 <a href="topic/wijmo.input.ComboBox.Class.html"><b>ComboBox</b></a>，因此您可以使用和操作 <b>ComboBox</b> 一样的方式填充数据以及
+        定制样式（参见 <b>itemsSource</b> 属性）。</p>
+
+<p>        <b>Menu</b> 控件添加了一个 <b>itemClicked</b> 事件，该事件在用户从菜单上选择了一个项目时触发。
+        该事件处理函数可以检查 <b>Menu</b> 以确定哪一个项目被单击。例如：</p>
+
+<p>        <pre>
+var menu = new wijmo.input.Menu(hostElement);
+menu.header = 'Main Menu';
+menu.itemsSource = ['option 1', 'option 2', 'option 3'];
+menu.itemClicked.addHandler(function(sender, args) {
+var menu = sender;
+  alert('Thanks for selecting item ' + menu.selectedIndex + ' from menu ' + menu.header + '!');
+});
+</pre></p>
+
+<p>        以下示例演示您如何可以创建一个 value picker，基于命令的菜单，以及响应 <b>itemClicked</b>
+        事件的菜单。该示例中的菜单基于 HTML <b>&lt;select;&gt</b> 以及 <b>&lt;option;&gt</b> 元素。</p>
+
+<p><a href="http://jsfiddle.net/Wijmo5/BX853/" target="_blank" class="btn btn-info">
+  <img src="images/fiddle.png"/>
+  在线示例
+</a>
+</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.input.MultiSelect.Class.html"><b>MultiSelect</b></a></td>
+      <td><p><b>MultiSelect</b> 控件允许用户从包含自定义对象或者简单字符串的下拉列表框选择多个项目。</p>
+
+<p>        <b>MultiSelect</b> 扩展自 <a href="topic/wijmo.input.ComboBox.Class.html"><b>ComboBox</b></a>，继承了全部的常见属性，包括 <b>itemsSource</b> 和 <b>displayMemberPath</b>。</p>
+
+<p>        和 <a href="topic/wijmo.input.ListBox.Class.html"><b>ListBox</b></a> 控件类似，它具有一个 <b>checkedMemberPath</b> 属性，该属性用来指定用作确定某一个项目是否为复选选中状态的
+        属性名称。</p>
+
+<p>        当前复选（选中）的项目可以通过 <b>checkedItems</b> 属性获取。</p>
+
+<p>        控件的 header 是完全可定制的。默认情况下，最多显示前两个选中的项目以及总共选中的项目个数。
+        您可以改变所显示的项目个数（<b>maxHeaderItems</b>），当没有任何的项目被选中时所显示的信息（<b>placeholder</b>），
+        以及用来显示项目个数的格式化字符串（<b>headerFormat</b>）。或者您可以提供一个函数，用来基于任何您的应用程序所需要
+        的条件生成 header 的内容（<b>headerFormatter</b>）。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.input.Popup.Class.html"><b>Popup</b></a></td>
+      <td><p>将某个元素以弹出窗体的方式显示的类。</p>
+
+<p>Popup 可能具有 <b>owner</b> 元素，在这种情况下，它的行为类似于一个 rich tooltip，可以基于 <b>showTrigger</b> 以及 <b>hideTrigger</b> 属性
+指定的动作显示或则隐藏。</p>
+
+<p>不具有 owner 元素的 Popup 的行为类似于对话框。它们相对于屏幕居中显示，
+并且通过调用 <b>show</b> 方法显示。</p>
+
+<p>关闭 <b>Popup</b>，可以调用 <b>hide</b> 方法。除此之外，<b>Popup</b> 内部任何可以点击的元素，只要是具有 ‘wj-hide’ class，就可以在发生单击时
+隐藏该 <b>Popup</b>。例如，以下 <b>Popup</b> 可以在用户按下 OK 或 Cancel 按钮时隐藏：</p>
+
+<p><pre>&lt;button id="btnPopup"&gt;Show Popup&lt;/button&gt;
+&lt;wj-popup owner="#btnPopup" style="padding:12px"&gt;
+  &lt;p&gt;按下以下按钮中的任意一个可以隐藏 Popup。&lt;/p&gt;
+  &lt;hr/&gt;
+  &lt;button class="wj-hide" ng-click="handleOK()"&gt;OK&lt;/button&gt;
+  &lt;button class="wj-hide"&gt;Cancel&lt;/button&gt;
+&lt;/wj-popup&gt;</pre></p></td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideEnumerations = !hideEnumerations">
+<span class="glyph-collapsed" ng-show="hideEnumerations"></span>
+<span class="glyph-expanded" ng-hide="hideEnumerations"></span>
+枚举
+</h3>
+</div>
+<table ng-hide="hideEnumerations" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th>名称</th>
+
+<th>描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.input.DateSelectionMode.Enum.html"><b>DateSelectionMode</b></a></td>
+      <td>指定定义日期选择行为的常数。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.input.PopupTrigger.Enum.html"><b>PopupTrigger</b></a></td>
+      <td>指定触发显示和隐藏 <a href="topic/wijmo.input.Popup.Class.html"><b>Popup</b></a> 控件的动作。</td>
+    </tr>
+</tbody>
+</table>
+</div>
+

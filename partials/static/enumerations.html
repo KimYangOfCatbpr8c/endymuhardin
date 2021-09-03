@@ -1,0 +1,83 @@
+﻿<h2>
+    在 Wijmo 5 中使用枚举
+</h2>
+<p>
+    个别的 Wijmo 5 控件定义了接受枚举类型值的属性。
+</p>
+<p>
+    例如，<b>FlexChart</b> 的 <b>chartType</b> 属性接受 <b>wijmo.chart.ChartType</b> 类型的值。
+<p>
+    <h3>
+        设置枚举属性
+    </h3>
+<p>
+    设置枚举类型属性的推荐方式如下：
+</p>
+<pre>// 用一个枚举类型的属性设置值
+chart.chartType = wijmo.chart.ChartType.Line;
+</pre>
+<p>
+    以下替代方案同样合法，并且会产生相同的结果：
+</p>
+<pre>// wijmo.chart.ChartType.Line 的值为 3：
+chart.chartType = 3;
+// 枚举值将被自动解析
+chart.chartType = 'Line';</pre>
+<h3>
+    获取枚举属性
+</h3>
+<p>
+    任何情况下，获取该属性将会返回 3。
+    如果您希望以字符串方式获取该值（比如说，显示在 UI 上），您可以按照以下方式：
+</p>
+<pre>// 获取数值形式的枚举值
+console.log(chart.chartType); // 输出 "3"
+// 获取字符串形式的枚举值
+console.log(wijmo.chart.ChartType[chart.chartType]); // 输出 "Line"</pre>
+<h3>
+    转换枚举值
+</h3>
+<p>
+    您可以使用枚举类型，通过索引将枚举值在字符串和其关联的数值之间转换。例如：
+</p>
+<pre>// 将枚举值转换为字符串
+console.log(wijmo.chart.ChartType[3]); // 输出 "Line"
+console.log(wijmo.chart.ChartType[1000]); // 输出 "null"
+// 将字符串转换为枚举值
+console.log(wijmo.chart.ChartType['Line']); // 输出 "3"
+console.log(wijmo.chart.ChartType['NoSuchValue']); // 输出 "null"</pre>
+
+<h3>
+    针对 .NET Developers 的注意事项
+</h3>
+<p>
+    在 .NET 中，<b>Enum</b> 类型提供了以下两个方法
+    <a href="http://msdn.microsoft.com/en-us/library/system.enum.getnames(v=vs.110).aspx">GetNames</a> 以及
+    <a href="http://msdn.microsoft.com/en-us/library/system.enum.getvalues(v=vs.110).aspx">GetValues</a>，
+    这两个方法将分别返回任意枚举类型定义的枚举名称（字符串）和枚举值。
+</p>
+<p>
+    以下代码展示了您如何实现类似的方法，以获取由 TypeScript 枚举定义（就像在 Wijmo 5 中用到的那样） 的枚举名称和枚举值：
+</p>
+<pre>// 获取由一个枚举定义的全部枚举名称
+function getEnumNames(enumClass) {
+    var names = [];
+    for (var key in enumClass) {
+        var val = parseInt(key);
+        if (isNaN(val)) names.push(key);
+    }
+    return names;
+}
+// 获取由一个枚举定义的全部枚举值
+function getEnumValues(enumClass) {
+    var values = [];
+    for (var key in enumClass) {
+        var val = parseInt(key);
+        if (!isNaN(val)) values.push(val);
+    }
+    return values;
+}
+// 调用示例：
+var nn = getEnumNames(wijmo.DataType); // 返回 [ 'Object', 'String', 'Number', 'Boolean', 'Array' ]
+var vv = getEnumValues(wijmo.DataType); // 返回 [ 0, 1, 2, 3, 4 ]</pre>
+

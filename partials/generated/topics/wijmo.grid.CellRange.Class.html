@@ -1,0 +1,249 @@
+<h2>CellRange 类</h2>
+<dl class="dl-horizontal">
+<dt>模块</dt><dd>wijmo.grid</dd>
+<dt>文件</dt><dd>wijmo.grid.js</dd>
+</dl>
+<p>表示由两个行索引以及两个列索引定义的一个方形的单元格分组。</p>
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideConstructor = !hideConstructor">
+<span class="glyph-collapsed" ng-show="hideConstructor"></span>
+<span class="glyph-expanded" ng-hide="hideConstructor"></span>
+ 构造函数
+</h3>
+</div>
+<table ng-hide="hideConstructor" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-2">名称</th>
+
+<th class="col-md-5">参数</th>
+
+<th class="col-md-5">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><b>constructor</b>&#8203;(r?, c?, r2?, c2?): <a href="topic/wijmo.grid.CellRange.Class.html"><b>CellRange</b></a></td>
+      <td><p>
+<b>r?</b> (<b>number</b>): 范围中第一行的索引（默认值为 -1）。<br/><span class="text-info">(默认值: <b>-1</b>)</span><br/><b>c?</b> (<b>number</b>): 范围中第一列的索引（默认值为 -1）。<br/><span class="text-info">(默认值: <b>-1</b>)</span><br/><b>r2?</b> (<b>number</b>): 范围中最后一行的索引（默认值为 <b>r</b>）。<br/><span class="text-info">(默认值: <b>r</b>)</span><br/><b>c2?</b> (<b>number</b>): 范围中最后一列的索引（默认值为 <b>r</b>）。<br/><span class="text-info">(默认值: <b>c</b>)</span><br/></p>
+</td>
+      <td>初始化类 <a href="topic/wijmo.grid.CellRange.Class.html"><b>CellRange</b></a> 的一个新实例</td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideProperties = !hideProperties">
+<span class="glyph-collapsed" ng-show="hideProperties"></span>
+<span class="glyph-expanded" ng-hide="hideProperties"></span>
+属性
+</h3>
+</div>
+<table ng-hide="hideProperties" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-3">名称</th>
+
+<th class="col-md-2">类型</th>
+
+<th class="col-md-7">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><b>bottomRow</b></td>
+      <td><b>number</b></td>
+      <td>获取范围内最后一行的索引。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>col</b></td>
+      <td><b>number</b></td>
+      <td>获取或设置范围中的第一列的索引。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>col2</b></td>
+      <td><b>number</b></td>
+      <td>获取或设置范围中的第二列的索引。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>columnSpan</b></td>
+      <td><b>number</b></td>
+      <td>获取该范围内列的个数。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>isSingleCell</b></td>
+      <td><b>boolean</b></td>
+      <td>检查是否该范围关联到一个单个的单元格（起始行和结束行具有相同的索引，且起始列和结束列也具有相同的索引）。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>isValid</b></td>
+      <td><b>boolean</b></td>
+      <td>检查是否该范围包含合法的行和列索引 
+（行和列的索引值大于等于零）。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>leftCol</b></td>
+      <td><b>number</b></td>
+      <td>获取范围内最左侧一列的索引。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>rightCol</b></td>
+      <td><b>number</b></td>
+      <td>获取范围内最右侧一列的索引。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>row</b></td>
+      <td><b>number</b></td>
+      <td>获取或设置范围中的第一行的索引。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>row2</b></td>
+      <td><b>number</b></td>
+      <td>获取或设置范围中的第二行的索引。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>rowSpan</b></td>
+      <td><b>number</b></td>
+      <td>获取该范围内行的个数。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>topRow</b></td>
+      <td><b>number</b></td>
+      <td>获取范围内第一行的索引。</td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideMethods = !hideMethods">
+<span class="glyph-collapsed" ng-show="hideMethods"></span>
+<span class="glyph-expanded" ng-hide="hideMethods"></span>
+方法
+</h3>
+</div>
+<table ng-hide="hideMethods" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-2">名称</th>
+
+<th class="col-md-5">参数</th>
+
+<th class="col-md-5">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><b>clone</b>&#8203;(): <a href="topic/wijmo.grid.CellRange.Class.html"><b>CellRange</b></a></td>
+      <td></td>
+      <td>创建一个该范围的拷贝。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>contains</b>&#8203;(r, c?): <b>boolean</b></td>
+      <td><p>
+<b>r</b> (<b>any</b>): 待查找的 CellRange 对象或者行索引。<br/><b>c?</b> (<b>number</b>): 列索引（如果 r 参数不是一个 CellRange 对象，则此参数为必须）。<br/></p>
+</td>
+      <td>检查是否该范围包含另一个范围或者一个特定的单元格。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>containsColumn</b>&#8203;(c): <b>boolean</b></td>
+      <td><p>
+<b>c</b> (<b>number</b>): 待查找的列索引。<br/></p>
+</td>
+      <td>检查是否该范围包含一个指定的列。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>containsRow</b>&#8203;(r): <b>boolean</b></td>
+      <td><p>
+<b>r</b> (<b>number</b>): 待查找的行的索引。<br/></p>
+</td>
+      <td>检查是否该范围包含一个指定的行。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>equals</b>&#8203;(rng): <b>boolean</b></td>
+      <td><p>
+<b>rng</b> (<a href="topic/wijmo.grid.CellRange.Class.html"><b>CellRange</b></a>): 和该范围进行比较的 CellRange 对象。<br/></p>
+</td>
+      <td>检查是否该范围和另一个范围相等。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>getRenderSize</b>&#8203;(p): <a href="topic/wijmo.Size.Class.html"><b>Size</b></a></td>
+      <td><p>
+<b>p</b> (<a href="topic/wijmo.grid.GridPanel.Class.html"><b>GridPanel</b></a>): 包含该范围的 <a href="topic/wijmo.grid.GridPanel.Class.html"><b>GridPanel</b></a> 对象。<br/></p>
+</td>
+      <td>获取该范围呈现的尺寸。<br/><br/><b>返回值</b> 一个表示该范围内所有行高的总和以及所有列宽的综合的 <a href="topic/wijmo.Size.Class.html"><b>Size</b></a> 对象。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>intersects</b>&#8203;(rng): <b>boolean</b></td>
+      <td><p>
+<b>rng</b> (<a href="topic/wijmo.grid.CellRange.Class.html"><b>CellRange</b></a>): 待检查的 CellRange 对象。<br/></p>
+</td>
+      <td>检查是否该范围和另一个范围有交集。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>intersectsColumn</b>&#8203;(rng): <b>boolean</b></td>
+      <td><p>
+<b>rng</b> (<a href="topic/wijmo.grid.CellRange.Class.html"><b>CellRange</b></a>): 待检查的 CellRange 对象。<br/></p>
+</td>
+      <td>检查是否该范围和另一个范围中的列有交集。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>intersectsRow</b>&#8203;(rng): <b>boolean</b></td>
+      <td><p>
+<b>rng</b> (<a href="topic/wijmo.grid.CellRange.Class.html"><b>CellRange</b></a>): 待检查的 CellRange 对象。<br/></p>
+</td>
+      <td>检查是否该范围和另一个范围的行有交集。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>setRange</b>&#8203;(r?, c?, r2?, c2?)</td>
+      <td><p>
+<b>r?</b> (<b>number</b>): 范围中第一行的索引（默认值为 -1）。<br/><span class="text-info">(默认值: <b>-1</b>)</span><br/><b>c?</b> (<b>number</b>): 范围中第一列的索引（默认值为 -1）。<br/><span class="text-info">(默认值: <b>-1</b>)</span><br/><b>r2?</b> (<b>number</b>): 范围中最后一行的索引（默认值为 <b>r</b>）。<br/><span class="text-info">(默认值: <b>r</b>)</span><br/><b>c2?</b> (<b>number</b>): 范围中最后一列的索引（默认值为 <b>r</b>）。<br/><span class="text-info">(默认值: <b>c</b>)</span><br/></p>
+</td>
+      <td>初始化一个现有的 <a href="topic/wijmo.grid.CellRange.Class.html"><b>CellRange</b></a>。</td>
+    </tr>
+</tbody>
+</table>
+</div>
+

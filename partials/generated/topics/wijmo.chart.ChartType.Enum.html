@@ -1,0 +1,104 @@
+<h2>ChartType 枚举</h2>
+<dl class="dl-horizontal">
+  <dt>模块</dt><dd>wijmo.chart</dd>
+  <dt>文件</dt><dd>wijmo.chart.js</dd>
+</dl>
+<p>指定图表类型。</p>
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideValues = !hideValues">
+<span class="glyph-collapsed" ng-show="hideValues"></span>
+<span class="glyph-expanded" ng-hide="hideValues"></span>
+值
+</h3>
+</div>
+<table ng-hide="hideValues" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th>名称</th>
+
+<th>描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><b>Area</b></td>
+      <td>显示一个折线以下区域填充颜色的折线图表。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>Bar</b></td>
+      <td>显示水平条形。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>Bubble</b></td>
+      <td>显示一个散点图，并通过第三个数据值决定每一个符号的尺寸。
+该图表类型的数据可以通过 <a href="topic/wijmo.chart.FlexChart.Class.html"><b>FlexChart</b></a> 或者 <a href="topic/wijmo.chart.Series.Class.html"><b>Series</b></a> 的 <b>binding</b> 属性，以逗号分隔的字符串数值指定，格式如下所示："yProperty, bubbleSizeProperty"。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>Candlestick</b></td>
+      <td>使用高值，低值，开盘值，以及收盘值表现每一个项目。
+烛芯线的尺寸由高值和低值决定，而
+柱形的尺寸由开盘价和收盘价决定。
+柱形显示为不同的颜色，取决于是否收盘价高于或低于开盘价。
+该图表类型的数据可以通过 <a href="topic/wijmo.chart.FlexChart.Class.html"><b>FlexChart</b></a> 或者 <a href="topic/wijmo.chart.Series.Class.html"><b>Series</b></a> 的 <b>binding</b> 属性，以逗号分隔的字符串数值指定，格式如下所示："highProperty, lowProperty, openProperty, closeProperty"。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>Column</b></td>
+      <td>显示垂直条形，允许您在不同的分组之间对数值进行比较。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>Funnel</b></td>
+      <td>Displays funnel chart.</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>HighLowOpenClose</b></td>
+      <td>显示和蜡烛图图表相同的信息，除了开盘价
+通过位于左侧的直线显示，同时右侧的直线
+表示收盘价。该图表类型的数据可以通过 <a href="topic/wijmo.chart.FlexChart.Class.html"><b>FlexChart</b></a> 或者 <a href="topic/wijmo.chart.Series.Class.html"><b>Series</b></a> 的 <b>binding</b> 属性，以逗号分隔的字符串数值指定，格式如下所示："highProperty, lowProperty, openProperty, closeProperty"。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>Line</b></td>
+      <td>显示了在一段时间内或跨类别的趋势。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>LineSymbols</b></td>
+      <td>显示一个每一个数据点自带一个符号的折线图表。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>Scatter</b></td>
+      <td>使用X和Y坐标，以显示数据内的模式。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>Spline</b></td>
+      <td>显示一个线条图，通过数据点绘制曲线而不是折线。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>SplineArea</b></td>
+      <td>绘制曲线图，并填充曲线以下的区域。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>SplineSymbols</b></td>
+      <td>绘制曲线图，并在每一个数据点绘制符号。</td>
+    </tr>
+</tbody>
+</table>
+</div>
+

@@ -1,0 +1,42 @@
+<h2>WjFlexGridFilter 类</h2>
+<dl class="dl-horizontal">
+<dt>基类</dt><dd><b>WjDirective</b></dd>
+<dt>模块</dt><dd>wijmo.angular</dd>
+<dt>文件</dt><dd>wijmo.angular.js</dd>
+<dt>表示</dt><dd><label style="font-weight:normal">继承成员 <input type="checkbox" ng-model="showInherited"></label></dd>
+</dl>
+<p><p>AngularJS 指令应用于 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a> <a href="topic/wijmo.grid.filter.FlexGridFilter.Class.html"><b>FlexGridFilter</b></a> 对象。</p>
+
+<p><b>wj-flex-grid-filter</b> 指令必须包含于 <a href="topic/wijmo.angular.WjFlexGrid.Class.html"><b>WjFlexGrid</b></a> 指令。 示例：</p>
+
+<p><pre>&lt;p&gt;Here is a FlexGrid control with column filters:&lt;/p&gt;
+&lt;wj-flex-grid items-source="data"&gt;
+  &lt;wj-flex-grid-filter filter-columns="['country', 'expenses']"&gt;&lt;/wj-flex-grid-filter&gt;
+&nbsp;
+  &lt;wj-flex-grid-column 
+    header="Country" 
+    binding="country"&gt;
+  &lt;/wj-flex-grid-column&gt;
+  &lt;wj-flex-grid-column 
+    header="Sales" 
+    binding="sales"&gt;
+  &lt;/wj-flex-grid-column&gt;
+  &lt;wj-flex-grid-column 
+    header="Expenses" 
+    binding="expenses"&gt;
+  &lt;/wj-flex-grid-column&gt;
+  &lt;wj-flex-grid-column 
+    header="Downloads" 
+    binding="downloads"&gt;
+  &lt;/wj-flex-grid-column&gt;
+&lt;/wj-flex-grid&gt;</pre></p>
+
+<p><b>wj-flex-grid-filter</b> 指令支持以下属性:</p>
+
+<p><dl class="dl-horizontal">
+  <dt>filter-columns</dt>    <dd><code>=</code> 包含列过滤器的数组。</dd>
+  <dt>show-filter-icons</dt> <dd><code>@</code>  是否在列头显示过滤器图标。</dd>
+  <dt>filter-changing</dt>   <dd><code>&</code> <b>filterChanging</b> 事件。</dd>
+  <dt>filter-changed</dt>    <dd><code>&</code> <b>filterChanged</b> 事件。</dd>
+  <dt>filter-applied</dt>    <dd><code>&</code> <b>filterApplied</b> 事件。</dd>
+</dl></p></p>

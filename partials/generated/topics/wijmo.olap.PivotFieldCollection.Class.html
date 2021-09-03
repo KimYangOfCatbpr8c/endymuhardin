@@ -1,0 +1,282 @@
+<h2>PivotFieldCollection 类</h2>
+<dl class="dl-horizontal">
+<dt>基类</dt><dd><a href="topic/wijmo.collections.ObservableArray.Class.html"><b>ObservableArray</b></a></dd>
+<dt>模块</dt><dd>wijmo.olap</dd>
+<dt>文件</dt><dd>wijmo.olap.js</dd>
+<dt>表示</dt><dd><label style="font-weight:normal">继承成员 <input type="checkbox" ng-model="showInherited"></label></dd>
+</dl>
+<p>表示一个 <a href="topic/wijmo.olap.PivotField.Class.html"><b>PivotField</b></a> 对象的集合。</p>
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideConstructor = !hideConstructor">
+<span class="glyph-collapsed" ng-show="hideConstructor"></span>
+<span class="glyph-expanded" ng-hide="hideConstructor"></span>
+ 构造函数
+</h3>
+</div>
+<table ng-hide="hideConstructor" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-2">名称</th>
+
+<th class="col-md-5">参数</th>
+
+<th class="col-md-5">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><b>constructor</b>&#8203;(engine): <a href="topic/wijmo.olap.PivotFieldCollection.Class.html"><b>PivotFieldCollection</b></a></td>
+      <td><p>
+<b>engine</b> (<a href="topic/wijmo.olap.PivotEngine.Class.html"><b>PivotEngine</b></a>): 包含这个 <a href="topic/wijmo.olap.PivotFieldCollection.Class.html"><b>PivotFieldCollection</b></a> 的<a href="topic/wijmo.olap.PivotEngine.Class.html"><b>PivotEngine</b></a> 。<br/></p>
+</td>
+      <td>初始化 <a href="topic/wijmo.olap.PivotFieldCollection.Class.html"><b>PivotFieldCollection</b></a> 类的一个新实例。</td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideProperties = !hideProperties">
+<span class="glyph-collapsed" ng-show="hideProperties"></span>
+<span class="glyph-expanded" ng-hide="hideProperties"></span>
+属性
+</h3>
+</div>
+<table ng-hide="hideProperties" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-3">名称</th>
+
+<th class="col-md-2">类型</th>
+
+<th class="col-md-7">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><b>engine</b></td>
+      <td><a href="topic/wijmo.olap.PivotEngine.Class.html"><b>PivotEngine</b></a></td>
+      <td>得到拥有这个 <a href="topic/wijmo.olap.PivotFieldCollection.Class.html"><b>PivotFieldCollection</b></a> 的 <a href="topic/wijmo.olap.PivotEngine.Class.html"><b>PivotEngine</b></a> 的一个引用。</td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>isUpdating</b></td>
+      <td></td>
+      <td>获取一个值，该值指示当前是否暂停通知（参见<b>beginUpdate</b> 和<b>endUpdate</b>）。<br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.ObservableArray.Class.html"><b>ObservableArray</b></a>).</span></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>maxItems</b></td>
+      <td><b>number</b></td>
+      <td><p>获取或设置该集合中最大允许的字段数。</p>
+
+<p>该属性默认设置为 null，表示接受任意数量的项目。</p></td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideMethods = !hideMethods">
+<span class="glyph-collapsed" ng-show="hideMethods"></span>
+<span class="glyph-expanded" ng-hide="hideMethods"></span>
+方法
+</h3>
+</div>
+<table ng-hide="hideMethods" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-2">名称</th>
+
+<th class="col-md-5">参数</th>
+
+<th class="col-md-5">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>beginUpdate</b>&#8203;()</td>
+      <td></td>
+      <td>直到下一次调用<b>endUpdate</b> 之前暂停通知。<br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.ObservableArray.Class.html"><b>ObservableArray</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>clear</b>&#8203;()</td>
+      <td></td>
+      <td>从数组中移除所有项目。<br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.ObservableArray.Class.html"><b>ObservableArray</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>deferUpdate</b>&#8203;(fn)</td>
+      <td><p>
+<b>fn</b> (<b>Function</b>): 被执行的没有更新的函数。<br/></p>
+</td>
+      <td><p>在<b>beginUpdate</b>/<b>endUpdate</b> 块中执行函数。</p>
+
+<p>直到函数完成前集合将不会被刷新。该方法确保<b>endUpdate</b> 会被调用即使函数会抛出异常。</p><br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.ObservableArray.Class.html"><b>ObservableArray</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>endUpdate</b>&#8203;()</td>
+      <td></td>
+      <td>通过调用<b>beginUpdate</b> 重新开始被暂停的通知。<br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.ObservableArray.Class.html"><b>ObservableArray</b></a>).</span></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>getField</b>&#8203;(header): <a href="topic/wijmo.olap.PivotField.Class.html"><b>PivotField</b></a></td>
+      <td><p>
+<b>header</b> (<b>string</b>): 待搜索的 Header 字符串。<br/></p>
+</td>
+      <td>通过 header 获取一个字段。</td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>implementsInterface</b>&#8203;(interfaceName): <b>boolean</b></td>
+      <td><p>
+<b>interfaceName</b> (<b>string</b>): 查找接口的名称。<br/></p>
+</td>
+      <td>如果一个调用者查询一个被支持的接口，则返回真。<br/><br/><b>返回值</b> 如果一个调用者查询一个被支持的接口，则为真。<br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.ObservableArray.Class.html"><b>ObservableArray</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>indexOf</b>&#8203;(searchElement, fromIndex?): <b>number</b></td>
+      <td><p>
+<b>searchElement</b> (<b>any</b>): 元素在数组中定位。<br/><b>fromIndex?</b> (<b>number</b>): 查找应该开始的位置。.<br/></p>
+</td>
+      <td>查找数组中的项。<br/><br/><b>返回值</b> 数组中项目的索引，或者如果一个项没有被发现，则索引为-1。<br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.ObservableArray.Class.html"><b>ObservableArray</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>insert</b>&#8203;(index, item)</td>
+      <td><p>
+<b>index</b> (<b>number</b>): 项目被添加的位置。<br/><b>item</b> (<b>any</b>): 添加到数组中的项目。<br/></p>
+</td>
+      <td>在数组中的特定位置插入一个项目。<br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.ObservableArray.Class.html"><b>ObservableArray</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>onCollectionChanged</b>&#8203;(e?)</td>
+      <td><p>
+<b>e?</b> (): 包含一个改变的描述。<br/><span class="text-info">(默认值: <b>NotifyCollectionChangedEventArgs.&#8203;reset</b>)</span><br/></p>
+</td>
+      <td>引发<b>collectionChanged</b> 事件。<br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.ObservableArray.Class.html"><b>ObservableArray</b></a>).</span></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>push</b>&#8203;(...item): <b>number</b></td>
+      <td><p>
+<b>...item</b> (<b>any</b><b>[]</b>): 待添加到数组中的一个或多个 <a href="topic/wijmo.olap.PivotField.Class.html"><b>PivotField</b></a> 对象。<br/></p>
+</td>
+      <td>重写push方法，允许通过 Header 送入字段。<br/><br/><b>返回值</b> 数组新的长度。</td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>remove</b>&#8203;(item): <b>boolean</b></td>
+      <td><p>
+<b>item</b> (<b>any</b>): 项目移除。<br/></p>
+</td>
+      <td>从一个数组中移除项目。<br/><br/><b>返回值</b> 如果项目被移除则为真，如果项目在数组中没有被找到则为假。<br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.ObservableArray.Class.html"><b>ObservableArray</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>removeAt</b>&#8203;(index)</td>
+      <td><p>
+<b>index</b> (<b>number</b>): 项目删除的位置。<br/></p>
+</td>
+      <td>在数组中的特定位置中移除项。<br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.ObservableArray.Class.html"><b>ObservableArray</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>setAt</b>&#8203;(index, item)</td>
+      <td><p>
+<b>index</b> (<b>number</b>): 项目将被分配的位置。<br/><b>item</b> (<b>any</b>): 分配给数组的项目。<br/></p>
+</td>
+      <td>在数组中的特定位置分配一个项目。<br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.ObservableArray.Class.html"><b>ObservableArray</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>slice</b>&#8203;(begin?, end?): <b>any</b><b>[]</b></td>
+      <td><p>
+<b>begin?</b> (<b>number</b>): 拷贝开始的位置。<br/><b>end?</b> (<b>number</b>): 拷贝结束的位置。<br/></p>
+</td>
+      <td>创建一个数组中一部分的浅拷贝。<br/><br/><b>返回值</b> 一个数组的浅拷贝。<br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.ObservableArray.Class.html"><b>ObservableArray</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>sort</b>&#8203;(compareFn?): <b>any</b><b>[]</b></td>
+      <td><p>
+<b>compareFn?</b> (<b>Function</b>): 指定定义排序顺序的函数。
+如果已经指定了， 函数应采取两个参数并且应该返回
+-1， +1，或者0 来指明第一个参数比第二个参数较小，较大，
+或者相等。
+如果被省略了，数组按照每个元素的字符串转换在字典顺序中进行排序的。<br/></p>
+</td>
+      <td>将数组中的元素排序。<br/><br/><b>返回值</b> 排序数组的副本。<br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.ObservableArray.Class.html"><b>ObservableArray</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>splice</b>&#8203;(index, count, item?): <b>any</b><b>[]</b></td>
+      <td><p>
+<b>index</b> (<b>number</b>): 将要添加或者删除项目的位置。<br/><b>count</b> (<b>number</b>): 从数组中删除的项数。<br/><b>item?</b> (<b>any</b>): 添加到数组中的项目。<br/></p>
+</td>
+      <td>删除和/或者添加到数组中的项。<br/><br/><b>返回值</b> 包含被删除元素的数组。<br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.ObservableArray.Class.html"><b>ObservableArray</b></a>).</span></td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideEvents = !hideEvents">
+<span class="glyph-collapsed" ng-show="hideEvents"></span>
+<span class="glyph-expanded" ng-hide="hideEvents"></span>
+事件
+</h3>
+</div>
+<table ng-hide="hideEvents" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-2">名称</th>
+
+<th class="col-md-5">参数</th>
+
+<th class="col-md-5">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>collectionChanged</b></td>
+      <td></td>
+      <td>当集合更改时发生。<br/><span class="text-info">(继承自 <a href="topic/wijmo.collections.ObservableArray.Class.html"><b>ObservableArray</b></a>).</span></td>
+    </tr>
+</tbody>
+</table>
+</div>
+

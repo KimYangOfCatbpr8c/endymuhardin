@@ -1,0 +1,27 @@
+<h2>wjStyle 类</h2>
+<dl class="dl-horizontal">
+<dt>模块</dt><dd>wijmo.knockout</dd>
+<dt>文件</dt><dd>wijmo.knockout.js</dd>
+</dl>
+<p><p>使用 KnockoutJS 绑定设置 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a> <a href="topic/wijmo.grid.Column.Class.html"><b>Column</b></a> 单元格条件格式化。</p>
+
+<p>使用 <b>wjStyle</b> 绑定和 <a href="topic/wijmo.knockout.wjFlexGridColumn.Class.html"><b>wjFlexGridColumn</b></a> 绑定提供单元格的条件格式化，示例如下：</p>
+
+<p><pre>&lt;div data-bind="wjFlexGridColumn: { 
+        header: 'Change',
+        binding: 'changePercent',
+        format: 'p2',
+        width: '*'
+        },
+        wjStyle: { color: getAmountColor($item().change) }"&gt;&lt;/div&gt;</pre></p>
+
+<p>
+<b>wjStyle</b> 使用 KnockoutJS 原生语法 
+<a href="http://knockoutjs.com/documentation/style-binding.html" target="_blank">style</a> 设置绑定。
+在视图模型中添加属性，在绑定表达式中使用监控属性：</p>
+
+<p><dl class="dl-horizontal">
+  <dt>$item</dt>  <dd>到绑定到当前行的一个引用</dd>
+  <dt>$row</dt>  <dd>行索引。</dd>
+  <dt>$col</dt>  <dd>列索引。</dd>
+</dl></p></p>

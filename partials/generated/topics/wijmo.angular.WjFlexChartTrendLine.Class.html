@@ -1,0 +1,31 @@
+<h2>WjFlexChartTrendLine 类</h2>
+<dl class="dl-horizontal">
+<dt>基类</dt><dd><b>WjTrendLineBase</b></dd>
+<dt>模块</dt><dd>wijmo.angular</dd>
+<dt>文件</dt><dd>wijmo.angular.js</dd>
+<dt>表示</dt><dd><label style="font-weight:normal">继承成员 <input type="checkbox" ng-model="showInherited"></label></dd>
+</dl>
+<p><p>AngularJS 指令应用于 <a href="topic/wijmo.chart.FlexChart.Class.html"><b>FlexChart</b></a> 和 <a href="topic/wijmo.chart.finance.FinancialChart.Class.html"><b>FinancialChart</b></a> <a href="topic/wijmo.chart.analytics.TrendLine.Class.html"><b>TrendLine</b></a> 对象。</p>
+
+<p><b>wj-flex-chart-trend-line</b> 指令必须包含于 <a href="topic/wijmo.angular.WjFlexChart.Class.html"><b>WjFlexChart</b></a> 或者 <a href="topic/wijmo.angular.WjFinancialChart.Class.html"><b>WjFinancialChart</b></a> 指令。
+支持以下属性:</p>
+
+<p><dl class="dl-horizontal">
+  <dt>binding</dt>      <dd><code>@</code> 包含Y轴数据的属性名。该值可被任意重写以绑定图表数据。</dd>
+  <dt>binding-x</dt>    <dd><code>@</code> 包含X轴数据的属性名。该值可被任意重写以绑定图表数据。</dd>
+  <dt>chart-type</dt>   <dd><code>@</code> 图表默认类型，可以重写这个。参见 <a href="topic/wijmo.chart.ChartType.Enum.html"><b>ChartType</b></a>。</dd>
+  <dt>css-class</dt>    <dd><code>@</code> 渲染序列的 CSS 样式类。</dd>
+  <dt>items-source</dt> <dd><code>=</code> 一个数组或者 <a href="topic/wijmo.collections.ICollectionView.Interface.html"><b>ICollectionView</b></a> 对象，其中包含序列数据。</dd>
+  <dt>name</dt>         <dd><code>@</code> 序列显示的图例名称。</dd>
+  <dt>style</dt>        <dd><code>=</code> 渲染序列的样式，使用 ng-attr-style 指定序列对象。参见 ngAttr <a target="_blank" href="https://docs.angularjs.org/guide/directive">
+                        AngularJS Creating Custom Directives</a> 以及 <a target="_blank" href=
+                        "http://demos.wijmo.com/5/Angular/FlexChartIntro/FlexChartIntro/#Styling">
+                        FlexChart 101 Styling Series</a> 上的实例以获取更多信息。</dd>
+  <dt>symbol-marker</dt><dd><code>@</code> 标记序列的形状。可重写默认值。 参见 <a href="topic/wijmo.chart.Marker.Enum.html"><b>Marker</b></a>。</dd>
+  <dt>symbol-size</dt>  <dd><code>@</code> 渲染数据点的像素级尺寸。可以重写这个。</dd>
+  <dt>symbol-style</dt> <dd><code>=</code> 渲染数据点的样式。可以重写这个。</dd>
+  <dt>visibility</dt>   <dd><code>=</code> <a href="topic/wijmo.chart.SeriesVisibility.Enum.html"><b>SeriesVisibility</b></a> 值，用于指定是否显示序列。</dd>
+  <dt>sample-count</dt> <dd><code>@</code> 计算样品数量。</dd>
+  <dt>fit-type</dt>     <dd><code>@</code> <a href="topic/wijmo.chart.analytics.TrendLineFitType.Enum.html"><b>TrendLineFitType</b></a> 值，指定趋势线.</dd>
+  <dt>order</dt>        <dd><code>@</code> 排序。</dd>
+</dl></p></p>

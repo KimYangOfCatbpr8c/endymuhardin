@@ -1,0 +1,42 @@
+<h2>wjFlexChart 类</h2>
+<dl class="dl-horizontal">
+<dt>基类</dt><dd><b>WjFlexChartBaseBinding</b></dd>
+<dt>模块</dt><dd>wijmo.knockout</dd>
+<dt>文件</dt><dd>wijmo.knockout.js</dd>
+<dt>表示</dt><dd><label style="font-weight:normal">继承成员 <input type="checkbox" ng-model="showInherited"></label></dd>
+</dl>
+<p><p>使用 KnockoutJS 绑定 <a href="topic/wijmo.chart.FlexChart.Class.html"><b>FlexChart</b></a> 控件。</p>
+
+<p>使用 <b>wjFlexChart</b> 绑定添加 <b>FlexChart</b> 控件，示例如下：</p>
+
+<p><pre>&lt;p&gt;Here is a FlexChart control:&lt;/p&gt;
+&lt;div data-bind="wjFlexChart: { itemsSource: data }"&gt;
+    &lt;div data-bind="wjFlexChartLegend : { 
+        position: 'Top' }"&gt;
+    &lt;/div&gt;
+    &lt;div data-bind="wjFlexChartAxis: { 
+        wjProperty: 'axisX', 
+        title: chartProps.titleX }"&gt;
+    &lt;/div&gt;
+    &lt;div data-bind="wjFlexChartAxis: { 
+        wjProperty: 'axisY', 
+        majorUnit: 5000 }"&gt;
+    &lt;/div&gt;
+    &lt;div data-bind="wjFlexChartSeries: { 
+        name: 'Sales', 
+        binding: 'sales' }"&gt;
+    &lt;/div&gt;
+    &lt;div data-bind="wjFlexChartSeries: { 
+        name: 'Expenses', 
+        binding: 'expenses' }"&gt;
+    &lt;/div&gt;
+    &lt;div data-bind="wjFlexChartSeries: { 
+        name: 'Downloads', 
+        binding: 'downloads', 
+        chartType: 'LineSymbols' }"&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</pre></p>
+
+<p><b>wjFlexChart</b> 绑定可以包含以下子绑定：<a href="topic/wijmo.knockout.wjFlexChartAxis.Class.html"><b>wjFlexChartAxis</b></a>, <a href="topic/wijmo.knockout.wjFlexChartSeries.Class.html"><b>wjFlexChartSeries</b></a>, <a href="topic/wijmo.knockout.wjFlexChartLegend.Class.html"><b>wjFlexChartLegend</b></a>.</p>
+
+<p><b>wjFlexChart</b> 支持 <b>FlexChart</b> 控件的所有可读写属性及事件，以及一个额外的属性<b>tooltipContent</b> 可以用来指定 <b>FlexChart.tooltip.content</b> 的属性值，另外 <b>selection</b> 属性提供了双向绑定。</p></p>

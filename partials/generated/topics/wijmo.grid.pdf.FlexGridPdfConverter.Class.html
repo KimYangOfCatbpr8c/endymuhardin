@@ -1,0 +1,130 @@
+<h2>FlexGridPdfConverter 类</h2>
+<dl class="dl-horizontal">
+<dt>模块</dt><dd>wijmo.grid.pdf</dd>
+<dt>文件</dt><dd>wijmo.grid.pdf.js</dd>
+</dl>
+<p>提供导出 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a> 至 PDF 的功能。</p>
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideMethods = !hideMethods">
+<span class="glyph-collapsed" ng-show="hideMethods"></span>
+<span class="glyph-expanded" ng-hide="hideMethods"></span>
+方法
+</h3>
+</div>
+<table ng-hide="hideMethods" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-2">名称</th>
+
+<th class="col-md-5">参数</th>
+
+<th class="col-md-5">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td><span class="badge" title="静态">S</span></td>
+      <td><b>draw</b>&#8203;(flex, doc, width?, height?, settings?): <b>void</b></td>
+      <td><p>
+<b>flex</b> (<a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>): 待导出的 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a> 实例。<br/><b>doc</b> (<a href="topic/wijmo.pdf.PdfDocument.Class.html"><b>PdfDocument</b></a>): 绘制的目标 <a href="topic/wijmo.pdf.PdfDocument.Class.html"><b>PdfDocument</b></a> 实例。<br/><b>width?</b> (<b>number</b>): 绘制区域的宽度，单位是点。<br/><b>height?</b> (<b>number</b>): 绘制区域的高度，单位是点。<br/><b>settings?</b> (<a href="topic/wijmo.grid.pdf.IFlexGridDrawSettings.Interface.html"><b>IFlexGridDrawSettings</b></a>): 绘制相关的设置。<br/></p>
+</td>
+      <td><p>将 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a> 绘制到一个现有的 <a href="topic/wijmo.pdf.PdfDocument.Class.html"><b>PdfDocument</b></a> 文档的 (0, @wijmo.pdf.PdfDocument.y)坐标位置。</p>
+
+<p>如果宽度未指定，则表单将以实际尺寸呈现，并按照需要拆分多个页面。
+如果高度未指定，则表单将拉伸以适应页面宽度，并按照需要在垂直方向
+拆分成多个页面。如果高度和宽度同时指定，则表单将拉伸以适应指定的
+矩形区域，此时不需要做任何的分页。</p>
+
+<p><pre>
+	var doc = new wijmo.pdf.PdfDocument({
+		ended: function (sender, args) {
+			wijmo.pdf.saveBlob(args.blob, 'FlexGrid.pdf');
+		}
+	});</p>
+
+<p>	wijmo.grid.pdf.FlexGridPdfConverter.draw(grid, doc, null, null, {
+		maxPages: 10,
+		styles: {
+			cellStyle: {
+				backgroundColor: '#ffffff',
+				borderColor: '#c6c6c6'
+			},
+			headerCellStyle: {
+				backgroundColor: '#eaeaea'
+			}
+		}
+	});
+</pre></p></td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="静态">S</span></td>
+      <td><b>drawToPosition</b>&#8203;(flex, doc, point, width?, height?, settings?): <b>void</b></td>
+      <td><p>
+<b>flex</b> (<a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>): 待导出的 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a> 实例。<br/><b>doc</b> (<a href="topic/wijmo.pdf.PdfDocument.Class.html"><b>PdfDocument</b></a>): 绘制的目标 <a href="topic/wijmo.pdf.PdfDocument.Class.html"><b>PdfDocument</b></a> 实例。<br/><b>point</b> (<a href="topic/wijmo.Point.Class.html"><b>Point</b></a>): 绘制的目标位置，单位是点。<br/><b>width?</b> (<b>number</b>): 绘制区域的宽度，单位是点。<br/><b>height?</b> (<b>number</b>): 绘制区域的高度，单位是点。<br/><b>settings?</b> (<a href="topic/wijmo.grid.pdf.IFlexGridDrawSettings.Interface.html"><b>IFlexGridDrawSettings</b></a>): 绘制相关的设置。<br/></p>
+</td>
+      <td><p>在指定的坐标位置绘制 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a> 至现有的 <a href="topic/wijmo.pdf.PdfDocument.Class.html"><b>PdfDocument</b></a> 实例。</p>
+
+<p>如果没有指定宽度，则表单将以实际尺寸绘制，且没有任何分页。
+如果没有指定宽度，则表单将缩放以适应页面宽度，且没有分页。
+如果同时指定了宽度和高度，则表单将缩放以适应指定的矩形区域，不需要分页显示。</p>
+
+<p><pre>
+	var doc = new wijmo.pdf.PdfDocument({
+		ended: function (sender, args) {
+			wijmo.pdf.saveBlob(args.blob, 'FlexGrid.pdf');
+		}
+	});</p>
+
+<p>	wijmo.grid.pdf.FlexGridPdfConverter.drawToPosition(grid, doc, new wijmo.Point(0, 0), null, null, {
+		maxPages: 10,
+		styles: {
+			cellStyle: {
+				backgroundColor: '#ffffff',
+				borderColor: '#c6c6c6'
+			},
+			headerCellStyle: {
+				backgroundColor: '#eaeaea'
+			}
+		}
+	});
+</pre></p></td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="静态">S</span></td>
+      <td><b>export</b>&#8203;(flex, fileName, settings?): <b>void</b></td>
+      <td><p>
+<b>flex</b> (<a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>): 待导出的 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a> 实例。<br/><b>fileName</b> (<b>string</b>): 导出的文件名。<br/><b>settings?</b> (<a href="topic/wijmo.grid.pdf.IFlexGridExportSettings.Interface.html"><b>IFlexGridExportSettings</b></a>): 导出的相关设置。<br/></p>
+</td>
+      <td><p>导出 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a> 至 PDF。</p>
+
+<p><pre>
+	wijmo.grid.pdf.FlexGridPdfConverter.export(grid, 'FlexGrid.pdf', {
+		scaleMode: wijmo.grid.pdf.ScaleMode.PageWidth;
+		maxPages: 10,
+		styles: {
+			cellStyle: {
+				backgroundColor: '#ffffff',
+				borderColor: '#c6c6c6'
+			},
+			headerCellStyle: {
+				backgroundColor: '#eaeaea'
+			}
+		},
+		documentOptions: {
+			info: {
+				title: 'Sample'
+			}
+		}
+	});
+</pre></p></td>
+    </tr>
+</tbody>
+</table>
+</div>
+

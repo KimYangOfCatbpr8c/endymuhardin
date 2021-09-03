@@ -1,0 +1,141 @@
+<h2>FinancialChartType 枚举</h2>
+<dl class="dl-horizontal">
+  <dt>模块</dt><dd>wijmo.chart.finance</dd>
+  <dt>文件</dt><dd>wijmo.chart.finance.js</dd>
+</dl>
+<p>指定金融图表的类型。</p>
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideValues = !hideValues">
+<span class="glyph-collapsed" ng-show="hideValues"></span>
+<span class="glyph-expanded" ng-hide="hideValues"></span>
+值
+</h3>
+</div>
+<table ng-hide="hideValues" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th>名称</th>
+
+<th>描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><b>Area</b></td>
+      <td>显示一个折线以下区域填充颜色的折线图表。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>ArmsCandleVolume</b></td>
+      <td>由 Richard Arms 创建，该图表组合了 EquiVolume 以及 CandleVolume 图表类型。该图表的数据可以使用 <a href="topic/wijmo.chart.finance.FinancialChart.Class.html"><b>FinancialChart</b></a> 或者 <a href="topic/wijmo.chart.finance.FinancialSeries.Class.html"><b>FinancialSeries</b></a> 的 <b>binding</b> 属性进行定义
+属性的内容使用逗号分隔，形如以下格式：
+"highProperty, lowProperty, openProperty, closeProperty, volumeProperty"。
+该图表类型仅可以被用在 <b>FinancialChart</b> 级别，不应当应用于
+<b>FinancialSeries</b> 对象。目前仅支持一个 <b>FinancialChart</b> 一个容量数据。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>Candlestick</b></td>
+      <td>使用高值，低值，开盘值，以及收盘值表现每一个项目。
+烛芯线的尺寸由高值和低值决定，而
+柱形的尺寸由开盘价和收盘价决定。柱形显示为不同的颜色，取决于是否收盘价高于或低于开盘价。该图表的数据可以使用 <a href="topic/wijmo.chart.finance.FinancialChart.Class.html"><b>FinancialChart</b></a> 或者 <a href="topic/wijmo.chart.finance.FinancialSeries.Class.html"><b>FinancialSeries</b></a> 的 <b>binding</b> 属性进行定义
+属性的内容使用逗号分隔，形如以下格式："highProperty, lowProperty, openProperty, closeProperty"。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>CandleVolume</b></td>
+      <td>和标准蜡烛图图表一致，不同之处在于每一个柱形的宽度由容量值决定。该图表的数据可以使用 <a href="topic/wijmo.chart.finance.FinancialChart.Class.html"><b>FinancialChart</b></a> 或者 <a href="topic/wijmo.chart.finance.FinancialSeries.Class.html"><b>FinancialSeries</b></a> 的 <b>binding</b> 属性进行定义
+属性的内容使用逗号分隔，形如以下格式：
+"highProperty, lowProperty, openProperty, closeProperty, volumeProperty"。
+该图表类型仅可以被用在 <b>FinancialChart</b> 级别，不应当应用于
+<b>FinancialSeries</b> 对象。目前仅支持一个 <b>FinancialChart</b> 一个容量数据。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>Column</b></td>
+      <td>显示垂直条形，允许您在不同的分组之间对数值进行比较。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>ColumnVolume</b></td>
+      <td>和标准柱状图相似，不同之处在于每一个柱形的宽度由容量值
+决定。该图表的数据可以使用 <a href="topic/wijmo.chart.finance.FinancialChart.Class.html"><b>FinancialChart</b></a> 或者 <a href="topic/wijmo.chart.finance.FinancialSeries.Class.html"><b>FinancialSeries</b></a> 的 <b>binding</b> 属性进行定义
+属性的内容使用逗号分隔，形如以下格式："yProperty, volumeProperty"。该图表类型仅可以被用在 <b>FinancialChart</b> 级别，不应当应用于
+<b>FinancialSeries</b> 对象。目前仅支持一个 <b>FinancialChart</b> 一个容量数据。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>EquiVolume</b></td>
+      <td>和标准蜡烛图图表类似，但是仅显示高值和低值。
+除此之外，每一个柱形的宽度由容量值决定。该图表的数据可以使用 <a href="topic/wijmo.chart.finance.FinancialChart.Class.html"><b>FinancialChart</b></a> 或者 <a href="topic/wijmo.chart.finance.FinancialSeries.Class.html"><b>FinancialSeries</b></a> 的 <b>binding</b> 属性进行定义
+属性的内容使用逗号分隔，形如以下格式：
+"highProperty, lowProperty, openProperty, closeProperty, volumeProperty"。
+该图表类型仅可以被用在 <b>FinancialChart</b> 级别，不应当应用于
+<b>FinancialSeries</b> 对象。目前仅支持一个 <b>FinancialChart</b> 一个容量数据。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>HeikinAshi</b></td>
+      <td>从蜡烛图图表派生，使用来自于当前以及以前信息的
+数据以滤除噪声。这些图表无法和任何其他系列
+对象组合在一起。该图表的数据可以使用 <a href="topic/wijmo.chart.finance.FinancialChart.Class.html"><b>FinancialChart</b></a> 或者 <a href="topic/wijmo.chart.finance.FinancialSeries.Class.html"><b>FinancialSeries</b></a> 的 <b>binding</b> 属性进行定义
+属性的内容使用逗号分隔，形如以下格式："highProperty, lowProperty, openProperty, closeProperty"。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>HighLowOpenClose</b></td>
+      <td>显示和蜡烛图图表相同的信息，除了开盘价
+通过位于左侧的直线显示，同时右侧的直线
+表示收盘价。该图表的数据可以使用 <a href="topic/wijmo.chart.finance.FinancialChart.Class.html"><b>FinancialChart</b></a> 或者 <a href="topic/wijmo.chart.finance.FinancialSeries.Class.html"><b>FinancialSeries</b></a> 的 <b>binding</b> 属性进行定义
+属性的内容使用逗号分隔，形如以下格式："highProperty, lowProperty, openProperty, closeProperty"。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>Kagi</b></td>
+      <td>忽略时间，侧重于价格行为。这些图表无法和
+任何其他系列对象组合在一起。该图表的数据可以使用 
+<a href="topic/wijmo.chart.finance.FinancialChart.Class.html"><b>FinancialChart</b></a> 或者 <a href="topic/wijmo.chart.finance.FinancialSeries.Class.html"><b>FinancialSeries</b></a> 的 <b>binding</b> 属性进行定义
+属性的内容使用逗号分隔，形如以下格式："highProperty, lowProperty, openProperty, closeProperty"。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>Line</b></td>
+      <td>显示了在一段时间内或跨类别的趋势。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>LineBreak</b></td>
+      <td>通过只关注价格变化过滤掉噪音。这些图表无法和
+任何其他系列对象组合在一起。该图表的数据可以使用
+ <a href="topic/wijmo.chart.finance.FinancialChart.Class.html"><b>FinancialChart</b></a> 或者 <a href="topic/wijmo.chart.finance.FinancialSeries.Class.html"><b>FinancialSeries</b></a> 的 <b>binding</b> 属性进行定义
+属性的内容使用逗号分隔，形如以下格式："highProperty, lowProperty, openProperty, closeProperty"。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>LineSymbols</b></td>
+      <td>显示一个每一个数据点自带一个符号的折线图表。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>Renko</b></td>
+      <td>忽略时间，专注于满足指定的量的价格变化。
+这些图表无法和任何其他系列对象组合在一起。该图表的数据
+可以使用 <a href="topic/wijmo.chart.finance.FinancialChart.Class.html"><b>FinancialChart</b></a> 或者 <a href="topic/wijmo.chart.finance.FinancialSeries.Class.html"><b>FinancialSeries</b></a> 的 <b>binding</b> 属性进行定义
+属性的内容使用逗号分隔，形如以下格式："highProperty, lowProperty, openProperty, closeProperty"。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>Scatter</b></td>
+      <td>使用X和Y坐标，以显示数据内的模式。</td>
+    </tr>
+</tbody>
+</table>
+</div>
+

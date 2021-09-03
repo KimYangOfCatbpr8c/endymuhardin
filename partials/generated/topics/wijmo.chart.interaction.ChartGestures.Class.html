@@ -1,0 +1,171 @@
+<h2>ChartGestures 类</h2>
+<dl class="dl-horizontal">
+<dt>派生类</dt><dd><a href="topic/wijmo-wijmo.angular2.chart.interaction.WjFlexChartGestures.Class.html"><b>WjFlexChartGestures</b></a></dd>
+<dt>模块</dt><dd>wijmo.chart.interaction</dd>
+<dt>文件</dt><dd>wijmo.chart.interaction.js</dd>
+</dl>
+<p><p><b>ChartGestures</b> 控件允许用户在通过 Zoom 或者 Pan 操作缩放指定的 <a href="topic/wijmo.chart.FlexChart.Class.html"><b>FlexChart</b></a>。</p>
+
+<p>为使用 <b>ChartGestures</b> 控件，指定需要 zoom 或 pan 操作的 <b>FlexChart</b>。</p>
+
+<p><pre>
+ var chartGestures = new wijmo.chart.interaction.ChartGestures(chart);
+</pre></p></p>
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideConstructor = !hideConstructor">
+<span class="glyph-collapsed" ng-show="hideConstructor"></span>
+<span class="glyph-expanded" ng-hide="hideConstructor"></span>
+ 构造函数
+</h3>
+</div>
+<table ng-hide="hideConstructor" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-2">名称</th>
+
+<th class="col-md-5">参数</th>
+
+<th class="col-md-5">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><b>constructor</b>&#8203;(chart, options?): <a href="topic/wijmo.chart.interaction.ChartGestures.Class.html"><b>ChartGestures</b></a></td>
+      <td><p>
+<b>chart</b> (<a href="topic/wijmo.chart.FlexChartCore.Class.html"><b>FlexChartCore</b></a>): The <a href="topic/wijmo.chart.FlexChart.Class.html"><b>FlexChart</b></a> that allows the user to zoom or pan.<br/><b>options?</b> (): A 包含控件初始化数据的Javascript对象。<br/></p>
+</td>
+      <td>初始化类 <a href="topic/wijmo.chart.interaction.ChartGestures.Class.html"><b>ChartGestures</b></a> 的一个新实例。.</td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideProperties = !hideProperties">
+<span class="glyph-collapsed" ng-show="hideProperties"></span>
+<span class="glyph-expanded" ng-hide="hideProperties"></span>
+属性
+</h3>
+</div>
+<table ng-hide="hideProperties" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-3">名称</th>
+
+<th class="col-md-2">类型</th>
+
+<th class="col-md-7">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><b>enable</b></td>
+      <td><b>boolean</b></td>
+      <td>获取或设置 ChartGestures 的启用状态。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>interactiveAxes</b></td>
+      <td><a href="topic/wijmo.chart.interaction.InteractiveAxes.Enum.html"><b>InteractiveAxes</b></a></td>
+      <td>获取或设置 ChartGestures 的交互坐标轴。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>mouseAction</b></td>
+      <td><a href="topic/wijmo.chart.interaction.MouseAction.Enum.html"><b>MouseAction</b></a></td>
+      <td>获取或设置 ChartGestures 的鼠标动作。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>posX</b></td>
+      <td><b>number</b></td>
+      <td>获取或设置 X 坐标轴的初始位置。
+该值表示当 Scale 小于 1 时，坐标轴的初始位置。
+否则，该 Value 没有效果。
+该值应当介于 0 和 1 之间。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>posY</b></td>
+      <td><b>number</b></td>
+      <td>获取或设置 Y 坐标轴的初始位置。
+该值表示当 Scale 小于 1 时，坐标轴的初始位置。
+否则，该 Value 没有效果。
+该值应当介于 0 和 1 之间。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>scaleX</b></td>
+      <td><b>number</b></td>
+      <td>获取或设置 X 坐标轴的初始缩放。
+缩放应当大于 0 并且小于等于 1。
+缩放指定介于 Min 和 Max 之间的哪一部分将显示。
+当缩放值为 1（默认值），整个坐标轴范围可见。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>scaleY</b></td>
+      <td><b>number</b></td>
+      <td>获取或设置 Y 坐标轴的初始缩放。
+缩放应当大于 0 并且小于等于 1。
+缩放指定介于 Min 和 Max 之间的哪一部分将显示。
+当缩放值为 1（默认值），整个坐标轴范围可见。</td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideMethods = !hideMethods">
+<span class="glyph-collapsed" ng-show="hideMethods"></span>
+<span class="glyph-expanded" ng-hide="hideMethods"></span>
+方法
+</h3>
+</div>
+<table ng-hide="hideMethods" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-2">名称</th>
+
+<th class="col-md-5">参数</th>
+
+<th class="col-md-5">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><b>remove</b>&#8203;()</td>
+      <td></td>
+      <td>从图表上移除 <a href="topic/wijmo.chart.interaction.ChartGestures.Class.html"><b>ChartGestures</b></a> 控件。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>reset</b>&#8203;()</td>
+      <td></td>
+      <td>重置图表的坐标轴。</td>
+    </tr>
+</tbody>
+</table>
+</div>
+

@@ -1,0 +1,1452 @@
+<h2>模块 wijmo.knockout</h2>
+<dl class="dl-horizontal">
+<dt>文件</dt><dd>wijmo.knockout.js</dd>
+</dl>
+<p><p>Wijmo控件拥有使用KnockoutJS绑定的特性.该绑定特性允许你在HTML页面中使用简单的标记将Wijmo控件引入到 
+<a href="http://knockoutjs.com/" target="_blank">KnockoutJS</a> 
+应用中。将Wijmo控件添加到页面标记中，添加 <b>&lt;div&gt;</b> 元素，并使用 <b>data-bind</b> 属性定义该绑定特性。绑定控件的名称是对应的控件名称加上wj前缀。例如，Wijmo的<a href="topic/wijmo.knockout.wjInputNumber.Class.html"><b>wjInputNumber</b></a> 绑定控件对应控件<a href="topic/wijmo.input.InputNumber.Class.html"><b>InputNumber</b></a>。 绑定的值是一个包含一系列控件读写属性与事件名称的对象字面量，并且他们的值与相对应的控件中定义的属性值和事件相一致。下面的标记创建了一个Wijimo <b>InputNumber</b> 控件，并且将 <b>value</b> 属性绑定到视图模型view model的 <b>theValue</b> 属性上, 将 <b>step</b> 属性设置为1，<b>inputType</b> 属性设置为 'text':</p>
+
+<p><pre>&lt;div data-bind="wjInputNumber: { value: theValue, step: 1, inputType: 'text' }"&gt;&lt;/div&gt;</pre></p>
+
+<p><h3>定制元素</h3>
+在标准的Knockout绑定语法之外，Wijimo为Knockout提供了在页面中使用的定制元素标签，这些元素标签对应其控件的绑定名称，其标签属性对应其控件的相应属性，这些元素和其参量名称需要格式化为纯小写，并使用连字符（-）替换原来的驼峰命名。上边的例子中的控件可以使用定制元素语法定义如下:</p>
+
+<p><pre>&lt;wj-input-number value="theValue" step="1" input-type="'text'"&gt;&lt;/wj-input-number&gt;</pre></p>
+
+<p>注意属性值的定义需要与你的data-bind定义严格对应，并且符合JavaScript表达式语法规则。Wijmo的Knockout预处理器会将这些定制元素转换为常规的data-bind形式。更多细节请参见主题 <b>定制元素预处理器 Custom elements preprocessor</b> 。</p>
+
+<p>
+<h3>绑定控件属性</h3>
+Wijmo 的 KnockoutJS 绑定支持绑定到控件的任何可读可写属性上。你可以为属性指定任何有效的 KnockoutJS 表达式（如常量、 视图模型的监控属性或复杂的表达式）。大多数属性提供了单向绑定，即视图模型上的监控属性更改可以触发到其对应的绑定控件上相应属性的更改，反之则不会触发。另外一些属性支持双向绑定，这意味着绑定控件属性的更改也可以传播到其对应的视图模型的监控属性上。双向绑定用于这类属性，即通过用户交互或其他操作可被控件自身更改的属性。 例如，InputNumber 控件为 
+<b>value</b> and <b>text</b> 属性提供了双向绑定, 该属性在用户输入了新的值后会被控件更改， InputNumber 控件的其他属性工作在单向绑定模式下。</p>
+
+<p><h3>绑定控件实践</h3>
+要跟踪事件处理，需要在定义控件绑定的对象字面量上定义一个属性，属性名为事件名称，以及一个在该事件触发时调用的函数，该函数作为属性的值。 Wijmo绑定在定义事件处理上遵循与KnockoutJS绑定一致的规则。例如 <b>click</b> 和 <b>event</b>，事件处理接收如下的一组特定顺序的参数:
+<ul>
+	<li><b>data:</b> 当前模型的值，与KnockoutJS绑定原生的一致 <b>click</b> 和 <b>event</b>. </li>
+	<li><b>sender:</b> 事件源 </li>
+	<li><b>args:</b> 事件参数 </li>
+</ul></p>
+
+<p>下面的例子创建了一个 <b>InputNumber</b> 控件，并添加了 <b>valueChanged</b>
+事件处理，使用对话框呈现控件的新值。</p>
+
+<p><pre>&lt;!-- HTML --&gt;
+&lt;div data-bind="wjInputNumber: { value: theValue, step: 1, valueChanged: valueChangedEH }"&gt;&lt;/div&gt;
+&nbsp;
+//View Model
+this.valueChangedEH = function (data, sender, args) {
+    alert('The new value is: ' + sender.value);
+}</pre></p>
+
+<p>同样的，上述例子中的控件可以使用定制元素语法定义如下:</p>
+
+<p><pre>&lt;wj-input-number value="theValue" step="1" value-changed="valueChangedEH"&gt;&lt;/wj-input-number&gt;</pre></p>
+
+<p><h3>绑定未定义监控属性</h3>
+视图模型的监控属性指定到 <i>undefined</i> 值时，Wijmo绑定在初始化处理时会进行特殊处理。例如，你像如下这种方式绑定控件属性，ko.observable(undefined) 或 ko.observable()，Wijmo不会为控件指定值，相反的，在属性支持双向绑定时，将使用控件默认值初始化绑定监控属性， 因为在绑定完成初始化后，绑定会将这类型属性的控件值更新到绑定的视图模型的监控属性上。注意 <i>null</i> 值，例如 ko.observable(null), 会使用一般的方式处理，即为绑定的控件属性设置 null 值。 在这一重要的初始化过程结束后，对于 undefined 的监控属性, 反过来 Wijmo 会使用一般的方式处理,并使用 undefined 设置相应的控件属性。</p>
+
+<p>在下边的例子中, <b>InputNumber</b> 控件的 <b>value</b> 属性拥有默认值0，在初始化后，相同的值会被指定到视图模型的 <b>theValue</b> :
+<pre>&lt;!-- HTML --&gt;
+&lt;div data-bind="wjInputNumber: { value: theValue }"&gt;&lt;/div&gt;
+&nbsp;
+//View Model
+this.theValue = ko.observable();</pre></p>
+
+<p><h3>定义对象属性和数组属性</h3>
+一些 Wijmo 控件拥有数组属性或对象属性。 例如 <a href="topic/wijmo.chart.FlexChart.Class.html"><b>FlexChart</b></a> 控件公开了 <b>axisX</b> 和 <b>axisY</b> 属性，其定义为 <a href="topic/wijmo.chart.Axis.Class.html"><b>Axis</b></a> 对象; 还有一个包含了 <a href="topic/wijmo.chart.Series.Class.html"><b>Series</b></a> 对象的数组属性 <b>series</b> 。 Wijmo 位这类控件提供了特殊的绑定方式，以便我们能够为这些控件元素的子元素设置绑定。如果控件暴漏了多个拥有相同类型定义的对象属性，需要使用 <b>wjProperty</b> 属性来明确指定绑定的对象属性。</p>
+
+<p>下边的例子定义了一个 <b>FlexChart</b> 控件，拥有 <b>axisX</b> 和 <b>axisY</b> 
+对象属性，以及两个 series 对象属性:</p>
+
+<p><pre>&lt;div data-bind="wjFlexChart: { itemsSource: data, bindingX: 'country' }"&gt;
+    &lt;div data-bind="wjFlexChartAxis: { wjProperty: 'axisX', title: chartProps.titleX }"&gt;&lt;/div&gt;
+    &lt;div data-bind="wjFlexChartAxis: { wjProperty: 'axisY', title: chartProps.titleY }"&gt;&lt;/div&gt;
+    &lt;div data-bind="wjFlexChartSeries: { name: 'Sales', binding: 'sales' }"&gt;&lt;/div&gt;
+    &lt;div data-bind="wjFlexChartSeries: { name: 'Downloads', binding: 'downloads' }"&gt;&lt;/div&gt;
+&lt;/div&gt;</pre></p>
+
+<p>
+上述例子中的控件可以使用定制元素语法定义如下::</p>
+
+<p><pre>&lt;wj-flex-chart items-source="data" binding-x="'country'"&gt;
+    &lt;wj-flex-chart-axis wj-property="'axisX'" title="chartProps.titleX"&gt;&lt;/wj-flex-chart-axis&gt;
+    &lt;wj-flex-chart-axis wj-property="'axisY'" title="chartProps.titleY"&gt;&lt;/wj-flex-chart-axis&gt;
+    &lt;wj-flex-chart-series name="'Sales'" binding"'sales'"&gt;&lt;/wj-flex-chart-series&gt;
+    &lt;wj-flex-chart-series name="'Downloads'" binding"'downloads'"&gt;&lt;/wj-flex-chart-series&gt;
+&lt;/wj-flex-chart&gt;</pre></p>
+
+<p><h3><b>control</b> 属性 </h3>
+每一个 Wijmo 控件绑定都公开了一个 <b>control</b> 属性，指向绑定创建的 Wijmo 控件实例。这样就可以在视图模型的代码或其他绑定中方便的引用到该控件。
+ 
+例如，下边的标签创建了一个 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a> 控件，它的引用存储在视图模型的 <b>flex</b> 监控属性中，在按钮的点击事件处理中使用该引用将表格移动到下一个记录行:</p>
+
+<p><pre>&lt;!-- HTML --&gt;
+&lt;div data-bind="'wjFlexGrid': { itemsSource: data, control: flex }"&gt;&lt;/div&gt;
+&lt;button data-bind="click: moveToNext"&gt;Next&lt;/button&gt;
+&nbsp;
+//View Model
+this.flex = ko.observable();
+this.moveToNext = function () {
+    this.flex().collectionView.moveCurrentToNext();
+}</pre></p>
+
+<p><h3><b>initialized</b> 事件</h3>
+每一个 Wijmo 控件绑定都公开了一个 <b>initialized</b> 事件以及一个 <b>isInitialized</b> 属性。该事件在绑定完成创建控件并使用标签属性指定的值完成初始化后被触发。 因为绑定可以包含自绑定，例如 <b>wjFlexGrid</b> 包含子绑定 <b>wjFlexGridColumn</b> ，这也意味着子绑定也完成了初始化并反映给了父绑定。isInitialized 属性在触发 initialized 事件之前会被设置为true, 你可以在视图模型中定义一个绑定 <b>isInitialized</b> 属性的监控属性用来观察它的值的变化。</p>
+
+<p>下边的例子在控件完成初始化后调整 FlexGridColumn 的格式，可以肯定的是这些格式设置不会被绑定定义的格式覆盖：</p>
+
+<p><pre>&lt;!-- HTML --&gt;
+&lt;div data-bind="'wjFlexGrid': { itemsSource: dataArray, initialized: flexInitialized }"&gt;
+     &lt;div data-bind="wjFlexGridColumn: { binding: 'sales', format: 'n2' }"&gt;&lt;/div&gt;
+     &lt;div data-bind="wjFlexGridColumn: { binding: 'downloads', format: 'n2' }"&gt;&lt;/div&gt;
+&lt;/div&gt;
+&nbsp;
+//View Model
+this.flexInitialized = function (data, sender, args) {
+    var columns = sender.columns;
+    for (var i = 0; i &lt; columns.length; i++) {
+        if (columns[i].dataType = wijmo.DataType.Number) {
+            columns[i].format = 'n0’;
+        }
+    }
+}</pre></p>
+
+<p><h3 id="custom_elem_preproc">定义元素预处理器</h3>
+Wijmo Knockout 预处理器使用标准的Knockout<a target="_blank" 
+href="http://knockoutjs.com/documentation/binding-preprocessing.html">ko.bindingProvider.instance.preprocessNode</a> 
+API. 同一页面中如果有其他的定制预处理器时，这可能会导致一些问题， 因为 Knockout 仅提供了单一的实例属性用来指向预处理器函数，这样后注册的预处理器会覆盖掉之前的 。</p>
+
+<p>为了确保附加的其他预处理有效，Wijmo Knockout 预处理初始化时，会存储当前已注册的预处理器，并在需要处理不能识别为Wijmo控件的的元素时委托调用，这样的组织形成可以理解为一个预处理器栈。但是如果你在 Wijmo Knockout 预处理器之后注册了其他的预处理器 (即其他预处理器 &lt;script&gt; 脚本应用在 <b>wijmo.knockout.js</b> 模块之后执行)，那么你需要确保其它的预处理器有类似预处理器栈的机制，否则 Wijmo konckout 预处理器会失效。如果你确实需要让 Wijimo konckout 预处理器失效，那么设置 <b>wijmo.disableKnockoutTags</b> 属性为 false 即可，注意需要在引用core Wijmo 模块之后，<b>wijmo.knockout.js</b> 模块之前进行设置，例如:</p>
+
+<p><pre>&lt;script src="scripts/wijmo.js" type="text/javascript"&gt;&lt;/script&gt;
+&lt;script src="scripts/wijmo.input.js" type="text/javascript"&gt;&lt;/script&gt;
+&nbsp;
+&lt;script type="text/javascript"&gt;
+    wijmo.disableKnockoutTags = true;
+&lt;/script&gt;
+&lt;script src="scripts/wijmo.knockout.js" type="text/javascript"&gt;&lt;/script&gt;</pre></p>
+
+<p>注意在这种场景下只能使用常规的绑定语法，Wijmo的定制标记不会被识别。</p></p>
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideClasses = !hideClasses">
+<span class="glyph-collapsed" ng-show="hideClasses"></span>
+<span class="glyph-expanded" ng-hide="hideClasses"></span>
+类
+</h3>
+</div>
+<table ng-hide="hideClasses" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th>名称</th>
+
+<th>描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.knockout.wjAutoComplete.Class.html"><b>wjAutoComplete</b></a></td>
+      <td><p>使用 KnockoutJS 绑定 <a href="topic/wijmo.input.AutoComplete.Class.html"><b>AutoComplete</b></a> 控件。</p>
+
+<p>使用 <b>wjAutoComplete</b> 绑定添加 <b>AutoComplete</b> 控件，示例如下:</p>
+
+<p><pre>&lt;p&gt;Here is an AutoComplete control:&lt;/p&gt;
+&lt;div data-bind="wjAutoComplete: {
+  itemsSource: countries,
+  text: theCountry,
+  isEditable: false,
+  placeholder: 'country' }"&gt;
+&lt;/div&gt;</pre></p>
+
+<p><b>wjAutoComplete</b> 支持 <b>AutoComplete</b> 控件的所有可读写属性及事件。以下属性支持双向绑定：
+<ul>
+	<li><b>isDroppedDown</b></li>
+	<li><b>text</b></li>
+	<li><b>selectedIndex</b></li>
+	<li><b>selectedItem</b></li>
+	<li><b>selectedValue</b></li>
+</ul></p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.knockout.wjBulletGraph.Class.html"><b>wjBulletGraph</b></a></td>
+      <td><p>使用 KnockoutJS 绑定 <a href="topic/wijmo.gauge.BulletGraph.Class.html"><b>BulletGraph</b></a> 控件。</p>
+
+<p>使用 <b>wjBulletGraph</b> 绑定添加 <b>BulletGraph</b> 控件，示例如下：</p>
+
+<p><pre>&lt;p&gt;Here is a BulletGraph control:&lt;/p&gt;
+&lt;div data-bind="wjBulletGraph: {
+        value: props.value,
+        min: props.min,
+        max: props.max,
+        format: props.format,
+        good: props.ranges.middle.max,
+        bad: props.ranges.middle.min,
+        target: props.ranges.target,
+        showRanges: props.showRanges }"
+        class="linear-gauge"&gt;
+    &lt;div data-bind="wjRange: { 
+            wjProperty: 'pointer', 
+            thickness: props.ranges.pointerThickness }"&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</pre></p>
+
+<p><b>wjBulletGraph</b> 绑定可以包含 <a href="topic/wijmo.knockout.wjRange.Class.html"><b>wjRange</b></a> 子绑定。 </p>
+
+<p><b>wjBulletGraph</b> 支持 <b>BulletGraph</b> 控件的所有可读写属性及事件。 <b>value</b> 属性支持双向绑定。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.knockout.wjCalendar.Class.html"><b>wjCalendar</b></a></td>
+      <td><p>使用 KnockoutJS 绑定 <a href="topic/wijmo.input.Calendar.Class.html"><b>Calendar</b></a> 控件。</p>
+
+<p>使用 <b>wjCalendar</b> 绑定添加 <b>Calendar</b> 控件，示例如下：</p>
+
+<p><pre>&lt;p&gt;Here is a Calendar control:&lt;/p&gt;
+&lt;div 
+  data-bind="wjCalendar: { value: theDate }"&gt;
+&lt;/div&gt;</pre></p>
+
+<p><b>wjCalendar</b> 支持 <b>Calendar</b> 控件的所有可读写属性及事件。以下属性支持双向绑定：
+<ul>
+	<li><b>value</b></li>
+	<li><b>displayMonth</b></li>
+</ul></p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.knockout.wjCollectionViewNavigator.Class.html"><b>wjCollectionViewNavigator</b></a></td>
+      <td><p>使用 KnockoutJS 绑定 <a href="topic/wijmo.collections.ICollectionView.Interface.html"><b>ICollectionView</b></a> 导航元素。</p>
+
+<p>使用 <b>wjCollectionViewNavigator</b> 指令，可以实现 <b>ICollectionView</b> 内部元素导航，示例如下：</p>
+
+<p><pre>Here is a CollectionViewNavigator:&lt;/p&gt;
+&lt;div 
+  data-bind="wjCollectionViewNavigator: { cv: myCollectionView }"&gt;
+&lt;/div&gt;</pre></p>
+
+<p><b>wjCollectionViewNavigator</b> 指令只有一个属性</p>
+
+<p><dl class="dl-horizontal">
+  <dt>cv</dt>  <dd>引用 <b>ICollectionView</b> 对象用于导航。</dd>
+</dl></p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.knockout.wjCollectionViewPager.Class.html"><b>wjCollectionViewPager</b></a></td>
+      <td><p>使用 KnockoutJS 绑定 <a href="topic/wijmo.collections.ICollectionView.Interface.html"><b>ICollectionView</b></a> 分页元素.</p>
+
+<p>使用 <b>wjCollectionViewPager</b> 指令，可以实现 <b>ICollectionView</b> 的分页导航，示例如下：</p>
+
+<p><pre>Here is a CollectionViewPager:&lt;/p&gt;
+&lt;div 
+  data-bind="wjCollectionViewPager: { cv: myCollectionView }"&gt;
+&lt;/div&gt;</pre></p>
+
+<p><b>wjCollectionViewPager</b> 指令只有一个属性：</p>
+
+<p><dl class="dl-horizontal">
+  <dt>cv</dt>  <dd>引用分页 <b>ICollectionView</b> 对象用于导航。</dd>
+</dl></p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.knockout.wjColorPicker.Class.html"><b>wjColorPicker</b></a></td>
+      <td><p>使用 KnockoutJS 绑定 <a href="topic/wijmo.input.ColorPicker.Class.html"><b>ColorPicker</b></a> 控件。</p>
+
+<p>使用 <b>wjColorPicker</b> 绑定添加 <b>ColorPicker</b> 控件，示例如下：</p>
+
+<p><pre>&lt;p&gt;Here is a ColorPicker control:&lt;/p&gt;
+&lt;div 
+  data-bind="wjColorPicker: { value: theColor }"&gt;
+&lt;/div&gt;</pre></p>
+
+<p><b>wjColorPicker</b> 支持 <b>ColorPicker</b> 控件的所有可读写属性及事件。以下属性支持双向绑定：
+<ul>
+	<li><b>value</b></li>
+</ul></p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.knockout.wjComboBox.Class.html"><b>wjComboBox</b></a></td>
+      <td><p>使用 KnockoutJS 绑定 <a href="topic/wijmo.input.ComboBox.Class.html"><b>ComboBox</b></a> 控件。</p>
+
+<p>使用 <b>wjComboBox</b> 绑定添加 <b>ComboBox</b> 控件，例如:</p>
+
+<p><pre>&lt;p&gt;Here is a ComboBox control:&lt;/p&gt;
+&lt;div data-bind="wjComboBox: {
+  itemsSource: countries,
+  text: theCountry,
+  isEditable: false,
+  placeholder: 'country' }"&gt;
+&lt;/div&gt;</pre></p>
+
+<p><b>wjComboBox</b> 支持 <b>ComboBox</b> 控件上的所有可读写属性和事件。以下属性提供了双向绑定：
+<ul>
+	<li><b>isDroppedDown</b></li>
+	<li><b>text</b></li>
+	<li><b>selectedIndex</b></li>
+	<li><b>selectedItem</b></li>
+	<li><b>selectedValue</b></li>
+</ul></p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.knockout.wjContextMenu.Class.html"><b>wjContextMenu</b></a></td>
+      <td><p>KnockoutJS 为上下文菜单做绑定。
+使用 <b>wjContextMenu</b> binding 将上下文菜单添加到页面的元素上。<b>wjContextMenu</b> binding  是在<a href="topic/wijmo.knockout.wjMenu.Class.html"><b>wjMenu</b></a> 基础上的。
+当用于在元素上请求一个上下文菜单（通常是右键菜单），它展示一个弹出式菜单。
+wjContextMenu binding 作为一个参数添加到上下文菜单应用的元素。参数值是一个元素的选择器，包含这个菜单，比如</p>
+
+<p></p>
+
+<p>
+<pre>&lt;!-- paragraph with a context menu --&gt;
+&lt;p data-bind="wjContextMenu: { id: '#idMenu'}" &gt;
+ 这个段落有一个上下文菜单
+ &lt;/p&gt;</p>
+
+<p>&lt;!-- define the context menu (hidden and with an id) --&gt;
+&lt;div id="contextmenu" data-bind="wjMenu: { header: 'File', itemClicked: menuItemClicked}"&gt;
+    &lt;span data-bind="wjMenuItem: {}"&gt;New&lt;/span&gt;
+    &lt;span data-bind="wjMenuItem: {}"&gt;open an existing file or folder&lt;/span&gt;
+    &lt;span data-bind="wjMenuItem: {}"&gt;save the current file&lt;/span&gt;
+    &lt;span data-bind="wjMenuSeparator: {}"&gt;&lt;/span&gt;
+    &lt;span data-bind="wjMenuItem: {}"&gt;exit the application&lt;/span&gt;
+&lt;/div&gt;</pre></p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.knockout.wjFinancialChart.Class.html"><b>wjFinancialChart</b></a></td>
+      <td><p>KnockoutJS 绑定用于 <a href="topic/wijmo.chart.finance.FinancialChart.Class.html"><b>FinancialChart</b></a> 控件。 </p>
+
+<p>使用 <b>wjFinancialChart</b> 绑定向你的 KnockoutJS 应用添加 <b>FinancialChart</b> 控件，比如：</p>
+
+<p><pre>&lt;p&gt;这是一个 FinancialChart 控件:&lt;/p&gt;
+&lt;div data-bind="wjFinancialChart: { itemsSource: data, chartType: 'Candlestick' }"&gt;
+    &lt;div data-bind="wjFlexChartLegend : { 
+        position: 'Top' }"&gt;
+    &lt;/div&gt;
+    &lt;div data-bind="wjFinancialChartSeries: {
+         name: 'close', 
+        binding: 'high,low,open,close' }"&gt;
+    &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</pre>
+<b>wjFinancialChart</b> 绑定可能包含下面的子绑定：
+<a href="topic/wijmo.knockout.wjFlexChartAxis.Class.html"><b>wjFlexChartAxis</b></a>, <a href="topic/wijmo.knockout.wjFinancialChartSeries.Class.html"><b>wjFinancialChartSeries</b></a>, <a href="topic/wijmo.knockout.wjFlexChartLegend.Class.html"><b>wjFlexChartLegend</b></a>.
+ <b>wjFinancialChart</b>  绑定支持 <b>FinancialChart</b> 控件的所有的读写属性和事件。
+ 并且支持额外的   <b>tooltipContent</b>   属性，为 <b>FinancialChart.tooltip.content</b>  属性分配一个值。 <b>selection</b> 属性支持双向的数据绑定。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.knockout.wjFinancialChartSeries.Class.html"><b>wjFinancialChartSeries</b></a></td>
+      <td><p>KnockoutJS 绑定用于 <a href="topic/wijmo.chart.finance.FinancialChart.Class.html"><b>FinancialChart</b></a> <a href="topic/wijmo.chart.finance.FinancialSeries.Class.html"><b>FinancialSeries</b></a> 对象。
+<a href="topic/wijmo.angular.WjFinancialChartSeries.Class.html"><b>WjFinancialChartSeries</b></a> 绑定必须包含在 <a href="topic/wijmo.knockout.wjFinancialChart.Class.html"><b>wjFinancialChart</b></a> 中。</p>
+
+<p>
+<b>WjFinancialChartSeries</b> 绑定支持 <b>FinancialSeries</b>  所有的读写属性和事件。
+<b>visibility</b>  支持双向的数据绑定。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.knockout.wjFlexChart.Class.html"><b>wjFlexChart</b></a></td>
+      <td><p>使用 KnockoutJS 绑定 <a href="topic/wijmo.chart.FlexChart.Class.html"><b>FlexChart</b></a> 控件。</p>
+
+<p>使用 <b>wjFlexChart</b> 绑定添加 <b>FlexChart</b> 控件，示例如下：</p>
+
+<p><pre>&lt;p&gt;Here is a FlexChart control:&lt;/p&gt;
+&lt;div data-bind="wjFlexChart: { itemsSource: data }"&gt;
+    &lt;div data-bind="wjFlexChartLegend : { 
+        position: 'Top' }"&gt;
+    &lt;/div&gt;
+    &lt;div data-bind="wjFlexChartAxis: { 
+        wjProperty: 'axisX', 
+        title: chartProps.titleX }"&gt;
+    &lt;/div&gt;
+    &lt;div data-bind="wjFlexChartAxis: { 
+        wjProperty: 'axisY', 
+        majorUnit: 5000 }"&gt;
+    &lt;/div&gt;
+    &lt;div data-bind="wjFlexChartSeries: { 
+        name: 'Sales', 
+        binding: 'sales' }"&gt;
+    &lt;/div&gt;
+    &lt;div data-bind="wjFlexChartSeries: { 
+        name: 'Expenses', 
+        binding: 'expenses' }"&gt;
+    &lt;/div&gt;
+    &lt;div data-bind="wjFlexChartSeries: { 
+        name: 'Downloads', 
+        binding: 'downloads', 
+        chartType: 'LineSymbols' }"&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</pre></p>
+
+<p><b>wjFlexChart</b> 绑定可以包含以下子绑定：<a href="topic/wijmo.knockout.wjFlexChartAxis.Class.html"><b>wjFlexChartAxis</b></a>, <a href="topic/wijmo.knockout.wjFlexChartSeries.Class.html"><b>wjFlexChartSeries</b></a>, <a href="topic/wijmo.knockout.wjFlexChartLegend.Class.html"><b>wjFlexChartLegend</b></a>.</p>
+
+<p><b>wjFlexChart</b> 支持 <b>FlexChart</b> 控件的所有可读写属性及事件，以及一个额外的属性<b>tooltipContent</b> 可以用来指定 <b>FlexChart.tooltip.content</b> 的属性值，另外 <b>selection</b> 属性提供了双向绑定。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.knockout.wjFlexChartAnimation.Class.html"><b>wjFlexChartAnimation</b></a></td>
+      <td><p>KnockoutJS 绑定用于 <a href="topic/wijmo.chart.animation.ChartAnimation.Class.html"><b>ChartAnimation</b></a> 对象。</p>
+
+<p>使用 <b>wjFlexChartAnimation</b> 绑定向你的 KnockoutJS 应用程序添加 <b>ChartAnimation</b> 对象。比如：
+<pre>&lt;p&gt;Here is a ChartAnimation:&lt;/p&gt;
+&lt;div data-bind="wjFlexChart: { itemsSource: data, bindingX: 'country',chartType:'Column' }"&gt;
+    &lt;div data-bind="wjFlexChartAxis: { wjProperty: 'axisX', title: 'country' }"&gt;&lt;/div&gt;
+    &lt;div data-bind="wjFlexChartSeries: { name: 'Sales', binding: 'sales' }"&gt;&lt;/div&gt;
+    &lt;div data-bind="wjFlexChartAnimation: { animationMode: 'Series',easing:'Swing',duration:2000 }  "&gt;&lt;/div&gt;
+&lt;/div&gt;</pre></p>
+
+<p><b>wjFlexChartAnimation</b> 绑定支持所有 <b>ChartAnimation</b> 的读写属性和事件</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.knockout.wjFlexChartAnnotation.Class.html"><b>wjFlexChartAnnotation</b></a></td>
+      <td><p>KnockoutJS 绑定用于 annotations。
+ <b>wjFlexChartAnnotation</b> 必须包含在 <a href="topic/wijmo.knockout.wjFlexChartAnnotationLayer.Class.html"><b>wjFlexChartAnnotationLayer</b></a> 绑定中。:
+<pre>&lt;p&gt;Here is a AnnotationLayer:&lt;/p&gt;
+&lt;div data-bind="wjFinancialChart: { itemsSource: fData, bindingX: 'date', chartType:'Candlestick' }"&gt;
+   &lt;div data-bind="wjFinancialChartSeries: { bindingX: 'date', binding: 'high,low,open,close' }"&gt;&lt;/div&gt;
+   &lt;div data-bind="wjFlexChartAnnotationLayer: {}"&gt;
+       &lt;div data-bind="wjFlexChartAnnotation: { type: 'Rectangle', content: 'E',height:20, width:20,attachment:'DataIndex',pointIndex: 10}"&gt;&lt;/div&gt;
+       &lt;div data-bind="wjFlexChartAnnotation: { type: 'Ellipse', content: 'E',height:20, width:20,attachment:'DataIndex',pointIndex: 30}"&gt;&lt;/div&gt;
+   &lt;/div&gt;
+      &lt;/div&gt;</pre></p>
+
+<p> <b>wjFlexChartAnnotation</b>  可以代表所有可能的标记形状，比如：
+<b>Circle</b>, <b>Rectangle</b>, <b>Polygon</b>。
+标记形状的类型通过  <b>type</b>  属性指定。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.knockout.wjFlexChartAnnotationLayer.Class.html"><b>wjFlexChartAnnotationLayer</b></a></td>
+      <td><p>KnockoutJS 绑定用于 <a href="topic/wijmo.chart.annotation.AnnotationLayer.Class.html"><b>AnnotationLayer</b></a> 对象。</p>
+
+<p>使用 <b>wjFlexChartAnnotationLayer</b> 绑定向你的 KnockoutJS 应用程序添加 <b>AnnotationLayer</b> 对象。比如：
+<pre>&lt;p&gt;Here is a AnnotationLayer:&lt;/p&gt;
+&lt;div data-bind="wjFinancialChart: { itemsSource: fData, bindingX: 'date', chartType:'Candlestick' }"&gt;
+   &lt;div data-bind="wjFinancialChartSeries: { bindingX: 'date', binding: 'high,low,open,close' }"&gt;&lt;/div&gt;
+   &lt;div data-bind="wjFlexChartAnnotationLayer: {}"&gt;
+       &lt;div data-bind="wjFlexChartAnnotation: { type: 'Rectangle', content: 'E',height:20, width:20,attachment:'DataIndex',pointIndex: 10}"&gt;&lt;/div&gt;
+       &lt;div data-bind="wjFlexChartAnnotation: { type: 'Ellipse', content: 'E',height:20, width:20,attachment:'DataIndex',pointIndex: 30}"&gt;&lt;/div&gt;
+   &lt;/div&gt;
+      &lt;/div&gt;</pre></p>
+
+<p><b>wjFlexChartAnnotationLayer</b> 绑定支持所有 <b>AnnotationLayer</b> 的读写属性和事件</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.knockout.wjFlexChartAtr.Class.html"><b>wjFlexChartAtr</b></a></td>
+      <td><p>KnockoutJS 绑定用于 <a href="topic/wijmo.chart.finance.analytics.ATR.Class.html"><b>ATR</b></a> 对象。</p>
+
+<p>使用 <b>wjFlexChartAtr</b> 绑定向你的 KnockoutJS 应用程序添加 <b>ATR</b> 对象。比如：
+<pre>&lt;p&gt;Here is a ATR:&lt;/p&gt;
+   &lt;div data-bind="wjFinancialChart: { itemsSource: fData, bindingX: 'date'}"&gt;
+        &lt;div data-bind="wjFlexChartAtr: { binding: 'high,low,open,close',period:'14' }"&gt;&lt;/div&gt;
+  &lt;/div&gt;</pre></p>
+
+<p><b>wjFlexChartAtr</b> 绑定支持所有 <b>ATR</b> 的读写属性和事件</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.knockout.wjFlexChartAxis.Class.html"><b>wjFlexChartAxis</b></a></td>
+      <td><p>使用 KnockoutJS 绑定 <a href="topic/wijmo.chart.FlexChart.Class.html"><b>FlexChart</b></a> <a href="topic/wijmo.chart.Axis.Class.html"><b>Axis</b></a> 对象。</p>
+
+<p>使用 <b>wjFlexChartAxis</b> 绑定必须包含在 <a href="topic/wijmo.knockout.wjFlexChart.Class.html"><b>wjFlexChart</b></a> binding. 使用 <b>wjProperty</b>
+属性用来说明属性 (<b>axisX</b> or <b>axisY</b>)使用该绑定初始化 。</p>
+
+<p><b>wjFlexChartAxis</b> 支持 <b>Axis</b> 类的所有可读写属性及事件</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.knockout.wjFlexChartBollingerBands.Class.html"><b>wjFlexChartBollingerBands</b></a></td>
+      <td><p>KnockoutJS 绑定用于 <a href="topic/wijmo.chart.finance.analytics.BollingerBands.Class.html"><b>BollingerBands</b></a> 对象。</p>
+
+<p>使用 <b>wjFlexChartBollingerBands</b> 绑定向你的 KnockoutJS 应用程序添加 <b>BollingerBands</b> 对象。比如：
+<pre>&lt;p&gt;Here is a BollingerBands:&lt;/p&gt;
+   &lt;div data-bind="wjFinancialChart: { itemsSource: fData, bindingX: 'date'}"&gt;
+        &lt;div data-bind="wjFlexChartStochastic: { binding: 'high,low,open,close',kPeriod:14,dPeriod:3,smoothingPeriod: 1 }" &gt;&lt;/div&gt;
+  &lt;/div&gt;</pre></p>
+
+<p><b>wjFlexChartBollingerBands</b> 绑定支持所有 <b>BollingerBands</b> 的读写属性和事件</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.knockout.wjFlexChartCci.Class.html"><b>wjFlexChartCci</b></a></td>
+      <td><p>KnockoutJS 绑定用于 <a href="topic/wijmo.chart.finance.analytics.CCI.Class.html"><b>CCI</b></a> 对象。</p>
+
+<p>使用 <b>wjFlexChartCci</b> 绑定向你的 KnockoutJS 应用程序添加 <b>CCI</b> 对象。比如：
+<pre>&lt;p&gt;Here is a CCI:&lt;/p&gt;
+   &lt;div data-bind="wjFinancialChart: { itemsSource: fData, bindingX: 'date'}"&gt;
+        &lt;div data-bind="wjFlexChartCci: { binding: 'high,low,open,close',period:20 }"&gt;&lt;/div&gt;
+  &lt;/div&gt;</pre></p>
+
+<p><b>wjFlexChartCci</b> 绑定支持所有 <b>CCI</b> 的读写属性和事件</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.knockout.wjFlexChartDataPoint.Class.html"><b>wjFlexChartDataPoint</b></a></td>
+      <td><p>KnockoutJS 绑定用于 <a href="topic/wijmo.chart.DataPoint.Class.html"><b>DataPoint</b></a> 对象。
+ <b>wjFlexChartDataPoint</b> 必须包含在<a href="topic/wijmo.knockout.wjFlexChartAnnotation.Class.html"><b>wjFlexChartAnnotation</b></a> 对象中。
+ 父对象的 where <b>wjFlexChartDataPoint</b> 属性应当通过<b>wjProperty</b>  属性指定。</p>
+
+<p>使用 <b>wjFlexChartDataPoint</b> 绑定向你的 KnockoutJS 应用程序添加 <b>DataPoint</b> 对象。比如：
+<pre>&lt;p&gt;Here is a DataPoint:&lt;/p&gt;
+  &lt;div data-bind="wjFlexChartDataPoint: { wjProperty: 'point', x: 0.9, y:0.4}" &gt;&lt;/div&gt;
+ </pre></p>
+
+<p><b>wjFlexChartDataPoint</b> 绑定支持所有 <b>DataPoint</b> 的读写属性和事件</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.knockout.wjFlexChartEnvelopes.Class.html"><b>wjFlexChartEnvelopes</b></a></td>
+      <td><p>KnockoutJS 绑定用于 <a href="topic/wijmo.chart.finance.analytics.Envelopes.Class.html"><b>Envelopes</b></a> 对象。</p>
+
+<p>使用 <b>wjFlexChartEnvelopes</b> 绑定向你的 KnockoutJS 应用程序添加 <b>Envelopes</b> 对象。比如：
+<pre>&lt;p&gt;Here is a Envelopes:&lt;/p&gt;
+   &lt;div data-bind="wjFinancialChart: { itemsSource: fData, bindingX: 'date'}"&gt;
+        &lt;div data-bind="wjFlexChartEnvelopes: { binding:'close', type:'Simple', size: 0.03, period:20}" &gt;&lt;/div&gt;
+  &lt;/div&gt;</pre></p>
+
+<p><b>wjFlexChartEnvelopes</b> 绑定支持所有 <b>Envelopes</b> 的读写属性和事件</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.knockout.wjFlexChartFibonacci.Class.html"><b>wjFlexChartFibonacci</b></a></td>
+      <td><p>KnockoutJS 绑定用于 <a href="topic/wijmo.chart.finance.analytics.Fibonacci.Class.html"><b>Fibonacci</b></a> 对象。</p>
+
+<p>使用 <b>wjFlexChartFibonacci</b> 绑定向你的 KnockoutJS 应用程序添加 <b>Fibonacci</b> 对象。比如：
+<pre>&lt;p&gt;Here is a Fibonacci:&lt;/p&gt;
+   &lt;div data-bind="wjFinancialChart: { itemsSource: fData, bindingX: 'date', chartType:'Candlestick' }"&gt;
+        &lt;div data-bind="wjFinancialChartSeries: { bindingX: 'date', binding: 'high,low,open,close' }"&gt;&lt;/div&gt;
+        &lt;div data-bind="wjFlexChartFibonacci: { binding:'close', symbolSize:1, labelPosition: 'Left',  uptrend: true}"&gt;&lt;/div&gt;
+  &lt;/div&gt;</pre></p>
+
+<p><b>wjFlexChartFibonacci</b> 绑定支持所有 <b>Fibonacci</b> 的读写属性和事件。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.knockout.wjFlexChartFibonacciArcs.Class.html"><b>wjFlexChartFibonacciArcs</b></a></td>
+      <td><p>KnockoutJS 绑定用于 <a href="topic/wijmo.chart.finance.analytics.FibonacciArcs.Class.html"><b>FibonacciArcs</b></a> 对象。</p>
+
+<p>使用 <b>wjFlexChartFibonacciArcs</b> 绑定向你的 KnockoutJS 应用程序添加 <b>FibonacciArcs</b> 对象。比如：
+<pre>&lt;p&gt;Here is a FibonacciArcs:&lt;/p&gt;
+   &lt;div data-bind="wjFinancialChart: { itemsSource: fData, bindingX: 'date', chartType:'Candlestick' }"&gt;
+        &lt;div data-bind="wjFinancialChartSeries: { bindingX: 'date', binding: 'high,low,open,close' }"&gt;&lt;/div&gt;
+        &lt;div data-bind="wjFlexChartFibonacciArcs: { binding:'close', start:start, end: end,  labelPosition: 'Top'}"&gt;&lt;/div&gt;
+  &lt;/div&gt;</pre></p>
+
+<p><b>wjFlexChartFibonacciArcs</b> 绑定支持所有 <b>FibonacciArcs</b> 的读写属性和事件。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.knockout.wjFlexChartFibonacciFans.Class.html"><b>wjFlexChartFibonacciFans</b></a></td>
+      <td><p>KnockoutJS 绑定用于 <a href="topic/wijmo.chart.finance.analytics.FibonacciFans.Class.html"><b>FibonacciFans</b></a> 对象。</p>
+
+<p>使用 <b>wjFlexChartFibonacciFans</b> 绑定向你的 KnockoutJS 应用程序添加 <b>FibonacciFans</b> 对象。比如：
+<pre>&lt;p&gt;Here is a FibonacciFans:&lt;/p&gt;
+   &lt;div data-bind="wjFinancialChart: { itemsSource: fData, bindingX: 'date', chartType:'Candlestick' }"&gt;
+        &lt;div data-bind="wjFinancialChartSeries: { bindingX: 'date', binding: 'high,low,open,close' }"&gt;&lt;/div&gt;
+        &lt;div data-bind="wjFlexChartFibonacciFans: { binding:'close', start:start, end: end,  labelPosition: 'Top'}"&gt;&lt;/div&gt;
+  &lt;/div&gt;</pre></p>
+
+<p><b>wjFlexChartFibonacciFans</b> 绑定支持所有 <b>FibonacciFans</b> 的读写属性和事件</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.knockout.wjFlexChartFibonacciTimeZones.Class.html"><b>wjFlexChartFibonacciTimeZones</b></a></td>
+      <td><p>KnockoutJS 绑定用于 <a href="topic/wijmo.chart.finance.analytics.FibonacciTimeZones.Class.html"><b>FibonacciTimeZones</b></a> 对象。</p>
+
+<p>使用 <b>wjFlexChartFibonacciTimeZones</b> 绑定向你的 KnockoutJS 应用程序添加 <b>FibonacciTimeZones</b> 对象。比如：
+<pre>&lt;p&gt;Here is a FibonacciTimeZones:&lt;/p&gt;
+   &lt;div data-bind="wjFinancialChart: { itemsSource: fData, bindingX: 'date', chartType:'Candlestick' }"&gt;
+        &lt;div data-bind="wjFinancialChartSeries: { bindingX: 'date', binding: 'high,low,open,close' }"&gt;&lt;/div&gt;
+        &lt;div data-bind="wjFlexChartFibonacciTimeZones: { binding:'close', startX:zStart, endX: zEnd,  labelPosition: 'Right'}"&gt;&lt;/div&gt;
+  &lt;/div&gt;</pre></p>
+
+<p><b>wjFlexChartFibonacciTimeZones</b> 绑定支持所有 <b>FibonacciTimeZones</b> 的读写属性和事件</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.knockout.wjFlexChartGestures.Class.html"><b>wjFlexChartGestures</b></a></td>
+      <td><p>KnockoutJS 绑定用于 <a href="topic/wijmo.chart.interaction.ChartGestures.Class.html"><b>ChartGestures</b></a> 对象。</p>
+
+<p>使用 <b>wjFlexChartGestures</b> 绑定向你的 KnockoutJS 应用添加 <b>ChartGestures</b> 控件，比如：</p>
+
+<p><pre>&lt;p&gt;Here is a ChartGestures:&lt;/p&gt;
+&lt;div data-bind="wjFlexChart: { itemsSource: data, bindingX: 'country' }"&gt;
+    &lt;div data-bind="wjFlexChartAxis: { wjProperty: 'axisX', title: 'country' }"&gt;&lt;/div&gt;
+    &lt;div data-bind="wjFlexChartSeries: { name: 'Sales', binding: 'sales' }"&gt;&lt;/div&gt;
+    &lt;div data-bind="wjFlexChartGestures: { scaleX:0.5, posX:0.1 } "&gt;&lt;/div&gt;
+&lt;/div&gt;</pre></p>
+
+<p><b>wjFlexChartGestures</b> 绑定支持所有 <b>ChartGestures</b> 的读写属性和事件</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.knockout.wjFlexChartLegend.Class.html"><b>wjFlexChartLegend</b></a></td>
+      <td><p>使用 KnockoutJS 绑定 <a href="topic/wijmo.chart.Legend.Class.html"><b>Legend</b></a> 对象。</p>
+
+<p>使用 <b>wjFlexChartLegend</b> 绑定必须包含在以下两个绑定中的一个：<a href="topic/wijmo.knockout.wjFlexChart.Class.html"><b>wjFlexChart</b></a>, <a href="topic/wijmo.knockout.wjFlexPie.Class.html"><b>wjFlexPie</b></a>。 </p>
+
+<p><b>wjFlexChartLegend</b> 支持 <b>Legend</b> 类的所有可读写属性及事件。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.knockout.wjFlexChartLineMarker.Class.html"><b>wjFlexChartLineMarker</b></a></td>
+      <td><p>KnockoutJS 绑定用于 <a href="topic/wijmo.chart.LineMarker.Class.html"><b>LineMarker</b></a> 控件。 </p>
+
+<p>使用 <b>wjFlexChartLineMarker</b> 绑定向你的 KnockoutJS 应用添加 <b>LineMarker</b> 控件，比如：</p>
+
+<p><pre>&lt;p&gt;Here is a LineMarker:&lt;/p&gt;
+&lt;div data-bind="wjFlexChart: { itemsSource: data, bindingX: 'country' }"&gt;
+    &lt;div data-bind="wjFlexChartAxis: { wjProperty: 'axisX', title: 'country' }"&gt;&lt;/div&gt;
+    &lt;div data-bind="wjFlexChartSeries: { name: 'Sales', binding: 'sales' }"&gt;&lt;/div&gt;
+    &lt;div data-bind="wjFlexChartSeries: { name: 'Expenses', binding: 'expenses' }"&gt;&lt;/div&gt;
+    &lt;div data-bind="wjFlexChartSeries: { name: 'Downloads', binding: 'downloads' }"&gt;&lt;/div&gt;
+    &lt;div data-bind="wjFlexChartLineMarker: { interaction: 'Move', lines: 'Both' }"&gt;&lt;/div&gt;
+&lt;/div&gt;</pre></p>
+
+<p>
+<b>wjFlexChartLineMarker</b> 绑定支持所有 <b>LineMarker</b> 的读写属性和事件</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.knockout.wjFlexChartMacd.Class.html"><b>wjFlexChartMacd</b></a></td>
+      <td><p>KnockoutJS 绑定用于 <a href="topic/wijmo.chart.finance.analytics.Macd.Class.html"><b>Macd</b></a> 对象。</p>
+
+<p>使用 <b>wjFlexChartMacd</b> 绑定向你的 KnockoutJS 应用程序添加 <b>Macd</b> 对象。比如：
+<pre>&lt;p&gt;Here is a Macd:&lt;/p&gt;
+   &lt;div data-bind="wjFinancialChart: { itemsSource: fData, bindingX: 'date'}"&gt;
+        &lt;div data-bind="wjFlexChartMacd: { binding: 'close',fastPeriod:12, slowPeriod: 26,smoothingPeriod: 9 }" &gt;&lt;/div&gt;
+  &lt;/div&gt;</pre></p>
+
+<p><b>wjFlexChartMacd</b> 绑定支持所有 <b>Macd</b> 的读写属性和事件</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.knockout.wjFlexChartMacdHistogram.Class.html"><b>wjFlexChartMacdHistogram</b></a></td>
+      <td><p>KnockoutJS 绑定用于 <a href="topic/wijmo.chart.finance.analytics.MacdHistogram.Class.html"><b>MacdHistogram</b></a> 对象。</p>
+
+<p>使用 <b>wjFlexChartMacdHistogram</b> 绑定向你的 KnockoutJS 应用程序添加 <b>MacdHistogram</b> 对象。比如：
+<pre>&lt;p&gt;Here is a MacdHistogram:&lt;/p&gt;
+   &lt;div data-bind="wjFinancialChart: { itemsSource: fData, bindingX: 'date'}"&gt;
+        &lt;div data-bind="WjFlexChartMacdHistogram: { binding: 'close',fastPeriod:12, slowPeriod: 26,smoothingPeriod: 9 }" &gt;&lt;/div&gt;
+  &lt;/div&gt;</pre></p>
+
+<p><b>wjFlexChartMacdHistogram</b> 绑定支持所有 <b>MacdHistogram</b> 的读写属性和事件</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.knockout.wjFlexChartMovingAverage.Class.html"><b>wjFlexChartMovingAverage</b></a></td>
+      <td><p>KnockoutJS 绑定用于 <a href="topic/wijmo.chart.analytics.MovingAverage.Class.html"><b>MovingAverage</b></a> 对象。</p>
+
+<p>使用 <b>wjFlexChartMovingAverage</b> 绑定向你的 KnockoutJS 应用程序添加 <b>MovingAverage</b> 对象。比如：
+<pre>&lt;p&gt;Here is a MovingAverage:&lt;/p&gt;
+&lt;div data-bind="wjFlexChart: { itemsSource: trendItemsSource, bindingX: 'x' }"&gt;
+    &lt;div data-bind="wjFlexChartAxis: { wjProperty: 'axisX', title: 'country' }"&gt;&lt;/div&gt;
+    &lt;div data-bind="wjFlexChartSeries: { chartType: 'Scatter', name: 'Base Data', binding: 'y' }"&gt;&lt;/div&gt;
+    &lt;div data-bind="wjFlexChartMovingAverage: { binding: 'y', bindingX: 'x', period:2 }  "&gt;&lt;/div&gt;
+&lt;/div&gt;</pre></p>
+
+<p><b>wjFlexChartMovingAverage</b> 绑定支持所有 <b>MovingAverage</b> 的读写属性和事件</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.knockout.wjFlexChartParametricFunctionSeries.Class.html"><b>wjFlexChartParametricFunctionSeries</b></a></td>
+      <td><p>KnockoutJS 绑定用于 <a href="topic/wijmo.chart.analytics.ParametricFunctionSeries.Class.html"><b>ParametricFunctionSeries</b></a> 对象。</p>
+
+<p>使用 <b>wjFlexChartParametricFunctionSeries</b> 绑定向你的 KnockoutJS 应用程序添加 <b>ParametricFunctionSeries</b> 对象。比如：
+<pre>&lt;p&gt;Here is a ParametricFunctionSeries:&lt;/p&gt;
+&lt;div data-bind="wjFlexChart: { itemsSource: trendItemsSource, bindingX: 'x' }"&gt;
+    &lt;div data-bind="wjFlexChartSeries: { name: 'Sales', binding: 'sales' }"&gt;&lt;/div&gt;
+    &lt;div data-bind="wjFlexChartParametricFunctionSeries: {  sampleCount:1000, max: max,xFunc:xFunc,yFunc:yFunc  }"&gt;&lt;/div&gt;
+&lt;/div&gt;</pre></p>
+
+<p><b>wjFlexChartParametricFunctionSeries</b> 绑定支持所有 <b>ParametricFunctionSeries</b> 的读写属性和事件</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.knockout.wjFlexChartPlotArea.Class.html"><b>wjFlexChartPlotArea</b></a></td>
+      <td><p>KnockoutJS 绑定用于 <a href="topic/wijmo.chart.PlotArea.Class.html"><b>PlotArea</b></a> 对象。</p>
+
+<p>使用 <b>wjFlexChartPlotArea</b> 绑定向你的 KnockoutJS 应用程序添加 <b>PlotArea</b> 对象。比如：
+<pre>&lt;p&gt;Here is a PlotArea:&lt;/p&gt;
+&lt;div data-bind="wjFlexChart: { itemsSource: data, bindingX: 'country' }"&gt;
+    &lt;div data-bind="wjFlexChartAxis: { wjProperty: 'axisX', title: 'country' }"&gt;&lt;/div&gt;
+    &lt;div data-bind="wjFlexChartSeries: { name: 'Sales', binding: 'sales' }"&gt;&lt;/div&gt;
+    &lt;div data-bind="wjFlexChartPlotArea: { row:0, name:'plot1', style:{ fill: 'rgba(136,189,230,0.2)'} }  "&gt;&lt;/div&gt;
+&lt;/div&gt;</pre></p>
+
+<p><b>wjFlexChartPlotArea</b> 绑定支持所有 <b>PlotArea</b> 的读写属性和事件</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.knockout.wjFlexChartRangeSelector.Class.html"><b>wjFlexChartRangeSelector</b></a></td>
+      <td><p>KnockoutJS 绑定用于 <a href="topic/wijmo.chart.interaction.RangeSelector.Class.html"><b>RangeSelector</b></a> 控件。 </p>
+
+<p>使用 <b>wjFlexChartRangeSelector</b> 绑定向你的 KnockoutJS 应用添加 <b>RangeSelector</b> 控件，比如：</p>
+
+<p><pre>&lt;p&gt;Here is a RangeSelector control:&lt;/p&gt;
+&lt;div data-bind="wjFlexChart: { itemsSource: data, bindingX: 'country' }"&gt;
+    &lt;div data-bind="wjFlexChartAxis: { wjProperty: 'axisX', title: 'country' }"&gt;&lt;/div&gt;
+    &lt;div data-bind="wjFlexChartSeries: { name: 'Sales', binding: 'sales' }"&gt;&lt;/div&gt;
+    &lt;div data-bind="wjFlexChartSeries: { name: 'Expenses', binding: 'expenses' }"&gt;&lt;/div&gt;
+    &lt;div data-bind="wjFlexChartSeries: { name: 'Downloads', binding: 'downloads' }"&gt;&lt;/div&gt;
+    &lt;div data-bind="wjFlexChartRangeSelector: { seamless: 'true',rangeChanged: rangeChanged }"&gt;&lt;/div&gt;
+&lt;/div&gt;</pre></p>
+
+<p><b>wjFlexChartRangeSelector</b> 绑定支持所有 <b>RangeSelector</b> 的读写属性和事件</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.knockout.wjFlexChartRsi.Class.html"><b>wjFlexChartRsi</b></a></td>
+      <td><p>KnockoutJS 绑定用于 <a href="topic/wijmo.chart.finance.analytics.RSI.Class.html"><b>RSI</b></a> 对象。</p>
+
+<p>使用 <b>wjFlexChartRsi</b> 绑定向你的 KnockoutJS 应用程序添加 <b>RSI</b> 对象。比如：
+<pre>&lt;p&gt;Here is a RSI:&lt;/p&gt;
+   &lt;div data-bind="wjFinancialChart: { itemsSource: fData, bindingX: 'date', chartType:'Candlestick' }"&gt;
+        &lt;div data-bind="wjFlexChartRsi: { binding: 'high,low,open,close',period:20 }"&gt;&lt;/div&gt;
+  &lt;/div&gt;</pre></p>
+
+<p><b>wjFlexChartRsi</b> 绑定支持所有 <b>RSI</b> 的读写属性和事件</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.knockout.wjFlexChartSeries.Class.html"><b>wjFlexChartSeries</b></a></td>
+      <td><p>使用 KnockoutJS 绑定 <a href="topic/wijmo.chart.FlexChart.Class.html"><b>FlexChart</b></a> <a href="topic/wijmo.chart.Series.Class.html"><b>Series</b></a> 对象。</p>
+
+<p>使用 <b>wjFlexChartSeries</b> 绑定必须包含在 <a href="topic/wijmo.knockout.wjFlexChart.Class.html"><b>wjFlexChart</b></a> 绑定中。</p>
+
+<p><b>wjFlexChartSeries</b> 支持 <b>Series</b> 类的所有可读写属性及事件。<b>visibility</b> 属性支持双向绑定。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.knockout.wjFlexChartStochastic.Class.html"><b>wjFlexChartStochastic</b></a></td>
+      <td><p>KnockoutJS 绑定用于 <a href="topic/wijmo.chart.finance.analytics.Stochastic.Class.html"><b>Stochastic</b></a> 对象。</p>
+
+<p>使用 <b>wjFlexChartStochastic</b> 绑定向你的 KnockoutJS 应用程序添加 <b>Stochastic</b> 对象。比如：
+<pre>&lt;p&gt;Here is a Stochastic:&lt;/p&gt;
+   &lt;div data-bind="wjFinancialChart: { itemsSource: fData, bindingX: 'date'}"&gt;
+        &lt;div data-bind="wjFlexChartStochastic: { binding: 'high,low,open,close',kPeriod:14,dPeriod:3,smoothingPeriod: 1 }" &gt;&lt;/div&gt;
+  &lt;/div&gt;</pre></p>
+
+<p><b>wjFlexChartStochastic</b> 绑定支持所有 <b>Stochastic</b> 的读写属性和事件</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.knockout.wjFlexChartTrendLine.Class.html"><b>wjFlexChartTrendLine</b></a></td>
+      <td><p>KnockoutJS 绑定用于 <a href="topic/wijmo.chart.analytics.TrendLine.Class.html"><b>TrendLine</b></a> 对象。</p>
+
+<p>使用 <b>wjFlexChartTrendLine</b> 绑定向你的 KnockoutJS 应用程序添加 <b>TrendLine</b> 对象。比如：
+<pre>&lt;p&gt;Here is a TrendLine:&lt;/p&gt;
+&lt;div data-bind="wjFlexChart: { itemsSource: data, bindingX: 'country',chartType:'Column' }"&gt;
+    &lt;div data-bind="wjFlexChartAxis: { wjProperty: 'axisX', title: 'country' }"&gt;&lt;/div&gt;
+    &lt;div data-bind="wjFlexChartSeries: { name: 'Sales', binding: 'sales' }"&gt;&lt;/div&gt;
+    &lt;div data-bind="wjFlexChartAnimation: { animationMode: 'Series',easing:'Swing',duration:2000 }  "&gt;&lt;/div&gt;
+&lt;/div&gt;</pre></p>
+
+<p><b>wjFlexChartTrendLine</b> 绑定支持所有 <b>TrendLine</b> 的读写属性和事件</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.knockout.wjFlexChartWaterfall.Class.html"><b>wjFlexChartWaterfall</b></a></td>
+      <td><p>KnockoutJS 绑定用于 <a href="topic/wijmo.chart.analytics.Waterfall.Class.html"><b>Waterfall</b></a> 对象。</p>
+
+<p>使用 <b>wjFlexChartWaterfall</b> 绑定向你的 KnockoutJS 应用程序添加 <b>Waterfall</b> 对象。比如：
+<pre>&lt;p&gt;Here is a Waterfall:&lt;/p&gt;
+&lt;div data-bind="wjFlexChart: { itemsSource: trendItemsSource,  binding:'value',bindingX: 'name' }"&gt;
+    &lt;div data-bind="wjFlexChartWaterfall: {  relativeData:true, connectorLines: true, start:1000,showIntermediateTotal: true,
+                      intermediateTotalPositions: [3, 6, 9, 12], intermediateTotalLabels: ['Q1', 'Q2', 'Q3', 'Q4'],name:'Increase,Decrease,Total'}"&gt;&lt;/div&gt;
+&lt;/div&gt;</pre></p>
+
+<p><b>wjFlexChartWaterfall</b> 绑定支持所有 <b>Waterfall</b> 的读写属性和事件</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.knockout.wjFlexChartWilliamsR.Class.html"><b>wjFlexChartWilliamsR</b></a></td>
+      <td><p>KnockoutJS 绑定用于 <a href="topic/wijmo.chart.finance.analytics.WilliamsR.Class.html"><b>WilliamsR</b></a> 对象。</p>
+
+<p>使用 <b>wjFlexChartWilliamsR</b> 绑定向你的 KnockoutJS 应用程序添加 <b>WilliamsR</b> 对象。比如：
+<pre>&lt;p&gt;Here is a WilliamsR:&lt;/p&gt;
+   &lt;div data-bind="wjFinancialChart: { itemsSource: fData, bindingX: 'date'}"&gt;
+        &lt;div data-bind="wjFlexChartWilliamsR: { binding: 'high,low,open,close',period:20 }"&gt;&lt;/div&gt;
+  &lt;/div&gt;</pre></p>
+
+<p><b>wjFlexChartWilliamsR</b> 绑定支持所有 <b>WilliamsR</b> 的读写属性和事件</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.knockout.wjFlexChartYFunctionSeries.Class.html"><b>wjFlexChartYFunctionSeries</b></a></td>
+      <td><p>KnockoutJS 绑定用于 <a href="topic/wijmo.chart.analytics.YFunctionSeries.Class.html"><b>YFunctionSeries</b></a> 对象。</p>
+
+<p>使用 <b>wjFlexChartYFunctionSeries</b> 绑定向你的 KnockoutJS 应用程序添加 <b>YFunctionSeries</b> 对象。比如：
+<pre>&lt;p&gt;Here is a YFunctionSeries:&lt;/p&gt;
+&lt;div data-bind="wjFlexChart: { itemsSource: trendItemsSource, bindingX: 'x' }"&gt;
+    &lt;div data-bind="wjFlexChartYFunctionSeries: {  min: 10, max: -10, sampleCount:100,func:func }"&gt;&lt;/div&gt;
+&lt;/div&gt;</pre></p>
+
+<p><b>wjFlexChartYFunctionSeries</b> 绑定支持所有 <b>YFunctionSeries</b> 的读写属性和事件</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.knockout.wjFlexGrid.Class.html"><b>wjFlexGrid</b></a></td>
+      <td><p>使用 KnockoutJS 绑定 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a> 控件。</p>
+
+<p>使用 <b>wjFlexGrid</b> 绑定添加 <b>FlexGrid</b> 控件，示例如下：</p>
+
+<p><pre>&lt;p&gt;Here is a FlexGrid control:&lt;/p&gt;
+&lt;div data-bind="wjFlexGrid: { itemsSource: data }"&gt;
+    &lt;div data-bind="wjFlexGridColumn: { 
+        header: 'Country', 
+        binding: 'country', 
+        width: '*' }"&gt;
+    &lt;/div&gt;
+    &lt;div data-bind="wjFlexGridColumn: { 
+        header: 'Date', 
+        binding: 'date' }"&gt;
+    &lt;/div&gt;
+    &lt;div data-bind="wjFlexGridColumn: { 
+        header: 'Revenue', 
+        binding: 'amount', 
+        format: 'n0' }"&gt;
+    &lt;/div&gt;
+    &lt;div data-bind="wjFlexGridColumn: { 
+        header: 'Active', 
+        binding: 'active' }"&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</pre></p>
+
+<p><b>wjFlexGrid</b> 绑定可以包含 <a href="topic/wijmo.knockout.wjFlexGridColumn.Class.html"><b>wjFlexGridColumn</b></a> 子绑定。</p>
+
+<p>lt;b>wjFlexGrid</b> 支持 <b>FlexGrid</b> 控件的所有可读写属性及事件，除了 <b>scrollPosition</b> 和 
+<b>selection</b> 属性</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.knockout.wjFlexGridColumn.Class.html"><b>wjFlexGridColumn</b></a></td>
+      <td><p>使用 KnockoutJS 绑定 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a> <a href="topic/wijmo.grid.Column.Class.html"><b>Column</b></a> 对象</p>
+
+<p><b>wjFlexGridColumn</b> 绑定必须包含在 <a href="topic/wijmo.knockout.wjFlexGrid.Class.html"><b>wjFlexGrid</b></a> 绑定中，示例如下：</p>
+
+<p><pre>&lt;p&gt;Here is a FlexGrid control:&lt;/p&gt;
+&lt;div data-bind="wjFlexGrid: { itemsSource: data }"&gt;
+    &lt;div data-bind="wjFlexGridColumn: { 
+        header: 'Country', 
+        binding: 'country', 
+        width: '*' }"&gt;
+    &lt;/div&gt;
+    &lt;div data-bind="wjFlexGridColumn: { 
+        header: 'Date', 
+        binding: 'date' }"&gt;
+    &lt;/div&gt;
+    &lt;div data-bind="wjFlexGridColumn: { 
+        header: 'Revenue', 
+        binding: 'amount', 
+        format: 'n0' }"&gt;
+    &lt;/div&gt;
+    &lt;div data-bind="wjFlexGridColumn: { 
+        header: 'Active', 
+        binding: 'active' }"&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</pre></p>
+
+<p><b>wjFlexGridColumn</b> 支持 <b>Column</b> 类的所有可读写属性及事件。<b>isSelected</b> 属性支持双向绑定。</p>
+
+<p>可以向 <b>Column</b> 类的属性添加匹配的正则式，一个 <b>wjFlexGridColumn</b> 绑定可能包含一个 <a href="topic/wijmo.knockout.wjStyle.Class.html"><b>wjStyle</b></a>  绑定，该绑定可以为单元格设置条件格式化和 HTML 模板片段。表格行会自动验证填充定制单元格的内容。</p>
+
+<p><b>wjStyle</b> 绑定和 HTML 片段都可以使用 <b>$item</b> 监控属性变量，<b>$item</b> 监控属性在 KnockoutJS 绑定中是一个指向当前行的引用。 <b>$row</b> 和 <b>$col</b> 监控属性属性也是可用的，他们分别执行行列的索引，示例如下：</p>
+
+<p><pre>&lt;div data-bind="wjFlexGridColumn: { 
+        header: 'Symbol', 
+        binding: 'symbol', 
+        readOnly: true, 
+        width: '*' }"&gt;
+  &lt;a data-bind="attr: { 
+        href: 'https://finance.yahoo.com/q?s=' + $item().symbol() }, 
+        text: $item().symbol"&gt;
+  &lt;/a&gt;
+&lt;/div&gt;
+&lt;div data-bind="wjFlexGridColumn: { 
+     header: 'Change',
+        binding: 'changePercent',
+        format: 'p2',
+        width: '*'
+        },
+        wjStyle: { 
+        color: getAmountColor($item().change) }"&gt;
+&lt;/div&gt;</pre></p>
+
+<p>上述的绑定创建了两列。
+第一列拥有一个模板，可以基于绑定的"symbol"属性生成一个链接； 
+第二列拥有一个条件样式，使用controller中定义的函数决定渲染value值时使用的颜色。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.knockout.wjFlexGridFilter.Class.html"><b>wjFlexGridFilter</b></a></td>
+      <td><p>使用 KnockoutJS 绑定 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a> <a href="topic/wijmo.grid.filter.FlexGridFilter.Class.html"><b>FlexGridFilter</b></a> 对象。</p>
+
+<p>使用 <b>wjFlexGridFilter</b> 绑定必须包含在 <a href="topic/wijmo.knockout.wjFlexGrid.Class.html"><b>wjFlexGrid</b></a> 中，示例如下：</p>
+
+<p><pre>&lt;p&gt;Here is a FlexGrid control with column filters:&lt;/p&gt;
+&lt;div data-bind="wjFlexGrid: { itemsSource: data }"&gt;
+    &lt;div data-bind="wjFlexGridFilter: { filterColumns: ['country', 'amount']  }"&gt;&lt;/div&gt;
+&nbsp;
+    &lt;div data-bind="wjFlexGridColumn: { 
+        header: 'Country', 
+        binding: 'country', 
+        width: '*' }"&gt;
+    &lt;/div&gt;
+    &lt;div data-bind="wjFlexGridColumn: { 
+        header: 'Date', 
+        binding: 'date' }"&gt;
+    &lt;/div&gt;
+    &lt;div data-bind="wjFlexGridColumn: { 
+        header: 'Revenue', 
+        binding: 'amount', 
+        format: 'n0' }"&gt;
+    &lt;/div&gt;
+    &lt;div data-bind="wjFlexGridColumn: { 
+        header: 'Active', 
+        binding: 'active' }"&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</pre></p>
+
+<p><b>wjFlexGridFilter</b> 支持 <b>FlexGridFilter</b> 类的所有可读写属性及事件</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.knockout.wjFlexPie.Class.html"><b>wjFlexPie</b></a></td>
+      <td><p>使用 KnockoutJS 绑定 <a href="topic/wijmo.chart.FlexPie.Class.html"><b>FlexPie</b></a> 控件。</p>
+
+<p>使用 <b>wjFlexPie</b> 绑定 <b>FlexPie</b> 控件，示例如下：</p>
+
+<p><pre>&lt;p&gt;Here is a FlexPie control:&lt;/p&gt;
+&lt;div data-bind="wjFlexPie: {
+        itemsSource: data,
+        binding: 'value',
+        bindingName: 'name',
+        header: 'Fruit By Value' }"&gt;
+    &lt;div data-bind="wjFlexChartLegend : { position: 'Top' }"&gt;&lt;/div&gt;
+&lt;/div&gt;</pre></p>
+
+<p><b>wjFlexPie</b> 绑定可以包含 <a href="topic/wijmo.knockout.wjFlexChartLegend.Class.html"><b>wjFlexChartLegend</b></a> 自绑定。</p>
+
+<p><b>wjFlexPie</b> 支持 <b>FlexPie</b> 控件的所有可读写属性及事件</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.knockout.wjFlexSheet.Class.html"><b>wjFlexSheet</b></a></td>
+      <td><p>使用 KnockoutJS 绑定 <a href="topic/wijmo.grid.sheet.FlexSheet.Class.html"><b>FlexSheet</b></a> 控件。</p>
+
+<p>使用 <b>wjFlexSheet</b> 绑定添加 <b>FlexSheet</b> 控件。</p>
+
+<p><b>wjFlexSheet</b> 绑定可以包含 <a href="topic/wijmo.knockout.wjSheet.Class.html"><b>wjSheet</b></a> 子绑定.</p>
+
+<p><b>wjFlexSheet</b> 支持 <b>FlexSheet</b> 控件的所有可读写属性及事件。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.knockout.wjGroupPanel.Class.html"><b>wjGroupPanel</b></a></td>
+      <td><p>使用 KnockoutJS 绑定 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a> <a href="topic/wijmo.grid.grouppanel.GroupPanel.Class.html"><b>GroupPanel</b></a> 控件。</p>
+
+<p>使用 <b>wjGroupPanel</b> 绑定需要使用 <b>grid</b> 属性连接到 <b>FlexGrid</b> 控件，示例如下：</p>
+
+<p><pre>&lt;p&gt;这是一个带有 GroupPanel 的FlexGrid 控件。&lt;/p&gt;
+&nbsp;
+&lt;div data-bind="wjGroupPanel: { grid: flex(), placeholder: '将列拖动到这里创建组。' }"&gt;&lt;/div&gt;
+&nbsp;
+&lt;div data-bind="wjFlexGrid: { control: flex, itemsSource: data }"&gt;
+    &lt;div data-bind="wjFlexGridColumn: { 
+        header: 'Country', 
+        binding: 'country', 
+        width: '*' }"&gt;
+    &lt;/div&gt;
+    &lt;div data-bind="wjFlexGridColumn: { 
+        header: 'Date', 
+        binding: 'date' }"&gt;
+    &lt;/div&gt;
+    &lt;div data-bind="wjFlexGridColumn: { 
+        header: 'Revenue', 
+        binding: 'amount', 
+        format: 'n0' }"&gt;
+    &lt;/div&gt;
+    &lt;div data-bind="wjFlexGridColumn: { 
+        header: 'Active', 
+        binding: 'active' }"&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</pre></p>
+
+<p><b>wjGroupPanel</b> 支持 <b>GroupPanel</b> 类的所有可读写属性及事件。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.knockout.wjInputColor.Class.html"><b>wjInputColor</b></a></td>
+      <td><p>使用 KnockoutJS 绑定 <a href="topic/wijmo.input.InputColor.Class.html"><b>InputColor</b></a> 控件。</p>
+
+<p>使用 <b>wjInputColor</b> 绑定添加 <b>InputColor</b> 控件，示例如下：</p>
+
+<p><pre>&lt;p&gt;Here is a InputColor control:&lt;/p&gt;
+&lt;div 
+  data-bind="wjInputColor: { value: theColor }"&gt;
+&lt;/div&gt;</pre></p>
+
+<p><b>wjInputColor</b> 支持 <b>InputColor</b> 控件的所有可读写属性及事件。以下属性支持双向绑定：
+<ul>
+	<li><b>isDroppedDown</b></li>
+	<li><b>text</b></li>
+	<li><b>value</b></li>
+</ul></p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.knockout.wjInputDate.Class.html"><b>wjInputDate</b></a></td>
+      <td><p>使用 KnockoutJS 绑定 <a href="topic/wijmo.input.InputDate.Class.html"><b>InputDate</b></a> 控件。</p>
+
+<p>使用 <b>wjInputDate</b> 绑定 <b>InputDate</b> 控件，示例如下：</p>
+
+<p><pre>&lt;p&gt;Here is an InputDate control:&lt;/p&gt;
+&lt;div data-bind="wjInputDate: {
+  value: theDate,
+  format: 'M/d/yyyy' }"&gt;
+&lt;/div&gt;</pre></p>
+
+<p><b>wjInputDate</b> 支持 <b>InputDate</b> 控件的所有可读写属性及事件，以下属性支持双向绑定：
+<ul>
+	<li><b>isDroppedDown</b></li>
+	<li><b>text</b></li>
+	<li><b>value</b></li>
+</ul></p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.knockout.wjInputDateTime.Class.html"><b>wjInputDateTime</b></a></td>
+      <td><p>使用 KnockoutJS 绑定 <a href="topic/wijmo.input.InputDateTime.Class.html"><b>InputDateTime</b></a> 控件。</p>
+
+<p>使用 <b>wjInputDateTime</b> 绑定添加 <b>InputDateTime</b> 控件。 </p>
+
+<p><b>wjInputDateTime</b> 支持 <b>InputDateTime</b> 控件的所有可读写属性及事件。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.knockout.wjInputMask.Class.html"><b>wjInputMask</b></a></td>
+      <td><p>使用 KnockoutJS 绑定 <a href="topic/wijmo.input.InputMask.Class.html"><b>InputMask</b></a> 控件。</p>
+
+<p>使用 <b>wjInputMask</b> 绑定添加 <b>InputMask</b> 控件，示例如下：</p>
+
+<p><pre>&lt;p&gt;Here is an InputMask control:&lt;/p&gt;
+&lt;div data-bind="wjInputMask: {
+  mask: '99/99/99',
+  promptChar: '*' }"&gt;
+&lt;/div&gt;</pre></p>
+
+<p><b>wjInputMask</b> 支持 <b>InputMask</b> 控件的所有可读写属性及事件。<b>value</b> 属性提供了双向绑定。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.knockout.wjInputNumber.Class.html"><b>wjInputNumber</b></a></td>
+      <td><p>使用 KnockoutJS 绑定 <a href="topic/wijmo.input.InputNumber.Class.html"><b>InputNumber</b></a> 控件。</p>
+
+<p>使用 <b>wjInputNumber</b> 绑定添加 <b>InputNumber</b> 控件，示例如下：</p>
+
+<p><pre>&lt;p&gt;Here is an InputNumber control:&lt;/p&gt;
+&lt;div data-bind="wjInputNumber: {
+  value: theNumber,
+  min: 0,
+  max: 10,
+  format: 'n0',
+  placeholder: 'number between zero and ten' }"&gt;
+&lt;/div&gt;</pre></p>
+
+<p><b>wjInputNumber</b> 支持 <b>InputNumber</b> 控件的所有可读写属性及事件。以下属性支持双向绑定：
+<ul>
+	<li><b>value</b></li>
+	<li><b>text</b></li>
+</ul></p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.knockout.wjInputTime.Class.html"><b>wjInputTime</b></a></td>
+      <td><p>使用 KnockoutJS 绑定 <a href="topic/wijmo.input.InputTime.Class.html"><b>InputTime</b></a> 控件。</p>
+
+<p>使用 <b>wjInputTime</b> 绑定添加 <b>InputTime</b> 控件，示例如下：</p>
+
+<p><pre>&lt;p&gt;Here is an InputTime control:&lt;/p&gt;
+&lt;div data-bind="wjInputTime: {
+  min: new Date(2014, 8, 1, 9, 0),
+  max: new Date(2014, 8, 1, 17, 0),
+  step: 15,
+  format: 'h:mm tt',
+  value: theDate }"&gt;
+&lt;/div&gt;</pre></p>
+
+<p><b>wjInputTime</b> 支持 <b>InputTime</b> 控件的所有可读写属性及事件。以下属性支持双向绑定：
+<ul>
+	<li><b>isDroppedDown</b></li>
+	<li><b>text</b></li>
+	<li><b>selectedIndex</b></li>
+	<li><b>selectedItem</b></li>
+	<li><b>selectedValue</b></li>
+ <li><b>value</b></li>
+</ul></p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.knockout.wjLinearGauge.Class.html"><b>wjLinearGauge</b></a></td>
+      <td><p>使用 KnockoutJS 绑定 <a href="topic/wijmo.gauge.LinearGauge.Class.html"><b>LinearGauge</b></a> 控件。</p>
+
+<p>使用 <b>wjLinearGauge</b> 绑定添加 <b>LinearGauge</b> 控件，示例如下：</p>
+
+<p><pre>&lt;p&gt;Here is a LinearGauge control:&lt;/p&gt;
+&lt;div data-bind="wjLinearGauge: {
+        value: props.value,
+        min: props.min,
+        max: props.max,
+        format: props.format,
+        showRanges: props.showRanges }"
+        &lt;class="linear-gauge"&gt;
+    &lt;div data-bind="wjRange: { 
+            wjProperty: 'pointer', 
+            thickness: props.ranges.pointerThickness }"&gt;
+    &lt;/div&gt;
+    &lt;div data-bind="wjRange: { 
+            min: props.ranges.lower.min, 
+            max: props.ranges.lower.max, 
+            color: props.ranges.lower.color }"&gt;
+    &lt;/div&gt;
+    &lt;div data-bind="wjRange: { 
+            min: props.ranges.middle.min, 
+            max: props.ranges.middle.max, 
+            color: props.ranges.middle.color }"&gt;
+    &lt;/div&gt;
+    &lt;div data-bind="wjRange: { 
+            min: props.ranges.upper.min, 
+            max: props.ranges.upper.max, 
+            color: props.ranges.upper.color }"&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</pre></p>
+
+<p><b>wjLinearGauge</b> 绑定可以包含 <a href="topic/wijmo.knockout.wjRange.Class.html"><b>wjRange</b></a> 子绑定。 </p>
+
+<p><b>wjLinearGauge</b> 支持 <b>LinearGauge</b> 控件的所有可读写属性及事件。<b>value</b> 属性支持双向绑定。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.knockout.wjListBox.Class.html"><b>wjListBox</b></a></td>
+      <td><p>使用 KnockoutJS 绑定 <a href="topic/wijmo.input.ListBox.Class.html"><b>ListBox</b></a> 控件。</p>
+
+<p>使用 <b>wjListBox</b> 绑定添加 <b>ListBox</b> 控件，示例如下:</p>
+
+<p><pre>&lt;p&gt;Here is a ListBox control:&lt;/p&gt;
+&lt;div data-bind="wjListBox: {
+  itemsSource: countries,
+  selectedItem: theCountry }"&gt;
+&lt;/div&gt;</pre></p>
+
+<p><b>wjListBox</b> 支持 <b>ListBox</b> 控件的所有可读写属性及事件。以下属性支持双向绑定：
+<ul>
+	<li><b>selectedIndex</b></li>
+	<li><b>selectedItem</b></li>
+	<li><b>selectedValue</b></li>
+</ul></p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.knockout.wjMenu.Class.html"><b>wjMenu</b></a></td>
+      <td><p>使用 KnockoutJS 绑定 <a href="topic/wijmo.input.Menu.Class.html"><b>Menu</b></a> 控件。</p>
+
+<p><b>wjMenu</b> 绑定添加 <b>Menu</b> 控件，示例如下：</p>
+
+<p><pre>&lt;p&gt;Here is a Menu control used as a value picker:&lt;/p&gt;
+&lt;div data-bind="wjMenu: { value: tax, header: 'Tax' }"&gt;
+    &lt;span data-bind="wjMenuItem: { value: 0 }"&gt;Exempt&lt;/span&gt;
+    &lt;span data-bind="wjMenuSeparator: {}"&gt;&lt;/span&gt;
+    &lt;span data-bind="wjMenuItem: { value: .05 }"&gt;5%&lt;/span&gt;
+    &lt;span data-bind="wjMenuItem: { value: .1 }"&gt;10%&lt;/span&gt;
+    &lt;span data-bind="wjMenuItem: { value: .15 }"&gt;15%&lt;/span&gt;
+&lt;/div&gt;</pre></p>
+
+<p><b>wjMenu</b> 该绑定可以包含子绑定：<a href="topic/wijmo.knockout.wjMenuItem.Class.html"><b>wjMenuItem</b></a>, <a href="topic/wijmo.knockout.wjMenuSeparator.Class.html"><b>wjMenuSeparator</b></a>。</p>
+
+<p><b>wjMenu</b> 支持 <b>Menu</b> 控件的所有可读写属性及事件。以下属性支持双向绑定：
+<ul>
+	<li><b>isDroppedDown</b></li>
+	<li><b>text</b></li>
+	<li><b>selectedIndex</b></li>
+	<li><b>selectedItem</b></li>
+	<li><b>selectedValue</b></li>
+ <li><b>value</b></li>
+</ul></p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.knockout.wjMenuItem.Class.html"><b>wjMenuItem</b></a></td>
+      <td><p>使用 KnockoutJS 绑定菜单项.</p>
+
+<p>使用<b>wjMenuItem</b> 绑定为 <a href="topic/wijmo.input.Menu.Class.html"><b>Menu</b></a> 控件添加菜单项，<b>wjMenuItem</b> 绑定必须包含在 <a href="topic/wijmo.knockout.wjMenu.Class.html"><b>wjMenu</b></a> 绑定中，示例如下：</p>
+
+<p><pre>&lt;p&gt;Here is a Menu control with four menu items:&lt;/p&gt;
+&lt;div data-bind="wjMenu: { value: tax, header: 'Tax' }"&gt;
+    &lt;span data-bind="wjMenuItem: { value: 0 }"&gt;Exempt&lt;/span&gt;
+    &lt;span data-bind="wjMenuItem: { value: .05 }"&gt;5%&lt;/span&gt;
+    &lt;span data-bind="wjMenuItem: { value: .1 }"&gt;10%&lt;/span&gt;
+    &lt;span data-bind="wjMenuItem: { value: .15 }"&gt;15%&lt;/span&gt;
+&lt;/div&gt;</pre></p>
+
+<p><b>wjMenuItem</b> 绑定支持以下属性： </p>
+
+<p><dl class="dl-horizontal">
+  <dt>cmd</dt>       <dd>在controller中定义的，当菜单项触发click事件时执行的函数。</dd>
+  <dt>cmdParam</dt>  <dd>传递给click事件执行函数的参数 <b>cmd</b> 。</dd>
+  <dt>value</dt>     <dd>菜单项触发click事件时设置的值Valued (使用 this 或参数 <b>cmd</b>访问)。</dd>
+</dl class="dl-horizontal"></p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.knockout.wjMenuSeparator.Class.html"><b>wjMenuSeparator</b></a></td>
+      <td><p>使用 KnockoutJS 绑定菜单分割器 menu separators.</p>
+
+<p>使用 <b>wjMenuSeparator</b> 为 <a href="topic/wijmo.input.Menu.Class.html"><b>Menu</b></a> 控件添加一个不可选的分离器，它没有属性并且必须包含在 <a href="topic/wijmo.knockout.wjMenu.Class.html"><b>wjMenu</b></a> 绑定中，示例如下：</p>
+
+<p><pre>&lt;p&gt;
+这是一个菜单控件，拥有四个子项目和一个分隔符。</p>
+
+<p>&lt;/p&gt;
+&lt;div data-bind="wjMenu: { value: tax, header: 'Tax' }"&gt;
+    &lt;span data-bind="wjMenuItem: { value: 0 }"&gt;Exempt&lt;/span&gt;
+    &lt;span data-bind="wjMenuSeparator: {}"&gt;&lt;/span&gt;
+    &lt;span data-bind="wjMenuItem: { value: .05 }"&gt;5%&lt;/span&gt;
+    &lt;span data-bind="wjMenuItem: { value: .1 }"&gt;10%&lt;/span&gt;
+    &lt;span data-bind="wjMenuItem: { value: .15 }"&gt;15%&lt;/span&gt;
+&lt;/div&gt;</pre></p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.knockout.wjMultiRow.Class.html"><b>wjMultiRow</b></a></td>
+      <td>KnockoutJS 绑定用于 <a href="topic/wijmo.grid.multirow.MultiRow.Class.html"><b>MultiRow</b></a> 对象。
+使用 <b>wjMultiRow</b> 绑定向你的 KnockoutJS 应用添加 <b>MultiRow</b> 控件，比如：
+ &lt;div data-bind="wjMultiRow:
+     {
+         itemsSource: orders,
+         layoutDefinition: ldThreeLines
+     }"&gt;
+ &lt;/div&gt;
+                                   
+<b>wjMultiRow</b> 绑定支持所有 <b>MultiRow</b> 的读写属性和事件</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.knockout.wjMultiSelect.Class.html"><b>wjMultiSelect</b></a></td>
+      <td><p>KnockoutJS 绑定用于 <a href="topic/wijmo.input.MultiSelect.Class.html"><b>MultiSelect</b></a> 控件。
+        使用<b>wjMultiSelect</b> 绑定向 KnockoutJS 应用程序添加 <b>MultiSelect</b> 控件。比如：</p>
+
+<p>
+<pre>&lt;p&gt;Here is a MultiSelect control:&lt;/p&gt;
+&lt;div data-bind="MultiSelect: {
+  itemsSource: countries,
+  isEditable: false,
+  headerFormat: '{count} countries selected' }"&gt;
+&lt;/div&gt;</pre></p>
+
+<p><b>wjMultiSelect</b> 绑定支持  <b>MultiSelect</b>  所有的读写属性和事件。下面的属性提供双向的数据绑定：</p>
+
+<p><ul>
+	<li><b>isDroppedDown</b></li>
+	<li><b>text</b></li>
+	<li><b>selectedIndex</b></li>
+	<li><b>selectedItem</b></li>
+	<li><b>selectedValue</b></li>
+</ul></p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.knockout.wjPivotChart.Class.html"><b>wjPivotChart</b></a></td>
+      <td>KnockoutJS 绑定用于 <a href="topic/wijmo.olap.PivotChart.Class.html"><b>PivotChart</b></a> 对象。
+使用 <b>wjPivotChart</b> 绑定向你的 KnockoutJS 应用添加 <b>PivotChart</b> 控件，比如：
+ &lt;div data-bind="wjPivotChart:
+     {
+         itemsSource: thePanel
+     }"&gt;
+ &lt;/div&gt;
+                                   
+<b>wjPivotChart</b> 绑定支持所有 <b>PivotChart</b> 的读写属性和事件</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.knockout.wjPivotGrid.Class.html"><b>wjPivotGrid</b></a></td>
+      <td>KnockoutJS 绑定用于 <a href="topic/wijmo.olap.PivotGrid.Class.html"><b>PivotGrid</b></a> 对象。
+使用 <b>wjPivotGrid</b> 绑定向你的 KnockoutJS 应用添加 <b>PivotGrid</b> 控件，比如：
+ &lt;div data-bind="wjPivotGrid:
+     {
+         itemsSource: thePanel
+     }"&gt;
+ &lt;/div&gt;
+                                   
+<b>wjPivotGrid</b> 绑定支持所有 <b>PivotGrid</b> 的读写属性和事件</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.knockout.wjPivotPanel.Class.html"><b>wjPivotPanel</b></a></td>
+      <td>KnockoutJS 绑定用于 <a href="topic/wijmo.olap.PivotPanel.Class.html"><b>PivotPanel</b></a> 对象。
+使用 <b>wjPivotPanel</b> 绑定向你的 KnockoutJS 应用添加 <b>PivotPanel</b> 控件，比如：
+ &lt;div data-bind="wjPivotPanel:
+     {
+          itemsSource: rawData,
+          control: thePanel,
+          initialized: init
+     }"&gt;
+ &lt;/div&gt;
+                                   
+<b>wjPivotPanel</b> 绑定支持所有 <b>PivotPanel</b> 的读写属性和事件</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.knockout.wjPopup.Class.html"><b>wjPopup</b></a></td>
+      <td><p>KnockoutJS 绑定用于  <a href="topic/wijmo.input.Popup.Class.html"><b>Popup</b></a>  控件。
+        KnockoutJS 绑定用于 <b>Popup</b> 控件。 </p>
+
+<p>使用 <b>wjPopup</b> 绑定向你的 KnockoutJS 应用添加 <b>Popup</b> 控件，比如：</p>
+
+<p><pre>&lt;p&gt;
+这是一个通过按钮触发的Popup 控件。
+&lt;/p&gt;
+&lt;button id="btn2" type="button"&gt;
+    Click to show Popup
+&lt;/button&gt;
+ &lt;div class="popover" data-bind="wjPopup: {
+      control: popup,
+      owner: '#btn2',
+      showTrigger: 'Click',
+      hideTrigger: 'Click'}"
+ &gt;
+&lt;h3&gt;
+	 Salutation
+&lt;/h3&gt;
+ &lt;div class="popover-content"&gt;
+ 	    Hello {&#8203;{firstName}} {&#8203;{lastName}}
+ &lt;/div&gt;
+&lt;/div&gt;</pre></p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.knockout.wjRadialGauge.Class.html"><b>wjRadialGauge</b></a></td>
+      <td><p>使用 KnockoutJS 绑定 <a href="topic/wijmo.gauge.RadialGauge.Class.html"><b>RadialGauge</b></a> 控件。</p>
+
+<p>使用 <b>wjRadialGauge</b> 绑定添加 <b>RadialGauge</b> 控件，示例如下：</p>
+
+<p><pre>&lt;p&gt;Here is a RadialGauge control:&lt;/p&gt;
+&lt;div data-bind="wjRadialGauge: {
+        value: props.value,
+        min: props.min,
+        max: props.max,
+        format: props.format,
+        showRanges: props.showRanges }"
+        class="radial-gauge"&gt;
+    &lt;div data-bind="wjRange: { 
+            wjProperty: 'pointer', 
+            thickness: props.ranges.pointerThickness }"&gt;
+    &lt;/div&gt;
+    &lt;div data-bind="wjRange: { 
+            min: props.ranges.lower.min, 
+            max: props.ranges.lower.max, 
+            color: props.ranges.lower.color }"&gt;
+    &lt;/div&gt;
+    &lt;div data-bind="wjRange: { 
+            min: props.ranges.middle.min, 
+            max: props.ranges.middle.max, 
+            color: props.ranges.middle.color }"&gt;
+    &lt;/div&gt;
+    &lt;div data-bind="wjRange: { 
+            min: props.ranges.upper.min, 
+            max: props.ranges.upper.max, 
+            color: props.ranges.upper.color }"&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</pre></p>
+
+<p><b>wjRadialGauge</b> 绑定可以包含 <a href="topic/wijmo.knockout.wjRange.Class.html"><b>wjRange</b></a> 子绑定。 </p>
+
+<p><b>wjRadialGauge</b> 支持 <b>RadialGauge</b> 控件的所有可读写属性及事件。<b>value</b> 属性支持双向绑定。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.knockout.wjRange.Class.html"><b>wjRange</b></a></td>
+      <td><p>使用 KnockoutJS 绑定 <a href="topic/wijmo.gauge.Range.Class.html"><b>Range</b></a> 对象</p>
+
+<p><b>wjRange</b> 绑定必须包含在下列绑定之一：
+<ul>
+    <li><a href="topic/wijmo.knockout.wjLinearGauge.Class.html"><b>wjLinearGauge</b></a></li> 
+    <li><a href="topic/wijmo.knockout.wjRadialGauge.Class.html"><b>wjRadialGauge</b></a></li>
+    <li><a href="topic/wijmo.knockout.wjBulletGraph.Class.html"><b>wjBulletGraph</b></a></li>
+</ul> 
+默认情况下，绑定会在 Chart 控件的 <b>ranges</b> 集合中添加一个 <b>Range</b> 对象。 <b>wjProperty</b> 属性允许你指定 Chart 的其他属性用来添加 <b>Range</b> 对象，例如使用该绑定来初始化 <b>pointer</b> 属性。</p>
+
+<p><b>wjRange</b> 支持 <b>Range</b> 类的所有可读写属性及事件</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.knockout.wjSheet.Class.html"><b>wjSheet</b></a></td>
+      <td><p>使用 KnockoutJS 绑定 <a href="topic/wijmo.grid.sheet.FlexSheet.Class.html"><b>FlexSheet</b></a> <a href="topic/wijmo.grid.sheet.Sheet.Class.html"><b>Sheet</b></a> 对象。</p>
+
+<p><b>wjSheet</b> 绑定必须包含在 <a href="topic/wijmo.knockout.wjFlexSheet.Class.html"><b>wjFlexSheet</b></a> 绑定中。 </p>
+
+<p><b>wjSheet</b> 支持 <b>Sheet</b> 类的所有可读写属性及事件。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.knockout.wjStyle.Class.html"><b>wjStyle</b></a></td>
+      <td><p>使用 KnockoutJS 绑定设置 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a> <a href="topic/wijmo.grid.Column.Class.html"><b>Column</b></a> 单元格条件格式化。</p>
+
+<p>使用 <b>wjStyle</b> 绑定和 <a href="topic/wijmo.knockout.wjFlexGridColumn.Class.html"><b>wjFlexGridColumn</b></a> 绑定提供单元格的条件格式化，示例如下：</p>
+
+<p><pre>&lt;div data-bind="wjFlexGridColumn: { 
+        header: 'Change',
+        binding: 'changePercent',
+        format: 'p2',
+        width: '*'
+        },
+        wjStyle: { color: getAmountColor($item().change) }"&gt;&lt;/div&gt;</pre></p>
+
+<p>
+<b>wjStyle</b> 使用 KnockoutJS 原生语法 
+<a href="http://knockoutjs.com/documentation/style-binding.html" target="_blank">style</a> 设置绑定。
+在视图模型中添加属性，在绑定表达式中使用监控属性：</p>
+
+<p><dl class="dl-horizontal">
+  <dt>$item</dt>  <dd>到绑定到当前行的一个引用</dd>
+  <dt>$row</dt>  <dd>行索引。</dd>
+  <dt>$col</dt>  <dd>列索引。</dd>
+</dl></p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.knockout.wjTooltip.Class.html"><b>wjTooltip</b></a></td>
+      <td><p>使用 KnockoutJS 绑定 <a href="topic/wijmo.Tooltip.Class.html"><b>Tooltip</b></a></p>
+
+<p>使用 <b>wjTooltip</b> 绑定为页面语速添加提示框. 
+<b>wjTooltip</b> 控件支持HTML文本内容，响应式布局，以及触摸。</p>
+
+<p><b>wjTooltip</b> 绑定被指定到需要提示框的元素上，value 设置为提示内容文本或者包含文本的元素Id,例如:</p>
+
+<p><pre>&lt;p data-bind="wjTooltip: '#fineprint'" &gt;
+    Regular paragraph content...&lt;/p&gt;
+...
+&lt;div id="fineprint" style="display:none" &gt;
+  &lt;h3&gt;Important Note&lt;/h3&gt;
+  &lt;p&gt;
+    Data for the current quarter is estimated by pro-rating etc...&lt;/p&gt;
+&lt;/div&gt;</pre></p></td>
+    </tr>
+</tbody>
+</table>
+</div>
+

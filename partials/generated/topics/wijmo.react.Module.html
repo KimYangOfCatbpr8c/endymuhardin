@@ -1,0 +1,262 @@
+<h2>模块 wijmo.react</h2>
+<dl class="dl-horizontal">
+<dt>文件</dt><dd>wijmo.react.js</dd>
+</dl>
+<p><p>Wijmo for  <a href="https://facebook.github.io/react/">React</a>
+这个模块提供了React组件，封装了Wijmo 控件。</p>
+
+<p>为了使用它，你的应用必须包含对React，ReactDomm 以及 Wijmo CSS 和 js 文件的引用。
+为了向React组件中添加Wijmo 控件，</p>
+
+<p>为了将Wijmo 控件添加到React组件，需要在JSX (或者 TSX) 文件中包含适当的标签。
+比如，下面的代码向React组件中添加<a href="topic/wijmo.input.InputNumber.Class.html"><b>InputNumber</b></a> :</p>
+
+<p><pre>&lt;label htmlFor="inputnumber"&gt;Here's an InputNumber control:&lt;/label&gt;
+&lt;Wj.InputNumber
+  id="inputNumber"
+  format="c2"
+  min={ 0 } max={ 10 } step={ .5 }
+  value={ this.state.value }
+  valueChanged={ this.valueChanged }/&gt;</pre></p>
+
+<p>这个例子说明了下面的要点：</p>
+
+<p><ol>
+  <li>
+  Wijmo控件 拥有 以‘Wj’起始的标签名，随后是控件的名字。"Wj"是 "wijmo.react"  的简写， "wijmo.react"  也是可以使用的，</li>
+<li>
+标签属性名匹配控件的属性和事件。</li>
+<li>
+放在引号中的属性值被解释为字符串，在大括号中的遏制被解释为JavaScript表达式。</li>
+<li>
+React 组件 没有实现双向数据绑定，因此控件通过通过事件处理程序将更改应用到父级组件状态。
+     </li>
+</ol></p>
+
+<p>为了说明最后一点，包含上面标记的组件实现一个 "valueChanged"  处理程序：</p>
+
+<p>
+<pre>valueChanged: function(s, e) {
+  this.setState({ value, s.value });
+}</pre>
+事件处理程序调用React 的<a href="https://facebook.github.io/react/docs/component-api.html">setState</a> 方法来跟新组件的状态。自动触发UI 更新。注意：这个方法不会直接写入 “state”对象，这个对象在React应用中是不变的。</p></p>
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideProperties = !hideProperties">
+<span class="glyph-collapsed" ng-show="hideProperties"></span>
+<span class="glyph-expanded" ng-hide="hideProperties"></span>
+属性
+</h3>
+</div>
+<table ng-hide="hideProperties" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-3">名称</th>
+
+<th class="col-md-2">类型</th>
+
+<th class="col-md-7">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><b>AutoComplete</b></td>
+      <td></td>
+      <td>封装了 <a href="topic/wijmo.input.AutoComplete.Class.html"><b>AutoComplete</b></a> 控件的React组件</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>BulletGraph</b></td>
+      <td></td>
+      <td>封装了 <a href="topic/wijmo.gauge.BulletGraph.Class.html"><b>BulletGraph</b></a> 控件的React组件</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>Calendar</b></td>
+      <td></td>
+      <td>封装了 <a href="topic/wijmo.input.Calendar.Class.html"><b>Calendar</b></a> 控件的React组件</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>ColorPicker</b></td>
+      <td></td>
+      <td>封装了 <a href="topic/wijmo.input.ColorPicker.Class.html"><b>ColorPicker</b></a> 控件的React组件</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>ComboBox</b></td>
+      <td></td>
+      <td>封装了 <a href="topic/wijmo.input.ComboBox.Class.html"><b>ComboBox</b></a> 控件的React组件</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>FlexChart</b></td>
+      <td></td>
+      <td><p>封装了 <a href="topic/wijmo.chart.FlexChart.Class.html"><b>FlexChart</b></a> 控件的React组件
+这里列子展示了如何在JSX中实例化 <b>wijmo.chart.FlexChart</b> 控件。</p>
+
+<p><pre>&lt;Wj.FlexChart
+  itemsSource={ this.state.data }
+  bindingX="name"
+  header={ this.state.header }
+  footer={ this.state.footer }
+  axisX={&#8203;{ title: this.state.titleX }}
+  axisY={&#8203;{ title: this.state.titleY }}
+  legend={&#8203;{ position: this.state.legendPosition }}
+  series={[
+      { name: 'Sales', binding: 'sales' },
+      { name: 'Expenses', binding: 'expenses' },
+      { name: 'Downloads', binding: 'downloads', chartType: 'LineSymbols' }
+  ]} /&gt;</pre></p>
+
+<p>这段代码设置  <b>itemsSource</b> 属性为一个集合，包含图表需要的数据，将 e <b>bindingX</b> 属性设置为图表的X 值 。</p>
+
+<p>设置<b>header</b> 和 <b>footer</b>属性指定图表的标题，，自定义坐标轴，和图例。 </p>
+
+<p>最后，，设置 <b>series</b> 属性为一个数组，指定图表应该展示的数据项。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>FlexGrid</b></td>
+      <td></td>
+      <td><p>封装了 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a> 控件的React组件</p>
+
+<p>下面的资历展示了如何使用JSX 实例化 <b>wijmo.grid.FlexGrid</b> 控件。
+<pre>&lt;Wj.FlexGrid
+  autoGenerateColumns={ false }
+  columns={[
+    { binding: 'name', header: 'Name' },
+    { binding: 'sales', header: 'Sales', format: 'c0' },
+    { binding: 'expenses', header: 'Expenses', format: 'c0' },
+    { binding: 'active', header: 'Active' },
+    { binding: 'date', header: 'Date' }
+  ]}
+  itemsSource={ this.state.data } /&gt;</pre>
+代码设置<b>autoGenerateColumns</b> 属性为false，然后设置 <b>columns</b> 属性，最后设置
+<b>itemsSource</b> 属性，
+这个顺序非常重要，可以组织表单自动生成列。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>InputColor</b></td>
+      <td></td>
+      <td>封装了 <a href="topic/wijmo.input.InputColor.Class.html"><b>InputColor</b></a> 控件的React组件</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>InputDate</b></td>
+      <td></td>
+      <td>封装了 <a href="topic/wijmo.input.InputDate.Class.html"><b>InputDate</b></a> 控件的React组件</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>InputDateTime</b></td>
+      <td></td>
+      <td>封装了 <a href="topic/wijmo.input.InputDateTime.Class.html"><b>InputDateTime</b></a> 控件的React组件</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>InputMask</b></td>
+      <td></td>
+      <td>封装了 <a href="topic/wijmo.input.InputMask.Class.html"><b>InputMask</b></a> 控件的React组件</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>InputNumber</b></td>
+      <td></td>
+      <td>封装了 <a href="topic/wijmo.input.InputNumber.Class.html"><b>InputNumber</b></a> 控件的React组件</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>InputTime</b></td>
+      <td></td>
+      <td>封装了 <a href="topic/wijmo.input.InputTime.Class.html"><b>InputTime</b></a> 控件的React组件</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>LinearGauge</b></td>
+      <td></td>
+      <td><p>封装了 <a href="topic/wijmo.gauge.LinearGauge.Class.html"><b>LinearGauge</b></a> 控件的React组件
+这个例子展示了如何使用JSX语法实例化一个 <b>wijmo.gauge.LinearGauge</b> 控件。</p>
+
+<p>
+<pre>&lt;Wj.LinearGauge
+  min={ 0 } max={ 1000 } step={ 50 } isReadOnly={ false }
+  value={ this.state.view.currentItem.sales }
+  valueChanged={ this.salesChanged }
+  format="c0" thumbSize={ 20 } showRanges={ false }
+  face={&#8203;{ thickness:0.5 }}
+  pointer={&#8203;{ thickness:0.5 }}
+  ranges={[
+      { min: 0, max: 333, color: 'red' },
+      { min: 333, max: 666, color: 'gold' },
+      { min: 666, max: 1000, color: 'green' }
+  ]} /&gt;</pre></p>
+
+<p>这段代码使用 <b>min</b>, <b>max</b>, <b>step</b>, 和 <b>isReadOnly</b>  属性设置仪表盘的范围并且允许用户编辑它的值。</p>
+
+<p>然后，它设置 <b>value</b> 和 <b>valueChanged</b> 属性到 仪表盘值的双向绑定。 </p>
+
+<p>然后，它设置  <b>format</b>, <b>thumbSize</b>, 和 <b>showRanges</b> 属性来定义仪表盘的外观。 最终，标记语言设置了<b>face</b> 的 thickness，pointer</b> ranges, 和 extra ranges， 这将会根据仪表盘当前值控制 <b>value</b> range的颜色。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>ListBox</b></td>
+      <td></td>
+      <td>封装了 <a href="topic/wijmo.input.ListBox.Class.html"><b>ListBox</b></a> 控件的React组件</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>Menu</b></td>
+      <td></td>
+      <td>封装了 <a href="topic/wijmo.input.Menu.Class.html"><b>Menu</b></a> 控件的React组件</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>MultiSelect</b></td>
+      <td></td>
+      <td>封装了 <a href="topic/wijmo.input.MultiSelect.Class.html"><b>MultiSelect</b></a> 控件的React组件</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>Popup</b></td>
+      <td></td>
+      <td>封装了 <a href="topic/wijmo.input.Popup.Class.html"><b>Popup</b></a> 控件的React组件</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>RadialGauge</b></td>
+      <td></td>
+      <td><p>封装了 <a href="topic/wijmo.gauge.RadialGauge.Class.html"><b>RadialGauge</b></a> 控件的React组件
+这个例子展示了如何使用JSX 语法实例化一个 <b>wijmo.gauge.RadialGauge</b> 控件。</p>
+
+<p><pre>&lt;Wj.RadialGauge
+  min={ 0 } max={ 1000 } step={ 50 } isReadOnly={ false }
+  value={ this.state.view.currentItem.sales }
+  valueChanged={ this.salesChanged }
+  format="c0" thumbSize={ 12 } showRanges={ false } showText="Value"
+  face={&#8203;{ thickness:0.5 }}
+  pointer={&#8203;{ thickness:0.5 }}
+  ranges={[
+      { min: 0, max: 333, color: 'red' },
+      { min: 333, max: 666, color: 'gold' },
+      { min: 666, max: 1000, color: 'green' }
+  ]} /&gt;</pre></p>
+
+<p>
+这段代码使用 <b>min</b>, <b>max</b>, <b>step</b>, 和 <b>isReadOnly</b>  属性设置仪表盘的范围并且允许用户编辑它的值。</p>
+
+<p>然后，它设置 <b>value</b> 和 <b>valueChanged</b> 属性到 仪表盘值的双向绑定。 </p>
+
+<p>然后，它设置  <b>format</b>, <b>thumbSize</b>, 和 <b>showRanges</b> 属性来定义仪表盘的外观。 最终，标记语言设置了<b>face</b> 的 thickness，pointer</b> ranges, 和 extra ranges， 这将会根据仪表盘当前值控制 <b>value</b> range的颜色。</p></td>
+    </tr>
+</tbody>
+</table>
+</div>
+

@@ -1,0 +1,233 @@
+<h2>ICollectionView 类</h2>
+<dl class="dl-horizontal">
+<dt>实现</dt><dd><a href="topic/wijmo.collections.INotifyCollectionChanged.Interface.html"><b>INotifyCollectionChanged</b></a></dd>
+<dt>模块</dt><dd>wijmo.collections</dd>
+<dt>文件</dt><dd>wijmo.js</dd>
+</dl>
+<p><p>使集合具有当前记录管理，自定义排序，过滤和归类的功能。</p>
+
+<p>这是一个被用于在Microsoft XAML平台中的<b>ICollectionView</b> 接口的JavaScript版本。它提供了一个连续的，有力的并且MVVM友好地方式来将数据绑定到用户界面元素上。</p>
+
+<p>Wijmo包括各种实现<b>ICollectionView</b> 的类。最常见的是<a href="topic/wijmo.collections.CollectionView.Class.html"><b>CollectionView</b></a>，它基于有规律的JavsScript数组进行工作。</p></p>
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideProperties = !hideProperties">
+<span class="glyph-collapsed" ng-show="hideProperties"></span>
+<span class="glyph-expanded" ng-hide="hideProperties"></span>
+属性
+</h3>
+</div>
+<table ng-hide="hideProperties" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-3">名称</th>
+
+<th class="col-md-2">类型</th>
+
+<th class="col-md-7">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td><span class="badge" title="字段">F</span></td>
+      <td><b>canFilter</b></td>
+      <td><b>boolean</b></td>
+      <td>获取一个值，该值指示此视图是否支持通过<b>filter</b> 属性进行过滤。</td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="字段">F</span></td>
+      <td><b>canGroup</b></td>
+      <td><b>boolean</b></td>
+      <td>获取一个值，该值指示此视图是否支持通过<b>groupDescriptions</b> 属性进行分组归类。</td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="字段">F</span></td>
+      <td><b>canSort</b></td>
+      <td><b>boolean</b></td>
+      <td>获取一个值，该值指示此视图是否支持通过<b>sortDescriptions</b> 属性进行排序。</td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="字段">F</span></td>
+      <td><b>currentChanged</b></td>
+      <td><a href="topic/wijmo.Event.Class.html"><b>Event</b></a></td>
+      <td>在当前项目更改后发生。</td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="字段">F</span></td>
+      <td><b>currentChanging</b></td>
+      <td><a href="topic/wijmo.Event.Class.html"><b>Event</b></a></td>
+      <td>在当前项目更改前发生。</td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="字段">F</span></td>
+      <td><b>currentItem</b></td>
+      <td><b>any</b></td>
+      <td>获取视图中当前的条目。</td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="字段">F</span></td>
+      <td><b>currentPosition</b></td>
+      <td><b>number</b></td>
+      <td>获取视图中当前条目的顺序位置。</td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="字段">F</span></td>
+      <td><b>filter</b></td>
+      <td><a href="topic/wijmo.collections.IPredicate.Interface.html"><b>IPredicate</b></a></td>
+      <td><p>获取或设置用于确定一个项目是否适合包含在视图中的回调函数</p>
+
+<p>注意：如果过滤函数需要一个范围（例如，一个有意义的'this'值），然后请记住使用“绑定”函数指定“this”对象来设置过滤器。例如：
+<pre>
+  collectionView.filter = this._filter.bind(this);
+</pre></p></td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="字段">F</span></td>
+      <td><b>groupDescriptions</b></td>
+      <td><a href="topic/wijmo.collections.ObservableArray.Class.html"><b>ObservableArray</b></a></td>
+      <td>获取<a href="topic/wijmo.collections.GroupDescription.Class.html"><b>GroupDescription</b></a> 对象的集合，该集合描述了如何在视图中将集合中的条目进行分组。</td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="字段">F</span></td>
+      <td><b>groups</b></td>
+      <td><b>any</b><b>[]</b></td>
+      <td>获取高水平的分组。</td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="字段">F</span></td>
+      <td><b>isEmpty</b></td>
+      <td><b>boolean</b></td>
+      <td>获取一个值，该值指示该视图是否包含任何条目。</td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="字段">F</span></td>
+      <td><b>items</b></td>
+      <td><b>any</b><b>[]</b></td>
+      <td>获取视图中的被过滤的，被排序的，被分类的项目。</td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="字段">F</span></td>
+      <td><b>sortDescriptions</b></td>
+      <td><a href="topic/wijmo.collections.ObservableArray.Class.html"><b>ObservableArray</b></a></td>
+      <td>获取<a href="topic/wijmo.collections.SortDescription.Class.html"><b>SortDescription</b></a> 对象的集合，该集合描述了如何在视图中将集合的条目进行排序。</td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="字段">F</span></td>
+      <td><b>sourceCollection</b></td>
+      <td><b>any</b></td>
+      <td>获取或者设置集合对象从中创建视图。</td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideMethods = !hideMethods">
+<span class="glyph-collapsed" ng-show="hideMethods"></span>
+<span class="glyph-expanded" ng-hide="hideMethods"></span>
+方法
+</h3>
+</div>
+<table ng-hide="hideMethods" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-2">名称</th>
+
+<th class="col-md-5">参数</th>
+
+<th class="col-md-5">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><b>beginUpdate</b>&#8203;()</td>
+      <td></td>
+      <td>直到下一次调用<b>endUpdate之前暂停刷新</b>。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>contains</b>&#8203;(item): <b>boolean</b></td>
+      <td><p>
+<b>item</b> (<b>any</b>): 条目在集合中进行定位。<br/></p>
+</td>
+      <td>返回一个值，该值指示给定的条目是否属于这个视图。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>deferUpdate</b>&#8203;(fn)</td>
+      <td><p>
+<b>fn</b> (<b>Function</b>): 在一个beginUpdate/endUpdate块中被执行的函数。<br/></p>
+</td>
+      <td><p>在一个beginUpdate/endUpdate块中执行一个函数。</p>
+
+<p>在执行功能已被执行之前，该集合将不会被刷新。
+该方法保证endupdate被调用甚至如果函数抛出所谓。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>endUpdate</b>&#8203;()</td>
+      <td></td>
+      <td>通过调用<b>beginUpdate</b> 来重新开始暂停的刷新。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>moveCurrentTo</b>&#8203;(item): <b>boolean</b></td>
+      <td><p>
+<b>item</b> (<b>any</b>): 将条目设置为<b>currentItem</b>.<br/></p>
+</td>
+      <td>将指定条目设置为视图中的当前项。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>moveCurrentToFirst</b>&#8203;(): <b>boolean</b></td>
+      <td></td>
+      <td>将视图中的第一项设置为当前项目。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>moveCurrentToLast</b>&#8203;(): <b>boolean</b></td>
+      <td></td>
+      <td>将视图中的最后一项设置为当前项目。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>moveCurrentToNext</b>&#8203;(): <b>boolean</b></td>
+      <td></td>
+      <td>将当前项后的项目设置为当前项目。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>moveCurrentToPosition</b>&#8203;(index): <b>boolean</b></td>
+      <td><p>
+<b>index</b> (<b>number</b>): The index of the item to set as the <b>currentItem</b>.<br/></p>
+</td>
+      <td>将该项在视图中的指定索引处设置为当前项目。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>moveCurrentToPrevious</b>&#8203;()</td>
+      <td></td>
+      <td>将视图中当前项之前的项目设置为当前项目。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>refresh</b>&#8203;()</td>
+      <td></td>
+      <td>重新创建使用当前排序、筛选器和分组参数的视图。</td>
+    </tr>
+</tbody>
+</table>
+</div>
+

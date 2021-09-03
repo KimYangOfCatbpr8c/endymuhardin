@@ -1,0 +1,114 @@
+<h2>WorkbookRow 类</h2>
+<dl class="dl-horizontal">
+<dt>实现</dt><dd><a href="topic/wijmo.xlsx.IWorkbookRow.Interface.html"><b>IWorkbookRow</b></a></dd>
+<dt>模块</dt><dd>wijmo.xlsx</dd>
+<dt>文件</dt><dd>wijmo.xlsx.js</dd>
+</dl>
+<p>表示 Workbook 对象模型的行定义。</p>
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideConstructor = !hideConstructor">
+<span class="glyph-collapsed" ng-show="hideConstructor"></span>
+<span class="glyph-expanded" ng-hide="hideConstructor"></span>
+ 构造函数
+</h3>
+</div>
+<table ng-hide="hideConstructor" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-2">名称</th>
+
+<th class="col-md-5">参数</th>
+
+<th class="col-md-5">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><b>constructor</b>&#8203;(): <a href="topic/wijmo.xlsx.WorkbookRow.Class.html"><b>WorkbookRow</b></a></td>
+      <td></td>
+      <td>初始化<a href="topic/wijmo.xlsx.WorkbookRow.Class.html"><b>WorkbookRow</b></a> 类一个新实例。</td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideProperties = !hideProperties">
+<span class="glyph-collapsed" ng-show="hideProperties"></span>
+<span class="glyph-expanded" ng-hide="hideProperties"></span>
+属性
+</h3>
+</div>
+<table ng-hide="hideProperties" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-3">名称</th>
+
+<th class="col-md-2">类型</th>
+
+<th class="col-md-7">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><b>cells</b></td>
+      <td><a href="topic/wijmo.xlsx.WorkbookCell.Class.html"><b>WorkbookCell</b></a><b>[]</b></td>
+      <td><p>获取或设置该行中单元格的数组。</p>
+
+<p>数组中的每一个 <a href="topic/wijmo.xlsx.WorkbookCell.Class.html"><b>WorkbookCell</b></a> 对象描述了位于一行指定位置处的一个单元格，
+比如说，位于索引 0 处的单元格
+属于具有索引值为 A 的列，具有索引值 1 的单元格属于 Excel 中具有索引值为 B 的列，以此类推。如果一个特定的单元格
+在 xlsx 文件中没有定义（empty），则在导入导出操作时相关联的数组元素为 undefined。</p></td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="字段">F</span></td>
+      <td><b>collapsed</b></td>
+      <td><b>boolean</b></td>
+      <td>表示是否该行为收起 outline 状态。</td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="字段">F</span></td>
+      <td><b>groupLevel</b></td>
+      <td><b>number</b></td>
+      <td>获取或设置行的分组级别。</td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="字段">F</span></td>
+      <td><b>height</b></td>
+      <td><b>number</b></td>
+      <td><p>获取或设置设备无关像素点（1/96英寸）表示的行高。</p>
+
+<p>如果高度未指定，则应用默认的行高。</p></td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="字段">F</span></td>
+      <td><b>style</b></td>
+      <td><a href="topic/wijmo.xlsx.WorkbookStyle.Class.html"><b>WorkbookStyle</b></a></td>
+      <td><p>获取或设置行的样式。</p>
+
+<p>该属性定义的样式可以应用到该行中全部的单元格，也可以被特定的单元格样式覆盖。</p></td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="字段">F</span></td>
+      <td><b>visible</b></td>
+      <td><b>boolean</b></td>
+      <td>获取或设置行的可见性。</td>
+    </tr>
+</tbody>
+</table>
+</div>
+

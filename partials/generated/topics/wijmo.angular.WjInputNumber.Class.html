@@ -1,0 +1,52 @@
+<h2>WjInputNumber 类</h2>
+<dl class="dl-horizontal">
+<dt>基类</dt><dd><b>WjDirective</b></dd>
+<dt>模块</dt><dd>wijmo.angular</dd>
+<dt>文件</dt><dd>wijmo.angular.js</dd>
+<dt>表示</dt><dd><label style="font-weight:normal">继承成员 <input type="checkbox" ng-model="showInherited"></label></dd>
+</dl>
+<p><p>AngularJS 指令应用于 <a href="topic/wijmo.input.InputNumber.Class.html"><b>InputNumber</b></a> 控件。</p>
+
+<p>使用 <b>wj-input-number</b> 指令添加 <b>InputNumber</b> 到 AngularJS 应用中。 
+注意指令和参数名称必须使用小写字母+短线语法替代驼峰命名。 示例：</p>
+
+<p><pre>&lt;p&gt;Here is an InputNumber control:&lt;/p&gt;
+&lt;wj-input-number
+  value="theNumber"
+  min="0"
+  max="10"
+  format="n0"
+  placeholder="number between zero and ten"&gt;
+&lt;/wj-input-number&gt;</pre></p>
+
+<p>下面的例子创建了几个 <b>InputNumber</b> 控件，并且展示了不同的格式化字符，范围，步进值的效果。</p>
+
+<p><a href="http://jsfiddle.net/Wijmo5/u7HpD/" target="_blank" class="btn btn-info">
+  <img src="images/fiddle.png"/>
+  在线示例
+</a>
+</p>
+
+<p><b>wj-input-number</b> 指令支持以下属性:</p>
+
+<p><dl class="dl-horizontal">
+  <dt>ng-model</dt>      <dd><code>@</code> 使用Angular的ng-model指令绑定控件的 <b>value</b> 属性。使用ng-model指令绑定属性能够获得一些共通的特性，例如验证，自动添加控件状态到form实例，等等。 使用 wj-model-property 重定义被 ng-model指定绑定的控件属性。</dd>
+  <dt>wj-model-property</dt>  <dd><code>@</code> 使用 <b>ng-model</b> 指令指定控件绑定的作用域。</dd>
+  <dt>control</dt>       <dd><code>=</code> 该指令创建的指向 <b>InputNumber</b> 的引用</dd>
+  <dt>format</dt>        <dd><code>@</code> 显示数字的格式化字符 (参见 <a href="topic/wijmo.Globalize.Class.html"><b>Globalize</b></a>).</dd>
+  <dt>input-type</dt>    <dd><code>@</code> 输入控件的类型。</dd>
+  <dt>initialized</dt>   <dd><code>&</code> 该事件在绑定完成控件特性值的初始化后被触发。</dd>
+  <dt>is-initialized</dt><dd><code>=</code> 绑定是否已经完成控件特性值的初始化。 </dd>
+  <dt>max</dt>           <dd><code>@</code> 最大有效数值。</dd>
+  <dt>min</dt>           <dd><code>@</code> 最小有效数值。</dd>
+  <dt>place-holder</dt>  <dd><code>@</code> 描述输入字段预期值的提示信息。</dd>
+  <dt>required</dt>      <dd><code>@</code> 是否阻止null值。</dd>
+  <dt>show-spinner</dt>  <dd><code>@</code> 是否显示按钮用于改变 <b>step</b> 值。</dd>
+  <dt>step</dt>          <dd><code>@</code> 用户点击按钮时增加或较少的值。</dd>
+  <dt>text</dt>          <dd><code>=</code> 控件显示文本。</dd>
+  <dt>value</dt>         <dd><code>=</code> 编辑的数字。</dd>
+  <dt>got-focus</dt>     <dd><code>&</code> <b>gotFocus</b> 事件。</dd>
+  <dt>lost-focus</dt>    <dd><code>&</code> <b>lostFocus</b> 事件。</dd>
+  <dt>text-changed</dt>  <dd><code>&</code> <b>textChanged</b> 事件。</dd>
+  <dt>value-changed</dt> <dd><code>&</code> <b>valueChanged</b> 事件。</dd>
+</dl></p></p>

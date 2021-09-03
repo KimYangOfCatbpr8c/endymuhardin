@@ -1,0 +1,52 @@
+<h2>WjFlexChartWaterfall 类</h2>
+<dl class="dl-horizontal">
+<dt>基类</dt><dd><b>WjSeriesBase</b></dd>
+<dt>模块</dt><dd>wijmo.angular</dd>
+<dt>文件</dt><dd>wijmo.angular.js</dd>
+<dt>表示</dt><dd><label style="font-weight:normal">继承成员 <input type="checkbox" ng-model="showInherited"></label></dd>
+</dl>
+<p><p>AngularJS 指令用于<a href="topic/wijmo.chart.FlexChart.Class.html"><b>FlexChart</b></a> 和 <a href="topic/wijmo.chart.finance.FinancialChart.Class.html"><b>FinancialChart</b></a> <a href="topic/wijmo.chart.analytics.Waterfall.Class.html"><b>Waterfall</b></a>。
+<b>wj-flex-chart-waterfall</b>  指令必须包含在 <a href="topic/wijmo.angular.WjFlexChart.Class.html"><b>WjFlexChart</b></a> or <a href="topic/wijmo.angular.WjFinancialChart.Class.html"><b>WjFinancialChart</b></a> 指令中。
+它支持下面的属性：</p>
+
+<p><dl class="dl-horizontal">
+  <dt>binding</dt>      <dd><code>@</code> 包含系列Y值的属性名。这个值覆盖在图表级别的设置。
+  </dd>
+  <dt>binding-x</dt>    <dd><code>@</code> 
+包含系列X值的属性名。这个值覆盖在图表级别的设置。</dd>
+  <dt>items-source</dt> <dd><code>=</code> 
+包含这个系列数据的数组或者 <a href="topic/wijmo.collections.ICollectionView.Interface.html"><b>ICollectionView</b></a>  对象。
+</dd>
+  <dt>name</dt>         <dd><code>@</code> 
+展示在图例上的这个系列的名称。
+</dd>
+  <dt>visibility</dt>   <dd><code>=</code>
+<a href="topic/wijmo.chart.SeriesVisibility.Enum.html"><b>SeriesVisibility</b></a> 决定是否和在哪展示系列。
+</dd>
+  <dt>relative-data</dt> <dd><code>@</code> 
+这个值决定是否给定的数据是相对的。
+</dd>
+  <dt>start</dt>        <dd><code>@</code> 
+开始栏的值。
+</dd>
+  <dt>start-label</dt>  <dd><code>@</code> 
+开始栏的标签。
+</dd>
+  <dt>show-total</dt>   <dd><code>@</code> 
+这个值决定是否展示合计栏。</dd>
+  <dt>total-label</dt>  <dd><code>@</code>
+合计栏的标签。</dd>
+  <dt>show-intermediate-total</dt>      <dd><code>@</code>
+这个值决定是否展示
+   决定是否显示中间合计栏。</dd>
+  <dt>intermediate-total-positions</dt> <dd><code>@</code> 
+包含用于中间合计栏的位置的索引的值。</dd>
+  <dt>intermediate-total-labels</dt>    <dd><code>@</code>
+这个值包含中间合计栏的标签。</dd>
+  <dt>connector-lines</dt>  <dd><code>@</code> 
+决定是否展示连接线。
+  The value that determines whether to show connector lines.</dd>
+  <dt>styles</dt>       <dd><code>@</code> 
+瀑布图样式的值。
+</dd>
+</dl></p></p>

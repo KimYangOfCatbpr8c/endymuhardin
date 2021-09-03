@@ -1,0 +1,45 @@
+<h2>WjRange 类</h2>
+<dl class="dl-horizontal">
+<dt>基类</dt><dd><b>WjDirective</b></dd>
+<dt>模块</dt><dd>wijmo.angular</dd>
+<dt>文件</dt><dd>wijmo.angular.js</dd>
+<dt>表示</dt><dd><label style="font-weight:normal">继承成员 <input type="checkbox" ng-model="showInherited"></label></dd>
+</dl>
+<p><p>AngularJS 指令应用于 <a href="topic/wijmo.gauge.Range.Class.html"><b>Range</b></a> 对象。</p>
+
+<p><b>wj-range</b> 指令必须包含于 <a href="topic/wijmo.angular.WjLinearGauge.Class.html"><b>WjLinearGauge</b></a>, <a href="topic/wijmo.angular.WjRadialGauge.Class.html"><b>WjRadialGauge</b></a> 
+或者 <a href="topic/wijmo.angular.WjBulletGraph.Class.html"><b>WjBulletGraph</b></a> 指令。 它添加 Range 对象到父指令的 'ranges' 数组属性上。 也可以使用 wj-property 特别指定属性名，用于使用父指令的其他 Range 类型属性。</p>
+
+<p>示例：
+<pre>&lt;wj-radial-gauge 
+    min="0" 
+    max="200" 
+    step="20" 
+    value="theValue" 
+    is-read-only="false"&gt;
+    &lt;wj-range 
+      min="0" 
+      max="100" 
+      color="red"&gt;
+    &lt;/wj-range&gt;
+    &lt;wj-range 
+      min="100" 
+      max="200" 
+      color="green"&gt;
+    &lt;/wj-range&gt;
+    &lt;wj-range 
+      wj-property="pointer" 
+      color="blue"&gt;
+    &lt;/wj-range&gt;
+&lt;/wj-radial-gauge&gt;</pre></p>
+
+<p><b>wj-range</b> 指令支持以下属性:</p>
+
+<p><dl class="dl-horizontal">
+  <dt>min</dt>           <dd><code>@</code> 范围的最小值。</dd>
+  <dt>max</dt>           <dd><code>@</code> 范围的最大值。</dd>
+  <dt>color</dt>         <dd><code>@</code> 范围显示的颜色。</dd>
+  <dt>thickness</dt>     <dd><code>@</code> 测量值的厚度，从0到1的值。</dd>
+  <dt>name</dt>          <dd><code>@</code> 范围的名称。</dd>
+  <dt>wj-property</dt>   <dd><code>@</code> 使用当前指令初始化的属性名称。</dd>
+</dl></p></p>

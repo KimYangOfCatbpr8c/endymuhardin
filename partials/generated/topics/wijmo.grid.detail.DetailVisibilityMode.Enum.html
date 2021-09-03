@@ -1,0 +1,55 @@
+<h2>DetailVisibilityMode 枚举</h2>
+<dl class="dl-horizontal">
+  <dt>模块</dt><dd>wijmo.grid.detail</dd>
+  <dt>文件</dt><dd>wijmo.grid.detail.js</dd>
+</dl>
+<p>指定何时以及如何显示明细行。</p>
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideValues = !hideValues">
+<span class="glyph-collapsed" ng-show="hideValues"></span>
+<span class="glyph-expanded" ng-hide="hideValues"></span>
+值
+</h3>
+</div>
+<table ng-hide="hideValues" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th>名称</th>
+
+<th>描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><b>Code</b></td>
+      <td>明细通过代码显示和隐藏，通过 
+<b>showDetail</b> 以及 <b>hideDetail</b> 方法。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>ExpandMulti</b></td>
+      <td>明细通过添加到行头上的按钮显示或隐藏。
+同一时刻可以有多行展开。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>ExpandSingle</b></td>
+      <td>明细通过添加到行头上的按钮显示或隐藏。
+同一时刻仅有一行展开。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>Selection</b></td>
+      <td>明细显示给当前选中的行。</td>
+    </tr>
+</tbody>
+</table>
+</div>
+

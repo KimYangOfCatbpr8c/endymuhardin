@@ -1,0 +1,51 @@
+<h2>WjFlexGridColumn 类</h2>
+<dl class="dl-horizontal">
+<dt>基类</dt><dd><b>WjDirective</b></dd>
+<dt>模块</dt><dd>wijmo.angular</dd>
+<dt>文件</dt><dd>wijmo.angular.js</dd>
+<dt>表示</dt><dd><label style="font-weight:normal">继承成员 <input type="checkbox" ng-model="showInherited"></label></dd>
+</dl>
+<p><p>AngularJS 指令应用于 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a> <a href="topic/wijmo.grid.Column.Class.html"><b>Column</b></a> 对象。</p>
+
+<p><b>wj-flex-grid-column</b> 指令必须包含于 <a href="topic/wijmo.angular.WjFlexGrid.Class.html"><b>WjFlexGrid</b></a> 指令。
+支持以下属性:</p>
+
+<p><dl class="dl-horizontal">
+  <dt>aggregate</dt>         <dd><code>@</code> <a href="topic/wijmo.Aggregate.Enum.html"><b>Aggregate</b></a> 对象，用于显示合计行和合计列。</dd>
+  <dt>align</dt>             <dd><code>@</code> 设置数据列的水平对齐方式。</dd>
+  <dt>allow-dragging</dt>    <dd><code>@</code> 指定拖拽行为。</dd>
+  <dt>allow-sorting</dt>     <dd><code>@</code> 是否允许排序。</dd>
+  <dt>allow-resizing</dt>    <dd><code>@</code> 是否重置行列尺寸</dd>
+  <dt>allow-merging</dt>     <dd><code>@</code> 是否允许列合并。</dd>
+  <dt>binding</dt>           <dd><code>@</code> 数据源绑定。</dd>
+  <dt>css-class</dt>         <dd><code>@</code> 渲染列的 css 样式类。</dd>
+  <dt>data-map</dt>          <dd><code>=</code> <a href="topic/wijmo.grid.DataMap.Class.html"><b>DataMap</b></a> 对象，用于编辑数据行的值。</dd>
+  <dt>data-type</dt>         <dd><code>@</code> <a href="topic/wijmo.DataType.Enum.html"><b>DataType</b></a> 枚举值，指定列存储的数据类型。</dd>
+  <dt>format</dt>            <dd><code>@</code> 用于显示行值的格式化字符串 (参见 <a href="topic/wijmo.Globalize.Class.html"><b>Globalize</b></a>)。</dd>
+  <dt>header</dt>            <dd><code>@</code> 列标题。</dd>
+  <dt>input-type</dt>        <dd><code>@</code> 列的输入类型。</dd>
+  <dt>is-content-html</dt>   <dd><code>@</code> 以纯文本还是HTML显示内容。</dd>
+  <dt>is-read-only</dt>      <dd><code>@</code> 是否只读。</dd>
+  <dt>is-selected</dt>       <dd><code>@</code> 是否选中。</dd>
+  <dt>mask</dt>              <dd><code>@</code> 编辑列时显示的掩饰字符。</dd>
+  <dt>max-width</dt>         <dd><code>@</code> 最大列宽。</dd>
+  <dt>min-width</dt>         <dd><code>@</code> 最小列宽。</dd>
+  <dt>name</dt>              <dd><code>@</code> 列名称。</dd>
+  <dt>required</dt>          <dd><code>@</code> 是否是必须列，即不能是null值。</dd>
+  <dt>show-drop-down</dt>    <dd><code>@</code> 是否下拉列表编辑基于 <b>DataMap</b> 的值。</dd>
+  <dt>visible</dt>           <dd><code>@</code> 列是否可见。</dd>
+  <dt>width</dt>             <dd><code>@</code> 列宽。</dd>
+  <dt>word-wrap</dt>         <dd><code>@</code> 单元格字符折行方式。</dd>
+</dl></p>
+
+<p><b>wj-flex-grid-column</b> 指令中的任何 HTML 内容将被处理成列上的单元格模板。模板仅适用于正常的单元格，如果你想指定特殊的单元格如列头或分组标题，那么需要使用 <a href="topic/wijmo.angular.WjFlexGridCellTemplate.Class.html"><b>WjFlexGridCellTemplate</b></a> 指令。</p>
+
+<p>下面的例子创建了两列，使用模板和条件样式:</p>
+
+<p><a href="http://jsfiddle.net/Wijmo5/5L423/" target="_blank" class="btn btn-info">
+  <img src="images/fiddle.png"/>
+  在线示例
+</a>
+</p>
+
+<p><b>wj-flex-grid-column</b> 指令可能包含 <b>WjFlexGridCellTemplate</b> 自治领。</p></p>

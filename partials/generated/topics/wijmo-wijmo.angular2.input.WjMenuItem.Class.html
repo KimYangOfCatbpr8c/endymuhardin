@@ -1,0 +1,25 @@
+<h2>WjMenuItem 类</h2>
+<dl class="dl-horizontal">
+<dt>派生类</dt><dd><a href="topic/wijmo-wijmo.angular2.input.WjMenuSeparator.Class.html"><b>WjMenuSeparator</b></a></dd>
+<dt>实现</dt><dd><b>AfterContentInit</b>, <b>OnInit</b></dd>
+<dt>模块</dt><dd>wijmo/wijmo.angular2.input</dd>
+<dt>文件</dt><dd>wijmo.angular2.js</dd>
+</dl>
+<p><p>菜单项的Angular 2 Directive 指令。</p>
+
+<p><b>wj-menu-item</b> 组件必须包含在一个 <a href="topic/wijmo-wijmo.angular2.input.WjMenu.Class.html"><b>WjMenu</b></a> Directive 指令中。
+它支持以下属性：</p>
+
+<p><dl class="dl-horizontal">
+  <dt>[cmd]</dt>       <dd>当项目被单击时，在 controller 上
+                     执行的函数。</dd>
+  <dt>[cmdParam]</dt>  <dd>当项目被单击时，传递给 <b>cmd</b> 函数 
+                     的参数。</dd>
+  <dt>[(value)]</dt>     <dd>当项目单击时，选中的值
+                     （可选地使用此参数和 <b>cmd</b>参数）。</dd>
+</dl></p>
+
+<p>该项目显示的内容可以包含任意的带有 Angular 2 绑定的HTML 片段，组件以及 Directive 指令。
+您也可以使用 <b>ngFor</b> 以及 <b>ngIf</b> 指令生成菜单控件中的项。
+本地的 <b>item</b>，
+<b>itemIndex</b> 以及 <b>control</b> 模板变量可以在 Angular 2 绑定中使用，分别表示数据项，当前项的索引以及 owner 控件。</p></p>

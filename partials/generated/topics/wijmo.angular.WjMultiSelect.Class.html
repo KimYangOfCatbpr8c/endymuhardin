@@ -1,0 +1,30 @@
+<h2>WjMultiSelect 类</h2>
+<dl class="dl-horizontal">
+<dt>基类</dt><dd><a href="topic/wijmo.angular.WjComboBox.Class.html"><b>WjComboBox</b></a></dd>
+<dt>模块</dt><dd>wijmo.angular</dd>
+<dt>文件</dt><dd>wijmo.angular.js</dd>
+<dt>表示</dt><dd><label style="font-weight:normal">继承成员 <input type="checkbox" ng-model="showInherited"></label></dd>
+</dl>
+<p><p>AngularJS 指令应用于 <a href="topic/wijmo.input.MultiSelect.Class.html"><b>MultiSelect</b></a> 控件。</p>
+
+<p>使用 <b>wj-multi-select</b> 指令添加 <b>MultiSelect</b> 到 AngularJS 应用中。 
+注意指令和参数名称必须使用小写字母+短线语法替代驼峰命名。 示例：</p>
+
+<p><pre>&lt;p&gt;Here is a MultiSelect bound to a collection of objects:&lt;/p&gt;
+&lt;wj-multi-select
+    placeholder="Select Countries"
+    items-source="ctx.items"
+    header-format="{count} countries selected"
+    display-Member-path="country"
+    checked-Member-path="selected"&gt;
+&lt;/wj-multi-select&gt;</pre></p>
+
+<p><b>wj-multi-select</b> 指令扩展了 <a href="topic/wijmo.angular.WjComboBox.Class.html"><b>WjComboBox</b></a> ，添加了一下特性：</p>
+
+<p><dl class="dl-horizontal">
+  <dt>checked-member-path</dt>  <dd><code>@</code> 属性的名称用来控制每个条目复选框放置。</dd>
+  <dt>header-format</dt>        <dd><code>@</code> 标题内容的格式化字符，当控件选中了多于 <b>maxHeaderItems</b> 指定的项目时。</dd>
+  <dt>header-formatter</dt>     <dd><code>=</code> 获取控件标题 HTML 的函数。</dd>
+  <dt>max-header-items</dt>     <dd><code>@</code> 标题部分显示的最大项目数。</dd>
+  <dt>checked-items-changed</dt><dd><code>&</code> <b>checkedItemsChanged</b> 事件。</dd>
+</dl></p></p>

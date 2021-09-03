@@ -1,0 +1,33 @@
+<h2>WjPivotGrid 类</h2>
+<dl class="dl-horizontal">
+<dt>基类</dt><dd><a href="topic/wijmo.angular.WjFlexGrid.Class.html"><b>WjFlexGrid</b></a></dd>
+<dt>模块</dt><dd>wijmo.angular</dd>
+<dt>文件</dt><dd>wijmo.angular.js</dd>
+<dt>表示</dt><dd><label style="font-weight:normal">继承成员 <input type="checkbox" ng-model="showInherited"></label></dd>
+</dl>
+<p><p>AngularJS 指令应用于 <a href="topic/wijmo.olap.PivotGrid.Class.html"><b>PivotGrid</b></a> control.</p>
+
+<p>使用 <b>wj-pivot-grid</b> 和 <b>wj-pivot-panel</b> 指令
+添加转置表格到 AngularJS 应用中。</p>
+
+<p>指令和参数名称必须使用小写字母+短线语法替代驼峰命名。 示例：</p>
+
+<p><pre>&lt;wj-pivot-panel
+    control="thePanel"
+    items-source="rawData"&gt;
+&lt;/wj-pivot-panel&gt;
+&lt;wj-pivot-grid
+    items-source="thePanel"
+    show-detail-on-double-click="false"
+    custom-context-menu="true"&gt;
+&lt;/wj-pivot-grid&gt;</pre></p>
+
+<p><b>wj-pivot-grid</b> 指令扩展了 <b>wj-flex-grid</b> 指令，并添加了如下属性:</p>
+
+<p><dl class="dl-horizontal">
+  <dt>items-source</dt>                  <dd>获取或设置 <a href="topic/wijmo.olap.PivotPanel.Class.html"><b>PivotPanel</b></a> ，使用这个 <b>PivotGrid</b> 定义了视图的显示。</dd>
+  <dt>show-detail-on-double-click</dt>   <dd>是否在双击时显示明细。</dd>
+  <dt>custom-context-menu</dt>           <dd>获取或设置自定义上下文菜单。</dd>
+  <dt>collapsible-subtotals</dt>         <dd>获取或设置是否允许用户收缩/展开合计行列。</dd>
+  <dt>center-headers-vertically</dt>     <dd>获取或设置行列标题单元格是否需要垂直居中。</dd>
+</dl></p></p>

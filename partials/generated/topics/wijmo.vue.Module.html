@@ -1,0 +1,341 @@
+<h2>模块 wijmo.vue</h2>
+<dl class="dl-horizontal">
+<dt>文件</dt><dd>wijmo.vue.js</dd>
+</dl>
+<p><p>Wijmo for  <a href="https://vuejs.org/">Vue</a> 模块。
+        这个模块提供了 Vue 组件，封装了 Wijmo 控件。
+        为了使用它，你的程序需要添加对Vue 和 Wijmo 的js 文件和css 文件的引用 。
+        为了向页面添加Wijmo 控件，需要在 HTML 页面中包含适当的标签。 比如：下面的代码向Vue 页面中添加了一个  <a href="topic/wijmo.input.InputNumber.Class.html"><b>InputNumber</b></a> 控件。</p>
+
+<p><pre>&lt;wj-input-number
+  format="c2"
+  placeholder="Sales"
+  :value.sync="view.currentItem.sales"
+  :value-changed="refreshView"
+  :min="0"
+  :max="10000"
+  :step="100"
+  :is-required="false"&gt;
+&lt;/wj-input-number&gt;</pre></p>
+
+<p>这个例子说明了以下要点：</p>
+
+<p><ol>
+  <li>
+    Wijmo 控件包含以 'wj' 起始的标签名，随后是小写的控件名称，使用短线连接。</li>
+  <li>
+  标签名匹配控件的属性和事件。</li>
+  <li></p>
+
+<p>     属性名前冒号指示该属性值应该
+     解释为JavaScript表达式(e.g. <code>:min="0"</code>).</li>
+  <li>
+   属性名就加 <code>.sync</code> 代表双向绑定。(e.g. <code>:value.sync="view.currentItem.sales"</code>).</li>
+  <li>
+  指定事件处理程序和单向属性为相同的方式。
+     (e.g. <code>:value-changed="refreshView"</code>).</li>
+</ol>
+所有的Vue组件包含一个“control” 伪属性，允许在标记中使用控件的属性，比如：</p>
+
+<p>&lt;wj-list-box style="height:150px;width:250px;"
+  :items-source="countries"
+  control="listBox"&gt;
+&lt;/wj-list-box&gt;
+&lt;p&gt;
+  selectedIndex: {{ listBox.selectedIndex }}&lt;/p&gt;
+&lt;p&gt;
+  selectedValue: {{ listBox.selectedValue }}&lt;/p&gt;
+这个标记语言设置控件的  <b>listBox</b> 属性为一个  <b>ListBox</b> 控件的实例，因此它可以在标记语言中使用。
+<b>listBox</b> 属性必须定义在 <b>data</b> 包含Vue 上下文的数据对象中，否则组件属性不会正确的更新比如：</p>
+
+<p>
+<pre>// Vue application
+var app = new Vue({
+  el: '#app',
+  data: {
+    listBox: null // will receive a reference to the ListBox control
+  }
+});</pre></p></p>
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideProperties = !hideProperties">
+<span class="glyph-collapsed" ng-show="hideProperties"></span>
+<span class="glyph-expanded" ng-hide="hideProperties"></span>
+属性
+</h3>
+</div>
+<table ng-hide="hideProperties" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-3">名称</th>
+
+<th class="col-md-2">类型</th>
+
+<th class="col-md-7">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><b>WjAutoComplete</b></td>
+      <td></td>
+      <td>Vue 组件封装了  <a href="topic/wijmo.input.AutoComplete.Class.html"><b>AutoComplete</b></a> 控件。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>WjBulletGraph</b></td>
+      <td></td>
+      <td>Vue 组件封装了 <a href="topic/wijmo.gauge.BulletGraph.Class.html"><b>BulletGraph</b></a> 控件。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>WjCalendar</b></td>
+      <td></td>
+      <td>Vue 组件封装了 <a href="topic/wijmo.input.Calendar.Class.html"><b>Calendar</b></a> 控件。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>WjColorPicker</b></td>
+      <td></td>
+      <td>Vue 组件封装了 <a href="topic/wijmo.input.ColorPicker.Class.html"><b>ColorPicker</b></a> 控件。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>WjComboBox</b></td>
+      <td></td>
+      <td>Vue 组件封装了 <a href="topic/wijmo.input.ComboBox.Class.html"><b>ComboBox</b></a> 控件。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>WjFlexChart</b></td>
+      <td></td>
+      <td><p>Vue 组件封装了 <a href="topic/wijmo.chart.FlexChart.Class.html"><b>FlexChart</b></a> 控件。 </p>
+
+<p>下面的例子展示了如何使用 Vue 标记实例化一个 <b>FlexChart</b> 控件。</p>
+
+<p><pre>&lt;wj-flex-chart
+    :items-source="data"
+    binding-x="country"
+    :header="props.header"
+    :footer="props.footer"&gt;</p>
+
+<p>    &lt;wj-flex-chart-legend :position="props.legendPosition"&gt;
+    &lt;/wj-flex-chart-legend&gt;
+    &lt;wj-flex-chart-axis wj-property="axisX" :title="props.titleX"&gt;
+    &lt;/wj-flex-chart-axis&gt;
+    &lt;wj-flex-chart-axis wj-property="axisY" :title="props.titleY"&gt;
+    &lt;/wj-flex-chart-axis&gt;</p>
+
+<p>    &lt;wj-flex-chart-series name="Sales" binding="sales"&gt;
+    &lt;/wj-flex-chart-series&gt;
+    &lt;wj-flex-chart-series name="Expenses" binding="expenses"&gt;
+    &lt;/wj-flex-chart-series&gt;
+    &lt;wj-flex-chart-series name="Downloads" binding="downloads"&gt;
+    &lt;/wj-flex-chart-series&gt;
+&lt;/wj-flex-chart&gt;</pre>
+代码设置 <b>itemsSource</b> 为一个集合，包含图表数据，<b>bindingX</b> 属性设置为数据属性，包含图表的X值。 也可以设置图表的<b>header</b> 和 <b>footer</b> 属性定义在图表上方和下放显示的标题。
+<b>wj-flex-chart-legend</b> and <b>wj-flex-chart-axis</b> 组件用来子定义控件的图例和轴。
+最终，三个 <b>wj-flex-chart-series</b> 组件用来指定图表中的数据属性。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>WjFlexChartAxis</b></td>
+      <td></td>
+      <td><a href="topic/wijmo.chart.FlexChart.Class.html"><b>FlexChart</b></a>  控件中的  <a href="topic/wijmo.chart.Axis.Class.html"><b>Axis</b></a> 组件。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>WjFlexChartLegend</b></td>
+      <td></td>
+      <td><a href="topic/wijmo.chart.FlexChart.Class.html"><b>FlexChart</b></a>  控件中的 <a href="topic/wijmo.chart.Legend.Class.html"><b>Legend</b></a> 组件。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>WjFlexChartSeries</b></td>
+      <td></td>
+      <td><a href="topic/wijmo.chart.FlexChart.Class.html"><b>FlexChart</b></a>  控件中的  a <a href="topic/wijmo.chart.Series.Class.html"><b>Series</b></a> 组件。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>WjFlexGrid</b></td>
+      <td></td>
+      <td><p>Vue 组件封装了 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a> 控件。 
+下面的例子展示了如何使用 Vue 标记实例化一个 <b>wijmo.grid.FlexGrid</b> 控件。</p>
+
+<p>
+<pre>&lt;wj-flex-grid
+  :items-source="data"&gt;
+  &lt;wj-flex-grid-column binding="name" header="Name"&gt;
+  &lt;/wj-flex-grid-column&gt;
+  &lt;wj-flex-grid-column binding="sales" header="Sales" format="c0"&gt;
+  &lt;/wj-flex-grid-column&gt;
+  &lt;wj-flex-grid-column binding="expenses" header="Expenses" format="c0"&gt;
+  &lt;/wj-flex-grid-column&gt;
+  &lt;wj-flex-grid-column binding="active" header="Active"&gt;
+  &lt;/wj-flex-grid-column&gt;
+  &lt;wj-flex-grid-column binding="date" header="Date"&gt;
+  &lt;/wj-flex-grid-column&gt;
+&lt;/wj-flex-grid&gt;</pre>
+这段代码设置 <b>itemsSource</b> 属性为一个集合，包含表单数据，然后使用<b>wj-flex-grid-column</b>组件展示列。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>WjFlexGridColumn</b></td>
+      <td></td>
+      <td>在<a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>  控件中代表 <a href="topic/wijmo.grid.Column.Class.html"><b>Column</b></a> 的组件。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>WjFormat</b></td>
+      <td></td>
+      <td><p>Vue 过滤器将国际化格式应用于日期和数字。
+        比如，下面的代码使用  <b>wj-format</b> 过滤器来格式化一个数字，作为货币值和使用 当前Wijmo culture 的短日期。:</p>
+
+<p><pre>&lt;p&gt;value: {&#8203;{ theAmount | wj-format 'c' }}&lt;/p&gt;
+&lt;p&gt;date: {&#8203;{ theDate | wj-format 'd' }}&lt;/p&gt;</pre></p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>WjInclude</b></td>
+      <td></td>
+      <td><p>Vue组件包含给定的HTML 片段。
+<b>wj-include</b> 组件接受一个 <b>src</b>  属性，指定加载的文件并包含在文档中。
+    比如：</p>
+
+<p>
+<pre>&lt;wj-popup control="modalDialog" :modal="true" :hide-trigger="None"&gt;
+  &lt;wj-include src="includes/dialog.htm"&gt;&lt;/wj-include&gt;
+&lt;/wj-popup&gt;</pre></p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>WjInputColor</b></td>
+      <td></td>
+      <td>Vue 组件封装了 <a href="topic/wijmo.input.InputColor.Class.html"><b>InputColor</b></a> 控件。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>WjInputDate</b></td>
+      <td></td>
+      <td>Vue 组件封装了 <a href="topic/wijmo.input.InputDate.Class.html"><b>InputDate</b></a> 控件。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>WjInputDateTime</b></td>
+      <td></td>
+      <td>Vue 组件封装了 <a href="topic/wijmo.input.InputDateTime.Class.html"><b>InputDateTime</b></a> 控件。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>WjInputMask</b></td>
+      <td></td>
+      <td>Vue 组件封装了 <a href="topic/wijmo.input.InputMask.Class.html"><b>InputMask</b></a> 控件。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>WjInputNumber</b></td>
+      <td></td>
+      <td>Vue 组件封装了 <a href="topic/wijmo.input.InputNumber.Class.html"><b>InputNumber</b></a> 控件。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>WjInputTime</b></td>
+      <td></td>
+      <td>Vue 组件封装了 <a href="topic/wijmo.input.InputTime.Class.html"><b>InputTime</b></a> 控件。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>WjLinearGauge</b></td>
+      <td></td>
+      <td><p>Vue 组件封装了 <a href="topic/wijmo.gauge.LinearGauge.Class.html"><b>LinearGauge</b></a> 控件。 
+下面的代码展示了如何实例化<b>wijmo.gauge.LinearGauge</b> 控件。</p>
+
+<p><pre>&lt;wj-linear-gauge
+    :min="0" :max="1000" :step="50" :is-read-only="false"
+    format="c0" :thumb-size="20"
+    :show-ranges="false"
+    :value.sync="sales"&gt;
+    &lt;wj-range wj-property="face" :thickness="0.5"&gt;
+    &lt;/wj-range&gt;
+    &lt;wj-range wj-property="pointer" :thickness="0.5"&gt;
+    &lt;/wj-range&gt;
+    &lt;wj-range :min="0" :max="333" color="red"&gt;
+    &lt;/wj-range&gt;
+    &lt;wj-range :min="333" :max="666" color="gold"&gt;
+    &lt;/wj-range&gt;
+    &lt;wj-range :min="666" :max="1000" color="green"&gt;
+    &lt;/wj-range&gt;
+&lt;/wj-linear-gauge&gt;</pre></p>
+
+<p>代码汇总通过<b>min</b>, <b>max</b>, <b>step</b>, 和 <b>isReadOnly</b> 属性来表示仪表盘的范围并允许用户来编辑它的值，
+然后，它绑定仪表盘的 <b>value</b>  属性到控制器中的<b>sales</b> 代码。</p>
+
+<p>然后它设置  <b>format</b>, <b>thumbSize</b>, 和 <b>showRanges</b>属性来定义仪表盘的外观，最终，标记设置设置 <b>face</b>  的粗细，<b>pointer</b>，ranges，extra ranges 来根据仪表盘当前值控制值范围的颜色。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>WjListBox</b></td>
+      <td></td>
+      <td>Vue 组件封装了 <a href="topic/wijmo.input.ListBox.Class.html"><b>ListBox</b></a> 控件。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>WjMenu</b></td>
+      <td></td>
+      <td>Vue 组件封装了 <a href="topic/wijmo.input.Menu.Class.html"><b>Menu</b></a> 控件。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>WjMultiSelect</b></td>
+      <td></td>
+      <td>Vue 组件封装了 <a href="topic/wijmo.input.MultiSelect.Class.html"><b>MultiSelect</b></a> 控件。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>WjPopup</b></td>
+      <td></td>
+      <td>Vue 组件封装了 <a href="topic/wijmo.input.Popup.Class.html"><b>Popup</b></a> 控件。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>WjRadialGauge</b></td>
+      <td></td>
+      <td><p>Vue 组件封装了 <a href="topic/wijmo.gauge.RadialGauge.Class.html"><b>RadialGauge</b></a> 控件。 
+下面的例子展示了如何使用Vue 标记实例化 <b>wijmo.gauge.RadialGauge</b> 。</p>
+
+<p><pre>&lt;wj-radial-gauge
+    :min="0" :max="1000" :step="50" :is-read-only="false"
+    format="c0" :thumb-size="12" :show-text="Value"
+    :show-ranges="false"
+    :value.sync="sales"&gt;
+    &lt;wj-range wj-property="face" :thickness="0.5"&gt;
+    &lt;/wj-range&gt;
+    &lt;wj-range wj-property="pointer" :thickness="0.5"&gt;
+    &lt;/wj-range&gt;
+    &lt;wj-range :min="0" :max="333" color="red"&gt;
+    &lt;/wj-range&gt;
+    &lt;wj-range :min="333" :max="666" color="gold"&gt;
+    &lt;/wj-range&gt;
+    &lt;wj-range :min="666" :max="1000" color="green"&gt;
+    &lt;/wj-range&gt;
+&lt;/wj-radial-gauge&gt;</pre>
+代码通过  <b>min</b>, <b>max</b>, <b>step</b>, 和 <b>isReadOnly</b> 属性来定义仪表盘的范围，并允许用户编辑它的值。
+然后，它绑定仪表盘的 <b>value</b>  属性到控制器中的<b>sales</b> 代码。</p>
+
+<p>然后它设置  <b>format</b>, <b>thumbSize</b>, 和 <b>showRanges</b>属性来定义仪表盘的外观，最终，标记设置设置 <b>face</b>  的粗细，<b>pointer</b>，ranges，extra ranges 来根据仪表盘当前值控制值范围的颜色。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>WjRange</b></td>
+      <td></td>
+      <td><a href="topic/wijmo.gauge.Gauge.Class.html"><b>Gauge</b></a> 控件中的  <a href="topic/wijmo.gauge.Range.Class.html"><b>Range</b></a> 组件。</td>
+    </tr>
+</tbody>
+</table>
+</div>
+

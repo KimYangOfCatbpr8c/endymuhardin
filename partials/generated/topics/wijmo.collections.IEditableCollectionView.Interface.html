@@ -1,0 +1,159 @@
+<h2>IEditableCollectionView 类</h2>
+<dl class="dl-horizontal">
+<dt>实现</dt><dd><a href="topic/wijmo.collections.ICollectionView.Interface.html"><b>ICollectionView</b></a></dd>
+<dt>模块</dt><dd>wijmo.collections</dd>
+<dt>文件</dt><dd>wijmo.js</dd>
+</dl>
+<p>定义扩展的<b>ICollectionView以提供具有编辑功能的方法和属性</b>。</p>
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideProperties = !hideProperties">
+<span class="glyph-collapsed" ng-show="hideProperties"></span>
+<span class="glyph-expanded" ng-hide="hideProperties"></span>
+属性
+</h3>
+</div>
+<table ng-hide="hideProperties" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-3">名称</th>
+
+<th class="col-md-2">类型</th>
+
+<th class="col-md-7">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td><span class="badge" title="字段">F</span></td>
+      <td><b>canAddNew</b></td>
+      <td><b>boolean</b></td>
+      <td>获取一个值，该值指示是否可将新项添加到集合中。</td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="字段">F</span></td>
+      <td><b>canCancelEdit</b></td>
+      <td><b>boolean</b></td>
+      <td>获取一个值，该值指示集合视图是否可以放弃更改和恢复编辑对象的原始值。</td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="字段">F</span></td>
+      <td><b>canRemove</b></td>
+      <td><b>boolean</b></td>
+      <td>获取一个值，该值指示是否可从集合中删除项目。</td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="字段">F</span></td>
+      <td><b>currentAddItem</b></td>
+      <td><b>any</b></td>
+      <td>获取在当前添加事务处理期间添加的项目。</td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="字段">F</span></td>
+      <td><b>currentEditItem</b></td>
+      <td><b>any</b></td>
+      <td>获取在当前编辑事务中编辑的项目。</td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="字段">F</span></td>
+      <td><b>isAddingNew</b></td>
+      <td><b>boolean</b></td>
+      <td>获取一个值，指示是否添加事务正在进行中。</td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="字段">F</span></td>
+      <td><b>isEditingItem</b></td>
+      <td><b>boolean</b></td>
+      <td>获取一个值，这个值指示编辑事务是否正在进行中。</td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideMethods = !hideMethods">
+<span class="glyph-collapsed" ng-show="hideMethods"></span>
+<span class="glyph-expanded" ng-hide="hideMethods"></span>
+方法
+</h3>
+</div>
+<table ng-hide="hideMethods" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-2">名称</th>
+
+<th class="col-md-5">参数</th>
+
+<th class="col-md-5">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><b>addNew</b>&#8203;(): <b>any</b></td>
+      <td></td>
+      <td>将新项目添加到集合中。<br/><br/><b>返回值</b> 被添加到集合中的项。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>cancelEdit</b>&#8203;()</td>
+      <td></td>
+      <td>结束当前编辑事务，如果可能的话，将原始值还原为该项目。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>cancelNew</b>&#8203;()</td>
+      <td></td>
+      <td>结束当前事务将等待添加新项目。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>commitEdit</b>&#8203;()</td>
+      <td></td>
+      <td>结束当前的编辑事务，并保存更改的更改。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>commitNew</b>&#8203;()</td>
+      <td></td>
+      <td>结束当前的添加事务，并保存正在等待的新项目。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>editItem</b>&#8203;(item)</td>
+      <td><p>
+<b>item</b> (<b>any</b>): 项目编辑。<br/></p>
+</td>
+      <td>开始指定项目的编辑事务。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>remove</b>&#8203;(item)</td>
+      <td><p>
+<b>item</b> (<b>any</b>): 从集合中删除项目。<br/></p>
+</td>
+      <td>从集合中移除指定的项。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>removeAt</b>&#8203;(index)</td>
+      <td><p>
+<b>index</b> (<b>number</b>): 从集合中移除项目的索引。<br/></p>
+</td>
+      <td>从集合中移除指定索引处的项。</td>
+    </tr>
+</tbody>
+</table>
+</div>
+

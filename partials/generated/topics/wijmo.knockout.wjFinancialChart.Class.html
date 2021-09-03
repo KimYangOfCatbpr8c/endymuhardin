@@ -1,0 +1,26 @@
+<h2>wjFinancialChart 类</h2>
+<dl class="dl-horizontal">
+<dt>基类</dt><dd><b>WjFlexChartBaseBinding</b></dd>
+<dt>模块</dt><dd>wijmo.knockout</dd>
+<dt>文件</dt><dd>wijmo.knockout.js</dd>
+<dt>表示</dt><dd><label style="font-weight:normal">继承成员 <input type="checkbox" ng-model="showInherited"></label></dd>
+</dl>
+<p><p>KnockoutJS 绑定用于 <a href="topic/wijmo.chart.finance.FinancialChart.Class.html"><b>FinancialChart</b></a> 控件。 </p>
+
+<p>使用 <b>wjFinancialChart</b> 绑定向你的 KnockoutJS 应用添加 <b>FinancialChart</b> 控件，比如：</p>
+
+<p><pre>&lt;p&gt;这是一个 FinancialChart 控件:&lt;/p&gt;
+&lt;div data-bind="wjFinancialChart: { itemsSource: data, chartType: 'Candlestick' }"&gt;
+    &lt;div data-bind="wjFlexChartLegend : { 
+        position: 'Top' }"&gt;
+    &lt;/div&gt;
+    &lt;div data-bind="wjFinancialChartSeries: {
+         name: 'close', 
+        binding: 'high,low,open,close' }"&gt;
+    &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</pre>
+<b>wjFinancialChart</b> 绑定可能包含下面的子绑定：
+<a href="topic/wijmo.knockout.wjFlexChartAxis.Class.html"><b>wjFlexChartAxis</b></a>, <a href="topic/wijmo.knockout.wjFinancialChartSeries.Class.html"><b>wjFinancialChartSeries</b></a>, <a href="topic/wijmo.knockout.wjFlexChartLegend.Class.html"><b>wjFlexChartLegend</b></a>.
+ <b>wjFinancialChart</b>  绑定支持 <b>FinancialChart</b> 控件的所有的读写属性和事件。
+ 并且支持额外的   <b>tooltipContent</b>   属性，为 <b>FinancialChart.tooltip.content</b>  属性分配一个值。 <b>selection</b> 属性支持双向的数据绑定。</p></p>

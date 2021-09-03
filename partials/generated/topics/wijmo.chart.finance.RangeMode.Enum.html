@@ -1,0 +1,47 @@
+<h2>RangeMode 枚举</h2>
+<dl class="dl-horizontal">
+  <dt>模块</dt><dd>wijmo.chart.finance</dd>
+  <dt>文件</dt><dd>wijmo.chart.finance.js</dd>
+</dl>
+<p>指定 Kagi 以及 Renko 图表类型的单位。</p>
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideValues = !hideValues">
+<span class="glyph-collapsed" ng-show="hideValues"></span>
+<span class="glyph-expanded" ng-hide="hideValues"></span>
+值
+</h3>
+</div>
+<table ng-hide="hideValues" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th>名称</th>
+
+<th>描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><b>ATR</b></td>
+      <td>为 Kagi 图表的转回金额或者 Renko 图表的 box 尺寸使用一个平均真实范围值。当使用了 ATR 时，转回金额或者 box 尺寸，这些图表的选项必须是一个整数，并且将会被用作 ATR 计算的周期。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>Fixed</b></td>
+      <td>为 Kagi 图表的转回金额或者 Renko 图表的 box 尺寸使用一个固定的，正数的数值。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>Percentage</b></td>
+      <td>为 Kagi 图表的转回金额使用一个百分比。RangeMode.Percentage 当前不被 Renko 图表类型支持。</td>
+    </tr>
+</tbody>
+</table>
+</div>
+

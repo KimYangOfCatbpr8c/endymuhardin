@@ -1,0 +1,358 @@
+<h2>模块 wijmo.chart</h2>
+<dl class="dl-horizontal">
+<dt>文件</dt><dd>wijmo.chart.js</dd>
+</dl>
+<p><p>定义 <a href="topic/wijmo.chart.FlexChart.Class.html"><b>FlexChart</b></a> 控件及其相关类。</p>
+
+<p>以下示例创建了一个 <b>FlexChart</b> 并将其绑定至一个数据数组。
+该图表具有三个系列，每一个系列关联到包含在数据源数组中对象的一个属性。
+该示例中的最后一个系列通过
+<a href="http://wijmo.com/5/docs/topic/wijmo.chart.ChartType.Enum.html" 
+target="_blank">chartType 属性</a> 覆盖了其他系列使用的默认图表类型。</p>
+
+<p><a href="http://jsfiddle.net/Wijmo5/6GB66/" target="_blank" class="btn btn-info">
+  <img src="images/fiddle.png"/>
+  在线示例
+</a>
+</p></p>
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideClasses = !hideClasses">
+<span class="glyph-collapsed" ng-show="hideClasses"></span>
+<span class="glyph-expanded" ng-hide="hideClasses"></span>
+类
+</h3>
+</div>
+<table ng-hide="hideClasses" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th>名称</th>
+
+<th>描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.chart.Axis.Class.html"><b>Axis</b></a></td>
+      <td>表示图表中的一个坐标轴。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.chart.AxisCollection.Class.html"><b>AxisCollection</b></a></td>
+      <td>表示位于 <a href="topic/wijmo.chart.FlexChart.Class.html"><b>FlexChart</b></a> 中的 <a href="topic/wijmo.chart.Axis.Class.html"><b>Axis</b></a> 对象的集合。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.chart.ChartTooltip.Class.html"><b>ChartTooltip</b></a></td>
+      <td>扩展自 <a href="topic/wijmo.Tooltip.Class.html"><b>Tooltip</b></a> 类，向图表提供工具提示。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.chart.DataLabel.Class.html"><b>DataLabel</b></a></td>
+      <td>FlexChart 的点数据标签。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.chart.DataLabelBase.Class.html"><b>DataLabelBase</b></a></td>
+      <td>表示 <a href="topic/wijmo.chart.DataLabel.Class.html"><b>DataLabel</b></a> 以及 <a href="topic/wijmo.chart.PieDataLabel.Class.html"><b>PieDataLabel</b></a> 的基础抽象类。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.chart.DataLabelRenderEventArgs.Class.html"><b>DataLabelRenderEventArgs</b></a></td>
+      <td>为 <a href="topic/wijmo.chart.DataLabel.Class.html"><b>DataLabel</b></a> 绘制事件提供事件参数。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.chart.DataPoint.Class.html"><b>DataPoint</b></a></td>
+      <td><p>表示一个数据点（带有 x 和 y 坐标轴）的类。</p>
+
+<p>X 和 Y 轴可以指定为一个数值或者一个日期对象（基于时间的数据）。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.chart.FlexChart.Class.html"><b>FlexChart</b></a></td>
+      <td><p><b>FlexChart</b> 提供了一个强大且灵活的方式可视化显示数据。</p>
+
+<p>您可以使用 <b>FlexChart</b> 控件创建以不同格式显示数据的图表，包括条形图，折线图，符号，气泡图以及其他。</p>
+
+<p>为使用 <b>FlexChart</b> 控件，须设置 <b>itemsSource</b> 属性为一个包含数据的数组，接下来向 <b>series</b> 属性添加一个或更多的 <a href="topic/wijmo.chart.Series.Class.html"><b>Series</b></a> 对象。</p>
+
+<p>使用 <b>chartType</b> 属性定义全部系列使用的 <a href="topic/wijmo.chart.ChartType.Enum.html"><b>ChartType</b></a>。
+您可以通过设置每一个 <b>Series</b> 对象上的 <b>chartType</b> 属性覆盖该默认设置的图表类型。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.chart.FlexChartBase.Class.html"><b>FlexChartBase</b></a></td>
+      <td>FlexChart 以及 FlexPie 派生自的基类 <b>FlexChartBase</b> 控件。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.chart.FlexChartCore.Class.html"><b>FlexChartCore</b></a></td>
+      <td><a href="topic/wijmo.chart.FlexChart.Class.html"><b>FlexChart</b></a> 核心的图表控件。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.chart.FlexPie.Class.html"><b>FlexPie</b></a></td>
+      <td><p><b>FlexPie</b> 控件提供了切片可选中的饼图和环形图。</p>
+
+<p>        使用 <b>FlexPie</b> 控件，设置 <b>itemsSource</b> 属性为一个包含数据的数组，
+        并使用 <b>binding</b> 以及 <b>bindingName</b> 属性设置包含项目值和名称的属性。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.chart.HitTestInfo.Class.html"><b>HitTestInfo</b></a></td>
+      <td>包含指定的页面坐标位置处，<a href="topic/wijmo.chart.FlexChart.Class.html"><b>FlexChart</b></a> 的某个部分的信息。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.chart.Legend.Class.html"><b>Legend</b></a></td>
+      <td>表示图表图例。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.chart.LineMarker.Class.html"><b>LineMarker</b></a></td>
+      <td><p>表示 FlexChart 的 LineMarker 的一个扩展。</p>
+
+<p>LineMarker 由一个显示数据点的值的一个文本区域，一个可选的水平或垂直线（或者两者同时显示，以达到十字线效果）组成，位于绘图区域上方。
+它可以是静态的（interaction = None)，或者是跟随鼠标或者触摸点（interaction = move），或者当用户拖拽线形时移动（interaction = Drag）。
+例如：
+<pre>
+  // 创建一个可交互的标记，显示水平线和 Y 值
+  var lm = new wijmo.chart.LineMarker($scope.ctx.chart, {
+      lines: wijmo.chart.LineMarkerLines.Horizontal,
+      interaction: wijmo.chart.LineMarkerInteraction.Move,
+      alignment : wijmo.chart.LineMarkerAlignment.Top
+  });
+  lm.content = function (ht) {
+      // 显示 Y 值
+      return lm.y.toFixed(2);
+  }
+</pre></p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.chart.Palettes.Class.html"><b>Palettes</b></a></td>
+      <td><p>以下为图表 <a href="topic/wijmo.chart.Series.Class.html"><b>Series</b></a> 对象准备的预定义的调色板。</p>
+
+<p>为创建自定义的调色板，可以指定一组字符串或者 rgba 值的数组。</p>
+
+<p>您可以为 <a href="topic/wijmo.chart.FlexChart.Class.html"><b>FlexChart</b></a> 以及 <a href="topic/wijmo.chart.FlexPie.Class.html"><b>FlexPie</b></a> 控件指定调色板。
+例如：</p>
+
+<p><pre>chart.palette = Palettes.light;</pre></p>
+
+<p>有以下预定义调色板：
+<ul>
+  <li>standard (default)</li>
+  <li>cocoa</li>
+  <li>coral</li>
+  <li>dark</li>
+  <li>highcontrast</li>
+  <li>light</li>
+  <li>midnight</li>
+  <li>minimal</li>
+  <li>modern</li>
+  <li>organic</li>
+  <li>slate</li>
+</ul></p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.chart.PieDataLabel.Class.html"><b>PieDataLabel</b></a></td>
+      <td>FlexPie 的点数据标签。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.chart.PlotArea.Class.html"><b>PlotArea</b></a></td>
+      <td><p>表示图表中的一个绘图区域。</p>
+
+<p>图表可以具有多个绘图区域以及多组坐标轴。
+通过 <b>Axis.plotArea</b> 属性向绘图区添加坐标轴。例如：
+<pre>
+ // 创建一个绘图区
+ var pa = new wijmo.chart.PlotArea();
+ pa.row = 1;
+ chart.plotAreas.push(pa);
+ // 创建辅助 Y 轴
+ var ay2 = new wijmo.chart.Axis(wijmo.chart.Position.Left);
+ ay2.plotArea = pa; // 将坐标轴关联到绘图区
+ chart.axes.push(ay2);
+ // 沿 Y 轴绘制第一个系列
+ chart.series[0].axisY = ay2;
+</pre></p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.chart.PlotAreaCollection.Class.html"><b>PlotAreaCollection</b></a></td>
+      <td>表示 <a href="topic/wijmo.chart.FlexChartCore.Class.html"><b>FlexChartCore</b></a> 中的 <a href="topic/wijmo.chart.PlotArea.Class.html"><b>PlotArea</b></a> 对象集合。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.chart.RenderEventArgs.Class.html"><b>RenderEventArgs</b></a></td>
+      <td>为 <a href="topic/wijmo.chart.Series.Class.html"><b>Series</b></a> 事件提供事件参数。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.chart.Series.Class.html"><b>Series</b></a></td>
+      <td><p>表示显示在图表中的一系列数据点。</p>
+
+<p><b>Series</b> 类支持全部的基本图表类型。您可以为添加到 <a href="topic/wijmo.chart.FlexChart.Class.html"><b>FlexChart</b></a> 系列集合中的每一个 <b>Series</b> 对象定义一个不同的图表类型。这将覆盖该集合中为全部 <b>Series</b> 对象设置的默认的 <b>chartType</b> 属性。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.chart.SeriesBase.Class.html"><b>SeriesBase</b></a></td>
+      <td>表示显示在图表中的一系列数据点。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.chart.SeriesEventArgs.Class.html"><b>SeriesEventArgs</b></a></td>
+      <td>为 <a href="topic/wijmo.chart.Series.Class.html"><b>Series</b></a> 事件提供事件参数。</td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideInterfaces = !hideInterfaces">
+<span class="glyph-collapsed" ng-show="hideInterfaces"></span>
+<span class="glyph-expanded" ng-hide="hideInterfaces"></span>
+接口
+</h3>
+</div>
+<table ng-hide="hideInterfaces" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th>名称</th>
+
+<th>描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.chart.IRenderEngine.Interface.html"><b>IRenderEngine</b></a></td>
+      <td>表示一个执行基本的绘图程序的呈现引擎。</td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideEnumerations = !hideEnumerations">
+<span class="glyph-collapsed" ng-show="hideEnumerations"></span>
+<span class="glyph-expanded" ng-hide="hideEnumerations"></span>
+枚举
+</h3>
+</div>
+<table ng-hide="hideEnumerations" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th>名称</th>
+
+<th>描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.chart.AxisType.Enum.html"><b>AxisType</b></a></td>
+      <td>指定坐标轴类型。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.chart.ChartElement.Enum.html"><b>ChartElement</b></a></td>
+      <td>枚举可以被 hitTest 方法查找到的图表元素的类型。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.chart.ChartType.Enum.html"><b>ChartType</b></a></td>
+      <td>指定图表类型。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.chart.ImageFormat.Enum.html"><b>ImageFormat</b></a></td>
+      <td>指定图像的格式，通过 base64 编码的二进制数据。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.chart.LabelPosition.Enum.html"><b>LabelPosition</b></a></td>
+      <td>指定图表中数据标签的位置。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.chart.LineMarkerAlignment.Enum.html"><b>LineMarkerAlignment</b></a></td>
+      <td>指定 LineMarker 的对齐方式。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.chart.LineMarkerInteraction.Enum.html"><b>LineMarkerInteraction</b></a></td>
+      <td>指定 LineMarker 如何和用户交互。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.chart.LineMarkerLines.Enum.html"><b>LineMarkerLines</b></a></td>
+      <td>指定 LineMarker 的线形类型。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.chart.Marker.Enum.html"><b>Marker</b></a></td>
+      <td>指定 <b>symbolMarker</b> 属性使用的标记的类型。
+应用到 Scatter，LineSymbols，以及 SplineSymbols 图表类型。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.chart.OverlappingLabels.Enum.html"><b>OverlappingLabels</b></a></td>
+      <td>指定如何处理层叠的标签。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.chart.PieLabelPosition.Enum.html"><b>PieLabelPosition</b></a></td>
+      <td>指定饼图上数据点的位置。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.chart.Position.Enum.html"><b>Position</b></a></td>
+      <td>指定图表上坐标轴或者图例区域的位置。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.chart.SelectionMode.Enum.html"><b>SelectionMode</b></a></td>
+      <td>指定当用户单击图表时，什么内容被选中。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.chart.SeriesVisibility.Enum.html"><b>SeriesVisibility</b></a></td>
+      <td>指定系列是否可见以及显示的位置。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.chart.Stacking.Enum.html"><b>Stacking</b></a></td>
+      <td>指定是否以及如何将图表的数据值堆叠。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.chart.TickMark.Enum.html"><b>TickMark</b></a></td>
+      <td>指定是否以及如何显示坐标轴刻度标记。</td>
+    </tr>
+</tbody>
+</table>
+</div>
+

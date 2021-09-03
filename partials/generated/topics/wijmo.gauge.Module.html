@@ -1,0 +1,152 @@
+<h2>模块 wijmo.gauge</h2>
+<dl class="dl-horizontal">
+<dt>文件</dt><dd>wijmo.gauge.js</dd>
+</dl>
+<p><p>定义 <a href="topic/wijmo.gauge.RadialGauge.Class.html"><b>RadialGauge</b></a>，<a href="topic/wijmo.gauge.LinearGauge.Class.html"><b>LinearGauge</b></a>，以及 <a href="topic/wijmo.gauge.BulletGraph.Class.html"><b>BulletGraph</b></a> 控件。</p>
+
+<p>和其他诸多仪表控件不同，Wijmo 仪表专注于展示的数据，
+几乎没有多余的颜色和标记元素。它们被设计为易于使用
+和读取，尤其是在小屏幕设备上。</p>
+
+<p>Wijmo 仪表由 <a href="topic/wijmo.gauge.Range.Class.html"><b>Range</b></a> 对象组成。每一个 Wijmo 仪表
+至少具有两个范围：“face” 和 “pointer”。</p>
+
+<p><ul><li>
+“face” 表示仪表的背景。面板范围的“min”和“max”属性关联到仪表控件的“min”和“max”属性，
+它们将限制着仪表可以显示的数值范围。
+</li><li>
+“pointer”是一个指示仪表当前值的范围。该 pointer 范围的“max”属性关联到仪表的“value”
+属性。
+</li></ul></p>
+
+<p>除了这两个特殊的范围之外，仪表还可以具有一些其他的额外范围，这些范围将添加到
+“ranges”集合。这些额外的范围可用来做两类事情：</p>
+
+<p><ul><li>
+默认情况下，额外的范围显示为仪表背景的一部分。通过这种方式您可以在图表上显示
+不同的区域，比如说“good”，“average”，“bad”。
+</li><li>
+如果您设置了仪表的“showRanges”属性为 false，则额外的范围将不会显示。取而代之，它们将用来
+自动地基于当前值设置“pointer”的颜色。
+</li></ul></p></p>
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideClasses = !hideClasses">
+<span class="glyph-collapsed" ng-show="hideClasses"></span>
+<span class="glyph-expanded" ng-hide="hideClasses"></span>
+类
+</h3>
+</div>
+<table ng-hide="hideClasses" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th>名称</th>
+
+<th>描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.gauge.BulletGraph.Class.html"><b>BulletGraph</b></a></td>
+      <td><p><b>BulletGraph</b> 是线性图表的一种，特别设计用作 dashboard 中的使用场景。
+      它显示一个单独的关键指标，随同一个测量指标，以及一个定量的范围，以便可以立即测定出
+      该测量值是 好的，不好的或者其他一些状态。</p>
+
+<p>Bullet Graphs 是由 dashboard 设计大师 Stephen Few 创建并推广。您可以在
+<a href="http://en.wikipedia.org/wiki/Bullet_graph">维基百科</a>上找到更多的详细介绍和示例。</p>
+
+<p><a href="http://jsfiddle.net/Wijmo5/8uxb1vwf/" target="_blank" class="btn btn-info">
+  <img src="images/fiddle.png"/>
+  在线示例
+</a>
+</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.gauge.Gauge.Class.html"><b>Gauge</b></a></td>
+      <td>Wijmo 仪表控件的基类（抽象类）。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.gauge.LinearGauge.Class.html"><b>LinearGauge</b></a></td>
+      <td><p><b>LinearGauge</b> 显示了一个线性的缩放，具有一个表示单一值的指示器，可选地可以有一些范围可以表示参考值。</p>
+
+<p>如果您设置了仪表的 <b>isReadOnly</b> 属性为 false，则用户可以通过单击仪表编辑值。</p>
+
+<p><a href="http://jsfiddle.net/Wijmo5/t842jozb/" target="_blank" class="btn btn-info">
+  <img src="images/fiddle.png"/>
+  在线示例
+</a>
+</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.gauge.RadialGauge.Class.html"><b>RadialGauge</b></a></td>
+      <td><p><b>RadialGauge</b> 显示了一个圆形的缩放，具有一个表示单一值的指示器，可选地可以有一些范围可以表示参考值。</p>
+
+<p>如果您设置了仪表的 <b>isReadOnly</b> 属性为 false，则用户可以通过单击仪表编辑值。
+<a href="http://jsfiddle.net/Wijmo5/7ec2144u/" target="_blank" class="btn btn-info">
+  <img src="images/fiddle.png"/>
+  在线示例
+</a>
+</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.gauge.Range.Class.html"><b>Range</b></a></td>
+      <td><p>定义 <a href="topic/wijmo.gauge.Gauge.Class.html"><b>Gauge</b></a> 控件所使用的范围。</p>
+
+<p><b>Range</b> 对象具有 <b>min</b> 以及 <b>max</b> 属性以定义该范围的领地，同时还提供了
+<b>color</b> 和 <b>thickness</b> 属性，以定义该范围的外观。</p>
+
+<p>每一个 <b>Gauge</b> 控件至少具有两个范围：
+‘face’ 定义了改仪表的最小值和最大值，而‘pointer’显示该仪表的当前值。</p>
+
+<p>除了内建的范围之外，仪表也可以具有额外的范围，这些范围用来显示重要的区域范围（比如说，过低，中等，过高值）。</p></td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideEnumerations = !hideEnumerations">
+<span class="glyph-collapsed" ng-show="hideEnumerations"></span>
+<span class="glyph-expanded" ng-hide="hideEnumerations"></span>
+枚举
+</h3>
+</div>
+<table ng-hide="hideEnumerations" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th>名称</th>
+
+<th>描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.gauge.GaugeDirection.Enum.html"><b>GaugeDirection</b></a></td>
+      <td>表示 <a href="topic/wijmo.gauge.LinearGauge.Class.html"><b>LinearGauge</b></a> 指针增长的方向。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.gauge.ShowText.Enum.html"><b>ShowText</b></a></td>
+      <td>指定哪一个值将作为文本显示。</td>
+    </tr>
+</tbody>
+</table>
+</div>
+

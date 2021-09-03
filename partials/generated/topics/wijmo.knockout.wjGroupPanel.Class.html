@@ -1,0 +1,37 @@
+<h2>wjGroupPanel 类</h2>
+<dl class="dl-horizontal">
+<dt>基类</dt><dd><b>WjBinding</b></dd>
+<dt>模块</dt><dd>wijmo.knockout</dd>
+<dt>文件</dt><dd>wijmo.knockout.js</dd>
+<dt>表示</dt><dd><label style="font-weight:normal">继承成员 <input type="checkbox" ng-model="showInherited"></label></dd>
+</dl>
+<p><p>使用 KnockoutJS 绑定 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a> <a href="topic/wijmo.grid.grouppanel.GroupPanel.Class.html"><b>GroupPanel</b></a> 控件。</p>
+
+<p>使用 <b>wjGroupPanel</b> 绑定需要使用 <b>grid</b> 属性连接到 <b>FlexGrid</b> 控件，示例如下：</p>
+
+<p><pre>&lt;p&gt;这是一个带有 GroupPanel 的FlexGrid 控件。&lt;/p&gt;
+&nbsp;
+&lt;div data-bind="wjGroupPanel: { grid: flex(), placeholder: '将列拖动到这里创建组。' }"&gt;&lt;/div&gt;
+&nbsp;
+&lt;div data-bind="wjFlexGrid: { control: flex, itemsSource: data }"&gt;
+    &lt;div data-bind="wjFlexGridColumn: { 
+        header: 'Country', 
+        binding: 'country', 
+        width: '*' }"&gt;
+    &lt;/div&gt;
+    &lt;div data-bind="wjFlexGridColumn: { 
+        header: 'Date', 
+        binding: 'date' }"&gt;
+    &lt;/div&gt;
+    &lt;div data-bind="wjFlexGridColumn: { 
+        header: 'Revenue', 
+        binding: 'amount', 
+        format: 'n0' }"&gt;
+    &lt;/div&gt;
+    &lt;div data-bind="wjFlexGridColumn: { 
+        header: 'Active', 
+        binding: 'active' }"&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</pre></p>
+
+<p><b>wjGroupPanel</b> 支持 <b>GroupPanel</b> 类的所有可读写属性及事件。</p></p>

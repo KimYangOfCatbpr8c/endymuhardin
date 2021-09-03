@@ -1,0 +1,73 @@
+<h2>模块 wijmo/wijmo.angular2.chart.finance</h2>
+<dl class="dl-horizontal">
+<dt>文件</dt><dd>wijmo.angular2.js</dd>
+</dl>
+<p><p>包含 <b>wijmo.chart.finance</b> 模块的 Angular 2 组件。 </p>
+
+<p><b>wijmo.angular2.chart.finance</b> 是一个外部的 TypeScript 模块，可以通过其环境模块名称导入到您的代码中。例如：</p>
+
+<p><pre>import * as wjFinance from 'wijmo/wijmo.angular2.chart.finance';
+&nbsp;
+&#64;Component({
+    directives: [wjFinance.WjFinancialChart, wjFinance.WjFinancialChartSeries],
+    template: `
+      &lt;wj-financial-chart [itemsSource]="data" [bindingX]="'x'"&gt;
+          &lt;wj-financial-chart-series [binding]="'y'"&gt;&lt;/wj-financial-chart-series&gt;
+      &lt;/wj-financial-chart&gt;`,
+    selector: 'my-cmp',
+})
+export class MyCmp {
+    data: any[];
+}</pre></p></p>
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideClasses = !hideClasses">
+<span class="glyph-collapsed" ng-show="hideClasses"></span>
+<span class="glyph-expanded" ng-hide="hideClasses"></span>
+类
+</h3>
+</div>
+<table ng-hide="hideClasses" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th>名称</th>
+
+<th>描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo-wijmo.angular2.chart.finance.WjFinancialChart.Class.html"><b>WjFinancialChart</b></a></td>
+      <td><p><b>FinancialChart控件对应的</b> Angular 2 组件。</p>
+
+<p>使用 <b>wj-financial-chart</b> 组件添加 <b>FinancialChart</b> 控件至您的 Angular 2 应用程序中。关于 Angular 2 标记语法的更多细节，请参见
+<a href="static/angular2Markup.html">Angular 2 标记</a>。 </p>
+
+<p><b>WjFinancialChart</b> 组件继承自 <b>FinancialChart</b> 控件，因此继承了其全部的属性，事件和方法。</p>
+
+<p><b>wj-financial-chart</b> 组件可以包含 <a href="topic/wijmo-wijmo.angular2.chart.WjFlexChartAxis.Class.html"><b>WjFlexChartAxis</b></a>， 
+<a href="topic/wijmo-wijmo.angular2.chart.WjFlexChartLegend.Class.html"><b>WjFlexChartLegend</b></a>，<a href="topic/wijmo-wijmo.angular2.chart.finance.WjFinancialChartSeries.Class.html"><b>WjFinancialChartSeries</b></a> 
+子组件，同时可以包含全部的来自于 <b>wijmo.angular2.chart.finance.analytics</b> 模块的组件。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo-wijmo.angular2.chart.finance.WjFinancialChartSeries.Class.html"><b>WjFinancialChartSeries</b></a></td>
+      <td><p><a href="topic/wijmo-wijmo.angular2.chart.finance.WjFinancialChart.Class.html"><b>WjFinancialChart</b></a> <a href="topic/wijmo.chart.finance.FinancialSeries.Class.html"><b>FinancialSeries</b></a> 对象对应的 Angular 2 组件。</p>
+
+<p><b>wj-financial-chart-series</b> 组件必须包含在一个 <a href="topic/wijmo-wijmo.angular2.chart.finance.WjFinancialChart.Class.html"><b>WjFinancialChart</b></a> 组件内部。</p>
+
+<p>使用 <b>wj-financial-chart-series</b> 组件添加 <b>FinancialSeries</b> 对象至您的 Angular 2 应用程序中。关于 Angular 2 标记语法的更多细节，请参见
+<a href="static/angular2Markup.html">Angular 2 标记</a>。</p>
+
+<p><b>WjFinancialChartSeries</b> 组件继承自 <b>FinancialSeries</b> 类，因此继承了其全部的属性，事件和方法。</p></td>
+    </tr>
+</tbody>
+</table>
+</div>
+

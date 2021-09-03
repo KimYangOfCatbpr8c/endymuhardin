@@ -1,0 +1,153 @@
+<h2>模块 wijmo.olap</h2>
+<dl class="dl-horizontal">
+<dt>文件</dt><dd>wijmo.olap.js</dd>
+</dl>
+<p><p>包含提供了 OLAP 功能的组件，比如说 pivot table 以及图表。 </p>
+
+<p><a href="topic/wijmo.olap.PivotEngine.Class.html"><b>PivotEngine</b></a> 类负责摘要原始数据至 pivot 视图。</p>
+
+<p><a href="topic/wijmo.olap.PivotPanel.Class.html"><b>PivotPanel</b></a> 控件提供通过拖拽字段至视图列表并编辑其属性的方式编辑 pivot 视图的 UI 界面。</p>
+
+<p><a href="topic/wijmo.olap.PivotGrid.Class.html"><b>PivotGrid</b></a> 控件扩展了 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a> 以显示具有可以折叠收起的行和列分组的 Pivot Table。</p>
+
+<p><a href="topic/wijmo.olap.PivotChart.Class.html"><b>PivotChart</b></a> 控件提供了 pivot table 的可视化展示，具有分级的坐标轴。</p></p>
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideClasses = !hideClasses">
+<span class="glyph-collapsed" ng-show="hideClasses"></span>
+<span class="glyph-expanded" ng-hide="hideClasses"></span>
+类
+</h3>
+</div>
+<table ng-hide="hideClasses" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th>名称</th>
+
+<th>描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.olap.DetailDialog.Class.html"><b>DetailDialog</b></a></td>
+      <td>表示一个用来显示一个表单单元格详细内容的对话框。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.olap.PivotChart.Class.html"><b>PivotChart</b></a></td>
+      <td><p>提供 <b>olap</b> pivot table 的可视化表示。</p>
+
+<p>为使用该控件，需设置其 <b>itemsSource</b> 属性为一个 <a href="topic/wijmo.olap.PivotPanel.Class.html"><b>PivotPanel</b></a> 控件或者一个 <a href="topic/wijmo.olap.PivotEngine.Class.html"><b>PivotEngine</b></a> 实例。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.olap.PivotCollectionView.Class.html"><b>PivotCollectionView</b></a></td>
+      <td>扩展 <a href="topic/wijmo.collections.CollectionView.Class.html"><b>CollectionView</b></a> 类，以防止小计行在排序时位置发生变化。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.olap.PivotEngine.Class.html"><b>PivotEngine</b></a></td>
+      <td><p>提供一个交互式转换常规数据表至 Olap pivot table 的用户界面。</p>
+
+<p>按照字段列表，以表格形式列出位于 <b>itemsSource</b> 集合中的数据并且
+创建包含汇总数据的 <b>pivotView</b> 集合。</p>
+
+<p>Pivot table 将数据分组成一个或多个维度。不同的维度由表格中的行和列表示，数据保存在表格中的单元格中。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.olap.PivotField.Class.html"><b>PivotField</b></a></td>
+      <td>表示位于 wijmo.olap 数据源中的一个项目的属性。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.olap.PivotFieldCollection.Class.html"><b>PivotFieldCollection</b></a></td>
+      <td>表示一个 <a href="topic/wijmo.olap.PivotField.Class.html"><b>PivotField</b></a> 对象的集合。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.olap.PivotFieldEditor.Class.html"><b>PivotFieldEditor</b></a></td>
+      <td><a href="topic/wijmo.olap.PivotField.Class.html"><b>PivotField</b></a> 对象的编辑器。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.olap.PivotFilter.Class.html"><b>PivotFilter</b></a></td>
+      <td>表示用做在 <a href="topic/wijmo.olap.PivotField.Class.html"><b>PivotField</b></a> 中选择值的一个筛选器。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.olap.PivotFilterEditor.Class.html"><b>PivotFilterEditor</b></a></td>
+      <td><a href="topic/wijmo.olap.PivotFilter.Class.html"><b>PivotFilter</b></a> 对象的编辑器。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.olap.PivotGrid.Class.html"><b>PivotGrid</b></a></td>
+      <td><p>扩展 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a> 控件以显示 pivot table。</p>
+
+<p>为使用该控件，需要将其 <b>itemsSource</b> 属性设置为一个 <a href="topic/wijmo.olap.PivotPanel.Class.html"><b>PivotPanel</b></a> 控件或者一个 <a href="topic/wijmo.olap.PivotEngine.Class.html"><b>PivotEngine</b></a> 的实例。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.olap.PivotPanel.Class.html"><b>PivotPanel</b></a></td>
+      <td><p>提供一个将常规数据表交互式转换至 Olap pivot table 的用户界面。</p>
+
+<p>Olap Pivot table 将数据分组成一个或多个维度。不同的维度由表格中的行和列表示，汇总数据保存在表格中的单元格中。</p>
+
+<p>使用 <b>itemsSource</b> 属性设置源数据，同时使用 <b>pivotView</b> 属性获取包含汇总数据的输出表。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.olap.ProgressEventArgs.Class.html"><b>ProgressEventArgs</b></a></td>
+      <td>为 progress 事件提供参数。</td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideEnumerations = !hideEnumerations">
+<span class="glyph-collapsed" ng-show="hideEnumerations"></span>
+<span class="glyph-expanded" ng-hide="hideEnumerations"></span>
+枚举
+</h3>
+</div>
+<table ng-hide="hideEnumerations" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th>名称</th>
+
+<th>描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.olap.PivotChartType.Enum.html"><b>PivotChartType</b></a></td>
+      <td>指定图表类型。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.olap.ShowAs.Enum.html"><b>ShowAs</b></a></td>
+      <td>指定应用到输出视图中单元格的计算。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.olap.ShowTotals.Enum.html"><b>ShowTotals</b></a></td>
+      <td>指定是否在输出表中包含合计。</td>
+    </tr>
+</tbody>
+</table>
+</div>
+

@@ -1,0 +1,255 @@
+<h2>GroupRow 类</h2>
+<dl class="dl-horizontal">
+<dt>基类</dt><dd><a href="topic/wijmo.grid.Row.Class.html"><b>Row</b></a></dd>
+<dt>模块</dt><dd>wijmo.grid</dd>
+<dt>文件</dt><dd>wijmo.grid.js</dd>
+<dt>表示</dt><dd><label style="font-weight:normal">继承成员 <input type="checkbox" ng-model="showInherited"></label></dd>
+</dl>
+<p>表示作为一组行的页眉的行。</p>
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideConstructor = !hideConstructor">
+<span class="glyph-collapsed" ng-show="hideConstructor"></span>
+<span class="glyph-expanded" ng-hide="hideConstructor"></span>
+ 构造函数
+</h3>
+</div>
+<table ng-hide="hideConstructor" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-2">名称</th>
+
+<th class="col-md-5">参数</th>
+
+<th class="col-md-5">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><b>constructor</b>&#8203;(): <a href="topic/wijmo.grid.GroupRow.Class.html"><b>GroupRow</b></a></td>
+      <td></td>
+      <td>初始化类 <a href="topic/wijmo.grid.GroupRow.Class.html"><b>GroupRow</b></a> 的一个新实例</td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideProperties = !hideProperties">
+<span class="glyph-collapsed" ng-show="hideProperties"></span>
+<span class="glyph-expanded" ng-hide="hideProperties"></span>
+属性
+</h3>
+</div>
+<table ng-hide="hideProperties" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-3">名称</th>
+
+<th class="col-md-2">类型</th>
+
+<th class="col-md-7">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>allowDragging</b></td>
+      <td><b>boolean</b></td>
+      <td>获取或设置一个值，该值表示是否用户可以通过鼠标将行或者列移动到一个新位置。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.RowCol.Class.html"><b>RowCol</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>allowMerging</b></td>
+      <td><b>boolean</b></td>
+      <td>获取或设置一个值，该值表示是否位于该行或该列的单元格可以被合并。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.RowCol.Class.html"><b>RowCol</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>allowResizing</b></td>
+      <td><b>boolean</b></td>
+      <td>获取或设置一个值，该值表示是否用户可以通过鼠标改变行或者列的尺寸。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.RowCol.Class.html"><b>RowCol</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>collectionView</b></td>
+      <td><b>ICollectionView</b></td>
+      <td>获取绑定到该行或者列的 <a href="topic/wijmo.collections.ICollectionView.Interface.html"><b>ICollectionView</b></a> 对象。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.RowCol.Class.html"><b>RowCol</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>cssClass</b></td>
+      <td><b>string</b></td>
+      <td>获取或设置当呈现非行或者列中间的行头或列头单元格时，使用的一个 CSS 类名。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.RowCol.Class.html"><b>RowCol</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>dataItem</b></td>
+      <td><b>any</b></td>
+      <td>获取或设置该项目绑定到的数据集合中的项。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.Row.Class.html"><b>Row</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>grid</b></td>
+      <td><a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a></td>
+      <td>获取拥有该行或者列的 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a> 对象。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.RowCol.Class.html"><b>RowCol</b></a>).</span></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>hasChildren</b></td>
+      <td><b>boolean</b></td>
+      <td>获取一个值，该值表示是否该分组行具有子行。</td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>height</b></td>
+      <td><b>number</b></td>
+      <td>获取或设置行的高度。
+设置该属性为 null 或者负值将使得该元素使用父集合的默认尺寸。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.Row.Class.html"><b>Row</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>index</b></td>
+      <td><b>number</b></td>
+      <td>获取位于父集合中的行或列的索引。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.RowCol.Class.html"><b>RowCol</b></a>).</span></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>isCollapsed</b></td>
+      <td><b>boolean</b></td>
+      <td>获取或设置一个值，该值表示是否该 GroupRow 为收起状态（子行隐藏）还是展开状态（子行可见）。</td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>isContentHtml</b></td>
+      <td><b>boolean</b></td>
+      <td>获取或设置一个值，该值表示是否位于该行或该列中的单元格包含 HTML 格式的文本内容而不是纯文本。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.RowCol.Class.html"><b>RowCol</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>isReadOnly</b></td>
+      <td><b>boolean</b></td>
+      <td>获取或设置一个值，该值表示是否位于该行或该列中的单元格可以被编辑。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.RowCol.Class.html"><b>RowCol</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>isSelected</b></td>
+      <td><b>boolean</b></td>
+      <td>获取或设置一个值，该值表示是否行或者列处于被选中状态。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.RowCol.Class.html"><b>RowCol</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>isVisible</b></td>
+      <td><b>boolean</b></td>
+      <td><p>获取一个值，该值表示是否该行或列为可见，且不是收起状态。</p>
+
+<p>该属性为只读状态。为改变一行或一列的可见性，请使用 <b>visible</b> 属性以取代。</p><br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.RowCol.Class.html"><b>RowCol</b></a>).</span></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>level</b></td>
+      <td><b>number</b></td>
+      <td>获取或设置关联到该 GroupRow 的分组的分层级别。</td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>pos</b></td>
+      <td><b>number</b></td>
+      <td>获取该行或列的位置。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.RowCol.Class.html"><b>RowCol</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>renderHeight</b></td>
+      <td><b>number</b></td>
+      <td><p>获取一行的呈现高度。</p>
+
+<p>该返回值将考虑行的可见性，默认尺寸，以及最小和最大尺寸。</p><br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.Row.Class.html"><b>Row</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>renderSize</b></td>
+      <td><b>number</b></td>
+      <td>获取该行或列的呈现尺寸。
+该属性受 visibility，默认尺寸，以及最小值和最大值的影响。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.RowCol.Class.html"><b>RowCol</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>size</b></td>
+      <td><b>number</b></td>
+      <td>获取或设置行或列的尺寸。
+设置该属性为 null 或者负值将使得该元素使用父集合的默认尺寸。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.RowCol.Class.html"><b>RowCol</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>visible</b></td>
+      <td><b>boolean</b></td>
+      <td>获取或设置一个值，该值表示是否该行或列为可见。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.RowCol.Class.html"><b>RowCol</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>wordWrap</b></td>
+      <td><b>boolean</b></td>
+      <td>获取或设置一个值，该值表示是否位于该行或该列中的单元格可以折行显示。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.RowCol.Class.html"><b>RowCol</b></a>).</span></td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideMethods = !hideMethods">
+<span class="glyph-collapsed" ng-show="hideMethods"></span>
+<span class="glyph-expanded" ng-hide="hideMethods"></span>
+方法
+</h3>
+</div>
+<table ng-hide="hideMethods" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-2">名称</th>
+
+<th class="col-md-5">参数</th>
+
+<th class="col-md-5">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><b>getCellRange</b>&#8203;(): <a href="topic/wijmo.grid.CellRange.Class.html"><b>CellRange</b></a></td>
+      <td></td>
+      <td>获取一个 CellRange 对象，包含表单中由 GroupRow 表示的分组的全部的行以及全部的列。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>getGroupHeader</b>&#8203;(): <b>string</b></td>
+      <td></td>
+      <td>获取该 <a href="topic/wijmo.grid.GroupRow.Class.html"><b>GroupRow</b></a> 的页眉文本。</td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>onPropertyChanged</b>&#8203;()</td>
+      <td></td>
+      <td>将 owner 标记为 dirty 状态，并刷新 owner 表单。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.RowCol.Class.html"><b>RowCol</b></a>).</span></td>
+    </tr>
+</tbody>
+</table>
+</div>
+

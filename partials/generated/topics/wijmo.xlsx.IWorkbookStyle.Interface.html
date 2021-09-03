@@ -1,0 +1,92 @@
+<h2>IWorkbookStyle 类</h2>
+<dl class="dl-horizontal">
+<dt>模块</dt><dd>wijmo.xlsx</dd>
+<dt>文件</dt><dd>wijmo.xlsx.js</dd>
+</dl>
+<p>表示用做给 Excel 单元格，列和行添加样式的 Workbook 对象模型样式定义。</p>
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideProperties = !hideProperties">
+<span class="glyph-collapsed" ng-show="hideProperties"></span>
+<span class="glyph-expanded" ng-hide="hideProperties"></span>
+属性
+</h3>
+</div>
+<table ng-hide="hideProperties" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-3">名称</th>
+
+<th class="col-md-2">类型</th>
+
+<th class="col-md-7">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td><span class="badge" title="字段">F</span></td>
+      <td><b>basedOn?</b></td>
+      <td><a href="topic/wijmo.xlsx.IWorkbookStyle.Interface.html"><b>IWorkbookStyle</b></a></td>
+      <td><p>定义该样式继承自的基础的样式。</p>
+
+<p>该属性仅适用于导出操作。该样式获取定义在基础样式中的全部属性，
+同时可以通过设置其自有属性覆盖或添加新的属性。</p></td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="字段">F</span></td>
+      <td><b>borders?</b></td>
+      <td><a href="topic/wijmo.xlsx.IWorkbookBorder.Interface.html"><b>IWorkbookBorder</b></a></td>
+      <td>单元格外边框设置。</td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="字段">F</span></td>
+      <td><b>fill?</b></td>
+      <td><a href="topic/wijmo.xlsx.IWorkbookFill.Interface.html"><b>IWorkbookFill</b></a></td>
+      <td>获取或设置单元格背景。</td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="字段">F</span></td>
+      <td><b>font?</b></td>
+      <td><a href="topic/wijmo.xlsx.IWorkbookFont.Interface.html"><b>IWorkbookFont</b></a></td>
+      <td>获取或设置字体属性。</td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="字段">F</span></td>
+      <td><b>format?</b></td>
+      <td><b>string</b></td>
+      <td><p>单元格值格式，使用 Excel 格式语法定义。</p>
+
+<p>Excel 格式语法的描述可以在
+<a href="https://support.office.com/en-us/article/Create-or-delete-a-custom-number-format-78f2a361-936b-4c03-8772-09fab54be7f4" target="_blank">这里</a> 查看。</p>
+
+<p>您可以使用 <b>XlsxConverter</b> 类上的<b>xlsxNumberFormat</b> 和 <b>xlsxDateFormat</b> 静态方法
+以转换 .Net (<a href="topic/wijmo.Globalize.Class.html"><b>Globalize</b></a>) 格式至 Excel 格式。</p></td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="字段">F</span></td>
+      <td><b>hAlign?</b></td>
+      <td><a href="topic/wijmo.xlsx.HAlign.Enum.html"><b>HAlign</b></a></td>
+      <td>获取或设置文本的水平对齐方式。</td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="字段">F</span></td>
+      <td><b>indent?</b></td>
+      <td><b>number</b></td>
+      <td>文本缩进。
+这是一个整数值，增量 1 表示三个空格。</td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="字段">F</span></td>
+      <td><b>vAlign?</b></td>
+      <td><a href="topic/wijmo.xlsx.VAlign.Enum.html"><b>VAlign</b></a></td>
+      <td>获取或设置文本的垂直对齐方式。</td>
+    </tr>
+</tbody>
+</table>
+</div>
+

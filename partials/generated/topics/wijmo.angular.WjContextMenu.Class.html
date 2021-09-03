@@ -1,0 +1,27 @@
+<h2>WjContextMenu 类</h2>
+<dl class="dl-horizontal">
+<dt>基类</dt><dd><b>WjDirective</b></dd>
+<dt>模块</dt><dd>wijmo.angular</dd>
+<dt>文件</dt><dd>wijmo.angular.js</dd>
+<dt>表示</dt><dd><label style="font-weight:normal">继承成员 <input type="checkbox" ng-model="showInherited"></label></dd>
+</dl>
+<p><p>AngularJS 指令应用于上下文菜单 context menus.</p>
+
+<p>使用 <b>wj-context-menu</b> 指令为画面元素添加上下文菜单。wj-context-menu 指令基于 <b>wj-menu</b> 
+指令; 当用户发出上下文菜单请求（通常是一个右键单击）时显示一个弹出菜单。</p>
+
+<p>wj-context-menu 指令作为一个参数指定给需要添加上下文菜单的元素。该参数是一个包含菜单的选择器。 示例：</p>
+
+<p><pre>&lt;!-- paragraph with a context menu --&gt;
+&lt;p wj-context-menu="#idMenu" &gt;
+ This paragraph has a context menu.&lt;/p&gt;</p>
+
+<p>&lt;!-- define the context menu (hidden and with an id) --&gt;
+&lt;wj-menu id="idMenu" ng-show="false"&gt;
+ &lt;wj-menu-item cmd="cmdOpen" cmd-param ="1"&gt;Open...&lt;/wj-menu-item&gt;
+ &lt;wj-menu-item cmd="cmdSave" cmd-param="2"&gt;Save &lt;/wj-menu-item&gt;
+ &lt;wj-menu-item cmd="cmdSave" cmd-param="3"&gt;Save As...&lt;/wj-menu-item&gt;
+ &lt;wj-menu-item cmd="cmdNew" cmd-param ="4"&gt;New...&lt;/wj-menu-item&gt;
+ &lt;wj-menu-separator&gt;&lt;/wj-menu-separator&gt;
+ &lt;wj-menu-item cmd="cmdExit" cmd-param="5"&gt;Exit&lt;/wj-menu-item&gt;
+&lt;/wj-menu &gt;</pre></p></p>

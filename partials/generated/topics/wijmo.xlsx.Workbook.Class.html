@@ -1,0 +1,301 @@
+<h2>Workbook 类</h2>
+<dl class="dl-horizontal">
+<dt>实现</dt><dd><a href="topic/wijmo.xlsx.IWorkbook.Interface.html"><b>IWorkbook</b></a></dd>
+<dt>模块</dt><dd>wijmo.xlsx</dd>
+<dt>文件</dt><dd>wijmo.xlsx.js</dd>
+</dl>
+<p>表示 Excel 工作簿。</p>
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideConstructor = !hideConstructor">
+<span class="glyph-collapsed" ng-show="hideConstructor"></span>
+<span class="glyph-expanded" ng-hide="hideConstructor"></span>
+ 构造函数
+</h3>
+</div>
+<table ng-hide="hideConstructor" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-2">名称</th>
+
+<th class="col-md-5">参数</th>
+
+<th class="col-md-5">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><b>constructor</b>&#8203;(): <a href="topic/wijmo.xlsx.Workbook.Class.html"><b>Workbook</b></a></td>
+      <td></td>
+      <td>实例化 <a href="topic/wijmo.xlsx.Workbook.Class.html"><b>Workbook</b></a> 类一个新的实例。</td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideProperties = !hideProperties">
+<span class="glyph-collapsed" ng-show="hideProperties"></span>
+<span class="glyph-expanded" ng-hide="hideProperties"></span>
+属性
+</h3>
+</div>
+<table ng-hide="hideProperties" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-3">名称</th>
+
+<th class="col-md-2">类型</th>
+
+<th class="col-md-7">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td><span class="badge" title="字段">F</span></td>
+      <td><b>activeWorksheet</b></td>
+      <td><b>number</b></td>
+      <td>获取或设置位于该 xlsx 文件中活动表单的索引。</td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="字段">F</span></td>
+      <td><b>application</b></td>
+      <td><b>string</b></td>
+      <td>获取或设置出现在文件属性中的生成该文件应用程序的名称。</td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="字段">F</span></td>
+      <td><b>company</b></td>
+      <td><b>string</b></td>
+      <td>获取或设置出现在文件属性中的公司的名称。</td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="字段">F</span></td>
+      <td><b>created</b></td>
+      <td><b>Date</b></td>
+      <td>获取或设置 xlsx 文件的创建时间。</td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="字段">F</span></td>
+      <td><b>creator</b></td>
+      <td><b>string</b></td>
+      <td>获取或设置 xlsx 文件的创建人。</td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="字段">F</span></td>
+      <td><b>lastModifiedBy</b></td>
+      <td><b>string</b></td>
+      <td>获取或设置 xlsx 文件的最后一次修改人。</td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="字段">F</span></td>
+      <td><b>modified</b></td>
+      <td><b>Date</b></td>
+      <td>获取或设置 xlsx 文件的最后一次修改时间。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>reservedContent</b></td>
+      <td><b>any</b></td>
+      <td>获取或设置 flexgrid 或者 flexsheet 目前尚未支持的，来自于 xlsx 文件的保留内容。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>sheets</b></td>
+      <td><a href="topic/wijmo.xlsx.WorkSheet.Class.html"><b>WorkSheet</b></a><b>[]</b></td>
+      <td>获取 Workbook 工作簿的 WorkSheet 工作表数组。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>styles</b></td>
+      <td><a href="topic/wijmo.xlsx.WorkbookStyle.Class.html"><b>WorkbookStyle</b></a><b>[]</b></td>
+      <td>获取 Workbook 工作簿的样式表。</td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideMethods = !hideMethods">
+<span class="glyph-collapsed" ng-show="hideMethods"></span>
+<span class="glyph-expanded" ng-hide="hideMethods"></span>
+方法
+</h3>
+</div>
+<table ng-hide="hideMethods" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-2">名称</th>
+
+<th class="col-md-5">参数</th>
+
+<th class="col-md-5">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td><span class="badge" title="静态">S</span></td>
+      <td><b>fromXlsxFormat</b>&#8203;(xlsxFormat): <b>string</b><b>[]</b></td>
+      <td><p>
+<b>xlsxFormat</b> (<b>string</b>): 一个 Excel 格式字符串，有可能包含用分号分隔的多段格式。<br/></p>
+</td>
+      <td>将 xlsx 多段格式字符串转换为相关的 wijmo 格式的数组。<br/><br/><b>返回值</b> 
+        .NET 格式的字符串数组，其中每一个元素对应一个独立的Excel 格式。返回的数组至少包含一个元素，它可以是空字符串以防传递的Excel格式为空。
+        </td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>load</b>&#8203;(base64)</td>
+      <td><p>
+<b>base64</b> (<b>string</b>): 包含 xlsx 文件内容的 base64 编码的字符串。<br/></p>
+</td>
+      <td><p>从 base64 编码的字符串或者数据 URL 加载。</p>
+
+<p>例如：
+<pre>// 该示例打开一个从 Open File 对话框选择的 xlsx 文件
+// 并创建一个工作簿实例以加载该文件。
+&nbsp;
+// HTML
+&lt;input type="file" 
+    id="importFile" 
+    accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" 
+/&gt;
+&nbsp;
+// JavaScript
+var workbook, // 接收导入的 IWorkbook
+    importFile = document.getElementById('importFile');
+&nbsp;
+importFile.addEventListener('change', function () {
+    loadWorkbook();
+});
+&nbsp;
+function loadWorkbook() {
+    var reader,
+        workbook,
+        file = importFile.files[0];
+    if (file) {
+        reader = new FileReader();
+        reader.onload = function (e) {
+           workbook = new wijmo.xlsx.Workbook(),
+           workbook.load(reader.result);
+        };
+        reader.readAsDataURL(file);
+    }
+}</pre></p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>save</b>&#8203;(fileName?): <b>string</b></td>
+      <td><p>
+<b>fileName?</b> (<b>string</b>): 保存的 xlsx 文件的名称。<br/></p>
+</td>
+      <td><p>保存为一个包含 xlsx 文件内容的 base64 编码的字符串，并返回该字符串。如果指定了 fileName，则保存到 xlsx 文件。</p>
+
+<p>例如：
+<pre>// 该示例保存一个工作簿实例至 xlsx 文件，在其中一个单元格包含一段 “Hello, Excel!” 的文本。
+// 单击。
+&nbsp;
+// HTML
+&lt;button 
+    onclick="saveXlsx('Hello.xlsx')"&gt;
+    Save
+&lt;/button&gt;
+&nbsp;
+// JavaScript
+function exportXlsx(fileName) {
+    // 定义一个工作簿的内容。
+    var workbook = new wijmo.xlsx.Workbook(),
+        worksheet = new wijmo.grid.xlsx.WorkSheet(),
+        workbookRow = new wijmo.grid.xlsx.WorkbookRow(),
+        workbookCell = new wijmo.grid.xlsx.WorkbookCell();
+    workbookCell.value = 'Hello, Excel!';
+    workbookRow.cells.push(workbookCell);
+    worksheet.rows.push(workbookRow);
+    workbook.sheets.push(worksheet);
+&nbsp;
+    // 如果指定了 fileName 文件名，则 Workbook.save 方法将导出工作簿至 xlsx 文件并返回该 xlsx 内容的 base64 编码的字符串。
+    workbook.save(fileName);
+}</pre>
+<pre>// 该示例保存一个工作簿实例至一个 base64 编码的字符串，在其中一个单元格包含一段 “Hello, Excel!” 的文本。 
+// 单击。
+&nbsp;
+// HTML
+&lt;button 
+    onclick="saveXlsx()"&gt;
+    Save
+&lt;/button&gt;
+&nbsp;
+// JavaScript
+function exportXlsx() {
+    // 定义一个工作簿的内容。
+    var workbook = new wijmo.xlsx.Workbook(),
+        worksheet = new wijmo.grid.xlsx.WorkSheet(),
+        workbookRow = new wijmo.grid.xlsx.WorkbookRow(),
+        workbookCell = new wijmo.grid.xlsx.WorkbookCell(),
+        fileContent;
+    workbookCell.value = 'Hello, Excel!';
+    workbookRow.cells.push(workbookCell);
+    worksheet.rows.push(workbookRow);
+    workbook.sheets.push(worksheet);
+&nbsp;
+    // 如果未指定 fileName 文件名，则 Workbool.save 方法仅返回 xlsx 内容的 base64 编码的字符串。
+    fileContent = workbook.save();
+    // TODO: 该 base64 编码的字符串可以被发送到服务器端以便在服务器端生成 xlsx 文件，等等。
+}</pre></p><br/><br/><b>返回值</b> A base-64 string representing the content of the file.</td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="静态">S</span></td>
+      <td><b>tableAddress</b>&#8203;(xlsxIndex): <a href="topic/wijmo.xlsx.ITableAddress.Interface.html"><b>ITableAddress</b></a></td>
+      <td><p>
+<b>xlsxIndex</b> (<b>string</b>): 一个可以包含从 A 开始的字母表示的列索引以及/或者从 1 开始计算的行索引的一个字母数值格式的 Excel 索引标记，形如 "D15"，"D" 或者 "15"。字母的列索引可以为小写字母或大写字母。<br/></p>
+</td>
+      <td>将 Excel 的字母数值形式的单元格，行或者列的索引转换为一对从零开始计算的行/列索引值。<br/><br/><b>返回值</b> 返回一个对象，包含基于0的行和列索引的<b>row</b> 和 <b>col</b> 属性。如果行或者列没有指定，那么对应的属性为undefined。
+      
+     </td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="静态">S</span></td>
+      <td><b>toXlsxDateFormat</b>&#8203;(format): <b>string</b></td>
+      <td><p>
+<b>format</b> (<b>string</b>): Wijmo 日期格式。<br/></p>
+</td>
+      <td>将 wijmo 日期格式转换为 Excel 格式。<br/><br/><b>返回值</b> Excel 格式的表示 。</td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="静态">S</span></td>
+      <td><b>toXlsxNumberFormat</b>&#8203;(format): <b>string</b></td>
+      <td><p>
+<b>format</b> (<b>string</b>): Wijmo 数值格式。<br/></p>
+</td>
+      <td>将 wijmo 数值格式转换为 xlsx 格式。<br/><br/><b>返回值</b> Excel格式表示 。</td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="静态">S</span></td>
+      <td><b>xlsxAddress</b>&#8203;(row, col, absolute?, absoluteCol?): <b>string</b></td>
+      <td><p>
+<b>row</b> (<b>number</b>): 从零开始计算的行索引，或者当仅需要转换列索引时，可以为 null。<br/><b>col</b> (<b>number</b>): 从零开始计算的列索引，或者当仅需要转换行索引时，可以为 null。<br/><b>absolute?</b> (<b>boolean</b>): True 值表示行和列的索引都应当返回绝对索引格式（形如 $D$7）。<b>absoluteCol</b> 参数允许重新定义列索引的行为<br/><b>absoluteCol?</b> (<b>boolean</b>): True 值表示列的索引返回绝对值索引格式。<br/></p>
+</td>
+      <td>将从零开始计算索引值的单元格，行或者列的索引转换为 Excel 字母数字表示。<br/><br/><b>返回值</b> 代表Excel 单元格索引的字母数字。</td>
+    </tr>
+</tbody>
+</table>
+</div>
+

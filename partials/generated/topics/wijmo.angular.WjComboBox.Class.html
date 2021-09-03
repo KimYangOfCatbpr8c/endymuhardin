@@ -1,0 +1,60 @@
+<h2>WjComboBox 类</h2>
+<dl class="dl-horizontal">
+<dt>基类</dt><dd><b>WjDropDown</b></dd>
+<dt>派生类</dt><dd><a href="topic/wijmo.angular.WjAutoComplete.Class.html"><b>WjAutoComplete</b></a>, <a href="topic/wijmo.angular.WjInputTime.Class.html"><b>WjInputTime</b></a>, <a href="topic/wijmo.angular.WjMenu.Class.html"><b>WjMenu</b></a>, <a href="topic/wijmo.angular.WjMultiSelect.Class.html"><b>WjMultiSelect</b></a></dd>
+<dt>模块</dt><dd>wijmo.angular</dd>
+<dt>文件</dt><dd>wijmo.angular.js</dd>
+<dt>表示</dt><dd><label style="font-weight:normal">继承成员 <input type="checkbox" ng-model="showInherited"></label></dd>
+</dl>
+<p><p>AngularJS 指令应用于 <a href="topic/wijmo.input.ComboBox.Class.html"><b>ComboBox</b></a> 控件.</p>
+
+<p>使用 <b>wj-combo-box</b> 指令添加 <b>ComboBox</b> 控件到 AngularJS 应用中。 
+注意指令和参数名称必须使用小写字母+短线语法替代驼峰命名。 示例：</p>
+
+<p><pre>&lt;p&gt;Here is a ComboBox control:&lt;/p&gt;
+&lt;wj-combo-box 
+  text="theCountry" 
+  items-source="countries"
+  is-editable="false" 
+  placeholder="country"&gt;
+&lt;/wj-combo-box&gt;</pre></p>
+
+<p>下面的例子创建了一个 <b>ComboBox</b> 控件，并绑定到控制器公开的'countries'数组上。<b>ComboBox</b> 根据用户类型检索country。<b>isEditable</b> 属性被设置为 false，因此用户只能从列表中选择。</p>
+
+<p><a href="http://jsfiddle.net/Wijmo5/37GHw/" target="_blank" class="btn btn-info">
+  <img src="images/fiddle.png"/>
+  在线示例
+</a>
+</p>
+
+<p><b>wj-combo-box</b> 指令支持以下属性:</p>
+
+<p><dl class="dl-horizontal">
+  <dt>ng-model</dt>      <dd><code>@</code> 使用Angular的ng-model指令绑定控件的 <b>selectedValue</b> 属性。使用ng-model指令绑定属性能够获得一些共通的特性，例如验证，自动添加控件状态到form实例，等等。 使用 wj-model-property 重定义被 ng-model指定绑定的控件属性。</dd>
+  <dt>wj-model-property</dt>  <dd><code>@</code> 使用 <b>ng-model</b> 指令指定控件绑定的作用域。</dd>
+  <dt>control</dt>              <dd><code>=</code> 该指令创建的指向 <b>ComboBox</b> 控件的引用。</dd>
+  <dt>display-member-path</dt>  <dd><code>@</code> 表示可视化项目的属性名称。</dd>
+  <dt>is-content-html</dt>      <dd><code>@</code> 以纯文本还是HTML显示内容。</dd>
+  <dt>is-dropped-down</dt>      <dd><code>@</code> 下拉列表是否当前可见。</dd>
+  <dt>is-editable</dt>          <dd><code>@</code> 用户是否可以输入列表中不存在的项目。</dd>
+  <dt>initialized</dt>          <dd><code>&</code> 该事件在绑定完成控件特性值的初始化后被触发。</dd>
+  <dt>is-initialized</dt>       <dd><code>=</code> 绑定是否已经完成控件特性值的初始化。</dd>
+  <dt>item-formatter</dt>       <dd><code>=</code> 自定义显示的格式化函数。</dd>
+  <dt>items-source</dt>         <dd><code>=</code> 一个数组或者一个包含列表项的 <a href="topic/wijmo.collections.ICollectionView.Interface.html"><b>ICollectionView</b></a>。</dd>
+  <dt>max-drop-down-height</dt> <dd><code>@</code> 下拉列表的最大高度。</dd>
+  <dt>max-drop-down-width</dt>  <dd><code>@</code> 下拉列表的最大宽度。</dd>
+  <dt>placeholder</dt>          <dd><code>@</code> 当控件为空时显示的占位字符。</dd>
+  <dt>required</dt>             <dd><code>@</code> 是否阻止null值。</dd>
+  <dt>show-drop-down-button</dt><dd><code>@</code> 是否显示下拉按钮。</dd>
+  <dt>selected-index</dt>       <dd><code>=</code> 当前选中的下拉列表项的索引。</dd>
+  <dt>selected-item</dt>        <dd><code>=</code> 当前选中的下拉列表项。</dd>
+  <dt>selected-value</dt>       <dd><code>=</code> 当前选中的下拉列表项的值,使用 <b>selected-value-path</b> 获得。</dd>
+  <dt>selected-value-path</dt>  <dd><code>@</code> 属性名，用来从<b>selected-item</b>获取 <b>selected-value</b> 的值。</dd>
+  <dt>text</dt>                 <dd><code>=</code> 控件显示文本。</dd>
+  <dt>is-dropped-down-changing</dt> <dd><code>&</code> <b>isDroppedDownChanging</b> 事件。</dd>
+  <dt>is-dropped-down-changed</dt>  <dd><code>&</code> <b>isDroppedDownChanged</b> 事件。</dd>
+  <dt>selected-index-changed</dt>   <dd><code>&</code> <b>selectedIndexChanged</b> 事件。</dd>
+  <dt>got-focus</dt>            <dd><code>&</code> <b>gotFocus</b> 事件。</dd>
+  <dt>lost-focus</dt>           <dd><code>&</code> <b>lostFocus</b> 事件。</dd>
+  <dt>text-changed</dt>         <dd><code>&</code> <b>textChanged</b> 事件。</dd>
+</dl></p></p>

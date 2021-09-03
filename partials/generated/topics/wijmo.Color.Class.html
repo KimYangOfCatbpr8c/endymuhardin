@@ -1,0 +1,205 @@
+<h2>Color 类</h2>
+<dl class="dl-horizontal">
+<dt>模块</dt><dd>wijmo</dd>
+<dt>文件</dt><dd>wijmo.js</dd>
+</dl>
+<p><p>颜色类。</p>
+
+<p><b>Color</b> 类指定CSS字符串来解析颜色，并且暴露了它们的红，绿，蓝，和alpha通道作为读写属性。</p>
+
+<p><b>Color</b> 类也提供了<b>fromHsb</b> 和<b>fromHsl</b> 方法，使用HSB和HSL颜色模型代替RGB创建颜色。
+并且用see:getHsb 和<b>getHsl</b> 方法来检索使用这些颜色模型的颜色组件。</p>
+
+<p>最后，<b>Color</b> 类提供了一个<b>interpolate</b> 方法来通过插值使用HSL模型和两种颜色之间 
+创建颜色。这种方法是特别有用的，用于创建彩色动画的方法。</p></p>
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideConstructor = !hideConstructor">
+<span class="glyph-collapsed" ng-show="hideConstructor"></span>
+<span class="glyph-expanded" ng-hide="hideConstructor"></span>
+ 构造函数
+</h3>
+</div>
+<table ng-hide="hideConstructor" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-2">名称</th>
+
+<th class="col-md-5">参数</th>
+
+<th class="col-md-5">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><b>constructor</b>&#8203;(color): <a href="topic/wijmo.Color.Class.html"><b>Color</b></a></td>
+      <td><p>
+<b>color</b> (<b>string</b>): CSS color specification.<br/></p>
+</td>
+      <td>Initializes a new <a href="topic/wijmo.Color.Class.html"><b>Color</b></a> from a CSS color specification.</td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideProperties = !hideProperties">
+<span class="glyph-collapsed" ng-show="hideProperties"></span>
+<span class="glyph-expanded" ng-hide="hideProperties"></span>
+属性
+</h3>
+</div>
+<table ng-hide="hideProperties" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-3">名称</th>
+
+<th class="col-md-2">类型</th>
+
+<th class="col-md-7">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><b>a</b></td>
+      <td><b>number</b></td>
+      <td>获取或设置<b>Color的alpha组件</b>，从0到1的一个范围（零是透明的，一是光滑的）。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>b</b></td>
+      <td><b>number</b></td>
+      <td>获取或设置<b>Color的蓝色组件</b>，从0到255的一个范围。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>g</b></td>
+      <td><b>number</b></td>
+      <td>获取或设置<b>Color的绿色组件</b>，从0到255的一个范围。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>r</b></td>
+      <td><b>number</b></td>
+      <td>获取或设置<b>Color的红色组件</b>，从0到255的一个范围。</td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideMethods = !hideMethods">
+<span class="glyph-collapsed" ng-show="hideMethods"></span>
+<span class="glyph-expanded" ng-hide="hideMethods"></span>
+方法
+</h3>
+</div>
+<table ng-hide="hideMethods" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-2">名称</th>
+
+<th class="col-md-5">参数</th>
+
+<th class="col-md-5">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><b>equals</b>&#8203;(clr): <b>boolean</b></td>
+      <td><p>
+<b>clr</b> (<a href="topic/wijmo.Color.Class.html"><b>Color</b></a>): <a href="topic/wijmo.Color.Class.html"><b>Color</b></a> 与<b>Color</b> 进行比较。<br/></p>
+</td>
+      <td>如果一个<b>Color与</b><b>Color具有相同的值</b>，则返回真值。</td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="静态">S</span></td>
+      <td><b>fromHsb</b>&#8203;(h, s, b, a?): <a href="topic/wijmo.Color.Class.html"><b>Color</b></a></td>
+      <td><p>
+<b>h</b> (<b>number</b>): Hue值，从0到1。<br/><b>s</b> (<b>number</b>): Saturation值，从0到1。<br/><b>b</b> (<b>number</b>): Brightness值，从0到1。<br/><b>a?</b> (<b>number</b>): Alpha值，从0到1。<br/><span class="text-info">(默认值: <b>1</b>)</span><br/></p>
+</td>
+      <td>使用指定的HSB值创建一个新的<a href="topic/wijmo.Color.Class.html"><b>Color</b></a>。</td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="静态">S</span></td>
+      <td><b>fromHsl</b>&#8203;(h, s, l, a?): <a href="topic/wijmo.Color.Class.html"><b>Color</b></a></td>
+      <td><p>
+<b>h</b> (<b>number</b>): Hue值，从0到1。<br/><b>s</b> (<b>number</b>): Saturation值，从0到1。<br/><b>l</b> (<b>number</b>): Lightness值，从0到1。<br/><b>a?</b> (<b>number</b>): Alpha值，从0到1。<br/><span class="text-info">(默认值: <b>1</b>)</span><br/></p>
+</td>
+      <td>使用指定的HSL值创建一个新的<a href="topic/wijmo.Color.Class.html"><b>Color</b></a>。</td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="静态">S</span></td>
+      <td><b>fromRgba</b>&#8203;(r, g, b, a?): <a href="topic/wijmo.Color.Class.html"><b>Color</b></a></td>
+      <td><p>
+<b>r</b> (<b>number</b>): 红色通道的值，从0到255。<br/><b>g</b> (<b>number</b>): 绿色通道的值，从0到255。<br/><b>b</b> (<b>number</b>): 蓝色通道的值，从0到255。<br/><b>a?</b> (<b>number</b>): alpha通道的值，从0到1。<br/><span class="text-info">(默认值: <b>1</b>)</span><br/></p>
+</td>
+      <td>创建一个使用RGBA颜色通道的值指定新<a href="topic/wijmo.Color.Class.html"><b>Color</b></a>。</td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="静态">S</span></td>
+      <td><b>fromString</b>&#8203;(value): <a href="topic/wijmo.Color.Class.html"><b>Color</b></a></td>
+      <td><p>
+<b>value</b> (<b>string</b>): 字符串包含指定的CSS颜色规范。<br/></p>
+</td>
+      <td>从一个CSS颜色字符串中创建新的<a href="topic/wijmo.Color.Class.html"><b>Color</b></a> 。<br/><br/><b>返回值</b> 一个新的<a href="topic/wijmo.Color.Class.html"><b>Color</b></a>，如果该字符串不能被解析成一个颜色则为null。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>getHsb</b>&#8203;(): <b>number</b><b>[]</b></td>
+      <td></td>
+      <td>获取该颜色的HSB组件的数组。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>getHsl</b>&#8203;(): <b>number</b><b>[]</b></td>
+      <td></td>
+      <td>获取该颜色的HSL组件的数组。</td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="静态">S</span></td>
+      <td><b>interpolate</b>&#8203;(c1, c2, pct): <a href="topic/wijmo.Color.Class.html"><b>Color</b></a></td>
+      <td><p>
+<b>c1</b> (<a href="topic/wijmo.Color.Class.html"><b>Color</b></a>): 第一个颜色。<br/><b>c2</b> (<a href="topic/wijmo.Color.Class.html"><b>Color</b></a>): 第二个颜色。<br/><b>pct</b> (<b>number</b>): 零和一个值之间的值，该值决定了该插值应该接近于第二色。<br/></p>
+</td>
+      <td>通过插值的颜色创建一个<a href="topic/wijmo.Color.Class.html"><b>Color</b></a>。</td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="静态">S</span></td>
+      <td><b>toOpaque</b>&#8203;(c, bkg?): <a href="topic/wijmo.Color.Class.html"><b>Color</b></a></td>
+      <td><p>
+<b>c</b> (<b>any</b>): <a href="topic/wijmo.Color.Class.html"><b>Color</b></a> 被转换成一个不透明的颜色（该颜色也可以被指定为字符串）。<br/><b>bkg?</b> (<b>any</b>): 在去除透明时使用的背景颜色
+（默认值为白色）。<br/></p>
+</td>
+      <td>获取给定颜色的最接近的不透明颜色。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>toString</b>&#8203;(): <b>string</b></td>
+      <td></td>
+      <td>获取<b>Color的字符串表示形式</b>。</td>
+    </tr>
+</tbody>
+</table>
+</div>
+

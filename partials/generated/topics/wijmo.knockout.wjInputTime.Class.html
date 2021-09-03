@@ -1,0 +1,29 @@
+<h2>wjInputTime 类</h2>
+<dl class="dl-horizontal">
+<dt>基类</dt><dd><a href="topic/wijmo.knockout.wjComboBox.Class.html"><b>wjComboBox</b></a></dd>
+<dt>模块</dt><dd>wijmo.knockout</dd>
+<dt>文件</dt><dd>wijmo.knockout.js</dd>
+<dt>表示</dt><dd><label style="font-weight:normal">继承成员 <input type="checkbox" ng-model="showInherited"></label></dd>
+</dl>
+<p><p>使用 KnockoutJS 绑定 <a href="topic/wijmo.input.InputTime.Class.html"><b>InputTime</b></a> 控件。</p>
+
+<p>使用 <b>wjInputTime</b> 绑定添加 <b>InputTime</b> 控件，示例如下：</p>
+
+<p><pre>&lt;p&gt;Here is an InputTime control:&lt;/p&gt;
+&lt;div data-bind="wjInputTime: {
+  min: new Date(2014, 8, 1, 9, 0),
+  max: new Date(2014, 8, 1, 17, 0),
+  step: 15,
+  format: 'h:mm tt',
+  value: theDate }"&gt;
+&lt;/div&gt;</pre></p>
+
+<p><b>wjInputTime</b> 支持 <b>InputTime</b> 控件的所有可读写属性及事件。以下属性支持双向绑定：
+<ul>
+	<li><b>isDroppedDown</b></li>
+	<li><b>text</b></li>
+	<li><b>selectedIndex</b></li>
+	<li><b>selectedItem</b></li>
+	<li><b>selectedValue</b></li>
+ <li><b>value</b></li>
+</ul></p></p>

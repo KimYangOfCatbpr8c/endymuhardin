@@ -1,0 +1,182 @@
+<h2>GridPanel 类</h2>
+<dl class="dl-horizontal">
+<dt>派生类</dt><dd><a href="topic/wijmo.grid.sheet.FlexSheetPanel.Class.html"><b>FlexSheetPanel</b></a></dd>
+<dt>模块</dt><dd>wijmo.grid</dd>
+<dt>文件</dt><dd>wijmo.grid.js</dd>
+</dl>
+<p>表示表单的一个逻辑部分，比如说列头，行头，以及可滚动数据区。</p>
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideConstructor = !hideConstructor">
+<span class="glyph-collapsed" ng-show="hideConstructor"></span>
+<span class="glyph-expanded" ng-hide="hideConstructor"></span>
+ 构造函数
+</h3>
+</div>
+<table ng-hide="hideConstructor" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-2">名称</th>
+
+<th class="col-md-5">参数</th>
+
+<th class="col-md-5">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><b>constructor</b>&#8203;(g, cellType, rows, cols, element): <a href="topic/wijmo.grid.GridPanel.Class.html"><b>GridPanel</b></a></td>
+      <td><p>
+<b>g</b> (<a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>): 拥有该面板的 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a> 对象。<br/><b>cellType</b> (<a href="topic/wijmo.grid.CellType.Enum.html"><b>CellType</b></a>): 该面板中单元格的类型。<br/><b>rows</b> (<a href="topic/wijmo.grid.RowCollection.Class.html"><b>RowCollection</b></a>): 显示在该面板中的行。<br/><b>cols</b> (<a href="topic/wijmo.grid.ColumnCollection.Class.html"><b>ColumnCollection</b></a>): 显示在该面板中的列。<br/><b>element</b> (<b>HTMLElement</b>): 托管控件中单元格的 HTMLElement。<br/></p>
+</td>
+      <td>初始化类 <a href="topic/wijmo.grid.GridPanel.Class.html"><b>GridPanel</b></a> 的一个新实例</td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideProperties = !hideProperties">
+<span class="glyph-collapsed" ng-show="hideProperties"></span>
+<span class="glyph-expanded" ng-hide="hideProperties"></span>
+属性
+</h3>
+</div>
+<table ng-hide="hideProperties" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-3">名称</th>
+
+<th class="col-md-2">类型</th>
+
+<th class="col-md-7">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><b>cellType</b></td>
+      <td><a href="topic/wijmo.grid.CellType.Enum.html"><b>CellType</b></a></td>
+      <td>获取包含在该面板中的单元格类型。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>columns</b></td>
+      <td><a href="topic/wijmo.grid.ColumnCollection.Class.html"><b>ColumnCollection</b></a></td>
+      <td>获取列集合的面板。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>grid</b></td>
+      <td><a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a></td>
+      <td>获取拥有该面板的表单。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>height</b></td>
+      <td><b>number</b></td>
+      <td>获取面板中的内容的总高度。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>hostElement</b></td>
+      <td><b>HTMLElement</b></td>
+      <td>获取面板的托管容器元素。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>rows</b></td>
+      <td><a href="topic/wijmo.grid.RowCollection.Class.html"><b>RowCollection</b></a></td>
+      <td>获取行集合的面板。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>viewRange</b></td>
+      <td><a href="topic/wijmo.grid.CellRange.Class.html"><b>CellRange</b></a></td>
+      <td>获取表示当前在面板上可见的单元格范围的 <a href="topic/wijmo.grid.CellRange.Class.html"><b>CellRange</b></a>。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>width</b></td>
+      <td><b>number</b></td>
+      <td>获取面板中的内容的总宽度。</td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideMethods = !hideMethods">
+<span class="glyph-collapsed" ng-show="hideMethods"></span>
+<span class="glyph-expanded" ng-hide="hideMethods"></span>
+方法
+</h3>
+</div>
+<table ng-hide="hideMethods" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-2">名称</th>
+
+<th class="col-md-5">参数</th>
+
+<th class="col-md-5">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><b>getCellBoundingRect</b>&#8203;(r, c, raw?): <a href="topic/wijmo.Rect.Class.html"><b>Rect</b></a></td>
+      <td><p>
+<b>r</b> (<b>number</b>): 包含该单元格的行的索引。<br/><b>c</b> (<b>number</b>): 包含该单元格的列的索引。<br/><b>raw?</b> (<b>boolean</b>): 是否返回的矩形框是按照原始的面板坐标系而不是 viewport 坐标系。<br/></p>
+</td>
+      <td><p>获取位于 viewport 坐标系的单元格范围。</p>
+
+<p>返回的值为一个包含位于 viewport 坐标系的单元格的位置和尺寸的 <a href="topic/wijmo.Rect.Class.html"><b>Rect</b></a> 对象。 
+viewport 坐标系和 <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element.getBoundingClientRect"target="_blank">getBoundingClientRect</a> 方法使用的相同。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>getCellData</b>&#8203;(r, c, formatted): <b>any</b></td>
+      <td><p>
+<b>r</b> (<b>number</b>): 该单元格的行索引。<br/><b>c</b> (<b>any</b>): 包含该单元格的列的索引，名称或者绑定。<br/><b>formatted</b> (<b>boolean</b>): 是否格式化该值用于显示目的。<br/></p>
+</td>
+      <td>获取保存在面板中单元格中间的值。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>getSelectedState</b>&#8203;(r, c, rng): <a href="topic/wijmo.grid.SelectedState.Enum.html"><b>SelectedState</b></a></td>
+      <td><p>
+<b>r</b> (<b>number</b>): 待调查的单元格的行索引。<br/><b>c</b> (<b>number</b>): 待调查的单元格的列索引。<br/><b>rng</b> (<a href="topic/wijmo.grid.CellRange.Class.html"><b>CellRange</b></a>): 包含待调查单元格的 <a href="topic/wijmo.grid.CellRange.Class.html"><b>CellRange</b></a>。<br/></p>
+</td>
+      <td>获取一个 <a href="topic/wijmo.grid.SelectedState.Enum.html"><b>SelectedState</b></a> 值，该值表示单元格的选中状态。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>setCellData</b>&#8203;(r, c, value, coerce?, invalidate?): <b>boolean</b></td>
+      <td><p>
+<b>r</b> (<b>number</b>): 包含该单元格的行的索引。<br/><b>c</b> (<b>any</b>): 包含该单元格的列的索引，名称或者绑定。<br/><b>value</b> (<b>any</b>): 待存储在单元格中的值。<br/><b>coerce?</b> (<b>boolean</b>): 是否自动地改变值以匹配该列的数据类型。<br/><span class="text-info">(默认值: <b>true</b>)</span><br/><b>invalidate?</b> (<b>boolean</b>): 是否将表单置为无效以便重绘显示变更后的结果。<br/><span class="text-info">(默认值: <b>true</b>)</span><br/></p>
+</td>
+      <td>设置面板中单元格的内容。<br/><br/><b>返回值</b> 如果该值被成功保存则返回 true，否则返回 false（错误的解析）。</td>
+    </tr>
+</tbody>
+</table>
+</div>
+

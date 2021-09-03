@@ -1,0 +1,40 @@
+<h2>WjInputColor 类</h2>
+<dl class="dl-horizontal">
+<dt>基类</dt><dd><b>WjDropDown</b></dd>
+<dt>模块</dt><dd>wijmo.angular</dd>
+<dt>文件</dt><dd>wijmo.angular.js</dd>
+<dt>表示</dt><dd><label style="font-weight:normal">继承成员 <input type="checkbox" ng-model="showInherited"></label></dd>
+</dl>
+<p><p>AngularJS 指令应用于 <a href="topic/wijmo.input.InputColor.Class.html"><b>InputColor</b></a> 控件。</p>
+
+<p>使用 <b>wj-input-color</b> 指令添加 <b>InputColor</b> 到 AngularJS 应用中。 
+注意指令和参数名称必须使用小写字母+短线语法替代驼峰命名。 示例：</p>
+
+<p><pre>&lt;p&gt;Here is an InputColor control:&lt;/p&gt;
+&lt;wj-input-color 
+  value="theColor" 
+  show-alpha-channel="false"&gt;
+&lt;/wj-input-color&gt;</pre></p>
+
+<p><b>wj-input-color</b> 指令支持以下属性:</p>
+
+<p><dl class="dl-horizontal">
+  <dt>ng-model</dt>      <dd><code>@</code> 使用Angular的ng-model指令绑定控件的 <b>value</b> 属性。使用ng-model指令绑定属性能够获得一些共通的特性，例如验证，自动添加控件状态到form实例，等等。 使用 wj-model-property 重定义被 ng-model指定绑定的控件属性。</dd>
+  <dt>wj-model-property</dt>     <dd><code>@</code> 使用 <b>ng-model</b> 指令指定控件绑定的作用域。</dd>
+  <dt>control</dt>               <dd><code>=</code> 该指令创建的指向 InputColor 的引用</dd>
+  <dt>is-dropped-down</dt>       <dd><code>@</code> 下拉列表是否可见。</dd>
+  <dt>initialized</dt>           <dd><code>&</code> 该事件在绑定完成控件特性值的初始化后被触发。</dd>
+  <dt>is-initialized</dt>        <dd><code>=</code> 绑定是否已经完成控件特性值的初始化。 </dd>
+  <dt>show-alpha-channel</dt>    <dd><code>@</code> 是否显示透明度编辑器。</dd>
+  <dt>place-holder</dt>          <dd><code>@</code> 描述输入字段预期值的提示信息。</dd>
+  <dt>required</dt>              <dd><code>@</code> 是否阻止null值。</dd>
+  <dt>show-drop-down-button</dt> <dd><code>@</code> 是否显示下拉按钮。</dd>
+  <dt>text</dt>                  <dd><code>=</code> 控件显示文本。</dd>
+  <dt>value</dt>                 <dd><code>=</code> 编辑的颜色。</dd>
+  <dt>got-focus</dt>             <dd><code>&</code> <b>gotFocus</b> 事件。</dd>
+  <dt>lost-focus</dt>            <dd><code>&</code> <b>lostFocus</b> 事件。</dd>
+  <dt>is-dropped-down-changing</dt><dd><code>&</code> <b>isDroppedDownChanging</b> 事件。</dd>
+  <dt>is-dropped-down-changed</dt><dd><code>&</code> <b>isDroppedDownChanged</b> 事件。</dd>
+  <dt>text-changed</dt>          <dd><code>&</code> <b>textChanged</b> 事件。</dd>
+  <dt>value-changed</dt>         <dd><code>&</code> <b>valueChanged</b> 事件。</dd>
+</dl></p></p>

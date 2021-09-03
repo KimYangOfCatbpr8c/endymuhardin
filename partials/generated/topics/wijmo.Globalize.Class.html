@@ -1,0 +1,177 @@
+<h2>Globalize 类</h2>
+<dl class="dl-horizontal">
+<dt>模块</dt><dd>wijmo</dd>
+<dt>文件</dt><dd>wijmo.js</dd>
+</dl>
+<p><p>类实现数字和日期的格式化和解析。</p>
+
+<p>默认地, <b>Globalize</b> 使用美国英语文化。
+为了切换多种文化，包含wijmo文件之后的合适的 <b>wijmo.culture.*.js</b> 
+文件.</p></p>
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideMethods = !hideMethods">
+<span class="glyph-collapsed" ng-show="hideMethods"></span>
+<span class="glyph-expanded" ng-hide="hideMethods"></span>
+方法
+</h3>
+</div>
+<table ng-hide="hideMethods" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-2">名称</th>
+
+<th class="col-md-5">参数</th>
+
+<th class="col-md-5">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td><span class="badge" title="静态">S</span></td>
+      <td><b>format</b>&#8203;(value, format, trim?, truncate?): <b>string</b></td>
+      <td><p>
+<b>value</b> (<b>any</b>): 数字或者日期进行格式化（所有其他类型转换为字符串 ）。<br/><b>format</b> (<b>string</b>): 格式化数字或日期时使用的格式字符串。<br/><b>trim?</b> (<b>boolean</b>): 是否从数值结果中移除尾随零。<br/><b>truncate?</b> (<b>boolean</b>): 是否缩短数字值而不是四折五入。<br/></p>
+</td>
+      <td><p>格式化一个数字或者日期。</p>
+
+<p>使用<b>format</b> 函数格式化的字符串与使用<b>Globalize.js</b> 和.NET 全局库处理的字符串相似。下面的表格包含了描述格式的可用的链接：</p>
+
+<p><ul>
+<li><a href="http://msdn.microsoft.com/en-us/library/dwhawy9k(v=vs.110).aspx">
+     标准数值格式化的字符串</a></li>
+<li><a href="http://msdn.microsoft.com/en-us/library/az4se3k1(v=vs.110).aspx">
+     标准日期和时间格式的字符串</a></li>
+<li><a href="http://msdn.microsoft.com/en-us/library/8kb3ddd4(v=vs.110).aspx">
+     自定义日期和时间格式化的字符串</a></li>
+</ul></p><br/><br/><b>返回值</b> 给定值的字符串表示形式。</td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="静态">S</span></td>
+      <td><b>formatDate</b>&#8203;(value, format): <b>string</b></td>
+      <td><p>
+<b>value</b> (<b>Date</b>): 数字或者日期格式化。<br/><b>format</b> (<b>string</b>): .NET风格的日期格式字符串</a>.<br/></p>
+</td>
+      <td><p>使用当前的文化格式化日期。</p>
+
+<p><b>format</b> 参数包含.NET风格的 
+<a href="http://msdn.microsoft.com/en-us/library/8kb3ddd4(v=vs.110).aspx">日期格式的字符串</a>
+补充如下:
+<ul>
+<li>
+ <i>Q, q</i> 日历季度。</li>
+ <i>U</i> 会计季度 (政府)。</li>
+ <i>u</i> 会计季度 (私营部门)。</li>
+ <i>EEEE, EEE, EE, E</i> 财政年度 (政府).</li>
+ <i>eeee, eee, ee, e</i> 财政年度 (私营部门)。</li>
+</ul></p>
+
+<p>例如:
+<code>
+var d = new Date(2015, 9, 1); // Oct 1, 2015
+console.log(wijmo.Globalize.format(d, '"FY"EEEE"Q"U') + ' (US culture)');
+&gt; <b>FY2016Q1 (US culture)</b>
+</code></p><br/><br/><b>返回值</b> 给定日期的字符串表示形式。</td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="静态">S</span></td>
+      <td><b>formatNumber</b>&#8203;(value, format, trim?, truncate?): <b>string</b></td>
+      <td><p>
+<b>value</b> (<b>number</b>): 格式化数字。<br/><b>format</b> (<b>string</b>): .NET风格的标准数字格式的字符串(例如 'n2', 'c4', 'p0', 'g2', 'd2')。<br/><b>trim?</b> (<b>boolean</b>): 是否从结果中移除尾随零。<br/><b>truncate?</b> (<b>boolean</b>): 是否缩短值而不是四舍五入。<br/></p>
+</td>
+      <td><p>使用当前的文化格式化一个数字。</p>
+
+<p><b>formatNumber</b> 方法接受更多的.NET风格的 
+<a href="http://msdn.microsoft.com/en-us/library/dwhawy9k(v=vs.110).aspx">
+标准数值格式化字符串</a>，除过不支持'e'和'x'格式（科学计数法和十六进制）的字符串。</p>
+
+<p>数字格式的字符串采取这种表单 <i>Axxccss</i>, 如下这里:
+<ul>
+<li>
+ <i>A</i> 是一个唯一的不区分大小写被称为格式说明符的字母文字。</i>
+<li>
+ <i>xx</i> 是一个被称为格式说明符的可选的整型。 
+ 该精确的说明符影响着结果中数字的位数。</li>
+<li>
+ <i>cc</i> 是一个可选的字符串，当格式化货币值时被用作重载货币符号。当格式化与当前默认的文化不同的货币值时，该字符串很有用 
+ (例如，在应用中使用英国文化格式化欧元或者日元值时)。</li>
+<li>
+ <i>ss</i> 是一个可选的字符串，用来缩放数量。如果提供了该参数，必须以逗号分隔。数字以每1000为单位使用指定的逗号分隔。</li>
+</ul></p>
+
+<p>下面的表格描述了标准的数字格式说明符，并且通过每一个格式说明符为默认的文化显示示例输出。</p>
+
+<p><b>n</b> 数字: <code>formatNumber(1234.5, 'n2') => '1,234.50'</code><br/>
+<b>f</b> 定点: <code>formatNumber(1234.5, 'f2') => '1234.50'</code><br/>
+<b>g</b> 常规 (没有尾随零): <code>formatNumber(1234.5, 'g2') => '1,234.5'</code><br/>
+<b>d</b> 十进制 (整型): <code>formatNumber(-1234, 'd6') => '-001234'</code><br/>
+<b>x</b> 十六进制 (整型): <code>formatNumber(1234, 'x6') => '0004d2'</code><br/>
+<b>c</b> 货币: <code>formatNumber(1234, 'c') => '$ 1,234.00'</code><br/>
+<b>p</b> 百分比: <code>formatNumber(0.1234, 'p2') => '12.34 %'</code></p>
+
+<p>当绘制大数据时，缩放说明符尤其有用。例如，下面的标记创建了一个地表人口与国内生产总值对比的图表。该原始数据表达了单位人口的百万国内生产总值。
+在坐标轴格式下制定的缩放引起了图表显示以百万为单位的人口和以百亿为单位的国内生产总值：</p>
+
+<p><pre>&lt;wj-flex-chart
+  items-source="countriesGDP" binding-x="pop" chart-type="Scatter"&gt;
+  &lt;wj-flex-chart-series
+    name="GDP" binding="gdp"&gt;&lt;/wj-flex-chart-series&gt;
+  &lt;wj-flex-chart-axis
+    wj-property="axisX" title="Population (millions)" 
+    format="n0,,"&gt;
+  &lt;/wj-flex-chart-axis&gt;
+  &lt;wj-flex-chart-axis
+    wj-property="axisY" title="GDP (US$ trillions)"
+    format="c0,,"&gt;
+  &lt;/wj-flex-chart-axis&gt;
+&lt;/wj-flex-chart&gt;</pre></p><br/><br/><b>返回值</b> A string representation of the given number.</td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="静态">S</span></td>
+      <td><b>getFirstDayOfWeek</b>&#8203;(): <b>number</b></td>
+      <td></td>
+      <td><p>根据当前的文化获取一周中的第一天。</p>
+
+<p>该返回的值为零（星期天）到六（星期六）之间。</p></td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="静态">S</span></td>
+      <td><b>getNumberDecimalSeparator</b>&#8203;(): <b>string</b></td>
+      <td></td>
+      <td>获取在数字中被用作十进制分隔符的符号。</td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="静态">S</span></td>
+      <td><b>parseDate</b>&#8203;(value, format): <b>Date</b></td>
+      <td><p>
+<b>value</b> (<b>string</b>): 将字符串转换为日期。<br/><b>format</b> (<b>string</b>): 用于解析日期的格式字符串。<br/></p>
+</td>
+      <td>将一个字符串解析为一个日期。.<br/><br/><b>返回值</b> 由一个给定的字符串呈现一个日期，或者如果该字符串不能被解析为一个日期时则为null。</td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="静态">S</span></td>
+      <td><b>parseFloat</b>&#8203;(value, format?): <b>number</b></td>
+      <td><p>
+<b>value</b> (<b>string</b>): 将字符串转换为数字。<br/><b>format?</b> (<b>string</b>): 解析数字时使用的格式。<br/></p>
+</td>
+      <td>将一个字符串转换为一个浮点型的数字。<br/><br/><b>返回值</b> 由一个给定的字符串呈现浮点型的数字， 
+or <b>NaN</b> 如果该字符串不能被解析为一个浮点型的数字。</td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="静态">S</span></td>
+      <td><b>parseInt</b>&#8203;(value, format?): <b>number</b></td>
+      <td><p>
+<b>value</b> (<b>string</b>): 将一个字符串转换为整数。<br/><b>format?</b> (<b>string</b>): 解析数字时使用的格式。<br/></p>
+</td>
+      <td>将字符串转换为整数。<br/><br/><b>返回值</b> 由给定的字符串呈现整数， 
+or <b>NaN</b> 如果该字符串不能被解析为一个整数。</td>
+    </tr>
+</tbody>
+</table>
+</div>
+

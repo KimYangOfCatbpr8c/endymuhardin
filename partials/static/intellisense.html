@@ -1,0 +1,95 @@
+﻿<h2>
+    JavaScript 智能感知
+</h2>
+<p>
+    智能感知是VS 和VSCode 中非常优秀的特点之一。
+    他节约了打字时间，减少错误，并帮助你学习或记住对象。
+</p>
+<p>
+Typescript的智能感知工作非常好，但是在Javascript上有所限制。
+你可以得到语言的基本支持，但是对于外部库来说是不支持的，除非你指定自定义文件。
+</p>
+<p>
+从我们的 2016/V2 版开始，我们为整个Wijmo 库提供智能感知定义文件。
+简单安装那些文件，你就可以得到完整的智能提示。</p>
+
+<h3>
+Visual Studio 安装。
+</h3>
+
+<p>
+为了在Visual Studio 中安装智能感知定义未见，你需要 "wijmo.intellisense.js"  文件。 你可以在Wijmo 输出库中的 "IntelliSense" 文件夹下找到这个文件。
+</p>
+<pre>C1Wijmo-Enterprise_5.xxxxx.xxx.zip
+  Dist
+    IntelliSense
+      readme.txt
+<span class="highlight">wijmo.intellisense.js</span>
+    Samples
+      VSTemplates</pre>
+<p>
+在VS中，按照下面的步骤安装Wijmo 智能感知定义文件。
+
+</p>
+<ol>
+    <li>
+向你的计算机拷贝"wijmo.intellisense.js" 文件 。
+</li>
+    <li>
+        打开VS设置面板。<br>
+        <pre>Tools|Options|Text Editor|JavaScript|IntelliSense|References</pre>
+    <li>
+    在Reference组合框，选择
+       <br>
+        <pre>Implicit (Web)</pre>
+    <li>添加到 "wijmo.intellisense.js"文件的引用。</li>
+    <li>点击OK 应用更改</li>
+</ol>
+<p>
+    下面的图片展示了细节。
+</p>
+<img src="images/intellisensevs.png" alt="Visual Studio IntelliSense dialog" style="margin-left:.25in">
+
+
+<h3>
+    VSCode 下安装
+</h3>
+
+<p>
+为了在VS Code 中安装Wijmo 智能感知定义文件，你需要Typescript定义文件(*.d.ts)。 你可以在Wijmo 的Control 文件夹下的输出目录下找到这些文件。
+
+</p>
+<pre>C1Wijmo-Enterprise_5.xxxxx.xxx.zip
+  Dist
+    controls
+<span class="highlight">wijmo.d.ts</span>
+<span class="highlight">wijmo.input.d.ts</span>
+<span class="highlight">wijmo.grid.d.ts</span>
+    … 
+  IntelliSense
+	Samples
+	VSTemplates</pre>
+<p>
+拷贝这些 "*.d.ts" 文件夹到工程根目录。 如果工程有一个 "jsconfig.json" 配置文件，确保"*.d.ts"文件已被包含。
+</p>
+<pre>"files": [
+  "typings/wijmo.d.ts",
+  "typings/wijmo.input.d.ts",
+  "typings/wijmo.grid.d.ts",
+     …
+]</pre>
+
+<p>
+替代地，你可以通过在js文件顶部添加对文件注释来指定 "*.d.ts"文件。
+   
+</p>
+<pre>/// &lt;reference path="typings/wijmo.d.ts" /&gt;</pre>
+
+<h3>
+使用Wijmo 智能感知。
+</h3>
+<p>
+一旦Wijmo 智能感知文件被安装， 你将在编写Javascript时可以搜索和浏览器可以感知到的对象。
+例如：
+</p>
+<img src="images/intellisense.png" alt="IntelliSense in JavaScript" style="margin-left:.25in">

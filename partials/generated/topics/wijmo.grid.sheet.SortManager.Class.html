@@ -1,0 +1,165 @@
+<h2>SortManager 类</h2>
+<dl class="dl-horizontal">
+<dt>模块</dt><dd>wijmo.grid.sheet</dd>
+<dt>文件</dt><dd>wijmo.grid.sheet.js</dd>
+</dl>
+<p>管理 <a href="topic/wijmo.grid.sheet.FlexSheet.Class.html"><b>FlexSheet</b></a> 选中的 <a href="topic/wijmo.grid.sheet.Sheet.Class.html"><b>Sheet</b></a> 的排序。</p>
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideConstructor = !hideConstructor">
+<span class="glyph-collapsed" ng-show="hideConstructor"></span>
+<span class="glyph-expanded" ng-hide="hideConstructor"></span>
+ 构造函数
+</h3>
+</div>
+<table ng-hide="hideConstructor" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-2">名称</th>
+
+<th class="col-md-5">参数</th>
+
+<th class="col-md-5">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><b>constructor</b>&#8203;(owner): <a href="topic/wijmo.grid.sheet.SortManager.Class.html"><b>SortManager</b></a></td>
+      <td><p>
+<b>owner</b> (<a href="topic/wijmo.grid.sheet.FlexSheet.Class.html"><b>FlexSheet</b></a>): 拥有这个 <b>SortManager</b> 的 <a href="topic/wijmo.grid.sheet.FlexSheet.Class.html"><b>FlexSheet</b></a> 控件。<br/></p>
+</td>
+      <td>初始化 <a href="topic/wijmo.grid.sheet.SortManager.Class.html"><b>SortManager</b></a> 类的一个新实例</td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideProperties = !hideProperties">
+<span class="glyph-collapsed" ng-show="hideProperties"></span>
+<span class="glyph-expanded" ng-hide="hideProperties"></span>
+属性
+</h3>
+</div>
+<table ng-hide="hideProperties" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-3">名称</th>
+
+<th class="col-md-2">类型</th>
+
+<th class="col-md-7">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><b>sortDescriptions</b></td>
+      <td><a href="topic/wijmo.collections.CollectionView.Class.html"><b>CollectionView</b></a></td>
+      <td>获取或设置由 <a href="topic/wijmo.grid.sheet.ColumnSortDescription.Class.html"><b>ColumnSortDescription</b></a> 对象表示的排序描述的集合。</td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideMethods = !hideMethods">
+<span class="glyph-collapsed" ng-show="hideMethods"></span>
+<span class="glyph-expanded" ng-hide="hideMethods"></span>
+方法
+</h3>
+</div>
+<table ng-hide="hideMethods" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-2">名称</th>
+
+<th class="col-md-5">参数</th>
+
+<th class="col-md-5">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><b>addSortLevel</b>&#8203;(columnIndex?, ascending?)</td>
+      <td><p>
+<b>columnIndex?</b> (<b>number</b>): FlexSheet 控件中列的索引。<br/><b>ascending?</b> (<b>boolean</b>): 排序方式 。<br/><span class="text-info">(默认值: <b>true</b>)</span><br/></p>
+</td>
+      <td>添加个空白的排序级别至排序描述。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>cancelSort</b>&#8203;()</td>
+      <td></td>
+      <td>取消至 FlexSheet 控件的当前排序描述。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>checkSortItemExists</b>&#8203;(columnIndex): <b>number</b></td>
+      <td><p>
+<b>columnIndex</b> (): FlexSheet 控件中的列的索引。<br/></p>
+</td>
+      <td>检查
+     检查特定列的排序项是否存在</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>commitSort</b>&#8203;(undoable?)</td>
+      <td><p>
+<b>undoable?</b> (<b>boolean</b>): 一个布尔类型的值，该值指示是否该提交排序的动作支持撤销。<br/><span class="text-info">(默认值: <b>true</b>)</span><br/></p>
+</td>
+      <td>将当前的排序描述应用到 FlexSheet 控件。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>copySortLevel</b>&#8203;()</td>
+      <td></td>
+      <td>添加当前排序等级的一份拷贝至排序描述。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>deleteSortLevel</b>&#8203;(columnIndex?)</td>
+      <td><p>
+<b>columnIndex?</b> (<b>number</b>): FlexSheet 控件中列的索引。<br/></p>
+</td>
+      <td>从排序描述中移除当前的排序等级。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>editSortLevel</b>&#8203;(columnIndex, ascending)</td>
+      <td><p>
+<b>columnIndex</b> (<b>number</b>): 排序级别的列索引。<br/><b>ascending</b> (<b>boolean</b>): 排序级别的排序顺序。<br/></p>
+</td>
+      <td>更新当前排序级别。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>moveSortLevel</b>&#8203;(offset)</td>
+      <td><p>
+<b>offset</b> (<b>number</b>): 将当前的级别移动的偏移量。<br/></p>
+</td>
+      <td>移动当前的排序等级至一个新位置。</td>
+    </tr>
+</tbody>
+</table>
+</div>
+

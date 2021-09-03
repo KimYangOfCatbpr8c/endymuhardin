@@ -1,0 +1,31 @@
+<h2>wjMenu 类</h2>
+<dl class="dl-horizontal">
+<dt>基类</dt><dd><a href="topic/wijmo.knockout.wjComboBox.Class.html"><b>wjComboBox</b></a></dd>
+<dt>模块</dt><dd>wijmo.knockout</dd>
+<dt>文件</dt><dd>wijmo.knockout.js</dd>
+<dt>表示</dt><dd><label style="font-weight:normal">继承成员 <input type="checkbox" ng-model="showInherited"></label></dd>
+</dl>
+<p><p>使用 KnockoutJS 绑定 <a href="topic/wijmo.input.Menu.Class.html"><b>Menu</b></a> 控件。</p>
+
+<p><b>wjMenu</b> 绑定添加 <b>Menu</b> 控件，示例如下：</p>
+
+<p><pre>&lt;p&gt;Here is a Menu control used as a value picker:&lt;/p&gt;
+&lt;div data-bind="wjMenu: { value: tax, header: 'Tax' }"&gt;
+    &lt;span data-bind="wjMenuItem: { value: 0 }"&gt;Exempt&lt;/span&gt;
+    &lt;span data-bind="wjMenuSeparator: {}"&gt;&lt;/span&gt;
+    &lt;span data-bind="wjMenuItem: { value: .05 }"&gt;5%&lt;/span&gt;
+    &lt;span data-bind="wjMenuItem: { value: .1 }"&gt;10%&lt;/span&gt;
+    &lt;span data-bind="wjMenuItem: { value: .15 }"&gt;15%&lt;/span&gt;
+&lt;/div&gt;</pre></p>
+
+<p><b>wjMenu</b> 该绑定可以包含子绑定：<a href="topic/wijmo.knockout.wjMenuItem.Class.html"><b>wjMenuItem</b></a>, <a href="topic/wijmo.knockout.wjMenuSeparator.Class.html"><b>wjMenuSeparator</b></a>。</p>
+
+<p><b>wjMenu</b> 支持 <b>Menu</b> 控件的所有可读写属性及事件。以下属性支持双向绑定：
+<ul>
+	<li><b>isDroppedDown</b></li>
+	<li><b>text</b></li>
+	<li><b>selectedIndex</b></li>
+	<li><b>selectedItem</b></li>
+	<li><b>selectedValue</b></li>
+ <li><b>value</b></li>
+</ul></p></p>

@@ -1,0 +1,101 @@
+﻿<h2>    
+    控件布局和样式
+</h2>
+<p>
+    Wijmo 5 控件依靠 CSS 进行定制样式，外观和布局。
+</p>
+<p>
+    正因如此，Wijmo 5 控件不需要具有诸如 “width”，“height”，或者 “background” 等属性。
+    样式和布局由 CSS 处理。如果您之前熟悉使用.NET 控件，包括 <b>WinForms</b> 以及<b>XAML</b> 版本，
+    您起初将觉得这种方式有一点点怪异。但是一旦您开始使用 CSS，您将会觉得这样做非常之容易且无比强大。
+    您可以容易地指定某种控件类型的样式，或者设置某个特定控件的样式，仅需要在可重用的 CSS 中添加屈指可数的
+    几行代码。
+</p>
+
+<h3>
+    控件布局
+</h3>
+<p>
+    控件的位置和尺寸由其容器元素决定，且遵守通常的 HTML/CSS 规则。
+    例如，以下 CSS 规则指定具有 “grid” class 的元素应当自动地计算高度以适应表单的内容，
+    最大不超过 300 像素：
+</p>
+<pre>.grid {
+    height: auto;
+    max-height: 300px;
+}</pre>
+<p>
+    以下 fiddle 示例展示该规则如何同时应用到两个 <b>FlexGrid</b> 控件。
+    第一个表单仅具有有限的几个项目，因此它改变高度适应其内容（就像一个普通的 HTML 表格）。
+    第二个表单具有稍多一些的项目，因此它的高度自动地设置为 300 像素，且出现滚动条，可以滚动
+    显示其内容。
+</p>
+<p>
+    <a href="http://jsfiddle.net/Wijmo5/J4zME/" target="_blank" class="btn btn-info">
+        <img src="images/fiddle.png" />
+        控件布局
+    </a>
+</p>
+<p>
+    第一个表单仅具有五个元素可以显示。由于其所需的高度小于 300 像素，表单可以显示全部的元素，且不需要
+    显示滚动条。第二个表单包含一万条项目，所需的高度远大于 300 像素，因此表单变成具有滚动条的固定高度。
+</p>
+
+<h3>
+    设置控件样式
+</h3>
+<p>
+    控件样式遵从和布局同样的逻辑。通过 CSS 改变字体，颜色，外边距，内边距，以及控件其他可视化的方面。
+</p>
+<p>
+    例如，以下 fiddle 示例展示如何通过 CSS 修改
+    <b>FlexGrid</b> 控件的外观：
+</p>
+<p>
+    <a href="http://jsfiddle.net/Wijmo5/3L8Cf/" target="_blank" class="btn btn-info">
+        <img src="images/fiddle.png" />
+        设置控件样式
+    </a>
+</p>
+<p>
+    可以看到，这里表单具有一个平坦的黑白外观。为了做到这一点，我们修改了 CSS，并指定了 grid <b>内部</b>元素的外观。
+    Wijmo 控件为其内部构成的元素指定了 class 类名，这使得修改样式变得更加容易和灵活。
+</p>
+<p>
+    例如：以下 CSS 创建了没有边框，白色背景的单元格元素（具有 “wj-cell” class的，且包含在具有 “grid” class 的元素内部的元素）：
+</p>
+<pre>.grid .wj-cell {
+    border: none;
+    background-color: #fff;
+}
+</pre>
+
+<h3>
+    基于代码的样式设置
+</h3>
+<p>
+    尽管 Wijmo 5 依靠 CSS 进行布局和样式修改，还是有一些不太常见的场景，您可能需要使用
+    代码完全控制控件的某些特性。
+</p>
+<p>
+    例如，FlexGrid 基于用来呈现控件的字体计算行高。但是您也许希望覆盖此基于 CSS 的设置
+    自己精确指定行高。您可以通过以下属性完成：
+</p>
+<pre>
+// 设置滚动区行高
+flex.rows.defaultSize = 34;
+// 设置列头区域行高
+flex.columnHeaders.rows.defaultSize = 40;
+</pre>
+<p>
+    如以下 fiddle 示例显示的那样，它同样使用到了 CSS 设置了一个表单的外观。
+    该示例代码使用到了 “itemsSourceChanged” 事件以获取对 FlexGrid 控件的引用。
+    当控件通过 directive 指令创建时，这是一种方便的获取控件引用的方式。
+    如果我们是通过纯的 JavaScript 代码使用控件，这种技巧完全派不上用场。
+</p>
+<p>
+    <a href="http://jsfiddle.net/Wijmo5/kzrutyj9/" target="_blank" class="btn btn-info">
+        <img src="images/fiddle.png" />
+        基于代码的样式设置
+    </a>
+</p>

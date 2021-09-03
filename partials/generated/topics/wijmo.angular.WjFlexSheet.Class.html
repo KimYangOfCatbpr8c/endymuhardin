@@ -1,0 +1,31 @@
+<h2>WjFlexSheet 类</h2>
+<dl class="dl-horizontal">
+<dt>基类</dt><dd><a href="topic/wijmo.angular.WjFlexGrid.Class.html"><b>WjFlexGrid</b></a></dd>
+<dt>模块</dt><dd>wijmo.angular</dd>
+<dt>文件</dt><dd>wijmo.angular.js</dd>
+<dt>表示</dt><dd><label style="font-weight:normal">继承成员 <input type="checkbox" ng-model="showInherited"></label></dd>
+</dl>
+<p><p>AngularJS 指令应用于 <a href="topic/wijmo.grid.sheet.FlexSheet.Class.html"><b>FlexSheet</b></a> 控件。</p>
+
+<p>使用 <b>wj-flex-sheet</b> 指令添加 <b>FlexSheet</b> 控件到 AngularJS 应用中。 
+注意指令和参数名称必须使用小写字母+短线语法替代驼峰命名。 示例：</p>
+
+<p><pre>&lt;p&gt;这是一个有一个绑定的表单和两个非绑定的表单的FlexSheet控件。:&lt;/p&gt;
+&lt;wj-flex-sheet&gt;
+   &lt;wj-sheet name="Country" items-source="ctx.data"&gt;&lt;/wj-sheet&gt;
+   &lt;wj-sheet name="Report" row-count="25" column-count="13"&gt;&lt;/wj-sheet&gt;
+   &lt;wj-sheet name="Formulas" row-count="310" column-count="10"&gt;&lt;/wj-sheet&gt;
+&lt;/wj-flex-sheet&gt;</pre></p>
+
+<p><b>wj-flex-sheet</b> directive extends <a href="topic/wijmo.angular.WjFlexGrid.Class.html"><b>WjFlexGrid</b></a> with the following attributes:</p>
+
+<p><dl class="dl-horizontal">
+  <dt>control</dt>                   <dd><code>=</code> 该指令创建的指向 <b>FlexSheet</b> 的引用</dd>
+  <dt>is-tab-holder-visible</dt>     <dd><code>@</code> 工作表页签是否可见。 </dd>
+  <dt>selected-sheet-index</dt>      <dd><code>=</code> 获取或设置页签索引。 </dd>
+  <dt>dragging-row-column</dt>    <dd><code>&</code> <b>draggingRowColumn</b> 事件。</dd>
+  <dt>dropping-row-column</dt>    <dd><code>&</code> <b>droppingRowColumn</b> 事件。</dd>
+  <dt>selected-sheet-changed</dt>    <dd><code>&</code> <b>selectedSheetChanged</b> 事件。</dd>
+</dl></p>
+
+<p><b>wj-flex-sheet</b> 指令可以包含 <a href="topic/wijmo.angular.WjSheet.Class.html"><b>WjSheet</b></a> 子指令。</p></p>

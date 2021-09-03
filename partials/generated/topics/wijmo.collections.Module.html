@@ -1,0 +1,215 @@
+<h2>模块 wijmo.collections</h2>
+<dl class="dl-horizontal">
+<dt>文件</dt><dd>wijmo.js</dd>
+</dl>
+<p>定义与数据相关的接口和类，包括<a href="topic/wijmo.collections.ICollectionView.Interface.html"><b>ICollectionView</b></a> 接口和<a href="topic/wijmo.collections.CollectionView.Class.html"><b>CollectionView</b></a> 类，还有<a href="topic/wijmo.collections.ObservableArray.Class.html"><b>ObservableArray</b></a> 类。</p>
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideClasses = !hideClasses">
+<span class="glyph-collapsed" ng-show="hideClasses"></span>
+<span class="glyph-expanded" ng-hide="hideClasses"></span>
+类
+</h3>
+</div>
+<table ng-hide="hideClasses" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th>名称</th>
+
+<th>描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.collections.ArrayBase.Class.html"><b>ArrayBase</b></a></td>
+      <td>通知数组类的基类。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.collections.CollectionView.Class.html"><b>CollectionView</b></a></td>
+      <td><p>实现该<a href="topic/wijmo.collections.ICollectionView.Interface.html"><b>ICollectionView</b></a> 接口的类，在正规的JavaScript数组中暴漏数据。</p>
+
+<p><b>CollectionView</b> 类实现下面的接口： 
+<ul>
+  <li><b>ICollectionView</b>: 提供当前的记录管理，自定义的排序，过滤，和分组归类。</li>
+  <li><a href="topic/wijmo.collections.IEditableCollectionView.Interface.html"><b>IEditableCollectionView</b></a>: 提供编辑，添加和移除项目的方法。</li>
+  <li><a href="topic/wijmo.collections.IPagedCollectionView.Interface.html"><b>IPagedCollectionView</b></a>: 提供分页功能。</li>
+</ul></p>
+
+<p>为了使用<b>CollectionView</b> 类， 通过将其声明为一个数据源，并通过一个规则数组开始。然后使用 
+<b>filter</b>， <b>sortDescriptions</b>， <b>groupDescriptions</b> 和<b>pageSize</b> 属性配置视图。最后，使用<b>items</b> 属性访问视图。例如： </p>
+
+<p><pre>
+  // 创建一个新的CollectionView 
+  var cv = new wijmo.collections.CollectionView(myArray);
+  // 按降序的数量排序项目
+  var sd = new wijmo.collections.SortDescription('amount', false);
+  cv.sortDescriptions.push(sd);
+  // 显示数量只大于100的项目
+  cv.filter = function(item) { return item.amount > 100 };
+  // 在控制台里显示排序的过滤后的结果
+  for (var i = 0; i &lt; cv.items.length; i++) {
+    var item = cv.items[i]; 
+    console.log(i + ': ' + item.name + ' ' + item.amount);
+  }
+</pre></p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.collections.CollectionViewGroup.Class.html"><b>CollectionViewGroup</b></a></td>
+      <td>表示<b>CollectionView对象为基础的</b><b>groupDescriptions属性创建的组</b>。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.collections.GroupDescription.Class.html"><b>GroupDescription</b></a></td>
+      <td><p>表示类型定义分组条件的基类。 </p>
+
+<p>普遍用作这个<b>PropertyGroupDescription目的的具体类</b>。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.collections.NotifyCollectionChangedEventArgs.Class.html"><b>NotifyCollectionChangedEventArgs</b></a></td>
+      <td>为<b>collectionChanged</b> 事件提供数据。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.collections.ObservableArray.Class.html"><b>ObservableArray</b></a></td>
+      <td><p>发送通知更改的数组。</p>
+
+<p>类引发 <b>collectionChanged</b> 事件，当更改与推送、弹出、拼接、插入或删除方法一起使用时。</p>
+
+<p>警告：直接将值分配给数组成员或者数组长度的变化不引发<b>collectionChanged</b> 事件。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.collections.PageChangingEventArgs.Class.html"><b>PageChangingEventArgs</b></a></td>
+      <td>为<b>pageChanging</b> 事件提供数据。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.collections.PropertyGroupDescription.Class.html"><b>PropertyGroupDescription</b></a></td>
+      <td><p>以属性名为标准来描述项目分组。</p>
+
+<p>例如，下面的代码会引起致<a href="topic/wijmo.collections.CollectionView.Class.html"><b>CollectionView</b></a> 通过它们的‘country’属性的第一个字母来进行分组:
+<pre>
+var cv = new wijmo.collections.CollectionView(items);
+var gd = new wijmo.collections.PropertyGroupDescription('country');
+cv.groupDescriptions.push(gd);
+</pre></p>
+
+<p>您还可以指定一个回调函数，该函数生成该组名。例如，下面的代码会引起致<b>CollectionView</b> 通过它们的‘country’属性的第一个字母来进行分组：
+<pre>
+var cv = new wijmo.collections.CollectionView(items);
+var gd = new wijmo.collections.PropertyGroupDescription('country', 
+  function(item, propName) {
+    return item[propName][0]; // return country's initial
+});
+cv.groupDescriptions.push(gd);
+</pre></p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.collections.SortDescription.Class.html"><b>SortDescription</b></a></td>
+      <td>描述一个排序标准。</td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideInterfaces = !hideInterfaces">
+<span class="glyph-collapsed" ng-show="hideInterfaces"></span>
+<span class="glyph-expanded" ng-hide="hideInterfaces"></span>
+接口
+</h3>
+</div>
+<table ng-hide="hideInterfaces" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th>名称</th>
+
+<th>描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.collections.ICollectionView.Interface.html"><b>ICollectionView</b></a></td>
+      <td><p>使集合具有当前记录管理，自定义排序，过滤和归类的功能。</p>
+
+<p>这是一个被用于在Microsoft XAML平台中的<b>ICollectionView</b> 接口的JavaScript版本。它提供了一个连续的，有力的并且MVVM友好地方式来将数据绑定到用户界面元素上。</p>
+
+<p>Wijmo包括各种实现<b>ICollectionView</b> 的类。最常见的是<a href="topic/wijmo.collections.CollectionView.Class.html"><b>CollectionView</b></a>，它基于有规律的JavsScript数组进行工作。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.collections.IComparer.Interface.html"><b>IComparer</b></a></td>
+      <td>表示比较对象的方法。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.collections.IEditableCollectionView.Interface.html"><b>IEditableCollectionView</b></a></td>
+      <td>定义扩展的<b>ICollectionView以提供具有编辑功能的方法和属性</b>。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.collections.INotifyCollectionChanged.Interface.html"><b>INotifyCollectionChanged</b></a></td>
+      <td>通知动态变化的监听，例如, 条目增加并且移除或者当集合被排序，过滤或者归类时。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.collections.IPagedCollectionView.Interface.html"><b>IPagedCollectionView</b></a></td>
+      <td>定义扩展的<b>ICollectionView以提供具有翻页功能的方法和属性</b>。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.collections.IPredicate.Interface.html"><b>IPredicate</b></a></td>
+      <td>表示一种方法，该方法需要一个任何类型的项，并返回一个布尔值，指示对象是否符合一组标准。</td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideEnumerations = !hideEnumerations">
+<span class="glyph-collapsed" ng-show="hideEnumerations"></span>
+<span class="glyph-expanded" ng-hide="hideEnumerations"></span>
+枚举
+</h3>
+</div>
+<table ng-hide="hideEnumerations" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th>名称</th>
+
+<th>描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.collections.NotifyCollectionChangedAction.Enum.html"><b>NotifyCollectionChangedAction</b></a></td>
+      <td>描述引起<b>collectionChanged</b> 事件发生时的行为。</td>
+    </tr>
+</tbody>
+</table>
+</div>
+

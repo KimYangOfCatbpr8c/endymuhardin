@@ -1,0 +1,36 @@
+<h2>WjAutoComplete 类</h2>
+<dl class="dl-horizontal">
+<dt>基类</dt><dd><a href="topic/wijmo.angular.WjComboBox.Class.html"><b>WjComboBox</b></a></dd>
+<dt>模块</dt><dd>wijmo.angular</dd>
+<dt>文件</dt><dd>wijmo.angular.js</dd>
+<dt>表示</dt><dd><label style="font-weight:normal">继承成员 <input type="checkbox" ng-model="showInherited"></label></dd>
+</dl>
+<p><p>AngularJS 指令应用于 <a href="topic/wijmo.input.AutoComplete.Class.html"><b>AutoComplete</b></a> 控件.</p>
+
+<p>使用 <b>wj-auto-complete</b> 指令添加 <b>AutoComplete</b> 控件到 AngularJS 应用中。 注意指令和参数名称必须使用小写字母+短线语法替代驼峰命名。 示例：</p>
+
+<p><pre>&lt;p&gt;Here is an AutoComplete control:&lt;/p&gt;
+&lt;wj-auto-complete
+  text="theCountry" 
+  items-source="countries"
+  is-editable="false" 
+  placeholder="country"&gt;
+&lt;/wj-auto-complete&gt;</pre></p>
+
+<p>下面的例子创建了一个 <b>AutoComplete</b> 控件，并绑定到控制器公开的 'countries' 数组上。 <b>AutoComplete</b> 根据用户类型检索country，在列表项中自动匹配当前输入。</p>
+
+<p><a href="http://jsfiddle.net/Wijmo5/37GHw/" target="_blank" class="btn btn-info">
+  <img src="images/fiddle.png"/>
+  在线示例
+</a>
+</p>
+
+<p><b>wj-auto-complete</b> 指令扩展了 <a href="topic/wijmo.angular.WjComboBox.Class.html"><b>WjComboBox</b></a> ，增加了下列特性:</p>
+
+<p><dl class="dl-horizontal">
+  <dt>css-match</dt>            <dd><code>@</code> 指定css类名称，用来使匹配到的查找内容显示高亮。</dd>
+  <dt>delay</dt>                <dd><code>@</code> 键盘输入后延迟执行检索的毫秒数。</dd>
+  <dt>items-source-function</dt><dd><code>=</code> 动态提供用户类型数据源的函数。</dd>
+  <dt>max-items</dt>            <dd><code>@</code> 下拉列表最多显示多少项</dd>
+  <dt>min-length</dt>           <dd><code>@</code> 触发自动检索执行所需输入的最小字符数量.</dd>
+</dl></p></p>

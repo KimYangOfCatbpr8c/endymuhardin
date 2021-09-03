@@ -1,0 +1,62 @@
+<h2>模块 wijmo/wijmo.angular2.grid.detail</h2>
+<dl class="dl-horizontal">
+<dt>文件</dt><dd>wijmo.angular2.js</dd>
+</dl>
+<p><p>包含 <b>wijmo.grid.detail</b> 模块的 Angular 2 组件。 </p>
+
+<p><b>wijmo.angular2.grid.detail</b> 是一个外部的 TypeScript 模块，可以通过其环境模块名称导入到您的代码中。例如：</p>
+
+<p><pre>import * as wjDetail from 'wijmo/wijmo.angular2.grid.detail';
+import * as wjGrid from 'wijmo/wijmo.angular2.grid';
+&nbsp;
+&#64;Component({
+    directives: [wjGrid.WjFlexGrid, wjDetail.WjFlexGridDetail],
+    template: `
+      &lt;wj-flex-grid [itemsSource]="data"&gt;
+          &lt;template wjFlexGridDetail&gt;
+              Detail row content here...
+          &lt;/template&gt;
+      &lt;/wj-flex-grid&gt;`,
+    selector: 'my-cmp',
+})
+export class MyCmp {
+    data: any[];
+}</pre></p></p>
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideClasses = !hideClasses">
+<span class="glyph-collapsed" ng-show="hideClasses"></span>
+<span class="glyph-expanded" ng-hide="hideClasses"></span>
+类
+</h3>
+</div>
+<table ng-hide="hideClasses" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th>名称</th>
+
+<th>描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo-wijmo.angular2.grid.detail.WjFlexGridDetail.Class.html"><b>WjFlexGridDetail</b></a></td>
+      <td><p><a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a> <a href="topic/wijmo.grid.detail.DetailRow.Class.html"><b>DetailRow</b></a> 模板的Angular 2 Directive 指令。</p>
+
+<p><b>wj-flex-grid-detail</b> 指令必须在一个包含在 <b>wj-flex-grid</b> 组件中包含的一个 <b>&lt;template&gt;</b> 模板元素。</p>
+
+<p><b>wj-flex-grid-detail</b> 指令继承自 <a href="topic/wijmo.grid.detail.FlexGridDetailProvider.Class.html"><b>FlexGridDetailProvider</b></a> 类，可以管理详细行的可见性，详细行的内容可以在 directive 指令标签中定义为任意的 HTML 片段。
+该片段可以包含 Angular 2 绑定，组件以及指令。
+<b>row</b> 和 
+<b>item</b> 模板变量可以在 Angular 2 绑定中使用，分别表示详细行的父 <a href="topic/wijmo.grid.Row.Class.html"><b>Row</b></a> 以及 <b>Row.dataItem</b> 对象。</p></td>
+    </tr>
+</tbody>
+</table>
+</div>
+

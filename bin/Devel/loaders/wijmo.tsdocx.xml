@@ -1,0 +1,1466 @@
+<Project
+    InputPath="."
+    OutputPath="dist"
+    ModuleSourcesOutputPath="npm\sources\node_modules\wijmo"
+    XmlDocumentationPath="xmlDocs"
+    DocumentationPath="..\Samples\Angular\WijmoHelp\WijmoHelp\partials\generated"
+    Minify="true"
+    Document="true">
+  <Configurations>
+    <!--
+      The mapping of VS configuration names to Wijmo library variations:
+      Debug;Release - Wijmo Enterprise Release
+      Evaluation - Wijmo Enterprise Evaluation
+      Standard - Wijmo Standard Release
+      StandardEvaluation - Wijmo Standard Evaluation
+    -->
+    <!--
+    Attributes:
+    Name - a semicolon separated list of config names that the Configuration applies to. The names should match the Config names
+           specified in Wijmo.5 VS project.
+    Default - a boolean value indicating a default configuration that will be used if specified configuration name doesn't exists.
+              Default is false.
+    Define - a list of conditional compilation symbols delimited by semicolon.
+    IncludeSources - a boolean value indicating whether source TS files should be included in the build. Default is false.
+    IncludeUnminified - a semicolon separated list of file extensions whose unminified versions should be included in the build.
+                        Default is empty string.
+    -->
+    <Configuration Name="Debug;Release;Standard" Default="true" IncludeSources="true" IncludeUnminified="js;css"/>
+    <Configuration Name="Evaluation;StandardEvaluation" Define="EVAL" IncludeUnminified="css"/>
+  </Configurations>
+  <Items>
+    
+    <!-- Standard Wijmo modules -->
+    <Item File="controls\wijmo.js" >
+      <Input File="wijmo\Util.js" />
+      <Input File="wijmo\Globalize.js" />
+      <Input File="wijmo\Binding.js" />
+      <Input File="wijmo\Event.js" />
+      <Input File="wijmo\Control.js" />
+      <Input File="wijmo\Aggregate.js" />
+      <Input File="wijmo\ICollectionView.js" />
+      <Input File="wijmo\ObservableArray.js" />
+      <Input File="wijmo\CollectionView.js" />
+      <Input File="wijmo\Tooltip.js" />
+      <Input File="wijmo\Color.js" />
+      <Input File="wijmo\Clipboard.js" />
+      <Input File="wijmo\Popup.js" />
+      <Input File="wijmo\PrintDocument.js" />
+      <Input File="wijmo\_MaskProvider.js" />
+      <Input File="wijmo\_IE9Polyfills.js" />
+    </Item>
+    <Item File="controls\wijmo.grid.js" >
+      <Input File="wijmo.grid\FlexGrid.js" />
+      <Input File="wijmo.grid\EventArgs.js" />
+      <Input File="wijmo.grid\GridPanel.js" />
+      <Input File="wijmo.grid\CellFactory.js" />
+      <Input File="wijmo.grid\CellRange.js" />
+      <Input File="wijmo.grid\RowCol.js" />
+      <Input File="wijmo.grid\HitTestInfo.js" />
+      <Input File="wijmo.grid\MergeManager.js" />
+      <Input File="wijmo.grid\DataMap.js" />
+      <Input File="wijmo.grid\_SelectionHandler.js" />
+      <Input File="wijmo.grid\_KeyboardHandler.js" />
+      <Input File="wijmo.grid\_MouseHandler.js" />
+      <Input File="wijmo.grid\_EditHandler.js" />
+      <Input File="wijmo.grid\_AddNewHandler.js" />
+      <Input File="wijmo.grid\_ImeHandler.js" />
+    </Item>
+    <Item File="controls\wijmo.grid.filter.js" >
+      <Input File="wijmo.grid.filter\IColumnFilter.js" />
+      <Input File="wijmo.grid.filter\value\ValueFilter.js" />
+      <Input File="wijmo.grid.filter\value\ValueFilterEditor.js" />
+      <Input File="wijmo.grid.filter\condition\ConditionFilter.js" />
+      <Input File="wijmo.grid.filter\condition\ConditionFilterEditor.js" />
+      <Input File="wijmo.grid.filter\condition\FilterCondition.js" />
+      <Input File="wijmo.grid.filter\ColumnFilter.js" />
+      <Input File="wijmo.grid.filter\ColumnFilterEditor.js" />
+      <Input File="wijmo.grid.filter\FlexGridFilter.js" />
+    </Item>
+    <Item File="controls\wijmo.grid.grouppanel.js" >
+      <Input File="wijmo.grid.grouppanel\GroupPanel.js" />
+    </Item>
+    <Item File="controls\wijmo.grid.detail.js" >
+      <Input File="wijmo.grid.detail\FlexGridDetailProvider.js" />
+      <Input File="wijmo.grid.detail\DetailMergeManager.js" />
+      <Input File="wijmo.grid.detail\DetailRow.js" />
+    </Item>
+    <Item File="controls\wijmo.grid.xlsx.js" >
+      <Input File="wijmo.grid.xlsx\FlexGridXlsxConverter.js" />
+    </Item>
+    <Item File="controls\wijmo.grid.multirow.js" IncludeInConfig="Debug;Release;Evaluation">
+      <Input File="wijmo.grid.multirow\_MultiRow.js" />
+      <Input File="wijmo.grid.multirow\_Cell.js" />
+      <Input File="wijmo.grid.multirow\_CellGroup.js" />
+      <Input File="wijmo.grid.multirow\_MergeManager.js" />
+      <Input File="wijmo.grid.multirow\_AddNewHandler.js" />
+      <Input File="wijmo.grid.multirow\MultiRow.js" />
+    </Item>
+    <Item File="controls\wijmo.input.js" >
+      <Input File="wijmo.input\DropDown.js" />
+      <Input File="wijmo.input\Calendar.js" />
+      <Input File="wijmo.input\ColorPicker.js" />
+      <Input File="wijmo.input\ListBox.js" />
+      <Input File="wijmo.input\ComboBox.js" />
+      <Input File="wijmo.input\AutoComplete.js" />
+      <Input File="wijmo.input\Menu.js" />
+      <Input File="wijmo.input\MultiSelect.js" />
+      <Input File="wijmo.input\Popup.js" />
+      <Input File="wijmo.input\InputDate.js" />
+      <Input File="wijmo.input\InputTime.js" />
+      <Input File="wijmo.input\InputDateTime.js" />
+      <Input File="wijmo.input\InputNumber.js" />
+      <Input File="wijmo.input\InputMask.js" />
+      <Input File="wijmo.input\InputColor.js" />
+    </Item>
+    <Item File="controls\wijmo.chart.js" >
+      <Input File="wijmo.chart\FlexChartBase.js" />
+      <Input File="wijmo.chart\FlexPie.js" />
+      <Input File="wijmo.chart\FlexChartCore.js" />
+      <Input File="wijmo.chart\FlexChart.js" />
+      <Input File="wijmo.chart\Axis.js" />
+      <Input File="wijmo.chart\PlotArea.js" />
+      <Input File="wijmo.chart\SeriesBase.js" />
+      <Input File="wijmo.chart\Series.js" />
+      <Input File="wijmo.chart\IRenderEngine.js" />
+      <Input File="wijmo.chart\SvgRenderEngine.js" />
+      <Input File="wijmo.chart\Legend.js" />
+      <Input File="wijmo.chart\HitTestInfo.js" />
+      <Input File="wijmo.chart\Palettes.js" />
+      <Input File="wijmo.chart\_Spline.js" />
+      <Input File="wijmo.chart\DataLabel.js" />
+      <Input File="wijmo.chart\LineMarker.js" />
+      <Input File="wijmo.chart\_HitTester.js" />
+      <Input File="wijmo.chart\_BasePlotter.js" />
+      <Input File="wijmo.chart\_BarPlotter.js" />
+      <Input File="wijmo.chart\_BoxPlotter.js" />
+      <Input File="wijmo.chart\_LinePlotter.js" />
+      <Input File="wijmo.chart\_AreaPlotter.js" />
+      <Input File="wijmo.chart\_BubblePlotter.js" />
+      <Input File="wijmo.chart\_FinancePlotter.js" />
+      <Input File="wijmo.chart\_FunnelPlotter.js" />
+      <Input File="wijmo.chart\_VolumeHelper.js" />
+    </Item>
+    <Item File="controls\wijmo.chart.analytics.js" >
+      <Input File="wijmo.chart.analytics\TrendLineBase.js" />
+      <Input File="wijmo.chart.analytics\TrendLine.js" />
+      <Input File="wijmo.chart.analytics\FunctionSeries.js" />
+      <Input File="wijmo.chart.analytics\MovingAverage.js" />
+      <Input File="wijmo.chart.analytics\Waterfall.js" />
+    </Item>
+    <Item File="controls\wijmo.chart.annotation.js" >
+      <Input File="wijmo.chart.annotation\Annotation.js" />
+      <Input File="wijmo.chart.annotation\AnnotationLayer.js" />
+    </Item>
+    <Item File="controls\wijmo.chart.interaction.js" >
+      <Input File="wijmo.chart.interaction\_RangeSlider.js" />
+      <Input File="wijmo.chart.interaction\RangeSelector.js" />
+      <Input File="wijmo.chart.interaction\ChartGestures.js" />
+    </Item>
+    <Item File="controls\wijmo.chart.animation.js" >
+      <Input File="wijmo.chart.animation\ChartAnimation.js" />
+    </Item>
+    <Item File="controls\wijmo.chart.hierarchical.js" >
+      <Input File="wijmo.chart.hierarchical\Sunburst.js" />
+      <Input File="wijmo.chart.hierarchical\HierarchicalUtil.js" />
+    </Item>
+    <Item File="controls\wijmo.chart.radar.js" >
+      <Input File="wijmo.chart.radar\FlexRadar.js" />
+      <Input File="wijmo.chart.radar\FlexRadarSeries.js" />
+      <Input File="wijmo.chart.radar\FlexRadarAxis.js" />
+      <Input File="wijmo.chart.radar\_RadarLinePlotter.js" />
+      <Input File="wijmo.chart.radar\_RadarBarPlotter.js" />
+    </Item>
+    <Item File="controls\wijmo.gauge.js" >
+      <Input File="wijmo.gauge\Gauge.js" />
+      <Input File="wijmo.gauge\LinearGauge.js" />
+      <Input File="wijmo.gauge\RadialGauge.js" />
+      <Input File="wijmo.gauge\BulletGraph.js" />
+      <Input File="wijmo.gauge\Range.js" />
+    </Item>
+    <Item File="controls\wijmo.odata.js" >
+      <Input File="wijmo.odata\ODataCollectionView.js" />
+      <Input File="wijmo.odata\ODataVirtualCollectionView.js" />
+    </Item>
+    <Item File="controls\wijmo.xlsx.js" >
+      <Input File="wijmo.xlsx\c1xlsx.js" />
+      <Input File="wijmo.xlsx\Workbook.js" />
+      <Input File="wijmo.xlsx\XlsxConverter.js" />
+    </Item>
+    <Item File="controls\wijmo.pdf.js">
+      <Input File="wijmo.pdf\c1pdfkit.js" Document="false" />
+      <Input File="wijmo.pdf\c1pdfkit.typings.js" Document="false" />
+      <Input File="wijmo.pdf\Enumerations.js" />
+      <Input File="wijmo.pdf\Interfaces.js" />
+      <Input File="wijmo.pdf\_Messages.js" />
+      <Input File="wijmo.pdf\Util.js" />
+      <Input File="wijmo.pdf\PdfDashPattern.js" />
+      <Input File="wijmo.pdf\brush\PdfBrush.js" />
+      <Input File="wijmo.pdf\brush\PdfGradientStop.js" />
+      <Input File="wijmo.pdf\brush\PdfGradientBrush.js" />
+      <Input File="wijmo.pdf\brush\PdfLinearGradientBrush.js" />
+      <Input File="wijmo.pdf\brush\PdfRadialGradientBrush.js" />
+      <Input File="wijmo.pdf\brush\PdfSolidBrush.js" />
+      <Input File="wijmo.pdf\PdfPen.js" />
+      <Input File="wijmo.pdf\font\PdfFont.js" />
+      <Input File="wijmo.pdf\font\_PdfFontRegistrar.js" />
+      <Input File="wijmo.pdf\PdfPageArea.js" />
+      <Input File="wijmo.pdf\PdfRunningTitleDeclarativeContent.js" />
+      <Input File="wijmo.pdf\PdfRunningTitle.js" />
+      <Input File="wijmo.pdf\_PdfImageHelper.js" />
+      <Input File="wijmo.pdf\PdfPaths.js" />
+      <Input File="wijmo.pdf\_PdfSvgPathHelper.js" />
+      <Input File="wijmo.pdf\_XhrHelper.js" />
+      <Input File="wijmo.pdf\PdfDocumentEndedEventArgs.js" />
+      <Input File="wijmo.pdf\PdfDocument.js" />
+      <Input File="wijmo.pdf\svg\_Util.js" Document="false" />
+      <Input File="wijmo.pdf\svg\_Attributes.js" Document="false" />
+      <Input File="wijmo.pdf\svg\_Elements.js" Document="false" />
+      <Input File="wijmo.pdf\svg\_SvgRenderer.js" Document="false" />
+    </Item>
+    <Item File="controls\wijmo.grid.pdf.js" >
+      <Input File="wijmo.grid.pdf\FlexGridPdfConverter.js" />
+    </Item>
+
+    <!-- Enterprise Modules -->
+    <Item File="controls\wijmo.grid.sheet.js" IncludeInConfig="Debug;Release;Evaluation">
+      <Input File="wijmo.grid.sheet\_CalcEngine.js" />
+      <Input File="wijmo.grid.sheet\_Expression.js" />
+      <Input File="wijmo.grid.sheet\_UndoAction.js" />
+      <Input File="wijmo.grid.sheet\_ContextMenu.js" />
+      <Input File="wijmo.grid.sheet\_TabHolder.js" />
+      <Input File="wijmo.grid.sheet\_FlexSheetCellFactory.js" />
+      <Input File="wijmo.grid.sheet\FlexSheet.js" />
+      <Input File="wijmo.grid.sheet\Sheet.js" />
+      <Input File="wijmo.grid.sheet\SortManager.js" />
+      <Input File="wijmo.grid.sheet\UndoStack.js" />
+      <Input File="wijmo.grid.sheet\filter\value\_FlexSheetValueFilter.js" />
+      <Input File="wijmo.grid.sheet\filter\value\_FlexSheetValueFilterEditor.js" />
+      <Input File="wijmo.grid.sheet\filter\condition\_FlexSheetConditionFilter.js" />
+      <Input File="wijmo.grid.sheet\filter\_FlexSheetColumnFilter.js" />
+      <Input File="wijmo.grid.sheet\filter\_FlexSheetColumnFilterEditor.js" />
+      <Input File="wijmo.grid.sheet\filter\_FlexSheetFilter.js" />
+    </Item>
+    <Item File="controls\wijmo.chart.finance.js" IncludeInConfig="Debug;Release;Evaluation">
+      <Input File="wijmo.chart.finance\Utils.js" />
+      <Input File="wijmo.chart.finance\FinancialChart.js" />
+      <Input File="wijmo.chart.finance\FinancialSeries.js" />
+      <Input File="wijmo.chart.finance\_IFinancialCalculator.js" />
+      <Input File="wijmo.chart.finance\_HeikinAshiPlotter.js" />
+      <Input File="wijmo.chart.finance\_BaseRangePlotter.js" />
+      <Input File="wijmo.chart.finance\_LineBreakPlotter.js" />
+      <Input File="wijmo.chart.finance\_RenkoPlotter.js" />
+      <Input File="wijmo.chart.finance\_KagiPlotter.js" />
+    </Item>
+    <Item File="controls\wijmo.chart.finance.analytics.js" IncludeInConfig="Debug;Release;Evaluation">
+      <Input File="wijmo.chart.finance.analytics\Fibonacci.js" />
+      <Input File="wijmo.chart.finance.analytics\OverlayIndicatorBase.js" />
+      <Input File="wijmo.chart.finance.analytics\ATR.js" />
+      <Input File="wijmo.chart.finance.analytics\CCI.js" />
+      <Input File="wijmo.chart.finance.analytics\WilliamsR.js" />
+      <Input File="wijmo.chart.finance.analytics\Envelopes.js" />
+      <Input File="wijmo.chart.finance.analytics\BollingerBands.js" />
+      <Input File="wijmo.chart.finance.analytics\RSI.js" />
+      <Input File="wijmo.chart.finance.analytics\Macd.js" />
+      <Input File="wijmo.chart.finance.analytics\Stochastic.js" />
+    </Item>
+    <Item File="controls\wijmo.olap.js" IncludeInConfig="Debug;Release;Evaluation">
+      <Input File="wijmo.olap\_Tally.js" />
+      <Input File="wijmo.olap\_PivotKey.js" />
+      <Input File="wijmo.olap\_PivotNode.js" />
+      <Input File="wijmo.olap\PivotCollectionView.js" />
+      <Input File="wijmo.olap\PivotField.js" />
+      <Input File="wijmo.olap\PivotFieldCollection.js" />
+      <Input File="wijmo.olap\PivotFilter.js" />
+      <Input File="wijmo.olap\PivotFieldEditor.js" />
+      <Input File="wijmo.olap\PivotFilterEditor.js" />
+      <Input File="wijmo.olap\PivotEngine.js" />
+      <Input File="wijmo.olap\panel\_ListContextMenu.js" />
+      <Input File="wijmo.olap\panel\PivotPanel.js" />
+      <Input File="wijmo.olap\grid\_GridContextMenu.js" />
+      <Input File="wijmo.olap\grid\_PivotMergeManager.js" />
+      <Input File="wijmo.olap\grid\PivotGrid.js" />
+      <Input File="wijmo.olap\grid\DetailDialog.js" />
+      <Input File="wijmo.olap\chart\PivotChart.js" />
+    </Item>
+    <Item File="controls\wijmo.viewer.js" IncludeInConfig="Debug;Release;Evaluation">
+        <Input File="wijmo.viewer\_DocumentSource.js" />
+        <Input File="wijmo.viewer\_Report.js" />
+        <Input File="wijmo.viewer\_PdfDocumentSource.js" />
+        <Input File="wijmo.viewer\ViewerBase.js" />
+        <Input File="wijmo.viewer\ReportViewer.js" />
+        <Input File="wijmo.viewer\PdfViewer.js" />
+    </Item>
+    <!-- Interop Modules -->
+    <Item File="interop\angular\wijmo.angular.js" MinifyLocalRename="false" ModuleSource="false">
+      <Input File="wijmo.interop\ControlMetaFactory.js" />
+      <Input File="wijmo.angular\wijmo.angular.MetaFactory.js" />
+      <Input File="wijmo.angular\wijmo.angular.directiveBase.js" />
+      <Input File="wijmo.angular\wijmo.angular.core.js" />
+      <Input File="wijmo.angular\wijmo.angular.input.js" />
+      <Input File="wijmo.angular\wijmo.angular.chart.js" />
+      <Input File="wijmo.angular\wijmo.angular.gauge.js" />
+      <Input File="wijmo.angular\wijmo.angular.grid.js" />
+      <Input File="wijmo.angular\wijmo.angular.olap.js" />
+      <Input File="wijmo.angular\wijmo.angular.all.js" />
+    </Item>
+    <Item File="interop\knockout\wijmo.knockout.js" ModuleSource="false">
+      <Input File="wijmo.interop\ControlMetaFactory.js" />
+      <Input File="wijmo.knockout\wijmo.knockout.MetaFactory.js" />
+      <Input File="wijmo.knockout\wijmo.knockout.bindingBase.js" />
+      <Input File="wijmo.knockout\wijmo.knockout.core.js" CheckCase="false"/>
+      <Input File="wijmo.knockout\wijmo.knockout.input.js" CheckCase="false"/>
+      <Input File="wijmo.knockout\wijmo.knockout.grid.js" CheckCase="false"/>
+      <Input File="wijmo.knockout\wijmo.knockout.chart.js" CheckCase="false"/>
+      <Input File="wijmo.knockout\wijmo.knockout.gauge.js" CheckCase="false"/>
+      <Input File="wijmo.knockout\wijmo.knockout.olap.js" CheckCase="false"/>
+      <Input File="wijmo.knockout\wijmo.knockout.tags.js" />
+    </Item>
+    <Item File="interop\angular2\wijmo.angular2.js" CheckModuleName="false" 
+          SeparateOutput="ts;d.ts;js;min.js" MergedOutput="js;min.js"
+          MinifyLocalRename="false" MinifyKeepLineBreaks="true">
+      <Input File="wijmo.angular2\node_modules\wijmo\wijmo.metaFactory.js" />
+      <Input File="wijmo.angular2\node_modules\wijmo\wijmo.angular2.metaFactory.js" />
+      <Input File="wijmo.angular2\node_modules\wijmo\wijmo.angular2.directiveBase.js" />
+      <Input File="wijmo.angular2\node_modules\wijmo\wijmo.angular2.core.js" />
+      <Input File="wijmo.angular2\node_modules\wijmo\wijmo.angular2.input.js" />
+      <Input File="wijmo.angular2\node_modules\wijmo\wijmo.angular2.grid.js" />
+      <Input File="wijmo.angular2\node_modules\wijmo\wijmo.angular2.grid.filter.js" />
+      <Input File="wijmo.angular2\node_modules\wijmo\wijmo.angular2.grid.grouppanel.js" />
+      <Input File="wijmo.angular2\node_modules\wijmo\wijmo.angular2.grid.detail.js" />
+      <Input File="wijmo.angular2\node_modules\wijmo\wijmo.angular2.grid.multirow.js" />
+      <Input File="wijmo.angular2\node_modules\wijmo\wijmo.angular2.grid.sheet.js" />
+      <Input File="wijmo.angular2\node_modules\wijmo\wijmo.angular2.chart.js" />
+      <Input File="wijmo.angular2\node_modules\wijmo\wijmo.angular2.chart.interaction.js" />
+      <Input File="wijmo.angular2\node_modules\wijmo\wijmo.angular2.chart.animation.js" />
+      <Input File="wijmo.angular2\node_modules\wijmo\wijmo.angular2.chart.analytics.js" />
+      <Input File="wijmo.angular2\node_modules\wijmo\wijmo.angular2.chart.annotation.js" />
+      <Input File="wijmo.angular2\node_modules\wijmo\wijmo.angular2.chart.finance.js" />
+      <Input File="wijmo.angular2\node_modules\wijmo\wijmo.angular2.chart.finance.analytics.js" />
+      <Input File="wijmo.angular2\node_modules\wijmo\wijmo.angular2.chart.hierarchical.js" />
+      <Input File="wijmo.angular2\node_modules\wijmo\wijmo.angular2.chart.radar.js" />
+      <Input File="wijmo.angular2\node_modules\wijmo\wijmo.angular2.gauge.js" />
+      <Input File="wijmo.angular2\node_modules\wijmo\wijmo.angular2.olap.js" />
+      <Input File="wijmo.angular2\node_modules\wijmo\wijmo.angular2.viewer.js" />
+      <Input File="wijmo.angular2\node_modules\wijmo\wijmo.angular2.all.js" />
+    </Item>
+    <Item File="interop\react\wijmo.react.js" ModuleSource="false">
+      <Input File="wijmo.react\wijmo.react.js" CheckCase="false"/>
+    </Item>
+    <Item File="interop\vue\wijmo.vue.js" ModuleSource="false">
+      <Input File="wijmo.vue\wijmo.vue.js" CheckCase="false"/>
+    </Item>
+    <Item File="interop\vue2\wijmo.vue2.js" ModuleSource="false">
+      <Input File="wijmo.vue2\wijmo.vue2.js" CheckCase="false" />
+    </Item>
+
+    <!-- Cultures -->
+    <!--
+    We include unminified versions of culture files unconditionally because they are
+    referenced in JS code where we can't rework the references to references to
+    minified versions.
+    -->
+    <Item File="controls\cultures\wijmo.culture.ar-AE.js" IncludeUnminified="true" ModuleSource="false">
+      <Input File="cultures\wijmo.culture.ar-AE.js" />
+    </Item>
+    <Item File="controls\cultures\wijmo.culture.bg.js" IncludeUnminified="true" ModuleSource="false">
+      <Input File="cultures\wijmo.culture.bg.js" />
+    </Item>
+    <Item File="controls\cultures\wijmo.culture.ca.js" IncludeUnminified="true" ModuleSource="false">
+      <Input File="cultures\wijmo.culture.ca.js" />
+    </Item>
+    <Item File="controls\cultures\wijmo.culture.cs.js" IncludeUnminified="true" ModuleSource="false">
+      <Input File="cultures\wijmo.culture.cs.js" />
+    </Item>
+    <Item File="controls\cultures\wijmo.culture.da.js" IncludeUnminified="true" ModuleSource="false">
+      <Input File="cultures\wijmo.culture.da.js" />
+    </Item>
+    <Item File="controls\cultures\wijmo.culture.de.js" IncludeUnminified="true" ModuleSource="false">
+      <Input File="cultures\wijmo.culture.de.js" />
+    </Item>
+    <Item File="controls\cultures\wijmo.culture.el.js" IncludeUnminified="true" ModuleSource="false">
+      <Input File="cultures\wijmo.culture.el.js" />
+    </Item>
+    <Item File="controls\cultures\wijmo.culture.en.js" IncludeUnminified="true" ModuleSource="false">
+      <Input File="cultures\wijmo.culture.en.js" />
+    </Item>
+    <Item File="controls\cultures\wijmo.culture.en-CA.js" IncludeUnminified="true" ModuleSource="false">
+      <Input File="cultures\wijmo.culture.en-CA.js" />
+    </Item>
+    <Item File="controls\cultures\wijmo.culture.en-GB.js" IncludeUnminified="true" ModuleSource="false">
+      <Input File="cultures\wijmo.culture.en-GB.js" />
+    </Item>
+    <Item File="controls\cultures\wijmo.culture.es.js" IncludeUnminified="true" ModuleSource="false">
+      <Input File="cultures\wijmo.culture.es.js" />
+    </Item>
+    <Item File="controls\cultures\wijmo.culture.et.js" IncludeUnminified="true" ModuleSource="false">
+      <Input File="cultures\wijmo.culture.et.js" />
+    </Item>
+    <Item File="controls\cultures\wijmo.culture.eu.js" IncludeUnminified="true" ModuleSource="false">
+      <Input File="cultures\wijmo.culture.eu.js" />
+    </Item>
+    <Item File="controls\cultures\wijmo.culture.fi.js" IncludeUnminified="true" ModuleSource="false">
+      <Input File="cultures\wijmo.culture.fi.js" />
+    </Item>
+    <Item File="controls\cultures\wijmo.culture.fr.js" IncludeUnminified="true" ModuleSource="false">
+      <Input File="cultures\wijmo.culture.fr.js" />
+    </Item>
+    <Item File="controls\cultures\wijmo.culture.fr-CA.js" IncludeUnminified="true" ModuleSource="false">
+      <Input File="cultures\wijmo.culture.fr-CA.js" />
+    </Item>
+    <Item File="controls\cultures\wijmo.culture.gl.js" IncludeUnminified="true" ModuleSource="false">
+      <Input File="cultures\wijmo.culture.gl.js" />
+    </Item>
+    <Item File="controls\cultures\wijmo.culture.he.js" IncludeUnminified="true" ModuleSource="false">
+      <Input File="cultures\wijmo.culture.he.js" />
+    </Item>
+    <Item File="controls\cultures\wijmo.culture.hi.js" IncludeUnminified="true" ModuleSource="false">
+      <Input File="cultures\wijmo.culture.hi.js" />
+    </Item>
+    <Item File="controls\cultures\wijmo.culture.hr.js" IncludeUnminified="true" ModuleSource="false">
+      <Input File="cultures\wijmo.culture.hr.js" />
+    </Item>
+    <Item File="controls\cultures\wijmo.culture.hu.js" IncludeUnminified="true" ModuleSource="false">
+      <Input File="cultures\wijmo.culture.hu.js" />
+    </Item>
+    <Item File="controls\cultures\wijmo.culture.id.js" IncludeUnminified="true" ModuleSource="false">
+      <Input File="cultures\wijmo.culture.id.js" />
+    </Item>
+    <Item File="controls\cultures\wijmo.culture.it.js" IncludeUnminified="true" ModuleSource="false">
+      <Input File="cultures\wijmo.culture.it.js" />
+    </Item>
+    <Item File="controls\cultures\wijmo.culture.ja.js" IncludeUnminified="true" ModuleSource="false">
+      <Input File="cultures\wijmo.culture.ja.js" />
+    </Item>
+    <Item File="controls\cultures\wijmo.culture.kk.js" IncludeUnminified="true" ModuleSource="false">
+      <Input File="cultures\wijmo.culture.kk.js" />
+    </Item>
+    <Item File="controls\cultures\wijmo.culture.ko.js" IncludeUnminified="true" ModuleSource="false">
+      <Input File="cultures\wijmo.culture.ko.js" />
+    </Item>
+    <Item File="controls\cultures\wijmo.culture.lt.js" IncludeUnminified="true" ModuleSource="false">
+      <Input File="cultures\wijmo.culture.lt.js" />
+    </Item>
+    <Item File="controls\cultures\wijmo.culture.lv.js" IncludeUnminified="true" ModuleSource="false">
+      <Input File="cultures\wijmo.culture.lv.js" />
+    </Item>
+    <Item File="controls\cultures\wijmo.culture.nl.js" IncludeUnminified="true" ModuleSource="false">
+      <Input File="cultures\wijmo.culture.nl.js" />
+    </Item>
+    <Item File="controls\cultures\wijmo.culture.no.js" IncludeUnminified="true" ModuleSource="false">
+      <Input File="cultures\wijmo.culture.no.js" />
+    </Item>
+    <Item File="controls\cultures\wijmo.culture.pl.js" IncludeUnminified="true" ModuleSource="false">
+      <Input File="cultures\wijmo.culture.pl.js" />
+    </Item>
+    <Item File="controls\cultures\wijmo.culture.pt.js" IncludeUnminified="true" ModuleSource="false">
+      <Input File="cultures\wijmo.culture.pt.js" />
+    </Item>
+    <Item File="controls\cultures\wijmo.culture.ro.js" IncludeUnminified="true" ModuleSource="false">
+      <Input File="cultures\wijmo.culture.ro.js" />
+    </Item>
+    <Item File="controls\cultures\wijmo.culture.ru.js" IncludeUnminified="true" ModuleSource="false">
+      <Input File="cultures\wijmo.culture.ru.js" />
+    </Item>
+    <Item File="controls\cultures\wijmo.culture.sk.js" IncludeUnminified="true" ModuleSource="false">
+      <Input File="cultures\wijmo.culture.sk.js" />
+    </Item>
+    <Item File="controls\cultures\wijmo.culture.sl.js" IncludeUnminified="true" ModuleSource="false">
+      <Input File="cultures\wijmo.culture.sl.js" />
+    </Item>
+    <Item File="controls\cultures\wijmo.culture.sr.js" IncludeUnminified="true" ModuleSource="false">
+      <Input File="cultures\wijmo.culture.sr.js" />
+    </Item>
+    <Item File="controls\cultures\wijmo.culture.sv.js" IncludeUnminified="true" ModuleSource="false">
+      <Input File="cultures\wijmo.culture.sv.js" />
+    </Item>
+    <Item File="controls\cultures\wijmo.culture.th.js" IncludeUnminified="true" ModuleSource="false">
+      <Input File="cultures\wijmo.culture.th.js" />
+    </Item>
+    <Item File="controls\cultures\wijmo.culture.tr.js" IncludeUnminified="true" ModuleSource="false">
+      <Input File="cultures\wijmo.culture.tr.js" />
+    </Item>
+    <Item File="controls\cultures\wijmo.culture.uk.js" IncludeUnminified="true" ModuleSource="false">
+      <Input File="cultures\wijmo.culture.uk.js" />
+    </Item>
+    <Item File="controls\cultures\wijmo.culture.zh.js" IncludeUnminified="true" ModuleSource="false">
+      <Input File="cultures\wijmo.culture.zh.js" />
+    </Item>
+    <Item File="controls\cultures\wijmo.culture.zh-HK.js" IncludeUnminified="true" ModuleSource="false">
+      <Input File="cultures\wijmo.culture.zh-HK.js" />
+    </Item>
+    <Item File="controls\cultures\wijmo.culture.zh-TW.js" IncludeUnminified="true" ModuleSource="false">
+      <Input File="cultures\wijmo.culture.zh-TW.js" />
+    </Item>
+    
+    <!-- Styles -->
+    <Item File="styles\wijmo.css" >
+      <Input File="styles\wijmo.css" />
+    </Item>
+    
+    <!-- Themes (changes to wijmo.css) -->
+    <Item File="styles\themes\wijmo.theme.cerulean.css" >
+        <Input File="styles\themes\wijmo.theme.cerulean.css" />
+    </Item>
+    <Item File="styles\themes\wijmo.theme.cleandark.css" >
+      <Input File="styles\themes\wijmo.theme.cleandark.css" />
+    </Item>
+    <Item File="styles\themes\wijmo.theme.cleanlight.css" >
+      <Input File="styles\themes\wijmo.theme.cleanlight.css" />
+    </Item>
+    <Item File="styles\themes\wijmo.theme.cocoa.css" >
+      <Input File="styles\themes\wijmo.theme.cocoa.css" />
+    </Item>
+    <Item File="styles\themes\wijmo.theme.coral.css" >
+      <Input File="styles\themes\wijmo.theme.coral.css" />
+    </Item>
+    <Item File="styles\themes\wijmo.theme.cyborg.css" >
+      <Input File="styles\themes\wijmo.theme.cyborg.css" />
+    </Item>
+    <Item File="styles\themes\wijmo.theme.dark.css" >
+      <Input File="styles\themes\wijmo.theme.dark.css" />
+    </Item>
+    <Item File="styles\themes\wijmo.theme.darkly.css" >
+      <Input File="styles\themes\wijmo.theme.darkly.css" />
+    </Item>
+    <Item File="styles\themes\wijmo.theme.flatly.css" >
+      <Input File="styles\themes\wijmo.theme.flatly.css" />
+    </Item>
+    <Item File="styles\themes\wijmo.theme.grayscale.css" >
+      <Input File="styles\themes\wijmo.theme.grayscale.css" />
+    </Item>
+    <Item File="styles\themes\wijmo.theme.highcontrast.css" >
+      <Input File="styles\themes\wijmo.theme.highcontrast.css" />
+    </Item>
+    <Item File="styles\themes\wijmo.theme.light.css" >
+      <Input File="styles\themes\wijmo.theme.light.css" />
+    </Item>
+    <Item File="styles\themes\wijmo.theme.midnight.css" >
+      <Input File="styles\themes\wijmo.theme.midnight.css" />
+    </Item>
+    <Item File="styles\themes\wijmo.theme.minimal.css" >
+      <Input File="styles\themes\wijmo.theme.minimal.css" />
+    </Item>
+    <Item File="styles\themes\wijmo.theme.modern.css" >
+      <Input File="styles\themes\wijmo.theme.modern.css" />
+    </Item>
+    <Item File="styles\themes\wijmo.theme.organic.css" >
+      <Input File="styles\themes\wijmo.theme.organic.css" />
+    </Item>
+    <Item File="styles\themes\wijmo.theme.simplex.css" >
+      <Input File="styles\themes\wijmo.theme.simplex.css" />
+    </Item>
+    <Item File="styles\themes\wijmo.theme.slate.css" >
+      <Input File="styles\themes\wijmo.theme.slate.css" />
+    </Item>
+    <Item File="styles\themes\wijmo.theme.superhero.css" >
+      <Input File="styles\themes\wijmo.theme.superhero.css" />
+    </Item>
+    <Item File="styles\themes\wijmo.theme.trust.css" >
+      <Input File="styles\themes\wijmo.theme.trust.css" />
+    </Item>
+    <Item File="styles\themes\wijmo.theme.zen.css" >
+      <Input File="styles\themes\wijmo.theme.zen.css" />
+    </Item>
+    <Item File="styles\themes\wijmo.theme.office.css" >
+      <Input File="styles\themes\wijmo.theme.office.css" />
+    </Item>
+    <Item File="styles\themes\wijmo.theme.paper.css" >
+      <Input File="styles\themes\wijmo.theme.paper.css" />
+    </Item>
+    <Item File="styles\themes\wijmo.theme.material.css" >
+      <Input File="styles\themes\wijmo.theme.material.css" />
+    </Item>
+
+    <!-- Material Design themes -->
+    <Item File="styles\themes\material\wijmo.theme.material.amber-blue.css">
+      <Input File="styles\themes\material\wijmo.theme.material.amber-blue.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.amber-cyan.css">
+      <Input File="styles\themes\material\wijmo.theme.material.amber-cyan.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.amber-deep_orange.css">
+      <Input File="styles\themes\material\wijmo.theme.material.amber-deep_orange.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.amber-deep_purple.css">
+      <Input File="styles\themes\material\wijmo.theme.material.amber-deep_purple.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.amber-green.css">
+      <Input File="styles\themes\material\wijmo.theme.material.amber-green.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.amber-indigo.css">
+      <Input File="styles\themes\material\wijmo.theme.material.amber-indigo.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.amber-light_blue.css">
+      <Input File="styles\themes\material\wijmo.theme.material.amber-light_blue.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.amber-light_green.css">
+      <Input File="styles\themes\material\wijmo.theme.material.amber-light_green.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.amber-lime.css">
+      <Input File="styles\themes\material\wijmo.theme.material.amber-lime.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.amber-orange.css">
+      <Input File="styles\themes\material\wijmo.theme.material.amber-orange.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.amber-pink.css">
+      <Input File="styles\themes\material\wijmo.theme.material.amber-pink.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.amber-purple.css">
+      <Input File="styles\themes\material\wijmo.theme.material.amber-purple.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.amber-red.css">
+      <Input File="styles\themes\material\wijmo.theme.material.amber-red.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.amber-teal.css">
+      <Input File="styles\themes\material\wijmo.theme.material.amber-teal.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.amber-yellow.css">
+      <Input File="styles\themes\material\wijmo.theme.material.amber-yellow.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.blue-amber.css">
+      <Input File="styles\themes\material\wijmo.theme.material.blue-amber.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.blue-cyan.css">
+      <Input File="styles\themes\material\wijmo.theme.material.blue-cyan.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.blue-deep_orange.css">
+      <Input File="styles\themes\material\wijmo.theme.material.blue-deep_orange.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.blue-deep_purple.css">
+      <Input File="styles\themes\material\wijmo.theme.material.blue-deep_purple.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.blue-green.css">
+      <Input File="styles\themes\material\wijmo.theme.material.blue-green.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.blue-indigo.css">
+      <Input File="styles\themes\material\wijmo.theme.material.blue-indigo.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.blue-light_blue.css">
+      <Input File="styles\themes\material\wijmo.theme.material.blue-light_blue.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.blue-light_green.css">
+      <Input File="styles\themes\material\wijmo.theme.material.blue-light_green.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.blue-lime.css">
+      <Input File="styles\themes\material\wijmo.theme.material.blue-lime.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.blue-orange.css">
+      <Input File="styles\themes\material\wijmo.theme.material.blue-orange.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.blue-pink.css">
+      <Input File="styles\themes\material\wijmo.theme.material.blue-pink.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.blue-purple.css">
+      <Input File="styles\themes\material\wijmo.theme.material.blue-purple.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.blue-red.css">
+      <Input File="styles\themes\material\wijmo.theme.material.blue-red.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.blue-teal.css">
+      <Input File="styles\themes\material\wijmo.theme.material.blue-teal.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.blue-yellow.css">
+      <Input File="styles\themes\material\wijmo.theme.material.blue-yellow.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.blue_grey-amber.css">
+      <Input File="styles\themes\material\wijmo.theme.material.blue_grey-amber.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.blue_grey-blue.css">
+      <Input File="styles\themes\material\wijmo.theme.material.blue_grey-blue.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.blue_grey-cyan.css">
+      <Input File="styles\themes\material\wijmo.theme.material.blue_grey-cyan.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.blue_grey-deep_orange.css">
+      <Input File="styles\themes\material\wijmo.theme.material.blue_grey-deep_orange.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.blue_grey-deep_purple.css">
+      <Input File="styles\themes\material\wijmo.theme.material.blue_grey-deep_purple.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.blue_grey-green.css">
+      <Input File="styles\themes\material\wijmo.theme.material.blue_grey-green.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.blue_grey-indigo.css">
+      <Input File="styles\themes\material\wijmo.theme.material.blue_grey-indigo.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.blue_grey-light_blue.css">
+      <Input File="styles\themes\material\wijmo.theme.material.blue_grey-light_blue.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.blue_grey-light_green.css">
+      <Input File="styles\themes\material\wijmo.theme.material.blue_grey-light_green.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.blue_grey-lime.css">
+      <Input File="styles\themes\material\wijmo.theme.material.blue_grey-lime.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.blue_grey-orange.css">
+      <Input File="styles\themes\material\wijmo.theme.material.blue_grey-orange.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.blue_grey-pink.css">
+      <Input File="styles\themes\material\wijmo.theme.material.blue_grey-pink.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.blue_grey-purple.css">
+      <Input File="styles\themes\material\wijmo.theme.material.blue_grey-purple.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.blue_grey-red.css">
+      <Input File="styles\themes\material\wijmo.theme.material.blue_grey-red.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.blue_grey-teal.css">
+      <Input File="styles\themes\material\wijmo.theme.material.blue_grey-teal.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.blue_grey-yellow.css">
+      <Input File="styles\themes\material\wijmo.theme.material.blue_grey-yellow.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.brown-amber.css">
+      <Input File="styles\themes\material\wijmo.theme.material.brown-amber.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.brown-blue.css">
+      <Input File="styles\themes\material\wijmo.theme.material.brown-blue.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.brown-cyan.css">
+      <Input File="styles\themes\material\wijmo.theme.material.brown-cyan.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.brown-deep_orange.css">
+      <Input File="styles\themes\material\wijmo.theme.material.brown-deep_orange.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.brown-deep_purple.css">
+      <Input File="styles\themes\material\wijmo.theme.material.brown-deep_purple.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.brown-green.css">
+      <Input File="styles\themes\material\wijmo.theme.material.brown-green.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.brown-indigo.css">
+      <Input File="styles\themes\material\wijmo.theme.material.brown-indigo.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.brown-light_blue.css">
+      <Input File="styles\themes\material\wijmo.theme.material.brown-light_blue.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.brown-light_green.css">
+      <Input File="styles\themes\material\wijmo.theme.material.brown-light_green.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.brown-lime.css">
+      <Input File="styles\themes\material\wijmo.theme.material.brown-lime.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.brown-orange.css">
+      <Input File="styles\themes\material\wijmo.theme.material.brown-orange.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.brown-pink.css">
+      <Input File="styles\themes\material\wijmo.theme.material.brown-pink.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.brown-purple.css">
+      <Input File="styles\themes\material\wijmo.theme.material.brown-purple.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.brown-red.css">
+      <Input File="styles\themes\material\wijmo.theme.material.brown-red.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.brown-teal.css">
+      <Input File="styles\themes\material\wijmo.theme.material.brown-teal.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.brown-yellow.css">
+      <Input File="styles\themes\material\wijmo.theme.material.brown-yellow.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.cyan-amber.css">
+      <Input File="styles\themes\material\wijmo.theme.material.cyan-amber.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.cyan-blue.css">
+      <Input File="styles\themes\material\wijmo.theme.material.cyan-blue.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.cyan-deep_orange.css">
+      <Input File="styles\themes\material\wijmo.theme.material.cyan-deep_orange.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.cyan-deep_purple.css">
+      <Input File="styles\themes\material\wijmo.theme.material.cyan-deep_purple.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.cyan-green.css">
+      <Input File="styles\themes\material\wijmo.theme.material.cyan-green.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.cyan-indigo.css">
+      <Input File="styles\themes\material\wijmo.theme.material.cyan-indigo.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.cyan-light_blue.css">
+      <Input File="styles\themes\material\wijmo.theme.material.cyan-light_blue.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.cyan-light_green.css">
+      <Input File="styles\themes\material\wijmo.theme.material.cyan-light_green.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.cyan-lime.css">
+      <Input File="styles\themes\material\wijmo.theme.material.cyan-lime.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.cyan-orange.css">
+      <Input File="styles\themes\material\wijmo.theme.material.cyan-orange.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.cyan-pink.css">
+      <Input File="styles\themes\material\wijmo.theme.material.cyan-pink.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.cyan-purple.css">
+      <Input File="styles\themes\material\wijmo.theme.material.cyan-purple.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.cyan-red.css">
+      <Input File="styles\themes\material\wijmo.theme.material.cyan-red.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.cyan-teal.css">
+      <Input File="styles\themes\material\wijmo.theme.material.cyan-teal.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.cyan-yellow.css">
+      <Input File="styles\themes\material\wijmo.theme.material.cyan-yellow.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.deep_orange-amber.css">
+      <Input File="styles\themes\material\wijmo.theme.material.deep_orange-amber.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.deep_orange-blue.css">
+      <Input File="styles\themes\material\wijmo.theme.material.deep_orange-blue.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.deep_orange-cyan.css">
+      <Input File="styles\themes\material\wijmo.theme.material.deep_orange-cyan.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.deep_orange-deep_purple.css">
+      <Input File="styles\themes\material\wijmo.theme.material.deep_orange-deep_purple.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.deep_orange-green.css">
+      <Input File="styles\themes\material\wijmo.theme.material.deep_orange-green.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.deep_orange-indigo.css">
+      <Input File="styles\themes\material\wijmo.theme.material.deep_orange-indigo.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.deep_orange-light_blue.css">
+      <Input File="styles\themes\material\wijmo.theme.material.deep_orange-light_blue.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.deep_orange-light_green.css">
+      <Input File="styles\themes\material\wijmo.theme.material.deep_orange-light_green.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.deep_orange-lime.css">
+      <Input File="styles\themes\material\wijmo.theme.material.deep_orange-lime.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.deep_orange-orange.css">
+      <Input File="styles\themes\material\wijmo.theme.material.deep_orange-orange.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.deep_orange-pink.css">
+      <Input File="styles\themes\material\wijmo.theme.material.deep_orange-pink.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.deep_orange-purple.css">
+      <Input File="styles\themes\material\wijmo.theme.material.deep_orange-purple.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.deep_orange-red.css">
+      <Input File="styles\themes\material\wijmo.theme.material.deep_orange-red.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.deep_orange-teal.css">
+      <Input File="styles\themes\material\wijmo.theme.material.deep_orange-teal.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.deep_orange-yellow.css">
+      <Input File="styles\themes\material\wijmo.theme.material.deep_orange-yellow.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.deep_purple-amber.css">
+      <Input File="styles\themes\material\wijmo.theme.material.deep_purple-amber.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.deep_purple-blue.css">
+      <Input File="styles\themes\material\wijmo.theme.material.deep_purple-blue.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.deep_purple-cyan.css">
+      <Input File="styles\themes\material\wijmo.theme.material.deep_purple-cyan.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.deep_purple-deep_orange.css">
+      <Input File="styles\themes\material\wijmo.theme.material.deep_purple-deep_orange.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.deep_purple-green.css">
+      <Input File="styles\themes\material\wijmo.theme.material.deep_purple-green.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.deep_purple-indigo.css">
+      <Input File="styles\themes\material\wijmo.theme.material.deep_purple-indigo.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.deep_purple-light_blue.css">
+      <Input File="styles\themes\material\wijmo.theme.material.deep_purple-light_blue.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.deep_purple-light_green.css">
+      <Input File="styles\themes\material\wijmo.theme.material.deep_purple-light_green.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.deep_purple-lime.css">
+      <Input File="styles\themes\material\wijmo.theme.material.deep_purple-lime.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.deep_purple-orange.css">
+      <Input File="styles\themes\material\wijmo.theme.material.deep_purple-orange.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.deep_purple-pink.css">
+      <Input File="styles\themes\material\wijmo.theme.material.deep_purple-pink.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.deep_purple-purple.css">
+      <Input File="styles\themes\material\wijmo.theme.material.deep_purple-purple.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.deep_purple-red.css">
+      <Input File="styles\themes\material\wijmo.theme.material.deep_purple-red.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.deep_purple-teal.css">
+      <Input File="styles\themes\material\wijmo.theme.material.deep_purple-teal.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.deep_purple-yellow.css">
+      <Input File="styles\themes\material\wijmo.theme.material.deep_purple-yellow.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.green-amber.css">
+      <Input File="styles\themes\material\wijmo.theme.material.green-amber.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.green-blue.css">
+      <Input File="styles\themes\material\wijmo.theme.material.green-blue.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.green-cyan.css">
+      <Input File="styles\themes\material\wijmo.theme.material.green-cyan.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.green-deep_orange.css">
+      <Input File="styles\themes\material\wijmo.theme.material.green-deep_orange.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.green-deep_purple.css">
+      <Input File="styles\themes\material\wijmo.theme.material.green-deep_purple.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.green-indigo.css">
+      <Input File="styles\themes\material\wijmo.theme.material.green-indigo.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.green-light_blue.css">
+      <Input File="styles\themes\material\wijmo.theme.material.green-light_blue.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.green-light_green.css">
+      <Input File="styles\themes\material\wijmo.theme.material.green-light_green.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.green-lime.css">
+      <Input File="styles\themes\material\wijmo.theme.material.green-lime.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.green-orange.css">
+      <Input File="styles\themes\material\wijmo.theme.material.green-orange.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.green-pink.css">
+      <Input File="styles\themes\material\wijmo.theme.material.green-pink.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.green-purple.css">
+      <Input File="styles\themes\material\wijmo.theme.material.green-purple.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.green-red.css">
+      <Input File="styles\themes\material\wijmo.theme.material.green-red.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.green-teal.css">
+      <Input File="styles\themes\material\wijmo.theme.material.green-teal.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.green-yellow.css">
+      <Input File="styles\themes\material\wijmo.theme.material.green-yellow.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.grey-amber.css">
+      <Input File="styles\themes\material\wijmo.theme.material.grey-amber.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.grey-blue.css">
+      <Input File="styles\themes\material\wijmo.theme.material.grey-blue.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.grey-cyan.css">
+      <Input File="styles\themes\material\wijmo.theme.material.grey-cyan.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.grey-deep_orange.css">
+      <Input File="styles\themes\material\wijmo.theme.material.grey-deep_orange.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.grey-deep_purple.css">
+      <Input File="styles\themes\material\wijmo.theme.material.grey-deep_purple.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.grey-green.css">
+      <Input File="styles\themes\material\wijmo.theme.material.grey-green.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.grey-indigo.css">
+      <Input File="styles\themes\material\wijmo.theme.material.grey-indigo.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.grey-light_blue.css">
+      <Input File="styles\themes\material\wijmo.theme.material.grey-light_blue.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.grey-light_green.css">
+      <Input File="styles\themes\material\wijmo.theme.material.grey-light_green.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.grey-lime.css">
+      <Input File="styles\themes\material\wijmo.theme.material.grey-lime.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.grey-orange.css">
+      <Input File="styles\themes\material\wijmo.theme.material.grey-orange.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.grey-pink.css">
+      <Input File="styles\themes\material\wijmo.theme.material.grey-pink.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.grey-purple.css">
+      <Input File="styles\themes\material\wijmo.theme.material.grey-purple.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.grey-red.css">
+      <Input File="styles\themes\material\wijmo.theme.material.grey-red.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.grey-teal.css">
+      <Input File="styles\themes\material\wijmo.theme.material.grey-teal.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.grey-yellow.css">
+      <Input File="styles\themes\material\wijmo.theme.material.grey-yellow.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.indigo-amber.css">
+      <Input File="styles\themes\material\wijmo.theme.material.indigo-amber.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.indigo-blue.css">
+      <Input File="styles\themes\material\wijmo.theme.material.indigo-blue.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.indigo-cyan.css">
+      <Input File="styles\themes\material\wijmo.theme.material.indigo-cyan.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.indigo-deep_orange.css">
+      <Input File="styles\themes\material\wijmo.theme.material.indigo-deep_orange.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.indigo-deep_purple.css">
+      <Input File="styles\themes\material\wijmo.theme.material.indigo-deep_purple.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.indigo-green.css">
+      <Input File="styles\themes\material\wijmo.theme.material.indigo-green.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.indigo-light_blue.css">
+      <Input File="styles\themes\material\wijmo.theme.material.indigo-light_blue.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.indigo-light_green.css">
+      <Input File="styles\themes\material\wijmo.theme.material.indigo-light_green.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.indigo-lime.css">
+      <Input File="styles\themes\material\wijmo.theme.material.indigo-lime.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.indigo-orange.css">
+      <Input File="styles\themes\material\wijmo.theme.material.indigo-orange.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.indigo-pink.css">
+      <Input File="styles\themes\material\wijmo.theme.material.indigo-pink.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.indigo-purple.css">
+      <Input File="styles\themes\material\wijmo.theme.material.indigo-purple.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.indigo-red.css">
+      <Input File="styles\themes\material\wijmo.theme.material.indigo-red.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.indigo-teal.css">
+      <Input File="styles\themes\material\wijmo.theme.material.indigo-teal.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.indigo-yellow.css">
+      <Input File="styles\themes\material\wijmo.theme.material.indigo-yellow.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.light_blue-amber.css">
+      <Input File="styles\themes\material\wijmo.theme.material.light_blue-amber.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.light_blue-blue.css">
+      <Input File="styles\themes\material\wijmo.theme.material.light_blue-blue.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.light_blue-cyan.css">
+      <Input File="styles\themes\material\wijmo.theme.material.light_blue-cyan.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.light_blue-deep_orange.css">
+      <Input File="styles\themes\material\wijmo.theme.material.light_blue-deep_orange.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.light_blue-deep_purple.css">
+      <Input File="styles\themes\material\wijmo.theme.material.light_blue-deep_purple.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.light_blue-green.css">
+      <Input File="styles\themes\material\wijmo.theme.material.light_blue-green.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.light_blue-indigo.css">
+      <Input File="styles\themes\material\wijmo.theme.material.light_blue-indigo.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.light_blue-light_green.css">
+      <Input File="styles\themes\material\wijmo.theme.material.light_blue-light_green.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.light_blue-lime.css">
+      <Input File="styles\themes\material\wijmo.theme.material.light_blue-lime.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.light_blue-orange.css">
+      <Input File="styles\themes\material\wijmo.theme.material.light_blue-orange.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.light_blue-pink.css">
+      <Input File="styles\themes\material\wijmo.theme.material.light_blue-pink.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.light_blue-purple.css">
+      <Input File="styles\themes\material\wijmo.theme.material.light_blue-purple.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.light_blue-red.css">
+      <Input File="styles\themes\material\wijmo.theme.material.light_blue-red.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.light_blue-teal.css">
+      <Input File="styles\themes\material\wijmo.theme.material.light_blue-teal.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.light_blue-yellow.css">
+      <Input File="styles\themes\material\wijmo.theme.material.light_blue-yellow.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.light_green-amber.css">
+      <Input File="styles\themes\material\wijmo.theme.material.light_green-amber.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.light_green-blue.css">
+      <Input File="styles\themes\material\wijmo.theme.material.light_green-blue.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.light_green-cyan.css">
+      <Input File="styles\themes\material\wijmo.theme.material.light_green-cyan.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.light_green-deep_orange.css">
+      <Input File="styles\themes\material\wijmo.theme.material.light_green-deep_orange.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.light_green-deep_purple.css">
+      <Input File="styles\themes\material\wijmo.theme.material.light_green-deep_purple.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.light_green-green.css">
+      <Input File="styles\themes\material\wijmo.theme.material.light_green-green.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.light_green-indigo.css">
+      <Input File="styles\themes\material\wijmo.theme.material.light_green-indigo.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.light_green-light_blue.css">
+      <Input File="styles\themes\material\wijmo.theme.material.light_green-light_blue.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.light_green-lime.css">
+      <Input File="styles\themes\material\wijmo.theme.material.light_green-lime.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.light_green-orange.css">
+      <Input File="styles\themes\material\wijmo.theme.material.light_green-orange.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.light_green-pink.css">
+      <Input File="styles\themes\material\wijmo.theme.material.light_green-pink.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.light_green-purple.css">
+      <Input File="styles\themes\material\wijmo.theme.material.light_green-purple.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.light_green-red.css">
+      <Input File="styles\themes\material\wijmo.theme.material.light_green-red.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.light_green-teal.css">
+      <Input File="styles\themes\material\wijmo.theme.material.light_green-teal.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.light_green-yellow.css">
+      <Input File="styles\themes\material\wijmo.theme.material.light_green-yellow.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.lime-amber.css">
+      <Input File="styles\themes\material\wijmo.theme.material.lime-amber.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.lime-blue.css">
+      <Input File="styles\themes\material\wijmo.theme.material.lime-blue.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.lime-cyan.css">
+      <Input File="styles\themes\material\wijmo.theme.material.lime-cyan.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.lime-deep_orange.css">
+      <Input File="styles\themes\material\wijmo.theme.material.lime-deep_orange.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.lime-deep_purple.css">
+      <Input File="styles\themes\material\wijmo.theme.material.lime-deep_purple.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.lime-green.css">
+      <Input File="styles\themes\material\wijmo.theme.material.lime-green.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.lime-indigo.css">
+      <Input File="styles\themes\material\wijmo.theme.material.lime-indigo.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.lime-light_blue.css">
+      <Input File="styles\themes\material\wijmo.theme.material.lime-light_blue.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.lime-light_green.css">
+      <Input File="styles\themes\material\wijmo.theme.material.lime-light_green.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.lime-orange.css">
+      <Input File="styles\themes\material\wijmo.theme.material.lime-orange.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.lime-pink.css">
+      <Input File="styles\themes\material\wijmo.theme.material.lime-pink.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.lime-purple.css">
+      <Input File="styles\themes\material\wijmo.theme.material.lime-purple.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.lime-red.css">
+      <Input File="styles\themes\material\wijmo.theme.material.lime-red.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.lime-teal.css">
+      <Input File="styles\themes\material\wijmo.theme.material.lime-teal.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.lime-yellow.css">
+      <Input File="styles\themes\material\wijmo.theme.material.lime-yellow.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.orange-amber.css">
+      <Input File="styles\themes\material\wijmo.theme.material.orange-amber.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.orange-blue.css">
+      <Input File="styles\themes\material\wijmo.theme.material.orange-blue.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.orange-cyan.css">
+      <Input File="styles\themes\material\wijmo.theme.material.orange-cyan.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.orange-deep_orange.css">
+      <Input File="styles\themes\material\wijmo.theme.material.orange-deep_orange.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.orange-deep_purple.css">
+      <Input File="styles\themes\material\wijmo.theme.material.orange-deep_purple.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.orange-green.css">
+      <Input File="styles\themes\material\wijmo.theme.material.orange-green.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.orange-indigo.css">
+      <Input File="styles\themes\material\wijmo.theme.material.orange-indigo.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.orange-light_blue.css">
+      <Input File="styles\themes\material\wijmo.theme.material.orange-light_blue.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.orange-light_green.css">
+      <Input File="styles\themes\material\wijmo.theme.material.orange-light_green.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.orange-lime.css">
+      <Input File="styles\themes\material\wijmo.theme.material.orange-lime.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.orange-pink.css">
+      <Input File="styles\themes\material\wijmo.theme.material.orange-pink.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.orange-purple.css">
+      <Input File="styles\themes\material\wijmo.theme.material.orange-purple.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.orange-red.css">
+      <Input File="styles\themes\material\wijmo.theme.material.orange-red.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.orange-teal.css">
+      <Input File="styles\themes\material\wijmo.theme.material.orange-teal.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.orange-yellow.css">
+      <Input File="styles\themes\material\wijmo.theme.material.orange-yellow.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.pink-amber.css">
+      <Input File="styles\themes\material\wijmo.theme.material.pink-amber.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.pink-blue.css">
+      <Input File="styles\themes\material\wijmo.theme.material.pink-blue.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.pink-cyan.css">
+      <Input File="styles\themes\material\wijmo.theme.material.pink-cyan.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.pink-deep_orange.css">
+      <Input File="styles\themes\material\wijmo.theme.material.pink-deep_orange.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.pink-deep_purple.css">
+      <Input File="styles\themes\material\wijmo.theme.material.pink-deep_purple.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.pink-green.css">
+      <Input File="styles\themes\material\wijmo.theme.material.pink-green.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.pink-indigo.css">
+      <Input File="styles\themes\material\wijmo.theme.material.pink-indigo.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.pink-light_blue.css">
+      <Input File="styles\themes\material\wijmo.theme.material.pink-light_blue.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.pink-light_green.css">
+      <Input File="styles\themes\material\wijmo.theme.material.pink-light_green.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.pink-lime.css">
+      <Input File="styles\themes\material\wijmo.theme.material.pink-lime.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.pink-orange.css">
+      <Input File="styles\themes\material\wijmo.theme.material.pink-orange.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.pink-purple.css">
+      <Input File="styles\themes\material\wijmo.theme.material.pink-purple.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.pink-red.css">
+      <Input File="styles\themes\material\wijmo.theme.material.pink-red.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.pink-teal.css">
+      <Input File="styles\themes\material\wijmo.theme.material.pink-teal.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.pink-yellow.css">
+      <Input File="styles\themes\material\wijmo.theme.material.pink-yellow.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.purple-amber.css">
+      <Input File="styles\themes\material\wijmo.theme.material.purple-amber.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.purple-blue.css">
+      <Input File="styles\themes\material\wijmo.theme.material.purple-blue.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.purple-cyan.css">
+      <Input File="styles\themes\material\wijmo.theme.material.purple-cyan.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.purple-deep_orange.css">
+      <Input File="styles\themes\material\wijmo.theme.material.purple-deep_orange.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.purple-deep_purple.css">
+      <Input File="styles\themes\material\wijmo.theme.material.purple-deep_purple.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.purple-green.css">
+      <Input File="styles\themes\material\wijmo.theme.material.purple-green.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.purple-indigo.css">
+      <Input File="styles\themes\material\wijmo.theme.material.purple-indigo.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.purple-light_blue.css">
+      <Input File="styles\themes\material\wijmo.theme.material.purple-light_blue.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.purple-light_green.css">
+      <Input File="styles\themes\material\wijmo.theme.material.purple-light_green.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.purple-lime.css">
+      <Input File="styles\themes\material\wijmo.theme.material.purple-lime.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.purple-orange.css">
+      <Input File="styles\themes\material\wijmo.theme.material.purple-orange.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.purple-pink.css">
+      <Input File="styles\themes\material\wijmo.theme.material.purple-pink.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.purple-red.css">
+      <Input File="styles\themes\material\wijmo.theme.material.purple-red.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.purple-teal.css">
+      <Input File="styles\themes\material\wijmo.theme.material.purple-teal.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.purple-yellow.css">
+      <Input File="styles\themes\material\wijmo.theme.material.purple-yellow.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.red-amber.css">
+      <Input File="styles\themes\material\wijmo.theme.material.red-amber.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.red-blue.css">
+      <Input File="styles\themes\material\wijmo.theme.material.red-blue.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.red-cyan.css">
+      <Input File="styles\themes\material\wijmo.theme.material.red-cyan.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.red-deep_orange.css">
+      <Input File="styles\themes\material\wijmo.theme.material.red-deep_orange.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.red-deep_purple.css">
+      <Input File="styles\themes\material\wijmo.theme.material.red-deep_purple.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.red-green.css">
+      <Input File="styles\themes\material\wijmo.theme.material.red-green.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.red-indigo.css">
+      <Input File="styles\themes\material\wijmo.theme.material.red-indigo.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.red-light_blue.css">
+      <Input File="styles\themes\material\wijmo.theme.material.red-light_blue.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.red-light_green.css">
+      <Input File="styles\themes\material\wijmo.theme.material.red-light_green.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.red-lime.css">
+      <Input File="styles\themes\material\wijmo.theme.material.red-lime.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.red-orange.css">
+      <Input File="styles\themes\material\wijmo.theme.material.red-orange.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.red-pink.css">
+      <Input File="styles\themes\material\wijmo.theme.material.red-pink.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.red-purple.css">
+      <Input File="styles\themes\material\wijmo.theme.material.red-purple.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.red-teal.css">
+      <Input File="styles\themes\material\wijmo.theme.material.red-teal.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.red-yellow.css">
+      <Input File="styles\themes\material\wijmo.theme.material.red-yellow.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.teal-amber.css">
+      <Input File="styles\themes\material\wijmo.theme.material.teal-amber.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.teal-blue.css">
+      <Input File="styles\themes\material\wijmo.theme.material.teal-blue.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.teal-cyan.css">
+      <Input File="styles\themes\material\wijmo.theme.material.teal-cyan.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.teal-deep_orange.css">
+      <Input File="styles\themes\material\wijmo.theme.material.teal-deep_orange.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.teal-deep_purple.css">
+      <Input File="styles\themes\material\wijmo.theme.material.teal-deep_purple.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.teal-green.css">
+      <Input File="styles\themes\material\wijmo.theme.material.teal-green.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.teal-indigo.css">
+      <Input File="styles\themes\material\wijmo.theme.material.teal-indigo.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.teal-light_blue.css">
+      <Input File="styles\themes\material\wijmo.theme.material.teal-light_blue.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.teal-light_green.css">
+      <Input File="styles\themes\material\wijmo.theme.material.teal-light_green.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.teal-lime.css">
+      <Input File="styles\themes\material\wijmo.theme.material.teal-lime.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.teal-orange.css">
+      <Input File="styles\themes\material\wijmo.theme.material.teal-orange.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.teal-pink.css">
+      <Input File="styles\themes\material\wijmo.theme.material.teal-pink.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.teal-purple.css">
+      <Input File="styles\themes\material\wijmo.theme.material.teal-purple.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.teal-red.css">
+      <Input File="styles\themes\material\wijmo.theme.material.teal-red.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.teal-yellow.css">
+      <Input File="styles\themes\material\wijmo.theme.material.teal-yellow.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.yellow-amber.css">
+      <Input File="styles\themes\material\wijmo.theme.material.yellow-amber.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.yellow-blue.css">
+      <Input File="styles\themes\material\wijmo.theme.material.yellow-blue.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.yellow-cyan.css">
+      <Input File="styles\themes\material\wijmo.theme.material.yellow-cyan.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.yellow-deep_orange.css">
+      <Input File="styles\themes\material\wijmo.theme.material.yellow-deep_orange.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.yellow-deep_purple.css">
+      <Input File="styles\themes\material\wijmo.theme.material.yellow-deep_purple.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.yellow-green.css">
+      <Input File="styles\themes\material\wijmo.theme.material.yellow-green.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.yellow-indigo.css">
+      <Input File="styles\themes\material\wijmo.theme.material.yellow-indigo.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.yellow-light_blue.css">
+      <Input File="styles\themes\material\wijmo.theme.material.yellow-light_blue.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.yellow-light_green.css">
+      <Input File="styles\themes\material\wijmo.theme.material.yellow-light_green.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.yellow-lime.css">
+      <Input File="styles\themes\material\wijmo.theme.material.yellow-lime.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.yellow-orange.css">
+      <Input File="styles\themes\material\wijmo.theme.material.yellow-orange.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.yellow-pink.css">
+      <Input File="styles\themes\material\wijmo.theme.material.yellow-pink.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.yellow-purple.css">
+      <Input File="styles\themes\material\wijmo.theme.material.yellow-purple.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.yellow-red.css">
+      <Input File="styles\themes\material\wijmo.theme.material.yellow-red.css"/>
+    </Item>
+    <Item File="styles\themes\material\wijmo.theme.material.yellow-teal.css">
+      <Input File="styles\themes\material\wijmo.theme.material.yellow-teal.css"/>
+    </Item>
+
+    <!-- LESS only files -->
+    <Item File="styles\themes\mixins\color-functions.less" >
+      <Input File="styles\themes\mixins\color-functions.less" />
+    </Item>
+    <Item File="styles\themes\mixins\guards.less" >
+      <Input File="styles\themes\mixins\guards.less" />
+    </Item>
+    <Item File="styles\themes\mixins\styles.less" >
+      <Input File="styles\themes\mixins\styles.less" />
+    </Item>
+  </Items>
+  <FileHeader>
+    /*
+    *
+    * Wijmo Library @version
+    * http://wijmo.com/
+    *
+    * Copyright(c) GrapeCity, Inc.  All rights reserved.
+    *
+    * Licensed under the Wijmo Commercial License.
+    * sales@wijmo.com
+    * http://wijmo.com/products/wijmo-5/license/
+    *
+    */
+  </FileHeader>
+</Project>

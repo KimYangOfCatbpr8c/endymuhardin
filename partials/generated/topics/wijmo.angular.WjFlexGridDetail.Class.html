@@ -1,0 +1,64 @@
+<h2>WjFlexGridDetail 类</h2>
+<dl class="dl-horizontal">
+<dt>基类</dt><dd><b>WjDirective</b></dd>
+<dt>模块</dt><dd>wijmo.angular</dd>
+<dt>文件</dt><dd>wijmo.angular.js</dd>
+<dt>表示</dt><dd><label style="font-weight:normal">继承成员 <input type="checkbox" ng-model="showInherited"></label></dd>
+</dl>
+<p><p>AngularJS 指令应用于 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a> <a href="topic/wijmo.grid.detail.DetailRow.Class.html"><b>DetailRow</b></a> 模板。</p>
+
+<p><b>wj-flex-grid-detail</b> 指令必须包含于 
+<b>wj-flex-grid</b> 指令。</p>
+
+<p><b>wj-flex-grid-detail</b> 使用 <a href="topic/wijmo.grid.detail.FlexGridDetailProvider.Class.html"><b>FlexGridDetailProvider</b></a> 对象描述细节可见性，可以使用任意的的 HTML 代码段定义行内容的细节，该代码段可以包含 AngularJS 绑定和指令。
+除了控制器中的任意属性，本地变量 <b>$row</b> 和 
+<b>$item</b> 等模板变量可以在 AngularJS 绑定中使用，并使用其引用 <a href="topic/wijmo.grid.Row.Class.html"><b>Row</b></a> 和 <b>Row.dataItem</b> 等对象。 示例：</p>
+
+<p><pre>&lt;p&gt;Here is a detail row with a nested FlexGrid:&lt;/p&gt;
+&nbsp;
+&lt;wj-flex-grid 
+  items-source="categories"&gt;
+  &lt;wj-flex-grid-column header="Name" binding="CategoryName"&gt;&lt;/wj-flex-grid-column&gt;
+  &lt;wj-flex-grid-column header="Description" binding="Description" width="*"&gt;&lt;/wj-flex-grid-column&gt;
+  &lt;wj-flex-grid-detail max-height="250" detail-visibility-mode="detailMode"&gt;
+    &lt;wj-flex-grid 
+      items-source="getProducts($item.CategoryID)"
+      headers-visibility="Column"&gt;
+    &lt;/wj-flex-grid&gt;
+  &lt;/wj-flex-grid-detail&gt;
+&lt;/wj-flex-grid&gt;</pre></p>
+
+<p>表示为<b>wj-flex-grid-detail</b> 指令的 <b>FlexGridDetailProvider</b> 对象引用能够以简便的方式检索绑定到该指令的 <b>control</b> 的属性。这样的机制为所有的 API 提供简便的方式在模板中使用
+<b>FlexGridDetailProvider</b> 变量，给你用户体验方面完全的控制。
+下面的例子在名称列单元格上添加了一个自定义的显示/隐藏编辑, 以及隐藏明细行的按钮。这些元素调用 <b>FlexGridDetailProvider</b>, <b>hideDetail</b> 和 <b>showDetail</b> 方法，在它们的 <b>ng-click</b> 事件绑定中实现自己的显示隐藏逻辑:</p>
+
+<p><pre>&lt;p&gt;Here is a FlexGrid with custom show/hide detail elements:&lt;/p&gt;
+&nbsp;
+&lt;wj-flex-grid 
+  items-source="categories"
+  headers-visibility="Column"
+  selection-mode="Row"&gt;
+  &lt;wj-flex-grid-column header="Name" binding="CategoryName" is-read-only="true" width="200"&gt;
+    &lt;img ng-show="dp.isDetailVisible($row)" ng-click="dp.hideDetail($row)" src="resources/hide.png" /&gt;
+    &lt;img ng-hide="dp.isDetailVisible($row)" ng-click="dp.showDetail($row, true)" src="resources/show.png" /&gt;
+    {&#8203;{$item.CategoryName}}
+  &lt;/wj-flex-grid-column&gt;
+  &lt;wj-flex-grid-column header="Description" binding="Description" width="2*"&gt;&lt;/wj-flex-grid-column&gt;
+  &lt;wj-flex-grid-detail control="dp" detail-visibility-mode="Code"&gt;
+    &lt;div style="padding:12px;background-color:#cee6f7"&gt;
+      ID: &lt;b&gt;{&#8203;{$item.CategoryID}}&lt;/b&gt;&lt;br /&gt;
+      Name: &lt;b&gt;{&#8203;{$item.CategoryName}}&lt;/b&gt;&lt;br /&gt;
+      Description: &lt;b&gt;{&#8203;{$item.Description}}&lt;/b&gt;&lt;br /&gt;
+      &lt;button class="btn btn-default" ng-click="dp.hideDetail($row)"&gt;Hide Detail&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/wj-flex-grid-detail&gt;
+&lt;/wj-flex-grid&gt;</pre></p>
+
+<p><b>wj-flex-grid-detail</b> 指令支持以下属性:</p>
+
+<p><dl class="dl-horizontal">
+  <dt>control</dt>                <dd><code>=</code> 该指令创建的指向 <b>FlexGridDetailProvider</b> 对象的引用。</dd>
+  <dt>detail-visibility-mode</dt> <dd><code>@</code> <a href="topic/wijmo.grid.detail.DetailVisibilityMode.Enum.html"><b>DetailVisibilityMode</b></a> 值，定义合适显示明细行。</dd>
+  <dt>max-height</dt>             <dd><code>@</code>明细行的最大高度，像素值。</dd>
+  <dt>row-has-detail</dt>         <dd><code>=</code>判断是否有明细行的回调函数。</dd>
+</dl></p></p>

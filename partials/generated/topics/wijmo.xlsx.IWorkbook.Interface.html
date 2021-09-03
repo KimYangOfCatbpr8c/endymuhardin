@@ -1,0 +1,103 @@
+<h2>IWorkbook 类</h2>
+<dl class="dl-horizontal">
+<dt>模块</dt><dd>wijmo.xlsx</dd>
+<dt>文件</dt><dd>wijmo.xlsx.js</dd>
+</dl>
+<p><p>表示 Excel 工作簿。该接口是 Excel Workbook 对象模型（WOM）的一个根定义，
+提供了定义存储在 xlsx 文件中数据和属性的简单方式。</p>
+
+<p>为了创建一个 xlsx 文件，您需要创建一个符合 <b>IWorkbook</b> 接口定义的 JavaScript 对象，同时创建子对象定义工作簿表单以及其中的列，行以及单元格。
+接着将该对象传递给 <b>XlsxConverter</b> 类的 <b>export</b> 方法，该方法会返回给您一个相关的 xlsx 文件的内容，该内容可以被保存在磁盘
+或上传到服务器。</p>
+
+<p>为了读取一个 xlsx 文件数据，您需要将 xlsx 文件的内容传递给 <b>XlsxConverter</b> 类的 <b>import</b> 方法，
+该方法将返回一个符合 <b>IWorkbook</b> 接口的 JavaScript 对象，该对象允许您容易地检查工作簿的数据和属性。您可以以各种
+方式进一步地使用该对象，例如，将其内容绘制到 HTML 页面或者将其保存为一个数据数组，以便进一步处理或用于数据绑定。</p></p>
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideProperties = !hideProperties">
+<span class="glyph-collapsed" ng-show="hideProperties"></span>
+<span class="glyph-expanded" ng-hide="hideProperties"></span>
+属性
+</h3>
+</div>
+<table ng-hide="hideProperties" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-3">名称</th>
+
+<th class="col-md-2">类型</th>
+
+<th class="col-md-7">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td><span class="badge" title="字段">F</span></td>
+      <td><b>activeWorksheet?</b></td>
+      <td><b>number</b></td>
+      <td>该 xlsx 文件中，活动表单的索引。</td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="字段">F</span></td>
+      <td><b>application?</b></td>
+      <td><b>string</b></td>
+      <td>出现在文件属性的生成该文件的应用程序的名称。</td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="字段">F</span></td>
+      <td><b>company?</b></td>
+      <td><b>string</b></td>
+      <td>出现在文件属性的生成该文件的公司名称。</td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="字段">F</span></td>
+      <td><b>created?</b></td>
+      <td><b>Date</b></td>
+      <td>该 xlsx 文件的创建时间。</td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="字段">F</span></td>
+      <td><b>creator?</b></td>
+      <td><b>string</b></td>
+      <td>该 xlsx 文件的创建者。</td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="字段">F</span></td>
+      <td><b>lastModifiedBy?</b></td>
+      <td><b>string</b></td>
+      <td>该 xlsx 文件的最后一次修改人。</td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="字段">F</span></td>
+      <td><b>modified?</b></td>
+      <td><b>Date</b></td>
+      <td>该 xlsx 文件的最后一次修改时间。</td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="字段">F</span></td>
+      <td><b>reservedContent?</b></td>
+      <td><b>any</b></td>
+      <td>该工作簿的保留内容。</td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="字段">F</span></td>
+      <td><b>sheets</b></td>
+      <td><a href="topic/wijmo.xlsx.IWorkSheet.Interface.html"><b>IWorkSheet</b></a><b>[]</b></td>
+      <td>定义一个 Excel Workbook 表单的数组。</td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="字段">F</span></td>
+      <td><b>styles?</b></td>
+      <td><a href="topic/wijmo.xlsx.IWorkbookStyle.Interface.html"><b>IWorkbookStyle</b></a><b>[]</b></td>
+      <td>该工作簿的样式表。</td>
+    </tr>
+</tbody>
+</table>
+</div>
+

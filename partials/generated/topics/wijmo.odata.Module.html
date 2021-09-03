@@ -1,0 +1,83 @@
+<h2>模块 wijmo.odata</h2>
+<dl class="dl-horizontal">
+<dt>文件</dt><dd>wijmo.odata.js</dd>
+</dl>
+<p><p>提供支持 OData 协议的类，包括
+<a href="topic/wijmo.odata.ODataCollectionView.Class.html"><b>ODataCollectionView</b></a> 类。</p>
+
+<p>OData 是创建和消费数据 API 的标准化协议。
+OData 构建在一些核心协议之上，诸如 HTTP 以及被广泛接受的方法好比是 REST。
+最终结果是一种统一的方式暴露全功能的数据 API。（http://www.odata.org/）</p></p>
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideClasses = !hideClasses">
+<span class="glyph-collapsed" ng-show="hideClasses"></span>
+<span class="glyph-expanded" ng-hide="hideClasses"></span>
+类
+</h3>
+</div>
+<table ng-hide="hideClasses" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th>名称</th>
+
+<th>描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.odata.ODataCollectionView.Class.html"><b>ODataCollectionView</b></a></td>
+      <td><p>扩展 <a href="topic/wijmo.collections.CollectionView.Class.html"><b>CollectionView</b></a> 类支持从 OData 数据源加载和保存数据。</p>
+
+<p>您可以使用 <b>ODataCollectionView</b> 类从 OData 服务加载数据，并将其用做任何 Wijmo 控件的数据源。</p>
+
+<p>为了额外的获取完整的 CRUD 支持，您需要获取全部的 <b>CollectionView</b> 的功能，
+包括排序，筛选，分页，以及分组。排序，筛选，分页功能既可以在服务器端完成也可以在客户端完成。</p>
+
+<p>以下代码展示了如何实例化一个 <b>ODataCollectionView</b>，从数据源选择一些字段并在客户端提供排序。
+请注意这里是如何通过使用‘Options’参数传递初始化数据，
+这一过程和初始化控件相同：</p>
+
+<p><pre>var url = 'http://services.odata.org/Northwind/Northwind.svc';
+var categories = new wijmo.odata.ODataCollectionView(url, 'Categories', {
+  fields: ['CategoryID', 'CategoryName', 'Description'],
+  sortOnServer: false
+});</pre></p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.odata.ODataVirtualCollectionView.Class.html"><b>ODataVirtualCollectionView</b></a></td>
+      <td><p>扩展 <a href="topic/wijmo.odata.ODataCollectionView.Class.html"><b>ODataCollectionView</b></a> 类以支持按需加载数据，使用 <b>setWindow</b> 方法。</p>
+
+<p>以下示例演示如何声明一个 <b>ODataCollectionView</b>，并将其和一个 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a> 控件同步，显示其当前视图区域中的数据：</p>
+
+<p><pre>// 声明虚拟集合视图
+var vcv = new wijmo.odata.ODataVirtualCollectionView(url, 'Order_Details_Extendeds', {
+  oDataVersion: 4
+});
+// 使用该虚拟集合视图作为表单数据源
+flex.itemsSource = vcv;
+// 当表单滚动时，更新数据窗口
+flex.scrollPositionChanged.addHandler(function () {
+  var rng = flex.viewRange;
+  vcv.setWindow(rng.row, rng.row2);
+});</pre></p>
+
+<p><b>ODataVirtualCollectionView</b> 类实现了一个 ‘数据窗口（data window）’，因此只有实际上显示的数据将从服务器端获取。
+没有显示的项目以 null 值添加到集合，直至某一个对 <b>setWindow</b> 方法的调用将这些项目实际加载。</p>
+
+<p>这种按需加载数据的方式在处理巨大的数据集时非常有优势，
+因为这种方式不会在加载数据时使应用程序失去响应。
+但是这种方式也确实带来一些限制：排序和筛选只能在服务器端完成；
+不支持分组和分页。</p></td>
+    </tr>
+</tbody>
+</table>
+</div>
+

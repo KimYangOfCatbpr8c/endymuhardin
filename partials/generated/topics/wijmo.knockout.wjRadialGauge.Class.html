@@ -1,0 +1,43 @@
+<h2>wjRadialGauge 类</h2>
+<dl class="dl-horizontal">
+<dt>基类</dt><dd><b>WjGaugeBinding</b></dd>
+<dt>模块</dt><dd>wijmo.knockout</dd>
+<dt>文件</dt><dd>wijmo.knockout.js</dd>
+<dt>表示</dt><dd><label style="font-weight:normal">继承成员 <input type="checkbox" ng-model="showInherited"></label></dd>
+</dl>
+<p><p>使用 KnockoutJS 绑定 <a href="topic/wijmo.gauge.RadialGauge.Class.html"><b>RadialGauge</b></a> 控件。</p>
+
+<p>使用 <b>wjRadialGauge</b> 绑定添加 <b>RadialGauge</b> 控件，示例如下：</p>
+
+<p><pre>&lt;p&gt;Here is a RadialGauge control:&lt;/p&gt;
+&lt;div data-bind="wjRadialGauge: {
+        value: props.value,
+        min: props.min,
+        max: props.max,
+        format: props.format,
+        showRanges: props.showRanges }"
+        class="radial-gauge"&gt;
+    &lt;div data-bind="wjRange: { 
+            wjProperty: 'pointer', 
+            thickness: props.ranges.pointerThickness }"&gt;
+    &lt;/div&gt;
+    &lt;div data-bind="wjRange: { 
+            min: props.ranges.lower.min, 
+            max: props.ranges.lower.max, 
+            color: props.ranges.lower.color }"&gt;
+    &lt;/div&gt;
+    &lt;div data-bind="wjRange: { 
+            min: props.ranges.middle.min, 
+            max: props.ranges.middle.max, 
+            color: props.ranges.middle.color }"&gt;
+    &lt;/div&gt;
+    &lt;div data-bind="wjRange: { 
+            min: props.ranges.upper.min, 
+            max: props.ranges.upper.max, 
+            color: props.ranges.upper.color }"&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</pre></p>
+
+<p><b>wjRadialGauge</b> 绑定可以包含 <a href="topic/wijmo.knockout.wjRange.Class.html"><b>wjRange</b></a> 子绑定。 </p>
+
+<p><b>wjRadialGauge</b> 支持 <b>RadialGauge</b> 控件的所有可读写属性及事件。<b>value</b> 属性支持双向绑定。</p></p>

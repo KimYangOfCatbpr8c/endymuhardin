@@ -1,0 +1,43 @@
+<h2>WjValidationError 类</h2>
+<dl class="dl-horizontal">
+<dt>基类</dt><dd><b>WjDirective</b></dd>
+<dt>模块</dt><dd>wijmo.angular</dd>
+<dt>文件</dt><dd>wijmo.angular.js</dd>
+<dt>表示</dt><dd><label style="font-weight:normal">继承成员 <input type="checkbox" ng-model="showInherited"></label></dd>
+</dl>
+<p><p>使用 AngularJS 指令创建基于表达式的自定义验证器。</p>
+
+<p><b>wj-validation-error</b> 指令同时支持AngularJS和原生HTML5验证机制。它接受一个AngularJS表达式，该表达式在输入无效时返回错误消息的字符串，在输入有效时返回empty字符串。</p>
+
+<p>为了使用AngularJS验证，必须同时应用 <b>ng-model</b> 指令。 
+<b>wj-validation-error</b> 指令报告一个错误消息，调用 <b>NgModelController.$setValidity</b> 方法，并使用 <b>wjValidationError</b> 错误标识key, AngularJS 原生和自定义验证指令使用相同的机制。</p>
+
+<p>对于HTML5验证, <b>wj-validation-error</b> 指令会用HTML5的验证API提供的 <b>setCustomValidity</b> 方法为元素设置一个错误状态。 示例：</p>
+
+<p><pre>&lt;p&gt;HTML5 validation:&lt;/p&gt;
+&lt;form&gt;
+    &lt;input type="password"
+        placeholder="Password" 
+        name="pwd" ng-model="thePwd" 
+        required minlength="2" /&gt;
+    &lt;input type="password"
+        placeholder="Check Password"
+        name="chk" ng-model="chkPwd"
+        wj-validation-error="chkPwd != thePwd ? 'Passwords don\'t match' : ''" /&gt;
+&lt;/form&gt;</p>
+
+<p>&lt;p&gt;AngularJS validation:&lt;/p&gt;
+&lt;form name="ngForm" novalidate&gt;
+    &lt;input type="password"
+        placeholder="Password" 
+        name="pwd" ng-model="thePwd" 
+        required minlength="2" /&gt;
+    &lt;input type="password"
+        placeholder="Check Password"
+        name="chk" ng-model="chkPwd"
+        wj-validation-error="chkPwd != thePwd" /&gt;
+    &lt;div 
+        ng-show="ngForm.chk.$error.wjValidationError && !ngForm.chk.$pristine"&gt;
+        Sorry, the passwords don't match.
+    &lt;/div&gt;
+&lt;/form&gt;</pre></p></p>

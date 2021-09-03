@@ -1,0 +1,177 @@
+<h2>WjFlexGridDetail 类</h2>
+<dl class="dl-horizontal">
+<dt>基类</dt><dd><a href="topic/wijmo.grid.detail.FlexGridDetailProvider.Class.html"><b>FlexGridDetailProvider</b></a></dd>
+<dt>模块</dt><dd>wijmo/wijmo.angular2.grid.detail</dd>
+<dt>文件</dt><dd>wijmo.angular2.js</dd>
+<dt>表示</dt><dd><label style="font-weight:normal">继承成员 <input type="checkbox" ng-model="showInherited"></label></dd>
+</dl>
+<p><p><a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a> <a href="topic/wijmo.grid.detail.DetailRow.Class.html"><b>DetailRow</b></a> 模板的Angular 2 Directive 指令。</p>
+
+<p><b>wj-flex-grid-detail</b> 指令必须在一个包含在 <b>wj-flex-grid</b> 组件中包含的一个 <b>&lt;template&gt;</b> 模板元素。</p>
+
+<p><b>wj-flex-grid-detail</b> 指令继承自 <a href="topic/wijmo.grid.detail.FlexGridDetailProvider.Class.html"><b>FlexGridDetailProvider</b></a> 类，可以管理详细行的可见性，详细行的内容可以在 directive 指令标签中定义为任意的 HTML 片段。
+该片段可以包含 Angular 2 绑定，组件以及指令。
+<b>row</b> 和 
+<b>item</b> 模板变量可以在 Angular 2 绑定中使用，分别表示详细行的父 <a href="topic/wijmo.grid.Row.Class.html"><b>Row</b></a> 以及 <b>Row.dataItem</b> 对象。</p></p>
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideProperties = !hideProperties">
+<span class="glyph-collapsed" ng-show="hideProperties"></span>
+<span class="glyph-expanded" ng-hide="hideProperties"></span>
+属性
+</h3>
+</div>
+<table ng-hide="hideProperties" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-3">名称</th>
+
+<th class="col-md-2">类型</th>
+
+<th class="col-md-7">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>createDetailCell</b></td>
+      <td><b>Function</b></td>
+      <td><p>获取或设置创建明细单元格的回调函数。</p>
+
+<p>该回调函数接受一个 <a href="topic/wijmo.grid.Row.Class.html"><b>Row</b></a> 对象作为参数，并返回一个表示该行明细的 HTML 元素。
+例如：</p>
+
+<p><pre>// 为指定的行创建明细单元格
+dp.createDetailCell = function (row) {
+  var cell = document.createElement('div');
+  var detailGrid = new wijmo.grid.FlexGrid(cell, {
+    itemsSource: getProducts(row.dataItem.CategoryID),
+    headersVisibility: wijmo.grid.HeadersVisibility.Column
+  });
+  return cell;
+};</pre></p><br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.detail.FlexGridDetailProvider.Class.html"><b>FlexGridDetailProvider</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>detailVisibilityMode</b></td>
+      <td><a href="topic/wijmo.grid.detail.DetailVisibilityMode.Enum.html"><b>DetailVisibilityMode</b></a></td>
+      <td>获取或设置一个值，该值决定何时显示行明细。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.detail.FlexGridDetailProvider.Class.html"><b>FlexGridDetailProvider</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>disposeDetailCell</b></td>
+      <td><b>Function</b></td>
+      <td><p>获取或设置用来销毁明细单元格的回调函数。</p>
+
+<p>该回调函数接受一个 <a href="topic/wijmo.grid.Row.Class.html"><b>Row</b></a> 对象做为参数，并将销毁任何关联到该
+明细单元格的资源。</p>
+
+<p>该函数为可选。当 <b>createDetailCell</b> 函数申请了一些无法被自动垃圾回收的资源时
+需要用到该函数。</p><br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.detail.FlexGridDetailProvider.Class.html"><b>FlexGridDetailProvider</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>grid</b></td>
+      <td><a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a></td>
+      <td>获取拥有该 <a href="topic/wijmo.grid.detail.FlexGridDetailProvider.Class.html"><b>FlexGridDetailProvider</b></a> 的 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.detail.FlexGridDetailProvider.Class.html"><b>FlexGridDetailProvider</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>maxHeight</b></td>
+      <td><b>number</b></td>
+      <td>获取或设置行明细的最大高度，单位是像素。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.detail.FlexGridDetailProvider.Class.html"><b>FlexGridDetailProvider</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>rowHasDetail</b></td>
+      <td><b>Function</b></td>
+      <td><p>获取或设置一个回调函数，该函数决定是否一行具有明细。</p>
+
+<p>该回调函数接受一个 <a href="topic/wijmo.grid.Row.Class.html"><b>Row</b></a> 对象作为参数，
+并返回一个布尔值，该值表示是否该行具有明细。例如：</p>
+
+<p><pre>// 移除具有偶数值的 CategoryID 的项目的明细
+dp.rowHasDetail = function (row) {
+  return row.dataItem.CategoryID % 2 == 0;
+};</pre></p>
+
+<p>设置该属性的值为 null 表示全部的行都具有明细。</p><br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.detail.FlexGridDetailProvider.Class.html"><b>FlexGridDetailProvider</b></a>).</span></td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideMethods = !hideMethods">
+<span class="glyph-collapsed" ng-show="hideMethods"></span>
+<span class="glyph-expanded" ng-hide="hideMethods"></span>
+方法
+</h3>
+</div>
+<table ng-hide="hideMethods" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-2">名称</th>
+
+<th class="col-md-5">参数</th>
+
+<th class="col-md-5">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>constructor</b>&#8203;(grid): <a href="topic/wijmo.grid.detail.FlexGridDetailProvider.Class.html"><b>FlexGridDetailProvider</b></a></td>
+      <td><p>
+<b>grid</b> (<a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>): 接收明细行的 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>。<br/></p>
+</td>
+      <td>初始化类 <a href="topic/wijmo.grid.detail.FlexGridDetailProvider.Class.html"><b>FlexGridDetailProvider</b></a> 的一个新实例<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.detail.FlexGridDetailProvider.Class.html"><b>FlexGridDetailProvider</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>hideDetail</b>&#8203;(row?)</td>
+      <td><p>
+<b>row?</b> (<b>any</b>): 需要隐藏明细行的行对象或行索引。
+该参数为可选。如果未指定，则全部的明细行将隐藏。<br/></p>
+</td>
+      <td>隐藏给定行的明细行。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.detail.FlexGridDetailProvider.Class.html"><b>FlexGridDetailProvider</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>isDetailAvailable</b>&#8203;(row): <b>boolean</b></td>
+      <td><p>
+<b>row</b> (<b>any</b>): 待调查的行或者行的索引。<br/></p>
+</td>
+      <td>获取一个值，该值决定是否一行具有待显示的明细。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.detail.FlexGridDetailProvider.Class.html"><b>FlexGridDetailProvider</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>isDetailVisible</b>&#8203;(row): <b>boolean</b></td>
+      <td><p>
+<b>row</b> (<b>any</b>): 待调查的行或者行的索引。<br/></p>
+</td>
+      <td>获取一个值，该值决定是否一行的明细可见。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.detail.FlexGridDetailProvider.Class.html"><b>FlexGridDetailProvider</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>showDetail</b>&#8203;(row, hideOthers?)</td>
+      <td><p>
+<b>row</b> (<b>any</b>): 待显示明细行的行对象或行索引。<br/><b>hideOthers?</b> (<b>boolean</b>): 是否隐藏其他行上显示的明细行。<br/><span class="text-info">(默认值: <b>false</b>)</span><br/></p>
+</td>
+      <td>为给定的行显示明细行。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.detail.FlexGridDetailProvider.Class.html"><b>FlexGridDetailProvider</b></a>).</span></td>
+    </tr>
+</tbody>
+</table>
+</div>
+

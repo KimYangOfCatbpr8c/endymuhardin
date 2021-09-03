@@ -1,0 +1,165 @@
+<h2>IPdfTextSettings 类</h2>
+<dl class="dl-horizontal">
+<dt>模块</dt><dd>wijmo.pdf</dd>
+<dt>文件</dt><dd>wijmo.pdf.js</dd>
+</dl>
+<p>表示 <b>drawText</b> 以及 <b>measureText</b> 方法使用的文本设置。</p>
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideProperties = !hideProperties">
+<span class="glyph-collapsed" ng-show="hideProperties"></span>
+<span class="glyph-expanded" ng-hide="hideProperties"></span>
+属性
+</h3>
+</div>
+<table ng-hide="hideProperties" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-3">名称</th>
+
+<th class="col-md-2">类型</th>
+
+<th class="col-md-7">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td><span class="badge" title="字段">F</span></td>
+      <td><b>align?</b></td>
+      <td><a href="topic/wijmo.pdf.PdfTextHorizontalAlign.Enum.html"><b>PdfTextHorizontalAlign</b></a></td>
+      <td>决定文本如何在绘制区域内对齐显示。
+默认值为 <b>Left</b>。</td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="字段">F</span></td>
+      <td><b>characterSpacing?</b></td>
+      <td><b>number</b></td>
+      <td>决定文本中两个字符之间的间隔。
+默认值为 0。</td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="字段">F</span></td>
+      <td><b>columnGap?</b></td>
+      <td><b>number</b></td>
+      <td>决定各个列之间的间隔，单位是点。
+默认值为 18。</td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="字段">F</span></td>
+      <td><b>columns?</b></td>
+      <td><b>number</b></td>
+      <td>决定文本浮动绘制的总列数。
+默认值为 1。</td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="字段">F</span></td>
+      <td><b>continued?</b></td>
+      <td><b>boolean</b></td>
+      <td><p>表示是否随后的文本应当紧随其后还是另起一个新的段落。如果设置为 true，则文本设置在不同的 drawText 方法调用之间将被保持。
+这意味着选项参数会和之前一次的 drawText 调用合并。</p>
+
+<p>默认值为 false。</p></td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="字段">F</span></td>
+      <td><b>ellipsis?</b></td>
+      <td><b>any</b></td>
+      <td>决定当文本超出指定区域时，显示在文本末尾的字符。默认值为 undefined，表示不显示省略号。
+设置为 true 表示使用默认字符。</td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="字段">F</span></td>
+      <td><b>fill?</b></td>
+      <td><b>boolean</b></td>
+      <td>表示是否文本是否应当被填充。
+默认值为 true。</td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="字段">F</span></td>
+      <td><b>height?</b></td>
+      <td><b>number</b></td>
+      <td>决定绘制区域的高度，单位是点，文本到达此位置需要被截断。
+默认值为 undefined，表示文本区域受到到底部 body 区域边距的限制。
+使用 Infinity 表示该文本区域具有无限制的高度。</td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="字段">F</span></td>
+      <td><b>indent?</b></td>
+      <td><b>number</b></td>
+      <td>决定在每一个段落起始位置文本的缩进，单位是点。
+默认值为 0。</td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="字段">F</span></td>
+      <td><b>lineBreak?</b></td>
+      <td><b>boolean</b></td>
+      <td>表示是否考虑文本折行。
+如果定义了 <b>width</b>，则该属性被忽略。
+默认值为 true。</td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="字段">F</span></td>
+      <td><b>lineGap?</b></td>
+      <td><b>number</b></td>
+      <td>决定两行文本之间的间隔。
+默认值为 0。</td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="字段">F</span></td>
+      <td><b>link?</b></td>
+      <td><b>string</b></td>
+      <td>决定一个用作创建一个链接标注的 URL（URI 动作）。</td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="字段">F</span></td>
+      <td><b>paragraphGap?</b></td>
+      <td><b>number</b></td>
+      <td>决定在两个段落的文本之间的间隔，单位是点。
+默认值为 0。</td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="字段">F</span></td>
+      <td><b>strike?</b></td>
+      <td><b>boolean</b></td>
+      <td>表示是否文本应当具有删除线。
+默认值为 false。</td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="字段">F</span></td>
+      <td><b>stroke?</b></td>
+      <td><b>boolean</b></td>
+      <td>表示是否文本是否应当描边。
+默认值为 false。</td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="字段">F</span></td>
+      <td><b>underline?</b></td>
+      <td><b>boolean</b></td>
+      <td>表示是否文本是否应当具有下划线。
+默认值为 false。</td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="字段">F</span></td>
+      <td><b>width?</b></td>
+      <td><b>number</b></td>
+      <td>决定文本区域的宽度，单位是点，文本到达此位置需要折行。
+默认值为 undefined，表示文本区域受到右侧页面边距的限制。
+使用 Infinity 表示该文本区域具有无限制的宽度。
+如果定义了值，则强制地使得 <b>lineBreak</b> 属性启用。</td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="字段">F</span></td>
+      <td><b>wordSpacing?</b></td>
+      <td><b>number</b></td>
+      <td>决定文本中两个单词之间的间隔。
+默认值为 0。</td>
+    </tr>
+</tbody>
+</table>
+</div>
+

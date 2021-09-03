@@ -1,0 +1,31 @@
+<h2>wjPopup 类</h2>
+<dl class="dl-horizontal">
+<dt>基类</dt><dd><b>WjBinding</b></dd>
+<dt>模块</dt><dd>wijmo.knockout</dd>
+<dt>文件</dt><dd>wijmo.knockout.js</dd>
+<dt>表示</dt><dd><label style="font-weight:normal">继承成员 <input type="checkbox" ng-model="showInherited"></label></dd>
+</dl>
+<p><p>KnockoutJS 绑定用于  <a href="topic/wijmo.input.Popup.Class.html"><b>Popup</b></a>  控件。
+        KnockoutJS 绑定用于 <b>Popup</b> 控件。 </p>
+
+<p>使用 <b>wjPopup</b> 绑定向你的 KnockoutJS 应用添加 <b>Popup</b> 控件，比如：</p>
+
+<p><pre>&lt;p&gt;
+这是一个通过按钮触发的Popup 控件。
+&lt;/p&gt;
+&lt;button id="btn2" type="button"&gt;
+    Click to show Popup
+&lt;/button&gt;
+ &lt;div class="popover" data-bind="wjPopup: {
+      control: popup,
+      owner: '#btn2',
+      showTrigger: 'Click',
+      hideTrigger: 'Click'}"
+ &gt;
+&lt;h3&gt;
+	 Salutation
+&lt;/h3&gt;
+ &lt;div class="popover-content"&gt;
+ 	    Hello {&#8203;{firstName}} {&#8203;{lastName}}
+ &lt;/div&gt;
+&lt;/div&gt;</pre></p></p>

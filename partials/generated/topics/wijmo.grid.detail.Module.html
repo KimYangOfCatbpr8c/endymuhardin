@@ -1,0 +1,101 @@
+<h2>模块 wijmo.grid.detail</h2>
+<dl class="dl-horizontal">
+<dt>文件</dt><dd>wijmo.grid.detail.js</dd>
+</dl>
+<p>为 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a> 控件提供明细行的扩展。</p>
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideClasses = !hideClasses">
+<span class="glyph-collapsed" ng-show="hideClasses"></span>
+<span class="glyph-expanded" ng-hide="hideClasses"></span>
+类
+</h3>
+</div>
+<table ng-hide="hideClasses" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th>名称</th>
+
+<th>描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.grid.detail.DetailMergeManager.Class.html"><b>DetailMergeManager</b></a></td>
+      <td><p>该 <a href="topic/wijmo.grid.detail.FlexGridDetailProvider.Class.html"><b>FlexGridDetailProvider</b></a> 类使用的合并管理器类。</p>
+
+<p><b>DetailMergeManager</b> 将明细单元格（<a href="topic/wijmo.grid.detail.DetailRow.Class.html"><b>DetailRow</b></a> 中的单元格）合并为单一的
+明细单元格，该单元格横跨全部的表单列。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.grid.detail.DetailRow.Class.html"><b>DetailRow</b></a></td>
+      <td>包含横跨全部表单列的单一明细单元格所在的行。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.grid.detail.FlexGridDetailProvider.Class.html"><b>FlexGridDetailProvider</b></a></td>
+      <td><p>实现 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a> 控件的明细行。</p>
+
+<p>为了向 <b>FlexGrid</b> 添加明细行，需要创建一个 <b>FlexGridDetailProvider</b> 的实例，并
+设置 <b>createDetailCell</b> 属性为一个函数，该函数创建用来在明细单元格中显示的元素。</p>
+
+<p>例如：</p>
+
+<p><pre>// 创建一个 FlexGrid 以显示不同分类
+var gridCat = new wijmo.grid.FlexGrid('#gridCat');
+gridCat.itemsSource = getCategories();
+// 添加明细行，以显示每一个分类下不同的产品
+var detailProvider = new wijmo.grid.detail.FlexGridDetailProvider(gridCat);
+detailProvider.createDetailCell = function (row) {
+  var cell = document.createElement('div');
+  var gridProducts = new wijmo.grid.FlexGrid(cell);
+  gridProducts.itemsSource = getProducts(row.dataItem.CategoryID);
+  return cell;
+}</pre></p>
+
+<p><b>FlexGridDetailProvider</b> 提供了一个 <b>detailVisibilityMode</b> 属性，该属性决定
+何时显示该明细行。该属性的默认值为 <b>ExpandSingle</b>，这将添加一组
+展开/收起图表至行头区域。</p></td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideEnumerations = !hideEnumerations">
+<span class="glyph-collapsed" ng-show="hideEnumerations"></span>
+<span class="glyph-expanded" ng-hide="hideEnumerations"></span>
+枚举
+</h3>
+</div>
+<table ng-hide="hideEnumerations" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th>名称</th>
+
+<th>描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.grid.detail.DetailVisibilityMode.Enum.html"><b>DetailVisibilityMode</b></a></td>
+      <td>指定何时以及如何显示明细行。</td>
+    </tr>
+</tbody>
+</table>
+</div>
+

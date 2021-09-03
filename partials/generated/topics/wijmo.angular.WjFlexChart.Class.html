@@ -1,0 +1,81 @@
+<h2>WjFlexChart 类</h2>
+<dl class="dl-horizontal">
+<dt>基类</dt><dd><b>WjFlexChartCore</b></dd>
+<dt>模块</dt><dd>wijmo.angular</dd>
+<dt>文件</dt><dd>wijmo.angular.js</dd>
+<dt>表示</dt><dd><label style="font-weight:normal">继承成员 <input type="checkbox" ng-model="showInherited"></label></dd>
+</dl>
+<p><p>AngularJS 指令应用于 <a href="topic/wijmo.chart.FlexChart.Class.html"><b>FlexChart</b></a> 控件。</p>
+
+<p>使用 <b>wj-flex-chart</b> 指令添加 charts 到 AngularJS 应用中。
+注意指令和参数名称必须使用小写字母+短线语法替代驼峰命名。 示例：</p>
+
+<p><pre>&lt;p&gt;Here is a FlexChart control:&lt;/p&gt;
+&lt;wj-flex-chart
+  style="height:300px"
+  items-source="data"
+  binding-x="country"&gt;
+  &lt;wj-flex-chart-axis
+    wj-property="axisY"
+    major-unit="5000"&gt;
+  &lt;/wj-flex-chart-axis&gt;
+  &lt;wj-flex-chart-series
+    binding="sales"
+    name="Sales"&gt;
+  &lt;/wj-flex-chart-series&gt;
+  &lt;wj-flex-chart-series
+    binding="expenses"
+    name="Expenses"&gt;
+  &lt;/wj-flex-chart-series&gt;
+  &lt;wj-flex-chart-series
+    binding="downloads"
+    name="Downloads"
+    chart-type="LineSymbols"&gt;
+  &lt;/wj-flex-chart-series&gt;
+&lt;/wj-flex-chart&gt;</pre></p>
+
+<p>下面的例子创建了一个 <b>FlexChart</b> 控件，并绑定到控制器公开的 'data' 数组上。该图标拥有3个对象，每一个数据源对应于对象包含的的数组上。最后系列图表使用了 'chart-type' 属性重写了默认的图标类型。</p>
+
+<p><a href="http://jsfiddle.net/Wijmo5/QNb9X/" target="_blank" class="btn btn-info">
+  <img src="images/fiddle.png"/>
+  在线示例
+</a>
+</p>
+
+<p>wj-flex-chart 指令支持以下属性:</p>
+
+<p><dl class="dl-horizontal">
+  <dt>binding</dt>           <dd><code>@</code> 包含Y轴数据的属性名。该值可被任意重写以绑定图表数据。</dd>
+  <dt>binding-x</dt>         <dd><code>@</code> 包含X轴数据的属性名。该值可被任意重写以绑定图表数据。</dd>
+  <dt>chart-type</dt>        <dd><code>@</code> 图表默认类型，可以重写这个。参见 <a href="topic/wijmo.chart.ChartType.Enum.html"><b>ChartType</b></a>。</dd>
+  <dt>control</dt>           <dd><code>=</code> 该指令创建的指向 <b>FlexChart</b> 控件的引用。</dd>
+  <dt>footer</dt>            <dd><code>@</code> 页脚显示的文本。</dd>
+  <dt>footer-style</dt>       <dd><code>=</code> 页脚显示的文本的样式。</dd>
+  <dt>header</dt>            <dd><code>@</code> 页头显示的文本。</dd>
+  <dt>header-style</dt>      <dd><code>=</code> 页头显示的文本的样式。</dd>
+  <dt>initialized</dt>       <dd><code>&</code> 该事件在绑定完成控件特性值的初始化后被触发。</dd>
+  <dt>is-initialized</dt><dd><code>=</code> 绑定是否已经完成控件特性值的初始化。 </dd>
+  <dt>interpolate-nulls</dt> <dd><code>@</code> 是否篡改或移除数据中的null值。</dd>
+  <dt>item-formatter</dt>    <dd><code>=</code> 自定义显示的格式化函数。</dd>
+  <dt>items-source</dt>      <dd><code>=</code> 一个数组或者 <a href="topic/wijmo.collections.ICollectionView.Interface.html"><b>ICollectionView</b></a> 对象，其中包含用于创建图表的数据。</dd>
+  <dt>legend-toggle</dt>     <dd><code>@</code> 是否点击示例项目切换序列可见性。</dd>
+  <dt>options</dt>           <dd><code>=</code> 只适用于特定类型的图表选项。更多细节参见 <b>FlexChart</b> 下的 <b>options</b> </dd>
+  <dt>palette</dt>           <dd><code>=</code> 包含用于显示项目的默认颜色的数组。</dd>
+  <dt>plot-margin</dt>       <dd><code>=</code> 控件与边际之间的像素点数，或者 CSS-Style margins。</dd>
+  <dt>rotated</dt>           <dd><code>@</code> 是否旋转X轴和Y轴</dd>
+  <dt>selection</dt>         <dd><code>=</code> 选中的序列</dd>
+  <dt>selection-mode</dt>    <dd><code>@</code> <a href="topic/wijmo.grid.SelectionMode.Enum.html"><b>SelectionMode</b></a> 值，定义用户点击时怎样选中序列。</dd>
+  <dt>stacking</dt>          <dd><code>@</code> <a href="topic/wijmo.chart.Stacking.Enum.html"><b>Stacking</b></a> 值，定义序列堆叠和描绘的方式。</dd>
+  <dt>symbol-size</dt>       <dd><code>@</code> 渲染数据点的像素级尺寸。可以重写这个。</dd>
+  <dt>tooltip-content</dt>   <dd><code>@</code> 提示栏 <a href="topic/wijmo.chart.ChartTooltip.Class.html"><b>ChartTooltip</b></a> 的内容。</dd>
+  <dt>got-focus</dt>         <dd><code>&</code> <b>gotFocus</b> 事件。</dd>
+  <dt>lost-focus</dt>        <dd><code>&</code> <b>lostFocus</b> 事件。</dd>
+  <dt>rendering</dt>         <dd><code>&</code> <b>rendering</b> 事件。</dd>
+  <dt>rendered</dt>          <dd><code>&</code> <b>rendered</b> 事件。</dd>
+  <dt>series-visibility-changed</dt>
+                             <dd><code>&</code> <b>seriesVisibilityChanged</b> 事件。</dd>
+  <dt>selection-changed</dt> <dd><code>&</code> <b>selectionChanged</b> 事件。</dd>
+</dl></p>
+
+<p>wj-flex-chart 指令通常包含以下的子指令:
+<a href="topic/wijmo.angular.WjFlexChartAxis.Class.html"><b>WjFlexChartAxis</b></a>, <a href="topic/wijmo.angular.WjFlexChartSeries.Class.html"><b>WjFlexChartSeries</b></a>, <a href="topic/wijmo.angular.WjFlexChartLegend.Class.html"><b>WjFlexChartLegend</b></a> and <a href="topic/wijmo.angular.WjFlexChartDataLabel.Class.html"><b>WjFlexChartDataLabel</b></a>.</p></p>

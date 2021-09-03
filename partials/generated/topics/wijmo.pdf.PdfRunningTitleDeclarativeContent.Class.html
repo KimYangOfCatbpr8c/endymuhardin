@@ -1,0 +1,144 @@
+<h2>PdfRunningTitleDeclarativeContent 类</h2>
+<dl class="dl-horizontal">
+<dt>模块</dt><dd>wijmo.pdf</dd>
+<dt>文件</dt><dd>wijmo.pdf.js</dd>
+</dl>
+<p>表示运行标题的声明式内容。</p>
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideConstructor = !hideConstructor">
+<span class="glyph-collapsed" ng-show="hideConstructor"></span>
+<span class="glyph-expanded" ng-hide="hideConstructor"></span>
+ 构造函数
+</h3>
+</div>
+<table ng-hide="hideConstructor" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-2">名称</th>
+
+<th class="col-md-5">参数</th>
+
+<th class="col-md-5">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><b>constructor</b>&#8203;(text?, font?, brushOrColor?): <a href="topic/wijmo.pdf.PdfRunningTitleDeclarativeContent.Class.html"><b>PdfRunningTitleDeclarativeContent</b></a></td>
+      <td><p>
+<b>text?</b> (<b>string</b>): 运行标题的文本。<br/><b>font?</b> (<a href="topic/wijmo.pdf.PdfFont.Class.html"><b>PdfFont</b></a>): 文本的字体。<br/><b>brushOrColor?</b> (<b>any</b>): <a href="topic/wijmo.pdf.PdfBrush.Class.html"><b>PdfBrush</b></a> 或 <a href="topic/wijmo.Color.Class.html"><b>Color</b></a> 或者 <b>fromString</b>  方法可接受的任何字符串。<br/></p>
+</td>
+      <td>初始化 <b>PdfRunningTitleDeclarativeContent新的实例</b>。</td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideProperties = !hideProperties">
+<span class="glyph-collapsed" ng-show="hideProperties"></span>
+<span class="glyph-expanded" ng-hide="hideProperties"></span>
+属性
+</h3>
+</div>
+<table ng-hide="hideProperties" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-3">名称</th>
+
+<th class="col-md-2">类型</th>
+
+<th class="col-md-7">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><b>brush</b></td>
+      <td><a href="topic/wijmo.pdf.PdfBrush.Class.html"><b>PdfBrush</b></a></td>
+      <td>获取或设置用来填充 <b>text</b> 的画刷。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>font</b></td>
+      <td><a href="topic/wijmo.pdf.PdfFont.Class.html"><b>PdfFont</b></a></td>
+      <td>获取或设置 <b>text</b> 的字体。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>text</b></td>
+      <td><b>string</b></td>
+      <td><p>获取或设置运行标题的文本。</p>
+
+<p>可以包含至多三个制表符（‘\t’），用做将文本分隔成几个部分，
+通过 Left，Center 以及 Right 在页面内部对齐。
+支持两种类型的宏，'&[Page]' 以及 '&[Pages]'。前者指定当前的页面索引，
+后者指定总页数。</p>
+
+<p>例如，对于一个具有十个页面的文档的第一页，以下字符串：
+<pre>
+	'&[Page]\\&[Pages]\theader\t&[Page]\\&[Pages]'
+</pre>
+将被翻译为：
+<pre>
+	'1\10 header 1\10'
+</pre></p></td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideMethods = !hideMethods">
+<span class="glyph-collapsed" ng-show="hideMethods"></span>
+<span class="glyph-expanded" ng-hide="hideMethods"></span>
+方法
+</h3>
+</div>
+<table ng-hide="hideMethods" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-2">名称</th>
+
+<th class="col-md-5">参数</th>
+
+<th class="col-md-5">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><b>clone</b>&#8203;(): <a href="topic/wijmo.pdf.PdfRunningTitleDeclarativeContent.Class.html"><b>PdfRunningTitleDeclarativeContent</b></a></td>
+      <td></td>
+      <td>创建该 <a href="topic/wijmo.pdf.PdfRunningTitleDeclarativeContent.Class.html"><b>PdfRunningTitleDeclarativeContent</b></a> 的一份拷贝。<br/><br/><b>返回值</b> 这个笔的一个拷贝。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>equals</b>&#8203;(value): <b>boolean</b></td>
+      <td><p>
+<b>value</b> (<a href="topic/wijmo.pdf.PdfRunningTitleDeclarativeContent.Class.html"><b>PdfRunningTitleDeclarativeContent</b></a>): 待比较的 <a href="topic/wijmo.pdf.PdfRunningTitleDeclarativeContent.Class.html"><b>PdfRunningTitleDeclarativeContent</b></a> 对象。<br/></p>
+</td>
+      <td>确定是否指定的 <a href="topic/wijmo.pdf.PdfRunningTitleDeclarativeContent.Class.html"><b>PdfRunningTitleDeclarativeContent</b></a> 实例和当前的实例相等。<br/><br/><b>返回值</b> 如果与当前对象相等，则返回true，否则返回false。</td>
+    </tr>
+</tbody>
+</table>
+</div>
+

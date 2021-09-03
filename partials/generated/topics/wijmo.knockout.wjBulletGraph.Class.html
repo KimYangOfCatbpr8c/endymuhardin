@@ -1,0 +1,31 @@
+<h2>wjBulletGraph 类</h2>
+<dl class="dl-horizontal">
+<dt>基类</dt><dd><a href="topic/wijmo.knockout.wjLinearGauge.Class.html"><b>wjLinearGauge</b></a></dd>
+<dt>模块</dt><dd>wijmo.knockout</dd>
+<dt>文件</dt><dd>wijmo.knockout.js</dd>
+<dt>表示</dt><dd><label style="font-weight:normal">继承成员 <input type="checkbox" ng-model="showInherited"></label></dd>
+</dl>
+<p><p>使用 KnockoutJS 绑定 <a href="topic/wijmo.gauge.BulletGraph.Class.html"><b>BulletGraph</b></a> 控件。</p>
+
+<p>使用 <b>wjBulletGraph</b> 绑定添加 <b>BulletGraph</b> 控件，示例如下：</p>
+
+<p><pre>&lt;p&gt;Here is a BulletGraph control:&lt;/p&gt;
+&lt;div data-bind="wjBulletGraph: {
+        value: props.value,
+        min: props.min,
+        max: props.max,
+        format: props.format,
+        good: props.ranges.middle.max,
+        bad: props.ranges.middle.min,
+        target: props.ranges.target,
+        showRanges: props.showRanges }"
+        class="linear-gauge"&gt;
+    &lt;div data-bind="wjRange: { 
+            wjProperty: 'pointer', 
+            thickness: props.ranges.pointerThickness }"&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</pre></p>
+
+<p><b>wjBulletGraph</b> 绑定可以包含 <a href="topic/wijmo.knockout.wjRange.Class.html"><b>wjRange</b></a> 子绑定。 </p>
+
+<p><b>wjBulletGraph</b> 支持 <b>BulletGraph</b> 控件的所有可读写属性及事件。 <b>value</b> 属性支持双向绑定。</p></p>

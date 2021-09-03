@@ -1,0 +1,152 @@
+<h2>PrintDocument 类</h2>
+<dl class="dl-horizontal">
+<dt>模块</dt><dd>wijmo</dd>
+<dt>文件</dt><dd>wijmo.js</dd>
+</dl>
+<p><p>类可以创建自定义文档的打印。 </p>
+
+<p><b>PrintDocument</b> 类可以创建打印或输出为PDF文件。大多数浏览器允许你选择纸张大小，方向，空间，以及是否包含页眉和页脚。</p>
+
+<p>为了使用，实例化一个<b>PrintDocument</b>，使用<b>append</b> 方法添加内容，并且通过调用<b>print</b> 方法来完成。 </p>
+
+<p>例如：
+<pre>// 创建文档
+var doc = new wijmo.PrintDocument({
+  title: 'PrintDocument Test'
+});</p>
+
+<p>// 添加一些简单的文本
+doc.append('<h1>Printing Example</h1>');
+doc.append('<p>This document was created using the <b>PrintDocument</b> class.</p>');</p>
+
+<p>// 添加一些存在的元素
+doc.append(document.getElementById('gaugeControl'));</p>
+
+<p>// 打印文档(或者输出它为 PDF)
+doc.print();</pre></p></p>
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideConstructor = !hideConstructor">
+<span class="glyph-collapsed" ng-show="hideConstructor"></span>
+<span class="glyph-expanded" ng-hide="hideConstructor"></span>
+ 构造函数
+</h3>
+</div>
+<table ng-hide="hideConstructor" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-2">名称</th>
+
+<th class="col-md-5">参数</th>
+
+<th class="col-md-5">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><b>constructor</b>&#8203;(options?): <a href="topic/wijmo.PrintDocument.Class.html"><b>PrintDocument</b></a></td>
+      <td><p>
+<b>options?</b> (<b>any</b>): JavaScript object containing initialization data for the <a href="topic/wijmo.PrintDocument.Class.html"><b>PrintDocument</b></a>.<br/></p>
+</td>
+      <td>初始化类 <a href="topic/wijmo.PrintDocument.Class.html"><b>PrintDocument</b></a> 的一个新实例。</td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideProperties = !hideProperties">
+<span class="glyph-collapsed" ng-show="hideProperties"></span>
+<span class="glyph-expanded" ng-hide="hideProperties"></span>
+属性
+</h3>
+</div>
+<table ng-hide="hideProperties" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-3">名称</th>
+
+<th class="col-md-2">类型</th>
+
+<th class="col-md-7">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><b>copyCss</b></td>
+      <td><b>boolean</b></td>
+      <td>获取或设置一个值，确定<a href="topic/wijmo.PrintDocument.Class.html"><b>PrintDocument</b></a> 应包含的CSS样式表在主文档中定义的。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>title</b></td>
+      <td><b>string</b></td>
+      <td>获取或者设置文档标题。</td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideMethods = !hideMethods">
+<span class="glyph-collapsed" ng-show="hideMethods"></span>
+<span class="glyph-expanded" ng-hide="hideMethods"></span>
+方法
+</h3>
+</div>
+<table ng-hide="hideMethods" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-2">名称</th>
+
+<th class="col-md-5">参数</th>
+
+<th class="col-md-5">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><b>addCSS</b>&#8203;(href)</td>
+      <td><p>
+<b>href</b> (<b>string</b>): URL的CSS文件应该被添加到文档。<br/></p>
+</td>
+      <td>添加CSS样式表单到文档上。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>append</b>&#8203;(child)</td>
+      <td><p>
+<b>child</b> (<b>any</b>): HTML或者字符串附加到文档上。<br/></p>
+</td>
+      <td>将HTML或者字符串附加到文档上。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>print</b>&#8203;()</td>
+      <td></td>
+      <td>打印文档。</td>
+    </tr>
+</tbody>
+</table>
+</div>
+

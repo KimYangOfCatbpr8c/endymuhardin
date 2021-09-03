@@ -1,0 +1,266 @@
+<h2>LineMarker 类</h2>
+<dl class="dl-horizontal">
+<dt>派生类</dt><dd><a href="topic/wijmo.angular.WjFlexChartLineMarker.Class.html"><b>WjFlexChartLineMarker</b></a></dd>
+<dt>模块</dt><dd>wijmo.chart</dd>
+<dt>文件</dt><dd>wijmo.chart.js</dd>
+</dl>
+<p><p>表示 FlexChart 的 LineMarker 的一个扩展。</p>
+
+<p>LineMarker 由一个显示数据点的值的一个文本区域，一个可选的水平或垂直线（或者两者同时显示，以达到十字线效果）组成，位于绘图区域上方。
+它可以是静态的（interaction = None)，或者是跟随鼠标或者触摸点（interaction = move），或者当用户拖拽线形时移动（interaction = Drag）。
+例如：
+<pre>
+  // 创建一个可交互的标记，显示水平线和 Y 值
+  var lm = new wijmo.chart.LineMarker($scope.ctx.chart, {
+      lines: wijmo.chart.LineMarkerLines.Horizontal,
+      interaction: wijmo.chart.LineMarkerInteraction.Move,
+      alignment : wijmo.chart.LineMarkerAlignment.Top
+  });
+  lm.content = function (ht) {
+      // 显示 Y 值
+      return lm.y.toFixed(2);
+  }
+</pre></p></p>
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideConstructor = !hideConstructor">
+<span class="glyph-collapsed" ng-show="hideConstructor"></span>
+<span class="glyph-expanded" ng-hide="hideConstructor"></span>
+ 构造函数
+</h3>
+</div>
+<table ng-hide="hideConstructor" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-2">名称</th>
+
+<th class="col-md-5">参数</th>
+
+<th class="col-md-5">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><b>constructor</b>&#8203;(chart, options?): <a href="topic/wijmo.chart.LineMarker.Class.html"><b>LineMarker</b></a></td>
+      <td><p>
+<b>chart</b> (<a href="topic/wijmo.chart.FlexChartCore.Class.html"><b>FlexChartCore</b></a>): The chart on which the LineMarker appears.<br/><b>options?</b> (): A 包含控件初始化数据的Javascript对象。<br/></p>
+</td>
+      <td>初始化类 <a href="topic/wijmo.chart.LineMarker.Class.html"><b>LineMarker</b></a> 的一个新实例。</td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideProperties = !hideProperties">
+<span class="glyph-collapsed" ng-show="hideProperties"></span>
+<span class="glyph-expanded" ng-hide="hideProperties"></span>
+属性
+</h3>
+</div>
+<table ng-hide="hideProperties" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-3">名称</th>
+
+<th class="col-md-2">类型</th>
+
+<th class="col-md-7">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><b>alignment</b></td>
+      <td><a href="topic/wijmo.chart.LineMarkerAlignment.Enum.html"><b>LineMarkerAlignment</b></a></td>
+      <td><p>获取或设置 LineMarker 内容的对齐方式。</p>
+
+<p>默认情况下，LineMarker　靠右显示，位于目标点的底部。
+使用 ‘|’ 联合对齐方式的设置。</p>
+
+<p><pre>
+// 设置对齐方式为靠左。
+marker.alignment = wijmo.chart.LineMarkerAlignment.Left;
+// 设置对齐方式为左上。
+marker.alignment = wijmo.chart.LineMarkerAlignment.Left | wijmo.chart.LineMarkerAlignment.Top;
+</pre></p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>chart</b></td>
+      <td><a href="topic/wijmo.chart.FlexChartCore.Class.html"><b>FlexChartCore</b></a></td>
+      <td>获取拥有该 LineMarker 的 <a href="topic/wijmo.chart.FlexChart.Class.html"><b>FlexChart</b></a> 对象。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>content</b></td>
+      <td><b>Function</b></td>
+      <td>获取或设置允许您自定义 LineMarker 文本内容的内容函数。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>dragContent</b></td>
+      <td><b>boolean</b></td>
+      <td>获取或设置一个布尔值，该值表示当交互模式设置为“Drag”时，标记的内容是否可拖拽。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>dragLines</b></td>
+      <td><b>boolean</b></td>
+      <td>获取或设置一个布尔值，该值表示当交互模式设置为“Drag”，且水平和垂直线被拖拽是，线形是连接的。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>dragThreshold</b></td>
+      <td><b>number</b></td>
+      <td>获取或设置标记可以被拖动的距离水平线和垂直线的最大距离。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>horizontalPosition</b></td>
+      <td><b>number</b></td>
+      <td><p>获取或设置相对于绘图区域 LineMarker 的水平位置。 </p>
+
+<p>其值范围为（0，1）。
+如果该值为 null 或者 undefined 并且 <b>interaction</b> 设置为 wijmo.chart.LineMarkerInteraction.Move 或者 wijmo.chart.LineMarkerInteraction.Drag，
+标记的水平位置将基于点的位置自动计算。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>interaction</b></td>
+      <td><a href="topic/wijmo.chart.LineMarkerInteraction.Enum.html"><b>LineMarkerInteraction</b></a></td>
+      <td>获取或设置 LineMarker 的交互模式。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>isVisible</b></td>
+      <td><b>boolean</b></td>
+      <td>获取或设置 LineMarker 的可见性。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>lines</b></td>
+      <td><a href="topic/wijmo.chart.LineMarkerLines.Enum.html"><b>LineMarkerLines</b></a></td>
+      <td>获取或设置 LineMarker 线形的可见性。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>seriesIndex</b></td>
+      <td><b>number</b></td>
+      <td>获取或设置显示该 LineMarker 的图表中系列的索引。
+当 <b>interaction</b> 属性设置为 wijmo.chart.LineMarkerInteraction.Move 或者 wijmo.chart.LineMarkerInteraction.Drag 时，该属性生效。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>verticalPosition</b></td>
+      <td><b>number</b></td>
+      <td><p>获取或设置相对于绘图区域 LineMarker 的垂直位置。</p>
+
+<p>其值范围为（0，1）。
+如果该值为 null 或者 undefined 并且 <b>interaction</b> 设置为 wijmo.chart.LineMarkerInteraction.Move 或者 wijmo.chart.LineMarkerInteraction.Drag，
+标记的垂直位置将基于点的位置自动计算。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>x</b></td>
+      <td><b>number</b></td>
+      <td>获取基于图表数据坐标的当前的 X 值。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>y</b></td>
+      <td><b>number</b></td>
+      <td>获取基于图表数据坐标的当前的 Y 值。</td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideMethods = !hideMethods">
+<span class="glyph-collapsed" ng-show="hideMethods"></span>
+<span class="glyph-expanded" ng-hide="hideMethods"></span>
+方法
+</h3>
+</div>
+<table ng-hide="hideMethods" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-2">名称</th>
+
+<th class="col-md-5">参数</th>
+
+<th class="col-md-5">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><b>onPositionChanged</b>&#8203;(point)</td>
+      <td><p>
+<b>point</b> (<a href="topic/wijmo.Point.Class.html"><b>Point</b></a>): 显示该 LineMarker 的目标位置。<br/></p>
+</td>
+      <td>触发 <b>positionChanged</b> 事件。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>remove</b>&#8203;()</td>
+      <td></td>
+      <td>从图表中移除该 LineMarker。</td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideEvents = !hideEvents">
+<span class="glyph-collapsed" ng-show="hideEvents"></span>
+<span class="glyph-expanded" ng-hide="hideEvents"></span>
+事件
+</h3>
+</div>
+<table ng-hide="hideEvents" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-2">名称</th>
+
+<th class="col-md-5">参数</th>
+
+<th class="col-md-5">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><b>positionChanged</b></td>
+      <td><a href="topic/wijmo.Point.Class.html"><b>Point</b></a></td>
+      <td>在 LineMarker 的位置发生变化之后触发。</td>
+    </tr>
+</tbody>
+</table>
+</div>
+

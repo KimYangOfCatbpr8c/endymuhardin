@@ -1,0 +1,43 @@
+<h2>WjMenu 类</h2>
+<dl class="dl-horizontal">
+<dt>基类</dt><dd><a href="topic/wijmo.angular.WjComboBox.Class.html"><b>WjComboBox</b></a></dd>
+<dt>模块</dt><dd>wijmo.angular</dd>
+<dt>文件</dt><dd>wijmo.angular.js</dd>
+<dt>表示</dt><dd><label style="font-weight:normal">继承成员 <input type="checkbox" ng-model="showInherited"></label></dd>
+</dl>
+<p><p>AngularJS 指令应用于 <a href="topic/wijmo.input.Menu.Class.html"><b>Menu</b></a> 控件.</p>
+
+<p>使用 <b>wj-menu</b> 指令添加 drop-down menus 到 AngularJS 应用中。 
+注意指令和参数名称必须使用小写字母+短线语法替代驼峰命名。 示例：</p>
+
+<p><pre>&lt;p&gt;Here is a Menu control used as a value picker:&lt;/p&gt;
+&lt;wj-menu header="Tax" value="tax"&gt;
+  &lt;wj-menu-item value="0"&gt;Exempt&lt;/wj-menu-item&gt;
+  &lt;wj-menu-item value=".05"&gt;5%&lt;/wj-menu-item&gt;
+  &lt;wj-menu-item value=".1"&gt;10%&lt;/wj-menu-item&gt;
+  &lt;wj-menu-item value=".15"&gt;15%&lt;/wj-menu-item&gt;
+&lt;/wj-menu&gt;</pre></p>
+
+<p><a href="http://jsfiddle.net/Wijmo5/Wc5Mq/" target="_blank" class="btn btn-info">
+  <img src="images/fiddle.png"/>
+  在线示例
+</a>
+</p>
+
+<p>下面的例子创建了3个 <b>Menu</b> 控件。第一个作为数据采集器，第二个使用了包含参数的命令列表，第三个绑定了控制器上的 <b>itemClicked</b> 事件处理函数。</p>
+
+<p><b>wj-menu</b> 指令扩展了 <a href="topic/wijmo.angular.WjComboBox.Class.html"><b>WjComboBox</b></a> ，提供以下特性：</p>
+
+<p><dl class="dl-horizontal">
+  <dt>command-path</dt>          <dd><code>@</code> 项目被点击时执行的命令。</dd>
+  <dt>command-parameter-path</dt><dd><code>@</code> 命令参数名。</dd>
+  <dt>header</dt>                <dd><code>@</code> 控件显示文本。</dd>
+  <dt>is-button</dt>             <dd><code>@</code> 是否响应控件标题区域的点击事件。</dd>
+  <dt>value</dt>                 <dd><code>@</code> 选中的 <b>wj-menu-item</b> 值。 </dd>
+  <dt>item-clicked</dt>          <dd><code>&</code> <b>itemClicked</b> 事件。</dd>
+  <dt>got-focus</dt>             <dd><code>&</code> <b>gotFocus</b> 事件。</dd>
+  <dt>lost-focus</dt>            <dd><code>&</code> <b>lostFocus</b> 事件。</dd>
+</dl></p>
+
+<p><b>wj-menu</b> 指令可能包含以下子指令:
+<a href="topic/wijmo.angular.WjMenuItem.Class.html"><b>WjMenuItem</b></a>, <a href="topic/wijmo.angular.WjMenuSeparator.Class.html"><b>WjMenuSeparator</b></a> 和 <a href="topic/wijmo.angular.WjItemTemplate.Class.html"><b>WjItemTemplate</b></a>(任意菜单绑定控件).</p></p>

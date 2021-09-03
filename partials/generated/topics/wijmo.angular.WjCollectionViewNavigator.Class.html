@@ -1,0 +1,30 @@
+<h2>WjCollectionViewNavigator 类</h2>
+<dl class="dl-horizontal">
+<dt>基类</dt><dd><b>WjDirective</b></dd>
+<dt>模块</dt><dd>wijmo.angular</dd>
+<dt>文件</dt><dd>wijmo.angular.js</dd>
+<dt>表示</dt><dd><label style="font-weight:normal">继承成员 <input type="checkbox" ng-model="showInherited"></label></dd>
+</dl>
+<p><p>AngularJS 指令应用到 <a href="topic/wijmo.collections.ICollectionView.Interface.html"><b>ICollectionView</b></a> 导航元素。</p>
+
+<p>使用 <b>wj-collection-view-navigator</b> 指令添加元素，允许用户通过 <b>ICollectionView</b> 中的项目进行导航。
+注意指令和参数名称必须使用小写字母+短线语法替代驼峰命名。 示例：</p>
+
+<p><pre>Here is a CollectionViewNavigator:&lt;/p&gt;
+&lt;wj-collection-view-navigator 
+  cv="myCollectionView"&gt;
+&lt;/wj-collection-view-navigator&gt;</pre></p>
+
+<p><a href="http://jsfiddle.net/Wijmo5/s8tT4/" target="_blank" class="btn btn-info">
+  <img src="images/fiddle.png"/>
+  在线示例
+</a>
+</p>
+
+<p>这个例子创建了一个拥有100,000个项目和每页20个项目的 CollectionView ，它定义了一个导航器用以选择当前页，当前项目，并使用 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a> 呈现数据。</p>
+
+<p><b>wj-collection-view-navigator</b> 指令只有一个属性：</p>
+
+<p><dl class="dl-horizontal">
+  <dt>cv</dt>  <dd><code>=</code> 指向 <b>ICollectionView</b> 对象的引用。</dd>
+</dl></p></p>

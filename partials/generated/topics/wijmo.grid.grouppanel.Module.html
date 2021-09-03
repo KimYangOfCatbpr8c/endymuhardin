@@ -1,0 +1,50 @@
+<h2>模块 wijmo.grid.grouppanel</h2>
+<dl class="dl-horizontal">
+<dt>文件</dt><dd>wijmo.grid.grouppanel.js</dd>
+</dl>
+<p>提供在绑定状态的 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a> 控件下的一个用来编辑分组的拖放界面的扩展包。</p>
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideClasses = !hideClasses">
+<span class="glyph-collapsed" ng-show="hideClasses"></span>
+<span class="glyph-expanded" ng-hide="hideClasses"></span>
+类
+</h3>
+</div>
+<table ng-hide="hideClasses" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th>名称</th>
+
+<th>描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.grid.grouppanel.GroupPanel.Class.html"><b>GroupPanel</b></a></td>
+      <td><p>该 <b>GroupPanel</b> 控件提供在绑定状态的 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a> 控件下的一个用来编辑分组的拖放界面。</p>
+
+<p>它允许用户从 <b>FlexGrid</b> 拖拽一列至该面板，并在该面板范围内移动分组。
+用户也可以在该面板内单击分组标记，以基于该分组列进行排序，或者移除分组。</p>
+
+<p>为了使用一个 <b>GroupPanel</b>，添加其至一个包含一个 <b>FlexGrid</b> 控件的页面，
+并设置该面板的 <b>grid</b> 属性至该 <b>FlexGrid</b> 控件。例如：</p>
+
+<p><pre>// 创建一个 FlexGrid 
+var flex = new wijmo.grid.FlexGrid('#flex-grid');
+flex.itemsSource = getData();
+// 添加一个 GroupPanel  以编辑数据分组
+var groupPanel = new wijmo.grid.grouppanel.GroupPanel('#group-panel');
+groupPanel.placeholder = "Drag columns here to create groups.";
+groupPanel.grid = flex;</pre></p></td>
+    </tr>
+</tbody>
+</table>
+</div>
+

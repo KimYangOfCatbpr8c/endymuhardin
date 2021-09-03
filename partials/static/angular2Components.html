@@ -1,0 +1,209 @@
+﻿<h2>
+    Angular 2 组件
+</h2>
+<p>
+
+</p>
+<h3>说明</h3>
+<ul>
+    <li>基于Angular 2 <b>2.0.0</b> 版本构建</li>
+</ul>
+<p>
+    Wijmo<i>组件</i>允许您在Angular 2 模板标记语言中使用 Wijmo <i>控件</i>。
+    针对 TypeScript 的类继承特性，Angular 2 版本的 Wijmo <i>组件</i> “扩展”自他们所表示的<i>control</i>类。
+    这表示，当您获取了对某个 Angular 2 <i>组件</i>的引用时，该引用实际指向的实例是一个 Wijmo <i>control</i>，同时将包括其全部的属性，事件及方法，以及一个 Angular 2 <i>组件</i>。
+    一个 Wijmo 组件扩展自 control 类，并添加了一些必要的功能，使其能够在 Angular 2 模板标记语言中使用。该组件完全支持单向和双向的数据绑定以及事件绑定机制。
+    这种集成是无缝的，因为所有的使用者， Wijmo 控件， Wijmo Angular 2 组件以及 Angular 2 自身，都是通过 TypeScript 语言进行书写。
+</p>
+<p>
+    Wijmo Angular 2 组件在一个单独的 wijmo.angular2.js 文件中提供，该文件包含多个模块，同时我们还提供了多个 TypeScript 定义文件（.d.ts)，这些文件将为 TypeScript 编译器以及 Visual Studio（或者其他可能的IDE）的智能感知提供各个模块的API描述。
+</p>
+
+<h3>在Angular 2 应用程序中使用 Wijmo 5</h3>
+<p>
+    为了在您的 Angular 2 应用程序中使用 Wijmo 5 Angular，因应当执行以下所讨论的步骤。
+</p>
+
+<h4>创建应用程序工程</h4>
+<h5>在Visual Studio下：</h5>
+<ul>
+    <li>
+        如果您使用的是 Visual Studio 2015 版本，请确保您已经安装了 Update 3 更新。
+    </li>
+    <li>
+        如果您使用的是 Visual Studio 2013 版本，请确保您已经安装了一下扩展：
+        <p>
+            Package 智能感知：
+            <br />
+            <a href="https://visualstudiogallery.msdn.microsoft.com/65748cdb-4087-497e-a394-2e3449c8e61e" target="_blank">https://visualstudiogallery.msdn.microsoft.com/65748cdb-4087-497e-a394-2e3449c8e61e</a>
+        </p>
+        <p>
+            最新的 TypeScript 版本：
+            <br />
+            <a href="https://visualstudiogallery.msdn.microsoft.com/9b47d09d-353c-4c53-9517-8e2ec3f4aa4f" target="_blank">https://visualstudiogallery.msdn.microsoft.com/9b47d09d-353c-4c53-9517-8e2ec3f4aa4f</a>
+        </p>
+    </li>
+    <li>
+        使用 “带 TypeScript 的 HTML 应用程序” 工程模板创建一个新的 Visual Studio 工程。
+    </li>
+    <li>
+        向您的工程的根目录添加一个 package.json 文件，并参见 <a href="https://angular.io/docs/ts/latest/quickstart.html" target="_blank">Angular 2 快速入门</a> 手册向其中添加内容。
+        一旦您保存了更新后的 package.json 文件，Visual Studio 将会自动地向您的工程安装 Angular 2 以及附属的其他库文件至 node_modules 子文件夹。
+    </li>
+</ul>
+<h5>在 NodeJS 下：</h5>
+<ul>
+    <li>
+        按照 <a href="https://angular.io/docs/ts/latest/quickstart.html" target="_blank">Angular 2 快速入门</a> 手册的指示设置您的工程即可。
+    </li>
+</ul>
+
+
+<h4>配置 HTML</h4>
+<p>
+    向 .html 文件的 &lt;head&gt; 区域内添加以下引用，这将为您的 Angular 2 应用程序创建托管根组件：
+
+</p>
+<ul>
+    <li>
+        添到 Angular 2 以及附属库的引用，如同在
+        the <a href="https://angular.io/docs/ts/latest/quickstart.html" target="_blank">
+            Angular 2 快速入门
+        </a> 手册中描述的那样。
+    </li>
+    <li>
+        添加所需的 Wijmo 模块的引用，具体描述请参见
+        <a href="static/references.html" target="_blank">向应用程序添加对 Wijmo 5 的引用</a>
+        主题。
+    </li>
+    <li>
+        添加对包含 Angular 2 版本 Wijmo 模块的 wijmo.angular2.js 文件的引用。
+        如下所示：
+        <pre>
+&lt;script src="scripts/vendor/interop/angular2/wijmo.angular2.min.js" type="text/javascript"&gt;&lt;/script&gt;
+</pre>
+        该文件位于 Wijmo 下载包的 dist\interop\angular2 文件夹。
+        该文件夹包含了一些命名的 SystemJS 模块，比如说“wijmo/wijmo.angular2.input”，“wijmo/wijmo.angular2.grid”等等。
+        每一个模块包含了表示来自于相应的 Wijmo 类库模块（比方说 “wijmo.input” 以及 “wijmo.grid”）的控件的 Anular 2 组件。
+        和 Wijmo 类库模块做一个比较，对于TypeScript 而言它是内部类型，而 Wijmo Angular 2 模块测试对外可访问的，可以通过 TypeScript 的 “import” 表达式使用。例如：
+        <pre>import * as wjGrid from 'wijmo/wijmo.angular2.grid';</pre>
+    </li>
+</ul>
+    整体的结构就像下面这样：
+<pre>
+&lt;!-- Polyfill(s) for older browsers --&gt;
+&lt;script src="node_modules/core-js/client/shim.min.js"&gt;&lt;/script&gt;
+&nbsp;  
+&lt;script src="node_modules/zone.js/dist/zone.js"&gt;&lt;/script&gt;
+&lt;script src="node_modules/reflect-metadata/Reflect.js"&gt;&lt;/script&gt; 
+&lt;script src="node_modules/systemjs/dist/system.src.js"&gt;&lt;/script&gt;
+&nbsp;  
+&lt;!-- Wijmo controls and css --&gt;
+&lt;script src="scripts/vendor/controls/wijmo.min.js"&gt;&lt;/script&gt;
+&lt;script src="scripts/vendor/controls/wijmo.grid.min.js"&gt;&lt;/script&gt;
+&lt;script src="scripts/vendor/controls/wijmo.chart.min.js"&gt;&lt;/script&gt;
+&lt;script src="scripts/vendor/controls/wijmo.input.min.js"&gt;&lt;/script&gt;
+&lt;script src="scripts/vendor/controls/wijmo.gauge.min.js"&gt;&lt;/script&gt;
+&lt;link href="styles/wijmo.min.css" rel="stylesheet"/&gt;
+&nbsp;  
+&lt;!-- Wijmo Angular 2 components --&gt;
+&lt;script src="scripts/vendor/interop/angular2/wijmo.angular2.min.js"&gt;&lt;/script&gt;
+</pre>
+
+<h4>通过 TypeScript 使用 Wijmo Angular 2 组件</h4>
+<!--You need to allow TypeScript compiler and Visual Studio IntelliSense (if you use the latter) to understand
+Wijmo Angular 2 modules' API which cannot be retrieved from the wijmo.angular.min.js file containing
+modules implementation. For this, we provide a set of TypeScript "definition" files (the ones with the .d.ts
+extension) that are located in the dist\interop\angular2 folder of the Wijmo download package. Because Wijmo
+Angular 2 modules are exposed using ambient names (like "wijmo/wijmo.angular2.grid"), to allow TypeScript
+to find corresponding .d.ts files that describes their API you need to make sure that your project uses "Node"
+module resolution algorithm and that .d.ts files are placed in a correct location. For this-->
+
+<p>
+    您需要允许 TypeScript 编译器以及 Visual Studio 的智能感知（如果您使用后者），用来理解 Wijmo 模块的 API 声明，但它们无法在运行时使用的 .js 模块文件中获取。
+    针对此需求，我们对于全部的官方 Wijmo 模块提供了一组 TypeScript “定义” 文件（带有 .d.ts 扩展名的文件）。
+</p>
+<p>
+    正如之前提到的，存在两种不同类型的模块，“内部”（Wijmo 控件）以及“外部”（Wijmo Angular 2 组件）模块。
+</p>
+<p>
+    内部模块的定义文件应当简单地被包含在 Visual Studio 工程中，并设置该项目属性BuildAction=TypeScriptCompile。您如果使用其他编译器，您可以按照该工程 tsconfig.json 文件中的设置，将这些
+    定义文件放置在任何 TypeScript 编译器命令行可见的文件夹中。
+
+</p>
+<p>
+    外部可访问的 Wijmo Angular 2 模块需要一些额外的注意事项。
+    由于这些模块通过环境名称（形如“wijmo/wijmo.angular2.grid”）暴露，您需要确保您的工程使用了“Node”模块解析算法，同时相关的定义文件（.d.ts 文件）放置在了合适的位置，以便 TypeScript 可以找到这些文件。
+</p>
+<p>
+    以下步骤用来正确配置一个 .d.ts 文件。
+</p>
+<h5>在使用 Visual Studio 的情况下：</h5>
+<ul>
+    <li>
+        将 Wijmo 下载包 dist\contorls 文件夹下的全部 .d.ts 文件添加至您的 Visual Studio 工程，确保添加项目的 BuildAction 属性设置为 TypeScriptCompile，通常这一过程是自动完成的。
+        这些文件描述了包含 Wijmo 控件的内部模块的 API。
+    </li>
+    <li>
+        将位于 Wijmo 下载包 dist\interop\angular2 文件夹下的全部的 .d.ts 文件复制到您工程根目录下的 node_modules\wijmo 子文件夹。
+        请注意，这些文件将不会包含在您的 Visual Studio 工程中。
+    </li>
+    <li>
+        在 TypeScript 工程设置中指定工程模块系统为 CommonJS。
+        该设置意味着将自动地使用 Node 模块解析算法。
+        <p>
+            注意：您可能使用了其他的模块系统。在这种情况下，您需要在 XML 编辑器中打开工程文件并添加以下修改模块解析的属性以修改 Node 解析算法：
+            &lt;TypeScriptModuleResolution&gt;Node&lt;/TypeScriptModuleResolution&gt;。
+            问题在于按照您使用的 TypeScript 版本的不同，您可能会遇到智能感知不工作的情形，如
+            <a href="https://github.com/Microsoft/TypeScript/issues/6625" target="_blank">这里</a>的讨论。
+            或许您可以通过应用在这个讨论线程里提到的解决方法解决这个问题。
+            默认情况下，CommonJS 模块系统使用 Node 模块解析算法。
+        </p>
+        在 Node 解析模式下，当 TypeScript 编译器在 TypeScript 的<b>import</b>声明中遇到了一个形如 “wijmo/wijmo.angular2.grid” 的环境模块名称，
+        它将搜索位于 node_modules/wijmo 文件夹下的 wijmo.angular2.grid.d.ts 定义文件。
+    </li>
+</ul>
+<h5>在使用 NodeJS 的情况下：</h5>
+<ul>
+    <li>
+        <p>
+            将位于 Wijmo 下载包 dist\controls 文件夹下全部的 .d.ts 文件拷贝到您工程根目录下除了 node_modules 文件夹以外的任意位置。
+            这些文件描述了包含 Wijmo 控件内部模块的 API。
+        </p>
+        <p>
+            您应当确保在编译时
+            <a href="https://github.com/Microsoft/TypeScript/wiki/tsconfig.json" target="_blank">tsconfig.json</a>
+            文件中的设置能够确保这些文件包含进来。通常您可以使用 tsconfig 中的 “exclude” 选项进行设置，默认情况下
+            在编译时将排除 node_modules 文件夹。因此，不推荐将 Wijmo 的内部模块定义文件放置在这个文件夹下。
+            如果您更喜欢通过 “files” 选项显示地指定需要编辑的文件列表，那么您需要将 Wijmo .d.ts 文件全部添加到选项列表。
+        </p>
+    </li>
+    <li>
+        将位于 Wijmo 下载包 dist\interop\angular2 文件夹下全部的 .d.ts 文件拷贝到您工程文件根目录下的 node_modules\wijmo 子文件夹。
+    </li>
+    <li>
+        如果您按照 <a href="https://angular.io/docs/ts/latest/quickstart.html" target="_blank">Angular 2 快速入门</a>手册中描述的过程设置您的应用程序，那
+        您没有什么额外需要做的。仅仅是需要确保 <b>"moduleResolution": "node"</b> 设置出现在 tsconfig.js 文件的 “compilerOptions” 部分。
+        在应用了该设置之后，当 TypeScript 编译器在 TypeScript 的<b>import</b>声明中遇到了一个形如 “wijmo/wijmo.angular2.grid” 的环境模块名称，
+        它将搜索位于 node_modules/wijmo 文件夹下的 wijmo.angular2.grid.d.ts 定义文件。
+
+    </li>
+</ul>
+完成以上设置之后，您已经可以导入 Wijmo Angular 2 模块，并使用其包含的组件和伪指令。例如：
+<pre>import * as wjGrid from 'wijmo/wijmo.angular2.grid';
+&nbsp;
+&#64;Component({
+    directives: [wjGrid.WjFlexGrid],
+    template: '&lt;wj-flex-grid [itemsSource]="data"&gt;&lt;/wj-flex-grid&gt;',
+    selector: 'my-cmp',
+})
+export class MyCmp {
+    data: any[];
+}</pre>
+
+
+<a name="ng2markup"></a>
+<h3>Angular 2 标记语法</h3>
+<p>
+    具体描述，请参见 <a href="static/angular2Markup.html">Angular 2 标记语法</a> 主题。
+</p>

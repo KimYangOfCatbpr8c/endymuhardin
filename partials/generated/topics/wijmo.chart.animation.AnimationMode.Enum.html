@@ -1,0 +1,49 @@
+<h2>AnimationMode 枚举</h2>
+<dl class="dl-horizontal">
+  <dt>模块</dt><dd>wijmo.chart.animation</dd>
+  <dt>文件</dt><dd>wijmo.chart.animation.js</dd>
+</dl>
+<p>指定动画的模式，是否图表应当逐点，逐个系列，或者整体一起执行动画。</p>
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideValues = !hideValues">
+<span class="glyph-collapsed" ng-show="hideValues"></span>
+<span class="glyph-expanded" ng-hide="hideValues"></span>
+值
+</h3>
+</div>
+<table ng-hide="hideValues" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th>名称</th>
+
+<th>描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><b>All</b></td>
+      <td>全部的点和系列一起开始动画。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>Point</b></td>
+      <td>动画逐点开始执行。不同的系列将同时开始动画。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>Series</b></td>
+      <td>不同的系列将逐一开始执行动画。
+整个系列将一起开始动画，和 "All" 选项执行的动画行为一致，
+唯一不同的是每次一个系列开始动画。</td>
+    </tr>
+</tbody>
+</table>
+</div>
+

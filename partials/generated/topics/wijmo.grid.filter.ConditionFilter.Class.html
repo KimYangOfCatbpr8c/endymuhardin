@@ -1,0 +1,157 @@
+<h2>ConditionFilter 类</h2>
+<dl class="dl-horizontal">
+<dt>实现</dt><dd><a href="topic/wijmo.grid.filter.IColumnFilter.Interface.html"><b>IColumnFilter</b></a></dd>
+<dt>模块</dt><dd>wijmo.grid.filter</dd>
+<dt>文件</dt><dd>wijmo.grid.filter.js</dd>
+</dl>
+<p><p>为 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a> 上的列定义一个条件筛选器。</p>
+
+<p>条件筛选器包含两个条件，这两个条件可以通过 ‘and’ 或者一个 ‘or’ 操作符连接在一起。</p>
+
+<p>该类被 <a href="topic/wijmo.grid.filter.FlexGridFilter.Class.html"><b>FlexGridFilter</b></a> 类所使用；您将很少有机会直接使用到。</p></p>
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideConstructor = !hideConstructor">
+<span class="glyph-collapsed" ng-show="hideConstructor"></span>
+<span class="glyph-expanded" ng-hide="hideConstructor"></span>
+ 构造函数
+</h3>
+</div>
+<table ng-hide="hideConstructor" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-2">名称</th>
+
+<th class="col-md-5">参数</th>
+
+<th class="col-md-5">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><b>constructor</b>&#8203;(column): <a href="topic/wijmo.grid.filter.ConditionFilter.Class.html"><b>ConditionFilter</b></a></td>
+      <td><p>
+<b>column</b> (<a href="topic/wijmo.grid.Column.Class.html"><b>Column</b></a>): The column to filter.<br/></p>
+</td>
+      <td>初始化 <a href="topic/wijmo.grid.filter.ConditionFilter.Class.html"><b>ConditionFilter</b></a> 类的一个新实例</td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideProperties = !hideProperties">
+<span class="glyph-collapsed" ng-show="hideProperties"></span>
+<span class="glyph-expanded" ng-hide="hideProperties"></span>
+属性
+</h3>
+</div>
+<table ng-hide="hideProperties" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-3">名称</th>
+
+<th class="col-md-2">类型</th>
+
+<th class="col-md-7">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><b>and</b></td>
+      <td><b>boolean</b></td>
+      <td>获取一个值，该值表示是否通过 AND 或 OR 操作符将两个条件联合在一起。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>column</b></td>
+      <td><a href="topic/wijmo.grid.Column.Class.html"><b>Column</b></a></td>
+      <td>获取待筛选的 <a href="topic/wijmo.grid.Column.Class.html"><b>Column</b></a> 对象。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>condition1</b></td>
+      <td><a href="topic/wijmo.grid.filter.FilterCondition.Class.html"><b>FilterCondition</b></a></td>
+      <td>获取筛选器中的第一个条件。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>condition2</b></td>
+      <td><a href="topic/wijmo.grid.filter.FilterCondition.Class.html"><b>FilterCondition</b></a></td>
+      <td>获取筛选器中的第二个条件。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>isActive</b></td>
+      <td><b>boolean</b></td>
+      <td><p>获取一个值，该值表示是否筛选器为活动状态。</p>
+
+<p>如果两个条件中的至少一个条件具有操作符，并且数值设置为一个合理的组合时，该筛选器为活动状态。</p></td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideMethods = !hideMethods">
+<span class="glyph-collapsed" ng-show="hideMethods"></span>
+<span class="glyph-expanded" ng-hide="hideMethods"></span>
+方法
+</h3>
+</div>
+<table ng-hide="hideMethods" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-2">名称</th>
+
+<th class="col-md-5">参数</th>
+
+<th class="col-md-5">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><b>apply</b>&#8203;(value): <b>boolean</b></td>
+      <td><p>
+<b>value</b> (): 待测试的值。<br/></p>
+</td>
+      <td>返回一个值，该值指示是否一个值通过了该筛选器。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>clear</b>&#8203;()</td>
+      <td></td>
+      <td>清除筛选器。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>implementsInterface</b>&#8203;(interfaceName): <b>boolean</b></td>
+      <td><p>
+<b>interfaceName</b> (<b>string</b>): 待查找的接口的名称。<br/></p>
+</td>
+      <td>如果调用者查询某一个支持的接口，则返回 true。</td>
+    </tr>
+</tbody>
+</table>
+</div>
+

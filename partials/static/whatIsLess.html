@@ -1,0 +1,154 @@
+﻿<h2>
+    什么是 LESS？
+</h2>
+<p>
+    LESS 是一种动态的样式表语言，通过添加变量，mixins，操作以及内嵌规则扩展现有的CSS。
+</p>
+<ul>
+    <li>
+        <b>变量：</b> 可重用的公共值，比如说颜色和样式信息。
+    </li>
+    <li>
+        <b>Mixins：</b> 来自于现有样式的属性，您可以在新的样式内部使用之。
+    </li>
+    <li>
+        <b>操作：</b> 通过数学逻辑创建和管理 CSS 属性。
+    </li>
+    <li>
+        <b>内嵌规则：</b> 放置在其他 CSS 选择器中的 CSS 选择器。
+    </li>
+</ul>
+<p>
+    LESS 也被称作 CSS 预处理器，因为您可以通过扩展的 LESS 语言书写样式表，然后将它们编译成纯的 CSS。
+    LESS 是开源的，您可以随心所欲地将其运行在客户端或者服务器端，再或者直接使用其输出的纯 CSS。
+</p>
+<p>
+    关于下载，详细文档，以及资源等，请参见 LESS 官方站点：
+    <a href="http://lesscss.org" target="_blank">http://lesscss.org</a>。
+</p>
+<h3>
+    使用 LESS
+</h3>
+<p>
+    您可以通过命令行使用 LESS，将其下载为 JS 文件以便在浏览器内使用，或者使用其它三方的应用程序。
+</p>
+<p>
+    <b>命令行</b>
+</p>
+<p>
+    您可以在 LESS 官网提供的 <a href="http://lesscss.org/usage/#command-line-usage" target="_blank">使用命令行</a> 查找
+    特定的指定，以及全部命令行提示的列表。
+</p>
+<p>
+    <b>在浏览器中使用</b>
+</p>
+<ol>
+    <li>
+        下载 <a href="http://lesscss.org/#download-options" target="_blank">less.js</a> 文件的一份拷贝，并保存。
+    </li>
+    <li>
+        创建一个样式表文件，将其保存为 .less 文件后缀，而不是通常的 .css 扩展名。
+    </li>
+    <li>
+        在您的 HTML 页面的 &lt;head&gt; 元素中添加以下代码：
+    </li>
+</ol>
+
+<pre>
+&lt;link rel="stylesheet/less" type="text/css" href="styles.less"&gt;
+&lt;script src="less.js" type="text/javascript"&gt;&lt;/script&gt;
+</pre>
+
+<p>
+    <b>注意：</b> 在 link 元素中，您需要将典型的 rel="stylesheet" 替换为 rel="stylesheet<b>/less</b>"
+    以便使得 LESS 可以在浏览器中进行编译。LESS 样式表必须出现在 LESS 脚本加载之前。
+</p>
+<p>
+    当页面加载时，<b>less.js</b> 将处理并编译您位于浏览器中的 LESS 代码。
+    这是一种方便的开发 LESS 的方式，但是在性能要求很高的生产环境中不推荐使用。
+</p>
+<p>
+    <b>第三方应用程序</b>
+</p>
+<p>
+    在生产环境中将 LESS 编译成纯 CSS 是一种明智的做法。如果您希望获得比使用纯命令行更好一些的用户体验，可以在
+    数量众多的三方工具中进行挑选。LESS 官方站点上列出了一组编辑器和编译器，适合不同平台和 IDE。具体请参见
+    <a href="http://lesscss.org/usage/index.html#online-less-compilers" target="_blank">在线 LESS 编译器</a>.
+</p>
+<h3>
+    自定义变量
+</h3>
+<p>
+    我们通过 LESS 构建 Wijmo 5 的主题，编译好的 CSS 零件集也伴随着提供了 LESS 的源文件。
+    您可以使用我们提供的源文件更新现有的主题或者基于现有主题创建新的主题。
+</p>
+<p>
+    Wijmo 5 主题文件具有以下命名结构： wijmo.theme.<i>ThemeName</i>.css。
+    为了使用 LESS 更新主题，找到对应的 wijmo.theme.<i>ThemeName</i>.less 文件，对其进行修改，
+    之后使用上面提供的方法之一对其进行重新编译。
+</p>
+<p>
+    每一个主题基于一组颜色和样式选项构建。我们为这些通用值声明了变量，以便可以在整个主题中重用这些值。
+    请注意 LESS 的变量以 @ 符号开头。
+</p>
+<pre>
+@background: #f3f3f3;
+@header: #54443b;
+@primary: #2780ec;
+@text: #26211f;
+@button: #5f534c;
+@tool-tip: #e5d9cf;
+@grid-cell-border: true;
+@grid-right-side-col: none;
+@border-radius: 4px;
+@background-grad: false;
+@button-grad: false;
+@header-grad: false;
+</pre>
+<p>
+    除了基本的变量之外，我们使用 import 语句包含额外的 LESS 文件，以 mixins 方式使用。
+    这些文件包含颜色函数，样式 mixin，以及 minxin guard。
+</p>
+<pre>
+@import "mixins/color-functions";
+@import "mixins/guards";
+@import "mixins/styles";
+@import "mixins/chart";
+</pre>
+<p>
+    这些颜色函数基于选中的初始颜色以及 minxin guard（以便确保对比度）生成了一个
+    种类繁多的额外颜色的调色板。
+    Mixin guard 将基于颜色的亮度进行计算，从而生成CSS：如果一个区域的背景色亮度高于 50%，则
+    该区域中呈现的文本将会使用较深的颜色，反之亦然。
+</p>
+<h3>
+    创建新的主题
+</h3>
+<p>
+    您可以通过复制当前的主题并修改基本颜色和样式选项以创建新的主题。
+    以下是颜色和样式变量的键值。
+</p>
+<p>
+    <b>@background</b> - 控件的背景色。<br />
+    <b>@header</b> - 控件标题的背景色（例如，FlexGrid，FlexChart）<br />
+    <b>@primary</b> - 整个主题使用的主强调文字颜色。<br />
+    <b>@text</b> - 默认的文本颜色。<br />
+    <b>@button</b> - 按钮的背景色。<br />
+    <b>@tool-tip</b> - 工具提示的背景色。<br />
+    <b>@border-radius</b> - 全部控件的全局边框圆角半径。<br />
+    <b>@grid-cell-border</b> - 切换是否显示 FlexGrid 单元格边框。设置为 ‘false’ 以便在表单上不现实单元格边框。<br />
+    <b>@grid-left-side-col</b> - FlexGrid 的行头单元格的背景色（默认情况下，和 @Header 相同）。 <br />
+    <b>@background-grad</b> - 切换是否将控件的背景色渐变显示。设置为 ‘ture’ 以便添加渐变效果。<br />
+    <b>@button-grad</b> - 切换按钮背景颜色渐变。设置为 ‘ture’ 以便添加渐变效果。<br />
+    <b>@header-grad</b> - 切换标题背景色渐变。设置为 ‘ture’ 以便添加渐变效果。
+</p>
+<h3>
+    部署新的主题
+</h3>
+<p>
+    一旦您创建了一个新的主题，并将其导出为纯 CSS，将其放置在样式目录，并将其包含在您的工程中。
+    接下来您就可以在任意包含了 Wijmo 5 控件的 HTML 页面中添加到该 CSS 的链接。
+</p>
+<pre>
+&lt;link href="styles/NewTheme.css" rel="stylesheet" type="text/css"&gt;
+</pre>

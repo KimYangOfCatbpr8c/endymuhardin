@@ -1,0 +1,2012 @@
+<h2>FlexSheet 类</h2>
+<dl class="dl-horizontal">
+<dt>基类</dt><dd><a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a></dd>
+<dt>派生类</dt><dd><a href="topic/wijmo.angular.WjFlexSheet.Class.html"><b>WjFlexSheet</b></a></dd>
+<dt>模块</dt><dd>wijmo.grid.sheet</dd>
+<dt>文件</dt><dd>wijmo.grid.sheet.js</dd>
+<dt>表示</dt><dd><label style="font-weight:normal">继承成员 <input type="checkbox" ng-model="showInherited"></label></dd>
+</dl>
+<p><p>定义 <b>FlexSheet</b> 控件。</p>
+
+<p><b>FlexSheet</b> 控件扩展了 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a> 控件，提供了类似 Excel 的功能，比如说 calculation engine，多表单，撤销/重做，以及 XLSX 格式文件导入/导出。</p></p>
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideConstructor = !hideConstructor">
+<span class="glyph-collapsed" ng-show="hideConstructor"></span>
+<span class="glyph-expanded" ng-hide="hideConstructor"></span>
+ 构造函数
+</h3>
+</div>
+<table ng-hide="hideConstructor" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-2">名称</th>
+
+<th class="col-md-5">参数</th>
+
+<th class="col-md-5">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><b>constructor</b>&#8203;(element, options?): <a href="topic/wijmo.grid.sheet.FlexSheet.Class.html"><b>FlexSheet</b></a></td>
+      <td><p>
+<b>element</b> (<b>any</b>): 托管该控件的DOM元素或者查询该元素的一个选择器 (比如：'#theCtrl')<br/><b>options?</b> (): 包含控件数据的Javascript对象。<br/></p>
+</td>
+      <td>初始化 <a href="topic/wijmo.grid.sheet.FlexSheet.Class.html"><b>FlexSheet</b></a> 类的一个新实例</td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideProperties = !hideProperties">
+<span class="glyph-collapsed" ng-show="hideProperties"></span>
+<span class="glyph-expanded" ng-hide="hideProperties"></span>
+属性
+</h3>
+</div>
+<table ng-hide="hideProperties" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-3">名称</th>
+
+<th class="col-md-2">类型</th>
+
+<th class="col-md-7">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>activeEditor</b></td>
+      <td><b>HTMLInputElement</b></td>
+      <td>获取表示当前处于活动状态的单元格编辑器的 <b>HTMLInputElement</b> 对象。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>allowAddNew</b></td>
+      <td><b>boolean</b></td>
+      <td><p>获取或设置一个值，该值表示是否该表单提供一个新行的模板，因此最终用户可以向数据集合添加新项。</p>
+
+<p>如果 <b>isReadOnly</b> 属性设置为 true，则新行模板也不会显示。</p><br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>allowDelete</b></td>
+      <td><b>boolean</b></td>
+      <td><p>获取或设置一个值，该值表示是否该表单将在用户按下了 Delete 键时删除选中的行。</p>
+
+<p>如果 <b>isReadOnly</b> 属性设置为 true，则选中的行也不会被删除。</p><br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>allowDragging</b></td>
+      <td><a href="topic/wijmo.grid.AllowDragging.Enum.html"><b>AllowDragging</b></a></td>
+      <td>获取或设置一个值，该值决定是否允许最终用户通过鼠标拖拽行或者/以及列。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>allowMerging</b></td>
+      <td><a href="topic/wijmo.grid.AllowMerging.Enum.html"><b>AllowMerging</b></a></td>
+      <td>获取或设置表单的哪一部分提供单元格合并。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>allowResizing</b></td>
+      <td><a href="topic/wijmo.grid.AllowResizing.Enum.html"><b>AllowResizing</b></a></td>
+      <td><p>获取或设置一个值，该值决定是否用户可以通过鼠标修改行和/或列的尺寸。</p>
+
+<p>如果允许改变尺寸，则用户可以通过鼠标拖拽列头单元格的右边缘改变列宽，或者拖拽行头单元格的下边缘改变行高。</p>
+
+<p>用户也可以双击行头或列头单元格的边缘以便自动地改变行或列的尺寸以适应其中的内容。该自动改变尺寸的行为可以
+通过 <b>autoSizeMode</b> 属性进行控制。</p><br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>allowSorting</b></td>
+      <td><b>boolean</b></td>
+      <td>获取或设置一个值，该值决定是否用户允许通过单击列头单元格对列进行排序。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>autoClipboard</b></td>
+      <td><b>boolean</b></td>
+      <td><p>获取或设置一个值，该值决定是否表单应当处理剪贴板快捷键。</p>
+
+<p>剪贴板快捷键如下所示：</p>
+
+<p><dl class="dl-horizontal">
+  <dt>ctrl+C, ctrl+Ins</dt>    <dd>复制表单的选择内容至剪贴板。</dd>
+  <dt>ctrl+V, shift+Ins</dt>   <dd>粘贴剪贴板中的文本至表单选择区域。</dd>
+</dl></p>
+
+<p>在执行剪贴板操作中，仅可见的行和列将被处理。</p>
+
+<p>粘贴操作将不会影响处于只读状态的单元格。</p><br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>autoGenerateColumns</b></td>
+      <td><b>boolean</b></td>
+      <td>获取或设置一个值，该值决定是否表单应当基于 <b>itemsSource</b> 自动地生成列。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>autoSizeMode</b></td>
+      <td><a href="topic/wijmo.grid.AutoSizeMode.Enum.html"><b>AutoSizeMode</b></a></td>
+      <td><p>获取或设置当自动计算行或者列的尺寸时，哪些单元格将被顾及。</p>
+
+<p>该属性控制当用户双击行头或列头的边缘时，所发生的具体结果。</p>
+
+<p>默认情况下，表单将自动地根据列头和列中单元格的内容设置列的宽度。
+该属性允许您改变这一行为，比如说仅考虑列头内容或者仅考虑列中所有
+数据的最佳宽度。</p><br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>bottomLeftCells</b></td>
+      <td><a href="topic/wijmo.grid.GridPanel.Class.html"><b>GridPanel</b></a></td>
+      <td><p>Gets the <a href="topic/wijmo.grid.GridPanel.Class.html"><b>GridPanel</b></a> that contains the bottom left cells.</p>
+
+<p>The <b>bottomLeftCells</b> panel appears below the row headers, to the
+left of the <b>columnFooters</b> panel.</p><br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>cellFactory</b></td>
+      <td><a href="topic/wijmo.grid.CellFactory.Class.html"><b>CellFactory</b></a></td>
+      <td>获取或设置为当前表单创建并更新单元格的 <a href="topic/wijmo.grid.CellFactory.Class.html"><b>CellFactory</b></a>。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>cells</b></td>
+      <td><a href="topic/wijmo.grid.GridPanel.Class.html"><b>GridPanel</b></a></td>
+      <td>获取包含数据单元格的 <a href="topic/wijmo.grid.GridPanel.Class.html"><b>GridPanel</b></a>。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>childItemsPath</b></td>
+      <td><b>any</b></td>
+      <td><p>获取或设置用来在层级表单上生成子行的属性（或多个属性）的名称。</p>
+
+<p>设置该属性的值为一个字符串，以指定包含项目的子项目的属性的名称（例如 <code>'items'</code>）。</p>
+
+<p>如果位于不同层级子项目的项目具有不同的名称，那么可以设置该属性为一个数组，该数组包含每一层的子项目的属性名称（例如，<code>[ 'accounts', 'checks', 'earnings' ]</code>）。</p>
+
+<p><a href="http://jsfiddle.net/Wijmo5/t0ncmjwp/" target="_blank" class="btn btn-info">
+  <img src="images/fiddle.png"/>
+  在线示例
+</a>
+</p><br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>clientSize</b></td>
+      <td><a href="topic/wijmo.Size.Class.html"><b>Size</b></a></td>
+      <td>获取控件的客户区大小（控件尺寸减去列头行头以及滚动条）。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>collectionView</b></td>
+      <td><b>ICollectionView</b></td>
+      <td>获取包含表单数据的 <a href="topic/wijmo.collections.ICollectionView.Interface.html"><b>ICollectionView</b></a>。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>columnFooters</b></td>
+      <td><a href="topic/wijmo.grid.GridPanel.Class.html"><b>GridPanel</b></a></td>
+      <td><p>返回包含列底单元格的 <a href="topic/wijmo.grid.GridPanel.Class.html"><b>GridPanel</b></a>.
+      The <b>columnFooters</b> 面板出现在表单单元格的底部，see:bottomLeftCells 面板的右方。它用来展示总结信息。
+      下面例子展示了如何向 <b>columnFooters</b> 添加一行，已展示包含 <b>aggregate</b> 属性的列的总结信息:</p>
+
+<p>
+<pre>function addFooterRow(flex) {
+  // 创建一个GroupRow 以展示聚合。
+  var row = new wijmo.grid.GroupRow();</p>
+
+<p>  // 向列底面板添加一行。
+  flex.columnFooters.rows.push(row);</p>
+
+<p>  // 在标题显示Σ 。
+  flex.bottomLeftCells.setCellData(0, 0, '\u03A3');
+}</pre></p><br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>columnHeaders</b></td>
+      <td><a href="topic/wijmo.grid.GridPanel.Class.html"><b>GridPanel</b></a></td>
+      <td>获取包含列头单元格的 <a href="topic/wijmo.grid.GridPanel.Class.html"><b>GridPanel</b></a>。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>columnLayout</b></td>
+      <td><b>string</b></td>
+      <td><p>获取或设置一个 JSON 字符串，定义当前的列布局。</p>
+
+<p>列布局字符串表示多列及其属性的一个数组。它可以用来持久化由用户定义的列布局，使得它们可以跨 session 保留，
+同时它们可以被用做在应用程序中，当允许用户编辑列布局是，实现撤销/重做功能。</p>
+
+<p>列布局字符串不包括 <b>dataMap</b> 属性，应为该属性不是可序列化的。</p><br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>columns</b></td>
+      <td><a href="topic/wijmo.grid.ColumnCollection.Class.html"><b>ColumnCollection</b></a></td>
+      <td>获取列集合的表单。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>controlRect</b></td>
+      <td><a href="topic/wijmo.Rect.Class.html"><b>Rect</b></a></td>
+      <td>获取页面坐标系下控件的边界矩形。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="静态">S</span><span class="badge" title="字段">F</span></td>
+      <td><b>controlTemplate</b></td>
+      <td><b>any</b></td>
+      <td>重载用来实例化 <a href="topic/wijmo.grid.sheet.FlexSheet.Class.html"><b>FlexSheet</b></a> 控件的模板。</td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>deferResizing</b></td>
+      <td><b>boolean</b></td>
+      <td><p>获取或设置一个值，该值指示是否行和列的改变尺寸操作延迟到用户释放鼠标按键执行 。</p>
+
+<p>默认情况下，<b>deferResizing</b> 设置为 false，这将使得当用户拖拽鼠标时，行和列会立即改变尺寸。
+设置该属性的值为 true 将使得表单在鼠标拖拽过程中显示一个尺寸改变标记，而在用户释放鼠标按键之
+后真正修改行和列的尺寸。</p><br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>editRange</b></td>
+      <td><a href="topic/wijmo.grid.CellRange.Class.html"><b>CellRange</b></a></td>
+      <td>获取一个 <a href="topic/wijmo.grid.CellRange.Class.html"><b>CellRange</b></a> 对象，表示当前正在编辑的单元格。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>frozenColumns</b></td>
+      <td><b>number</b></td>
+      <td><p>获取或设置冻结列的个数。</p>
+
+<p>被冻结的列将不能滚动，但是它们所包含的单元格可以被选中并编辑。</p><br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>frozenRows</b></td>
+      <td><b>number</b></td>
+      <td><p>获取或设置冻结行的个数。</p>
+
+<p>被冻结的行将不能滚动，但是它们所包含的单元格可以被选中并编辑。</p><br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>groupHeaderFormat</b></td>
+      <td><b>string</b></td>
+      <td><p>获取或设置用来创建分组页眉内容的格式化字符串。</p>
+
+<p>该字符串可以包含任意文本，加上以下的替换字符串：
+<ul>
+  <li><b>{name}</b>: 进行分组的属性名称。</li>
+  <li><b>{value}</b>: 进行分组的属性值。</li>
+  <li><b>{level}</b>: 分组级别。</li>
+  <li><b>{count}</b>: 该分组中项目的总数。</li>
+</ul></p>
+
+<p>如果一列绑定到分组属性，则列头将被用作替换 {name} 参数，而列上的 format 以及数据映射将被用作计算 {value} 参数。
+如果没有任何列可用，则分组信息将被用作替代。</p>
+
+<p>您也可以添加不可见的列绑定至分组属性，以便自定义分组页眉单元格的格式。</p>
+
+<p>该属性的默认值为
+'{name}: &lt;b&gt;{value}&lt;/b&gt;({count:n0} items)',
+这将创建类似以下的分组页眉
+'Country: <b>UK</b> (12 items)' or 'Country: <b>Japan</b> (8 items)'。</p><br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>headersVisibility</b></td>
+      <td><a href="topic/wijmo.grid.HeadersVisibility.Enum.html"><b>HeadersVisibility</b></a></td>
+      <td>获取或设置一个值，该值表示是否行和列头单元格可见。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>hostElement</b></td>
+      <td><b>HTMLElement</b></td>
+      <td>获取托管着控件的DOM元素。<br/><span class="text-info">(继承自 <a href="topic/wijmo.Control.Class.html"><b>Control</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>imeEnabled</b></td>
+      <td><b>boolean</b></td>
+      <td><p>获取或设置一个值，该值决定是否表单应当在非编辑模式下支持输入法编辑器（IME）。</p>
+
+<p>该属性仅在当站点/应用程序支持日文，中文，韩文，以及其他需要 IME 支持的语言时有用。</p><br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>isDisabled</b></td>
+      <td><b>boolean</b></td>
+      <td>获取或设置一个值，决定是否控件被禁用。
+      禁用的控件不能响应鼠标和键盘事件。<br/><span class="text-info">(继承自 <a href="topic/wijmo.Control.Class.html"><b>Control</b></a>).</span></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>isFunctionListOpen</b></td>
+      <td><b>boolean</b></td>
+      <td>获取一个值，该值指示是否该函数列表打开。</td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>isReadOnly</b></td>
+      <td><b>boolean</b></td>
+      <td>获取或设置一个值，该值决定是否用户可以通过键盘编辑单元格的内容。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>isTabHolderVisible</b></td>
+      <td><b>boolean</b></td>
+      <td>获取或设置一个布尔值，该值表示是否 <b>TabHolder</b> 为可见。</td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>isTouching</b></td>
+      <td><b>boolean</b></td>
+      <td>获取表明控件当前是否处理了一个异常事件的值。.<br/><span class="text-info">(继承自 <a href="topic/wijmo.Control.Class.html"><b>Control</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>isUpdating</b></td>
+      <td><b>boolean</b></td>
+      <td>获取表明控件当前是否被更新的值。<br/><span class="text-info">(继承自 <a href="topic/wijmo.Control.Class.html"><b>Control</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>itemFormatter</b></td>
+      <td><b>Function</b></td>
+      <td><p>获取或设置一个格式化函数，用做自定义该表单上的单元格。</p>
+
+<p>该格式化函数可以添加任意的内容至任意的单元格。这将提供了对表单单元格外观和行为完全灵活的定制能力。</p>
+
+<p>如果指定，该函数应当接受四个参数：包含该单元格的 <a href="topic/wijmo.grid.GridPanel.Class.html"><b>GridPanel</b></a>，该单元格的行索引和列索引，以及表示该单元格的 HTML 元素。
+该函数通常将修改单元格元素的 <b>innerHTML</b> 属性。</p>
+
+<p>例如：
+<pre>
+flex.itemFormatter = function(panel, r, c, cell) {
+  if (panel.cellType == CellType.Cell) {
+    // 在单元格上绘制 sparkline
+    var col = panel.columns[c];
+    if (col.name == 'sparklines') {
+      cell.innerHTML = getSparklike(panel, r, c);
+    }
+  }
+}
+</pre></p>
+
+<p>请注意 FlexGrid 将回收并重复使用单元格实例，因此如果您的 <b>itemFormatter</b> 
+更改了单元格的样式属性，您必须确保在其他不需要这些样式属性的单元格中已经重置了
+这些设置。例如：</p>
+
+<p><pre>
+flex.itemFormatter = function(panel, r, c, cell) {
+  // 重置掉我们将自定义的全部属性
+  var s = cell.style;
+  s.color = '';
+  s.backgroundColor = '';
+  // 自定义单元格的颜色和背景色属性
+  ...
+}
+</pre></p>
+
+<p>如果您需要多个客户端自定义表单呈现的场景
+（比如说当创建 directive 或者可重用的库），请考虑使用 <b>formatItem</b> 事件。
+该事件允许多个不同的客户端关联各自不同的处理逻辑。</p><br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>itemsSource</b></td>
+      <td><b>any</b></td>
+      <td>获取或设置包含显示在表单上项目的 <a href="topic/wijmo.collections.ICollectionView.Interface.html"><b>ICollectionView</b></a> 数组。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>mergeManager</b></td>
+      <td><a href="topic/wijmo.grid.MergeManager.Class.html"><b>MergeManager</b></a></td>
+      <td>获取或设置用来决定单元格如何合并的 <a href="topic/wijmo.grid.MergeManager.Class.html"><b>MergeManager</b></a> 对象。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>newRowAtTop</b></td>
+      <td><b>boolean</b></td>
+      <td>获取或设置一个值，指定是否新行模板应该在表格顶部还是底部。
+    只有当  <b>allowAddNew</b>  属性设置为true 时并且 <b>itemsSource</b>  支持添加新项，新行模版才出现。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>preserveOutlineState</b></td>
+      <td><b>boolean</b></td>
+      <td>获取或设置一个值，该值决定是否表单应当在数据刷新时，保持节点的收起/展开状态不变。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>preserveSelectedState</b></td>
+      <td><b>boolean</b></td>
+      <td>获取或设置一个值，该值决定是否表单应当在数据刷新时，保持行的选择状态不变。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>rowHeaders</b></td>
+      <td><a href="topic/wijmo.grid.GridPanel.Class.html"><b>GridPanel</b></a></td>
+      <td>获取包含行头单元格的 <a href="topic/wijmo.grid.GridPanel.Class.html"><b>GridPanel</b></a>。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>rows</b></td>
+      <td><a href="topic/wijmo.grid.RowCollection.Class.html"><b>RowCollection</b></a></td>
+      <td>获取行集合的表单。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>scrollPosition</b></td>
+      <td><a href="topic/wijmo.Point.Class.html"><b>Point</b></a></td>
+      <td>获取或设置一个 <a href="topic/wijmo.Point.Class.html"><b>Point</b></a>，表示表单滚动条的值。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>scrollSize</b></td>
+      <td><a href="topic/wijmo.Size.Class.html"><b>Size</b></a></td>
+      <td>获取表单内容的尺寸，单位是像素。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>selectedItems</b></td>
+      <td><b>any</b><b>[]</b></td>
+      <td><p>获取或设置一个包含当前选中的数据项的数组。</p>
+
+<p>注意：在全部的选择模式设置下，该属性可以被读到正确的值，但是仅当 <b>selectionMode</b>
+设置为 <b>SelectionMode.ListBox</b> 时，可以被设值。</p><br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>selectedRows</b></td>
+      <td><b>any</b><b>[]</b></td>
+      <td><p>获取或设置一个包含当前选中行的数组。</p>
+
+<p>注意：在全部的选择模式设置下，该属性可以被读到正确的值，但是仅当 <b>selectionMode</b>
+设置为 <b>SelectionMode.ListBox</b> 时，可以被设值。</p><br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>selectedSheet</b></td>
+      <td><a href="topic/wijmo.grid.sheet.Sheet.Class.html"><b>Sheet</b></a></td>
+      <td>获取 <b>FlexSheet</b> 中的当前表单。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>selectedSheetIndex</b></td>
+      <td><b>number</b></td>
+      <td>获取或设置 <a href="topic/wijmo.grid.sheet.FlexSheet.Class.html"><b>FlexSheet</b></a> 中的当前表单的索引。</td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>selection</b></td>
+      <td><a href="topic/wijmo.grid.CellRange.Class.html"><b>CellRange</b></a></td>
+      <td>获取或设置当前的选择。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>selectionMode</b></td>
+      <td><a href="topic/wijmo.grid.SelectionMode.Enum.html"><b>SelectionMode</b></a></td>
+      <td>获取或设置当前的选择模式。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>sheets</b></td>
+      <td><a href="topic/wijmo.grid.sheet.SheetCollection.Class.html"><b>SheetCollection</b></a></td>
+      <td>获取 <a href="topic/wijmo.grid.sheet.Sheet.Class.html"><b>Sheet</b></a> 类型的对象集合。表示一个工作簿表单。</td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>showAlternatingRows</b></td>
+      <td><b>boolean</b></td>
+      <td><p>获取或设置一个值，该值决定是否表单应当在交替行中的单元格添加 'wj-alt' 类。</p>
+
+<p>设置该属性为 false 将禁用交替行样式，而不需要对 CSS 做任何的改变。</p><br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>showGroups</b></td>
+      <td><b>boolean</b></td>
+      <td><p>获取或设置一个值，该值决定是否表单应当插入一个分组行以界定数据分组。</p>
+
+<p>数据分组藉由修改用作表单 <b>itemsSource</b> 数据源的 <a href="topic/wijmo.collections.ICollectionView.Interface.html"><b>ICollectionView</b></a> 对象的 <b>groupDescriptions</b> 属性进行创建。</p><br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>showMarquee</b></td>
+      <td><b>boolean</b></td>
+      <td>获取或设置一个值，该值表示是否表单应当在当前选择区域周围显示一个 marquee 元素。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>showSelectedHeaders</b></td>
+      <td><a href="topic/wijmo.grid.HeadersVisibility.Enum.html"><b>HeadersVisibility</b></a></td>
+      <td>获取或设置一个值，该值表示是否表单应当添加一个特殊的类名以标识选中的头单元格。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>showSort</b></td>
+      <td><b>boolean</b></td>
+      <td><p>获取或设置一个值，该值决定是否表单应当在列头显示一个排序指示器。</p>
+
+<p>排序由用作表单 <b>itemsSource</b> 数据源的 <a href="topic/wijmo.collections.ICollectionView.Interface.html"><b>ICollectionView</b></a> 对象的 <b>sortDescriptions</b> 属性进行控制。</p><br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>sortManager</b></td>
+      <td><a href="topic/wijmo.grid.sheet.SortManager.Class.html"><b>SortManager</b></a></td>
+      <td>获取控制 <b>FlexSheet</b> 排序的 <a href="topic/wijmo.grid.sheet.SortManager.Class.html"><b>SortManager</b></a> 实例。</td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>sortRowIndex</b></td>
+      <td><b>number</b></td>
+      <td><p>获取或设置列头面板上某一行的索引，该行用来展示并改变当前排序。</p>
+
+<p>该属性默认设置为 null，将使得 <b>columnHeaders</b> 面板中的最后一行被用做排序行。</p><br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>stickyHeaders</b></td>
+      <td><b>boolean</b></td>
+      <td>获取或设置一个值，该值决定是否列头应当用户滚动窗体时保持原始位置不变。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>topLeftCells</b></td>
+      <td><a href="topic/wijmo.grid.GridPanel.Class.html"><b>GridPanel</b></a></td>
+      <td>获取包含左上角单元格的 <a href="topic/wijmo.grid.GridPanel.Class.html"><b>GridPanel</b></a>。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>treeIndent</b></td>
+      <td><b>number</b></td>
+      <td>获取或设置用来偏移不同级别的行分组的缩进。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>undoStack</b></td>
+      <td><a href="topic/wijmo.grid.sheet.UndoStack.Class.html"><b>UndoStack</b></a></td>
+      <td>获取 <a href="topic/wijmo.grid.sheet.UndoStack.Class.html"><b>UndoStack</b></a> 的一个实例，该实例控制 <b>FlexSheet</b> 的撤销和重做操作。</td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>viewRange</b></td>
+      <td><a href="topic/wijmo.grid.CellRange.Class.html"><b>CellRange</b></a></td>
+      <td>获取当前位于可见区的单元格范围。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideMethods = !hideMethods">
+<span class="glyph-collapsed" ng-show="hideMethods"></span>
+<span class="glyph-expanded" ng-hide="hideMethods"></span>
+方法
+</h3>
+</div>
+<table ng-hide="hideMethods" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-2">名称</th>
+
+<th class="col-md-5">参数</th>
+
+<th class="col-md-5">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><b>addBoundSheet</b>&#8203;(sheetName, source, pos?, grid?): <a href="topic/wijmo.grid.sheet.Sheet.Class.html"><b>Sheet</b></a></td>
+      <td><p>
+<b>sheetName</b> (<b>string</b>): 表单 Sheet 的名称。<br/><b>source</b> (<b>any</b>): 该表单 <a href="topic/wijmo.grid.sheet.Sheet.Class.html"><b>Sheet</b></a> 的项目源。<br/><b>pos?</b> (<b>number</b>): <b>sheets</b> 集合中的位置。<br/><b>grid?</b> (<a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>): 关联到该 <a href="topic/wijmo.grid.sheet.Sheet.Class.html"><b>Sheet</b></a> 的 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a> 实例。如果没有指定，则会创建一个新的 <b>FlexGrid</b> 实例。<br/></p>
+</td>
+      <td>添加一个绑定态的 <a href="topic/wijmo.grid.sheet.Sheet.Class.html"><b>Sheet</b></a> 至 <b>FlexSheet</b>。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>addCustomFunction</b>&#8203;(name, func, description?, minParamsCount?, maxParamsCount?)</td>
+      <td><p>
+<b>name</b> (<b>string</b>): 自定义函数的名称。<br/><b>func</b> (<b>Function</b>): 自定义函数。<br/><b>description?</b> (<b>string</b>): 自定义函数的描述，它将显示在 <a href="topic/wijmo.grid.sheet.FlexSheet.Class.html"><b>FlexSheet</b></a> 的函数自动完成中。<br/><b>minParamsCount?</b> (<b>number</b>): 该函数所需的最小参数个数。<br/><b>maxParamsCount?</b> (<b>number</b>): 该函数所需的最大参数个数。
+       如果自定义函数的参数个数为任意，则 minParamsCount 和 maxParamsCount 都应当设置为 null。<br/></p>
+</td>
+      <td>添加自定义函数至 <a href="topic/wijmo.grid.sheet.FlexSheet.Class.html"><b>FlexSheet</b></a>。</td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>addEventListener</b>&#8203;(target, type, fn, capture?)</td>
+      <td><p>
+<b>target</b> (<b>EventTarget</b>): 时间的目标元素。<br/><b>type</b> (<b>string</b>): 指定该事件的字符串。<br/><b>fn</b> (<b>any</b>): 当事件发生时执行的函数。<br/><b>capture?</b> (<b>boolean</b>): 监听是否正在捕获。<br/><span class="text-info">(默认值: <b>false</b>)</span><br/></p>
+</td>
+      <td><p>为<a href="topic/wijmo.Control.Class.html"><b>Control</b></a> 上的元素增加一个事件监听。</p>
+
+<p>该控件持有依附于监听和处理器的列表，当控件被处理掉时使它更容易地移除这些监听和处理器（参见<b>dispose</b> 和<b>removeEventListener</b> 方法）。</p>
+
+<p>移除事件监听失败时，可能引起内存泄露。</p><br/><span class="text-info">(继承自 <a href="topic/wijmo.Control.Class.html"><b>Control</b></a>).</span></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>addUnboundSheet</b>&#8203;(sheetName?, rows?, cols?, pos?, grid?): <a href="topic/wijmo.grid.sheet.Sheet.Class.html"><b>Sheet</b></a></td>
+      <td><p>
+<b>sheetName?</b> (<b>string</b>): 表单 Sheet 的名称。<br/><b>rows?</b> (<b>number</b>): 该表单的行数量。<br/><b>cols?</b> (<b>number</b>): 该表单的列数量。<br/><b>pos?</b> (<b>number</b>): <b>sheets</b> 集合中的位置。<br/><b>grid?</b> (<a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>): 关联到该 <a href="topic/wijmo.grid.sheet.Sheet.Class.html"><b>Sheet</b></a> 的 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a> 实例。如果没有指定，则会创建一个新的 <b>FlexGrid</b> 实例。<br/></p>
+</td>
+      <td>添加一个非绑定态的 <a href="topic/wijmo.grid.sheet.Sheet.Class.html"><b>Sheet</b></a> 至 <b>FlexSheet</b>。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>applyCellsStyle</b>&#8203;(cellStyle, cells?, isPreview?)</td>
+      <td><p>
+<b>cellStyle</b> (<a href="topic/wijmo.grid.sheet.ICellStyle.Interface.html"><b>ICellStyle</b></a>): 待应用的 <a href="topic/wijmo.grid.sheet.ICellStyle.Interface.html"><b>ICellStyle</b></a> 对象。<br/><b>cells?</b> (<a href="topic/wijmo.grid.CellRange.Class.html"><b>CellRange</b></a><b>[]</b>): 待应用样式的 <a href="topic/wijmo.grid.CellRange.Class.html"><b>CellRange</b></a> 对象的一个数组。如果未指定，则样式应用给当前选中的单元格。<br/><b>isPreview?</b> (<b>boolean</b>): 指示是否应用的样式仅仅是用做预览。<br/><span class="text-info">(默认值: <b>false</b>)</span><br/></p>
+</td>
+      <td>应用该样式至一个范围内的单元格。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>applyFunctionToCell</b>&#8203;()</td>
+      <td></td>
+      <td>将函数列表中选中的函数插入到单元格值编辑器。</td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>applyTemplate</b>&#8203;(classNames, template, parts, namePart?): <b>HTMLElement</b></td>
+      <td><p>
+<b>classNames</b> (<b>string</b>): 添加到控件主元素上的类的名称。<br/><b>template</b> (<b>string</b>): 定义控件模板的HTML字符串。<br/><b>parts</b> (<b>Object</b>): 部分变量及其名称的字典。<br/><b>namePart?</b> (<b>string</b>): 部分名称将以主元素命名。
+确定控件在表单中使用时如何提交数据。<br/></p>
+</td>
+      <td><p>将这个模板应用到控件的一个新的实例上，并且返回根元素。</p>
+
+<p>这个方法应该被模板化控件的构造器调用。它的职责是绑定模板部分到相应的控件成员上。</p>
+
+<p>例如，下面的代码应用一个模板到<a href="topic/wijmo.input.InputNumber.Class.html"><b>InputNumber</b></a> 控件的实例上。这个模板必须包含有'wj-part'属性的元素，该属性值可以被设置为'input', 'btn-inc'，和'btn-dec'。
+该控件的成员'_tbx', '_btnUp', 和 '_btnDn'将被分配一些引用到这些元素上。</p>
+
+<p><pre>this.applyTemplate('wj-control wj-inputnumber', template, {
+  _tbx: 'input',
+  _btnUp: 'btn-inc',
+  _btnDn: 'btn-dec'
+}, 'input');</pre></p><br/><span class="text-info">(继承自 <a href="topic/wijmo.Control.Class.html"><b>Control</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>autoSizeColumn</b>&#8203;(c, header?, extra?)</td>
+      <td><p>
+<b>c</b> (<b>number</b>): 待改变列宽的列的索引。<br/><b>header?</b> (<b>boolean</b>): 是否列索引指示一个普通行或者行头列。<br/><span class="text-info">(默认值: <b>false</b>)</span><br/><b>extra?</b> (<b>number</b>): 额外的预留空间，单位是像素。<br/><span class="text-info">(默认值: <b>4</b>)</span><br/></p>
+</td>
+      <td>改变一列的宽度以适应其内容。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>autoSizeColumns</b>&#8203;(firstColumn?, lastColumn?, header?, extra?)</td>
+      <td><p>
+<b>firstColumn?</b> (<b>number</b>): 待改变列宽的第一列（默认为表单第一列）。<br/><b>lastColumn?</b> (<b>number</b>): 待改变列宽的最后一列（默认为表单最后一列）。<br/><b>header?</b> (<b>boolean</b>): 是否列索引表示通常的列还是表示行头列。<br/><span class="text-info">(默认值: <b>false</b>)</span><br/><b>extra?</b> (<b>number</b>): 额外的预留空间，单位是像素。<br/><span class="text-info">(默认值: <b>4</b>)</span><br/></p>
+</td>
+      <td><p>改变一个范围内所有列的宽度以分别适应其内容。</p>
+
+<p>表单会始终计算位于当前可见区范围的行，加上最多额外的不在当前可见区域的 2000 行。
+如果表单包含大量的数据（比如说，50,000 行），则并非所有的行将参与计算，因为可以
+预见到这么大规模的数据极有可能花费大量的运算时间。</p><br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>autoSizeRow</b>&#8203;(r, header?, extra?)</td>
+      <td><p>
+<b>r</b> (<b>number</b>): 待改变行高的行的索引。<br/><b>header?</b> (<b>boolean</b>): 是否行索引表示一个通常的行还是列头行。<br/><span class="text-info">(默认值: <b>false</b>)</span><br/><b>extra?</b> (<b>number</b>): 额外的预留空间，单位是像素。<br/><span class="text-info">(默认值: <b>0</b>)</span><br/></p>
+</td>
+      <td>改变一行的高度以适应其内容。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>autoSizeRows</b>&#8203;(firstRow?, lastRow?, header?, extra?)</td>
+      <td><p>
+<b>firstRow?</b> (<b>number</b>): 待改变行高的第一行。<br/><b>lastRow?</b> (<b>number</b>): 待改变行高的最后一行。<br/><b>header?</b> (<b>boolean</b>): 是否行索引表示一个通常的行还是列头行。<br/><span class="text-info">(默认值: <b>false</b>)</span><br/><b>extra?</b> (<b>number</b>): 额外的预留空间，单位是像素。<br/><span class="text-info">(默认值: <b>0</b>)</span><br/></p>
+</td>
+      <td>改变一个范围内所有行的高度以分别适应其内容。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>beginUpdate</b>&#8203;()</td>
+      <td></td>
+      <td>直到下一次调用<b>endUpdate</b> 之前暂停通知。<br/><span class="text-info">(继承自 <a href="topic/wijmo.Control.Class.html"><b>Control</b></a>).</span></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>clear</b>&#8203;()</td>
+      <td></td>
+      <td>清除 <b>FlexSheet</b> 控件的内容。</td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>collapseGroupsToLevel</b>&#8203;(level)</td>
+      <td><p>
+<b>level</b> (<b>number</b>): 最大显示的分组个数。<br/></p>
+</td>
+      <td>收起全部的分组至指定等级。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>containsFocus</b>&#8203;(): <b>boolean</b></td>
+      <td></td>
+      <td>覆盖基类上的方法以兼顾功能列表。</td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="静态">S</span></td>
+      <td><b>convertNumberToAlpha</b>&#8203;(c): <b>string</b></td>
+      <td><p>
+<b>c</b> (<b>number</b>): 待转换的数值。<br/></p>
+</td>
+      <td>将数值转换为其相关的字母值。
+例如：转换 0, 1, 2...为 a, b, c...</td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>deferUpdate</b>&#8203;(fn)</td>
+      <td><p>
+<b>fn</b> (<b>Function</b>): 函数被执行。<br/></p>
+</td>
+      <td><p>执行在<b>beginUpdate</b>/<b>endUpdate</b> 块中的函数。</p>
+
+<p>控件直到该方法已经被执行时才被更新。该方法确保<b>endUpdate</b> 被调用，即使该方法抛出异常。</p><br/><span class="text-info">(继承自 <a href="topic/wijmo.Control.Class.html"><b>Control</b></a>).</span></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>deleteColumns</b>&#8203;(index?, count?)</td>
+      <td><p>
+<b>index?</b> (<b>number</b>): 移除列的起始位置的索引。如果未指定，则删除的起始位置从当前选择的第一列开始。<br/><b>count?</b> (<b>number</b>): 待移除的列的数量。如果未指定，则仅删除一列。<br/></p>
+</td>
+      <td>从 <b>FlexSheet</b> 控件的当前 <a href="topic/wijmo.grid.sheet.Sheet.Class.html"><b>Sheet</b></a> 移除列。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>deleteRows</b>&#8203;(index?, count?)</td>
+      <td><p>
+<b>index?</b> (<b>number</b>): 待删除行的起始位置的索引。如果未指定，则删除的行将从当前选择范围的第一行开始。<br/><b>count?</b> (<b>number</b>): 待删除的行数。如果未指定，则仅删除一行。<br/></p>
+</td>
+      <td>从 <b>FlexSheet</b> 控件当前的 <a href="topic/wijmo.grid.sheet.Sheet.Class.html"><b>Sheet</b></a> 中删除行。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>dispose</b>&#8203;()</td>
+      <td></td>
+      <td>通过断开和容器元素的关联，销毁该控件。</td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td><span class="badge" title="静态">S</span></td>
+      <td><b>disposeAll</b>&#8203;(e?)</td>
+      <td><p>
+<b>e?</b> (<b>HTMLElement</b>): 容器元素。<br/></p>
+</td>
+      <td>处理掉包含在HTML元素上的Wijmo控件。<br/><span class="text-info">(继承自 <a href="topic/wijmo.Control.Class.html"><b>Control</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>endUpdate</b>&#8203;()</td>
+      <td></td>
+      <td>通过调用<b>beginUpdate</b> 重新开始被暂停的通知。<br/><span class="text-info">(继承自 <a href="topic/wijmo.Control.Class.html"><b>Control</b></a>).</span></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>evaluate</b>&#8203;(formula, format?, sheet?): <b>any</b></td>
+      <td><p>
+<b>formula</b> (<b>string</b>): 待计算的公式。该公式可以以一个可选的等号符号（‘=’）开头。<br/><b>format?</b> (<b>string</b>): 如果指定，则定义了将应用到计算结果的 .NET 格式。<br/><b>sheet?</b> (<a href="topic/wijmo.grid.sheet.Sheet.Class.html"><b>Sheet</b></a>): 定义哪一个 <a href="topic/wijmo.grid.sheet.Sheet.Class.html"><b>Sheet</b></a> 对象的数据将用来执行计算。
+             如果未指定，则将使用当前的表单。<br/></p>
+</td>
+      <td><p>计算一个公式。</p>
+
+<p><a href="topic/wijmo.grid.sheet.FlexSheet.Class.html"><b>FlexSheet</b></a> 的公式沿用 Excel 的公式语法，包含了 Excel 所支持公式的相当大的一部分。
+关于 <b>FlexSheet</b> 所支持的函数的完整列表可以在这里找到：
+<a href="static/FlexSheetFunctions.html">FlexSheet 函数</a>。</p></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>finishEditing</b>&#8203;(cancel?): <b>boolean</b></td>
+      <td><p>
+<b>cancel?</b> (<b>boolean</b>): 是否待定的修改应当被取消还是被提交。<br/><span class="text-info">(默认值: <b>false</b>)</span><br/></p>
+</td>
+      <td>提交任何待定的修改，并离开编辑模式。<br/><br/><b>返回值</b> 如果编辑操作正常结束，则返回 true。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>focus</b>&#8203;()</td>
+      <td></td>
+      <td>覆盖以便在设置焦点至表单时，不会将整个表单滚动到可视区。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>freezeAtCursor</b>&#8203;()</td>
+      <td></td>
+      <td>冻结/接触冻结 <b>FlexSheet</b> 中的行和列。</td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>getCellBoundingRect</b>&#8203;(r, c, raw?): <a href="topic/wijmo.Rect.Class.html"><b>Rect</b></a></td>
+      <td><p>
+<b>r</b> (<b>number</b>): 包含该单元格的行索引。<br/><b>c</b> (<b>number</b>): 包含该单元格的列的索引。<br/><b>raw?</b> (<b>boolean</b>): 是否返回的矩形框是按照原始的面板坐标系而不是 viewport 坐标系。<br/></p>
+</td>
+      <td><p>获取位于 viewport 坐标系的单元格元素的边界。</p>
+
+<p>该方法返回位于 <b>cells</b> 面板中（可滚动的数据单元格）单元格的边界。
+为获取其他面板中单元格的边界，请使用对应的 <a href="topic/wijmo.grid.GridPanel.Class.html"><b>GridPanel</b></a> 对象上的
+<b>getCellBoundingRect</b> 方法。</p>
+
+<p>返回的值为一个包含位于 viewport 坐标系的单元格的位置和尺寸的 <a href="topic/wijmo.Rect.Class.html"><b>Rect</b></a> 对象。
+viewport 坐标系和
+<a href="https://developer.mozilla.org/en-US/docs/Web/API/Element.getBoundingClientRect">getBoundingClientRect</a>
+方法所使用的坐标系相同。</p><br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>getCellData</b>&#8203;(r, c, formatted): <b>any</b></td>
+      <td><p>
+<b>r</b> (<b>number</b>): 包含该单元格的行索引。<br/><b>c</b> (<b>number</b>): 包含该单元格的列的索引。<br/><b>formatted</b> (<b>boolean</b>): 是否格式化该值用于显示目的。<br/></p>
+</td>
+      <td>获取位于表单可滚动区域单元格中存储的值。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>getCellValue</b>&#8203;(rowIndex, colIndex, formatted?, sheet?): <b>any</b></td>
+      <td><p>
+<b>rowIndex</b> (<b>number</b>): 该单元格的行索引。<br/><b>colIndex</b> (<b>number</b>): 该单元格的列索引。<br/><b>formatted?</b> (<b>boolean</b>): 指示是返回单元格的原始值还是格式化后的值。<br/><span class="text-info">(默认值: <b>false</b>)</span><br/><b>sheet?</b> (<a href="topic/wijmo.grid.sheet.Sheet.Class.html"><b>Sheet</b></a>): 用来从中取值计算的 <a href="topic/wijmo.grid.sheet.Sheet.Class.html"><b>Sheet</b></a> 表单。如果未指定，则使用来自于当前表单的数据。<br/></p>
+</td>
+      <td><p>获取计算后的单元格的值。</p>
+
+<p>和 <b>getCellData</b> 方法返回单元格原始数据，既可以是一个值也可以是一个公式不同，<b>getCellValue</b> 方法将始终返回一个计算后的值，
+也就是说，如果单元格包含一个公式，则该公式将首先进行计算，然后会返回计算后的结果。</p></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>getClipString</b>&#8203;(rng?): <b>string</b></td>
+      <td><p>
+<b>rng?</b> (<a href="topic/wijmo.grid.CellRange.Class.html"><b>CellRange</b></a>): 待复制的 <a href="topic/wijmo.grid.CellRange.Class.html"><b>CellRange</b></a>。如果忽略该参数，则使用当前的选择范围。<br/></p>
+</td>
+      <td><p>获取一个 <a href="topic/wijmo.grid.CellRange.Class.html"><b>CellRange</b></a> 的内容，包含适合复制到剪贴板的字符串。</p>
+
+<p>隐藏的行和列不包含在该剪辑字符串中。</p><br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>getColumn</b>&#8203;(name): <a href="topic/wijmo.grid.Column.Class.html"><b>Column</b></a></td>
+      <td><p>
+<b>name</b> (<b>string</b>): The name or binding to find.<br/></p>
+</td>
+      <td><p>Gets a column by name or by binding.</p>
+
+<p>The method searches the column by name. If a column with the given name 
+is not found, it searches by binding. The searches are case-sensitive.</p><br/><br/><b>返回值</b> The column with the specified name or binding, or null if not found.<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td><span class="badge" title="静态">S</span></td>
+      <td><b>getControl</b>&#8203;(element): <a href="topic/wijmo.Control.Class.html"><b>Control</b></a></td>
+      <td><p>
+<b>element</b> (<b>any</b>): DOM元素托管着控件，或者托管着主元素的选择器（例如'#theCtrl'）。<br/></p>
+</td>
+      <td>获取托管在给定的DOM元素上的控件。<br/><span class="text-info">(继承自 <a href="topic/wijmo.Control.Class.html"><b>Control</b></a>).</span></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>getMergedRange</b>&#8203;(panel, r, c, clip?): <a href="topic/wijmo.grid.CellRange.Class.html"><b>CellRange</b></a></td>
+      <td><p>
+<b>panel</b> (<a href="topic/wijmo.grid.GridPanel.Class.html"><b>GridPanel</b></a>): 包含该范围的 <a href="topic/wijmo.grid.GridPanel.Class.html"><b>GridPanel</b></a>。<br/><b>r</b> (<b>number</b>): 包含该单元格的行索引。<br/><b>c</b> (<b>number</b>): 包含该单元格的列的索引。<br/><b>clip?</b> (<b>boolean</b>): 是否将合并的范围和表单的当前可视范围做 clip。<br/><span class="text-info">(默认值: <b>true</b>)</span><br/></p>
+</td>
+      <td>获取一个 <a href="topic/wijmo.grid.CellRange.Class.html"><b>CellRange</b></a>，指定在 <a href="topic/wijmo.grid.GridPanel.Class.html"><b>GridPanel</b></a> 中的单元格合并扩展。
+该方法覆盖了在其父类 FlexGrid 中的 getMergedRange 方法。<br/><br/><b>返回值</b> 指定合并范围的一个 <a href="topic/wijmo.grid.CellRange.Class.html"><b>CellRange</b></a> 对象，或者如果单元格没有合并，则返回 null。</td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>getSelectedState</b>&#8203;(r, c): <a href="topic/wijmo.grid.SelectedState.Enum.html"><b>SelectedState</b></a></td>
+      <td><p>
+<b>r</b> (<b>number</b>): 待调查的单元格的行索引。<br/><b>c</b> (<b>number</b>): 待调查的单元格的列索引。<br/></p>
+</td>
+      <td>获取一个 <a href="topic/wijmo.grid.SelectedState.Enum.html"><b>SelectedState</b></a> 值，该值表示单元格的选中状态。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>getSelectionFormatState</b>&#8203;(): <a href="topic/wijmo.grid.sheet.IFormatState.Interface.html"><b>IFormatState</b></a></td>
+      <td></td>
+      <td>获取描述格式化选中单元格的 <a href="topic/wijmo.grid.sheet.IFormatState.Interface.html"><b>IFormatState</b></a> 对象。<br/><br/><b>返回值</b> 包含格式化属性的 <a href="topic/wijmo.grid.sheet.IFormatState.Interface.html"><b>IFormatState</b></a> 对象。</td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>getTemplate</b>&#8203;(): <b>string</b></td>
+      <td></td>
+      <td><p>获取HTML模板来创建控件的实例。</p>
+
+<p>这个方法遍历类的层次结构来发现最近的祖先元素，该祖先元素指定了一个控件模板。例如，如果你指定了一个<a href="topic/wijmo.input.ComboBox.Class.html"><b>ComboBox</b></a> 控件的原型，它将重载由基类<a href="topic/wijmo.input.DropDown.Class.html"><b>DropDown</b></a> 定义的模板。</p><br/><span class="text-info">(继承自 <a href="topic/wijmo.Control.Class.html"><b>Control</b></a>).</span></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>hideFunctionList</b>&#8203;()</td>
+      <td></td>
+      <td>关闭该函数列表。</td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>hitTest</b>&#8203;(pt, y?): <a href="topic/wijmo.grid.HitTestInfo.Class.html"><b>HitTestInfo</b></a></td>
+      <td><p>
+<b>pt</b> (<b>any</b>): 待调查的 <a href="topic/wijmo.Point.Class.html"><b>Point</b></a>，位于页面坐标系，或者一个 MouseEvent 对象，再或者一个点的 x 坐标。<br/><b>y?</b> (<b>number</b>): 位于页面坐标系的某个点的 Y 坐标值（如果第一个参数是一个数值的话）。<br/></p>
+</td>
+      <td><p>获取带有指定点相关信息的 <a href="topic/wijmo.grid.HitTestInfo.Class.html"><b>HitTestInfo</b></a> 对象。</p>
+
+<p>例如：</p>
+
+<p><pre>// 当用户单击表单时，对该点进行命中测试
+flex.hostElement.addEventListener('click', function (e) {
+  var ht = flex.hitTest(e.pageX, e.pageY);
+  console.log('you clicked a cell of type "' +
+    wijmo.grid.CellType[ht.cellType] + '".');
+});</pre></p><br/><br/><b>返回值</b> 带有指定点相关信息的 <a href="topic/wijmo.grid.HitTestInfo.Class.html"><b>HitTestInfo</b></a> 对象。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>initialize</b>&#8203;(options)</td>
+      <td><p>
+<b>options</b> (<b>any</b>): Object that contains the initialization data.<br/></p>
+</td>
+      <td><p>通过从给定的对象中拷贝属性来初始化控件。</p>
+
+<p>该方法允许你使用普通的数据对象代替在代码中为每一个属性设置值来初始化控件。</p>
+
+<p>例如:
+<pre>
+grid.initialize({
+  itemsSource: myList,
+  autoGenerateColumns: false,
+  columns: [
+    { binding: 'id', header: 'Code', width: 130 },
+    { binding: 'name', header: 'Name', width: 60 } 
+  ]
+});
+// 相当于
+grid.itemsSource = myList;
+grid.autoGenerateColumns = false;
+// 等等.
+</pre></p>
+
+<p>初始化数据被应用时，它作为一种类型检查。如果初始化的对象包含不知名的属性名称或者无效的数据类型时，该方法将被抛出。</p><br/><span class="text-info">(继承自 <a href="topic/wijmo.Control.Class.html"><b>Control</b></a>).</span></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>insertColumns</b>&#8203;(index?, count?)</td>
+      <td><p>
+<b>index?</b> (<b>number</b>): 新列待添加的位置。如果未指定，则新列将添加至当前选中范围最左侧的列之前。<br/><b>count?</b> (<b>number</b>): 待添加的列的数量。如果未指定，则仅添加一列。<br/></p>
+</td>
+      <td>向 <b>FlexSheet</b> 控件的当前 <a href="topic/wijmo.grid.sheet.Sheet.Class.html"><b>Sheet</b></a> 添加列。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>insertRows</b>&#8203;(index?, count?)</td>
+      <td><p>
+<b>index?</b> (<b>number</b>): 新行待添加的位置。如果未指定，则新行将添加至当前选择区域的第一行之前。<br/><b>count?</b> (<b>number</b>): 待添加的行数。如果未指定，则将添加一行。<br/></p>
+</td>
+      <td>向 <b>FlexSheet</b> 控件的当前 <a href="topic/wijmo.grid.sheet.Sheet.Class.html"><b>Sheet</b></a> 插入行。</td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>invalidate</b>&#8203;(fullUpdate?)</td>
+      <td><p>
+<b>fullUpdate?</b> (<b>boolean</b>): 是否更新该控件的布局和内容。<br/><span class="text-info">(默认值: <b>true</b>)</span><br/></p>
+</td>
+      <td>使能够引起异步刷新的控件无效。<br/><span class="text-info">(继承自 <a href="topic/wijmo.Control.Class.html"><b>Control</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td><span class="badge" title="静态">S</span></td>
+      <td><b>invalidateAll</b>&#8203;(e?)</td>
+      <td><p>
+<b>e?</b> (<b>HTMLElement</b>): Container element. If set to null, all Wijmo controls
+on the page will be invalidated.<br/></p>
+</td>
+      <td><p>使所有包含在HTML元素中的Wijmo控件无效。</p>
+
+<p>当你的应用包含有动态的面板，且该面板能改变控件的可见性或者面积时，可以使用该方法。例如，splitters，accordions，
+和tab控件通常改变控件内容元素的可见性。在这种情况下，通知包含在该元素中的控件失败时，将会引起它们适当地停止工作。</p>
+
+<p>如果此情况发生，你必须处理在动态容器中合适的事件，并且调用<a href="topic/wijmo.Control.Class.html"><b>Control</b></a> 使所有的方法无效，这样包含的Wijmo控件将适当地更新它们的布局信息。</p><br/><span class="text-info">(继承自 <a href="topic/wijmo.Control.Class.html"><b>Control</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>isRangeValid</b>&#8203;(rng): <b>boolean</b></td>
+      <td><p>
+<b>rng</b> (<a href="topic/wijmo.grid.CellRange.Class.html"><b>CellRange</b></a>): 待检查的范围。<br/></p>
+</td>
+      <td>检查是否指定的 CellRange 相对于表单的行和列的集合为合法。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>load</b>&#8203;(workbook)</td>
+      <td><p>
+<b>workbook</b> (<b>any</b>): 一个 WorkBook 实例或者一个 Blob 实例，再或者一个 base 64 编码字符串或一个 ArrayBuffer，包含 xlsx 文件内容。<br/></p>
+</td>
+      <td><p>加载工作簿至 <b>FlexSheet</b>。</p>
+
+<p>例如：
+<pre>// 该示例通过打开文件对话框打开一个 xlsx 文件
+// 并填充 FlexSheet
+&nbsp;
+// HTML
+&lt;input type="file" 
+    id="importFile" 
+    accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" 
+/&gt;
+&lt;div id="flexHost"&gt;&lt;/&gt;
+&nbsp;
+// JavaScript
+var flexSheet = new wijmo.grid.FlexSheet("#flexHost"),
+    importFile = document.getElementById('importFile');
+&nbsp;
+importFile.addEventListener('change', function () {
+    loadWorkbook();
+});
+&nbsp;
+function loadWorkbook() {
+    var reader,
+        file = importFile.files[0];
+    if (file) {
+        reader = new FileReader();
+        reader.onload = function (e) {
+            flexSheet.load(reader.result);
+        };
+        reader.readAsArrayBuffer(file);
+    }
+}</pre></p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>mergeRange</b>&#8203;(cells?)</td>
+      <td><p>
+<b>cells?</b> (<a href="topic/wijmo.grid.CellRange.Class.html"><b>CellRange</b></a>): 待合并的 <a href="topic/wijmo.grid.CellRange.Class.html"><b>CellRange</b></a>。<br/></p>
+</td>
+      <td>将选中的 <a href="topic/wijmo.grid.CellRange.Class.html"><b>CellRange</b></a> 范围合并成一个单元格。</td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>onAutoSizedColumn</b>&#8203;(e)</td>
+      <td><p>
+<b>e</b> (<a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><b>CellRangeEventArgs</b></a>): 包含事件数据的 <a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><b>CellRangeEventArgs</b></a> 对象。<br/></p>
+</td>
+      <td>触发 <b>autoSizedColumn</b> 事件。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>onAutoSizedRow</b>&#8203;(e)</td>
+      <td><p>
+<b>e</b> (<a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><b>CellRangeEventArgs</b></a>): 包含事件数据的 <a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><b>CellRangeEventArgs</b></a> 对象。<br/></p>
+</td>
+      <td>触发 <b>autoSizedRow</b> 事件。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>onAutoSizingColumn</b>&#8203;(e): <b>boolean</b></td>
+      <td><p>
+<b>e</b> (<a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><b>CellRangeEventArgs</b></a>): 包含事件数据的 <a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><b>CellRangeEventArgs</b></a> 对象。<br/></p>
+</td>
+      <td>触发 <b>autoSizingColumn</b> 事件。<br/><br/><b>返回值</b> True if the event was not canceled.<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>onAutoSizingRow</b>&#8203;(e): <b>boolean</b></td>
+      <td><p>
+<b>e</b> (<a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><b>CellRangeEventArgs</b></a>): 包含事件数据的 <a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><b>CellRangeEventArgs</b></a> 对象。<br/></p>
+</td>
+      <td>触发 <b>autoSizingRow</b> 事件。<br/><br/><b>返回值</b> True if the event was not canceled.<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>onBeginningEdit</b>&#8203;(e): <b>boolean</b></td>
+      <td><p>
+<b>e</b> (<a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><b>CellRangeEventArgs</b></a>): 包含事件数据的 <a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><b>CellRangeEventArgs</b></a> 对象。<br/></p>
+</td>
+      <td>触发 <b>beginningEdit</b> 事件。<br/><br/><b>返回值</b> 如果该事件未取消，则为 true。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>onCellEditEnded</b>&#8203;(e)</td>
+      <td><p>
+<b>e</b> (<a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><b>CellRangeEventArgs</b></a>): 包含事件数据的 <a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><b>CellRangeEventArgs</b></a> 对象。<br/></p>
+</td>
+      <td>触发 <b>cellEditEnded</b> 事件。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>onCellEditEnding</b>&#8203;(e): <b>boolean</b></td>
+      <td><p>
+<b>e</b> (<a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><b>CellRangeEventArgs</b></a>): 包含事件数据的 <a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><b>CellRangeEventArgs</b></a> 对象。<br/></p>
+</td>
+      <td><p>触发 <b>cellEditEnding</b> 事件。</p>
+
+<p>您可以使用该事件执行一些校验操作，防止无效编辑值。
+例如，以下代码防止用户输入不包含字母‘a’的值。
+该代码演示了您如何在编辑被应用之前获取旧值和新值。</p>
+
+<p><pre>function cellEditEnding (sender, e) {
+  // 获取旧值和新值
+  var flex = sender,
+      oldVal = flex.getCellData(e.row, e.col),
+      newVal = flex.activeEditor.value;
+  // 如果新值不包含‘a’，则取消编辑结果
+  e.cancel = newVal.indexOf('a') &lt; 0;
+}</pre></p><br/><br/><b>返回值</b> 如果该事件未取消，则为 true。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>onCopied</b>&#8203;(e)</td>
+      <td><p>
+<b>e</b> (<a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><b>CellRangeEventArgs</b></a>): 包含事件数据的 <a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><b>CellRangeEventArgs</b></a> 对象。<br/></p>
+</td>
+      <td>触发 <b>copied</b> 事件。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>onCopying</b>&#8203;(e): <b>boolean</b></td>
+      <td><p>
+<b>e</b> (<a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><b>CellRangeEventArgs</b></a>): 包含事件数据的 <a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><b>CellRangeEventArgs</b></a> 对象。<br/></p>
+</td>
+      <td>触发 <b>copying</b> 事件。<br/><br/><b>返回值</b> 如果该事件未取消，则为 true。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>onDeletedRow</b>&#8203;(e)</td>
+      <td><p>
+<b>e</b> (<a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><b>CellRangeEventArgs</b></a>): <a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><b>CellRangeEventArgs</b></a> that contains the event data.<br/></p>
+</td>
+      <td>Raises the <b>deletedRow</b> event.<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>onDeletingRow</b>&#8203;(e): <b>boolean</b></td>
+      <td><p>
+<b>e</b> (<a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><b>CellRangeEventArgs</b></a>): <a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><b>CellRangeEventArgs</b></a> that contains the event data.<br/></p>
+</td>
+      <td>触发 <b>deletingRow</b> 事件。<br/><br/><b>返回值</b> 如果事件没有取消则返回真。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>onDraggedColumn</b>&#8203;(e)</td>
+      <td><p>
+<b>e</b> (<a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><b>CellRangeEventArgs</b></a>): 包含事件数据的 <a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><b>CellRangeEventArgs</b></a> 对象。<br/></p>
+</td>
+      <td>触发 <b>draggedColumn</b> 事件。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>onDraggedRow</b>&#8203;(e)</td>
+      <td><p>
+<b>e</b> (<a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><b>CellRangeEventArgs</b></a>): 包含事件数据的 <a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><b>CellRangeEventArgs</b></a> 对象。<br/></p>
+</td>
+      <td>触发 <b>draggedRow</b> 事件。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>onDraggingColumn</b>&#8203;(e): <b>boolean</b></td>
+      <td><p>
+<b>e</b> (<a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><b>CellRangeEventArgs</b></a>): 包含事件数据的 <a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><b>CellRangeEventArgs</b></a> 对象。<br/></p>
+</td>
+      <td>触发 <b>draggingColumn</b> 事件。<br/><br/><b>返回值</b> 如果该事件未取消，则为 true。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>onDraggingRow</b>&#8203;(e): <b>boolean</b></td>
+      <td><p>
+<b>e</b> (<a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><b>CellRangeEventArgs</b></a>): 包含事件数据的 <a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><b>CellRangeEventArgs</b></a> 对象。<br/></p>
+</td>
+      <td>触发 <b>draggingRow</b> 事件。<br/><br/><b>返回值</b> 如果该事件未取消，则为 true。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>onDraggingRowColumn</b>&#8203;(e)</td>
+      <td><p>
+<b>e</b> (<a href="topic/wijmo.grid.sheet.DraggingRowColumnEventArgs.Class.html"><b>DraggingRowColumnEventArgs</b></a>)<br/></p>
+</td>
+      <td>触发 draggingRowColumn 事件。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>onDroppingRowColumn</b>&#8203;()</td>
+      <td></td>
+      <td>触发 droppingRowColumn 事件。</td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>onFormatItem</b>&#8203;(e)</td>
+      <td><p>
+<b>e</b> (<a href="topic/wijmo.grid.FormatItemEventArgs.Class.html"><b>FormatItemEventArgs</b></a>): 包含事件数据的 <a href="topic/wijmo.grid.FormatItemEventArgs.Class.html"><b>FormatItemEventArgs</b></a> 对象。<br/></p>
+</td>
+      <td>触发 <b>formatItem</b> 事件。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>onGotFocus</b>&#8203;(e?)</td>
+      <td><p>
+<b>e?</b> (<a href="topic/wijmo.EventArgs.Class.html"><b>EventArgs</b></a>)<br/></p>
+</td>
+      <td>增加<b>gotFocus</b> 事件。<br/><span class="text-info">(继承自 <a href="topic/wijmo.Control.Class.html"><b>Control</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>onGroupCollapsedChanged</b>&#8203;(e)</td>
+      <td><p>
+<b>e</b> (<a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><b>CellRangeEventArgs</b></a>): 包含事件数据的 <a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><b>CellRangeEventArgs</b></a> 对象。<br/></p>
+</td>
+      <td>触发 <b>groupCollapsedChanged</b> 事件。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>onGroupCollapsedChanging</b>&#8203;(e): <b>boolean</b></td>
+      <td><p>
+<b>e</b> (<a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><b>CellRangeEventArgs</b></a>): 包含事件数据的 <a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><b>CellRangeEventArgs</b></a> 对象。<br/></p>
+</td>
+      <td>触发 <b>groupCollapsedChanging</b> 事件。<br/><br/><b>返回值</b> 如果该事件未取消，则为 true。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>onItemsSourceChanged</b>&#8203;(e?)</td>
+      <td><p>
+<b>e?</b> (<a href="topic/wijmo.EventArgs.Class.html"><b>EventArgs</b></a>)<br/></p>
+</td>
+      <td>触发 <b>itemsSourceChanged</b> 事件。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>onLoaded</b>&#8203;()</td>
+      <td></td>
+      <td>触发 loaded 事件。</td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>onLoadedRows</b>&#8203;(e?)</td>
+      <td><p>
+<b>e?</b> (<a href="topic/wijmo.EventArgs.Class.html"><b>EventArgs</b></a>)<br/></p>
+</td>
+      <td>触发 <b>loadedRows</b> 事件。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>onLoadingRows</b>&#8203;(e): <b>boolean</b></td>
+      <td><p>
+<b>e</b> (<a href="topic/wijmo.CancelEventArgs.Class.html"><b>CancelEventArgs</b></a>): <a href="topic/wijmo.CancelEventArgs.Class.html"><b>CancelEventArgs</b></a> that contains the event data.<br/></p>
+</td>
+      <td>触发 <b>loadingRows</b> 事件。<br/><br/><b>返回值</b> True if the event was not canceled.<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>onLostFocus</b>&#8203;(e?)</td>
+      <td><p>
+<b>e?</b> (<a href="topic/wijmo.EventArgs.Class.html"><b>EventArgs</b></a>)<br/></p>
+</td>
+      <td>增加<b>lostFocus</b> 事件。<br/><span class="text-info">(继承自 <a href="topic/wijmo.Control.Class.html"><b>Control</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>onPasted</b>&#8203;(e)</td>
+      <td><p>
+<b>e</b> (<a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><b>CellRangeEventArgs</b></a>): 包含事件数据的 <a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><b>CellRangeEventArgs</b></a> 对象。<br/></p>
+</td>
+      <td>触发 <b>pasted</b> 事件。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>onPastedCell</b>&#8203;(e)</td>
+      <td><p>
+<b>e</b> (<a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><b>CellRangeEventArgs</b></a>): 包含事件数据的 <a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><b>CellRangeEventArgs</b></a> 对象。<br/></p>
+</td>
+      <td>触发 <b>pastedCell</b> 事件。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>onPasting</b>&#8203;(e): <b>boolean</b></td>
+      <td><p>
+<b>e</b> (<a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><b>CellRangeEventArgs</b></a>): 包含事件数据的 <a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><b>CellRangeEventArgs</b></a> 对象。<br/></p>
+</td>
+      <td>触发 <b>pasting</b> 事件。<br/><br/><b>返回值</b> 如果该事件未取消，则为 true。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>onPastingCell</b>&#8203;(e): <b>boolean</b></td>
+      <td><p>
+<b>e</b> (<a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><b>CellRangeEventArgs</b></a>): 包含事件数据的 <a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><b>CellRangeEventArgs</b></a> 对象。<br/></p>
+</td>
+      <td>触发 <b>pastingCell</b> 事件。<br/><br/><b>返回值</b> 如果该事件未取消，则为 true。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>onPrepareCellForEdit</b>&#8203;(e)</td>
+      <td><p>
+<b>e</b> (<a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><b>CellRangeEventArgs</b></a>): 包含事件数据的 <a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><b>CellRangeEventArgs</b></a> 对象。<br/></p>
+</td>
+      <td>触发 <b>prepareCellForEdit</b> 事件。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>onResizedColumn</b>&#8203;(e)</td>
+      <td><p>
+<b>e</b> (<a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><b>CellRangeEventArgs</b></a>): 包含事件数据的 <a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><b>CellRangeEventArgs</b></a> 对象。<br/></p>
+</td>
+      <td>触发 <b>resizedColumn</b> 事件。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>onResizedRow</b>&#8203;(e)</td>
+      <td><p>
+<b>e</b> (<a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><b>CellRangeEventArgs</b></a>): 包含事件数据的 <a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><b>CellRangeEventArgs</b></a> 对象。<br/></p>
+</td>
+      <td>触发 <b>resizedRow</b> 事件。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>onResizingColumn</b>&#8203;(e): <b>boolean</b></td>
+      <td><p>
+<b>e</b> (<a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><b>CellRangeEventArgs</b></a>): 包含事件数据的 <a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><b>CellRangeEventArgs</b></a> 对象。<br/></p>
+</td>
+      <td>触发 <b>resizingColumn</b> 事件。<br/><br/><b>返回值</b> 如果该事件未取消，则为 true。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>onResizingRow</b>&#8203;(e): <b>boolean</b></td>
+      <td><p>
+<b>e</b> (<a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><b>CellRangeEventArgs</b></a>): 包含事件数据的 <a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><b>CellRangeEventArgs</b></a> 对象。<br/></p>
+</td>
+      <td>触发 <b>resizingRow</b> 事件。<br/><br/><b>返回值</b> 如果该事件未取消，则为 true。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>onRowAdded</b>&#8203;(e)</td>
+      <td><p>
+<b>e</b> (<a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><b>CellRangeEventArgs</b></a>): 包含事件数据的 <a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><b>CellRangeEventArgs</b></a> 对象。<br/></p>
+</td>
+      <td>触发 <b>rowAdded</b> 事件。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>onRowEditEnded</b>&#8203;(e)</td>
+      <td><p>
+<b>e</b> (<a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><b>CellRangeEventArgs</b></a>): 包含事件数据的 <a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><b>CellRangeEventArgs</b></a> 对象。<br/></p>
+</td>
+      <td>触发 <b>rowEditEnded</b> 事件。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>onRowEditEnding</b>&#8203;(e)</td>
+      <td><p>
+<b>e</b> (<a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><b>CellRangeEventArgs</b></a>): 包含事件数据的 <a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><b>CellRangeEventArgs</b></a> 对象。<br/></p>
+</td>
+      <td>触发 <b>rowEditEnding</b> 事件。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>onScrollPositionChanged</b>&#8203;(e?)</td>
+      <td><p>
+<b>e?</b> (<a href="topic/wijmo.EventArgs.Class.html"><b>EventArgs</b></a>)<br/></p>
+</td>
+      <td>触发 <b>scrollPositionChanged</b> 事件。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>onSelectedSheetChanged</b>&#8203;(e)</td>
+      <td><p>
+<b>e</b> (<a href="topic/wijmo.PropertyChangedEventArgs.Class.html"><b>PropertyChangedEventArgs</b></a>): 包含事件数据的 <a href="topic/wijmo.PropertyChangedEventArgs.Class.html"><b>PropertyChangedEventArgs</b></a> 对象。<br/></p>
+</td>
+      <td>触发 currentSheetChanged 事件。</td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>onSelectionChanged</b>&#8203;(e)</td>
+      <td><p>
+<b>e</b> (<a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><b>CellRangeEventArgs</b></a>): <a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><b>CellRangeEventArgs</b></a> that contains the event data.<br/></p>
+</td>
+      <td>Raises the <b>selectionChanged</b> event.<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>onSelectionChanging</b>&#8203;(e): <b>boolean</b></td>
+      <td><p>
+<b>e</b> (<a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><b>CellRangeEventArgs</b></a>): 包含事件数据的 <a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><b>CellRangeEventArgs</b></a> 对象。<br/></p>
+</td>
+      <td>触发 <b>selectionChanging</b> 事件。<br/><br/><b>返回值</b> 如果该事件未取消，则为 true。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>onSheetCleared</b>&#8203;()</td>
+      <td></td>
+      <td>触发 sheetCleared 事件。</td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>onSortedColumn</b>&#8203;(e)</td>
+      <td><p>
+<b>e</b> (<a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><b>CellRangeEventArgs</b></a>): 包含事件数据的 <a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><b>CellRangeEventArgs</b></a> 对象。<br/></p>
+</td>
+      <td>触发 <b>sortedColumn</b> 事件。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>onSortingColumn</b>&#8203;(e): <b>boolean</b></td>
+      <td><p>
+<b>e</b> (<a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><b>CellRangeEventArgs</b></a>): 包含事件数据的 <a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><b>CellRangeEventArgs</b></a> 对象。<br/></p>
+</td>
+      <td>触发 <b>sortingColumn</b> 事件。<br/><br/><b>返回值</b> 如果该事件未取消，则为 true。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>onUnknownFunction</b>&#8203;(e)</td>
+      <td><p>
+<b>e</b> (<a href="topic/wijmo.grid.sheet.UnknownFunctionEventArgs.Class.html"><b>UnknownFunctionEventArgs</b></a>)<br/></p>
+</td>
+      <td>触发 unknownFunction 事件。</td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>onUpdatedLayout</b>&#8203;(e?)</td>
+      <td><p>
+<b>e?</b> (<a href="topic/wijmo.EventArgs.Class.html"><b>EventArgs</b></a>)<br/></p>
+</td>
+      <td>触发 <b>updatedLayout</b> 事件。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>onUpdatedView</b>&#8203;(e?)</td>
+      <td><p>
+<b>e?</b> (<a href="topic/wijmo.EventArgs.Class.html"><b>EventArgs</b></a>)<br/></p>
+</td>
+      <td>触发 <b>updatedView</b> 事件。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>onUpdatingLayout</b>&#8203;(e): <b>boolean</b></td>
+      <td><p>
+<b>e</b> (<a href="topic/wijmo.CancelEventArgs.Class.html"><b>CancelEventArgs</b></a>): 包含初始化数据的 <a href="topic/wijmo.CancelEventArgs.Class.html"><b>CancelEventArgs</b></a>。<br/></p>
+</td>
+      <td>触发 <b>updatingLayout</b> event.<br/><br/><b>返回值</b> 如果事件没有被取消，则返回真。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>onUpdatingView</b>&#8203;(e): <b>boolean</b></td>
+      <td><p>
+<b>e</b> (<a href="topic/wijmo.CancelEventArgs.Class.html"><b>CancelEventArgs</b></a>): 包含数据的 <a href="topic/wijmo.CancelEventArgs.Class.html"><b>CancelEventArgs</b></a> 的对象。<br/></p>
+</td>
+      <td>触发<b>updatingView</b> 事件。<br/><br/><b>返回值</b> 如果事件没有取消则返回真。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>redo</b>&#8203;()</td>
+      <td></td>
+      <td>重做上一次用户操作。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>refresh</b>&#8203;(fullUpdate?)</td>
+      <td><p>
+<b>fullUpdate?</b> (<b>boolean</b>): 是否同时更新控件布局和内容。<br/><span class="text-info">(默认值: <b>true</b>)</span><br/></p>
+</td>
+      <td>覆盖以刷新表单和 <b>TabHolder</b>。</td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td><span class="badge" title="静态">S</span></td>
+      <td><b>refreshAll</b>&#8203;(e?)</td>
+      <td><p>
+<b>e?</b> (<b>HTMLElement</b>): 容器元素。如果设置为null，所有在页面上的Wijmo控件
+将无效。<br/></p>
+</td>
+      <td><p>刷新包含在HTML元素中所有的Wijmo控件。</p>
+
+<p>该方法与<b>invalidateAll</b> 相似，除过控件被立即更新，而不是一段时间之后。</p><br/><span class="text-info">(继承自 <a href="topic/wijmo.Control.Class.html"><b>Control</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>refreshCells</b>&#8203;(fullUpdate, recycle?, state?)</td>
+      <td><p>
+<b>fullUpdate</b> (<b>boolean</b>): 是否同时更新表单的布局和内容，或者仅更新内容。<br/><b>recycle?</b> (<b>boolean</b>): 是否回收现有元素。<br/><b>state?</b> (<b>boolean</b>): 是否保持现有元素并更新其状态。<br/></p>
+</td>
+      <td>刷新表单显示。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>removeEventListener</b>&#8203;(target?, type?, capture?): <b>number</b></td>
+      <td><p>
+<b>target?</b> (<b>EventTarget</b>): 事件的目标元素。如果为null，移除在依附在所有目标上的监听。<br/><b>type?</b> (<b>string</b>): 指定事件的字符串。如果为null，移除依附在所有事件上的监听。<br/><b>capture?</b> (<b>boolean</b>): 监听是否正在捕获。如果为null，移除捕获的和没有捕获的监听。<br/></p>
+</td>
+      <td>移除一个或者更多的依附在<a href="topic/wijmo.Control.Class.html"><b>Control</b></a> 中的元素上的事件监听。<br/><br/><b>返回值</b> 被移除的监听数量。<br/><span class="text-info">(继承自 <a href="topic/wijmo.Control.Class.html"><b>Control</b></a>).</span></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>save</b>&#8203;(fileName?): <a href="topic/wijmo.xlsx.Workbook.Class.html"><b>Workbook</b></a></td>
+      <td><p>
+<b>fileName?</b> (<b>string</b>): 待生成的文件的文件名。<br/></p>
+</td>
+      <td><p>将 <b>FlexSheet</b> 保存为 xslx 文件。</p>
+
+<p>例如：
+<pre>// 该示例导出 FlexSheet 内容至一个 XLSX 文件
+// click.
+&nbsp;
+// HTML
+&lt;button 
+    onclick="saveXlsx('FlexSheet.xlsx')"&gt;
+    Save
+&lt;/button&gt;
+&nbsp;
+// JavaScript
+function saveXlsx(fileName) {
+    // 保存 flexGrid 至 xlsx 文件。
+    flexsheet.save(fileName);
+}</pre></p><br/><br/><b>返回值</b> 一个包含生成的 xlsx 文件内容的工作簿对象。</td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>scrollIntoView</b>&#8203;(r, c): <b>boolean</b></td>
+      <td><p>
+<b>r</b> (<b>number</b>): 待滚动到可见区的行。<br/><b>c</b> (<b>number</b>): 待滚动到可见区的列。<br/></p>
+</td>
+      <td>滚动表单，以便使得指定的单元格滚动到可见区。<br/><br/><b>返回值</b> 如果表单真正发生了滚动，则返回 true。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>select</b>&#8203;(rng, show?)</td>
+      <td><p>
+<b>rng</b> (<b>any</b>): The cell range to select.<br/><b>show?</b> (<b>any</b>): 表示是否将新的选择范围滚动到可见区域。<br/><span class="text-info">(默认值: <b>true</b>)</span><br/></p>
+</td>
+      <td><p>选择一个单元格范围，并可选地将其滚动到可见区域。</p>
+
+<p><a href="topic/wijmo.grid.sheet.FlexSheet.Class.html"><b>FlexSheet</b></a> 覆盖了该方法，以调整在此 <b>FlexSheet</b> 中合并单元格的选中单元格范围。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>selectNextFunction</b>&#8203;()</td>
+      <td></td>
+      <td>在函数列表中选择下一个函数。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>selectPreviousFunction</b>&#8203;()</td>
+      <td></td>
+      <td>在函数列表中选择前一个函数。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>setCellData</b>&#8203;(r, c, value, coerce?): <b>boolean</b></td>
+      <td><p>
+<b>r</b> (<b>number</b>): 包含该单元格的行索引。<br/><b>c</b> (<b>any</b>): 包含该单元格的列的索引，名称或者绑定。<br/><b>value</b> (<b>any</b>): 待存储在单元格中的值。<br/><b>coerce?</b> (<b>boolean</b>): 是否自动地改变值以匹配该列的数据类型。<br/><span class="text-info">(默认值: <b>false</b>)</span><br/></p>
+</td>
+      <td>覆盖基类上的 setCellData 函数。<br/><br/><b>返回值</b> 如果该值成功存储则返回 true，否则返回 false。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>setClipString</b>&#8203;(text, rng?)</td>
+      <td><p>
+<b>text</b> (<b>string</b>): 解析到表格中的制表符和换行符的文本。<br/><b>rng?</b> (<a href="topic/wijmo.grid.CellRange.Class.html"><b>CellRange</b></a>): 要拷贝的 <a href="topic/wijmo.grid.CellRange.Class.html"><b>CellRange</b></a> to copy，如果忽略，使用当前选中项。<br/></p>
+</td>
+      <td>将一个字符串转化为行和列并且应用到给定的范围。覆盖了 <b>FlexGrid的</b> <b>setClipString</b>方法。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>showColumnFilter</b>&#8203;()</td>
+      <td></td>
+      <td>显示筛选器编辑器。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>showFunctionList</b>&#8203;(target)</td>
+      <td><p>
+<b>target</b> (<b>HTMLElement</b>): 用来显示函数列表的 DOM 元素。<br/></p>
+</td>
+      <td>打开函数列表。</td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>startEditing</b>&#8203;(fullEdit?, r?, c?, focus?): <b>boolean</b></td>
+      <td><p>
+<b>fullEdit?</b> (<b>boolean</b>): 当用户按下方向键时，是否保持编辑状态。默认值为 false。<br/><span class="text-info">(默认值: <b>true</b>)</span><br/><b>r?</b> (<b>number</b>): 待编辑单元格所在的行的索引。默认值为当前选中的行。<br/><b>c?</b> (<b>number</b>): 待编辑单元格所在的列的索引。默认值为当前选中的列。<br/><b>focus?</b> (<b>boolean</b>): 在编辑开始时，是否将输入焦点移交给编辑器。默认值为 true。<br/></p>
+</td>
+      <td><p>开始编辑一个指定的单元格。</p>
+
+<p>在 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a> 中进行编辑和在 Excel 中进行编辑类似：
+按下 F2 或者双击一个单元格将使得表单进入<b>完全编辑</b>模式。
+在该模式下，单元格编辑器将始终保持活动状态，直到用户按下了 Enter，Tab，或者 Escape 键。
+再或者当用户通过鼠标移动选择至其他单元格。在完全编辑模式下，按下方向键将不会使得表单
+离开编辑模式。</p>
+
+<p>在单元格上直接开始输入文本将使得表单进入<b>快速编辑模式</b>。
+在该模式下，单元格编辑器将保持活动状态，直至用户按下 Enter，Tab，或者 Escape 键，
+再或者任何的方向键。</p>
+
+<p>完全编辑模式通常用做对当前值进行修改。 
+快速编辑模式通常用做快速地输入新值。</p>
+
+<p>在编辑过程中，用户可以通过按下 F2 键在完全编辑模式和快速编辑模式下切换。</p><br/><br/><b>返回值</b> 如果编辑操作成功开始则返回 true。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>undo</b>&#8203;()</td>
+      <td></td>
+      <td>撤销上一次用户操作。</td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideEvents = !hideEvents">
+<span class="glyph-collapsed" ng-show="hideEvents"></span>
+<span class="glyph-expanded" ng-hide="hideEvents"></span>
+事件
+</h3>
+</div>
+<table ng-hide="hideEvents" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-2">名称</th>
+
+<th class="col-md-5">参数</th>
+
+<th class="col-md-5">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>autoSizedColumn</b></td>
+      <td><a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><b>CellRangeEventArgs</b></a></td>
+      <td>在用户通过双击列头单元格的右侧边缘自动计算一列的列宽之后触发。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>autoSizedRow</b></td>
+      <td><a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><b>CellRangeEventArgs</b></a></td>
+      <td>在用户通过双击行头单元格底部边缘使得行高自动计算之后触发。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>autoSizingColumn</b></td>
+      <td><a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><b>CellRangeEventArgs</b></a></td>
+      <td>在用户通过双击列头单元格的右侧边缘自动计算一列的列宽之前触发。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>autoSizingRow</b></td>
+      <td><a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><b>CellRangeEventArgs</b></a></td>
+      <td>在用户通过双击行头单元格底部边缘使得行高自动计算之前触发。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>beginningEdit</b></td>
+      <td><a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><b>CellRangeEventArgs</b></a></td>
+      <td>在一个单元格进入编辑模式之前触发。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>cellEditEnded</b></td>
+      <td><a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><b>CellRangeEventArgs</b></a></td>
+      <td>当一个单元格的编辑被提交或取消时触发。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>cellEditEnding</b></td>
+      <td><a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><b>CellRangeEventArgs</b></a></td>
+      <td>当单元格编辑即将结束时触发。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>copied</b></td>
+      <td><a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><b>CellRangeEventArgs</b></a></td>
+      <td>在用户通过按下剪贴板快捷键复制选择内容至剪贴板（参见 <b>autoClipboard</b>）之后触发。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>copying</b></td>
+      <td><a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><b>CellRangeEventArgs</b></a></td>
+      <td><p>当用户通过按下剪贴板快捷键即将复制选择内容至剪贴板（参见 <b>autoClipboard</b>）时触发。</p>
+
+<p>事件处理函数可以取消复制操作。</p><br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>deletedRow</b></td>
+      <td><a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><b>CellRangeEventArgs</b></a></td>
+      <td>Occurs after the user has deleted a row by pressing the Delete 
+key (see the <b>allowDelete</b> property).<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>deletingRow</b></td>
+      <td><a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><b>CellRangeEventArgs</b></a></td>
+      <td><p>当用户通过按下 Delete 键删除选中的行（参见 <b>allowDelete</b> 属性）时触发。</p>
+
+<p>事件处理逻辑有可能取消行删除操作。</p><br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>draggedColumn</b></td>
+      <td><a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><b>CellRangeEventArgs</b></a></td>
+      <td>当用户结束拖拽一列时触发。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>draggedRow</b></td>
+      <td><a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><b>CellRangeEventArgs</b></a></td>
+      <td>当用户结束拖拽一行时触发。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>draggingColumn</b></td>
+      <td><a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><b>CellRangeEventArgs</b></a></td>
+      <td>当用户开始拖拽一列时触发。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>draggingRow</b></td>
+      <td><a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><b>CellRangeEventArgs</b></a></td>
+      <td>当用户开始拖拽一行时触发。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>draggingRowColumn</b></td>
+      <td><a href="topic/wijmo.grid.sheet.DraggingRowColumnEventArgs.Class.html"><b>DraggingRowColumnEventArgs</b></a></td>
+      <td>当拖拽 <b>FlexSheet</b> 的行或者列时触发。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>droppingRowColumn</b></td>
+      <td><a href="topic/wijmo.EventArgs.Class.html"><b>EventArgs</b></a></td>
+      <td>当拖拽释放 <b>FlexSheet</b> 的行或者列时触发。</td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>formatItem</b></td>
+      <td><a href="topic/wijmo.grid.FormatItemEventArgs.Class.html"><b>FormatItemEventArgs</b></a></td>
+      <td><p>当表示一个单元格的一个元素被创建时触发。</p>
+
+<p>该事件可以被用来格式化显示的单元格。这和 <b>itemFormatter</b> 属性的目的类似，但是具有可以添加多个独立的处理函数的长处。</p>
+
+<p>例如，以下代码从分组行移除了‘wj-wrap’类：</p>
+
+<p><pre>flex.formatItem.addHandler(function (s, e) {
+  if (flex.rows[e.row] instanceof wijmo.grid.GroupRow) {
+    wijmo.removeClass(e.cell, 'wj-wrap');
+  }
+});</pre></p><br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>gotFocus</b></td>
+      <td><a href="topic/wijmo.EventArgs.Class.html"><b>EventArgs</b></a></td>
+      <td>当控件获取焦点时发生。<br/><span class="text-info">(继承自 <a href="topic/wijmo.Control.Class.html"><b>Control</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>groupCollapsedChanged</b></td>
+      <td><a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><b>CellRangeEventArgs</b></a></td>
+      <td>在一个分组已经被展开或收起之后触发。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>groupCollapsedChanging</b></td>
+      <td><a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><b>CellRangeEventArgs</b></a></td>
+      <td>当一个分组即将被展开或收起时触发。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>itemsSourceChanged</b></td>
+      <td><a href="topic/wijmo.EventArgs.Class.html"><b>EventArgs</b></a></td>
+      <td>在表单绑定到一个新的项目源之后触发。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>loaded</b></td>
+      <td><a href="topic/wijmo.EventArgs.Class.html"><b>EventArgs</b></a></td>
+      <td>在 <b>FlexSheet</b> 加载了 <a href="topic/wijmo.xlsx.Workbook.Class.html"><b>Workbook</b></a> 实例之后触发。</td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>loadedRows</b></td>
+      <td><a href="topic/wijmo.EventArgs.Class.html"><b>EventArgs</b></a></td>
+      <td>在表单行绑定到数据源中的项目之后触发。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>loadingRows</b></td>
+      <td><a href="topic/wijmo.CancelEventArgs.Class.html"><b>CancelEventArgs</b></a></td>
+      <td>在表单行绑定到数据源中的项目之前触发。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>lostFocus</b></td>
+      <td><a href="topic/wijmo.EventArgs.Class.html"><b>EventArgs</b></a></td>
+      <td>当控件失去焦点时发生。<br/><span class="text-info">(继承自 <a href="topic/wijmo.Control.Class.html"><b>Control</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>pasted</b></td>
+      <td><a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><b>CellRangeEventArgs</b></a></td>
+      <td>在用户通过按下剪贴板快捷键从剪贴板粘贴内容（参见 <b>autoClipboard</b>）之后触发。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>pastedCell</b></td>
+      <td><a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><b>CellRangeEventArgs</b></a></td>
+      <td>在用户通过按下剪贴板快捷键从剪贴板粘贴内容（参见 <b>autoClipboard</b>）至一个单元格之后触发。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>pasting</b></td>
+      <td><a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><b>CellRangeEventArgs</b></a></td>
+      <td><p>当用户通过按下剪贴板快捷键从剪贴板粘贴内容（参见 <b>autoClipboard</b>）时触发。</p>
+
+<p>事件处理函数可以取消复制操作。</p><br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>pastingCell</b></td>
+      <td><a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><b>CellRangeEventArgs</b></a></td>
+      <td><p>当用户通过按下剪贴板快捷键从剪贴板粘贴内容（参见 <b>autoClipboard</b>）至一个单元格时触发。</p>
+
+<p>事件处理函数可以取消复制操作。</p><br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>prepareCellForEdit</b></td>
+      <td><a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><b>CellRangeEventArgs</b></a></td>
+      <td>当一个编辑单元格被创建之后且在变成活动状态之前时触发。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>resizedColumn</b></td>
+      <td><a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><b>CellRangeEventArgs</b></a></td>
+      <td>当用户结束改变列宽操作时触发。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>resizedRow</b></td>
+      <td><a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><b>CellRangeEventArgs</b></a></td>
+      <td>当用户结束改变行高时触发。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>resizingColumn</b></td>
+      <td><a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><b>CellRangeEventArgs</b></a></td>
+      <td>当列的宽度发生变化时触发。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>resizingRow</b></td>
+      <td><a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><b>CellRangeEventArgs</b></a></td>
+      <td>当行高发生变化之后触发。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>rowAdded</b></td>
+      <td><a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><b>CellRangeEventArgs</b></a></td>
+      <td><p>当用户通过编辑新行模板（参见 <b>allowAddNew</b> 属性）创建了一个新项目时触发。</p>
+
+<p>该事件处理函数可以自定义新项的内容或者取消该新行创建。</p><br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>rowEditEnded</b></td>
+      <td><a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><b>CellRangeEventArgs</b></a></td>
+      <td>当一个行编辑被提交或取消时触发。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>rowEditEnding</b></td>
+      <td><a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><b>CellRangeEventArgs</b></a></td>
+      <td>当一个行编辑结束，在发生的改变最终被提交或取消之前触发。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>scrollPositionChanged</b></td>
+      <td><a href="topic/wijmo.EventArgs.Class.html"><b>EventArgs</b></a></td>
+      <td>在控件发生滚动之后触发。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>selectedSheetChanged</b></td>
+      <td><a href="topic/wijmo.PropertyChangedEventArgs.Class.html"><b>PropertyChangedEventArgs</b></a></td>
+      <td>当当前表单的索引发生变化时触发。</td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>selectionChanged</b></td>
+      <td><a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><b>CellRangeEventArgs</b></a></td>
+      <td>在选择发生变化之后触发。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>selectionChanging</b></td>
+      <td><a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><b>CellRangeEventArgs</b></a></td>
+      <td>在选择发生变化之前触发。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>sheetCleared</b></td>
+      <td><a href="topic/wijmo.EventArgs.Class.html"><b>EventArgs</b></a></td>
+      <td>当 <b>FlexSheet</b> 清空时触发。</td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>sortedColumn</b></td>
+      <td><a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><b>CellRangeEventArgs</b></a></td>
+      <td>在用户通过单击列头应用一个排序之后触发。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>sortingColumn</b></td>
+      <td><a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><b>CellRangeEventArgs</b></a></td>
+      <td>在用户通过单击列头应用一个排序之前触发。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>unknownFunction</b></td>
+      <td><a href="topic/wijmo.grid.sheet.UnknownFunctionEventArgs.Class.html"><b>UnknownFunctionEventArgs</b></a></td>
+      <td>当 <b>FlexSheet</b> 遇到未知公式时触发。</td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>updatedLayout</b></td>
+      <td><a href="topic/wijmo.EventArgs.Class.html"><b>EventArgs</b></a></td>
+      <td>在表单更新它的内部布局之后触发。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>updatedView</b></td>
+      <td><a href="topic/wijmo.EventArgs.Class.html"><b>EventArgs</b></a></td>
+      <td><p>当表单创建/更新构建当前视图的元素时触发。</p>
+
+<p>表单将响应以下几类动作更新视图，包括：</p>
+
+<p><ul>
+<li>刷新表单或者其数据源，</li>
+<li>添加，移除，或者改变行或者列，</li>
+<li>改变表单尺寸或者滚动表单，</li>
+<li>改变选择。</li>
+</ul></p><br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>updatingLayout</b></td>
+      <td><a href="topic/wijmo.CancelEventArgs.Class.html"><b>CancelEventArgs</b></a></td>
+      <td>在表单更新它的内部布局之前触发。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>updatingView</b></td>
+      <td><a href="topic/wijmo.CancelEventArgs.Class.html"><b>CancelEventArgs</b></a></td>
+      <td>当表单创建/更新构建当前视图的元素时触发。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>).</span></td>
+    </tr>
+</tbody>
+</table>
+</div>
+

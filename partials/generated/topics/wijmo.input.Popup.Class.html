@@ -1,0 +1,551 @@
+<h2>Popup 类</h2>
+<dl class="dl-horizontal">
+<dt>基类</dt><dd><a href="topic/wijmo.Control.Class.html"><b>Control</b></a></dd>
+<dt>派生类</dt><dd><a href="topic/wijmo.angular.WjPopup.Class.html"><b>WjPopup</b></a></dd>
+<dt>模块</dt><dd>wijmo.input</dd>
+<dt>文件</dt><dd>wijmo.input.js</dd>
+<dt>表示</dt><dd><label style="font-weight:normal">继承成员 <input type="checkbox" ng-model="showInherited"></label></dd>
+</dl>
+<p><p>将某个元素以弹出窗体的方式显示的类。</p>
+
+<p>Popup 可能具有 <b>owner</b> 元素，在这种情况下，它的行为类似于一个 rich tooltip，可以基于 <b>showTrigger</b> 以及 <b>hideTrigger</b> 属性
+指定的动作显示或则隐藏。</p>
+
+<p>不具有 owner 元素的 Popup 的行为类似于对话框。它们相对于屏幕居中显示，
+并且通过调用 <b>show</b> 方法显示。</p>
+
+<p>关闭 <b>Popup</b>，可以调用 <b>hide</b> 方法。除此之外，<b>Popup</b> 内部任何可以点击的元素，只要是具有 ‘wj-hide’ class，就可以在发生单击时
+隐藏该 <b>Popup</b>。例如，以下 <b>Popup</b> 可以在用户按下 OK 或 Cancel 按钮时隐藏：</p>
+
+<p><pre>&lt;button id="btnPopup"&gt;Show Popup&lt;/button&gt;
+&lt;wj-popup owner="#btnPopup" style="padding:12px"&gt;
+  &lt;p&gt;按下以下按钮中的任意一个可以隐藏 Popup。&lt;/p&gt;
+  &lt;hr/&gt;
+  &lt;button class="wj-hide" ng-click="handleOK()"&gt;OK&lt;/button&gt;
+  &lt;button class="wj-hide"&gt;Cancel&lt;/button&gt;
+&lt;/wj-popup&gt;</pre></p></p>
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideConstructor = !hideConstructor">
+<span class="glyph-collapsed" ng-show="hideConstructor"></span>
+<span class="glyph-expanded" ng-hide="hideConstructor"></span>
+ 构造函数
+</h3>
+</div>
+<table ng-hide="hideConstructor" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-2">名称</th>
+
+<th class="col-md-5">参数</th>
+
+<th class="col-md-5">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><b>constructor</b>&#8203;(element, options?): <a href="topic/wijmo.input.Popup.Class.html"><b>Popup</b></a></td>
+      <td><p>
+<b>element</b> (<b>any</b>): The DOM element that will host the control, or a selector for the host element (e.g. '#theCtrl').<br/><b>options?</b> (<b>any</b>): JavaScript object containing initialization data for the control.<br/></p>
+</td>
+      <td>初始化类<b>Popup的一个新实例</b></td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideProperties = !hideProperties">
+<span class="glyph-collapsed" ng-show="hideProperties"></span>
+<span class="glyph-expanded" ng-hide="hideProperties"></span>
+属性
+</h3>
+</div>
+<table ng-hide="hideProperties" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-3">名称</th>
+
+<th class="col-md-2">类型</th>
+
+<th class="col-md-7">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><b>content</b></td>
+      <td><b>HTMLElement</b></td>
+      <td>获取或设置包含在该 <a href="topic/wijmo.input.Popup.Class.html"><b>Popup</b></a> 内部的 HTML 元素。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>dialogResult</b></td>
+      <td><b>any</b></td>
+      <td>获取或设置一个值，可以用来处理 <a href="topic/wijmo.input.Popup.Class.html"><b>Popup</b></a> 隐藏之后的文本。
+  当 <b>Popup</b> 呈现，那么这个属性会设置为 null 。它也可以设置用来响应按钮点击事件或者 <b>hide</b>  方法。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>dialogResultEnter</b></td>
+      <td><b>any</b></td>
+      <td>获取或设置一个值，用作 <a href="topic/wijmo.input.Popup.Class.html"><b>Popup</b></a> 可见并且用户按下 Enter 键时 <b>dialogResult</b> 的值。如果用户按下了 Enter 键后，并且<b>dialogResultEnter</b> 不为 null，popup 会检查所有的子元素都有效。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>fadeIn</b></td>
+      <td><b>boolean</b></td>
+      <td>获取或设置一个值，该值决定是否 popup 应当在显示时有
+淡入动画效果。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>fadeOut</b></td>
+      <td><b>boolean</b></td>
+      <td>获取或设置一个值，该值决定是否 popup 应当在隐藏时有淡出动画效果。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>hideTrigger</b></td>
+      <td><a href="topic/wijmo.input.PopupTrigger.Enum.html"><b>PopupTrigger</b></a></td>
+      <td><p>获取或设置隐藏该 <a href="topic/wijmo.input.Popup.Class.html"><b>Popup</b></a> 的动作。</p>
+
+<p>默认情况下，<b>hideTrigger</b> 属性设置为 <b>Blur</b>，
+这将使得在 popup 丢失焦点之后将其隐藏。</p>
+
+<p>如果您设置了 <b>hideTrigger</b> 属性为 <b>Click</b>，则仅在 owner 元素被单击时关闭该 popup。</p>
+
+<p>如果您设置了 <b>hideTrigger</b> 属性为 <b>None</b>，则 popup 将仅在调用了 <b>hide</b> 方法之后隐藏。</p></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>hostElement</b></td>
+      <td><b>HTMLElement</b></td>
+      <td>获取托管着控件的DOM元素。<br/><span class="text-info">(继承自 <a href="topic/wijmo.Control.Class.html"><b>Control</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>isDisabled</b></td>
+      <td><b>boolean</b></td>
+      <td>获取或设置一个值，决定是否控件被禁用。
+      禁用的控件不能响应鼠标和键盘事件。<br/><span class="text-info">(继承自 <a href="topic/wijmo.Control.Class.html"><b>Control</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>isTouching</b></td>
+      <td><b>boolean</b></td>
+      <td>获取表明控件当前是否处理了一个异常事件的值。.<br/><span class="text-info">(继承自 <a href="topic/wijmo.Control.Class.html"><b>Control</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>isUpdating</b></td>
+      <td><b>boolean</b></td>
+      <td>获取表明控件当前是否被更新的值。<br/><span class="text-info">(继承自 <a href="topic/wijmo.Control.Class.html"><b>Control</b></a>).</span></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>isVisible</b></td>
+      <td><b>boolean</b></td>
+      <td>获取一个值，该值决定是否 当前 <a href="topic/wijmo.input.Popup.Class.html"><b>Popup</b></a> 为可见。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>modal</b></td>
+      <td><b>boolean</b></td>
+      <td><p>获取或设置一个值，该值决定是否 <a href="topic/wijmo.input.Popup.Class.html"><b>Popup</b></a> 应当显示为一个模态对话框。</p>
+
+<p>模态对话框显示一个深色的背景，使得 Popup 在页面上其他内容上突出显示。</p>
+
+<p>如果您希望使得一个对话框真正的为模态，请同时设置 <b>hideTrigger</b> 属性为 <b>None</b>，因此
+用户无法单击深色背景区域关闭对话框。在这种情况下，该对话框当且仅当调用了 <b>close</b> 方法或者用户按下了
+Escape 键时，才会关闭。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>owner</b></td>
+      <td><b>HTMLElement</b></td>
+      <td><p>获取或设置拥有该 <a href="topic/wijmo.input.Popup.Class.html"><b>Popup</b></a> 的元素。</p>
+
+<p>如果 <b>owner</b> 属性的值为 null，<b>Popup</b> 的行为将类似于一个对话框。
+它将在屏幕上居中显示，并且必须通过 <b>show</b> 方法显示。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>showTrigger</b></td>
+      <td><a href="topic/wijmo.input.PopupTrigger.Enum.html"><b>PopupTrigger</b></a></td>
+      <td><p>获取或设置显示该 <a href="topic/wijmo.input.Popup.Class.html"><b>Popup</b></a> 的动作。</p>
+
+<p>默认情况下 <b>showTrigger</b> 属性设置为 <b>Click</b>，
+这将使得当用户单击 owner 元素时显示该弹出窗体。</p>
+
+<p>如果您设置 <b>showTrigger</b> 属性为 <b>None</b>，则该 popup 将仅在调用了 <b>show</b> 方法之后显示。</p></td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideMethods = !hideMethods">
+<span class="glyph-collapsed" ng-show="hideMethods"></span>
+<span class="glyph-expanded" ng-hide="hideMethods"></span>
+方法
+</h3>
+</div>
+<table ng-hide="hideMethods" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-2">名称</th>
+
+<th class="col-md-5">参数</th>
+
+<th class="col-md-5">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>addEventListener</b>&#8203;(target, type, fn, capture?)</td>
+      <td><p>
+<b>target</b> (<b>EventTarget</b>): 时间的目标元素。<br/><b>type</b> (<b>string</b>): 指定该事件的字符串。<br/><b>fn</b> (<b>any</b>): 当事件发生时执行的函数。<br/><b>capture?</b> (<b>boolean</b>): 监听是否正在捕获。<br/><span class="text-info">(默认值: <b>false</b>)</span><br/></p>
+</td>
+      <td><p>为<a href="topic/wijmo.Control.Class.html"><b>Control</b></a> 上的元素增加一个事件监听。</p>
+
+<p>该控件持有依附于监听和处理器的列表，当控件被处理掉时使它更容易地移除这些监听和处理器（参见<b>dispose</b> 和<b>removeEventListener</b> 方法）。</p>
+
+<p>移除事件监听失败时，可能引起内存泄露。</p><br/><span class="text-info">(继承自 <a href="topic/wijmo.Control.Class.html"><b>Control</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>applyTemplate</b>&#8203;(classNames, template, parts, namePart?): <b>HTMLElement</b></td>
+      <td><p>
+<b>classNames</b> (<b>string</b>): 添加到控件主元素上的类的名称。<br/><b>template</b> (<b>string</b>): 定义控件模板的HTML字符串。<br/><b>parts</b> (<b>Object</b>): 部分变量及其名称的字典。<br/><b>namePart?</b> (<b>string</b>): 部分名称将以主元素命名。
+确定控件在表单中使用时如何提交数据。<br/></p>
+</td>
+      <td><p>将这个模板应用到控件的一个新的实例上，并且返回根元素。</p>
+
+<p>这个方法应该被模板化控件的构造器调用。它的职责是绑定模板部分到相应的控件成员上。</p>
+
+<p>例如，下面的代码应用一个模板到<a href="topic/wijmo.input.InputNumber.Class.html"><b>InputNumber</b></a> 控件的实例上。这个模板必须包含有'wj-part'属性的元素，该属性值可以被设置为'input', 'btn-inc'，和'btn-dec'。
+该控件的成员'_tbx', '_btnUp', 和 '_btnDn'将被分配一些引用到这些元素上。</p>
+
+<p><pre>this.applyTemplate('wj-control wj-inputnumber', template, {
+  _tbx: 'input',
+  _btnUp: 'btn-inc',
+  _btnDn: 'btn-dec'
+}, 'input');</pre></p><br/><span class="text-info">(继承自 <a href="topic/wijmo.Control.Class.html"><b>Control</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>beginUpdate</b>&#8203;()</td>
+      <td></td>
+      <td>直到下一次调用<b>endUpdate</b> 之前暂停通知。<br/><span class="text-info">(继承自 <a href="topic/wijmo.Control.Class.html"><b>Control</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>containsFocus</b>&#8203;(): <b>boolean</b></td>
+      <td></td>
+      <td>检查该控件是否包含有获得焦点的元素。<br/><span class="text-info">(继承自 <a href="topic/wijmo.Control.Class.html"><b>Control</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>deferUpdate</b>&#8203;(fn)</td>
+      <td><p>
+<b>fn</b> (<b>Function</b>): 函数被执行。<br/></p>
+</td>
+      <td><p>执行在<b>beginUpdate</b>/<b>endUpdate</b> 块中的函数。</p>
+
+<p>控件直到该方法已经被执行时才被更新。该方法确保<b>endUpdate</b> 被调用，即使该方法抛出异常。</p><br/><span class="text-info">(继承自 <a href="topic/wijmo.Control.Class.html"><b>Control</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>dispose</b>&#8203;()</td>
+      <td></td>
+      <td><p>通过移除控件相关的主元素来配置控件。</p>
+
+<p> <b>dispose</b> 方法自动移除增加在<b>addEventListener</b> 方法上的任何事件监听。</p>
+
+<p>在应用中调用<b>dispose</b> 方法很重要，这样能自动地创建和移除控件。当处理掉控件时，可能会引起内存泄露。</p><br/><span class="text-info">(继承自 <a href="topic/wijmo.Control.Class.html"><b>Control</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td><span class="badge" title="静态">S</span></td>
+      <td><b>disposeAll</b>&#8203;(e?)</td>
+      <td><p>
+<b>e?</b> (<b>HTMLElement</b>): 容器元素。<br/></p>
+</td>
+      <td>处理掉包含在HTML元素上的Wijmo控件。<br/><span class="text-info">(继承自 <a href="topic/wijmo.Control.Class.html"><b>Control</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>endUpdate</b>&#8203;()</td>
+      <td></td>
+      <td>通过调用<b>beginUpdate</b> 重新开始被暂停的通知。<br/><span class="text-info">(继承自 <a href="topic/wijmo.Control.Class.html"><b>Control</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>focus</b>&#8203;()</td>
+      <td></td>
+      <td>为该控件设置焦点。<br/><span class="text-info">(继承自 <a href="topic/wijmo.Control.Class.html"><b>Control</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td><span class="badge" title="静态">S</span></td>
+      <td><b>getControl</b>&#8203;(element): <a href="topic/wijmo.Control.Class.html"><b>Control</b></a></td>
+      <td><p>
+<b>element</b> (<b>any</b>): DOM元素托管着控件，或者托管着主元素的选择器（例如'#theCtrl'）。<br/></p>
+</td>
+      <td>获取托管在给定的DOM元素上的控件。<br/><span class="text-info">(继承自 <a href="topic/wijmo.Control.Class.html"><b>Control</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>getTemplate</b>&#8203;(): <b>string</b></td>
+      <td></td>
+      <td><p>获取HTML模板来创建控件的实例。</p>
+
+<p>这个方法遍历类的层次结构来发现最近的祖先元素，该祖先元素指定了一个控件模板。例如，如果你指定了一个<a href="topic/wijmo.input.ComboBox.Class.html"><b>ComboBox</b></a> 控件的原型，它将重载由基类<a href="topic/wijmo.input.DropDown.Class.html"><b>DropDown</b></a> 定义的模板。</p><br/><span class="text-info">(继承自 <a href="topic/wijmo.Control.Class.html"><b>Control</b></a>).</span></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>hide</b>&#8203;(dialogResult?)</td>
+      <td><p>
+<b>dialogResult?</b> (<b>any</b>): Optional value assigned to the <b>dialogResult</b> property
+before closing the <a href="topic/wijmo.input.Popup.Class.html"><b>Popup</b></a>.<br/></p>
+</td>
+      <td>隐藏 <a href="topic/wijmo.input.Popup.Class.html"><b>Popup</b></a>。</td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>initialize</b>&#8203;(options)</td>
+      <td><p>
+<b>options</b> (<b>any</b>): Object that contains the initialization data.<br/></p>
+</td>
+      <td><p>通过从给定的对象中拷贝属性来初始化控件。</p>
+
+<p>该方法允许你使用普通的数据对象代替在代码中为每一个属性设置值来初始化控件。</p>
+
+<p>例如:
+<pre>
+grid.initialize({
+  itemsSource: myList,
+  autoGenerateColumns: false,
+  columns: [
+    { binding: 'id', header: 'Code', width: 130 },
+    { binding: 'name', header: 'Name', width: 60 } 
+  ]
+});
+// 相当于
+grid.itemsSource = myList;
+grid.autoGenerateColumns = false;
+// 等等.
+</pre></p>
+
+<p>初始化数据被应用时，它作为一种类型检查。如果初始化的对象包含不知名的属性名称或者无效的数据类型时，该方法将被抛出。</p><br/><span class="text-info">(继承自 <a href="topic/wijmo.Control.Class.html"><b>Control</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>invalidate</b>&#8203;(fullUpdate?)</td>
+      <td><p>
+<b>fullUpdate?</b> (<b>boolean</b>): 是否更新该控件的布局和内容。<br/><span class="text-info">(默认值: <b>true</b>)</span><br/></p>
+</td>
+      <td>使能够引起异步刷新的控件无效。<br/><span class="text-info">(继承自 <a href="topic/wijmo.Control.Class.html"><b>Control</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td><span class="badge" title="静态">S</span></td>
+      <td><b>invalidateAll</b>&#8203;(e?)</td>
+      <td><p>
+<b>e?</b> (<b>HTMLElement</b>): Container element. If set to null, all Wijmo controls
+on the page will be invalidated.<br/></p>
+</td>
+      <td><p>使所有包含在HTML元素中的Wijmo控件无效。</p>
+
+<p>当你的应用包含有动态的面板，且该面板能改变控件的可见性或者面积时，可以使用该方法。例如，splitters，accordions，
+和tab控件通常改变控件内容元素的可见性。在这种情况下，通知包含在该元素中的控件失败时，将会引起它们适当地停止工作。</p>
+
+<p>如果此情况发生，你必须处理在动态容器中合适的事件，并且调用<a href="topic/wijmo.Control.Class.html"><b>Control</b></a> 使所有的方法无效，这样包含的Wijmo控件将适当地更新它们的布局信息。</p><br/><span class="text-info">(继承自 <a href="topic/wijmo.Control.Class.html"><b>Control</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>onGotFocus</b>&#8203;(e?)</td>
+      <td><p>
+<b>e?</b> (<a href="topic/wijmo.EventArgs.Class.html"><b>EventArgs</b></a>)<br/></p>
+</td>
+      <td>增加<b>gotFocus</b> 事件。<br/><span class="text-info">(继承自 <a href="topic/wijmo.Control.Class.html"><b>Control</b></a>).</span></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>onHidden</b>&#8203;(e?)</td>
+      <td><p>
+<b>e?</b> (<a href="topic/wijmo.EventArgs.Class.html"><b>EventArgs</b></a>)<br/></p>
+</td>
+      <td>触发 <b>hidden</b> 事件。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>onHiding</b>&#8203;(e): <b>boolean</b></td>
+      <td><p>
+<b>e</b> (<a href="topic/wijmo.CancelEventArgs.Class.html"><b>CancelEventArgs</b></a>)<br/></p>
+</td>
+      <td>触发 <b>hiding</b> 事件。</td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>onLostFocus</b>&#8203;(e?)</td>
+      <td><p>
+<b>e?</b> (<a href="topic/wijmo.EventArgs.Class.html"><b>EventArgs</b></a>)<br/></p>
+</td>
+      <td>增加<b>lostFocus</b> 事件。<br/><span class="text-info">(继承自 <a href="topic/wijmo.Control.Class.html"><b>Control</b></a>).</span></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>onShowing</b>&#8203;(e): <b>boolean</b></td>
+      <td><p>
+<b>e</b> (<a href="topic/wijmo.CancelEventArgs.Class.html"><b>CancelEventArgs</b></a>)<br/></p>
+</td>
+      <td>触发 <b>showing</b> 事件。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>onShown</b>&#8203;(e?)</td>
+      <td><p>
+<b>e?</b> (<a href="topic/wijmo.EventArgs.Class.html"><b>EventArgs</b></a>)<br/></p>
+</td>
+      <td>触发 <b>shown</b> 事件。</td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>refresh</b>&#8203;(fullUpdate?)</td>
+      <td><p>
+<b>fullUpdate?</b> (<b>boolean</b>): 是否更新该控件的布局和内容。<br/><span class="text-info">(默认值: <b>true</b>)</span><br/></p>
+</td>
+      <td>刷新控件。<br/><span class="text-info">(继承自 <a href="topic/wijmo.Control.Class.html"><b>Control</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td><span class="badge" title="静态">S</span></td>
+      <td><b>refreshAll</b>&#8203;(e?)</td>
+      <td><p>
+<b>e?</b> (<b>HTMLElement</b>): 容器元素。如果设置为null，所有在页面上的Wijmo控件
+将无效。<br/></p>
+</td>
+      <td><p>刷新包含在HTML元素中所有的Wijmo控件。</p>
+
+<p>该方法与<b>invalidateAll</b> 相似，除过控件被立即更新，而不是一段时间之后。</p><br/><span class="text-info">(继承自 <a href="topic/wijmo.Control.Class.html"><b>Control</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>removeEventListener</b>&#8203;(target?, type?, capture?): <b>number</b></td>
+      <td><p>
+<b>target?</b> (<b>EventTarget</b>): 事件的目标元素。如果为null，移除在依附在所有目标上的监听。<br/><b>type?</b> (<b>string</b>): 指定事件的字符串。如果为null，移除依附在所有事件上的监听。<br/><b>capture?</b> (<b>boolean</b>): 监听是否正在捕获。如果为null，移除捕获的和没有捕获的监听。<br/></p>
+</td>
+      <td>移除一个或者更多的依附在<a href="topic/wijmo.Control.Class.html"><b>Control</b></a> 中的元素上的事件监听。<br/><br/><b>返回值</b> 被移除的监听数量。<br/><span class="text-info">(继承自 <a href="topic/wijmo.Control.Class.html"><b>Control</b></a>).</span></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>show</b>&#8203;(modal?, handleResult?)</td>
+      <td><p>
+<b>modal?</b> (<b>boolean</b>): 是否将 popup 显示为一个模态对话框。如果提供了该参数，将 
+ 设置 <b>modal</b> 属性的值。<br/><b>handleResult?</b> (<b>Function</b>): <p>Callback invoked when the popup is hidden. If provided,
+this should be a function that receives the popup as a parameter.</p>
+
+<p>The <b>handleResult</b> callback allows callers to handle the result of modal
+dialogs without attaching handlers to the <b>hidden</b> event. For example,
+the code below shows a dialog used to edit the current item in a
+<a href="topic/wijmo.collections.CollectionView.Class.html"><b>CollectionView</b></a>. The edits are committed or canceled depending on the
+<b>dialogResult</b> value. For example:</p>
+
+<p><pre>$scope.editCurrentItem = function () {
+  $scope.data.editItem($scope.data.currentItem);
+  $scope.itemEditor.show(true, function (e) {
+    if (e.dialogResult == 'wj-hide-ok') {
+      $scope.data.commitEdit();
+    } else {
+      $scope.data.cancelEdit();
+    }
+  });
+}</pre></p><br/></p>
+</td>
+      <td>显示 <a href="topic/wijmo.input.Popup.Class.html"><b>Popup</b></a>。</td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideEvents = !hideEvents">
+<span class="glyph-collapsed" ng-show="hideEvents"></span>
+<span class="glyph-expanded" ng-hide="hideEvents"></span>
+事件
+</h3>
+</div>
+<table ng-hide="hideEvents" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-2">名称</th>
+
+<th class="col-md-5">参数</th>
+
+<th class="col-md-5">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>gotFocus</b></td>
+      <td><a href="topic/wijmo.EventArgs.Class.html"><b>EventArgs</b></a></td>
+      <td>当控件获取焦点时发生。<br/><span class="text-info">(继承自 <a href="topic/wijmo.Control.Class.html"><b>Control</b></a>).</span></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>hidden</b></td>
+      <td><a href="topic/wijmo.EventArgs.Class.html"><b>EventArgs</b></a></td>
+      <td>在 <b>Popup</b> 已经隐藏之后触发。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>hiding</b></td>
+      <td><a href="topic/wijmo.CancelEventArgs.Class.html"><b>CancelEventArgs</b></a></td>
+      <td>在 <b>Popup</b> 即将隐藏之前触发。</td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>lostFocus</b></td>
+      <td><a href="topic/wijmo.EventArgs.Class.html"><b>EventArgs</b></a></td>
+      <td>当控件失去焦点时发生。<br/><span class="text-info">(继承自 <a href="topic/wijmo.Control.Class.html"><b>Control</b></a>).</span></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>showing</b></td>
+      <td><a href="topic/wijmo.CancelEventArgs.Class.html"><b>CancelEventArgs</b></a></td>
+      <td>在 <b>Popup</b> 即将显示之前触发。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>shown</b></td>
+      <td><a href="topic/wijmo.EventArgs.Class.html"><b>EventArgs</b></a></td>
+      <td>在 <b>Popup</b> 已经显示之后触发。</td>
+    </tr>
+</tbody>
+</table>
+</div>
+

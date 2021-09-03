@@ -1,0 +1,47 @@
+﻿<!--
+    This page was generated manually.
+    It is not included in the static TOC, instead it should be referenced
+    from appropriate topics using a link such as this:
+    <a href="static/minMax.html">min max</a>
+-->
+<h2>
+    使用 min 和 max 属性
+</h2>
+<p>
+    有一些 Wijmo 控件具有 <b>min</b> 和 <b>max</b> 属性，可以用来约束可输入值的范围。
+    具有 <b>min</b> 和 <b>max</b> 属性的 Wijmo 控件包括
+    <b>Gauge</b>，<b>Calendar</b>，<b>InputDate</b>
+    以及 <b>InputNumber</b>。
+<p>
+    对于上面全部的控件而言，<b>min</b> 以及 <b>max</b> 属性的行为完全一致：
+    如果指定了值（它们可能被设置为 null），则控件将其用来限制 <b>value</b>
+     属性的值。用户无法将控件的值改变为小于最小值 <b>min</b> 的值或者大于
+    最大值 <b>max</b> 的值。
+</p>
+<p>
+    该行为和标准 HTML <b>input</b> 元素的 <b>min</b> 属性的行为不同，标准的 input 元素
+    允许用户输入无效的值，并会触发校验错误。而 Wijmo 控件简单地防止用户输入非法值。
+</p>
+<p>
+    然而，要注意 <b>min</b> 和 <b>max</b> 属性仅仅限制用户可以输入的值。它们<b>不会</b>
+    限制通过代码或者数据绑定指定给控件的值。
+</p>
+<p>
+    因此，如果您的代码设置或者改变了 <b>min</b> 以及 <b>max</b> 属性的值，同时您希望这些限制
+    应用到当前控件上的值，您需要自己通过代码进行限制。
+</p>
+<p>
+    例如：
+</p>
+<pre>
+// 'ctl' 是任何具有 min/max 属性的 Wijmo 控件，包括
+// Gauge，Calendar，InputDate，以及 InputNumber 。
+//
+// 为值应用新的范围
+ctl.min = newMinValue;
+ctl.max = newMaxValue;
+//
+// 确保控件的值位于新的范围之内
+ctl.value = wijmo.clamp(ctl.value, ctl.min, ctl.max); 
+</pre>
+

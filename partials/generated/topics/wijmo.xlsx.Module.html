@@ -1,0 +1,298 @@
+<h2>模块 wijmo.xlsx</h2>
+<dl class="dl-horizontal">
+<dt>文件</dt><dd>wijmo.xlsx.js</dd>
+</dl>
+<p>该模块依赖外部的 <a href="https://stuk.github.io/jszip" target="_blank">JSZip</a> 库，
+需要在 HTML 页面中使用类似以下的标记添加引用：
+<pre>&lt;script src="http://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"&gt;&lt;/script&gt;</pre></p>
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideClasses = !hideClasses">
+<span class="glyph-collapsed" ng-show="hideClasses"></span>
+<span class="glyph-expanded" ng-hide="hideClasses"></span>
+类
+</h3>
+</div>
+<table ng-hide="hideClasses" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th>名称</th>
+
+<th>描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.xlsx.Workbook.Class.html"><b>Workbook</b></a></td>
+      <td>表示 Excel 工作簿。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.xlsx.WorkbookBorder.Class.html"><b>WorkbookBorder</b></a></td>
+      <td>返回Workbook对象的边框定义 。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.xlsx.WorkbookBorderSetting.Class.html"><b>WorkbookBorderSetting</b></a></td>
+      <td>代表Workbook对象的背景设置定义 。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.xlsx.WorkbookCell.Class.html"><b>WorkbookCell</b></a></td>
+      <td>表示 Workbook 对象模型的单元格定义。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.xlsx.WorkbookColumn.Class.html"><b>WorkbookColumn</b></a></td>
+      <td>表示 Workbook 对象模型的列定义。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.xlsx.WorkbookFill.Class.html"><b>WorkbookFill</b></a></td>
+      <td>表示Workbook 对象模型背景填充定义。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.xlsx.WorkbookFont.Class.html"><b>WorkbookFont</b></a></td>
+      <td>表示 Workbook 对象模型的字体定义。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.xlsx.WorkbookFrozenPane.Class.html"><b>WorkbookFrozenPane</b></a></td>
+      <td>工作簿冻结面板定义</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.xlsx.WorkbookRow.Class.html"><b>WorkbookRow</b></a></td>
+      <td>表示 Workbook 对象模型的行定义。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.xlsx.WorkbookStyle.Class.html"><b>WorkbookStyle</b></a></td>
+      <td>表示用做给 Excel 单元格，列和行添加样式的 Workbook 对象模型样式定义。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.xlsx.WorkSheet.Class.html"><b>WorkSheet</b></a></td>
+      <td><p>表示包含表单属性和数据的 Workbook 对象模型表单定义。</p>
+
+<p>表单的单元格保存在行对象的数组中，通过类似于 <b>sheet.rows[i].cells[j]</b> 的路径进行访问。</p></td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideInterfaces = !hideInterfaces">
+<span class="glyph-collapsed" ng-show="hideInterfaces"></span>
+<span class="glyph-expanded" ng-hide="hideInterfaces"></span>
+接口
+</h3>
+</div>
+<table ng-hide="hideInterfaces" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th>名称</th>
+
+<th>描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.xlsx.ITableAddress.Interface.html"><b>ITableAddress</b></a></td>
+      <td>使用从零开始计算索引值的行和列部分组成的一个单元格索引，同时还包含了表示是否该索引部分是绝对（例如“$D”）的还是相对的（例如“D”）的属性。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.xlsx.IWorkbook.Interface.html"><b>IWorkbook</b></a></td>
+      <td><p>表示 Excel 工作簿。该接口是 Excel Workbook 对象模型（WOM）的一个根定义，
+提供了定义存储在 xlsx 文件中数据和属性的简单方式。</p>
+
+<p>为了创建一个 xlsx 文件，您需要创建一个符合 <b>IWorkbook</b> 接口定义的 JavaScript 对象，同时创建子对象定义工作簿表单以及其中的列，行以及单元格。
+接着将该对象传递给 <b>XlsxConverter</b> 类的 <b>export</b> 方法，该方法会返回给您一个相关的 xlsx 文件的内容，该内容可以被保存在磁盘
+或上传到服务器。</p>
+
+<p>为了读取一个 xlsx 文件数据，您需要将 xlsx 文件的内容传递给 <b>XlsxConverter</b> 类的 <b>import</b> 方法，
+该方法将返回一个符合 <b>IWorkbook</b> 接口的 JavaScript 对象，该对象允许您容易地检查工作簿的数据和属性。您可以以各种
+方式进一步地使用该对象，例如，将其内容绘制到 HTML 页面或者将其保存为一个数据数组，以便进一步处理或用于数据绑定。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.xlsx.IWorkbookBorder.Interface.html"><b>IWorkbookBorder</b></a></td>
+      <td>Workbook 单元格外边框定义。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.xlsx.IWorkbookBorderSetting.Interface.html"><b>IWorkbookBorderSetting</b></a></td>
+      <td>边框样式定义 。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.xlsx.IWorkbookCell.Interface.html"><b>IWorkbookCell</b></a></td>
+      <td>表示 Workbook 对象模型的单元格定义。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.xlsx.IWorkbookColumn.Interface.html"><b>IWorkbookColumn</b></a></td>
+      <td>表示 Workbook 对象模型的列定义。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.xlsx.IWorkbookFill.Interface.html"><b>IWorkbookFill</b></a></td>
+      <td>表示Workbook 对象模型背景填充定义。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.xlsx.IWorkbookFont.Interface.html"><b>IWorkbookFont</b></a></td>
+      <td>表示 Workbook 对象模型的字体定义。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.xlsx.IWorkbookFrozenPane.Interface.html"><b>IWorkbookFrozenPane</b></a></td>
+      <td>工作簿冻结面板定义</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.xlsx.IWorkbookRow.Interface.html"><b>IWorkbookRow</b></a></td>
+      <td>表示 Workbook 对象模型的行定义。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.xlsx.IWorkbookStyle.Interface.html"><b>IWorkbookStyle</b></a></td>
+      <td>表示用做给 Excel 单元格，列和行添加样式的 Workbook 对象模型样式定义。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.xlsx.IWorkSheet.Interface.html"><b>IWorkSheet</b></a></td>
+      <td><p>表示包含表单属性和数据的 Workbook 对象模型表单定义。</p>
+
+<p>表单的单元格保存在行对象的数组中，通过类似于 <b>sheet.rows[i].cells[j]</b> 的路径进行访问。</p></td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideEnumerations = !hideEnumerations">
+<span class="glyph-collapsed" ng-show="hideEnumerations"></span>
+<span class="glyph-expanded" ng-hide="hideEnumerations"></span>
+枚举
+</h3>
+</div>
+<table ng-hide="hideEnumerations" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th>名称</th>
+
+<th>描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.xlsx.BorderStyle.Enum.html"><b>BorderStyle</b></a></td>
+      <td>边框样式</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.xlsx.HAlign.Enum.html"><b>HAlign</b></a></td>
+      <td>定义 Workbook 对象模型水平文本对齐方式。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo.xlsx.VAlign.Enum.html"><b>VAlign</b></a></td>
+      <td>垂直对齐方式</td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideProperties = !hideProperties">
+<span class="glyph-collapsed" ng-show="hideProperties"></span>
+<span class="glyph-expanded" ng-hide="hideProperties"></span>
+属性
+</h3>
+</div>
+<table ng-hide="hideProperties" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-3">名称</th>
+
+<th class="col-md-2">类型</th>
+
+<th class="col-md-7">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td><span class="badge" title="字段">F</span></td>
+      <td><b>absCol</b></td>
+      <td><b>boolean</b></td>
+      <td>表示是否原始的列索引是绝对表示（比如说 “$D”）还是相对表示（比如说“D”）。</td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="字段">F</span></td>
+      <td><b>absRow</b></td>
+      <td><b>boolean</b></td>
+      <td>表示是否原始的行索引是绝对表示（比如说 “$15”）还是相对表示（比如说“15”）。</td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="字段">F</span></td>
+      <td><b>base64</b></td>
+      <td><b>string</b></td>
+      <td>表示导出结果的 base64 编码的字符串。</td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="字段">F</span></td>
+      <td><b>base64Array</b></td>
+      <td><b>Uint8Array</b></td>
+      <td>base64 编码字符串结果转换的 int 型数组。</td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="字段">F</span></td>
+      <td><b>col</b></td>
+      <td><b>number</b></td>
+      <td>从零开始计算的列索引。</td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="字段">F</span></td>
+      <td><b>href</b></td>
+      <td><b>Function</b></td>
+      <td>导出结果的下载链接。</td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="字段">F</span></td>
+      <td><b>row</b></td>
+      <td><b>number</b></td>
+      <td>从零开始计算的行索引。</td>
+    </tr>
+</tbody>
+</table>
+</div>
+

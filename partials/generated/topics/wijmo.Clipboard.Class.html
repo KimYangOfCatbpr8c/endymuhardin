@@ -1,0 +1,75 @@
+<h2>Clipboard 类</h2>
+<dl class="dl-horizontal">
+<dt>模块</dt><dd>wijmo</dd>
+<dt>文件</dt><dd>wijmo.js</dd>
+</dl>
+<p><p>提供剪贴板操作的实用方法的静态类。 </p>
+
+<p><b>Clipboard</b> 类提供了静态 <b>copy</b> 和<b>paste</b> 方法，它可以使用控件来自定义剪贴板操作中的剪贴板内容。 </p>
+
+<p>例如，下面的代码演示了如何控制可以截取剪贴板快捷键，并提供自定义剪贴板处理：</p>
+
+<p><pre>
+rootElement.addEventListener('keydown', function(e) {
+  // 拷贝： ctrl+c 或者 ctrl+Insert
+  if (e.ctrlKey && (e.keyCode == 67 || e.keyCode == 45)) {
+    var text = this.getClipString();
+    Clipboard.copy(text);
+    return;
+  }
+  // 粘贴： ctrl+v 或者 shift+Insert
+  if ((e.ctrlKey && e.keyCode == 86) || (e.shiftKey && e.keyCode == 45)) {
+    Clipboard.paste(function (text) {
+      this.setClipString(text);
+    });
+    return;
+  }
+});</pre></p></p>
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideMethods = !hideMethods">
+<span class="glyph-collapsed" ng-show="hideMethods"></span>
+<span class="glyph-expanded" ng-hide="hideMethods"></span>
+方法
+</h3>
+</div>
+<table ng-hide="hideMethods" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-2">名称</th>
+
+<th class="col-md-5">参数</th>
+
+<th class="col-md-5">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td><span class="badge" title="静态">S</span></td>
+      <td><b>copy</b>&#8203;(text)</td>
+      <td><p>
+<b>text</b> (<b>string</b>): 文本复制到剪切板上。<br/></p>
+</td>
+      <td><p>拷贝字符串到剪切板上。</p>
+
+<p>此方法只适用在用户按下剪贴板复制命令后立即调用该方法（例如ctrl+c）。</p></td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="静态">S</span></td>
+      <td><b>paste</b>&#8203;(callback)</td>
+      <td><p>
+<b>callback</b> (<b>Function</b>): 在检索剪贴板内容时调用的函数。函数接收剪贴板内容作为参数。<br/></p>
+</td>
+      <td><p>从剪切板上获取字符串。</p>
+
+<p>此方法只适用在用户按下剪贴板粘贴命令后立即调用该方法（例如ctrl+v）。</p></td>
+    </tr>
+</tbody>
+</table>
+</div>
+

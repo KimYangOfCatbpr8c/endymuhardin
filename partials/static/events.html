@@ -1,0 +1,65 @@
+﻿<h2>
+    Wijmo 和 HTML 事件</h2>
+<p>
+HTML5 对于HTML 元素有一个事件机制，但是不能为任意对象添加事件，比如，控件和集合。
+</p>
+<p>
+正是由于这个原因，Wijmo 定义了 <b>Event</b>  类用来为所有的Wijmo 类实现所有事件。
+   Wijmo 和 HTML 事件主要的区别有:
+   </p>
+<ol>
+    <li>
+    Wijmo 事件可以被任何元素声明，（不只是html 元素）。</li>
+    <li>
+    Wijmo 事件比 HTML 事件更加轻量，因为他们无需路由（事件捕捉和事件冒泡）。
+        事件的目标就是声明事件的对象。
+        </li>
+    <li>
+     你可以调用事件的 <b>addHandler</b> 和 
+        <b>removeHandler</b> 方法添加和一处WIjmo事件处理程序 （而不是HTML 中的<b>addEventListener</b> 和 
+        <b>removeEventListner</b> ）。
+       </li>
+    <li>
+    每个Wijmo 事件处理程序接受两个参数：(a) 事件触发者,  (b) 事件参数。</li>
+    <li>Wijmo 根据这个模式来触发事件：
+    事件“XYZ” 可以被对应的方法“onXYZ”来触发 。可以被派生类覆盖以处理事件，无需附加任何处理程序，自定义或者取缔事件。
+    </li>
+</ol>
+
+<p>
+Wijmo 事件不会取代HTML 事件，通常应用会同时使用。HTMl 事件用来处理鼠标和键盘交互，用于控件的托管元素或者定义控件模板的元素。
+
+Wijmo 事件用于处理控件特定事件，和DOM 没有直接的关系。
+比如：<b>valueChanged</b> 或 <b>rowAdded</b> 。</p>
+<p>
+下面这个列子展示了如何向HTML 添加事件处理程序，和向<b>InputNumber</b> 控件添加Wijmo 事件处理程序。
+
+<pre>// 创建控件
+var ctl = new wijmo.input.InputNumber('#inputNumber');
+
+// 添加Wijmo 事件处理程序
+ctl.valueChanged.addHandler(function (s, e) {
+    console.log('the value has changed to ' + s.value);
+});
+
+// 添加 HTML 事件处理程序。
+ctl.addEventListener(ctl.hostElement, 'keypress', function(e) {
+    console.log('you pressed ' + e.charCode);
+});</pre>
+
+<p>
+    这个列子展示了纯Javascript语法。 如果应用使用了一些框架，比如：Angular, Knockout, Aurelia, 或者 Vue，那么应该使用框架定义的语法。
+    </p>
+<p>
+
+比如：Angular 1.x 可以向 Wijmo  <b>valueChanged</b> 事件添加处理程序：</p>
+<pre>&lt;wj-input-number
+    value-changed="myValueChangedEventHander(s, e)"&gt;...</pre>
+
+<p>
+但是在Angular 中，你需要这么做:</p>
+<pre>&lt;wj-input-number #theControl
+    (value-changed)="myValueChangedEventHander(theControl, $event)"&gt;...</pre>
+
+<p>
+ 了解更多关于HTML 和WIjmo事件，请参见我们的  <a href="http://wijmo.com/blog/html-and-wijmo-events/" target="_blank">HTML and Wijmo Events</a> 博客，和<a href="topic/wijmo.Event.Class.html">Event</a>  文档。</p>

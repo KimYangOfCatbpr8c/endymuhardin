@@ -1,0 +1,67 @@
+﻿<h2>
+    AngularJS 指令</h2>
+<p>
+    我们，ComponentOne 是 Google 的 JavaScript 应用程序框架 <a href="https://angularjs.org/" target="_blank">AngularJS</a> 的超级粉丝。
+    AngularJS 提供了模板引擎，数据绑定，MVVM，Web 组件，以及其他许多特性。
+</p>
+<p>
+    AngularJS 的众多长处之一就是支持 MVVM 模式，应用程序逻辑包含在 Model （也叫做 Controller，通过 JavaScript 实现）中，外观包含在 View（HTML） 中。
+</p>
+<p>
+    为了实现这一点，AngularJS 支持了 <b>directives 指令</b>，这是一种自定义 HTML 元素和属性。
+    AngularJS 发布了一系列的内置指定，并且您可以容易地创建您自己的指令。就像在 WinForms 或者 XAML 应用程序中创建您自己的控件一样。
+</p>
+<p>
+    Wijmo 5 为其全部的控件发布了 AngularJS 指定。这些指令定义在 <b>wijmo.angular.js</b> 文件中，
+    允许您像这样书写代码：
+</p>
+<pre>&lt;div ng-app="app" ng-controller="appCtrl"&gt;
+    
+&lt;p&gt;This is a &lt;b&gt;FlexGrid&lt;/b&gt; control:&lt;/p&gt;
+&lt;wj-flex-grid items-source="data"&gt;
+    &lt;wj-flex-grid-column header="Country" binding="country"&gt;&lt;/wj-flex-grid-column&gt;
+    &lt;wj-flex-grid-column header="Sales" binding="sales"&gt;&lt;/wj-flex-grid-column&gt;
+    &lt;wj-flex-grid-column header="Expenses" binding="expenses"&gt;&lt;/wj-flex-grid-column&gt;
+    &lt;wj-flex-grid-column header="Downloads" binding="downloads"&gt;&lt;/wj-flex-grid-column&gt;
+&lt;/wj-flex-grid&gt;
+&lt;/div&gt;</pre>
+
+<h3>
+    在 AngularJS 应用程序中使用 Wijmo 5
+</h3>
+<p>
+    如果您希望在您的工程中使用 Wijmo 5 Angular 指令，请添加对 AngularJS，Wijmo 的引用，同时添加对 Wijmo AngularJS 指令的引用。具体描述请参见
+    <a href="static/references.html">在应用程序中引用 Wijomo 5</a>
+    主题。
+</p>
+<p>
+    当您添加完引用，就可以使用类似以下代码告诉 AngularJS 您的应用程序依赖 “wj” 模块：
+</p>
+<pre>var app = angular.module('app', ['wj']);</pre>
+<p>
+    应用程序定义完成后，您可以继续添加 controller，以便像普通的 AngularJS 应用程序一样提供数据和逻辑。
+</p>
+<p>
+    全部的 Wijmo 5 指令均以 “wj” 前缀，紧跟着控件的类名称，使用短线连接而不是驼峰格式。
+    匹配控件的指令属性，也遵循相同的命名规范。
+</p>
+<p>
+    有一些指令支持内嵌子指令。比如说 <b>wj-flex-grid</b> 指令可以包含一个或多个的 <b>wj-flex-grid-column</b> 指令，
+    同时 <b>wj-flex-chart</b> 指令可以包含一个或多个的 <b>wj-flex-chart-series</b> 指令。
+    这产生了一种表现力丰富的标记语法，与 XAML 非常相似。
+    这种灵活性是必不可少的，以便充分享受到 MVVM 的好处。
+    控件的外观和布局由 view 定义；controller 仅仅提供数据。
+</p>
+<p>
+    以下 fiddle 片段展示这是如何工作的：
+</p>
+<p>
+    <a href="http://jsfiddle.net/Wijmo5/QNb9X/" target="_blank" class="btn btn-info">
+        <img src="images/fiddle.png" />
+        AngularJS 版本 Wijmo Directives 指令
+    </a>
+</p>
+<p>
+    更多关于如何在 AngularJS 中使用 Wijmo 5 的范例，请参见我们的
+    <a href="http://wijmo.com/5/#demos" target="_blank">示例</a>。
+</p>

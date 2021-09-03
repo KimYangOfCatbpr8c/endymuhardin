@@ -1,0 +1,38 @@
+<h2>wjFlexGrid 类</h2>
+<dl class="dl-horizontal">
+<dt>基类</dt><dd><b>WjBinding</b></dd>
+<dt>派生类</dt><dd><a href="topic/wijmo.knockout.wjFlexSheet.Class.html"><b>wjFlexSheet</b></a>, <a href="topic/wijmo.knockout.wjMultiRow.Class.html"><b>wjMultiRow</b></a>, <a href="topic/wijmo.knockout.wjPivotGrid.Class.html"><b>wjPivotGrid</b></a></dd>
+<dt>模块</dt><dd>wijmo.knockout</dd>
+<dt>文件</dt><dd>wijmo.knockout.js</dd>
+<dt>表示</dt><dd><label style="font-weight:normal">继承成员 <input type="checkbox" ng-model="showInherited"></label></dd>
+</dl>
+<p><p>使用 KnockoutJS 绑定 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a> 控件。</p>
+
+<p>使用 <b>wjFlexGrid</b> 绑定添加 <b>FlexGrid</b> 控件，示例如下：</p>
+
+<p><pre>&lt;p&gt;Here is a FlexGrid control:&lt;/p&gt;
+&lt;div data-bind="wjFlexGrid: { itemsSource: data }"&gt;
+    &lt;div data-bind="wjFlexGridColumn: { 
+        header: 'Country', 
+        binding: 'country', 
+        width: '*' }"&gt;
+    &lt;/div&gt;
+    &lt;div data-bind="wjFlexGridColumn: { 
+        header: 'Date', 
+        binding: 'date' }"&gt;
+    &lt;/div&gt;
+    &lt;div data-bind="wjFlexGridColumn: { 
+        header: 'Revenue', 
+        binding: 'amount', 
+        format: 'n0' }"&gt;
+    &lt;/div&gt;
+    &lt;div data-bind="wjFlexGridColumn: { 
+        header: 'Active', 
+        binding: 'active' }"&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</pre></p>
+
+<p><b>wjFlexGrid</b> 绑定可以包含 <a href="topic/wijmo.knockout.wjFlexGridColumn.Class.html"><b>wjFlexGridColumn</b></a> 子绑定。</p>
+
+<p>lt;b>wjFlexGrid</b> 支持 <b>FlexGrid</b> 控件的所有可读写属性及事件，除了 <b>scrollPosition</b> 和 
+<b>selection</b> 属性</p></p>

@@ -1,0 +1,104 @@
+<h2>IFlexGridDrawSettings 类</h2>
+<dl class="dl-horizontal">
+<dt>模块</dt><dd>wijmo.grid.pdf</dd>
+<dt>文件</dt><dd>wijmo.grid.pdf.js</dd>
+</dl>
+<p>表示 <b>draw</b> 以及 <b>drawToPosition</b> 方法所使用的设置。</p>
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideProperties = !hideProperties">
+<span class="glyph-collapsed" ng-show="hideProperties"></span>
+<span class="glyph-expanded" ng-hide="hideProperties"></span>
+属性
+</h3>
+</div>
+<table ng-hide="hideProperties" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-3">名称</th>
+
+<th class="col-md-2">类型</th>
+
+<th class="col-md-7">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td><span class="badge" title="字段">F</span></td>
+      <td><b>embeddedFonts?</b></td>
+      <td><a href="topic/wijmo.pdf.IPdfFontFile.Interface.html"><b>IPdfFontFile</b></a><b>[]</b></td>
+      <td><p>表示将内嵌到文档中的自定义字体的数组。</p>
+
+<p>该示例演示如何设置 FlexGridPdfConverter 使用两种自定义字体，Cuprum-Bold.ttf 以及 Cuprum-Regular.ttf。
+第一个仅应用到行头或列头单元格，而第二个字体将应用到其余所有的单元格。</p>
+
+<p><pre>
+	wijmo.grid.pdf.FlexGridPdfConverter.export(flex, fileName, {
+		embeddedFonts: [
+			{
+				source: 'resources/ttf/Cuprum-Bold.ttf',
+				name: 'cuprum',
+				style: 'normal',
+				weight: 'bold'
+			},
+			{
+				source: 'resources/ttf/Cuprum-Regular.ttf',
+				name: 'cuprum',
+				style: 'normal',
+				weight: 'normal'
+			}
+		],
+		styles: {
+			cellStyle: {
+				font: {
+					family: 'cuprum'
+				}
+			},
+			headerCellStyle: {
+				font: {
+					weight: 'bold'
+				}
+			}
+		}
+	});
+		</pre></p></td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="字段">F</span></td>
+      <td><b>exportMode?</b></td>
+      <td><a href="topic/wijmo.grid.pdf.ExportMode.Enum.html"><b>ExportMode</b></a></td>
+      <td>确定导出模式。</td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="字段">F</span></td>
+      <td><b>maxPages?</b></td>
+      <td><b>number</b></td>
+      <td>确定最大导出页数。</td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="字段">F</span></td>
+      <td><b>recalculateStarWidths?</b></td>
+      <td><b>boolean</b></td>
+      <td>确定是否星号尺寸标记的列宽应当基于 PDF 页面的宽度重新计算而不是使用表单的宽度。</td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="字段">F</span></td>
+      <td><b>repeatMergedValuesAcrossPages?</b></td>
+      <td><b>boolean</b></td>
+      <td>指示当合并的范围切分到多个页面时，是否合并的值应当跨页面重复。</td>
+    </tr>
+    <tr>
+      <td><span class="badge" title="字段">F</span></td>
+      <td><b>styles?</b></td>
+      <td><a href="topic/wijmo.grid.pdf.IFlexGridStyle.Interface.html"><b>IFlexGridStyle</b></a></td>
+      <td>表示导出的 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a> 的外观。</td>
+    </tr>
+</tbody>
+</table>
+</div>
+

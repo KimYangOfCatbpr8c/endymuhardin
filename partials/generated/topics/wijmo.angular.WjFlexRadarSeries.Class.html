@@ -1,0 +1,57 @@
+<h2>WjFlexRadarSeries 类</h2>
+<dl class="dl-horizontal">
+<dt>基类</dt><dd><b>WjSeriesBase</b></dd>
+<dt>模块</dt><dd>wijmo.angular</dd>
+<dt>文件</dt><dd>wijmo.angular.js</dd>
+<dt>表示</dt><dd><label style="font-weight:normal">继承成员 <input type="checkbox" ng-model="showInherited"></label></dd>
+</dl>
+<p><p>用于 <a href="topic/wijmo.chart.finance.FinancialSeries.Class.html"><b>FinancialSeries</b></a> 的AngularJs指令。</p>
+
+<p> <b>wj-financial-chart-series</b> 指令可能包含在 <a href="topic/wijmo.angular.WjFinancialChart.Class.html"><b>WjFinancialChart</b></a>  指令中。.
+ 它支持下面的特性：</p>
+
+<p>
+<dl class="dl-horizontal">
+  <dt>axis-x</dt>       <dd><code>@</code>系列的X轴。</dd>
+  <dt>axis-y</dt>       <dd><code>@</code>系列的X轴。</dd>
+  <dt>binding</dt>      <dd><code>@</code> 包含系列Y轴值的属性名。
+  这个值覆盖任何绑定在图表上的设置。</dd>
+  <dt>binding-x</dt>    <dd><code>@</code> 包含系列X轴值的属性名。
+  这个值覆盖任何绑定在图表上的设置。</dd>
+  <dt>chart-type</dt>   <dd><code>@</code> 
+用于为这个系列绘制的图表类型。这个值覆盖任何绑定在图表上的设置。参见
+                        <a href="topic/wijmo.chart.finance.FinancialChartType.Enum.html"><b>FinancialChartType</b></a>.</dd>
+  <dt>css-class</dt>    <dd><code>@</code> 
+用于这个系列的CSS类。</dd>
+  <dt>items-source</dt> <dd><code>=</code> 
+包含这几个系列数据的数组或者<a href="topic/wijmo.collections.ICollectionView.Interface.html"><b>ICollectionView</b></a> 对象。
+</dd>
+  <dt>name</dt>         <dd><code>@</code>
+展示在图例上的系列名称。</dd>
+  <dt>style</dt>        <dd><code>=</code>
+系列样式。 使用ng-attr-style 指令系列样式对象。参见 ngAttr 属性绑定
+   The series style. Use ng-attr-style to specify the series
+                        style object as an object.
+                        <a target="_blank" href="https://docs.angularjs.org/guide/directive">
+                        AngularJS 创建自定义指令。</a> and the <a target="_blank" href=
+                        "http://demos.wijmo.com/5/Angular/FlexChartIntro/FlexChartIntro/#Styling">
+                        FlexChart 101 Styling Series</a></dd>
+  <dt>altStyle</dt>     <dd><code>=</code> 
+系列可替代风格。
+</dd>
+  <dt>symbol-marker</dt><dd><code>@</code>
+这个系列使用的标记形状，这个值覆盖了设置在图表上的默认值。</dd>
+  <dt>symbol-size</dt>  <dd><code>@</code> 
+用于 Scatter, LineSymbols, 或 SplineSymbols 图表的数据点符号的尺寸，单位是像素。
+这个值覆盖了图标级别上的设置。
+</dd>
+  <dt>symbol-style</dt> <dd><code>=</code> </p>
+
+<p>
+ 用于 Scatter, LineSymbols, 或 SplineSymbols 图表的数据点符号的样式，单位是像素。
+这个值覆盖了图标级别上的设置。</dd>
+  <dt>visibility</dt>   <dd><code>=</code> 
+ <a href="topic/wijmo.chart.SeriesVisibility.Enum.html"><b>SeriesVisibility</b></a>  指定是否和在哪里展示系列。</dd>
+</dl>
+在大多数情况下， <b>wj-financial-chart-series</b>  仅指定 <b>name</b> 和 <b>binding</b> 属性。
+保留的值是集成自父  <b>wj-financial-chart</b> 指令。</p></p>

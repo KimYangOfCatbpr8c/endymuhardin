@@ -1,0 +1,73 @@
+<h2>WjFlexRadar 类</h2>
+<dl class="dl-horizontal">
+<dt>基类</dt><dd><b>WjFlexChartCore</b></dd>
+<dt>模块</dt><dd>wijmo.angular</dd>
+<dt>文件</dt><dd>wijmo.angular.js</dd>
+<dt>表示</dt><dd><label style="font-weight:normal">继承成员 <input type="checkbox" ng-model="showInherited"></label></dd>
+</dl>
+<p><p>AngularJS 指令用于 <a href="topic/wijmo.chart.radar.FlexRadar.Class.html"><b>FlexRadar</b></a> 控件。
+使用 <b>wj-flex-radar</b>  指令想你的 AngularJs 应用添加雷达图。注意，指令和参数名必须使用小写加短线格式。
+wj-flex-radar  指令支持下面的属性：</p>
+
+<p><dl class="dl-horizontal">
+  <dt>binding</dt>           <dd><code>@</code>包含图表Y轴值的属性名。你可以在系列级别上覆盖它。
+ </dd>
+  <dt>binding-x</dt>         <dd><code>@</code>
+  包含图表X轴值的属性名。你可以在系列级别上覆盖它。
+ </dd>
+  <dt>chart-type</dt>        <dd><code>@</code> 选择这个系列对象的默认图表类型。你可以在系列级别上覆盖它。
+  The default chart type to use in rendering series
+                             objects. 你可以在系列级别上覆盖它。 查看 <a href="topic/wijmo.chart.radar.RadarChartType.Enum.html"><b>RadarChartType</b></a>.</dd>
+  <dt>control</dt>           <dd><code>=</code>指向这里指定创建的<b>FlexRadar控件的引用</b>。</dd>
+  <dt>footer</dt>            <dd><code>@</code> 在图表底部展示的图表内容（纯文本）。</dd>
+  <dt>footer-style</dt>       <dd><code>=</code> 
+  应用到图表底部的样式。</dd>
+  <dt>header</dt>            <dd><code>@</code> 在图表标题展示的图表内容（纯文本）。</dd>
+  <dt>header-style</dt>      <dd><code>=</code> 应用到图表标题的样式。</dd>
+  <dt>initialized</dt>       <dd><code>&</code> 
+  在绑定完成对控件的初始化后触发。</dd>
+  <dt>is-initialized</dt><dd><code>=</code>
+一个值指示绑定是否完成对控件的初始化。 </dd>
+  <dt>interpolate-nulls</dt> <dd><code>@</code> 
+  获取一个值，决定当数据为null是，插入值还是留空隙。</p>
+
+<p> </dd>
+  <dt>item-formatter</dt>    <dd><code>=</code> 
+  自定义数据点外观的格式化函数。</dd>
+  <dt>items-source</dt>      <dd><code>=</code>
+包含用于创建图表数据的数组或者<a href="topic/wijmo.collections.ICollectionView.Interface.html"><b>ICollectionView</b></a> 对象。</dd>
+  <dt>legend-toggle</dt>     <dd><code>@</code>
+获取一个值，决定在点击图例时是否切换图表可见性。</dd>
+  <dt>options</dt>           <dd><code>=</code> 
+只能应用与确定图表类型的 <b>options</b> 。</dd>
+  <dt>palette</dt>           <dd><code>=</code> 
+包含用于展示每个系列的颜色的数组。</dd>
+  <dt>plot-margin</dt>       <dd><code>=</code> 
+在控件边缘留空隙的像素数，或是 CSS-style 的margin。
+</dd>
+  <dt>stacking</dt>          <dd><code>@</code>
+ <a href="topic/wijmo.chart.Stacking.Enum.html"><b>Stacking</b></a>  值指定系列堆积还是独立绘制。
+ </dd>
+  <dt>reversed</dt>          <dd><code>@</code> 
+ <b>reversed</b>  决定角度是否为逆时针。
+ </dd>
+  <dt>startAngle</dt>        <dd><code>@</code>
+指定控件的其实角度，单位是度。
+</dd>
+  <dt>totalAngle</dt>        <dd><code>@</code> 
+指定控件的总角度，单位是度。
+</dd>
+  <dt>symbol-size</dt>       <dd><code>@</code>
+用于在Scatter,LineSymbols, 和 SplineSymbols 图表中绘制数据点的符号尺寸，单位是像素，你可以在系列级别覆盖。
+</dd>
+  <dt>tooltip-content</dt>   <dd><code>@</code> 
+ 展示在<a href="topic/wijmo.chart.ChartTooltip.Class.html"><b>ChartTooltip</b></a> 属性中的文本。</dd>
+  <dt>rendering</dt>         <dd><code>&</code> 
+ <b>rendering</b> 事件处理程序。
+ </dd>
+  <dt>rendered</dt>          <dd><code>&</code><b>rendered</b> 事件处理程序 。</dd>
+  <dt>series-visibility-changed</dt>
+                             <dd><code>&</code> <b>seriesVisibilityChanged</b> 事件处理程序。</dd>
+</dl>
+wj-flex-radar 指令可能包含下面的子指令：
+<a href="topic/wijmo.angular.WjFlexChartAxis.Class.html"><b>WjFlexChartAxis</b></a>, <a href="topic/wijmo.angular.WjFlexRadarSeries.Class.html"><b>WjFlexRadarSeries</b></a>, <a href="topic/wijmo.angular.WjFlexChartLegend.Class.html"><b>WjFlexChartLegend</b></a> 和 <a href="topic/wijmo.angular.WjFlexChartDataLabel.Class.html"><b>WjFlexChartDataLabel</b></a>.</p></p>

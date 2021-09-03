@@ -1,0 +1,33 @@
+<h2>WjFlexChartLegend 类</h2>
+<dl class="dl-horizontal">
+<dt>基类</dt><dd><b>WjDirective</b></dd>
+<dt>模块</dt><dd>wijmo.angular</dd>
+<dt>文件</dt><dd>wijmo.angular.js</dd>
+<dt>表示</dt><dd><label style="font-weight:normal">继承成员 <input type="checkbox" ng-model="showInherited"></label></dd>
+</dl>
+<p><p>AngularJS 指令应用于 <a href="topic/wijmo.chart.FlexChart.Class.html"><b>FlexChart</b></a> <a href="topic/wijmo.chart.Legend.Class.html"><b>Legend</b></a> 对象.</p>
+
+<p><b>wj-flex-chart-legend</b> 指令必须包含于 <a href="topic/wijmo.angular.WjFlexChart.Class.html"><b>WjFlexChart</b></a> 指令, <a href="topic/wijmo.angular.WjFlexPie.Class.html"><b>WjFlexPie</b></a> 指令或者 <a href="topic/wijmo.angular.WjFinancialChart.Class.html"><b>WjFinancialChart</b></a> 指令中。
+支持以下属性:</p>
+
+<p><dl class="dl-horizontal">
+  <dt>position</dt>       <dd><code>@</code> <a href="topic/wijmo.chart.Position.Enum.html"><b>Position</b></a> 定义示例的位置。</dd>
+</dl></p>
+
+<p>下面的例子演示了怎样使用 wj-flex-chart-legend 指令改变示例图表的位置:</p>
+
+<p><pre>&lt;wj-flex-chart
+  items-source="data"
+  binding-x="country"&gt;
+  &lt;wj-flex-chart-axis
+      wj-property="axisY"
+      major-unit="5000"&gt;
+    &lt;/wj-flex-chart-axis&gt;
+    &lt;wj-flex-chart-series
+      binding="sales"
+      name="Sales"&gt;
+    &lt;/wj-flex-chart-series&gt;
+  &lt;wj-flex-chart-legend
+    position="Bottom"&gt;
+  &lt;/wj-flex-chart-legend&gt;
+&lt;/wj-flex-chart&gt;</pre></p></p>

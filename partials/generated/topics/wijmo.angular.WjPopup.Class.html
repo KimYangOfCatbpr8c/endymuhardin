@@ -1,0 +1,47 @@
+<h2>WjPopup 类</h2>
+<dl class="dl-horizontal">
+<dt>基类</dt><dd><b>WjDirective</b></dd>
+<dt>模块</dt><dd>wijmo.angular</dd>
+<dt>文件</dt><dd>wijmo.angular.js</dd>
+<dt>表示</dt><dd><label style="font-weight:normal">继承成员 <input type="checkbox" ng-model="showInherited"></label></dd>
+</dl>
+<p><p>AngularJS 指令应用于 <a href="topic/wijmo.input.Popup.Class.html"><b>Popup</b></a> control.</p>
+
+<p>使用 <b>wj-popup</b> 指令添加 <b>Popup</b> 到 AngularJS 应用中。</p>
+
+<p>弹出内容可能包含 <b>wj-popup</b> 标签，可以包含使用了 AngularJS 绑定和指令的 HTML 代码段。</p>
+
+<p>注意指令和参数名称必须使用小写字母+短线语法替代驼峰命名。 示例：</p>
+
+<p><pre>&lt;p&gt;Here is a Popup control triggered by a button:&lt;/p&gt;
+&lt;button id="btn2" type="button"&gt;
+    Click to show Popup
+&lt;/button&gt;
+&lt;wj-popup owner="#btn2" show-trigger="Click" hide-trigger="Blur"&gt;
+    &lt;h3&gt;
+        Salutation
+    &lt;/h3&gt;
+    &lt;div class="popover-content"&gt;
+        Hello {&#8203;{firstName}} {&#8203;{lastName}}
+    &lt;/div&gt;
+&lt;/wj-popup&gt;</pre></p>
+
+<p><b>wj-popup</b> 指令支持以下属性:</p>
+
+<p><dl class="dl-horizontal">
+  <dt>control</dt>         <dd><code>=</code> 该指令创建的指向 Popup 的引用</dd>
+  <dt>fade-in</dt>         <dd><code>@</code> 是否显示淡入效果。</dd>
+  <dt>fade-out</dt>        <dd><code>@</code> 是否显示淡出效果。</dd>
+  <dt>hide-trigger</dt>    <dd><code>@</code> <a href="topic/wijmo.input.PopupTrigger.Enum.html"><b>PopupTrigger</b></a> 值定义隐藏 <b>Popup</b> 的行为。</dd>
+  <dt>initialized</dt>     <dd><code>&</code> 该事件在绑定完成控件特性值的初始化后被触发。</dd>
+  <dt>is-initialized</dt>  <dd><code>=</code> 绑定是否已经完成控件特性值的初始化。 </dd>
+  <dt>owner</dt>           <dd><code>@</code> 一个css选择器，用以定位控制弹出画面可见性的画面元素。</dd>
+  <dt>show-trigger</dt>    <dd><code>@</code> <b>PopupTrigger</b> 值定义显示 <b>Popup</b> 的行为。</dd>
+  <dt>modal</dt>           <dd><code>@</code> 指定是否显示为模态对话框。</dd>
+  <dt>got-focus</dt>       <dd><code>&</code> <b>gotFocus</b> 事件。</dd>
+  <dt>lost-focus</dt>      <dd><code>&</code> <b>lostFocus</b> 事件。</dd>
+  <dt>showing</dt>         <dd><code>&</code> <b>showing</b> 事件。</dd>
+  <dt>shown</dt>           <dd><code>&</code> <b>shown</b> 事件。</dd>
+  <dt>hiding</dt>          <dd><code>&</code> <b>hiding</b> 事件。</dd>
+  <dt>hidden</dt>          <dd><code>&</code> <b>hidden</b> 事件。</dd>
+</dl></p></p>

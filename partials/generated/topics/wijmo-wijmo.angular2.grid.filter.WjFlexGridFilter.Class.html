@@ -1,0 +1,251 @@
+<h2>WjFlexGridFilter 类</h2>
+<dl class="dl-horizontal">
+<dt>基类</dt><dd><a href="topic/wijmo.grid.filter.FlexGridFilter.Class.html"><b>FlexGridFilter</b></a></dd>
+<dt>模块</dt><dd>wijmo/wijmo.angular2.grid.filter</dd>
+<dt>文件</dt><dd>wijmo.angular2.js</dd>
+<dt>表示</dt><dd><label style="font-weight:normal">继承成员 <input type="checkbox" ng-model="showInherited"></label></dd>
+</dl>
+<p><p><a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a> <a href="topic/wijmo.grid.filter.FlexGridFilter.Class.html"><b>FlexGridFilter</b></a> 对象对应的 Angular 2 组件。</p>
+
+<p><b>wj-flex-grid-filter</b> 组件必须包含在一个 <a href="topic/wijmo-wijmo.angular2.grid.WjFlexGrid.Class.html"><b>WjFlexGrid</b></a> 组件内部。</p>
+
+<p>使用 <b>wj-flex-grid-filter</b> 组件添加 <b>FlexGridFilter</b> 对象至您的 Angular 2 应用程序中。关于 Angular 2 标记语法的更多细节，请参见
+<a href="static/angular2Markup.html">Angular 2 标记</a>。</p>
+
+<p><b>WjFlexGridFilter</b> 组件继承自 <b>FlexGridFilter</b> 类，因此继承了其全部的属性，事件和方法。</p></p>
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideProperties = !hideProperties">
+<span class="glyph-collapsed" ng-show="hideProperties"></span>
+<span class="glyph-expanded" ng-hide="hideProperties"></span>
+属性
+</h3>
+</div>
+<table ng-hide="hideProperties" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-3">名称</th>
+
+<th class="col-md-2">类型</th>
+
+<th class="col-md-7">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>defaultFilterType</b></td>
+      <td><a href="topic/wijmo.grid.filter.FilterType.Enum.html"><b>FilterType</b></a></td>
+      <td><p>获取或设置所使用的默认筛选器类型。</p>
+
+<p>该值可以在指定列的筛选器上被覆盖。例如，以下代码创建一个筛选器，在全部的列上
+按照指定条件筛选，除了“ByValue”列以外：</p>
+
+<p><pre>
+var f = new wijmo.grid.filter.FlexGridFilter(flex);
+f.defaultFilterType = wijmo.grid.filter.FilterType.Condition;
+var col = flex.columns.getColumn('ByValue'),
+    cf = f.getColumnFilter(col);
+cf.filterType = wijmo.grid.filter.FilterType.Value;
+</pre></p><br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.filter.FlexGridFilter.Class.html"><b>FlexGridFilter</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>filterColumns</b></td>
+      <td><b>string</b><b>[]</b></td>
+      <td><p>获取或设置一个包含具有筛选器的列的名称或绑定的数组。</p>
+
+<p>设置该属性为 null 或者一个空的数组将添加筛选器至全部的列。</p><br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.filter.FlexGridFilter.Class.html"><b>FlexGridFilter</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>filterDefinition</b></td>
+      <td><b>string</b></td>
+      <td>获取或设置以 JSON 字符串表示的当前的筛选器定义。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.filter.FlexGridFilter.Class.html"><b>FlexGridFilter</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>grid</b></td>
+      <td><a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a></td>
+      <td>获取拥有该筛选器的 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a> 的一个引用。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.filter.FlexGridFilter.Class.html"><b>FlexGridFilter</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>showFilterIcons</b></td>
+      <td><b>boolean</b></td>
+      <td><p>获取或设置一个布尔值，该值表示是否 <a href="topic/wijmo.grid.filter.FlexGridFilter.Class.html"><b>FlexGridFilter</b></a> 向表单的列头添加编辑按钮。</p>
+
+<p>如果您设置该属性的值为 false，那么您需要自行向用户提供编辑/清除/应用筛选器的方式。</p><br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.filter.FlexGridFilter.Class.html"><b>FlexGridFilter</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>showSortButtons</b></td>
+      <td><b>boolean</b></td>
+      <td><p>获取或设置一个布尔值，该值表示是否筛选编辑器应当包含排序按钮。</p>
+
+<p>默认情况下，编辑器和 Excel 一样提供排序按钮。但是由于用户也可以通过单击列头进行排序，
+在某些场景下排序按钮不是那么的有迫切需求。</p><br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.filter.FlexGridFilter.Class.html"><b>FlexGridFilter</b></a>).</span></td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideMethods = !hideMethods">
+<span class="glyph-collapsed" ng-show="hideMethods"></span>
+<span class="glyph-expanded" ng-hide="hideMethods"></span>
+方法
+</h3>
+</div>
+<table ng-hide="hideMethods" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-2">名称</th>
+
+<th class="col-md-5">参数</th>
+
+<th class="col-md-5">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>apply</b>&#8203;()</td>
+      <td></td>
+      <td>应用当前列筛选器至表单。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.filter.FlexGridFilter.Class.html"><b>FlexGridFilter</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>clear</b>&#8203;()</td>
+      <td></td>
+      <td>清除全部的列筛选器。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.filter.FlexGridFilter.Class.html"><b>FlexGridFilter</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>closeEditor</b>&#8203;()</td>
+      <td></td>
+      <td>关闭该筛选器编辑器。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.filter.FlexGridFilter.Class.html"><b>FlexGridFilter</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>constructor</b>&#8203;(grid): <a href="topic/wijmo.grid.filter.FlexGridFilter.Class.html"><b>FlexGridFilter</b></a></td>
+      <td><p>
+<b>grid</b> (<a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a>): The <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a> to filter.<br/></p>
+</td>
+      <td>初始化 <a href="topic/wijmo.grid.filter.FlexGridFilter.Class.html"><b>FlexGridFilter</b></a> 类的一个新实例<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.filter.FlexGridFilter.Class.html"><b>FlexGridFilter</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>editColumnFilter</b>&#8203;(col, ht?)</td>
+      <td><p>
+<b>col</b> (<b>any</b>): 包含待编辑的筛选器的 <a href="topic/wijmo.grid.Column.Class.html"><b>Column</b></a>。<br/><b>ht?</b> (<a href="topic/wijmo.grid.HitTestInfo.Class.html"><b>HitTestInfo</b></a>): 一个包含触发该筛选器显示的单元格范围的 <a href="topic/wijmo.grid.HitTestInfo.Class.html"><b>HitTestInfo</b></a> 对象。<br/></p>
+</td>
+      <td>为指定的表单列显示筛选器编辑器。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.filter.FlexGridFilter.Class.html"><b>FlexGridFilter</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>getColumnFilter</b>&#8203;(col, create?): <a href="topic/wijmo.grid.filter.ColumnFilter.Class.html"><b>ColumnFilter</b></a></td>
+      <td><p>
+<b>col</b> (<b>any</b>): 该筛选器应用到的目标 <a href="topic/wijmo.grid.Column.Class.html"><b>Column</b></a>（或者列名或列索引）。<br/><b>create?</b> (<b>boolean</b>): 当不存在筛选器时，是否创建该筛选器。<br/><span class="text-info">(默认值: <b>true</b>)</span><br/></p>
+</td>
+      <td>获取指定列的筛选器。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.filter.FlexGridFilter.Class.html"><b>FlexGridFilter</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>onFilterApplied</b>&#8203;(e?)</td>
+      <td><p>
+<b>e?</b> (<a href="topic/wijmo.EventArgs.Class.html"><b>EventArgs</b></a>)<br/></p>
+</td>
+      <td>触发 <b>filterApplied</b> 事件。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.filter.FlexGridFilter.Class.html"><b>FlexGridFilter</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>onFilterChanged</b>&#8203;(e)</td>
+      <td><p>
+<b>e</b> (<a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><b>CellRangeEventArgs</b></a>)<br/></p>
+</td>
+      <td>触发 <b>filterChanged</b> 事件。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.filter.FlexGridFilter.Class.html"><b>FlexGridFilter</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>onFilterChanging</b>&#8203;(e)</td>
+      <td><p>
+<b>e</b> (<a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><b>CellRangeEventArgs</b></a>)<br/></p>
+</td>
+      <td>触发 <b>filterChanging</b> 事件。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.filter.FlexGridFilter.Class.html"><b>FlexGridFilter</b></a>).</span></td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideEvents = !hideEvents">
+<span class="glyph-collapsed" ng-show="hideEvents"></span>
+<span class="glyph-expanded" ng-hide="hideEvents"></span>
+事件
+</h3>
+</div>
+<table ng-hide="hideEvents" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-2">名称</th>
+
+<th class="col-md-5">参数</th>
+
+<th class="col-md-5">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>filterApplied</b></td>
+      <td><a href="topic/wijmo.EventArgs.Class.html"><b>EventArgs</b></a></td>
+      <td>在筛选器被应用之后触发。<br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.filter.FlexGridFilter.Class.html"><b>FlexGridFilter</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>filterChanged</b></td>
+      <td><a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><b>CellRangeEventArgs</b></a></td>
+      <td><p>在一个列筛选器被用户编辑完成之后触发。</p>
+
+<p>使用该事件参数获取拥有该筛选器的列，并确定是否该变更被应用或取消。</p><br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.filter.FlexGridFilter.Class.html"><b>FlexGridFilter</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>filterChanging</b></td>
+      <td><a href="topic/wijmo.grid.CellRangeEventArgs.Class.html"><b>CellRangeEventArgs</b></a></td>
+      <td><p>当一个列筛选器即将被用户编辑时触发。</p>
+
+<p>如果您希望覆盖筛选器默认的设置，您可以通过该事件自定义该列筛选器。</p>
+
+<p>比如说，以下代码当筛选器条件使用的操作为符 null 时，设置该操作符为 ‘contains’：</p>
+
+<p><pre>filter.filterChanging.addHandler(function (s, e) {
+  var cf = filter.getColumnFilter(e.col);
+  if (!cf.valueFilter.isActive && cf.conditionFilter.condition1.operator == null) {
+    cf.filterType = wijmo.grid.filter.FilterType.Condition;
+    cf.conditionFilter.condition1.operator = wijmo.grid.filter.Operator.CT;
+  }
+});</pre></p><br/><span class="text-info">(继承自 <a href="topic/wijmo.grid.filter.FlexGridFilter.Class.html"><b>FlexGridFilter</b></a>).</span></td>
+    </tr>
+</tbody>
+</table>
+</div>
+

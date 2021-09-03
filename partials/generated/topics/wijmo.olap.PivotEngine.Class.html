@@ -1,0 +1,415 @@
+<h2>PivotEngine 类</h2>
+<dl class="dl-horizontal">
+<dt>模块</dt><dd>wijmo.olap</dd>
+<dt>文件</dt><dd>wijmo.olap.js</dd>
+</dl>
+<p><p>提供一个交互式转换常规数据表至 Olap pivot table 的用户界面。</p>
+
+<p>按照字段列表，以表格形式列出位于 <b>itemsSource</b> 集合中的数据并且
+创建包含汇总数据的 <b>pivotView</b> 集合。</p>
+
+<p>Pivot table 将数据分组成一个或多个维度。不同的维度由表格中的行和列表示，数据保存在表格中的单元格中。</p></p>
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideConstructor = !hideConstructor">
+<span class="glyph-collapsed" ng-show="hideConstructor"></span>
+<span class="glyph-expanded" ng-hide="hideConstructor"></span>
+ 构造函数
+</h3>
+</div>
+<table ng-hide="hideConstructor" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-2">名称</th>
+
+<th class="col-md-5">参数</th>
+
+<th class="col-md-5">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><b>constructor</b>&#8203;(options?): <a href="topic/wijmo.olap.PivotEngine.Class.html"><b>PivotEngine</b></a></td>
+      <td><p>
+<b>options?</b> (<b>any</b>): 包含初始化数据的Javascript对象。<br/></p>
+</td>
+      <td>初始化<a href="topic/wijmo.olap.PivotEngine.Class.html"><b>PivotEngine</b></a> 类的一个新实例 。</td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideProperties = !hideProperties">
+<span class="glyph-collapsed" ng-show="hideProperties"></span>
+<span class="glyph-expanded" ng-hide="hideProperties"></span>
+属性
+</h3>
+</div>
+<table ng-hide="hideProperties" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-3">名称</th>
+
+<th class="col-md-2">类型</th>
+
+<th class="col-md-7">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><b>allowFieldEditing</b></td>
+      <td><b>boolean</b></td>
+      <td>获取或设置一个值，该值决定是否用户应当允许修改该 <a href="topic/wijmo.olap.PivotEngine.Class.html"><b>PivotEngine</b></a> 所拥有的 <a href="topic/wijmo.olap.PivotField.Class.html"><b>PivotField</b></a> 对象的属性。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>async</b></td>
+      <td><b>boolean</b></td>
+      <td><p>获取或设置一个值，该值决定是否视图刷新应当被异步生成。</p>
+
+<p>该属性默认设置为 true，因此大数据集的汇总将异步执行，以防止 UI 线程停止响应。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>autoGenerateFields</b></td>
+      <td><b>boolean</b></td>
+      <td>获取或设置一个值，该值决定是否该引擎应当基于 <b>itemsSource</b> 自动地生成字段。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>collectionView</b></td>
+      <td><b>ICollectionView</b></td>
+      <td>获取包含原始数据的 <a href="topic/wijmo.collections.ICollectionView.Interface.html"><b>ICollectionView</b></a>。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>columnFields</b></td>
+      <td><a href="topic/wijmo.olap.PivotFieldCollection.Class.html"><b>PivotFieldCollection</b></a></td>
+      <td>获取定义将字段以列的形式显示在输出表的一个 <a href="topic/wijmo.olap.PivotField.Class.html"><b>PivotField</b></a> 对象的列表。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>defaultFilterType</b></td>
+      <td><b>FilterType</b></td>
+      <td>获取或设置默认的筛选类型（按照值或者条件）。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>fields</b></td>
+      <td><a href="topic/wijmo.olap.PivotFieldCollection.Class.html"><b>PivotFieldCollection</b></a></td>
+      <td><p>获取由该数据源暴露的<a href="topic/wijmo.olap.PivotField.Class.html"><b>PivotField</b></a> 对象的列表。</p>
+
+<p>一旦 <b>ItemsSource</b> 属性设置，该列表将自动创建。</p>
+
+<p>Pivot view 通过从该列表复制字段至定义视图列表：<b>valueFields</b>，<b>rowFields</b>，<b>columnFields</b>，以及 <b>filterFields进行定义</b>。 </p>
+
+<p>例如，以下代码将分配一个数据源至 <a href="topic/wijmo.olap.PivotEngine.Class.html"><b>PivotEngine</b></a> 接下来
+通过添加字段至 <b>rowFields</b>，<b>columnFields</b>，以及 <b>valueFields</b> 列表定义视图。</p>
+
+<p><pre>// 创建 pivot 引擎
+var pe = new wijmo.olap.PivotEngine();</p>
+
+<p>// 设置数据源（生成字段列表）
+pe.itemsSource = this.getRawData();</p>
+
+<p>// 在构建 Olap view 过程中防止界面刷新
+pe.beginUpdate();</p>
+
+<p>// 在行上显示国家
+pe.rowFields.push('Country');</p>
+
+<p>// 在列上显示分类和产品
+pe.columnFields.push('Category');
+pe.columnFields.push('Product');</p>
+
+<p>// 在单元格中显示销售汇总
+pe.valueFields.push('Sales');</p>
+
+<p>// 结束定义视图
+pe.endUpdate();</pre></p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>filterFields</b></td>
+      <td><a href="topic/wijmo.olap.PivotFieldCollection.Class.html"><b>PivotFieldCollection</b></a></td>
+      <td><p>获取定义用做过滤器的字段的一个 <a href="topic/wijmo.olap.PivotField.Class.html"><b>PivotField</b></a> 对象的列表。</p>
+
+<p>在该列表中的字段将不会出现在输出表中，但是将被用来过滤输入数据。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>isUpdating</b></td>
+      <td><b>boolean</b></td>
+      <td>获取一个值，该值表示是否该引擎正在被更新。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>isViewDefined</b></td>
+      <td><b>boolean</b></td>
+      <td><p>获取一个值，该值决定是否当前已经定义了一个 pivot view。</p>
+
+<p>如果 <b>valueFields</b> 列表不为空，且 <b>rowFields</b> 或者 <b>columnFields</b> 列表不为空，则定义了一个 Pivot View。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>itemsSource</b></td>
+      <td><b>any</b></td>
+      <td>获取或设置包含原始数据的 <a href="topic/wijmo.collections.ICollectionView.Interface.html"><b>ICollectionView</b></a> 的数组。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>pivotView</b></td>
+      <td><b>ICollectionView</b></td>
+      <td>获取包含输出 pivot 视图的 <a href="topic/wijmo.collections.ICollectionView.Interface.html"><b>ICollectionView</b></a>。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>rowFields</b></td>
+      <td><a href="topic/wijmo.olap.PivotFieldCollection.Class.html"><b>PivotFieldCollection</b></a></td>
+      <td>获取定义将字段以行的形式显示在输出表的一个 <a href="topic/wijmo.olap.PivotField.Class.html"><b>PivotField</b></a> 对象的列表。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>showColumnTotals</b></td>
+      <td><a href="topic/wijmo.olap.ShowTotals.Enum.html"><b>ShowTotals</b></a></td>
+      <td>获取或设置一个值，该值决定是否输出 <b>pivotView</b> 应当包含一列包含小计或合计信息。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>showRowTotals</b></td>
+      <td><a href="topic/wijmo.olap.ShowTotals.Enum.html"><b>ShowTotals</b></a></td>
+      <td>获取或设置一个值，该值决定是否输出 <b>pivotView</b> 应当包含一行包含小计或合计信息。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>showZeros</b></td>
+      <td><b>boolean</b></td>
+      <td>获取或设置一个值，该值决定是否该 Olap 输出表格应当使用零值表示缺失的值。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>totalsBeforeData</b></td>
+      <td><b>boolean</b></td>
+      <td>获取或设置一个值，决定行和列的统计是否应当在常规数据的前面或者后面显示。如果设置为真，那么行总计出现在数据行的上方，列统计出现在常规数据的左边。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>valueFields</b></td>
+      <td><a href="topic/wijmo.olap.PivotFieldCollection.Class.html"><b>PivotFieldCollection</b></a></td>
+      <td>获取定义汇总显示在输出表中的字段的一个 <a href="topic/wijmo.olap.PivotField.Class.html"><b>PivotField</b></a> 对象的列表。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>viewDefinition</b></td>
+      <td><b>string</b></td>
+      <td><p>获取或设置以 JSON 字符串表示的 pivot 视图定义。</p>
+
+<p>该属性典型地被用来将当前视图设置作为应用程序设置持久保存。</p>
+
+<p>例如，以下代码实现了两个函数，通过 local storage 保存/读取视图定义：</p>
+
+<p><pre>// 保存/加载视图
+function saveView() {
+  localStorage.viewDefinition = pivotEngine.viewDefinition;
+}
+function loadView() {
+  pivotEngine.viewDefinition = localStorage.viewDefinition;
+}</pre></p></td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideMethods = !hideMethods">
+<span class="glyph-collapsed" ng-show="hideMethods"></span>
+<span class="glyph-expanded" ng-hide="hideMethods"></span>
+方法
+</h3>
+</div>
+<table ng-hide="hideMethods" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-2">名称</th>
+
+<th class="col-md-5">参数</th>
+
+<th class="col-md-5">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><b>beginUpdate</b>&#8203;()</td>
+      <td></td>
+      <td>挂起刷新处理，直至下一次调用 <b>endUpdate</b>。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>cancelPendingUpdates</b>&#8203;()</td>
+      <td></td>
+      <td>取消任何待处理的异步视图更新。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>deferUpdate</b>&#8203;(fn)</td>
+      <td><p>
+<b>fn</b> (<b>Function</b>): 待执行的函数。<br/></p>
+</td>
+      <td><p>在 <b>beginUpdate</b>/<b>endUpdate</b> 函数块内部执行一个函数。</p>
+
+<p>该控件将不会刷新，直至该函数被调用。
+该方法将确保即便是函数抛出异常也会调用 <b>endUpdate</b>。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>editField</b>&#8203;(field)</td>
+      <td><p>
+<b>field</b> (<a href="topic/wijmo.olap.PivotField.Class.html"><b>PivotField</b></a>): 待编辑的 <a href="topic/wijmo.olap.PivotField.Class.html"><b>PivotField</b></a>。<br/></p>
+</td>
+      <td>显示一个设置对话框，用户可以编辑一个字段的设置。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>endUpdate</b>&#8203;()</td>
+      <td></td>
+      <td>恢复由于调用了 <b>beginUpdate</b> 被挂起的刷新操作。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>getDetail</b>&#8203;(item, binding)</td>
+      <td><p>
+<b>item</b> (<b>any</b>): <b>pivotView</b> 列表中的数据项。<br/><b>binding</b> (<b>string</b>): 被汇总的属性的名称。<br/></p>
+</td>
+      <td>获取一个数组，包含由 <b>pivotView</b> 列表中的某个属性汇总的记录。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>invalidate</b>&#8203;()</td>
+      <td></td>
+      <td>将视图置为无效，引发一次异步刷新。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>onItemsSourceChanged</b>&#8203;(e?)</td>
+      <td><p>
+<b>e?</b> (<a href="topic/wijmo.EventArgs.Class.html"><b>EventArgs</b></a>)<br/></p>
+</td>
+      <td>触发 <b>itemsSourceChanged</b> 事件。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>onUpdatedView</b>&#8203;(e?)</td>
+      <td><p>
+<b>e?</b> (<a href="topic/wijmo.EventArgs.Class.html"><b>EventArgs</b></a>)<br/></p>
+</td>
+      <td>触发 <b>updatedView</b> 事件。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>onUpdatingView</b>&#8203;(e)</td>
+      <td><p>
+<b>e</b> (<a href="topic/wijmo.olap.ProgressEventArgs.Class.html"><b>ProgressEventArgs</b></a>): 提供事件参数的 <a href="topic/wijmo.olap.ProgressEventArgs.Class.html"><b>ProgressEventArgs</b></a> 对象。<br/></p>
+</td>
+      <td>触发 <b>updatingView</b> 事件。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>onViewDefinitionChanged</b>&#8203;(e?)</td>
+      <td><p>
+<b>e?</b> (<a href="topic/wijmo.EventArgs.Class.html"><b>EventArgs</b></a>)<br/></p>
+</td>
+      <td>触发 <b>viewDefinitionChanged</b> 事件。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>refresh</b>&#8203;(force?)</td>
+      <td><p>
+<b>force?</b> (<b>boolean</b>): 即便是在更新过程中（参见 <b>beginUpdate</b>）也执行刷新。<br/><span class="text-info">(默认值: <b>false</b>)</span><br/></p>
+</td>
+      <td>汇总数据并更新输出的 <b>pivotView</b>。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>removeField</b>&#8203;(field)</td>
+      <td><p>
+<b>field</b> (<a href="topic/wijmo.olap.PivotField.Class.html"><b>PivotField</b></a>): 待移除的 <a href="topic/wijmo.olap.PivotField.Class.html"><b>PivotField</b></a>。<br/></p>
+</td>
+      <td>从当前视图中移除一个字段。</td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideEvents = !hideEvents">
+<span class="glyph-collapsed" ng-show="hideEvents"></span>
+<span class="glyph-expanded" ng-hide="hideEvents"></span>
+事件
+</h3>
+</div>
+<table ng-hide="hideEvents" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-2">名称</th>
+
+<th class="col-md-5">参数</th>
+
+<th class="col-md-5">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><b>itemsSourceChanged</b></td>
+      <td><a href="topic/wijmo.EventArgs.Class.html"><b>EventArgs</b></a></td>
+      <td>在 <b>itemsSource</b> 属性的值发生变化之后触发。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>updatedView</b></td>
+      <td><a href="topic/wijmo.EventArgs.Class.html"><b>EventArgs</b></a></td>
+      <td>在引擎完成更新 <b>pivotView</b> 列表之后触发。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>updatingView</b></td>
+      <td><a href="topic/wijmo.olap.ProgressEventArgs.Class.html"><b>ProgressEventArgs</b></a></td>
+      <td>当引擎开始更新 <b>pivotView</b> 列表时触发。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>viewDefinitionChanged</b></td>
+      <td><a href="topic/wijmo.EventArgs.Class.html"><b>EventArgs</b></a></td>
+      <td>在视图定义发生变化之后触发。</td>
+    </tr>
+</tbody>
+</table>
+</div>
+

@@ -1,0 +1,226 @@
+<h2>Tooltip 类</h2>
+<dl class="dl-horizontal">
+<dt>派生类</dt><dd><a href="topic/wijmo.chart.ChartTooltip.Class.html"><b>ChartTooltip</b></a></dd>
+<dt>模块</dt><dd>wijmo</dd>
+<dt>文件</dt><dd>wijmo.js</dd>
+</dl>
+<p><p>提供一个弹出窗口，该窗口显示页面上的其他元素的附加信息。 </p>
+
+<p><b>Tooltip</b> 类可以在两个模式中使用：</p>
+
+<p><b>Automatic 模式：</b> 使用<b>setTooltip</b> 方法连接<b>Tooltip</b> 到页面上的一个或者更多个元素。
+<b>Tooltip</b> 自动监听事件，并且当用户执行操作时触发提示信息。例如：</p>
+
+<p><pre>var tt = new wijmo.Tooltip();
+tt.setTooltip('#menu', 'Select commands.');
+tt.setTooltip('#tree', 'Explore the hierarchy.');
+tt.setTooltip('#chart', '#idChartTooltip');</pre></p>
+
+<p><b>Manual 模式：</b> 调用者使用<b>show</b> 和<b>hide</b> 方法负责显示和隐藏工具提示。例如：</p>
+
+<p><pre>var tt = new wijmo.Tooltip();
+element.addEventListener('click', function () {
+  if (tt.isVisible) {
+    tt.hide();
+  } else {
+    tt.show(element, 'This is an important element!');
+  }
+});</pre></p></p>
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideConstructor = !hideConstructor">
+<span class="glyph-collapsed" ng-show="hideConstructor"></span>
+<span class="glyph-expanded" ng-hide="hideConstructor"></span>
+ 构造函数
+</h3>
+</div>
+<table ng-hide="hideConstructor" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-2">名称</th>
+
+<th class="col-md-5">参数</th>
+
+<th class="col-md-5">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><b>constructor</b>&#8203;(options?): <a href="topic/wijmo.Tooltip.Class.html"><b>Tooltip</b></a></td>
+      <td><p>
+<b>options?</b> (<b>any</b>): JavaScript object containing initialization data for the <a href="topic/wijmo.Tooltip.Class.html"><b>Tooltip</b></a>.<br/></p>
+</td>
+      <td>初始化类 <a href="topic/wijmo.Tooltip.Class.html"><b>Tooltip</b></a> 的一个新实例。</td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideProperties = !hideProperties">
+<span class="glyph-collapsed" ng-show="hideProperties"></span>
+<span class="glyph-expanded" ng-hide="hideProperties"></span>
+属性
+</h3>
+</div>
+<table ng-hide="hideProperties" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-3">名称</th>
+
+<th class="col-md-2">类型</th>
+
+<th class="col-md-7">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><b>gap</b></td>
+      <td><b>number</b></td>
+      <td>获取或设置工具提示和目标元素之间的距离。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>hideDelay</b></td>
+      <td><b>number</b></td>
+      <td>获取或设置延时，以毫秒为单位，在隐藏工具提示鼠标离开目标元素后。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>isContentHtml</b></td>
+      <td><b>boolean</b></td>
+      <td>获取或设置一个值，决定是否提示内容应该显示为纯文本或HTML。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>isVisible</b></td>
+      <td><b>boolean</b></td>
+      <td>获取提示信息当前是否可见。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>showAtMouse</b></td>
+      <td><b>boolean</b></td>
+      <td>获取或设置一个值，决定是否提示应该定位相对于鼠标的位置而不是目标元素。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>showDelay</b></td>
+      <td><b>number</b></td>
+      <td>获取或设置延时，以毫秒为单位，在鼠标进入目标元素后显示的工具提示。</td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideMethods = !hideMethods">
+<span class="glyph-collapsed" ng-show="hideMethods"></span>
+<span class="glyph-expanded" ng-hide="hideMethods"></span>
+方法
+</h3>
+</div>
+<table ng-hide="hideMethods" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-2">名称</th>
+
+<th class="col-md-5">参数</th>
+
+<th class="col-md-5">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><b>hide</b>&#8203;()</td>
+      <td></td>
+      <td>如果提示信息当前可见，则隐藏它。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>onPopup</b>&#8203;(e)</td>
+      <td><p>
+<b>e</b> (<a href="topic/wijmo.TooltipEventArgs.Class.html"><b>TooltipEventArgs</b></a>): <a href="topic/wijmo.TooltipEventArgs.Class.html"><b>TooltipEventArgs</b></a> 包含事件数据。<br/></p>
+</td>
+      <td>引发<b>popup</b> 事件。</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>setTooltip</b>&#8203;(element, content)</td>
+      <td><p>
+<b>element</b> (<b>any</b>): 提示信息解释元素，元素id，或者控件。<br/><b>content</b> (<b>string</b>): 元素的提示信息内容或者id包含提示信息内容。<br/></p>
+</td>
+      <td><p>指定工具提示内容到一个特定的页面上的元素。</p>
+
+<p>同样的提示可以显示任意数量的元素在页面中的信息。为了从元素上移除提示信息， 
+调用<b>setTooltip</b> 并且制定内容为null。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><b>show</b>&#8203;(element, content, bounds?)</td>
+      <td><p>
+<b>element</b> (<b>any</b>): 提示信息解释元素，元素id，或者控件。<br/><b>content</b> (<b>string</b>): 元素的提示信息内容或者id包含提示信息内容<br/><b>bounds?</b> (<a href="topic/wijmo.Rect.Class.html"><b>Rect</b></a>): 可选的元素定义提示目标的范围。如果没有被提供，元素的边界被使用（由
+<b>getBoundingClientRect</b>方法报告）。<br/></p>
+</td>
+      <td>显示指定内容的提示，紧挨着指定的元素。</td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideEvents = !hideEvents">
+<span class="glyph-collapsed" ng-show="hideEvents"></span>
+<span class="glyph-expanded" ng-hide="hideEvents"></span>
+事件
+</h3>
+</div>
+<table ng-hide="hideEvents" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-2">名称</th>
+
+<th class="col-md-5">参数</th>
+
+<th class="col-md-5">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><b>popup</b></td>
+      <td><a href="topic/wijmo.TooltipEventArgs.Class.html"><b>TooltipEventArgs</b></a></td>
+      <td><p>提示信息被显示之前发生。</p>
+
+<p>事件处理程序可以自定义提示内容或改变的事件参数压制工具提示显示。</p></td>
+    </tr>
+</tbody>
+</table>
+</div>
+

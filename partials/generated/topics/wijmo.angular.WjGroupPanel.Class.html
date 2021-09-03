@@ -1,0 +1,45 @@
+<h2>WjGroupPanel 类</h2>
+<dl class="dl-horizontal">
+<dt>基类</dt><dd><b>WjDirective</b></dd>
+<dt>模块</dt><dd>wijmo.angular</dd>
+<dt>文件</dt><dd>wijmo.angular.js</dd>
+<dt>表示</dt><dd><label style="font-weight:normal">继承成员 <input type="checkbox" ng-model="showInherited"></label></dd>
+</dl>
+<p><p>AngularJS 指令应用于 <a href="topic/wijmo.grid.FlexGrid.Class.html"><b>FlexGrid</b></a> <a href="topic/wijmo.grid.grouppanel.GroupPanel.Class.html"><b>GroupPanel</b></a> 控件。</p>
+
+<p><b>wj-group-panel</b> 指令通过 <b>grid</b> 属性连接到 <b>FlexGrid</b> 控件。 
+示例：</p>
+
+<p><pre>&lt;p&gt;Here is a FlexGrid control with GroupPanel:&lt;/p&gt;
+&nbsp;
+&lt;wj-group-panel grid="flex" placeholder="Drag columns here to create groups."&gt;&lt;/wj-group-panel&gt;
+&nbsp;
+&lt;wj-flex-grid control="flex" items-source="data"&gt;
+  &lt;wj-flex-grid-column 
+    header="Country" 
+    binding="country"&gt;
+  &lt;/wj-flex-grid-column&gt;
+  &lt;wj-flex-grid-column 
+    header="Sales" 
+    binding="sales"&gt;
+  &lt;/wj-flex-grid-column&gt;
+  &lt;wj-flex-grid-column 
+    header="Expenses" 
+    binding="expenses"&gt;
+  &lt;/wj-flex-grid-column&gt;
+  &lt;wj-flex-grid-column 
+    header="Downloads" 
+    binding="downloads"&gt;
+  &lt;/wj-flex-grid-column&gt;
+&lt;/wj-flex-grid&gt;</pre></p>
+
+<p><b>wj-group-panel</b> 指令支持以下属性:</p>
+
+<p><dl class="dl-horizontal">
+  <dt>grid</dt>                      <dd><code>@</code> 当前 <b>GroupPanel</b> 连接的 <b>FlexGrid</b> 。</dd>
+  <dt>hide-grouped-columns</dt>      <dd><code>@</code>是否隐藏分组标题区域。</dd>
+  <dt>max-groups</dt>                <dd><code>@</code>最大分组数。</dd>
+  <dt>placeholder</dt>               <dd><code>@</code>当分组为空时显示的占位字符。</dd>
+  <dt>got-focus</dt>                 <dd><code>&</code> <b>gotFocus</b> 事件。</dd>
+  <dt>lost-focus</dt>                <dd><code>&</code> <b>lostFocus</b> 事件。</dd>
+</dl></p></p>

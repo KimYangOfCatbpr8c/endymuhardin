@@ -1,0 +1,591 @@
+<h2>WjComboBox 类</h2>
+<dl class="dl-horizontal">
+<dt>基类</dt><dd><a href="topic/wijmo.input.ComboBox.Class.html"><b>ComboBox</b></a></dd>
+<dt>模块</dt><dd>wijmo/wijmo.angular2.input</dd>
+<dt>文件</dt><dd>wijmo.angular2.js</dd>
+<dt>表示</dt><dd><label style="font-weight:normal">继承成员 <input type="checkbox" ng-model="showInherited"></label></dd>
+</dl>
+<p><p><b>ComboBox控件对应的</b> Angular 2 组件。</p>
+
+<p>使用 <b>wj-combo-box</b> 组件添加 <b>ComboBox</b> 控件至您的 Angular 2 应用程序中。关于 Angular 2 标记语法的更多细节，请参见
+<a href="static/angular2Markup.html">Angular 2 标记</a>。</p>
+
+<p><b>WjComboBox</b> 组件继承自 <b>ComboBox</b> 控件，因此继承了其全部的属性，事件和方法。</p></p>
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideProperties = !hideProperties">
+<span class="glyph-collapsed" ng-show="hideProperties"></span>
+<span class="glyph-expanded" ng-hide="hideProperties"></span>
+属性
+</h3>
+</div>
+<table ng-hide="hideProperties" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-3">名称</th>
+
+<th class="col-md-2">类型</th>
+
+<th class="col-md-7">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>autoExpandSelection</b></td>
+      <td><b>boolean</b></td>
+      <td>获取或设置一个值，该值指示是否控件应当在控件单击时自动将选择扩展到整个单词/数值。<br/><span class="text-info">(继承自 <a href="topic/wijmo.input.DropDown.Class.html"><b>DropDown</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>collectionView</b></td>
+      <td><b>ICollectionView</b></td>
+      <td>获取用作数据项来源的 <a href="topic/wijmo.collections.ICollectionView.Interface.html"><b>ICollectionView</b></a> 对象。<br/><span class="text-info">(继承自 <a href="topic/wijmo.input.ComboBox.Class.html"><b>ComboBox</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td><span class="badge" title="静态">S</span><span class="badge" title="字段">F</span></td>
+      <td><b>controlTemplate</b></td>
+      <td><b>any</b></td>
+      <td>获取或设置用来实例化 <a href="topic/wijmo.input.DropDown.Class.html"><b>DropDown</b></a> 控件的模板。<br/><span class="text-info">(继承自 <a href="topic/wijmo.input.DropDown.Class.html"><b>DropDown</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>displayMemberPath</b></td>
+      <td><b>string</b></td>
+      <td>获取或设置用做项目的可视化展示的属性的名称。<br/><span class="text-info">(继承自 <a href="topic/wijmo.input.ComboBox.Class.html"><b>ComboBox</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>dropDown</b></td>
+      <td><b>HTMLElement</b></td>
+      <td>获取当 <b>isDroppedDown</b> 属性设置为 true 时，所显示的下拉元素。<br/><span class="text-info">(继承自 <a href="topic/wijmo.input.DropDown.Class.html"><b>DropDown</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>dropDownCssClass</b></td>
+      <td><b>string</b></td>
+      <td><p>获取或设置添加到控件下拉元素的一个 CSS 类名。</p>
+
+<p>该属性在设置下拉元素样式时非常有用，因为该元素实际上是文档 border 元素的一个直接子元素，而不是控件本身的子。
+这将使得无法基于父控件使用 CSS 选择器。</p><br/><span class="text-info">(继承自 <a href="topic/wijmo.input.DropDown.Class.html"><b>DropDown</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>headerPath</b></td>
+      <td><b>string</b></td>
+      <td><p>获取或设置用来获取显示在控件的输入元素上的值的属性名称。</p>
+
+<p>该属性的默认值为 null，这将使得控件在输入元素上显示和下拉列表中选中项目相同的内容。</p>
+
+<p>当您需要使显示在输入元素上的值和来自于下拉列表中的值脱钩时，可以使用该属性。
+例如，输入元素可以显示项目的名称，而下拉列表可以显示额外的细节信息。</p><br/><span class="text-info">(继承自 <a href="topic/wijmo.input.ComboBox.Class.html"><b>ComboBox</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>hostElement</b></td>
+      <td><b>HTMLElement</b></td>
+      <td>获取托管着控件的DOM元素。<br/><span class="text-info">(继承自 <a href="topic/wijmo.Control.Class.html"><b>Control</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>inputElement</b></td>
+      <td><b>HTMLInputElement</b></td>
+      <td><p>获取控件包含的 HTML 输入元素。</p>
+
+<p>        当您希望自定义输入元素的属性时，可以使用该属性。</p><br/><span class="text-info">(继承自 <a href="topic/wijmo.input.DropDown.Class.html"><b>DropDown</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>isContentHtml</b></td>
+      <td><b>boolean</b></td>
+      <td>获取或设置一个布尔值，该值表示是否下拉列表将项目显示为纯文本还是 HTML 格式。<br/><span class="text-info">(继承自 <a href="topic/wijmo.input.ComboBox.Class.html"><b>ComboBox</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>isDisabled</b></td>
+      <td><b>boolean</b></td>
+      <td>获取或设置一个值，决定是否控件被禁用。
+      禁用的控件不能响应鼠标和键盘事件。<br/><span class="text-info">(继承自 <a href="topic/wijmo.Control.Class.html"><b>Control</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>isDroppedDown</b></td>
+      <td><b>boolean</b></td>
+      <td>获取或设置一个值，该值指示是否下拉框当前为可见状态。<br/><span class="text-info">(继承自 <a href="topic/wijmo.input.DropDown.Class.html"><b>DropDown</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>isEditable</b></td>
+      <td><b>boolean</b></td>
+      <td>获取或设置一个值，可以启用或禁用 <a href="topic/wijmo.input.ComboBox.Class.html"><b>ComboBox</b></a> 的输入元素上的文本编辑（默认值为 false）。<br/><span class="text-info">(继承自 <a href="topic/wijmo.input.ComboBox.Class.html"><b>ComboBox</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>isReadOnly</b></td>
+      <td><b>boolean</b></td>
+      <td>获取或设置一个值，指示用户是否可以使用鼠标或这键盘更改控件。<br/><span class="text-info">(继承自 <a href="topic/wijmo.input.DropDown.Class.html"><b>DropDown</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>isRequired</b></td>
+      <td><b>boolean</b></td>
+      <td>获取或设置一个值，指示控件必须要设置为非空值，或者它可以设置为null（通过删除控件的内容）。<br/><span class="text-info">(继承自 <a href="topic/wijmo.input.DropDown.Class.html"><b>DropDown</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>isTouching</b></td>
+      <td><b>boolean</b></td>
+      <td>获取表明控件当前是否处理了一个异常事件的值。.<br/><span class="text-info">(继承自 <a href="topic/wijmo.Control.Class.html"><b>Control</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>isUpdating</b></td>
+      <td><b>boolean</b></td>
+      <td>获取表明控件当前是否被更新的值。<br/><span class="text-info">(继承自 <a href="topic/wijmo.Control.Class.html"><b>Control</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>itemFormatter</b></td>
+      <td><b>Function</b></td>
+      <td><p>获取或设置一个用做自定义显示在下拉列表中的值的函数。
+该函数接受两个参数，项目索引以及默认的文本或者 HTML，并
+返回待显示的新文本或者 HTML。</p>
+
+<p>如果该格式化函数需要使用到一个作用域（例如，一个有意义的 ‘this’
+值），那么请务必记住要通过 ‘bind’函数设置 filter 以便
+指定‘this’对象。例如：</p>
+
+<p><pre>
+  comboBox.itemFormatter = customItemFormatter.bind(this);
+  function customItemFormatter(index, content) {
+    if (this.makeItemBold(index)) {
+      content = '&lt;b&gt;' + content + '&lt;/b&gt;';
+    }
+    return content;
+  }
+</pre></p><br/><span class="text-info">(继承自 <a href="topic/wijmo.input.ComboBox.Class.html"><b>ComboBox</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>itemsSource</b></td>
+      <td><b>any</b></td>
+      <td>获取或设置包含待选择项目的数组或者 <a href="topic/wijmo.collections.ICollectionView.Interface.html"><b>ICollectionView</b></a> 对象。<br/><span class="text-info">(继承自 <a href="topic/wijmo.input.ComboBox.Class.html"><b>ComboBox</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>listBox</b></td>
+      <td><a href="topic/wijmo.input.ListBox.Class.html"><b>ListBox</b></a></td>
+      <td>获取显示在下拉窗体的 <a href="topic/wijmo.input.ListBox.Class.html"><b>ListBox</b></a> 控件。<br/><span class="text-info">(继承自 <a href="topic/wijmo.input.ComboBox.Class.html"><b>ComboBox</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>maxDropDownHeight</b></td>
+      <td><b>number</b></td>
+      <td>获取或设置下拉列表框的最大高度。<br/><span class="text-info">(继承自 <a href="topic/wijmo.input.ComboBox.Class.html"><b>ComboBox</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>maxDropDownWidth</b></td>
+      <td><b>number</b></td>
+      <td><p>获取或设置下拉列表框的最大宽度。</p>
+
+<p>下拉列表的宽度同样受到控件本身宽度的限制（该值将决定下拉窗体的最小宽度）。</p><br/><span class="text-info">(继承自 <a href="topic/wijmo.input.ComboBox.Class.html"><b>ComboBox</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>placeholder</b></td>
+      <td><b>string</b></td>
+      <td>获取或设置当控件为空白时，用作提示显示的字符串。<br/><span class="text-info">(继承自 <a href="topic/wijmo.input.DropDown.Class.html"><b>DropDown</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>selectedIndex</b></td>
+      <td><b>number</b></td>
+      <td>获取或设置下拉列表中当前选中项目的索引。<br/><span class="text-info">(继承自 <a href="topic/wijmo.input.ComboBox.Class.html"><b>ComboBox</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>selectedItem</b></td>
+      <td><b>any</b></td>
+      <td>获取或设置下拉列表中当前选中的项目。<br/><span class="text-info">(继承自 <a href="topic/wijmo.input.ComboBox.Class.html"><b>ComboBox</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>selectedValue</b></td>
+      <td><b>any</b></td>
+      <td>获取或设置通过 <b>selectedValuePath</b> 获取的 <b>selectedItem</b> 的值。<br/><span class="text-info">(继承自 <a href="topic/wijmo.input.ComboBox.Class.html"><b>ComboBox</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>selectedValuePath</b></td>
+      <td><b>string</b></td>
+      <td>获取或设置用来从 <b>selectedItem</b> 获取 <b>selectedValue的属性的名称</b>。<br/><span class="text-info">(继承自 <a href="topic/wijmo.input.ComboBox.Class.html"><b>ComboBox</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>showDropDownButton</b></td>
+      <td><b>boolean</b></td>
+      <td>获取或设置一个值，该值指示是否控件是否显示一个下拉按钮。<br/><span class="text-info">(继承自 <a href="topic/wijmo.input.DropDown.Class.html"><b>DropDown</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>text</b></td>
+      <td><b>string</b></td>
+      <td>获取或设置显示在控件上的文本。<br/><span class="text-info">(继承自 <a href="topic/wijmo.input.DropDown.Class.html"><b>DropDown</b></a>).</span></td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideMethods = !hideMethods">
+<span class="glyph-collapsed" ng-show="hideMethods"></span>
+<span class="glyph-expanded" ng-hide="hideMethods"></span>
+方法
+</h3>
+</div>
+<table ng-hide="hideMethods" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-2">名称</th>
+
+<th class="col-md-5">参数</th>
+
+<th class="col-md-5">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>addEventListener</b>&#8203;(target, type, fn, capture?)</td>
+      <td><p>
+<b>target</b> (<b>EventTarget</b>): 时间的目标元素。<br/><b>type</b> (<b>string</b>): 指定该事件的字符串。<br/><b>fn</b> (<b>any</b>): 当事件发生时执行的函数。<br/><b>capture?</b> (<b>boolean</b>): 监听是否正在捕获。<br/><span class="text-info">(默认值: <b>false</b>)</span><br/></p>
+</td>
+      <td><p>为<a href="topic/wijmo.Control.Class.html"><b>Control</b></a> 上的元素增加一个事件监听。</p>
+
+<p>该控件持有依附于监听和处理器的列表，当控件被处理掉时使它更容易地移除这些监听和处理器（参见<b>dispose</b> 和<b>removeEventListener</b> 方法）。</p>
+
+<p>移除事件监听失败时，可能引起内存泄露。</p><br/><span class="text-info">(继承自 <a href="topic/wijmo.Control.Class.html"><b>Control</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>applyTemplate</b>&#8203;(classNames, template, parts, namePart?): <b>HTMLElement</b></td>
+      <td><p>
+<b>classNames</b> (<b>string</b>): 添加到控件主元素上的类的名称。<br/><b>template</b> (<b>string</b>): 定义控件模板的HTML字符串。<br/><b>parts</b> (<b>Object</b>): 部分变量及其名称的字典。<br/><b>namePart?</b> (<b>string</b>): 部分名称将以主元素命名。
+确定控件在表单中使用时如何提交数据。<br/></p>
+</td>
+      <td><p>将这个模板应用到控件的一个新的实例上，并且返回根元素。</p>
+
+<p>这个方法应该被模板化控件的构造器调用。它的职责是绑定模板部分到相应的控件成员上。</p>
+
+<p>例如，下面的代码应用一个模板到<a href="topic/wijmo.input.InputNumber.Class.html"><b>InputNumber</b></a> 控件的实例上。这个模板必须包含有'wj-part'属性的元素，该属性值可以被设置为'input', 'btn-inc'，和'btn-dec'。
+该控件的成员'_tbx', '_btnUp', 和 '_btnDn'将被分配一些引用到这些元素上。</p>
+
+<p><pre>this.applyTemplate('wj-control wj-inputnumber', template, {
+  _tbx: 'input',
+  _btnUp: 'btn-inc',
+  _btnDn: 'btn-dec'
+}, 'input');</pre></p><br/><span class="text-info">(继承自 <a href="topic/wijmo.Control.Class.html"><b>Control</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>beginUpdate</b>&#8203;()</td>
+      <td></td>
+      <td>直到下一次调用<b>endUpdate</b> 之前暂停通知。<br/><span class="text-info">(继承自 <a href="topic/wijmo.Control.Class.html"><b>Control</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>constructor</b>&#8203;(element, options?): <a href="topic/wijmo.input.ComboBox.Class.html"><b>ComboBox</b></a></td>
+      <td><p>
+<b>element</b> (<b>any</b>): 包含这个元素的选择器，或者查找这个元素的选择器（比如，‘#theCtrl’）。<br/><b>options?</b> (): 包含这个控件初始化数据的一个Javascript对象。<br/></p>
+</td>
+      <td>初始化类<b>ComboBox的一个新实例</b><br/><span class="text-info">(继承自 <a href="topic/wijmo.input.ComboBox.Class.html"><b>ComboBox</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>containsFocus</b>&#8203;(): <b>boolean</b></td>
+      <td></td>
+      <td>检查该控件是否包含有获得焦点的元素。<br/><span class="text-info">(继承自 <a href="topic/wijmo.Control.Class.html"><b>Control</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>deferUpdate</b>&#8203;(fn)</td>
+      <td><p>
+<b>fn</b> (<b>Function</b>): 函数被执行。<br/></p>
+</td>
+      <td><p>执行在<b>beginUpdate</b>/<b>endUpdate</b> 块中的函数。</p>
+
+<p>控件直到该方法已经被执行时才被更新。该方法确保<b>endUpdate</b> 被调用，即使该方法抛出异常。</p><br/><span class="text-info">(继承自 <a href="topic/wijmo.Control.Class.html"><b>Control</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>dispose</b>&#8203;()</td>
+      <td></td>
+      <td><p>通过移除控件相关的主元素来配置控件。</p>
+
+<p> <b>dispose</b> 方法自动移除增加在<b>addEventListener</b> 方法上的任何事件监听。</p>
+
+<p>在应用中调用<b>dispose</b> 方法很重要，这样能自动地创建和移除控件。当处理掉控件时，可能会引起内存泄露。</p><br/><span class="text-info">(继承自 <a href="topic/wijmo.Control.Class.html"><b>Control</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td><span class="badge" title="静态">S</span></td>
+      <td><b>disposeAll</b>&#8203;(e?)</td>
+      <td><p>
+<b>e?</b> (<b>HTMLElement</b>): 容器元素。<br/></p>
+</td>
+      <td>处理掉包含在HTML元素上的Wijmo控件。<br/><span class="text-info">(继承自 <a href="topic/wijmo.Control.Class.html"><b>Control</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>endUpdate</b>&#8203;()</td>
+      <td></td>
+      <td>通过调用<b>beginUpdate</b> 重新开始被暂停的通知。<br/><span class="text-info">(继承自 <a href="topic/wijmo.Control.Class.html"><b>Control</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>focus</b>&#8203;()</td>
+      <td></td>
+      <td>为该控件设置焦点。<br/><span class="text-info">(继承自 <a href="topic/wijmo.Control.Class.html"><b>Control</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td><span class="badge" title="静态">S</span></td>
+      <td><b>getControl</b>&#8203;(element): <a href="topic/wijmo.Control.Class.html"><b>Control</b></a></td>
+      <td><p>
+<b>element</b> (<b>any</b>): DOM元素托管着控件，或者托管着主元素的选择器（例如'#theCtrl'）。<br/></p>
+</td>
+      <td>获取托管在给定的DOM元素上的控件。<br/><span class="text-info">(继承自 <a href="topic/wijmo.Control.Class.html"><b>Control</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>getDisplayText</b>&#8203;(index?): <b>string</b></td>
+      <td><p>
+<b>index?</b> (<b>number</b>): 重新获取文本的项的索引。<br/><span class="text-info">(默认值: <b>this.&#8203;selectedIndex</b>)</span><br/></p>
+</td>
+      <td>获取指定索引位置的项目显示在输入元素上的字符串（始终为纯文本）。<br/><span class="text-info">(继承自 <a href="topic/wijmo.input.ComboBox.Class.html"><b>ComboBox</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>getTemplate</b>&#8203;(): <b>string</b></td>
+      <td></td>
+      <td><p>获取HTML模板来创建控件的实例。</p>
+
+<p>这个方法遍历类的层次结构来发现最近的祖先元素，该祖先元素指定了一个控件模板。例如，如果你指定了一个<a href="topic/wijmo.input.ComboBox.Class.html"><b>ComboBox</b></a> 控件的原型，它将重载由基类<a href="topic/wijmo.input.DropDown.Class.html"><b>DropDown</b></a> 定义的模板。</p><br/><span class="text-info">(继承自 <a href="topic/wijmo.Control.Class.html"><b>Control</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>indexOf</b>&#8203;(text, fullMatch): <b>number</b></td>
+      <td><p>
+<b>text</b> (<b>string</b>): 待搜索的文本。<br/><b>fullMatch</b> (<b>boolean</b>): 是否按照全文匹配查找还是仅匹配字符串的开头。<br/></p>
+</td>
+      <td>获取匹配给定字符串的第一个项目的索引。<br/><br/><b>返回值</b> 项目的索引，或者当未查找到时返回 -1。<br/><span class="text-info">(继承自 <a href="topic/wijmo.input.ComboBox.Class.html"><b>ComboBox</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>initialize</b>&#8203;(options)</td>
+      <td><p>
+<b>options</b> (<b>any</b>): Object that contains the initialization data.<br/></p>
+</td>
+      <td><p>通过从给定的对象中拷贝属性来初始化控件。</p>
+
+<p>该方法允许你使用普通的数据对象代替在代码中为每一个属性设置值来初始化控件。</p>
+
+<p>例如:
+<pre>
+grid.initialize({
+  itemsSource: myList,
+  autoGenerateColumns: false,
+  columns: [
+    { binding: 'id', header: 'Code', width: 130 },
+    { binding: 'name', header: 'Name', width: 60 } 
+  ]
+});
+// 相当于
+grid.itemsSource = myList;
+grid.autoGenerateColumns = false;
+// 等等.
+</pre></p>
+
+<p>初始化数据被应用时，它作为一种类型检查。如果初始化的对象包含不知名的属性名称或者无效的数据类型时，该方法将被抛出。</p><br/><span class="text-info">(继承自 <a href="topic/wijmo.Control.Class.html"><b>Control</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>invalidate</b>&#8203;(fullUpdate?)</td>
+      <td><p>
+<b>fullUpdate?</b> (<b>boolean</b>): 是否更新该控件的布局和内容。<br/><span class="text-info">(默认值: <b>true</b>)</span><br/></p>
+</td>
+      <td>使能够引起异步刷新的控件无效。<br/><span class="text-info">(继承自 <a href="topic/wijmo.Control.Class.html"><b>Control</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td><span class="badge" title="静态">S</span></td>
+      <td><b>invalidateAll</b>&#8203;(e?)</td>
+      <td><p>
+<b>e?</b> (<b>HTMLElement</b>): Container element. If set to null, all Wijmo controls
+on the page will be invalidated.<br/></p>
+</td>
+      <td><p>使所有包含在HTML元素中的Wijmo控件无效。</p>
+
+<p>当你的应用包含有动态的面板，且该面板能改变控件的可见性或者面积时，可以使用该方法。例如，splitters，accordions，
+和tab控件通常改变控件内容元素的可见性。在这种情况下，通知包含在该元素中的控件失败时，将会引起它们适当地停止工作。</p>
+
+<p>如果此情况发生，你必须处理在动态容器中合适的事件，并且调用<a href="topic/wijmo.Control.Class.html"><b>Control</b></a> 使所有的方法无效，这样包含的Wijmo控件将适当地更新它们的布局信息。</p><br/><span class="text-info">(继承自 <a href="topic/wijmo.Control.Class.html"><b>Control</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>onGotFocus</b>&#8203;(e?)</td>
+      <td><p>
+<b>e?</b> (<a href="topic/wijmo.EventArgs.Class.html"><b>EventArgs</b></a>)<br/></p>
+</td>
+      <td>增加<b>gotFocus</b> 事件。<br/><span class="text-info">(继承自 <a href="topic/wijmo.Control.Class.html"><b>Control</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>onIsDroppedDownChanged</b>&#8203;(e?)</td>
+      <td><p>
+<b>e?</b> (<a href="topic/wijmo.EventArgs.Class.html"><b>EventArgs</b></a>)<br/></p>
+</td>
+      <td>触发 <b>isDroppedDownChanged</b> 事件。<br/><span class="text-info">(继承自 <a href="topic/wijmo.input.DropDown.Class.html"><b>DropDown</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>onIsDroppedDownChanging</b>&#8203;(e): <b>boolean</b></td>
+      <td><p>
+<b>e</b> (<a href="topic/wijmo.CancelEventArgs.Class.html"><b>CancelEventArgs</b></a>)<br/></p>
+</td>
+      <td>触发 <b>isDroppedDownChanging</b> 事件。<br/><span class="text-info">(继承自 <a href="topic/wijmo.input.DropDown.Class.html"><b>DropDown</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>onLostFocus</b>&#8203;(e?)</td>
+      <td><p>
+<b>e?</b> (<a href="topic/wijmo.EventArgs.Class.html"><b>EventArgs</b></a>)<br/></p>
+</td>
+      <td>增加<b>lostFocus</b> 事件。<br/><span class="text-info">(继承自 <a href="topic/wijmo.Control.Class.html"><b>Control</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>onSelectedIndexChanged</b>&#8203;(e?)</td>
+      <td><p>
+<b>e?</b> (<a href="topic/wijmo.EventArgs.Class.html"><b>EventArgs</b></a>)<br/></p>
+</td>
+      <td>触发 <b>selectedIndexChanged</b> 事件。<br/><span class="text-info">(继承自 <a href="topic/wijmo.input.ComboBox.Class.html"><b>ComboBox</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>onTextChanged</b>&#8203;(e?)</td>
+      <td><p>
+<b>e?</b> (<a href="topic/wijmo.EventArgs.Class.html"><b>EventArgs</b></a>)<br/></p>
+</td>
+      <td>触发 <b>textChanged</b> 事件。<br/><span class="text-info">(继承自 <a href="topic/wijmo.input.DropDown.Class.html"><b>DropDown</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>refresh</b>&#8203;(fullUpdate?)</td>
+      <td><p>
+<b>fullUpdate?</b> (<b>boolean</b>): 是否更新该控件的布局和内容。<br/><span class="text-info">(默认值: <b>true</b>)</span><br/></p>
+</td>
+      <td>刷新控件。<br/><span class="text-info">(继承自 <a href="topic/wijmo.Control.Class.html"><b>Control</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td><span class="badge" title="静态">S</span></td>
+      <td><b>refreshAll</b>&#8203;(e?)</td>
+      <td><p>
+<b>e?</b> (<b>HTMLElement</b>): 容器元素。如果设置为null，所有在页面上的Wijmo控件
+将无效。<br/></p>
+</td>
+      <td><p>刷新包含在HTML元素中所有的Wijmo控件。</p>
+
+<p>该方法与<b>invalidateAll</b> 相似，除过控件被立即更新，而不是一段时间之后。</p><br/><span class="text-info">(继承自 <a href="topic/wijmo.Control.Class.html"><b>Control</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>removeEventListener</b>&#8203;(target?, type?, capture?): <b>number</b></td>
+      <td><p>
+<b>target?</b> (<b>EventTarget</b>): 事件的目标元素。如果为null，移除在依附在所有目标上的监听。<br/><b>type?</b> (<b>string</b>): 指定事件的字符串。如果为null，移除依附在所有事件上的监听。<br/><b>capture?</b> (<b>boolean</b>): 监听是否正在捕获。如果为null，移除捕获的和没有捕获的监听。<br/></p>
+</td>
+      <td>移除一个或者更多的依附在<a href="topic/wijmo.Control.Class.html"><b>Control</b></a> 中的元素上的事件监听。<br/><br/><b>返回值</b> 被移除的监听数量。<br/><span class="text-info">(继承自 <a href="topic/wijmo.Control.Class.html"><b>Control</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>selectAll</b>&#8203;()</td>
+      <td></td>
+      <td>将焦点设置给控件，同时选中全部其内容。<br/><span class="text-info">(继承自 <a href="topic/wijmo.input.DropDown.Class.html"><b>DropDown</b></a>).</span></td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideEvents = !hideEvents">
+<span class="glyph-collapsed" ng-show="hideEvents"></span>
+<span class="glyph-expanded" ng-hide="hideEvents"></span>
+事件
+</h3>
+</div>
+<table ng-hide="hideEvents" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th class="col-md-2">名称</th>
+
+<th class="col-md-5">参数</th>
+
+<th class="col-md-5">描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>gotFocus</b></td>
+      <td><a href="topic/wijmo.EventArgs.Class.html"><b>EventArgs</b></a></td>
+      <td>当控件获取焦点时发生。<br/><span class="text-info">(继承自 <a href="topic/wijmo.Control.Class.html"><b>Control</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>isDroppedDownChanged</b></td>
+      <td><a href="topic/wijmo.EventArgs.Class.html"><b>EventArgs</b></a></td>
+      <td>在下拉框显示或者隐藏之后触发。<br/><span class="text-info">(继承自 <a href="topic/wijmo.input.DropDown.Class.html"><b>DropDown</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>isDroppedDownChanging</b></td>
+      <td><a href="topic/wijmo.CancelEventArgs.Class.html"><b>CancelEventArgs</b></a></td>
+      <td>在下拉框显示或者隐藏之前触发。<br/><span class="text-info">(继承自 <a href="topic/wijmo.input.DropDown.Class.html"><b>DropDown</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>lostFocus</b></td>
+      <td><a href="topic/wijmo.EventArgs.Class.html"><b>EventArgs</b></a></td>
+      <td>当控件失去焦点时发生。<br/><span class="text-info">(继承自 <a href="topic/wijmo.Control.Class.html"><b>Control</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>selectedIndexChanged</b></td>
+      <td><a href="topic/wijmo.EventArgs.Class.html"><b>EventArgs</b></a></td>
+      <td>当 <b>selectedIndex</b> 属性发生变化时触发。<br/><span class="text-info">(继承自 <a href="topic/wijmo.input.ComboBox.Class.html"><b>ComboBox</b></a>).</span></td>
+    </tr>
+    <tr ng-show="showInherited">
+      <td></td>
+      <td><b>textChanged</b></td>
+      <td><a href="topic/wijmo.EventArgs.Class.html"><b>EventArgs</b></a></td>
+      <td>当 <b>text</b> 属性发生变化时触发。<br/><span class="text-info">(继承自 <a href="topic/wijmo.input.DropDown.Class.html"><b>DropDown</b></a>).</span></td>
+    </tr>
+</tbody>
+</table>
+</div>
+

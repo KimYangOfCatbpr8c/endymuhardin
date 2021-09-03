@@ -1,0 +1,22 @@
+<h2>WjMenuItem 类</h2>
+<dl class="dl-horizontal">
+<dt>基类</dt><dd><b>WjDirective</b></dd>
+<dt>模块</dt><dd>wijmo.angular</dd>
+<dt>文件</dt><dd>wijmo.angular.js</dd>
+<dt>表示</dt><dd><label style="font-weight:normal">继承成员 <input type="checkbox" ng-model="showInherited"></label></dd>
+</dl>
+<p><p>AngularJS 指令应用于 menu items.</p>
+
+<p><b>wj-menu-item</b> 指令必须包含于 <a href="topic/wijmo.angular.WjMenu.Class.html"><b>WjMenu</b></a> 指令.
+支持以下特性:</p>
+
+<p><dl class="dl-horizontal">
+  <dt>cmd</dt>       <dd><code>=</code> 项目被点击时控制器中执行的函数。</dd>
+  <dt>cmd-param</dt>  <dd><code>=</code> 项目被点击时传递给执行函数<b>cmd</b>的参数。</dd>
+  <dt>value</dt>     <dd><code>=</code> 项目被点击时选中的值 (通过 this 或 <b>cmd</b> 获得).</dd>
+</dl></p>
+
+<p>菜单项显示的内容有可能是包含 AngularJS 绑定和指令的 HTML 代码段。
+也可以使用 <b>ng-repeat</b> 和 <b>ng-if</b> 指令填充菜单项。
+除了控制器上任何可用的属性变量之外， <b>$item</b>, 
+<b>$itemIndex</b> 和 <b>$control</b> 模板变量也可用于 AngularJS 绑定中，用以指定数据项，索引，以及父控件等。</p></p>

@@ -1,0 +1,73 @@
+<h2>模块 wijmo/wijmo.angular2.chart.interaction</h2>
+<dl class="dl-horizontal">
+<dt>文件</dt><dd>wijmo.angular2.js</dd>
+</dl>
+<p><p>包含 <b>wijmo.chart.interaction</b> 模块的 Angular 2 组件。 </p>
+
+<p><b>wijmo.angular2.chart.interaction</b> 是一个外部的 TypeScript 模块，可以通过其环境模块名称导入到您的代码中。例如：</p>
+
+<p><pre>import * as wjInteraction from 'wijmo/wijmo.angular2.chart.interaction';
+import * as wjChart from 'wijmo/wijmo.angular2.chart';
+&nbsp;
+&#64;Component({
+    directives: [wjChart.WjFlexChart, wjInteraction.WjFlexChartRangeSelector, wjChart.WjFlexChartSeries],
+    template: `
+      &lt;wj-flex-chart [itemsSource]="data" [bindingX]="'x'"&gt;
+          &lt;wj-flex-chart-range-selector&gt;&lt;/wj-flex-chart-range-selector&gt;
+          &lt;wj-flex-chart-series [binding]="'y'"&gt;&lt;/wj-flex-chart-series&gt;
+      &lt;/wj-flex-chart&gt;`,
+    selector: 'my-cmp',
+})
+export class MyCmp {
+    data: any[];
+}</pre></p></p>
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 style="margin:0px" ng-click="hideClasses = !hideClasses">
+<span class="glyph-collapsed" ng-show="hideClasses"></span>
+<span class="glyph-expanded" ng-hide="hideClasses"></span>
+类
+</h3>
+</div>
+<table ng-hide="hideClasses" class="table table-condensed" style="font:inherit">
+<thead>
+<tr>
+
+<th></th>
+
+<th>名称</th>
+
+<th>描述</th>
+
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo-wijmo.angular2.chart.interaction.WjFlexChartGestures.Class.html"><b>WjFlexChartGestures</b></a></td>
+      <td><p><a href="topic/wijmo.angular.WjFlexChart.Class.html"><b>WjFlexChart</b></a> <a href="topic/wijmo.chart.interaction.ChartGestures.Class.html"><b>ChartGestures</b></a> 对象对应的 Angular 2 组件。</p>
+
+<p><b>wj-flex-chart-gestures</b> 组件必须包含在一个 <a href="topic/wijmo-wijmo.angular2.chart.WjFlexChart.Class.html"><b>WjFlexChart</b></a> 组件内部。</p>
+
+<p>使用 <b>wj-flex-chart-gestures</b> 组件添加 <b>ChartGestures</b> 对象至您的 Angular 2 应用程序中。关于 Angular 2 标记语法的更多细节，请参见
+<a href="static/angular2Markup.html">Angular 2 标记</a>。</p>
+
+<p><b>WjFlexChartGestures</b> 组件继承自 <b>ChartGestures</b> 类，因此继承了其全部的属性，事件和方法。</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><a href="topic/wijmo-wijmo.angular2.chart.interaction.WjFlexChartRangeSelector.Class.html"><b>WjFlexChartRangeSelector</b></a></td>
+      <td><p><a href="topic/wijmo.angular.WjFlexChart.Class.html"><b>WjFlexChart</b></a> <a href="topic/wijmo.chart.interaction.RangeSelector.Class.html"><b>RangeSelector</b></a> 对象对应的 Angular 2 组件。</p>
+
+<p><b>wj-flex-chart-range-selector</b> 组件必须包含在一个 <a href="topic/wijmo-wijmo.angular2.chart.WjFlexChart.Class.html"><b>WjFlexChart</b></a> 组件内部。</p>
+
+<p>使用 <b>wj-flex-chart-range-selector</b> 组件添加 <b>RangeSelector</b> 对象至您的 Angular 2 应用程序中。关于 Angular 2 标记语法的更多细节，请参见
+<a href="static/angular2Markup.html">Angular 2 标记</a>。</p>
+
+<p><b>WjFlexChartRangeSelector</b> 组件继承自 <b>RangeSelector</b> 类，因此继承了其全部的属性，事件和方法。</p></td>
+    </tr>
+</tbody>
+</table>
+</div>
+
